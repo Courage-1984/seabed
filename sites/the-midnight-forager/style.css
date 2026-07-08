@@ -1,0 +1,536 @@
+/* Agent Implementation: Inject exclusively into :root */
+:root {
+  --color-primary: #0B131F;
+  --color-secondary: #1C2A39;
+  --color-accent: #D4AF37;
+  --color-background: #050A10;
+  --color-text: #E5E9F0;
+
+  --font-heading: 'Cinzel Decorative', serif;
+  --font-body: 'Inter', sans-serif;
+
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+  --spacing-xxl: 12rem;
+  
+  --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, .logo {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Typography Scales */
+h1 { font-size: clamp(3rem, 8vw, 6rem); text-transform: uppercase; letter-spacing: 0.05em; }
+h2 { font-size: clamp(2rem, 5vw, 4rem); margin-bottom: var(--spacing-md); }
+h3 { font-size: clamp(1.25rem, 3vw, 2rem); margin-bottom: var(--spacing-sm); color: var(--color-accent); }
+p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
+.section-lead { font-size: 1.5rem; font-style: italic; opacity: 0.8; }
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--color-accent);
+  color: var(--color-background);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  border: 1px solid var(--color-accent);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-accent);
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--color-text);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn-text {
+  display: inline-block;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 4px;
+}
+
+.btn-text:hover {
+  color: var(--color-text);
+  border-color: var(--color-text);
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--spacing-md) 5%;
+  z-index: 100;
+  transition: background-color 0.4s ease, padding 0.4s ease;
+}
+
+.site-header.scrolled {
+  background-color: rgba(5, 10, 16, 0.95);
+  backdrop-filter: blur(10px);
+  padding: var(--spacing-sm) 5%;
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--color-accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a:not(.btn-outline):hover {
+  color: var(--color-accent);
+}
+
+/* Sections */
+.section {
+  padding: var(--spacing-xl) 5%;
+  position: relative;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--spacing-xxl);
+  position: relative;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  margin-bottom: var(--spacing-lg);
+  color: rgba(229, 233, 240, 0.8);
+}
+
+.hero-image-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, var(--color-background) 0%, rgba(5, 10, 16, 0.4) 50%, transparent 100%);
+  z-index: 2;
+}
+
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+/* Concept Section */
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.concept-text {
+  padding-right: var(--spacing-lg);
+}
+
+.offset-image {
+  transform: translateY(var(--spacing-lg));
+  position: relative;
+}
+
+.offset-image::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--color-accent);
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* Expedition Section */
+.expedition-section {
+  background-color: var(--color-primary);
+  margin-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xxl);
+}
+
+.expedition-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.expedition-header p {
+  margin: 0 auto;
+}
+
+.expedition-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.expedition-image {
+  position: sticky;
+  top: var(--spacing-xl);
+}
+
+.itinerary-list {
+  list-style: none;
+  counter-reset: itinerary-counter;
+}
+
+.itinerary-list li {
+  position: relative;
+  padding-left: 4rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+.itinerary-list li::before {
+  counter-increment: itinerary-counter;
+  content: "0" counter(itinerary-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-accent);
+  line-height: 1;
+  opacity: 0.5;
+}
+
+.itinerary-list strong {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Menu Section */
+.menu-section {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+}
+
+.menu-container {
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+  position: relative;
+}
+
+.menu-content {
+  background-color: var(--color-secondary);
+  padding: var(--spacing-xl);
+  position: relative;
+  z-index: 2;
+  margin-right: -10%;
+  box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
+}
+
+.menu-items {
+  list-style: none;
+  margin-bottom: var(--spacing-xl);
+}
+
+.menu-items li {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid rgba(229, 233, 240, 0.1);
+}
+
+.menu-items li:last-child {
+  border-bottom: none;
+}
+
+.dish-name {
+  color: var(--color-accent);
+}
+
+.overlapping-image {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--spacing-xl);
+}
+
+.overlapping-image img {
+  height: 100%;
+  object-fit: cover;
+  min-height: 600px;
+}
+
+/* Booking Section */
+.booking-section {
+  background-color: var(--color-primary);
+}
+
+.booking-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.booking-image img {
+  height: 100%;
+  object-fit: cover;
+  min-height: 600px;
+}
+
+.booking-form-container {
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.booking-form {
+  margin-top: var(--spacing-md);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+  letter-spacing: 1px;
+  color: rgba(229, 233, 240, 0.7);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-background);
+  border: 1px solid rgba(229, 233, 240, 0.2);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.form-feedback {
+  margin-top: 1rem;
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--color-background);
+  padding: var(--spacing-xl) 5% var(--spacing-md);
+  border-top: 1px solid rgba(229, 233, 240, 0.1);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.footer-brand h3 {
+  font-size: 2rem;
+  color: var(--color-accent);
+}
+
+.footer-contact h4,
+.footer-links h4 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+  font-family: var(--font-heading);
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a:hover {
+  color: var(--color-accent);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(229, 233, 240, 0.1);
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+/* Animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  h1 { font-size: 4rem; }
+  .hero-image-wrapper { width: 100%; opacity: 0.3; }
+  .hero-image-wrapper::before { background: rgba(5, 10, 16, 0.6); }
+  
+  .concept-grid,
+  .expedition-grid,
+  .menu-container,
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .offset-image {
+    transform: translateY(0);
+    margin-top: var(--spacing-md);
+  }
+  
+  .expedition-image {
+    position: relative;
+    top: 0;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .menu-content {
+    margin-right: 0;
+    margin-bottom: -10%;
+  }
+  
+  .overlapping-image {
+    margin-top: 0;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* simple mobile nav approach for brevity */
+  }
+  
+  .section {
+    padding: var(--spacing-lg) 5%;
+  }
+  
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.5rem; }
+  
+  .menu-content {
+    margin-bottom: 0;
+  }
+}
+

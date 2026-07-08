@@ -1,0 +1,34 @@
+// Use import.meta.glob to eagerly load all meta.json files
+const sites = import.meta.glob('./sites/*/meta.json', { eager: true });
+const images = import.meta.glob('./sites/*/assets/*.{jpg,png,jpeg,svg,gif}', { eager: true, query: '?url', import: 'default' });
+
+const grid = document.getElementById('hub-grid');
+
+Object.entries(sites).forEach(([path, meta]) => {
+  // path is something like './sites/brand-name/meta.json'
+  const siteFolder = path.replace('/meta.json', '');
+  const { title, blurb, hero } = meta;
+  
+  // Resolve the hashed image URL from Vite's glob
+  const imageGlobPath = `${siteFolder}/${hero}`;
+  const imagePath = hero.startsWith('/') ? hero : imageGlobPath;
+  const resolvedImageUrl = images[imageGlobPath] || imagePath;
+  
+  // Create card element
+  const card = document.createElement('a');
+  card.href = `${siteFolder}/index.html`;
+  card.className = 'card';
+  
+  card.innerHTML = `
+    <div class="card-img-wrapper">
+      <img src="${resolvedImageUrl}" alt="${title} screenshot" loading="lazy">
+    </div>
+    <div class="card-content">
+      <h2 class="card-title">${title}</h2>
+      <p class="card-blurb">${blurb}</p>
+      <div class="card-link-text">Visit Project &rarr;</div>
+    </div>
+  `;
+  
+  grid.appendChild(card);
+});

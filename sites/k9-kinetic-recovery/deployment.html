@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deployment & Booking | K9 Kinetic Recovery</title>
+  <meta name="description" content="Track the K9 Kinetic Recovery mobile unit and submit veterinary referrals for retired working dogs.">
+  <meta property="og:title" content="Deployment & Booking | K9 Kinetic Recovery">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">K9 KINETIC RECOVERY</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="methodology.html">Therapies</a></li>
+        <li><a href="deployment.html" class="active">Schedule & Booking</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" style="background-image: linear-gradient(rgba(30, 58, 76, 0.8), rgba(30, 58, 76, 0.8)), url('/assets/k9/landscape.jpg'); height: 40vh;">
+      <div class="hero-content">
+        <h1>Deployment Schedule</h1>
+        <p>Strategic interception of the mobile clinic.</p>
+      </div>
+    </section>
+
+    <section class="section-padding container">
+      <div class="deployment-grid">
+        
+        <!-- Schedule Section -->
+        <div>
+          <h2 class="oswald-text" style="color: var(--color-primary); margin-bottom: 2rem;">Upcoming Regional Route</h2>
+          <p style="margin-bottom: 2rem;">Our mobile unit operates on a strict regional deployment schedule. Please review our upcoming locations below to coordinate your handler application and veterinary referral.</p>
+          
+          <ul class="schedule-list">
+            <li class="schedule-item">
+              <div class="date">12 Aug - 16 Aug, 2026</div>
+              <h4>Scottish Highlands Sector</h4>
+              <p>Operating primarily out of Inverness. Serving retired search-and-rescue dogs from the Northern Mountain Rescue teams.</p>
+            </li>
+            <li class="schedule-item">
+              <div class="date">20 Aug - 28 Aug, 2026</div>
+              <h4>Yorkshire Moors Sector</h4>
+              <p>Based near Whitby. Prioritising former police K9s with diagnosed lumbar and hind-limb osteoarthritis.</p>
+            </li>
+            <li class="schedule-item">
+              <div class="date">05 Sep - 12 Sep, 2026</div>
+              <h4>Brecon Beacons Sector</h4>
+              <p>Wales deployment. Specialised tactical dismount recovery for retired military working dogs.</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Booking Form Section -->
+        <div style="background-color: var(--color-background); padding: 3rem; border-top: 4px solid var(--color-accent);">
+          <h2 class="oswald-text" style="color: var(--color-primary); margin-bottom: 1rem;">Handler Application</h2>
+          <p style="margin-bottom: 2rem; font-size: 0.9rem;">Treatment slots are strictly prioritised for retired working breeds with documented orthopaedic trauma. A veterinary referral is mandatory.</p>
+          
+          <form onsubmit="event.preventDefault(); alert('Application submitted successfully.');">
+            <div class="form-group">
+              <label for="handlerName">Primary Handler Name</label>
+              <input type="text" id="handlerName" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="dogName">Dog's Name &amp; Service Branch</label>
+              <input type="text" id="dogName" placeholder="e.g. Max (Metropolitan Police)" required>
+            </div>
+
+            <div class="form-group">
+              <label for="sector">Preferred Interception Sector</label>
+              <select id="sector" required>
+                <option value="">Select a sector...</option>
+                <option value="highlands">Scottish Highlands</option>
+                <option value="yorkshire">Yorkshire Moors</option>
+                <option value="brecon">Brecon Beacons</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="clinicalNotes">Brief Clinical Notes</label>
+              <textarea id="clinicalNotes" placeholder="Provide a brief overview of the dog's mobility issues and confirmed diagnoses..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%;">Submit Handler Application</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h4 class="oswald-text" style="margin-bottom: 0.5rem;">K9 Kinetic Recovery</h4>
+        <p>Mobile Operations Unit</p>
+        <p>contact@k9kinetic.co.uk | +44 1632 960001</p>
+      </div>
+      <div>
+        <p>&copy; 2026 K9 Kinetic Recovery. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
