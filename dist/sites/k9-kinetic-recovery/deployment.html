@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deployment & Booking | K9 Kinetic Recovery</title>
-  <meta name="description" content="Track the K9 Kinetic Recovery mobile unit and submit veterinary referrals for retired working dogs.">
+  <meta name="description" content="Track the K9 Kinetic Recovery mobile unit and submit veterinary referrals for retired working dogs. Multi-step handler application with deployment schedule.">
   <meta property="og:title" content="Deployment & Booking | K9 Kinetic Recovery">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <script type="module" crossorigin src="../../assets/modulepreload-polyfill-Dezn_h7o.js"></script>
-  <script type="module" crossorigin src="../../assets/main-C1eW0mh2.js"></script>
-  <link rel="stylesheet" crossorigin href="../../assets/main-CgbIxt5B.css">
+  <script type="module" crossorigin src="../../assets/main-C6VO4J6K.js"></script>
+  <link rel="stylesheet" crossorigin href="../../assets/main-88iTAM89.css">
 </head>
 <body>
   <header>
@@ -18,82 +17,239 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="methodology.html">Therapies</a></li>
-        <li><a href="deployment.html" class="active">Schedule & Booking</a></li>
+        <li><a href="deployment.html" class="active">Schedule &amp; Booking</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="hero" style="background-image: linear-gradient(rgba(30, 58, 76, 0.8), rgba(30, 58, 76, 0.8)), url('../../assets/k9/landscape.jpg'); height: 40vh;">
+    <!-- 1. Hero -->
+    <section class="hero" style="height: 40vh;">
       <div class="hero-content">
         <h1>Deployment Schedule</h1>
-        <p>Strategic interception of the mobile clinic.</p>
+        <p class="subheadline">Strategic interception of the mobile clinic. Review our upcoming regional deployment routes and submit your handler application to secure a priority treatment slot for your retired working dog.</p>
       </div>
     </section>
 
+    <!-- 2. Value Grid — Why Book With Us -->
     <section class="section-padding container">
-      <div class="deployment-grid">
-        
-        <!-- Schedule Section -->
-        <div>
-          <h2 class="oswald-text" style="color: var(--color-primary); margin-bottom: 2rem;">Upcoming Regional Route</h2>
-          <p style="margin-bottom: 2rem;">Our mobile unit operates on a strict regional deployment schedule. Please review our upcoming locations below to coordinate your handler application and veterinary referral.</p>
-          
-          <ul class="schedule-list">
-            <li class="schedule-item">
-              <div class="date">12 Aug - 16 Aug, 2026</div>
-              <h4>Scottish Highlands Sector</h4>
-              <p>Operating primarily out of Inverness. Serving retired search-and-rescue dogs from the Northern Mountain Rescue teams.</p>
-            </li>
-            <li class="schedule-item">
-              <div class="date">20 Aug - 28 Aug, 2026</div>
-              <h4>Yorkshire Moors Sector</h4>
-              <p>Based near Whitby. Prioritising former police K9s with diagnosed lumbar and hind-limb osteoarthritis.</p>
-            </li>
-            <li class="schedule-item">
-              <div class="date">05 Sep - 12 Sep, 2026</div>
-              <h4>Brecon Beacons Sector</h4>
-              <p>Wales deployment. Specialised tactical dismount recovery for retired military working dogs.</p>
-            </li>
-          </ul>
+      <h2 class="oswald-text" style="font-size: 2.5rem; color: var(--color-primary); text-align: center; margin-bottom: 1rem;">Why Book With Us</h2>
+      <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Our mobile deployment model eliminates the barriers that prevent retired working dogs from accessing the specialist rehabilitation they need.</p>
+
+      <div class="grid-cards grid-cards-4">
+        <div class="card">
+          <h3>Fully Mobile</h3>
+          <p>We transport our self-contained clinical container directly to your location. By bringing the entire hydrotherapy and diagnostic suite to your door, we eliminate the severe stress of long-distance veterinary transport.</p>
         </div>
-
-        <!-- Booking Form Section -->
-        <div style="background-color: var(--color-background); padding: 3rem; border-top: 4px solid var(--color-accent);">
-          <h2 class="oswald-text" style="color: var(--color-primary); margin-bottom: 1rem;">Handler Application</h2>
-          <p style="margin-bottom: 2rem; font-size: 0.9rem;">Treatment slots are strictly prioritised for retired working breeds with documented orthopaedic trauma. A veterinary referral is mandatory.</p>
-          
-          <form onsubmit="event.preventDefault(); alert('Application submitted successfully.');">
-            <div class="form-group">
-              <label for="handlerName">Primary Handler Name</label>
-              <input type="text" id="handlerName" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="dogName">Dog's Name &amp; Service Branch</label>
-              <input type="text" id="dogName" placeholder="e.g. Max (Metropolitan Police)" required>
-            </div>
-
-            <div class="form-group">
-              <label for="sector">Preferred Interception Sector</label>
-              <select id="sector" required>
-                <option value="">Select a sector...</option>
-                <option value="highlands">Scottish Highlands</option>
-                <option value="yorkshire">Yorkshire Moors</option>
-                <option value="brecon">Brecon Beacons</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="clinicalNotes">Brief Clinical Notes</label>
-              <textarea id="clinicalNotes" placeholder="Provide a brief overview of the dog's mobility issues and confirmed diagnoses..." required></textarea>
-            </div>
-
-            <button type="submit" class="btn" style="width: 100%;">Submit Handler Application</button>
-          </form>
+        <div class="card">
+          <h3>Veterinary Approved</h3>
+          <p>Developed with orthopaedic specialists and delivered by RAMP-certified physiotherapists. We maintain formal referral relationships, ensuring seamless clinical communication and sharing all treatment records via a secure digital portal.</p>
         </div>
-
+        <div class="card">
+          <h3>No Kennelling Required</h3>
+          <p>Treatment happens without leaving the home environment. By eliminating the acute stress of kennelling, dogs maintain the parasympathetic dominance essential for effective tissue repair while sleeping in their own beds.</p>
+        </div>
+        <div class="card">
+          <h3>Priority Scheduling</h3>
+          <p>Retired service dogs receive automatic priority booking in every sector. Acknowledging their extraordinary service, we ensure these complex cases are scheduled first and accommodate emergency referrals when clinically necessary.</p>
+        </div>
       </div>
+    </section>
+
+    <!-- 3. Schedule + Multi-Step Booking Form -->
+    <section class="section-padding" style="background-color: #f4f6f8;">
+      <div class="container">
+        <div class="deployment-grid">
+          
+          <!-- Schedule Section -->
+          <div>
+            <h2 class="oswald-text" style="color: var(--color-primary); margin-bottom: 2rem;">Upcoming Regional Route</h2>
+            <p style="margin-bottom: 2rem;">Our mobile unit operates on a strict regional deployment schedule. Please review our upcoming locations below to coordinate your handler application and veterinary referral.</p>
+            
+            <ul class="schedule-list">
+              <li class="schedule-item">
+                <div class="date">12 Aug - 16 Aug, 2026</div>
+                <h4>Scottish Highlands Sector</h4>
+                <p>Operating primarily out of Inverness. Serving retired search-and-rescue dogs from the Northern Mountain Rescue teams. Priority given to dogs with documented hip dysplasia and lumbar spondylosis. Capacity: 8 treatment slots across 5 days.</p>
+              </li>
+              <li class="schedule-item">
+                <div class="date">20 Aug - 28 Aug, 2026</div>
+                <h4>Yorkshire Moors Sector</h4>
+                <p>Based near Whitby. Prioritising former police K9s with diagnosed lumbar and hind-limb osteoarthritis. Extended deployment (9 days) to accommodate the high volume of referrals from West Yorkshire and North Yorkshire Police dog sections. Capacity: 14 treatment slots.</p>
+              </li>
+              <li class="schedule-item">
+                <div class="date">05 Sep - 12 Sep, 2026</div>
+                <h4>Brecon Beacons Sector</h4>
+                <p>Wales deployment. Specialised tactical dismount recovery for retired military working dogs from Sennybridge Training Area units. Liaison with Defence Animal Training Regiment (DATR) veterinary team. Capacity: 10 treatment slots.</p>
+              </li>
+              <li class="schedule-item">
+                <div class="date">20 Sep - 26 Sep, 2026</div>
+                <h4>East Anglia Sector</h4>
+                <p>Norfolk-based deployment serving retired RAF police dogs and Suffolk Constabulary K9 units. Focus on post-surgical cruciate ligament rehabilitation and multi-joint osteoarthritis management. Capacity: 12 treatment slots.</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Multi-Step Booking Form -->
+          <div style="background-color: var(--color-background); padding: 3rem; border-top: 4px solid var(--color-accent);">
+            <h2 class="oswald-text" style="color: var(--color-primary); margin-bottom: 1rem;">Handler Application</h2>
+            <p style="margin-bottom: 2rem; font-size: 0.9rem;">Treatment slots are strictly prioritised for retired working breeds with documented orthopaedic trauma. A veterinary referral is mandatory.</p>
+
+            <!-- Progress Indicator -->
+            <div class="k9-progress-bar">
+              <div class="k9-progress-step active" data-step="1"><span>1</span> Handler</div>
+              <div class="k9-progress-step" data-step="2"><span>2</span> Dog</div>
+              <div class="k9-progress-step" data-step="3"><span>3</span> Clinical</div>
+            </div>
+
+            <form id="deployment-form" class="k9-multistep-form">
+              <!-- Step 1: Handler Details -->
+              <div class="k9-form-step active" data-step="1">
+                <div class="form-group">
+                  <label for="handlerName">Primary Handler Name</label>
+                  <input type="text" id="handlerName" required>
+                </div>
+                <div class="form-group">
+                  <label for="handlerEmail">Contact Email</label>
+                  <input type="email" id="handlerEmail" required placeholder="handler@example.com">
+                </div>
+                <div class="form-group">
+                  <label for="handlerPhone">Contact Telephone</label>
+                  <input type="tel" id="handlerPhone" placeholder="+44 7700 900000">
+                </div>
+                <div class="form-group">
+                  <label for="handlerLocation">Location (Town/County)</label>
+                  <input type="text" id="handlerLocation" required placeholder="e.g. Inverness, Highland">
+                </div>
+                <div class="k9-form-nav">
+                  <span></span>
+                  <button type="button" class="btn k9-btn-next" data-next="2">Next: Dog Profile &rarr;</button>
+                </div>
+              </div>
+
+              <!-- Step 2: Dog Profile -->
+              <div class="k9-form-step" data-step="2">
+                <div class="form-group">
+                  <label for="dogName">Dog's Name &amp; Breed</label>
+                  <input type="text" id="dogName" placeholder="e.g. Rex (Belgian Malinois)" required>
+                </div>
+                <div class="form-group">
+                  <label for="dogAge">Dog's Age (Years)</label>
+                  <input type="number" id="dogAge" placeholder="e.g. 9" min="1" max="20" required>
+                </div>
+                <div class="form-group">
+                  <label for="serviceBranch">Service Branch / Organisation</label>
+                  <select id="serviceBranch" required>
+                    <option value="">Select service branch...</option>
+                    <option value="military">Military (Army/RAF/Navy)</option>
+                    <option value="police">Police K9 Unit</option>
+                    <option value="sar">Search & Rescue</option>
+                    <option value="customs">Border Force / Customs</option>
+                    <option value="other">Other Working Dog</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="sector">Preferred Deployment Sector</label>
+                  <select id="sector" required>
+                    <option value="">Select a sector...</option>
+                    <option value="highlands">Scottish Highlands (Aug 12-16)</option>
+                    <option value="yorkshire">Yorkshire Moors (Aug 20-28)</option>
+                    <option value="brecon">Brecon Beacons (Sep 5-12)</option>
+                    <option value="anglia">East Anglia (Sep 20-26)</option>
+                  </select>
+                </div>
+                <div class="k9-form-nav">
+                  <button type="button" class="btn k9-btn-prev" data-prev="1">&larr; Back</button>
+                  <button type="button" class="btn k9-btn-next" data-next="3">Next: Clinical Notes &rarr;</button>
+                </div>
+              </div>
+
+              <!-- Step 3: Clinical Notes -->
+              <div class="k9-form-step" data-step="3">
+                <div class="form-group">
+                  <label for="primaryCondition">Primary Condition</label>
+                  <select id="primaryCondition" required>
+                    <option value="">Select primary condition...</option>
+                    <option value="hip-dysplasia">Hip Dysplasia</option>
+                    <option value="spondylosis">Lumbar Spondylosis</option>
+                    <option value="cruciate">Cruciate Ligament (Post-Op)</option>
+                    <option value="osteoarthritis">Multi-Joint Osteoarthritis</option>
+                    <option value="soft-tissue">Soft Tissue / Muscle Injury</option>
+                    <option value="other">Other (specify in notes)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="clinicalNotes">Clinical Notes & Mobility Assessment</label>
+                  <textarea id="clinicalNotes" placeholder="Provide a brief overview of the dog's mobility issues, confirmed diagnoses, current medications, and any previous surgical history. Include referring veterinary practice name." required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="vetReferral">Referring Veterinary Practice</label>
+                  <input type="text" id="vetReferral" required placeholder="e.g. Highland Veterinary Group, Inverness">
+                </div>
+                <div class="k9-form-nav">
+                  <button type="button" class="btn k9-btn-prev" data-prev="2">&larr; Back</button>
+                  <button type="submit" class="btn k9-btn-submit">Submit Handler Application</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. FAQ Accordion -->
+    <section class="section-padding container">
+      <h2 class="oswald-text" style="font-size: 2.5rem; color: var(--color-primary); text-align: center; margin-bottom: 3rem;">Deployment FAQs</h2>
+      
+      <div class="k9-accordion" id="deployment-faq">
+        <div class="k9-accordion-item">
+          <button class="k9-accordion-trigger" aria-expanded="false" aria-controls="dfaq-1">
+            <span>How do I know if my dog qualifies for treatment?</span>
+            <span class="k9-accordion-icon">+</span>
+          </button>
+          <div class="k9-accordion-panel" id="dfaq-1" hidden>
+            <p>Treatment is available for any retired working dog with documented orthopaedic or musculoskeletal conditions. This includes military working dogs (MWDs), police K9 units, search-and-rescue dogs, and border force detection dogs. A formal veterinary referral and diagnostic imaging (radiographs minimum) are mandatory for all cases. We also accept private working dogs (e.g., farm dogs, assistance dogs) on a case-by-case basis, though priority scheduling is reserved for retired service animals.</p>
+          </div>
+        </div>
+
+        <div class="k9-accordion-item">
+          <button class="k9-accordion-trigger" aria-expanded="false" aria-controls="dfaq-2">
+            <span>What does a treatment session involve?</span>
+            <span class="k9-accordion-icon">+</span>
+          </button>
+          <div class="k9-accordion-panel" id="dfaq-2" hidden>
+            <p>Each session lasts approximately 90 minutes and includes a pre-treatment thermal imaging scan, the primary therapy modality (hydrotherapy, acoustic resonance, or myofascial release, as prescribed), a post-treatment cool-down and monitoring period, and a handler debrief with home exercise recommendations. The first session in any treatment block also includes a full intake assessment with validated pain scoring (CBPI/HCPI), body condition scoring, and a detailed gait analysis recorded on video for the clinical record.</p>
+          </div>
+        </div>
+
+        <div class="k9-accordion-item">
+          <button class="k9-accordion-trigger" aria-expanded="false" aria-controls="dfaq-3">
+            <span>How far in advance should I book?</span>
+            <span class="k9-accordion-icon">+</span>
+          </button>
+          <div class="k9-accordion-panel" id="dfaq-3" hidden>
+            <p>We recommend submitting your handler application at least 4 weeks prior to your preferred deployment sector dates. Treatment slots are limited by the capacity of the mobile unit (typically 2–3 dogs per day depending on protocol complexity) and are allocated on a priority basis: retired military working dogs first, then police K9s, then search-and-rescue, then other working breeds. Emergency referrals for dogs in acute pain or post-surgical cases are accommodated where possible — contact us directly by telephone for urgent bookings.</p>
+          </div>
+        </div>
+
+        <div class="k9-accordion-item">
+          <button class="k9-accordion-trigger" aria-expanded="false" aria-controls="dfaq-4">
+            <span>Is the service subsidised for retired service dogs?</span>
+            <span class="k9-accordion-icon">+</span>
+          </button>
+          <div class="k9-accordion-panel" id="dfaq-4" hidden>
+            <p>Yes. Retired military, police, and search-and-rescue dogs receive a 40% reduction on all treatment fees in recognition of their operational service. This subsidy is funded through a combination of charitable donations, corporate sponsorship, and our own operational commitment. We also work with several military and police welfare charities who can fund treatment in full for handlers experiencing financial difficulty. No qualifying dog will be turned away for financial reasons — speak to our team confidentially if this applies to your situation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Closing CTA -->
+    <section class="section-padding container text-center closing-cta">
+      <h2 class="oswald-text" style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 1.5rem;">Questions About Deployment?</h2>
+      <p style="font-size: 1.15rem; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Contact our operations team directly for urgent referrals, bespoke deployment requests, or to discuss your dog's specific clinical needs.</p>
+      <a href="methodology.html" class="btn btn-large">Explore Our Therapies</a>
     </section>
   </main>
 
@@ -103,6 +259,11 @@
         <h4 class="oswald-text" style="margin-bottom: 0.5rem;">K9 Kinetic Recovery</h4>
         <p>Mobile Operations Unit</p>
         <p>contact@k9kinetic.co.uk | +44 1632 960001</p>
+      </div>
+      <div class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="methodology.html">Therapies</a>
+        <a href="deployment.html">Schedule & Booking</a>
       </div>
       <div>
         <p>&copy; 2026 K9 Kinetic Recovery. All rights reserved.</p>

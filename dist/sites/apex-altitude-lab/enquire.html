@@ -2,15 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Submit your medical profile for biometric diagnostic screening at Apex Altitude Lab." />
+    <meta name="description" content="Submit your medical profile for biometric diagnostic screening at Apex Altitude Lab. Multi-step intake for bespoke hypoxic conditioning programmes." />
     <meta property="og:title" content="Diagnostics & Enquiries | Apex Altitude Lab" />
     <meta property="og:description" content="Capture rigorous biometric and operational screening data to configure bespoke training packages." />
     <title>Diagnostics - Apex Altitude Lab</title>
     <script type="module" crossorigin src="../../assets/modulepreload-polyfill-Dezn_h7o.js"></script>
-    <script type="module" crossorigin src="../../assets/main-Dkz5YSPX.js"></script>
-    <link rel="stylesheet" crossorigin href="../../assets/main-DI4MU3FH.css">
+    <script type="module" crossorigin src="../../assets/main-BF-t_Nc8.js"></script>
+    <link rel="stylesheet" crossorigin href="../../assets/main-DPDzeh_c.css">
   </head>
   <body>
     <header>
@@ -25,49 +24,258 @@
       </nav>
     </header>
 
-    <main class="split-layout">
-      <section class="split-content">
+    <main>
+      <!-- 1. High-Impact Hero -->
+      <section class="hero-compact container section-padding">
         <h1>Basal Diagnostic Screening</h1>
-        <p>Our onboard intake process functions as an aerospace pre-flight check. Please provide your operational history and current biometric baselines to initiate bespoke training package configurations.</p>
-        
-        <div class="form-container">
-          <form id="enquire-form">
-            <div class="form-group">
-              <label for="operativeId">Operative Identifier (Name)</label>
-              <input type="text" id="operativeId" required placeholder="e.g. J. Doe" />
+        <p class="subheadline">Our onboard intake process functions as an aerospace pre-flight check, rigorously capturing your operational history and current biometric baselines. This data directly informs the configuration of your bespoke conditioning package, ensuring every chamber session is calibrated to your precise physiological profile and deployment requirements.</p>
+      </section>
+
+      <!-- 2. Deep Value Adds (4 Cards) -->
+      <section class="value-add container">
+        <div class="value-grid value-grid-4">
+          <div class="value-card">
+            <h3>Confidential Processing</h3>
+            <p>Every data point is encrypted at rest and in transit using AES-256 protocols. Your medical history and biometric baselines are stored on air-gapped servers, maintaining strict GDPR and MOD data compliance.</p>
+          </div>
+          <div class="value-card">
+            <h3>Rapid Clinical Assessment</h3>
+            <p>Our clinical team initiates a comprehensive review within 48 hours. This includes risk stratification, contraindication screening, and an initial programme recommendation perfectly calibrated to your stated deployment timeline.</p>
+          </div>
+          <div class="value-card">
+            <h3>Bespoke Programme Design</h3>
+            <p>Your intake data feeds directly into our algorithmic planning engine. This generates a tailored 12-week blueprint specifying daily chamber durations, gas mixtures, and sleep optimisation targets individualised to your metabolic fingerprint.</p>
+          </div>
+          <div class="value-card">
+            <h3>24-Hour Concierge Support</h3>
+            <p>You are assigned a dedicated operations concierge who manages every logistical detail of your residency. From facility access and secure transport to dietary provisioning, we ensure the administrative overhead is reduced to zero.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Multi-Step Diagnostic Form -->
+      <section class="section-padding bg-alt">
+        <div class="container">
+          <h2>Diagnostic Intake Protocol</h2>
+          <p class="subheadline">Complete all three stages of the intake process below. Each stage captures critical data points required for accurate programme design.</p>
+
+          <!-- Progress Bar -->
+          <div class="progress-bar-container">
+            <div class="progress-steps">
+              <div class="progress-step active" data-step="1">
+                <span class="step-number">01</span>
+                <span class="step-label">Personal</span>
+              </div>
+              <div class="progress-step" data-step="2">
+                <span class="step-number">02</span>
+                <span class="step-label">Medical</span>
+              </div>
+              <div class="progress-step" data-step="3">
+                <span class="step-number">03</span>
+                <span class="step-label">Programme</span>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="specialisation">Primary Specialisation</label>
-              <select id="specialisation" required>
-                <option value="" disabled selected>Select Operational Field...</option>
-                <option value="commercial-diver">Commercial Saturation Diver</option>
-                <option value="extreme-surfer">Extreme Cold-Water Surfer</option>
-                <option value="other">Other High-Pressure Operative</option>
-              </select>
+            <div class="progress-track">
+              <div class="progress-fill" id="progress-fill"></div>
             </div>
-            <div class="form-group">
-              <label for="heartRate">Resting Heart Rate (BPM)</label>
-              <input type="number" id="heartRate" required placeholder="e.g. 48" min="30" max="150" />
+          </div>
+
+          <!-- Form -->
+          <form id="enquire-form" class="multistep-form">
+            <!-- Step 1: Personal Details -->
+            <div class="form-step active" data-step="1">
+              <h3>Stage 01 — Personal & Operational Details</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="operativeId">Operative Identifier (Full Name)</label>
+                  <input type="text" id="operativeId" required placeholder="e.g. Commander J. Sterling" />
+                </div>
+                <div class="form-group">
+                  <label for="operativeEmail">Secure Contact Email</label>
+                  <input type="email" id="operativeEmail" required placeholder="j.sterling@example.mil" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="specialisation">Primary Specialisation</label>
+                  <select id="specialisation" required>
+                    <option value="" disabled selected>Select Operational Field...</option>
+                    <option value="commercial-diver">Commercial Saturation Diver</option>
+                    <option value="extreme-surfer">Extreme Cold-Water Surfer</option>
+                    <option value="military-diver">Military Clearance Diver</option>
+                    <option value="cave-diver">Technical Cave Diver</option>
+                    <option value="high-altitude">High-Altitude Mountaineer</option>
+                    <option value="other">Other High-Pressure Operative</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="yearsActive">Years of Active Service</label>
+                  <input type="number" id="yearsActive" required placeholder="e.g. 8" min="0" max="50" />
+                </div>
+              </div>
+              <div class="form-nav">
+                <span></span>
+                <button type="button" class="btn btn-next" data-next="2">Proceed to Medical &rarr;</button>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="medicalHistory">Prior Hyperbaric Exposure & Medical Context</label>
-              <textarea id="medicalHistory" rows="4" required placeholder="Detail previous deep-sea or high-altitude operations..."></textarea>
+
+            <!-- Step 2: Medical Baseline -->
+            <div class="form-step" data-step="2">
+              <h3>Stage 02 — Medical Baseline</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="heartRate">Resting Heart Rate (BPM)</label>
+                  <input type="number" id="heartRate" required placeholder="e.g. 48" min="30" max="150" />
+                </div>
+                <div class="form-group">
+                  <label for="bloodPressure">Blood Pressure (Systolic/Diastolic)</label>
+                  <input type="text" id="bloodPressure" required placeholder="e.g. 120/80" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="spO2">Resting SpO2 (%)</label>
+                  <input type="number" id="spO2" placeholder="e.g. 98" min="85" max="100" />
+                </div>
+                <div class="form-group">
+                  <label for="vo2estimate">Estimated VO2 Max (ml/kg/min)</label>
+                  <input type="number" id="vo2estimate" placeholder="e.g. 55" min="20" max="90" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="medicalHistory">Prior Hyperbaric Exposure & Medical Context</label>
+                <textarea id="medicalHistory" rows="5" required placeholder="Detail previous deep-sea or high-altitude operations, any history of decompression sickness, barotrauma, or altitude-related illness. Include current medications and known contraindications."></textarea>
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn btn-prev" data-prev="1">&larr; Back</button>
+                <button type="button" class="btn btn-next" data-next="3">Proceed to Programme &rarr;</button>
+              </div>
             </div>
-            <button type="submit" class="btn">Submit Medical Profile</button>
+
+            <!-- Step 3: Programme Selection -->
+            <div class="form-step" data-step="3">
+              <h3>Stage 03 — Programme Selection</h3>
+              <div class="form-group">
+                <label for="programme">Target Conditioning Programme</label>
+                <select id="programme" required>
+                  <option value="" disabled selected>Select Programme...</option>
+                  <option value="standard-12">Standard 12-Week Acclimatisation</option>
+                  <option value="accelerated-6">Accelerated 6-Week Deployment Prep</option>
+                  <option value="maintenance">Ongoing Maintenance (Post-Deployment)</option>
+                  <option value="diagnostic-only">Diagnostic Assessment Only</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="deploymentDate">Target Deployment Date</label>
+                <input type="date" id="deploymentDate" />
+              </div>
+              <div class="form-group">
+                <label for="additionalNotes">Additional Operational Context</label>
+                <textarea id="additionalNotes" rows="4" placeholder="Any further information relevant to your conditioning requirements, target depth/altitude, team size, or organisational constraints."></textarea>
+              </div>
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="consentCheck" required />
+                  I confirm this data is accurate and consent to clinical review under Apex Altitude Lab's data processing policy.
+                </label>
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn btn-prev" data-prev="2">&larr; Back</button>
+                <button type="submit" class="btn btn-submit">Submit Medical Profile</button>
+              </div>
+            </div>
           </form>
         </div>
       </section>
 
-      <section class="split-visual">
-        <img src="../../assets/deepsea-B70FOAXg.jpg" alt="Extreme depth deep-sea marine environment with faint bioluminescence" loading="lazy" />
+      <!-- 4. FAQ Accordion -->
+      <section class="section-padding container">
+        <h2>Frequently Asked Questions</h2>
+        <p class="subheadline">Common enquiries about our diagnostic intake process, programme eligibility, and facility logistics.</p>
+
+        <div class="accordion" id="faq-accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-1">
+              <span class="accordion-title">What medical documentation do I need to provide?</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-panel" id="faq-1" role="region" hidden>
+              <div class="accordion-content">
+                <p>We require a recent (within 6 months) occupational medical certificate, a signed physician's clearance for hypoxic exposure, and any relevant imaging or diagnostic reports pertaining to cardiovascular, pulmonary, or neurological conditions. If you are an active military or commercial operative, your unit medical officer's referral is sufficient in lieu of a civilian physician clearance. All documentation is processed under strict medical confidentiality protocols and stored in compliance with NHS and MOD data handling standards.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-2">
+              <span class="accordion-title">How long does the initial assessment take?</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-panel" id="faq-2" role="region" hidden>
+              <div class="accordion-content">
+                <p>The initial on-site diagnostic assessment is a comprehensive two-day process. Day one comprises a full cardiopulmonary exercise test (CPET), resting metabolic rate analysis, body composition scanning (DEXA), and baseline polysomnography setup. Day two covers the overnight sleep data review, a cognitive resilience battery under graded hypoxic conditions, and a detailed consultation with our lead clinical physiologist to discuss your personalised programme blueprint. Remote operatives can complete the preliminary data submission online, with the on-site component scheduled within 14 days of profile acceptance.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-3">
+              <span class="accordion-title">Are there any contraindications for hypoxic training?</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-panel" id="faq-3" role="region" hidden>
+              <div class="accordion-content">
+                <p>Absolute contraindications include uncontrolled hypertension (systolic > 180 mmHg), unstable angina, severe chronic obstructive pulmonary disease (COPD), active pulmonary embolism, and sickle cell disease. Relative contraindications that require additional clinical review include pregnancy, moderate asthma, recent (under 3 months) surgical history, and concurrent use of anticoagulant medications. Our clinical team conducts a thorough risk-benefit analysis for all relative contraindications and will advise on modified protocols where appropriate. Safety is the non-negotiable foundation of every programme we design.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-4">
+              <span class="accordion-title">Can I complete the programme remotely or part-time?</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-panel" id="faq-4" role="region" hidden>
+              <div class="accordion-content">
+                <p>Our standard 12-week programme requires full residential attendance at our Northern Sea campus facility. This is a clinical necessity — the precise calibration of daily chamber sessions, continuous biometric monitoring, and nutritional protocol adherence cannot be replicated in an unsupervised environment. However, we offer an Accelerated 6-Week variant for operatives with scheduling constraints, and a post-deployment Maintenance programme that includes periodic on-site recalibration visits (typically 3–5 days per quarter) combined with remote monitoring via our wearable SpO2 and HRV platform. Contact our operations concierge to discuss bespoke scheduling arrangements.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Closing CTA -->
+      <section class="closing-cta section-padding container text-center">
+        <h2>Ready for the Extremes?</h2>
+        <p>Do not leave your physiological adaptation to chance. Our clinical team is standing by to review your diagnostic profile and design a conditioning programme that delivers measurable, repeatable performance gains under the most hostile environmental conditions on Earth.</p>
+        <a href="science.html" class="btn btn-large">Explore the Science</a>
       </section>
     </main>
 
     <footer>
-      <span>&copy; 2026 Apex Altitude Lab. All rights reserved.</span>
-      <span>Operations: Secure Facility, Northern Sea / Comm: contact@apexaltitude.lab</span>
+      <div class="footer-expanded">
+        <div class="footer-col">
+          <h4>Apex Altitude Lab</h4>
+          <p>Calibrating human physiology for the world's most hostile depths.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="index.html">Terminal</a></li>
+            <li><a href="science.html">The Science</a></li>
+            <li><a href="enquire.html">Diagnostics</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Operations</h4>
+          <p>Secure Facility, Northern Sea</p>
+          <p>contact@apexaltitude.lab</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Apex Altitude Lab. All rights reserved.</span>
+      </div>
     </footer>
 
   </body>
 </html>
-
