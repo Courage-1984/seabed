@@ -7,11 +7,12 @@ const grid = document.getElementById('hub-grid');
 Object.entries(sites).forEach(([path, meta]) => {
   // path is something like './sites/brand-name/meta.json'
   const siteFolder = path.replace('/meta.json', '');
-  const { title, blurb, hero } = meta;
+  const metaData = meta.default || meta;
+  const { title, blurb, hero } = metaData;
   
   // Resolve the hashed image URL from Vite's glob
   const imageGlobPath = `${siteFolder}/${hero}`;
-  const imagePath = hero.startsWith('/') ? hero : imageGlobPath;
+  const imagePath = hero.startsWith('/') ? '.' + hero : imageGlobPath;
   const resolvedImageUrl = images[imageGlobPath] || imagePath;
   
   // Create card element
