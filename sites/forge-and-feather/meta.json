@@ -1,5 +1,6 @@
 {
   "title": "Forge & Feather",
   "blurb": "Bespoke Culinary Blacksmithing & Open-Fire Dining.",
-  "hero": "assets/hero.jpg"
+  "hero": "assets/hero.jpg",
+  "standard": "v2"
 }
