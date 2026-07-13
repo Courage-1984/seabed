@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Xenon Arc Mobile Metallurgy: Rapid-deployment, ISO 4 mobile clean-room welding units for onsite, zero-defect titanium and inconel fabrication." />
+  <meta property="og:title" content="Xenon Arc | Dispatch Terminal" />
+  <meta property="og:description" content="Surgical-grade metallurgy, deployed directly to the launchpad." />
+  <meta property="og:image" content="/assets/tig_arc.png" />
+  <link rel="icon" type="image/png" href="/assets/glowing_seam.png" />
+  <title>Xenon Arc | Dispatch Terminal</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="../../assets/sites/xenon-arc/index-CxKfvIyI.js"></script>
+  <link rel="modulepreload" crossorigin href="../../assets/modulepreload-polyfill-Dezn_h7o.js">
+  <link rel="stylesheet" crossorigin href="../../assets/index-CjewyfaE.css">
+</head>
+<body>
+  
+  <main id="dispatch-terminal">
+    
+    <header class="terminal-header">
+      <div class="logo">XENON ARC</div>
+      <div class="status-indicator">
+        <span class="status-dot"></span>
+        SYSTEM ONLINE — SECURE CONNECTION
+      </div>
+      <div class="clock" id="live-clock">00:00:00 UTC</div>
+    </header>
+
+    <div class="bento-grid">
+      
+      <!-- Main Title Block -->
+      <section class="bento-item span-2">
+        <h1>Surgical-grade metallurgy, deployed directly to the launchpad.</h1>
+        <p>Rapid-deployment, ISO 4 mobile clean-room welding units for onsite, zero-defect titanium and inconel fabrication. X-ray verified tolerances executed under extreme time constraints.</p>
+      </section>
+
+      <!-- Stats Block -->
+      <section class="bento-item stat-block highlight-bg">
+        <h3>Live Deployment Status</h3>
+        <div class="stat-row">
+          <span>Active Units</span>
+          <strong>04</strong>
+        </div>
+        <div class="stat-row">
+          <span>Standby Units</span>
+          <strong>02</strong>
+        </div>
+        <div class="stat-row">
+          <span>Avg. Dispatch Time</span>
+          <strong>&lt; 90 min</strong>
+        </div>
+        <div class="stat-row">
+          <span>Defect Rate</span>
+          <strong>0.00%</strong>
+        </div>
+      </section>
+
+      <!-- Image Block 1 -->
+      <section class="bento-item image-block">
+        <img src="/assets/tig_arc.png" alt="Intense TIG welding arc on titanium" loading="lazy">
+        <div class="image-label">ARC PARAMETERS: NOMINAL</div>
+      </section>
+
+      <!-- Capabilities Block -->
+      <section class="bento-item span-2 specs-block">
+        <h3>Material Capabilities & Tolerances</h3>
+        <div class="specs-grid">
+          <div class="spec-col">
+            <h4>Alloys</h4>
+            <ul>
+              <li>Titanium Grade 5 (Ti-6Al-4V)</li>
+              <li>Inconel 718 / 625</li>
+              <li>Cryogenic Stainless (304L/316L)</li>
+              <li>Niobium C-103</li>
+            </ul>
+          </div>
+          <div class="spec-col">
+            <h4>Standardisation</h4>
+            <ul>
+              <li>ISO 4 Clean-Room Environment</li>
+              <li>100% Radiographic Testing (RT)</li>
+              <li>Sub-millimetre Precision</li>
+              <li>AWS D17.1 Class A Certified</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Image Block 2 -->
+      <section class="bento-item image-block tall">
+        <img src="/assets/cleanroom.png" alt="Mobile clean-room deployment unit" loading="lazy">
+        <div class="image-label">MOBILE UNIT: XA-7</div>
+      </section>
+
+      <!-- Form Block -->
+      <section class="bento-item form-block span-2">
+        <h3>Emergency Contract Dispatch</h3>
+        <p>Initiate a high-priority deployment sequence. A logistics commander will establish contact within 5 minutes.</p>
+        <form id="dispatch-form">
+          <div class="form-row">
+            <input type="text" id="facility-name" placeholder="Facility Name / Operator" required>
+            <input type="text" id="coordinates" placeholder="GPS Coordinates" required>
+          </div>
+          <div class="form-row">
+            <select id="material-fault" required>
+              <option value="" disabled selected>Select Material Fault</option>
+              <option value="titanium">Titanium Structural Fracture</option>
+              <option value="inconel">Inconel Thermal Degradation</option>
+              <option value="cryogenic">Cryogenic Line Rupture</option>
+              <option value="other">Unclassified Alloy Failure</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary">Initiate Clean-Room Deployment</button>
+          <div id="form-response"></div>
+        </form>
+      </section>
+
+      <!-- Image Block 3 -->
+      <section class="bento-item image-block">
+        <img src="/assets/glowing_seam.png" alt="Freshly welded titanium seam glowing" loading="lazy">
+        <div class="image-label">VERIFIED SEAM</div>
+      </section>
+
+    </div>
+
+    <footer>
+      <div>&copy; 2026 Xenon Arc Mobile Metallurgy</div>
+      <div>101 Orbital Way, Texas, USA</div>
+      <div><a href="mailto:dispatch@xenonarc.com">dispatch@xenonarc.com</a></div>
+    </footer>
+
+  </main>
+
+</body>
+</html>

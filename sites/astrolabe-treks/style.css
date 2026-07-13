@@ -1,0 +1,474 @@
+:root {
+  --color-primary: #0B0C10;
+  --color-secondary: #1F2833;
+  --color-accent: #C5A880;
+  --color-background: #050608;
+  --color-text: #EBEBEB;
+  
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Work Sans', sans-serif;
+  
+  --transition-speed: 0.5s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1, h2, h3, h4, .logo {
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  margin-bottom: 2rem;
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: rgba(235, 235, 235, 0.8);
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-accent);
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--color-text);
+}
+
+/* Header & Nav */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+nav {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+nav a {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Buttons and Links */
+.btn-primary, .btn-outline {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  border: 1px solid var(--color-accent);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-accent);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-accent);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.text-link {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-style: italic;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 0.2rem;
+}
+
+/* Asymmetric Grid Sections */
+.asymmetric-section {
+  min-height: 100vh;
+  padding: 8rem 5%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section {
+  padding-top: 15rem;
+  align-items: flex-start;
+}
+
+.hero-content {
+  width: 55%;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  mask-image: linear-gradient(to right, transparent, black 40%);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 40%);
+}
+
+/* Overlaps & Asymmetry */
+.overlap-right {
+  justify-content: flex-end;
+}
+
+.overlap-right .section-text {
+  width: 45%;
+  position: relative;
+  z-index: 2;
+  background-color: rgba(11, 12, 16, 0.85);
+  padding: 4rem;
+  border: 1px solid var(--color-secondary);
+  backdrop-filter: blur(5px);
+  margin-right: -10%;
+  margin-top: 10rem;
+}
+
+.overlap-right .section-image {
+  width: 50%;
+  position: relative;
+  z-index: 1;
+}
+
+.overlap-left {
+  justify-content: flex-start;
+}
+
+.overlap-left .section-text {
+  width: 45%;
+  position: relative;
+  z-index: 2;
+  background-color: rgba(11, 12, 16, 0.85);
+  padding: 4rem;
+  border: 1px solid var(--color-secondary);
+  backdrop-filter: blur(5px);
+  margin-left: -5%;
+}
+
+.overlap-left .section-image {
+  width: 60%;
+  position: relative;
+  z-index: 1;
+}
+
+.section-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: sepia(20%) hue-rotate(340deg) brightness(0.8);
+  transition: filter var(--transition-speed);
+}
+
+.section-image img:hover {
+  filter: sepia(0%) hue-rotate(0deg) brightness(1);
+}
+
+/* Centre Align & Floating */
+.centre-align {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.text-centre {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 4rem;
+  z-index: 2;
+}
+
+.floating-img {
+  width: 70%;
+  max-width: 900px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* Double Column */
+.double-column {
+  align-items: flex-start;
+  gap: 10%;
+}
+
+.col-left, .col-right {
+  width: 45%;
+}
+
+.col-right {
+  margin-top: 8rem;
+}
+
+.trek-card {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-secondary);
+  padding: 3rem;
+  position: relative;
+}
+
+.trek-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--color-accent);
+}
+
+.duration {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.mt-2 {
+  margin-top: 3rem;
+}
+
+/* Form Section */
+.application-section {
+  background-color: var(--color-primary);
+  display: block;
+}
+
+.application-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.application-container h2 {
+  text-align: center;
+}
+
+.application-container p {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 2rem;
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group.full-width {
+  width: 100%;
+}
+
+label {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+input, select, textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-secondary);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.8rem 0;
+  transition: border-color var(--transition-speed);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-bottom-color: var(--color-accent);
+}
+
+select {
+  background-color: var(--color-background);
+}
+
+.form-action {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+#form-message {
+  margin-top: 1rem;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+  background-color: var(--color-primary);
+  padding: 5rem 5%;
+  border-top: 1px solid var(--color-secondary);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+.footer-brand h3 {
+  color: var(--color-accent);
+}
+
+.footer-contact h4 {
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+  .top-nav {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .hero-content {
+    width: 80%;
+  }
+  
+  .overlap-right .section-text, .overlap-left .section-text {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: -5rem;
+  }
+  
+  .overlap-right .section-image, .overlap-left .section-image {
+    width: 100%;
+  }
+  
+  .double-column {
+    flex-direction: column;
+  }
+  
+  .col-left, .col-right {
+    width: 100%;
+  }
+  
+  .col-right {
+    margin-top: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .asymmetric-section {
+    padding: 6rem 5%;
+  }
+  
+  .hero-section {
+    padding-top: 12rem;
+  }
+  
+  .hero-content {
+    width: 100%;
+  }
+  
+  .hero-image {
+    opacity: 0.2;
+    mask-image: none;
+    -webkit-mask-image: none;
+    width: 100%;
+  }
+  
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

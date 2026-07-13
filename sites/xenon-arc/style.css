@@ -1,0 +1,365 @@
+:root {
+  --color-primary: #1A1B20;
+  --color-secondary: #2E3039;
+  --color-accent: #00E5FF;
+  --color-background: #08080A;
+  --color-text: #F8F9FA;
+  
+  --font-heading: 'Archivo', sans-serif;
+  --font-body: 'JetBrains Mono', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+#dispatch-terminal {
+  width: 100%;
+  max-width: 1440px;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-secondary);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 0 50px rgba(0, 229, 255, 0.05);
+}
+
+/* Header */
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--color-secondary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  letter-spacing: 2px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-accent);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.clock {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-accent);
+  letter-spacing: 1px;
+}
+
+h4 {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: var(--color-text);
+}
+
+p {
+  color: rgba(248, 249, 250, 0.7);
+  margin-bottom: 1rem;
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+  gap: 1.5rem;
+}
+
+.bento-item {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-secondary);
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+/* Specific Blocks */
+.highlight-bg {
+  background: linear-gradient(135deg, var(--color-background) 0%, rgba(0, 229, 255, 0.05) 100%);
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed var(--color-secondary);
+  padding: 0.8rem 0;
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.stat-row span {
+  color: rgba(248, 249, 250, 0.6);
+}
+
+.stat-row strong {
+  color: var(--color-text);
+  font-size: 1.1rem;
+}
+
+/* Image Blocks */
+.image-block {
+  padding: 0;
+  border: 1px solid var(--color-secondary);
+}
+
+.image-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.image-block:hover img {
+  transform: scale(1.05);
+}
+
+.tall {
+  grid-row: span 2;
+}
+
+.image-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: rgba(26, 27, 32, 0.85);
+  backdrop-filter: blur(4px);
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-top: 1px solid var(--color-secondary);
+}
+
+/* Specs Block */
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.spec-col ul {
+  list-style: none;
+}
+
+.spec-col li {
+  margin-bottom: 0.5rem;
+  color: rgba(248, 249, 250, 0.7);
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.spec-col li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+}
+
+/* Form Block */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+input, select {
+  width: 100%;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-secondary);
+  color: var(--color-text);
+  padding: 0.8rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  padding: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-text);
+  color: var(--color-background);
+}
+
+#form-response {
+  margin-top: 0.5rem;
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-secondary);
+  color: rgba(248, 249, 250, 0.5);
+  font-size: 0.8rem;
+}
+
+footer a {
+  color: rgba(248, 249, 250, 0.5);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .span-2 {
+    grid-column: span 2;
+  }
+  
+  .tall {
+    grid-row: span 1;
+  }
+  
+  .image-block {
+    min-height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+  
+  #dispatch-terminal {
+    border-radius: 0;
+    border: none;
+    min-height: 100vh;
+  }
+  
+  .terminal-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .span-2 {
+    grid-column: span 1;
+  }
+  
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+}
