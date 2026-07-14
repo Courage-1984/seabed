@@ -1,6 +1,6 @@
 // Use import.meta.glob to eagerly load all meta.json files
 const sites = import.meta.glob('./sites/*/meta.json', { eager: true });
-const images = import.meta.glob('./sites/*/assets/*.{jpg,png,jpeg,svg,gif}', { eager: true, query: '?url', import: 'default' });
+const images = import.meta.glob('./sites/*/assets/**/*.{jpg,png,jpeg,svg,gif}', { eager: true, query: '?url', import: 'default' });
 
 const grid = document.getElementById('hub-grid');
 
@@ -11,7 +11,9 @@ Object.entries(sites).forEach(([path, meta]) => {
   const { title, blurb, hero } = metaData;
   
   // Resolve the hashed image URL from Vite's glob
-  const imageGlobPath = `${siteFolder}/${hero}`;
+  // Normalize the hero path to match the glob key
+  const normalizedHero = hero.replace(/^.\//, '');
+  const imageGlobPath = `${siteFolder}/${normalizedHero}`;
   const imagePath = hero.startsWith('/') ? '.' + hero : imageGlobPath;
   const resolvedImageUrl = images[imageGlobPath] || imagePath;
   
