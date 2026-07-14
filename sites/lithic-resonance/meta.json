@@ -2,5 +2,6 @@
   "title": "Lithic Resonance",
   "blurb": "Bespoke, brutalist sound diffusers and bass traps cast from repurposed Johannesburg gold mine tailings.",
   "hero": "./assets/hero-bg.jpg",
-  "standard": "v2"
+  "standard": "v2",
+  "qa": "v2-pass"
 }
