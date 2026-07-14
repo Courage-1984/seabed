@@ -711,6 +711,8 @@ footer {
   .data-table td {
     padding: 0.5rem;
   }
+  .prev-btn { left: 0.5rem; }
+  .next-btn { right: 0.5rem; }
 }
 
 @media (max-width: 480px) {
