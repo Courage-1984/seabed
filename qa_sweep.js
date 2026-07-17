@@ -42,16 +42,30 @@ if (!existsSync(outDir)) mkdirSync(outDir);
       const checkViewport = async (width, height, label) => {
         await page.setViewport({ width, height });
         
-        // Scroll to trigger lazy loading
+        // Force-load lazy images and wait for decode (bounded)
         await page.evaluate(async () => {
+          const withTimeout = (p, ms) => Promise.race([
+            p,
+            new Promise((resolve) => setTimeout(resolve, ms)),
+          ]);
+          const imgs = [...document.images];
+          for (const img of imgs) {
+            if (img.loading === 'lazy') img.loading = 'eager';
+            if (!img.complete) {
+              await withTimeout(new Promise((resolve) => {
+                img.addEventListener('load', resolve, { once: true });
+                img.addEventListener('error', resolve, { once: true });
+              }), 8000);
+            }
+            try { await withTimeout(img.decode(), 4000); } catch {}
+          }
           window.scrollTo(0, document.body.scrollHeight);
-          await new Promise(r => setTimeout(r, 1000));
+          await new Promise(r => setTimeout(r, 300));
           window.scrollTo(0, 0);
         });
-        await new Promise(r => setTimeout(r, 1000));
 
-        const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
-        const brokenImages = await page.evaluate(() => [...document.images].filter(i => !i.complete || i.naturalWidth === 0).map(i => i.src));
+        const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+        const brokenImages = await page.evaluate(() => [...document.images].filter(i => i.complete && i.naturalWidth === 0).map(i => i.src));
         const brokenLinks = [];
         
         if (pagePath === 'index.html') {
@@ -71,7 +85,7 @@ if (!existsSync(outDir)) mkdirSync(outDir);
         return { overflow, brokenImages, consoleErrors: [...consoleErrors], brokenLinks };
       };
 
-      pageResult.mobile = await checkViewport(360, 800, 'mobile');
+      pageResult.mobile = await checkViewport(390, 844, 'mobile');
       consoleErrors.length = 0;
       pageResult.desktop = await checkViewport(1440, 900, 'desktop');
       

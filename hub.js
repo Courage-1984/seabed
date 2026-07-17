@@ -16,18 +16,24 @@ Object.entries(sites).forEach(([path, meta]) => {
   const imageGlobPath = `${siteFolder}/${normalizedHero}`;
   const imagePath = hero.startsWith('/') ? '.' + hero : imageGlobPath;
   const resolvedImageUrl = images[imageGlobPath] || imagePath;
+  const faviconGlobPath = `${siteFolder}/assets/favicon.svg`;
+  const resolvedFaviconUrl = images[faviconGlobPath] || `${siteFolder}/assets/favicon.svg`;
   
   // Create card element
   const card = document.createElement('a');
   card.href = `${siteFolder}/index.html`;
   card.className = 'card';
+  card.target = '_blank';
   
   card.innerHTML = `
     <div class="card-img-wrapper">
       <img src="${resolvedImageUrl}" alt="${title} screenshot" loading="lazy">
     </div>
     <div class="card-content">
-      <h2 class="card-title">${title}</h2>
+      <h2 class="card-title">
+        <img src="${resolvedFaviconUrl}" class="card-favicon" alt="favicon" width="24" height="24" style="vertical-align: middle; margin-right: 8px;">
+        ${title}
+      </h2>
       <p class="card-blurb">${blurb}</p>
       <div class="card-link-text">Visit Project &rarr;</div>
     </div>

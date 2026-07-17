@@ -405,8 +405,13 @@ footer {
 /* Responsive Overrides */
 @media (max-width: 1024px) {
   .top-nav {
+    position: relative;
     flex-direction: column;
     gap: 1.5rem;
+  }
+
+  .hero-section {
+    padding-top: 4rem;
   }
   
   .hero-content {

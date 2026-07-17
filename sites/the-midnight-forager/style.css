@@ -813,7 +813,10 @@ p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
 
 @media (max-width: 768px) {
   .site-header {
+    position: relative;
     padding: 1rem 5%;
+    background-color: rgba(5, 10, 16, 0.95);
+    border-bottom: 1px solid var(--color-primary);
   }
   .site-nav {
     flex-direction: column;
@@ -824,6 +827,13 @@ p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
+  }
+
+  .hero-section {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
   }
   
   .section {

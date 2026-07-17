@@ -33,21 +33,13 @@
     "path": "sites/apex-altitude-lab/index.html",
     "mobile": {
       "overflow": false,
-      "brokenImages": [
-        "http://localhost:4173/assets/chamber-CEraBJut.jpg",
-        "http://localhost:4173/assets/biometrics-_lQ7YfyS.jpg",
-        "http://localhost:4173/assets/deepsea-z3-FlFVl.jpg"
-      ],
+      "brokenImages": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
-      "brokenImages": [
-        "http://localhost:4173/assets/chamber-CEraBJut.jpg",
-        "http://localhost:4173/assets/biometrics-_lQ7YfyS.jpg",
-        "http://localhost:4173/assets/deepsea-z3-FlFVl.jpg"
-      ],
+      "brokenImages": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -71,19 +63,13 @@
     "path": "sites/astrolabe-treks/index.html",
     "mobile": {
       "overflow": false,
-      "brokenImages": [
-        "http://localhost:4173/assets/desert_night_dunes-CPyV_-cZ.png",
-        "http://localhost:4173/assets/brass_astrolabe-Bptr7yC7.png"
-      ],
+      "brokenImages": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
-      "brokenImages": [
-        "http://localhost:4173/assets/desert_night_dunes-CPyV_-cZ.png",
-        "http://localhost:4173/assets/brass_astrolabe-Bptr7yC7.png"
-      ],
+      "brokenImages": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -121,10 +107,8 @@
   {
     "path": "sites/drosera-vault/index.html",
     "mobile": {
-      "overflow": true,
-      "brokenImages": [
-        "http://localhost:4173/assets/pinguicula_macro-Dv6myoWQ.png"
-      ],
+      "overflow": false,
+      "brokenImages": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
@@ -168,7 +152,7 @@
   {
     "path": "sites/k9-kinetic-recovery/index.html",
     "mobile": {
-      "overflow": true,
+      "overflow": false,
       "brokenImages": [],
       "consoleErrors": [],
       "brokenLinks": []
@@ -211,21 +195,31 @@
     }
   },
   {
-    "path": "sites/siloshield-dynamics/index.html",
+    "path": "sites/signal-and-silo/index.html",
     "mobile": {
       "overflow": false,
-      "brokenImages": [
-        "http://localhost:4173/assets/drone_deployment-NQAhr5r0.png",
-        "http://localhost:4173/assets/motherboard_macro-DXMVi4z4.png"
-      ],
+      "brokenImages": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
-      "brokenImages": [
-        "http://localhost:4173/assets/motherboard_macro-DXMVi4z4.png"
-      ],
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
+    "path": "sites/siloshield-dynamics/index.html",
+    "mobile": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -261,12 +255,70 @@
     }
   },
   {
+    "path": "sites/the-slate-and-chisel/index.html",
+    "mobile": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
+    "path": "sites/the-tidal-vault/booking.html",
+    "mobile": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
+    "path": "sites/the-tidal-vault/index.html",
+    "mobile": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
+    "path": "sites/the-tidal-vault/therapy.html",
+    "mobile": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
     "path": "sites/xenon-arc/index.html",
     "mobile": {
       "overflow": false,
-      "brokenImages": [
-        "http://localhost:4173/assets/cleanroom-UzkRG3II.png"
-      ],
+      "brokenImages": [],
       "consoleErrors": [],
       "brokenLinks": []
     },

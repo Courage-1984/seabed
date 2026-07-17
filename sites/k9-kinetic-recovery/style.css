@@ -188,8 +188,10 @@ nav a:hover, nav a.active {
   align-items: center;
   margin-top: 2rem;
   max-width: 1000px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
+  overflow: hidden;
 }
 .carousel-container {
   display: flex;
@@ -199,6 +201,7 @@ nav a:hover, nav a.active {
   gap: 1.5rem;
   padding-bottom: 1rem;
   flex: 1;
+  min-width: 0;
   scrollbar-width: none;
 }
 .carousel-container::-webkit-scrollbar {
@@ -247,6 +250,16 @@ nav a:hover, nav a.active {
 }
 .prev-btn { left: -1.5rem; }
 .next-btn { right: -1.5rem; }
+
+@media (max-width: 1024px) {
+  .prev-btn { left: 0.5rem; }
+  .next-btn { right: 0.5rem; }
+  .carousel-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+}
 
 /* Features */
 .feature-list {
