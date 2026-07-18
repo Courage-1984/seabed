@@ -119,7 +119,7 @@ nav a:hover, nav a.active {
 /* Home Page Hero */
 .hero {
   height: 80vh;
-  background-image: linear-gradient(rgba(30, 58, 76, 0.7), rgba(30, 58, 76, 0.7)), url('./assets/k9/hero.jpg');
+  background-image: linear-gradient(rgba(30, 58, 76, 0.7), rgba(30, 58, 76, 0.7)), url('./assets/k9/hero.webp');
   background-size: cover;
   background-position: center;
   display: flex;

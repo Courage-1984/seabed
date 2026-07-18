@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@500;700&display=swap');
+
+:root {
+  --color-primary: #7a1a21;
+  --color-secondary: #4b5e40;
+  --color-accent: #9ba4b5;
+  --color-background: #f5f5f2;
+  --color-text: #121415;
+  --color-muted: #575e66;
+  --color-border: #d3d8e0;
+  
+  --border-thick: 2px solid var(--color-text);
+  --border-thin: 1px solid var(--color-text);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: 1.5rem; font-weight: 500; }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.2s ease;
+}
+
+a:hover {
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* Layout Core */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+header {
+  border-bottom: var(--border-thick);
+  padding: 1.5rem 0;
+  background-color: var(--color-text);
+  color: var(--color-background);
+}
+
+header a {
+  color: var(--color-background);
+}
+header a:hover {
+  border-bottom: 2px solid var(--color-accent);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.brand-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-name img {
+  width: 32px;
+  height: 32px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+/* Bento Grid System */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+  padding: 4rem 0;
+}
+
+.bento-item {
+  border: var(--border-thick);
+  padding: 2.5rem;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-item--hero {
+  grid-column: span 12;
+  background-color: var(--color-text);
+  color: var(--color-background);
+}
+
+.bento-item--hero h1 {
+  color: var(--color-background);
+}
+
+.bento-item--hero p {
+  font-size: 1.25rem;
+  max-width: 800px;
+}
+
+.bento-item--half { grid-column: span 6; }
+.bento-item--third { grid-column: span 4; }
+.bento-item--two-thirds { grid-column: span 8; }
+.bento-item--full { grid-column: span 12; }
+
+@media (max-width: 1024px) {
+  .bento-item--third, .bento-item--two-thirds { grid-column: span 6; }
+}
+
+@media (max-width: 768px) {
+  .bento-item--half, .bento-item--third, .bento-item--two-thirds { grid-column: span 12; }
+  .bento-grid { gap: 1rem; padding: 2rem 0; }
+  .nav-links { width: 100%; justify-content: space-between; }
+}
+
+/* Content Elements */
+p { margin-bottom: 1.5rem; }
+
+strong {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.bento-item--hero strong {
+  color: var(--color-background);
+}
+
+ul, ol {
+  margin: 0 0 1.5rem 1.5rem;
+}
+
+li {
+  margin-bottom: 0.75rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: var(--border-thick);
+  display: block;
+  margin-bottom: 1.5rem;
+  object-fit: cover;
+}
+
+/* Markdown Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  border: var(--border-thick);
+}
+
+th, td {
+  border: var(--border-thin);
+  padding: 1rem;
+  text-align: left;
+}
+
+th {
+  background-color: var(--color-text);
+  color: var(--color-background);
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+}
+
+td {
+  background-color: #ffffff;
+}
+
+/* Buttons / CTAs */
+.cta-button {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  padding: 1rem 2rem;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: var(--border-thick);
+  margin-top: auto;
+  align-self: flex-start;
+  transition: all 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  border-bottom: var(--border-thick);
+}
+
+.bento-item--hero .cta-button {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  border-color: var(--color-background);
+}
+
+.bento-item--hero .cta-button:hover {
+  background-color: var(--color-text);
+  color: var(--color-background);
+  border-color: var(--color-background);
+}
+
+/* Footer */
+footer {
+  border-top: var(--border-thick);
+  padding: 3rem 0;
+  margin-top: 4rem;
+  background-color: var(--color-text);
+  color: var(--color-background);
+}
+
+footer .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+footer h4 {
+  color: var(--color-accent);
+}
+
+footer a {
+  color: var(--color-accent);
+}
+footer a:hover {
+  border-bottom: 2px solid var(--color-background);
+}

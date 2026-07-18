@@ -48,7 +48,7 @@ h1, h2, h3, h4, h5, h6 {
       rgba(17, 17, 27, 0.7),
       rgba(17, 17, 27, 0.95)
     ),
-    url('./assets/hero-bg.jpg');
+    url('./assets/hero-bg.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -1,7 +1,7 @@
 {
   "title": "The Brass & Thistle",
   "blurb": "Heritage British pub fare, wild-fermented and wood-fired on the historic waters of the Kennet & Avon Canal.",
-  "hero": "./assets/hero.png",
+  "hero": "./assets/hero.webp",
   "standard": "v2",
   "qa": "v2-pass"
 }

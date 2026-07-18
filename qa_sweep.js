@@ -1,6 +1,7 @@
 import puppeteer from 'puppeteer';
 import { readdirSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
+import { spawn } from 'child_process';
 
 function findHtmlFiles(dir, fileList = []) {
   const files = readdirSync(dir, { withFileTypes: true });
@@ -21,7 +22,33 @@ const results = [];
 const outDir = './qa-screenshots';
 if (!existsSync(outDir)) mkdirSync(outDir);
 
+const waitForServer = async (url, timeout = 10000) => {
+  const start = Date.now();
+  while (Date.now() - start < timeout) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) return true;
+    } catch (e) {
+      // ignore
+    }
+    await new Promise(r => setTimeout(r, 500));
+  }
+  throw new Error(`Server did not start at ${url}`);
+};
+
 (async () => {
+  console.log('Starting preview server...');
+  const server = spawn('npm', ['run', 'preview'], { shell: true });
+
+  try {
+    await waitForServer(baseUrl);
+    console.log('Server is ready.');
+  } catch (err) {
+    console.error(err.message);
+    server.kill();
+    process.exit(1);
+  }
+
   console.log('Launching browser...');
   const browser = await puppeteer.launch();
 
@@ -101,4 +128,7 @@ if (!existsSync(outDir)) mkdirSync(outDir);
   await browser.close();
   writeFileSync('qa-report.json', JSON.stringify(results, null, 2));
   console.log('QA sweep complete! Saved to qa-report.json');
+  
+  server.kill();
+  process.exit(0);
 })();
