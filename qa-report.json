@@ -4,7 +4,8 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [
-        "http://localhost:4173/sites/halyard-and-hemp-sailmakers/assets/favicon.svg"
+        "http://localhost:4173/sites/halyard-and-hemp-sailmakers/assets/favicon.svg",
+        "http://localhost:4173/sites/nepenthes-forge/assets/favicon.svg"
       ],
       "consoleErrors": [],
       "brokenLinks": []
@@ -12,7 +13,8 @@
     "desktop": {
       "overflow": false,
       "brokenImages": [
-        "http://localhost:4173/sites/halyard-and-hemp-sailmakers/assets/favicon.svg"
+        "http://localhost:4173/sites/halyard-and-hemp-sailmakers/assets/favicon.svg",
+        "http://localhost:4173/sites/nepenthes-forge/assets/favicon.svg"
       ],
       "consoleErrors": [],
       "brokenLinks": []
@@ -455,6 +457,51 @@
   },
   {
     "path": "sites/lithic-resonance/index.html",
+    "mobile": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
+    "path": "sites/nepenthes-forge/hardware.html",
+    "mobile": {
+      "overflow": true,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
+    "path": "sites/nepenthes-forge/index.html",
+    "mobile": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
+    "path": "sites/nepenthes-forge/substrates.html",
     "mobile": {
       "overflow": false,
       "brokenImages": [],
