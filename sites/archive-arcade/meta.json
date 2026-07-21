@@ -1,5 +1,7 @@
 {
   "title": "Archive Arcade",
   "blurb": "Carefully restored Japanese and European coin-operated photo booths.",
-  "hero": "./assets/hero.webp"
+  "hero": "assets/hero.webp",
+  "standard": "v2",
+  "qa": "v2-pass"
 }

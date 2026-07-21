@@ -40,7 +40,7 @@ npm run build            # output to dist/
 npm run preview          # serve dist/
 npm run optimize:webp    # PNG/JPEG → WebP + rewrite refs
 npm run optimize:html    # lazy-load / dimensions
-npm run qa               # Puppeteer sweep (build first)
+npm run qa               # Puppeteer sweep (build first; headless). QA_HEADED=1 for visual
 npm run sites:index      # regenerate .agents/prompts/_sites-index.md for Gemini paste
 ```
 

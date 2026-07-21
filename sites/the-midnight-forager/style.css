@@ -7,7 +7,7 @@
   --color-text: #E5E9F0;
 
   --font-heading: 'Cinzel Decorative', serif;
-  --font-body: 'Inter', sans-serif;
+  --font-body: 'Literata', sans-serif;
 
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
@@ -341,8 +341,13 @@ p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
   background: var(--color-accent);
   color: var(--color-background);
 }
-.prev-btn { left: -1.5rem; }
-.next-btn { right: -1.5rem; }
+.prev-btn { left: 0.75rem; }
+.next-btn { right: 0.75rem; }
+
+@media (min-width: 900px) {
+  .prev-btn { left: -1.5rem; }
+  .next-btn { right: -1.5rem; }
+}
 
 /* TMF Feature List */
 .tmf-feature-list {

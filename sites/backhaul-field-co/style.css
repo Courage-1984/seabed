@@ -15,7 +15,7 @@
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   line-height: 1.6;
   padding: 1rem;
 }

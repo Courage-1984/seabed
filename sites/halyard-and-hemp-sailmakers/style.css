@@ -13,7 +13,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   color: var(--color-text);
   background-color: var(--color-background);
   line-height: 1.6;
@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Typography Editorial Touches */
 .eyebrow {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -114,7 +114,7 @@ nav ul {
 }
 
 nav a {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-weight: 600;
   font-size: 0.9rem;
   text-transform: uppercase;

@@ -1,7 +1,7 @@
 {
   "title": "K9 Kinetic Recovery",
   "blurb": "Mobile hydrotherapy & acoustic resonance for retired working dogs.",
-  "hero": "./assets/k9/hero.webp",
+  "hero": "assets/k9/hero.webp",
   "standard": "v2",
   "qa": "v2-pass"
 }

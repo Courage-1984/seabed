@@ -10,8 +10,11 @@
 | abyssal-hardware | Abyssal Hardware Co. | — |
 | apex-altitude-lab | Apex Altitude Lab | — |
 | archive-arcade | Archive Arcade | — |
+| aseptic-cellars | Aseptic Cellars | — |
 | astrolabe-treks | Astrolabe Desert Treks | — |
 | backhaul-field-co | Backhaul Field Co. | — |
+| copper-cloche | The Copper Cloche | — |
+| cryotex-isolates | Cryotex Isolates | — |
 | drosera-vault | Drosera Vault | — |
 | forge-and-feather | Forge & Feather | — |
 | halyard-and-hemp-sailmakers | Halyard & Hemp Sailmakers | — |
@@ -22,6 +25,7 @@
 | lithic-fibre-dynamics | Lithic Fibre Dynamics | — |
 | lithic-resonance | Lithic Resonance | — |
 | nepenthes-forge | Nepenthes Forge & Flight | — |
+| null-state-cryogenics | Null-State Cryogenics | — |
 | oxide-and-tide | Oxide & Tide | — |
 | patch-parcel | Patch & Parcel | — |
 | signal-and-silo | Signal & Silo | — |

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;500;600&display=swap');
 
 :root {
   --color-primary: #7A2E1F;
@@ -7,7 +7,7 @@
   --color-background: #F4EDDC;
   --color-text: #1B1B18;
   --font-serif: 'Fraunces', serif;
-  --font-sans: 'Inter', sans-serif;
+  --font-sans: 'Source Sans 3', sans-serif;
 }
 
 *, *::before, *::after {

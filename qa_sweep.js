@@ -49,10 +49,12 @@ const waitForServer = async (url, timeout = 15000) => {
     await waitForServer(baseUrl);
     console.log('Server is ready.');
 
-    console.log('Launching browser...');
+    // Default headless for CI/automation. Visual mode: QA_HEADED=1 npm run qa
+    const headed = process.env.QA_HEADED === '1' || process.env.QA_HEADED === 'true';
+    console.log(`Launching browser (${headed ? 'headed' : 'headless'})...`);
     browser = await puppeteer.launch({
-      headless: false, // Keeping false for your visual inspection
-      defaultViewport: null
+      headless: headed ? false : true,
+      defaultViewport: headed ? null : { width: 1440, height: 900 },
     });
 
     for (const pagePath of pages) {
@@ -102,10 +104,10 @@ const waitForServer = async (url, timeout = 15000) => {
           const scrollHeight = await page.evaluate(() => Math.max(document.body.scrollHeight, document.documentElement.scrollHeight));
           for (let pos = 0; pos < scrollHeight; pos += height) {
             await page.evaluate((p) => window.scrollTo(0, p), pos);
-            await new Promise(r => setTimeout(r, 1000));
+            await new Promise(r => setTimeout(r, 150));
           }
           await page.evaluate(() => window.scrollTo(0, 0));
-          await new Promise(r => setTimeout(r, 500));
+          await new Promise(r => setTimeout(r, 200));
 
           // Granular Overflow Detection
           const overflowingElements = await page.evaluate(() => {
