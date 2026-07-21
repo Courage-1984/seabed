@@ -1,27 +1,27 @@
 [
   {
     "path": "index.html",
+    "mobile": {},
+    "desktop": {},
+    "error": "net::ERR_ABORTED at http://localhost:4173/"
+  },
+  {
+    "path": "sites/abyssal-data-recovery/index.html",
     "mobile": {
       "overflow": false,
-      "brokenImages": [
-        "http://localhost:4173/sites/halyard-and-hemp-sailmakers/assets/favicon.svg",
-        "http://localhost:4173/sites/nepenthes-forge/assets/favicon.svg"
-      ],
+      "brokenImages": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
-      "brokenImages": [
-        "http://localhost:4173/sites/halyard-and-hemp-sailmakers/assets/favicon.svg",
-        "http://localhost:4173/sites/nepenthes-forge/assets/favicon.svg"
-      ],
+      "brokenImages": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
   },
   {
-    "path": "sites/abyssal-data-recovery/index.html",
+    "path": "sites/abyssal-hardware/index.html",
     "mobile": {
       "overflow": false,
       "brokenImages": [],
@@ -474,13 +474,17 @@
     "path": "sites/nepenthes-forge/hardware.html",
     "mobile": {
       "overflow": true,
-      "brokenImages": [],
+      "brokenImages": [
+        "http://localhost:4173/sites/nepenthes-forge/favicon.svg"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
-      "brokenImages": [],
+      "brokenImages": [
+        "http://localhost:4173/sites/nepenthes-forge/favicon.svg"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -489,13 +493,17 @@
     "path": "sites/nepenthes-forge/index.html",
     "mobile": {
       "overflow": false,
-      "brokenImages": [],
+      "brokenImages": [
+        "http://localhost:4173/sites/nepenthes-forge/favicon.svg"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
-      "brokenImages": [],
+      "brokenImages": [
+        "http://localhost:4173/sites/nepenthes-forge/favicon.svg"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -504,13 +512,17 @@
     "path": "sites/nepenthes-forge/substrates.html",
     "mobile": {
       "overflow": false,
-      "brokenImages": [],
+      "brokenImages": [
+        "http://localhost:4173/sites/nepenthes-forge/favicon.svg"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
-      "brokenImages": [],
+      "brokenImages": [
+        "http://localhost:4173/sites/nepenthes-forge/favicon.svg"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }

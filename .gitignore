@@ -5,3 +5,5 @@ dist/
 
 qa-screenshots/
 qa-visual/
+
+.firecrawl/
