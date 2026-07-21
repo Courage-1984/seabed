@@ -3,10 +3,15 @@ import { readdirSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
 import { spawn } from 'child_process';
 
+const targetSlug = process.argv[2];
+
 function findHtmlFiles(dir, fileList = []) {
   const files = readdirSync(dir, { withFileTypes: true });
   for (const file of files) {
     if (file.isDirectory()) {
+      if (targetSlug && dir === 'sites' && file.name !== targetSlug) {
+        continue;
+      }
       findHtmlFiles(join(dir, file.name), fileList);
     } else if (file.name.endsWith('.html')) {
       fileList.push(join(dir, file.name).replace(/\\/g, '/'));
@@ -15,7 +20,7 @@ function findHtmlFiles(dir, fileList = []) {
   return fileList;
 }
 
-const pages = ['index.html', ...findHtmlFiles('sites')];
+const pages = targetSlug ? findHtmlFiles('sites') : ['index.html', ...findHtmlFiles('sites')];
 const baseUrl = 'http://localhost:4173/';
 const results = [];
 
@@ -97,7 +102,7 @@ const waitForServer = async (url, timeout = 10000) => {
           [...document.querySelectorAll('img[src]')]
             .map((img) => img.getAttribute('src') || '')
             .filter((src) => src && !/\.webp(\?|$)/i.test(src))
-            .filter((src) => !/\.svg(\?|$)/i.test(src))
+            .filter((src) => !/\.svg(\?|$)/i.test(src) && !src.startsWith('data:image/svg+xml'))
             .filter((src) => !/favicon/i.test(src))
         );
         const brokenLinks = [];
