@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "qa": "node qa_sweep.js",
     "optimize:webp": "node scripts/convert-webp.js",
-    "optimize:html": "node scripts/optimize-html.js"
+    "optimize:html": "node scripts/optimize-html.js",
+    "sites:index": "node scripts/export-sites-index.js",
+    "check:copy-depth": "node scripts/check-copy-depth.js"
   },
   "devDependencies": {
     "cheerio": "^1.2.0",

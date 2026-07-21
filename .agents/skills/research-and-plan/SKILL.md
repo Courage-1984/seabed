@@ -14,6 +14,12 @@ Run a **short** research-and-planning pass from brief §10 (Antigravity Handoff)
 - Checklist from `parse-brief` (brand, slug, tone, architecture, layout family).
 - Prefer §10 content when present; if missing (older brief), invent a minimal 3-bullet research list + risk list from §1/§3/§7.
 
+## Codebase awareness (mandatory)
+
+1. Use the repo scan from `parse-brief` (existing slugs, titles, layout families).
+2. If slug collision or near-duplicate brand flagged, carry into planning risks and confirm user intent before `scaffold-site`.
+3. Add §10 research angle: compare niche to existing `sites/**` — avoid layout clone and trope repeat.
+
 ## Research (bounded)
 
 1. Read §10 Research angles (or derive 3–5 from the niche).
@@ -23,8 +29,8 @@ Run a **short** research-and-planning pass from brief §10 (Antigravity Handoff)
 
 ## Planning
 
-1. Confirm skill order: scaffold → design-and-build → acquire-images → qa-and-ship.
-2. List risks from §10 (overflow, thin FAQ, generic hero, copy ceiling, WebP).
+1. Confirm skill order per @AGENTS.md (full pipeline).
+2. List risks from §10 (overflow, thin FAQ, generic hero, copy ceiling, WebP, slug/layout collision).
 3. Note layout family + architecture so design-and-build does not invent a different structure.
 4. Note image prefs (`pd-open` vs `generate`) for acquire-images.
 

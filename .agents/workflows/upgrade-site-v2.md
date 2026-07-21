@@ -27,5 +27,5 @@ sites/<slug>/
 5. Delete nested `package.json`, `package-lock.json`, `src/`, Vite leftovers, and per-site `.gitignore` if it only existed for the scaffold.
 6. Write/update `meta.json` with `title`, `blurb`, `hero`, `"standard": "v2"`.
 7. Run `npm run optimize:webp` and `npm run optimize:html` as needed.
-8. Run `/qa-sweep` (or `qa-and-ship` steps); set `"qa": "v2-pass"` only when clean.
-9. Confirm the hub card resolves; do not commit unless asked.
+8. Run `/qa-sweep` (or @.agents/skills/qa-and-ship/SKILL.md steps); `"qa": "v2-pass"` per qa-and-ship gate only.
+9. Confirm the hub card resolves; do not commit unless asked — @.agents/rules/03-repo-safety.md.

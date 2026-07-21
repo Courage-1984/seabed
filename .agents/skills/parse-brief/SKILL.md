@@ -56,9 +56,10 @@ Still accept older briefs without §10.
 
 1. Read the full user message as the brief.
 2. If `# Website Build Brief — …`, parse Brand and date, then walk §§1–10.
-3. Derive kebab `slug`. Check `sites/<slug>/` collision for `scaffold-site`.
-4. Emit internal checklist. Preserve §4a verbatim. Do not invent pages beyond §3.
-5. If brand name or core concept missing, ask **one** question; otherwise continue.
+3. **Repo scan (mandatory):** Read every `sites/*/meta.json`. Emit: all existing slugs, titles, and layout families (if present). Flag **slug collision** if `sites/<slug>/` exists. Flag **near-duplicate brands** (normalize titles — same core words or obvious variant). **Block silent overwrite** — if slug exists, note for `scaffold-site` (upgrade in place or new slug; never overwrite without consent).
+4. Derive kebab `slug` from §1 or brand; confirm uniqueness against the repo scan.
+5. Emit internal checklist. Preserve §4a verbatim. Do not invent pages beyond §3.
+6. If brand name or core concept missing, ask **one** question; otherwise continue.
 
 ## Output shape (example)
 
@@ -66,6 +67,8 @@ Still accept older briefs without §10.
 Brand: …
 Slug: …
 Date: …
+Repo scan: N existing sites; slug available / COLLISION
+Near-duplicates: none / flagged: …
 Tone: sharp industrial
 Architecture: dense one-pager
 Layout family: bento

@@ -13,6 +13,6 @@ Optional recovery / polish pass for image pipelines.
    - `npm run optimize:webp`
    - `npm run optimize:html`
 3. Verify `meta.json` `"hero"` still matches the final WebP filename.
-4. Spot-check that no HTML still points at deleted `.webp` / `.webp` files.
+4. Spot-check that no HTML still points at deleted `.webp`/`.webp` sources after WebP conversion.
 5. Optionally run `/qa-sweep` afterward.
-6. Do not commit unless asked.
+6. Do not commit unless asked — see @.agents/rules/03-repo-safety.md.

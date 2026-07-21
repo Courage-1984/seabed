@@ -36,11 +36,11 @@ sites/<slug>/
 }
 ```
 
-Omit `"qa": "v2-pass"` until `qa-and-ship` succeeds.
+Omit `"qa": "v2-pass"` until @.agents/skills/qa-and-ship/SKILL.md gate passes.
 
 ### index.html (stub)
 
-Minimal valid document: `lang` (default `en-GB`), charset, viewport, title, description, favicon link to `./assets/favicon.svg`, stylesheet `./style.css`, script `./main.js` (defer), empty `<main>`.
+Minimal valid document: `lang` default `en-GB` (see @GEMINI.md Defaults), charset, viewport, title, description, favicon link to `./assets/favicon.svg`, stylesheet `./style.css`, script `./main.js` (defer), empty `<main>`.
 
 ### style.css / main.js
 

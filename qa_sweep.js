@@ -93,6 +93,13 @@ const waitForServer = async (url, timeout = 10000) => {
 
         const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
         const brokenImages = await page.evaluate(() => [...document.images].filter(i => i.complete && i.naturalWidth === 0).map(i => i.src));
+        const nonWebpPhotos = await page.evaluate(() =>
+          [...document.querySelectorAll('img[src]')]
+            .map((img) => img.getAttribute('src') || '')
+            .filter((src) => src && !/\.webp(\?|$)/i.test(src))
+            .filter((src) => !/\.svg(\?|$)/i.test(src))
+            .filter((src) => !/favicon/i.test(src))
+        );
         const brokenLinks = [];
         
         if (pagePath === 'index.html') {
@@ -109,7 +116,7 @@ const waitForServer = async (url, timeout = 10000) => {
         
         await page.screenshot({ path: `${outDir}/${pagePath.replace(/\//g, '_')}_${label}.png`, fullPage: true });
         
-        return { overflow, brokenImages, consoleErrors: [...consoleErrors], brokenLinks };
+        return { overflow, brokenImages, nonWebpPhotos, consoleErrors: [...consoleErrors], brokenLinks };
       };
 
       pageResult.mobile = await checkViewport(390, 844, 'mobile');
@@ -128,6 +135,27 @@ const waitForServer = async (url, timeout = 10000) => {
   await browser.close();
   writeFileSync('qa-report.json', JSON.stringify(results, null, 2));
   console.log('QA sweep complete! Saved to qa-report.json');
+
+  const failures = results.filter((r) => {
+    const m = r.mobile || {};
+    const d = r.desktop || {};
+    return (
+      r.error ||
+      m.overflow ||
+      d.overflow ||
+      (m.brokenImages && m.brokenImages.length) ||
+      (d.brokenImages && d.brokenImages.length) ||
+      (m.nonWebpPhotos && m.nonWebpPhotos.length) ||
+      (d.nonWebpPhotos && d.nonWebpPhotos.length) ||
+      (m.consoleErrors && m.consoleErrors.length) ||
+      (d.consoleErrors && d.consoleErrors.length)
+    );
+  });
+  if (failures.length) {
+    console.error(`QA FAIL: ${failures.length} page(s) with issues`);
+    server.kill();
+    process.exit(1);
+  }
   
   server.kill();
   process.exit(0);

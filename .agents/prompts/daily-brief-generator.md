@@ -26,6 +26,8 @@ Stack the agent will use: Vite MPA + static HTML + CSS + Vanilla JS. No framewor
 
 You have no memory of previous briefs. Derive today’s parameters from the UTC date `YYYY-MM-DD`.
 
+**Existing sites (collision avoidance):** Before choosing a niche, consult the **Existing sites** list in these instructions if present (from `.agents/prompts/_sites-index.md`, pasted ~weekly). Never reuse an existing slug. Avoid the layout family used in the last 7 slugs.
+
 Compute `sum` = sum of character codes of the date string `YYYY-MM-DD`.
 
 ### Sector pool (weekday — keep)
@@ -116,23 +118,10 @@ Include:
 
 ### ## 2. Repo Integration
 
-Instruct the Antigravity agent **verbatim** (fill `<slug>`):
+Emit this block in the brief (fill `<slug>`):
 
 ```text
-Follow AGENTS.md and the repo v2 standard. Auto-run the full pipeline:
-parse-brief → research-and-plan → scaffold-site → design-and-build → acquire-images → qa-and-ship.
-
-- Create `sites/<slug>/` as a flat static site (no nested package.json, no create-vite, no per-site node_modules).
-- Files: `index.html`, `style.css`, `main.js` (entry must `import './style.css'`), plus extra `.html` pages only if multi-page. Copy shared nav/footer into each HTML file (no component system).
-- Do not edit `hub.js` or `vite.config.js` unless discovery/build is broken.
-- Create `meta.json` with:
-  - `title`, `blurb`, `hero` as `assets/<file>.webp` (NO leading `./`)
-  - `"standard": "v2"` when layout matches v2
-  - `"qa": "v2-pass"` ONLY after npm run qa is clean AND responsive PASS desktop + mobile
-- Relative paths everywhere: `./style.css`, `./main.js`, `./assets/...`. Never `/assets/...`.
-- Images in `sites/<slug>/assets/`. Custom `assets/favicon.svg` required.
-- All photographic assets must ship as WebP. After imagery: `npm run optimize:webp` then `npm run optimize:html`.
-- Before done: `npm run build` then `npm run qa` from repo root. Confirm Responsive: PASS desktop + mobile.
+Builder follows @AGENTS.md, @.agents/rules/01-site-v2-standard.md, @.agents/skills/acquire-images/SKILL.md, and @.agents/skills/qa-and-ship/SKILL.md. Create the site under sites/<slug>/.
 ```
 
 ### ## 3. Scope & Sitemap
@@ -194,25 +183,12 @@ Draw from this module pool as fits — enough modules to clear the word **floor*
 - One Google Fonts pairing (heading + body, **max 2 families**). Exact names + weights.
 - Faces **must fit the tone** (e.g. calm clinical ≠ display blackletter; wry editorial can take a characterful serif).
 - Load via `<link>` with `preconnect` in `<head>`.
-- **Banned as primary display / body:** Inter, Roboto, Arial, system-ui stacks.
+- **Banned fonts, hero craft, anti-clichés, motion:** per @.agents/rules/02-frontend-design.md — summarise the named layout family and 2–3 motion ideas for this brand in the brief.
 
 **Layout**
 
 - Name the STEP 0 **layout family** and describe in 2–4 sentences how it applies to this brand (grids, scroll behaviour, section rhythm).
 - Visual density never reduces the copy word floor or excuses exceeding the ceiling with filler.
-
-**Hero craft (mandatory)**
-
-- Brand as hero-level signal; full-bleed dominant visual.
-- First viewport: brand + one headline + one short supporting sentence + one CTA group + one dominant image.
-- No stats strips / schedules / secondary promos in the first viewport.
-- No floating badges/chips on hero media. Never cards in the hero.
-
-**Anti-clichés** (avoid unless twist requires): purple-on-white / purple–indigo gradients; cream (~#F4F1EA) + terracotta + generic serif broadsheet; default dark + glow + pill clusters + emoji decoration.
-
-**Motion**
-
-Specify **2–3 intentional motion ideas** for CSS/`main.js`. Hierarchy, not noise.
 
 ### ## 7. Asset Specs
 
@@ -224,41 +200,26 @@ Do **not** invent unverified image URLs. Provide **2–4 image briefs**:
 - Prompt-ready one-liner for generation (even if `pd-open` is preferred — Antigravity may fall back)
 - Alt text
 
-**Agent ladder** (include verbatim):
-
-```text
-Per asset:
-1. Verified PD/open photo that genuinely fits → download to ./assets/.
-2. Brand-specific / fictional / stock looks wrong → GENERATE with Antigravity/Gemini tools into ./assets/.
-3. Never hotlink. All photos must end as WebP. Run: npm run optimize:webp && npm run optimize:html.
-4. meta.json hero = assets/….webp (no leading ./). Live HTML src must be .webp (SVG ok for icons/favicon).
-5. Hero: fetchpriority="high". Below-fold: loading="lazy".
-6. picsum / random placeholders = failure — do not set qa v2-pass until real WebP assets exist.
-```
+**Image acquisition:** list filenames and generation prompts above; builder follows @.agents/skills/acquire-images/SKILL.md (PD/open → generate fallback, WebP-only, no hotlink, no picsum as done).
 
 Bespoke `favicon.svg` in `assets/` required.
 
 ### ## 8. Definition of Done
 
-Include verbatim (fill `<slug>`):
+Include a checklist referencing canonical owners (fill `<slug>`):
 
-- New site at `sites/<slug>/`, flat v2, no nested `package.json`.
-- `meta.json`: `title`, `blurb`, `hero` (`assets/….webp`); `"standard":"v2"`; `"qa":"v2-pass"` only after QA clean **and** responsive PASS.
-- Relative paths only; custom `assets/favicon.svg`.
-- Semantic HTML5; one `h1` per page.
-- Copy within floor/ceiling; §4a verbatim used exactly; §4b authored by Antigravity within min/max; no placeholders.
-- All photographic assets are **WebP** in HTML and meta.
-- Responsive 360px–1440px; **no horizontal overflow** on mobile (~390) or desktop (~1280+).
-- Antigravity confirms: `Responsive: PASS desktop + mobile` after `npm run qa` (via qa-and-ship).
-- WCAG AA; meta + OG per page; colours via `:root`; `main.js` imports `./style.css`; zero console errors.
-- `npm run optimize:webp` + `npm run optimize:html`; then `npm run build` + `npm run qa`.
+- New site at `sites/<slug>/` per @.agents/rules/01-site-v2-standard.md.
+- `"qa":"v2-pass"` only per @.agents/skills/qa-and-ship/SKILL.md gate.
+- WebP photos per @.agents/skills/acquire-images/SKILL.md.
+- Copy within §3 floor/ceiling; §4a verbatim; §4b within min/max; brief §4c rules.
+- Responsive 360px–1440px; zero console errors; WCAG AA; meta + OG per page.
 - Footer: fictional complete contact block consistent with world-building city.
 
 ### ## 9. Build Constraints
 
 - Vite + HTML + CSS + Vanilla JS only. No React/Vue/Svelte. No Tailwind/Bootstrap.
 - No plugins beyond Vite defaults. No nested `package.json`.
-- Do not commit or push unless the human asks.
+- Git/deploy: @.agents/rules/03-repo-safety.md (do not commit or push unless the human asks).
 - Distinctive design for *this* brief — do not clone another site in the repo.
 - Implement the named layout family; match the voice card on all Antigravity-authored copy.
 
@@ -273,14 +234,15 @@ Fill this so Antigravity produces higher quality (research + plan + skills + ima
 
 ### Planning
 - Ordered checklist referencing skills by name
-- Risks to watch (overflow, thin FAQ, generic hero, exceeding copy ceiling)
+- Risks to watch (overflow, thin FAQ, generic hero, exceeding copy ceiling, slug/layout collision vs existing sites)
 
 ### Skills to load (in order)
-parse-brief → research-and-plan → scaffold-site → design-and-build → acquire-images → qa-and-ship
+
+Per @AGENTS.md full pipeline.
 
 ### Image generation briefs
 - Repeat or refine §7 assets with ready-to-run generate prompts
-- Remind: WebP only; optimize scripts; no hotlink; no picsum as done
+- Remind: follow @.agents/skills/acquire-images/SKILL.md
 ```
 
 Make the research angles and risks **specific to today’s brand**, not generic filler.

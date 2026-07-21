@@ -10,12 +10,18 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3crect%20width='100'%20height='100'%20fill='%2308101A'/%3e%3crect%20x='25'%20y='25'%20width='50'%20height='50'%20fill='none'%20stroke='%23EAB308'%20stroke-width='8'/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23B87333'/%3e%3cline%20x1='50'%20y1='25'%20x2='50'%20y2='15'%20stroke='%23EAB308'%20stroke-width='4'/%3e%3cline%20x1='50'%20y1='75'%20x2='50'%20y2='85'%20stroke='%23EAB308'%20stroke-width='4'/%3e%3cline%20x1='25'%20y1='50'%20x2='15'%20y2='50'%20stroke='%23EAB308'%20stroke-width='4'/%3e%3cline%20x1='75'%20y1='50'%20x2='85'%20y2='50'%20stroke='%23EAB308'%20stroke-width='4'/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3crect%20width='100'%20height='100'%20fill='%2308101A'/%3e%3crect%20x='25'%20y='25'%20width='50'%20height='50'%20fill='none'%20stroke='%23EAB308'%20stroke-width='8'/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23B87333'/%3e%3cline%20x1='50'%20y1='25'%20x2='50'%20y2='15'%20stroke='%23EAB308'%20stroke-width='4'/%3e%3cline%20x1='50'%20y1='75'%20x2='50'%20y2='85'%20stroke='%23EAB308'%20stroke-width='4'/%3e%3cline%20x1='25'%20y1='50'%20x2='15'%20y2='50'%20stroke='%23EAB308'%20stroke-width='4'/%3e%3cline%20x1='75'%20y1='50'%20x2='85'%20y2='50'%20stroke='%23EAB308'%20stroke-width='4'/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -25,12 +31,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -40,12 +48,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -55,12 +65,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -70,12 +82,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -85,12 +99,20 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e",
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e",
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -100,12 +122,20 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e",
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e",
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -115,12 +145,20 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e",
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e",
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -130,12 +168,20 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e",
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e",
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%231E3A5F'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='25'%20fill='none'%20stroke='%23F7F4EE'%20stroke-width='4'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='12'%20fill='%23D6463A'%20/%3e%3cpath%20d='M%2050%2015%20L%2050%2025%20M%2050%2075%20L%2050%2085%20M%2015%2050%20L%2025%2050%20M%2075%2050%20L%2085%2050'%20stroke='%238A5C2E'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -145,12 +191,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -160,12 +208,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -175,12 +225,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -190,12 +242,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -205,12 +259,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -220,12 +276,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -235,12 +293,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -250,12 +310,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -265,12 +327,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -280,12 +344,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -295,12 +361,18 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%20width='64'%20height='64'%3e%3crect%20width='64'%20height='64'%20rx='12'%20fill='%23F4EDDC'%20/%3e%3cpath%20d='M24%2016%20L40%2016%20L44%2024%20L20%2024%20Z'%20fill='%237A2E1F'%20/%3e%3crect%20x='22'%20y='24'%20width='20'%20height='24'%20fill='%237A2E1F'%20rx='2'%20/%3e%3crect%20x='26'%20y='28'%20width='12'%20height='16'%20fill='%23C89F5A'%20rx='2'%20/%3e%3crect%20x='28'%20y='10'%20width='8'%20height='6'%20fill='%237A2E1F'%20/%3e%3ccircle%20cx='32'%20cy='8'%20r='4'%20fill='%237A2E1F'%20/%3e%3crect%20x='18'%20y='48'%20width='28'%20height='6'%20fill='%237A2E1F'%20rx='2'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%20width='64'%20height='64'%3e%3crect%20width='64'%20height='64'%20rx='12'%20fill='%23F4EDDC'%20/%3e%3cpath%20d='M24%2016%20L40%2016%20L44%2024%20L20%2024%20Z'%20fill='%237A2E1F'%20/%3e%3crect%20x='22'%20y='24'%20width='20'%20height='24'%20fill='%237A2E1F'%20rx='2'%20/%3e%3crect%20x='26'%20y='28'%20width='12'%20height='16'%20fill='%23C89F5A'%20rx='2'%20/%3e%3crect%20x='28'%20y='10'%20width='8'%20height='6'%20fill='%237A2E1F'%20/%3e%3ccircle%20cx='32'%20cy='8'%20r='4'%20fill='%237A2E1F'%20/%3e%3crect%20x='18'%20y='48'%20width='28'%20height='6'%20fill='%237A2E1F'%20rx='2'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -310,12 +382,18 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%20width='64'%20height='64'%3e%3crect%20width='64'%20height='64'%20rx='12'%20fill='%23F4EDDC'%20/%3e%3cpath%20d='M24%2016%20L40%2016%20L44%2024%20L20%2024%20Z'%20fill='%237A2E1F'%20/%3e%3crect%20x='22'%20y='24'%20width='20'%20height='24'%20fill='%237A2E1F'%20rx='2'%20/%3e%3crect%20x='26'%20y='28'%20width='12'%20height='16'%20fill='%23C89F5A'%20rx='2'%20/%3e%3crect%20x='28'%20y='10'%20width='8'%20height='6'%20fill='%237A2E1F'%20/%3e%3ccircle%20cx='32'%20cy='8'%20r='4'%20fill='%237A2E1F'%20/%3e%3crect%20x='18'%20y='48'%20width='28'%20height='6'%20fill='%237A2E1F'%20rx='2'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%20width='64'%20height='64'%3e%3crect%20width='64'%20height='64'%20rx='12'%20fill='%23F4EDDC'%20/%3e%3cpath%20d='M24%2016%20L40%2016%20L44%2024%20L20%2024%20Z'%20fill='%237A2E1F'%20/%3e%3crect%20x='22'%20y='24'%20width='20'%20height='24'%20fill='%237A2E1F'%20rx='2'%20/%3e%3crect%20x='26'%20y='28'%20width='12'%20height='16'%20fill='%23C89F5A'%20rx='2'%20/%3e%3crect%20x='28'%20y='10'%20width='8'%20height='6'%20fill='%237A2E1F'%20/%3e%3ccircle%20cx='32'%20cy='8'%20r='4'%20fill='%237A2E1F'%20/%3e%3crect%20x='18'%20y='48'%20width='28'%20height='6'%20fill='%237A2E1F'%20rx='2'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -325,12 +403,18 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%20width='64'%20height='64'%3e%3crect%20width='64'%20height='64'%20rx='12'%20fill='%23F4EDDC'%20/%3e%3cpath%20d='M24%2016%20L40%2016%20L44%2024%20L20%2024%20Z'%20fill='%237A2E1F'%20/%3e%3crect%20x='22'%20y='24'%20width='20'%20height='24'%20fill='%237A2E1F'%20rx='2'%20/%3e%3crect%20x='26'%20y='28'%20width='12'%20height='16'%20fill='%23C89F5A'%20rx='2'%20/%3e%3crect%20x='28'%20y='10'%20width='8'%20height='6'%20fill='%237A2E1F'%20/%3e%3ccircle%20cx='32'%20cy='8'%20r='4'%20fill='%237A2E1F'%20/%3e%3crect%20x='18'%20y='48'%20width='28'%20height='6'%20fill='%237A2E1F'%20rx='2'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%20width='64'%20height='64'%3e%3crect%20width='64'%20height='64'%20rx='12'%20fill='%23F4EDDC'%20/%3e%3cpath%20d='M24%2016%20L40%2016%20L44%2024%20L20%2024%20Z'%20fill='%237A2E1F'%20/%3e%3crect%20x='22'%20y='24'%20width='20'%20height='24'%20fill='%237A2E1F'%20rx='2'%20/%3e%3crect%20x='26'%20y='28'%20width='12'%20height='16'%20fill='%23C89F5A'%20rx='2'%20/%3e%3crect%20x='28'%20y='10'%20width='8'%20height='6'%20fill='%237A2E1F'%20/%3e%3ccircle%20cx='32'%20cy='8'%20r='4'%20fill='%237A2E1F'%20/%3e%3crect%20x='18'%20y='48'%20width='28'%20height='6'%20fill='%237A2E1F'%20rx='2'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -340,12 +424,18 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%20width='64'%20height='64'%3e%3crect%20width='64'%20height='64'%20rx='12'%20fill='%23F4EDDC'%20/%3e%3cpath%20d='M24%2016%20L40%2016%20L44%2024%20L20%2024%20Z'%20fill='%237A2E1F'%20/%3e%3crect%20x='22'%20y='24'%20width='20'%20height='24'%20fill='%237A2E1F'%20rx='2'%20/%3e%3crect%20x='26'%20y='28'%20width='12'%20height='16'%20fill='%23C89F5A'%20rx='2'%20/%3e%3crect%20x='28'%20y='10'%20width='8'%20height='6'%20fill='%237A2E1F'%20/%3e%3ccircle%20cx='32'%20cy='8'%20r='4'%20fill='%237A2E1F'%20/%3e%3crect%20x='18'%20y='48'%20width='28'%20height='6'%20fill='%237A2E1F'%20rx='2'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%20width='64'%20height='64'%3e%3crect%20width='64'%20height='64'%20rx='12'%20fill='%23F4EDDC'%20/%3e%3cpath%20d='M24%2016%20L40%2016%20L44%2024%20L20%2024%20Z'%20fill='%237A2E1F'%20/%3e%3crect%20x='22'%20y='24'%20width='20'%20height='24'%20fill='%237A2E1F'%20rx='2'%20/%3e%3crect%20x='26'%20y='28'%20width='12'%20height='16'%20fill='%23C89F5A'%20rx='2'%20/%3e%3crect%20x='28'%20y='10'%20width='8'%20height='6'%20fill='%237A2E1F'%20/%3e%3ccircle%20cx='32'%20cy='8'%20r='4'%20fill='%237A2E1F'%20/%3e%3crect%20x='18'%20y='48'%20width='28'%20height='6'%20fill='%237A2E1F'%20rx='2'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -355,12 +445,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -370,12 +462,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -385,12 +479,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -400,12 +496,20 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjNGEyMDExIi8+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZjRmMWVhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LYXJvbyBCcmFzcyAmYW1wOyBHbGFzcyAoQ2F0YWxvZ3VlIEhlcm8gUGxhY2Vob2xkZXIpPC90ZXh0Pgo8L3N2Zz4K",
+        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjNGEyMDExIi8+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZjRmMWVhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LYXJvbyBCcmFzcyAmYW1wOyBHbGFzcyAoQ2F0YWxvZ3VlIEhlcm8gUGxhY2Vob2xkZXIpPC90ZXh0Pgo8L3N2Zz4K"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjNGEyMDExIi8+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZjRmMWVhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LYXJvbyBCcmFzcyAmYW1wOyBHbGFzcyAoQ2F0YWxvZ3VlIEhlcm8gUGxhY2Vob2xkZXIpPC90ZXh0Pgo8L3N2Zz4K",
+        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjNGEyMDExIi8+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZjRmMWVhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LYXJvbyBCcmFzcyAmYW1wOyBHbGFzcyAoQ2F0YWxvZ3VlIEhlcm8gUGxhY2Vob2xkZXIpPC90ZXh0Pgo8L3N2Zz4K"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -415,12 +519,20 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjMmEzYjRjIi8+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZjRmMWVhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LYXJvbyBCcmFzcyAmYW1wOyBHbGFzcyAoSG9tZSBIZXJvIFBsYWNlaG9sZGVyKTwvdGV4dD4KPC9zdmc+Cg==",
+        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjMmEzYjRjIi8+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZjRmMWVhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LYXJvbyBCcmFzcyAmYW1wOyBHbGFzcyAoSG9tZSBIZXJvIFBsYWNlaG9sZGVyKTwvdGV4dD4KPC9zdmc+Cg=="
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjMmEzYjRjIi8+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZjRmMWVhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LYXJvbyBCcmFzcyAmYW1wOyBHbGFzcyAoSG9tZSBIZXJvIFBsYWNlaG9sZGVyKTwvdGV4dD4KPC9zdmc+Cg==",
+        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjMmEzYjRjIi8+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZjRmMWVhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LYXJvbyBCcmFzcyAmYW1wOyBHbGFzcyAoSG9tZSBIZXJvIFBsYWNlaG9sZGVyKTwvdGV4dD4KPC9zdmc+Cg=="
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -430,12 +542,20 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjOGE2MzI3Ii8+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmaWxsPSIjMWExYTFhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LYXJvbyBCcmFzcyAmYW1wOyBHbGFzcyAoUHJvY2VzcyBIZXJvIFBsYWNlaG9sZGVyKTwvdGV4dD4KPC9zdmc+Cg==",
+        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjOGE2MzI3Ii8+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmaWxsPSIjMWExYTFhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LYXJvbyBCcmFzcyAmYW1wOyBHbGFzcyAoUHJvY2VzcyBIZXJvIFBsYWNlaG9sZGVyKTwvdGV4dD4KPC9zdmc+Cg=="
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjOGE2MzI3Ii8+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmaWxsPSIjMWExYTFhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LYXJvbyBCcmFzcyAmYW1wOyBHbGFzcyAoUHJvY2VzcyBIZXJvIFBsYWNlaG9sZGVyKTwvdGV4dD4KPC9zdmc+Cg==",
+        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjOGE2MzI3Ii8+CiAgPHRleHQgeD0iNjAwIiB5PSIzMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjQwIiBmaWxsPSIjMWExYTFhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LYXJvbyBCcmFzcyAmYW1wOyBHbGFzcyAoUHJvY2VzcyBIZXJvIFBsYWNlaG9sZGVyKTwvdGV4dD4KPC9zdmc+Cg=="
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -445,12 +565,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -460,12 +582,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -475,12 +599,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -492,6 +618,7 @@
       "brokenImages": [
         "http://localhost:4173/sites/nepenthes-forge/favicon.svg"
       ],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
@@ -500,6 +627,7 @@
       "brokenImages": [
         "http://localhost:4173/sites/nepenthes-forge/favicon.svg"
       ],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -511,6 +639,7 @@
       "brokenImages": [
         "http://localhost:4173/sites/nepenthes-forge/favicon.svg"
       ],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
@@ -519,6 +648,7 @@
       "brokenImages": [
         "http://localhost:4173/sites/nepenthes-forge/favicon.svg"
       ],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -530,6 +660,7 @@
       "brokenImages": [
         "http://localhost:4173/sites/nepenthes-forge/favicon.svg"
       ],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
@@ -538,6 +669,24 @@
       "brokenImages": [
         "http://localhost:4173/sites/nepenthes-forge/favicon.svg"
       ],
+      "nonWebpPhotos": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
+    "path": "sites/null-state-cryogenics/index.html",
+    "mobile": {
+      "overflow": false,
+      "brokenImages": [],
+      "nonWebpPhotos": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -547,12 +696,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -562,12 +713,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -577,12 +730,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -592,12 +747,24 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "https://picsum.photos/id/119/800/600",
+        "https://picsum.photos/id/225/800/600",
+        "https://picsum.photos/id/292/400/300",
+        "https://picsum.photos/id/342/400/300"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "https://picsum.photos/id/119/800/600",
+        "https://picsum.photos/id/225/800/600",
+        "https://picsum.photos/id/292/400/300",
+        "https://picsum.photos/id/342/400/300"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -607,12 +774,22 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "https://picsum.photos/id/175/800/600",
+        "https://picsum.photos/id/445/400/300",
+        "https://picsum.photos/id/392/400/300"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "https://picsum.photos/id/175/800/600",
+        "https://picsum.photos/id/445/400/300",
+        "https://picsum.photos/id/392/400/300"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -622,12 +799,20 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "https://picsum.photos/id/26/400/300",
+        "https://picsum.photos/id/63/400/300"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "https://picsum.photos/id/26/400/300",
+        "https://picsum.photos/id/63/400/300"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -637,12 +822,18 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "https://picsum.photos/id/111/800/600"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "https://picsum.photos/id/111/800/600"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -652,12 +843,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -667,12 +860,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -682,12 +877,18 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3crect%20width='64'%20height='64'%20fill='%231b3b2b'%20rx='12'%20/%3e%3cpath%20d='M32%2010%20C32%2010,%2024%2020,%2024%2030%20C24%2040,%2030%2046,%2030%2054%20L34%2054%20C34%2046,%2040%2040,%2040%2030%20C40%2020,%2032%2010,%2032%2010%20Z'%20fill='%23c39b4b'%20/%3e%3cpath%20d='M24%2030%20C20%2028,%2016%2032,%2018%2036%20C20%2040,%2024%2038,%2024%2038'%20fill='none'%20stroke='%23c39b4b'%20stroke-width='2'%20/%3e%3cpath%20d='M40%2030%20C44%2028,%2048%2032,%2046%2036%20C44%2040,%2040%2038,%2040%2038'%20fill='none'%20stroke='%23c39b4b'%20stroke-width='2'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3crect%20width='64'%20height='64'%20fill='%231b3b2b'%20rx='12'%20/%3e%3cpath%20d='M32%2010%20C32%2010,%2024%2020,%2024%2030%20C24%2040,%2030%2046,%2030%2054%20L34%2054%20C34%2046,%2040%2040,%2040%2030%20C40%2020,%2032%2010,%2032%2010%20Z'%20fill='%23c39b4b'%20/%3e%3cpath%20d='M24%2030%20C20%2028,%2016%2032,%2018%2036%20C20%2040,%2024%2038,%2024%2038'%20fill='none'%20stroke='%23c39b4b'%20stroke-width='2'%20/%3e%3cpath%20d='M40%2030%20C44%2028,%2048%2032,%2046%2036%20C44%2040,%2040%2038,%2040%2038'%20fill='none'%20stroke='%23c39b4b'%20stroke-width='2'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -697,12 +898,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -712,12 +915,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -727,12 +932,18 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3crect%20width='100'%20height='100'%20fill='%23162e25'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='30'%20fill='none'%20stroke='%2379988d'%20stroke-width='4'%20/%3e%3cpath%20d='M%2030%2050%20Q%2040%2030%2050%2050%20T%2070%2050'%20fill='none'%20stroke='%23faf9f6'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3crect%20width='100'%20height='100'%20fill='%23162e25'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='30'%20fill='none'%20stroke='%2379988d'%20stroke-width='4'%20/%3e%3cpath%20d='M%2030%2050%20Q%2040%2030%2050%2050%20T%2070%2050'%20fill='none'%20stroke='%23faf9f6'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -742,12 +953,18 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3crect%20width='100'%20height='100'%20fill='%23162e25'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='30'%20fill='none'%20stroke='%2379988d'%20stroke-width='4'%20/%3e%3cpath%20d='M%2030%2050%20Q%2040%2030%2050%2050%20T%2070%2050'%20fill='none'%20stroke='%23faf9f6'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3crect%20width='100'%20height='100'%20fill='%23162e25'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='30'%20fill='none'%20stroke='%2379988d'%20stroke-width='4'%20/%3e%3cpath%20d='M%2030%2050%20Q%2040%2030%2050%2050%20T%2070%2050'%20fill='none'%20stroke='%23faf9f6'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -757,12 +974,18 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3crect%20width='100'%20height='100'%20fill='%23162e25'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='30'%20fill='none'%20stroke='%2379988d'%20stroke-width='4'%20/%3e%3cpath%20d='M%2030%2050%20Q%2040%2030%2050%2050%20T%2070%2050'%20fill='none'%20stroke='%23faf9f6'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [
+        "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3crect%20width='100'%20height='100'%20fill='%23162e25'%20/%3e%3ccircle%20cx='50'%20cy='50'%20r='30'%20fill='none'%20stroke='%2379988d'%20stroke-width='4'%20/%3e%3cpath%20d='M%2030%2050%20Q%2040%2030%2050%2050%20T%2070%2050'%20fill='none'%20stroke='%23faf9f6'%20stroke-width='4'%20/%3e%3c/svg%3e"
+      ],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -772,6 +995,7 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [
         "Failed to load resource: the server responded with a status of 404 (Not Found)"
       ],
@@ -780,6 +1004,7 @@
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -789,12 +1014,14 @@
     "mobile": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     },
     "desktop": {
       "overflow": false,
       "brokenImages": [],
+      "nonWebpPhotos": [],
       "consoleErrors": [],
       "brokenLinks": []
     }

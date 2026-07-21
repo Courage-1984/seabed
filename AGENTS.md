@@ -14,15 +14,15 @@ Only pause to ask **one** clarifying question when critical fields are missing (
 2. Load skill `research-and-plan` — execute §10 handoff research/planning (bounded).
 3. Load skill `scaffold-site` — create `sites/<slug>/` tree.
 4. Load skill `design-and-build` — implement HTML/CSS/JS; author §4b directed copy; apply layout family.
-5. Load skill `acquire-images` — PD/open vs generate; **WebP only** for photos.
+5. Load skill `acquire-images` — PD/open vs generate (WebP per @.agents/skills/acquire-images/SKILL.md).
 6. Optimize assets:
    - `npm run optimize:webp`
    - `npm run optimize:html`
 7. Load skill `qa-and-ship`:
    - `npm run build`
    - `npm run qa`
-   - Confirm `Responsive: PASS desktop + mobile` and WebP srcs
-8. Set `meta.json` `"standard": "v2"` and `"qa": "v2-pass"` **only after QA is clean and responsive PASS**.
+   - Confirm `Responsive: PASS desktop + mobile` and WebP per @.agents/skills/acquire-images/SKILL.md
+8. Set `meta.json` `"standard": "v2"` and `"qa": "v2-pass"` per @.agents/skills/qa-and-ship/SKILL.md gate only.
 9. Summarize: slug, pages, image strategy per asset, responsive status, QA status, remaining risks.
 
 ## Commands
@@ -35,22 +35,18 @@ Only pause to ask **one** clarifying question when critical fields are missing (
 | PNG/JPEG → WebP | `npm run optimize:webp` |
 | Lazy-load / dimensions | `npm run optimize:html` |
 | Puppeteer QA sweep | `npm run qa` |
+| Regenerate sites index (Gemini paste) | `npm run sites:index` |
+| Copy depth check (floor from brief §3) | `npm run check:copy-depth -- <slug> <floor>` |
 
-`npm run qa` starts preview against the built `dist/` — always `npm run build` first.
+`npm run qa` starts preview against the built `dist/` — always `npm run build` first. QA fails on overflow, broken images, non-WebP photos, or console errors.
 
 ## Hub contract
 
-- New sites must appear via `sites/<slug>/meta.json` alone.
-- Do **not** change `hub.js`, `vite.config.js`, or the hub `index.html` unless discovery/build is broken.
-- Hero path in `meta.json` must match a real file under that site’s `assets/` (prefer `assets/hero.webp` or equivalent WebP).
+See @.agents/rules/01-site-v2-standard.md (hub integration + meta schema + paths).
 
 ## Off-limits
 
-- Never edit `node_modules/`, `dist/`, or `.env`.
-- Never create a nested `package.json` / Vite app inside a site folder (v2 = flat static HTML/CSS/JS).
-- Do not break or rewrite unrelated existing sites while adding a new one.
-- Do not `git commit` or `git push` unless the user explicitly asks.
-- Do not force-deploy or change GitHub Pages settings unless asked.
+See @.agents/rules/03-repo-safety.md.
 
 ## Optional recovery workflows
 

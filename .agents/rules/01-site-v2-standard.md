@@ -1,5 +1,6 @@
 ---
-trigger: always_on
+trigger: glob
+glob: sites/**
 description: Site v2 folder layout, meta.json schema, and asset path contract for hub sites
 ---
 
@@ -34,7 +35,7 @@ sites/<kebab-slug>/
 - `title`, `blurb`, `hero` are required for hub cards.
 - `hero` is relative to the site folder, **without** a leading `./` (e.g. `assets/tig_arc.webp`).
 - Set `"standard": "v2"` when the folder matches this layout.
-- Set `"qa": "v2-pass"` only after `npm run qa` reports no critical failures for that site.
+- Set `"qa": "v2-pass"` only per the gate in @.agents/skills/qa-and-ship/SKILL.md.
 
 ## Paths
 

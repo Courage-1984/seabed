@@ -7,7 +7,7 @@ description: Implements a full static brand website (HTML/CSS/JS) from a parsed 
 
 ## Goal
 
-Ship a distinctive, production-quality static site inside the scaffold. Follow `.agents/rules/02-frontend-design.md` and `.agents/rules/01-site-v2-standard.md`. Use research notes from `research-and-plan`.
+Ship a distinctive, production-quality static site inside the scaffold. Follow @.agents/rules/02-frontend-design.md and @.agents/rules/01-site-v2-standard.md. Use research notes from `research-and-plan`.
 
 ## Structure and layout
 
@@ -23,19 +23,30 @@ Ship a distinctive, production-quality static site inside the scaffold. Follow `
    - Body sections: 120–180 words (do not exceed ceiling; do not pad).
    - FAQ answers: 40–80 words; testimonials: 30–50 words + attribution.
    - Stay within site word floor/ceiling from §3.
-4. Apply §4c copy rules (British English unless overridden; no AI-tells; no placeholders).
+4. Apply brief §4c copy rules (anti-AI-tells, British English, no placeholders).
+
+## Pre-handoff self-check (mandatory)
+
+Before `acquire-images`:
+
+1. **Word counts:** Every §4b section meets its min/max; site total within §3 floor/ceiling.
+2. **Section count:** Minimum directed (§4b) sections for the architecture:
+   - **Landing:** ≥ 5 directed sections (plus §4a hero + flagship).
+   - **Dense one-pager:** ≥ 7 directed sections.
+   - **Multi-page:** ≥ 4 directed sections per non-index page; pages must not clone each other.
+3. Run `node scripts/check-copy-depth.js <slug> <floor>` using §3 word floor — must pass before QA.
 
 ## Requirements
 
 1. **Semantic HTML** — landmarks, heading hierarchy, button/link semantics.
 2. **Meta** — title, description, OG tags, `lang`, viewport.
-3. **Brand-first hero** — full-bleed; tight hero budget (design rule).
+3. **Brand-first hero** — per @.agents/rules/02-frontend-design.md (hero budget, first viewport).
 4. **CSS** — `:root` colour variables from §5; fluid type/spacing; breakpoints for 360–1440; **no horizontal overflow**.
-5. **Fonts** — §6 pairing only; never Inter/Roboto/Arial/system as primary.
+5. **Fonts** — §6 pairing only; banned display faces per @.agents/rules/02-frontend-design.md.
 6. **Motion** — implement the 2–3 ideas from §6.
 7. **Favicon** — custom `assets/favicon.svg`.
 8. **Distinctiveness** — do not clone another site in this repo.
-9. Reference `./assets/<name>.webp` paths; `acquire-images` must resolve them before QA.
+9. Reference `./assets/<name>.webp` paths; @.agents/skills/acquire-images/SKILL.md must resolve them before QA.
 
 ## Responsive mindset
 
