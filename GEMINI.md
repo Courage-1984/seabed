@@ -18,7 +18,7 @@ Gemini has **no repo access**. Regenerate @./.agents/prompts/_sites-index.md wit
 - **Per site:** vanilla HTML, CSS, and JS — no React, no Tailwind, no per-site bundler
 - **Hub:** `index.html` + `hub.js` + `hub.css` — discovers `./sites/*/meta.json`
 - **Assets:** WebP photos, SVG favicons; optimize via `scripts/convert-webp.js` and `scripts/optimize-html.js`
-- **QA:** Puppeteer sweep in `qa_sweep.js` → `qa-report.json` + `qa-screenshots/`
+- **QA:** Puppeteer sweep in `scripts/qa_sweep.js` → `qa-report.json` + `qa-screenshots/`
 
 ## Site layout (v2)
 

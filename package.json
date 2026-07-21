@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "qa": "node qa_sweep.js",
+    "qa": "node scripts/qa_sweep.js",
     "optimize:webp": "node scripts/convert-webp.js",
     "optimize:html": "node scripts/optimize-html.js",
     "sites:index": "node scripts/export-sites-index.js",

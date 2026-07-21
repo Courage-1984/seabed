@@ -22,7 +22,7 @@ Verify the new (or upgraded) site in the MPA build and hub. Enforce WebP per @.a
    - Horizontal overflow on mobile/desktop
    - Console errors
    - Hub card missing image/favicon
-6. **WebP check (canonical gate):** Enforce @.agents/skills/acquire-images/SKILL.md — every photographic `<img src>` must end in `.webp` (SVG ok for favicon/icons). `qa_sweep.js` reports `nonWebpPhotos`; fix via `acquire-images` / optimize, then re-QA.
+6. **WebP check (canonical gate):** Enforce @.agents/skills/acquire-images/SKILL.md — every photographic `<img src>` must end in `.webp` (SVG ok for favicon/icons). `scripts/qa_sweep.js` reports `nonWebpPhotos`; fix via `acquire-images` / optimize, then re-QA.
 7. **Responsive confirm:** From `qa-report.json` and screenshots for this site:
    - Mobile (~390) — no overflow, no broken images, no non-WebP photos
    - Desktop (~1280+) — no overflow, no broken images, no non-WebP photos
