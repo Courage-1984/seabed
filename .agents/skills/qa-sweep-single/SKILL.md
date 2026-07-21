@@ -18,7 +18,7 @@ Run the QA sweep script for a single site slug, check for technical errors in th
 
 1. **Run Sweep:** Execute `node qa_sweep.js <slug>` from the repository root. This runs Puppeteer and generates screenshots in `qa-screenshots/`.
 2. **Technical Check:** Read `qa-report.json` to verify if there are any technical failures (such as `overflow: true`, missing WebP images, or broken links).
-3. **Visual Verification:** Locate the mobile and desktop `.png` screenshots for the site in the `qa-screenshots/` folder. Load these screenshots into your context to visually inspect them.
+3. **Visual Verification:** Locate the mobile and desktop `.webp` screenshots for the site in the `qa-screenshots/` folder. Load these screenshots into your context to visually inspect them.
 4. **Assessment:** Confirm there are no visual artifacts, text overlapping, or improper styling. 
 
 ## Next

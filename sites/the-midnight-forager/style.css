@@ -812,6 +812,11 @@ p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
 }
 
 @media (max-width: 768px) {
+  :root {
+    --spacing-xxl: 6rem;
+    --spacing-xl: 3rem;
+    --spacing-lg: 2rem;
+  }
   .site-header {
     position: relative;
     padding: 1rem 5%;

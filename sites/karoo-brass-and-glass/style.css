@@ -303,3 +303,6 @@ input:focus, textarea:focus, select:focus {
   outline: 2px solid var(--color-primary);
   border-color: transparent;
 }
+.table-container { width: 100%; overflow-x: auto; }
+
+.table-container { width: 100%; overflow-x: auto; }

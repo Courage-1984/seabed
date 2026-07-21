@@ -9,9 +9,7 @@ function findHtmlFiles(dir, fileList = []) {
   const files = readdirSync(dir, { withFileTypes: true });
   for (const file of files) {
     if (file.isDirectory()) {
-      if (targetSlug && dir === 'sites' && file.name !== targetSlug) {
-        continue;
-      }
+      if (targetSlug && dir === 'sites' && file.name !== targetSlug) continue;
       findHtmlFiles(join(dir, file.name), fileList);
     } else if (file.name.endsWith('.html')) {
       fileList.push(join(dir, file.name).replace(/\\/g, '/'));
@@ -23,145 +21,217 @@ function findHtmlFiles(dir, fileList = []) {
 const pages = targetSlug ? findHtmlFiles('sites') : ['index.html', ...findHtmlFiles('sites')];
 const baseUrl = 'http://localhost:4173/';
 const results = [];
-
 const outDir = './qa-screenshots';
+
 if (!existsSync(outDir)) mkdirSync(outDir);
 
-const waitForServer = async (url, timeout = 10000) => {
+const waitForServer = async (url, timeout = 15000) => {
   const start = Date.now();
   while (Date.now() - start < timeout) {
     try {
       const res = await fetch(url);
       if (res.ok) return true;
-    } catch (e) {
-      // ignore
-    }
+    } catch (e) { /* ignore and poll */ }
     await new Promise(r => setTimeout(r, 500));
   }
   throw new Error(`Server did not start at ${url}`);
 };
 
 (async () => {
-  console.log('Starting preview server...');
-  const server = spawn('npm', ['run', 'preview'], { shell: true });
+  let server;
+  let browser;
 
   try {
+    console.log('Starting preview server...');
+    // Note: Using cross-platform friendly command for Windows
+    server = spawn('npm', ['run', 'preview'], { shell: true, stdio: 'ignore' });
+
     await waitForServer(baseUrl);
     console.log('Server is ready.');
-  } catch (err) {
-    console.error(err.message);
-    server.kill();
-    process.exit(1);
-  }
 
-  console.log('Launching browser...');
-  const browser = await puppeteer.launch();
-
-  for (const pagePath of pages) {
-    console.log(`Checking ${pagePath}...`);
-    const url = pagePath === 'index.html' ? baseUrl : `${baseUrl}${pagePath}`;
-    const pageResult = { path: pagePath, mobile: {}, desktop: {} };
-    
-    const page = await browser.newPage();
-    const consoleErrors = [];
-    page.on('console', msg => {
-      if (msg.type() === 'error') consoleErrors.push(msg.text());
+    console.log('Launching browser...');
+    browser = await puppeteer.launch({
+      headless: false, // Keeping false for your visual inspection
+      defaultViewport: null
     });
-    
-    try {
-      await page.goto(url, { waitUntil: 'networkidle2' });
-      
-      const checkViewport = async (width, height, label) => {
-        await page.setViewport({ width, height });
-        
-        // Force-load lazy images and wait for decode (bounded)
-        await page.evaluate(async () => {
-          const withTimeout = (p, ms) => Promise.race([
-            p,
-            new Promise((resolve) => setTimeout(resolve, ms)),
-          ]);
-          const imgs = [...document.images];
-          for (const img of imgs) {
-            if (img.loading === 'lazy') img.loading = 'eager';
-            if (!img.complete) {
-              await withTimeout(new Promise((resolve) => {
-                img.addEventListener('load', resolve, { once: true });
-                img.addEventListener('error', resolve, { once: true });
-              }), 8000);
-            }
-            try { await withTimeout(img.decode(), 4000); } catch {}
-          }
-          window.scrollTo(0, document.body.scrollHeight);
-          await new Promise(r => setTimeout(r, 300));
-          window.scrollTo(0, 0);
-        });
 
-        const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
-        const brokenImages = await page.evaluate(() => [...document.images].filter(i => i.complete && i.naturalWidth === 0).map(i => i.src));
-        const nonWebpPhotos = await page.evaluate(() =>
-          [...document.querySelectorAll('img[src]')]
-            .map((img) => img.getAttribute('src') || '')
-            .filter((src) => src && !/\.webp(\?|$)/i.test(src))
-            .filter((src) => !/\.svg(\?|$)/i.test(src) && !src.startsWith('data:image/svg+xml'))
-            .filter((src) => !/favicon/i.test(src))
-        );
-        const brokenLinks = [];
-        
-        if (pagePath === 'index.html') {
-          const links = await page.evaluate(() => [...document.querySelectorAll('a')].map(a => a.href));
-          for (const link of links) {
-            if (link.startsWith(baseUrl)) {
-               try {
-                 const res = await fetch(link);
-                 if (!res.ok) brokenLinks.push(link);
-               } catch(e) { brokenLinks.push(link); }
-            }
-          }
+    for (const pagePath of pages) {
+      console.log(`\nChecking ${pagePath}...`);
+      const url = pagePath === 'index.html' ? baseUrl : `${baseUrl}${pagePath}`;
+      const pageResult = { path: pagePath, mobile: {}, desktop: {} };
+
+      const page = await browser.newPage();
+
+      // Track Network & Console Errors
+      const consoleErrors = [];
+      const networkErrors = [];
+
+      page.on('console', msg => {
+        if (msg.type() === 'error') consoleErrors.push(msg.text());
+      });
+
+      page.on('response', response => {
+        if (!response.ok() && response.status() >= 400 && response.url().startsWith(baseUrl)) {
+          networkErrors.push(`${response.status()} - ${response.url()}`);
         }
-        
-        await page.screenshot({ path: `${outDir}/${pagePath.replace(/\//g, '_')}_${label}.png`, fullPage: true });
-        
-        return { overflow, brokenImages, nonWebpPhotos, consoleErrors: [...consoleErrors], brokenLinks };
-      };
+      });
 
-      pageResult.mobile = await checkViewport(390, 844, 'mobile');
-      consoleErrors.length = 0;
-      pageResult.desktop = await checkViewport(1440, 900, 'desktop');
-      
-    } catch (err) {
-      console.error(`Error processing ${pagePath}:`, err);
-      pageResult.error = err.message;
+      try {
+        await page.goto(url, { waitUntil: 'networkidle2' });
+
+        const checkViewport = async (width, height, label) => {
+          await page.setViewport({ width, height });
+
+          // Force-load lazy images
+          await page.evaluate(async () => {
+            const withTimeout = (p, ms) => Promise.race([p, new Promise(r => setTimeout(r, ms))]);
+            const imgs = [...document.images];
+            for (const img of imgs) {
+              if (img.loading === 'lazy') img.loading = 'eager';
+              if (!img.complete) {
+                await withTimeout(new Promise((resolve) => {
+                  img.addEventListener('load', resolve, { once: true });
+                  img.addEventListener('error', resolve, { once: true });
+                }), 8000);
+              }
+              try { await withTimeout(img.decode(), 4000); } catch { }
+            }
+          });
+
+          // Visual Inspection Scroll
+          const scrollHeight = await page.evaluate(() => Math.max(document.body.scrollHeight, document.documentElement.scrollHeight));
+          for (let pos = 0; pos < scrollHeight; pos += height) {
+            await page.evaluate((p) => window.scrollTo(0, p), pos);
+            await new Promise(r => setTimeout(r, 1000));
+          }
+          await page.evaluate(() => window.scrollTo(0, 0));
+          await new Promise(r => setTimeout(r, 500));
+
+          // Granular Overflow Detection
+          const overflowingElements = await page.evaluate(() => {
+            const docWidth = document.documentElement.clientWidth;
+            return [...document.querySelectorAll('*')]
+              .filter(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.right <= docWidth + 1) return false; // +1 for subpixel rounding
+                
+                // Check if safely contained in a scrolling/clipped parent
+                let parent = el.parentElement;
+                while (parent && parent !== document.body && parent !== document.documentElement) {
+                  const style = window.getComputedStyle(parent);
+                  if (['hidden', 'auto', 'scroll', 'clip'].includes(style.overflowX)) {
+                    const parentRect = parent.getBoundingClientRect();
+                    // If the parent itself is within bounds, the child's overflow is safely contained
+                    if (parentRect.right <= docWidth + 1) {
+                      return false;
+                    }
+                  }
+                  parent = parent.parentElement;
+                }
+                return true;
+              })
+              .map(el => `${el.tagName.toLowerCase()}${el.id ? '#' + el.id : ''}${el.className ? '.' + el.className.split(' ').join('.') : ''}`);
+          });
+
+          // Asset validation
+          const brokenImages = await page.evaluate(() =>
+            [...document.images].filter(i => i.complete && i.naturalWidth === 0).map(i => i.src)
+          );
+
+          const missingAltTags = await page.evaluate(() =>
+            [...document.images].filter(i => !i.hasAttribute('alt')).map(i => i.src)
+          );
+
+          // Deep WebP check (includes <picture> and srcset)
+          const nonWebpPhotos = await page.evaluate(() => {
+            const getSrc = (el) => el.getAttribute('src') || el.getAttribute('srcset') || '';
+            const elements = [...document.querySelectorAll('img[src], source[srcset]')];
+            return elements
+              .map(getSrc)
+              .filter(src => src && !/\.webp(\?|$)/i.test(src) && !/\.svg(\?|$)/i.test(src) && !src.startsWith('data:image/') && !/favicon/i.test(src));
+          });
+
+          // Link Sweeper (Internal links only, to avoid external CORS/Timeout issues)
+          const brokenLinks = [];
+          const links = await page.evaluate(() => [...document.querySelectorAll('a')].map(a => a.href));
+          const uniqueInternalLinks = [...new Set(links)].filter(link => link.startsWith(baseUrl));
+
+          for (const link of uniqueInternalLinks) {
+            try {
+              const res = await fetch(link, { method: 'HEAD' });
+              if (!res.ok) brokenLinks.push(link);
+            } catch (e) {
+              brokenLinks.push(link);
+            }
+          }
+
+          await page.screenshot({ path: `${outDir}/${pagePath.replace(/\//g, '_')}_${label}.png`, fullPage: true });
+
+          return {
+            overflowingElements,
+            brokenImages,
+            missingAltTags,
+            nonWebpPhotos,
+            consoleErrors: [...consoleErrors],
+            networkErrors: [...networkErrors],
+            brokenLinks
+          };
+        };
+
+        pageResult.mobile = await checkViewport(390, 844, 'mobile');
+
+        // Reset errors before desktop check
+        consoleErrors.length = 0;
+        networkErrors.length = 0;
+
+        pageResult.desktop = await checkViewport(1440, 900, 'desktop');
+
+      } catch (err) {
+        console.error(`Error processing ${pagePath}:`, err);
+        pageResult.error = err.message;
+      }
+
+      results.push(pageResult);
+      await page.close();
     }
 
-    results.push(pageResult);
-    await page.close();
-  }
+    writeFileSync('qa-report.json', JSON.stringify(results, null, 2));
+    console.log('\nQA sweep complete! Saved to qa-report.json');
 
-  await browser.close();
-  writeFileSync('qa-report.json', JSON.stringify(results, null, 2));
-  console.log('QA sweep complete! Saved to qa-report.json');
+    // Strict Failure Checking
+    const failures = results.filter((r) => {
+      const m = r.mobile || {};
+      const d = r.desktop || {};
+      const hasIssues = (view) =>
+        (view.overflowingElements?.length) ||
+        (view.brokenImages?.length) ||
+        (view.nonWebpPhotos?.length) ||
+        (view.consoleErrors?.length) ||
+        (view.networkErrors?.length) ||
+        (view.brokenLinks?.length);
 
-  const failures = results.filter((r) => {
-    const m = r.mobile || {};
-    const d = r.desktop || {};
-    return (
-      r.error ||
-      m.overflow ||
-      d.overflow ||
-      (m.brokenImages && m.brokenImages.length) ||
-      (d.brokenImages && d.brokenImages.length) ||
-      (m.nonWebpPhotos && m.nonWebpPhotos.length) ||
-      (d.nonWebpPhotos && d.nonWebpPhotos.length) ||
-      (m.consoleErrors && m.consoleErrors.length) ||
-      (d.consoleErrors && d.consoleErrors.length)
-    );
-  });
-  if (failures.length) {
-    console.error(`QA FAIL: ${failures.length} page(s) with issues`);
-    server.kill();
-    process.exit(1);
+      return r.error || hasIssues(m) || hasIssues(d);
+    });
+
+    if (failures.length) {
+      console.error(`\nQA FAIL: ${failures.length} page(s) with issues. Check qa-report.json for details.`);
+      process.exitCode = 1; // Mark as failed instead of immediate exit to allow `finally` block to run
+    }
+
+  } catch (globalError) {
+    console.error('Fatal QA Error:', globalError);
+    process.exitCode = 1;
+  } finally {
+    // Guaranteed Teardown (Crucial for Windows 11 / MSI setups)
+    if (browser) await browser.close();
+    if (server) {
+      // Windows sometimes requires specific kill signals for npm child processes
+      if (process.platform === 'win32') {
+        spawn('taskkill', ['/pid', server.pid, '/f', '/t']);
+      } else {
+        server.kill();
+      }
+    }
+    process.exit();
   }
-  
-  server.kill();
-  process.exit(0);
 })();

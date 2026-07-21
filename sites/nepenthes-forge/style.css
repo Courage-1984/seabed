@@ -262,3 +262,6 @@ footer a {
 footer a:hover {
   border-bottom: 2px solid var(--color-background);
 }
+.table-container { width: 100%; overflow-x: auto; }
+
+.table-container { width: 100%; overflow-x: auto; }
