@@ -441,6 +441,21 @@
     }
   },
   {
+    "path": "sites/knot-and-westerly/index.html",
+    "mobile": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
     "path": "sites/lithic-fibre-dynamics/index.html",
     "mobile": {
       "overflow": false,
@@ -523,6 +538,51 @@
       "brokenImages": [
         "http://localhost:4173/sites/nepenthes-forge/favicon.svg"
       ],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
+    "path": "sites/oxide-and-tide/commissions.html",
+    "mobile": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
+    "path": "sites/oxide-and-tide/index.html",
+    "mobile": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
+    "path": "sites/oxide-and-tide/restoration.html",
+    "mobile": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
       "consoleErrors": [],
       "brokenLinks": []
     }
@@ -698,6 +758,23 @@
       "overflow": false,
       "brokenImages": [],
       "consoleErrors": [],
+      "brokenLinks": []
+    },
+    "desktop": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [],
+      "brokenLinks": []
+    }
+  },
+  {
+    "path": "sites/vapour-and-vault/index.html",
+    "mobile": {
+      "overflow": false,
+      "brokenImages": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
       "brokenLinks": []
     },
     "desktop": {

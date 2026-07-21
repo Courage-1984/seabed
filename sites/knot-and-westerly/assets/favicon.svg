@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- minimalist knot crossed with wind vector -->
+  <path d="M20,50 Q50,20 80,50 T20,50" fill="none" stroke="#D4A373" stroke-width="6"/>
+  <path d="M10,70 L90,30" fill="none" stroke="#2C3539" stroke-width="8" stroke-linecap="round"/>
+  <path d="M70,30 L90,30 L90,50" fill="none" stroke="#2C3539" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
