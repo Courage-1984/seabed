@@ -27,9 +27,10 @@ Only pause to ask **one** clarifying question when critical fields are missing (
    - Confirm layout family’s structural signature from the brief was implemented (self-check)
    - Confirm `Responsive: PASS desktop + mobile` and WebP per @.agents/skills/acquire-images/SKILL.md
 
-**Note:** Pasted briefs §2/§8 may lag behind these commands — **this file wins** over thinner brief repo-integration blocks.
-8. Set `meta.json` `"standard": "v2"`, `"layoutFamily"`, `"created"` (UTC `YYYY-MM-DD`), optional `"wordFloor"`, and `"qa": "v2-pass"` per @.agents/skills/qa-and-ship/SKILL.md gate only.
+**Note:** Pasted briefs §2/§8 should match this command list (see `.agents/prompts/daily-brief-generator.md`). If a brief is somehow thinner, **this file wins**.
+8. Set `meta.json` `"standard": "v2"`, `"layoutFamily"`, `"tags"`, `"created"` (UTC `YYYY-MM-DD`), `"wordFloor"` when known, and `"qa": "v2-pass"` per @.agents/skills/qa-and-ship/SKILL.md gate only.
 9. Summarize: slug, pages, layout family, created date, image strategy per asset, copy depth, responsive status, QA status, remaining risks.
+10. After ship (operator): `npm run sites:index` and paste Roster + Existing sites table into the live Gemini prompt (~weekly).
 
 ## Commands
 

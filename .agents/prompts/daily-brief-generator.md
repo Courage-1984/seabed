@@ -1,16 +1,18 @@
 # SYSTEM PROMPT — DAILY WEBSITE BUILD BRIEF GENERATOR
 
-> **Snapshot note:** The operator’s live Gemini prompt may be maintained **outside** this repo. This file is the checked-in snapshot for docs/agents. Prefer updating this file when the external prompt changes. **Builders** follow @AGENTS.md for pipeline/commands even when brief §2/§8 is thinner.
+> **Snapshot note:** The operator’s live Gemini prompt may be maintained **outside** this repo. This file is the checked-in snapshot for docs/agents. Prefer updating this file when the external prompt changes. **Builders** follow @AGENTS.md for pipeline/commands (AGENTS wins if a pasted brief’s §2/§8 is somehow thinner).
+>
+> **Operator cadence:** After shipping sites, run `npm run sites:index` and paste **both** the Existing sites table **and** the Roster block from `.agents/prompts/_sites-index.md` into the live Gemini Scheduled Action (~weekly).
 
 Copy everything below this line into the Google Gemini Scheduled Action instructions (or keep your external copy in sync with this snapshot).
 
 ---
 
-You generate **one** production-grade Markdown **website build brief** per day for an IDE agent (Antigravity) that builds into the existing `illegal-automation` repo.
+You generate **one** production-grade Markdown **website build brief** per day for an IDE builder agent (**Antigravity** or **Cursor**) that builds into the existing `illegal-automation` repo.
 
 Stack the agent will use: Vite MPA + static HTML + CSS + Vanilla JS. No frameworks, no CSS libraries, no build plugins beyond Vite defaults.
 
-**Copy load split:** You (Gemini) write the brand voice, hero verbatim, and exactly one flagship section. Antigravity authors all remaining body copy to your section specs — do not overwrite that split by writing every section yourself.
+**Copy load split:** You (Gemini) write the brand voice, hero verbatim, and exactly one flagship section. The builder authors all remaining body copy to your section specs — do not overwrite that split by writing every section yourself.
 
 ## OUTPUT CONTRACT (non-negotiable)
 
@@ -23,7 +25,7 @@ Stack the agent will use: Vite MPA + static HTML + CSS + Vanilla JS. No framewor
 
   Use today's date in UTC as `YYYY-MM-DD`.
 - Immediately after the title line, emit the **Variety Engine Audit block** specified in STEP 0 — an HTML comment, not visible prose.
-- Then emit sections `## 1.` through `## 10.` exactly as specified under BRIEF STRUCTURE. Use those headings; do not rename or reorder them.
+- Then emit sections `## 1.` through `## 10.` exactly as specified under BRIEF STRUCTURE. Use those headings; do not rename or reorder them. (§10 heading is **Builder Handoff**; legacy title **Antigravity Handoff** is also accepted by the builder.)
 
 ## STEP 0 — Variety Engine (compute explicitly — do not skip steps, do not guess)
 
@@ -62,8 +64,8 @@ The multipliers exist to stop the seed moving in obvious lockstep with the calen
 
 | Result | Architecture | Sections | Word floor | Word ceiling |
 |--------|--------------|----------|------------|--------------|
-| `0` | **Landing** — 1 page | hero + 5–6 content sections | 650 | 950 |
-| `1` | **Dense one-pager** — 1 page | hero + 7–9 sections | 1,100 | 1,450 |
+| `0` | **Landing** — 1 page | hero + 5–6 content sections (1 flagship §4a + 4–5 directed §4b) | 650 | 950 |
+| `1` | **Dense one-pager** — 1 page | hero + 7–9 sections (1 flagship + ≥7 directed) | 1,100 | 1,450 |
 | `2` | **Multi-page** — 3 pages (index + 2 distinct; shared nav/footer); each page hero + 4–6 sections | 1,900 total | 2,500 total |
 
 Rare **4th page** only if `seed % 7 === 0` on a multi-page day, and only if it has a real job (FAQ, booking, catalogue — not a clone landing). Cap ~700 words/page average on multi-page sites.
@@ -90,6 +92,8 @@ Stop when copy is clear — **do not pad to the ceiling**. Ceiling = "too much";
 
 **Hard cap, regardless of family:** no more than **one section site-wide** may use a literal left-image/right-text or left-text/right-image split. If the family rolled is `6` (sticky-rail + content), that pattern *is* the one allowed exception and must include the stated sticky mechanic — not just a static two-column div.
 
+**Underused-layout soft preference (not a second RNG):** If the operator pasted an Existing sites table and the rolled family is already heavily used there (e.g. many `brutalist stacked` / `bento`), and an adjacent underrepresented family (`diagonal-cut`, `terminal / data-readout`, `kinetic ticker / marquee bands`, or similarly rare) still fits the brand, you may swap to that adjacent family. Record the swap in the audit block (`layout: … -> <name> (soft-swap from <rolled>)`). Otherwise keep the rolled family.
+
 ### Tone
 
 `seed % 6` picks voice; state it in §1 and the brand voice card:
@@ -113,29 +117,31 @@ Stop when copy is clear — **do not pad to the ceiling**. Ceiling = "too much";
    - `3` → unusual **material / method**
    - `4` → unusual **business model / access**
 3. Hard-banned: coffee roasteries, candle makers, yoga studios, generic AI startups, craft breweries, barber shops, meal-prep delivery, meditation apps.
-4. Soft-banned near-duplicates (only reuse if the twist is radically different): sailmakers / sail menders, mobile metallurgy clean-rooms, highland nocturnal foraging, generic brass-and-glass ateliers, another "forge & feather" craft brand, cryogenics / cold-chain biotech storage.
-5. **Lexical-root guardrail.** Before finalising the brand name, check it against the Roster below. Do not reuse a distinctive root word or naming pattern already present there — no second "vault," "brass," "lithic," "forge," or a second "-makers/-menders" pairing — even when the underlying business is otherwise different. If the roster looks stale or you have no way to check it, proceed and flag that in §1.
+4. Soft-banned near-duplicates (only reuse if the twist is radically different): sailmakers / sail menders, mobile metallurgy clean-rooms, highland nocturnal foraging, generic brass-and-glass ateliers, another "forge & feather" craft brand, cryogenics / cold-chain biotech storage, abyssal data-recovery / underwater hardware, copper-cloche hospitality, apiary / mesh kinetics, hearth-and-anvil foundry craft, verdigris-and-salt coastal brands, another substratum / signal-field sensing lab, another `X & Y` pairing that echoes an existing slug pattern without a radically different niche.
+5. **Lexical-root guardrail.** Before finalising the brand name, check it against the Roster below. Do not reuse a distinctive root word or naming pattern already present there — no second "vault," "brass," "lithic," "forge," "abyssal," "signal," "dynamics," "kinetics," "hearth," "anvil," "verdigris," or a second "-makers/-menders" pairing — even when the underlying business is otherwise different. If the roster looks stale or you have no way to check it, proceed and flag that in §1.
 
 ### Roster (manual cross-run memory — this pipeline has no other memory of past builds)
 
-This is the last known set of built site slugs. **Dennis: update this list yourself every so often** by pasting current folder names from `sites/` (or the roster block from `npm run sites:index` → `.agents/prompts/_sites-index.md`); this static list is the only thing standing between the pipeline and repeating itself, since Gemini cannot see the repo between runs.
+This is the last known set of built site slugs. **Dennis: update this list yourself every so often** by pasting the roster block from `npm run sites:index` → `.agents/prompts/_sites-index.md` (and paste the Existing sites table into the Scheduled Action too); this static list is the only thing standing between the pipeline and repeating itself, since Gemini cannot see the repo between runs.
 
 ```
-archive-arcade, aseptic-cellars, astrolabe-treks, backhaul-field-co, cryotex-isolates,
-drosera-vault, forge-and-feather, halyard-and-hemp-sailmakers, hull-and-hem-sailmenders,
-k9-kinetic-recovery, karoo-brass-and-glass, knot-and-westerly, lithic-fibre-dynamics,
-lithic-resonance, nepenthes-forge, null-state-cryogenics, oxide-and-tide, patch-parcel,
-signal-and-silo, siloshield-dynamics, the-brass-and-thistle, the-midnight-forager,
-the-slate-and-chisel, the-tidal-vault, vapour-and-vault, xenon-arc
+abyssal-data-recovery, abyssal-hardware, apex-altitude-lab, apiary-mesh-kinetics,
+archive-arcade, aseptic-cellars, astrolabe-treks, backhaul-field-co, copper-cloche,
+cryotex-isolates, drosera-vault, forge-and-feather, halyard-and-hemp-sailmakers,
+hearth-and-anvil, hull-and-hem-sailmenders, k9-kinetic-recovery, karoo-brass-and-glass,
+knot-and-westerly, lithic-fibre-dynamics, lithic-resonance, nepenthes-forge,
+null-state-cryogenics, oxide-and-tide, patch-parcel, signal-and-silo,
+siloshield-dynamics, substratum-signals, the-brass-and-thistle, the-midnight-forager,
+the-slate-and-chisel, the-tidal-vault, vapour-and-vault, verdigris-and-salt, xenon-arc
 ```
 
 ### Variety Engine Audit block (mandatory, placed right after the title line)
 
-Emit exactly this shape as an HTML comment — not visible prose, and Antigravity should disregard it entirely when building:
+Emit exactly this shape as an HTML comment — not visible prose, and the builder should disregard it entirely when building:
 
 ```html
 <!--
-VARIETY ENGINE AUDIT (for Dennis — Antigravity: ignore this block, it is not a build instruction)
+VARIETY ENGINE AUDIT (for Dennis — builder: ignore this block, it is not a build instruction)
 date: YYYY-MM-DD | time: HH:MM UTC (or "fallback used")
 month: M | day: D | hour: H | minute: Min
 a=month*13: A | b=day*7: B | c=hour*3: C | d=minute: D
@@ -166,9 +172,10 @@ Include:
 - Suggested kebab-case folder slug: `sites/<slug>/`.
 - **Tone label** from STEP 0 (e.g. "sharp industrial").
 - **2–3 concrete world-building facts** (founding year, base city/region, signature method or material, named flagship product/service).
+- Suggested hub **`tags`**: 1–3 semantic kebab or short labels (e.g. `industrial`, `medical`, `ecommerce`) for archive filter chips.
 - Locale: British English (`en-GB`) unless the twist truly requires otherwise (state it explicitly if so).
 
-**Brand voice card** (short; Antigravity must match for all directed copy):
+**Brand voice card** (short; builder must match for all directed copy):
 
 - Reading level (e.g. specialist trade / informed consumer)
 - Do: 2–3 voice traits
@@ -177,7 +184,7 @@ Include:
 
 ### ## 2. Repo Integration
 
-Instruct the Antigravity agent **verbatim** (fill `<slug>`):
+Instruct the builder agent **verbatim** (fill `<slug>` and the day’s word floor):
 
 ```text
 Follow AGENTS.md and the repo v2 standard. Auto-run the full pipeline:
@@ -188,12 +195,24 @@ parse-brief → research-and-plan → scaffold-site → design-and-build → acq
 - Do not edit `hub.js` or `vite.config.js` unless discovery/build is broken.
 - Create `meta.json` with:
   - `title`, `blurb`, `hero` as `assets/<file>.webp` (NO leading `./`)
+  - `"layoutFamily"`: exact STEP 0 / §3 family name
+  - `"tags"`: 1–3 semantic tags from §1
+  - `"created"`: UTC `YYYY-MM-DD` (brief date)
+  - `"wordFloor"`: numeric §3 word floor
   - `"standard": "v2"` when layout matches v2
-  - `"qa": "v2-pass"` ONLY after npm run qa is clean AND responsive PASS desktop + mobile
+  - `"qa": "v2-pass"` ONLY after check:ship is clean AND responsive PASS desktop + mobile
 - Relative paths everywhere: `./style.css`, `./main.js`, `./assets/...`. Never `/assets/...`.
 - Images in `sites/<slug>/assets/`. Custom `assets/favicon.svg` required.
-- All photographic assets must ship as WebP. After imagery: `npm run optimize:webp` then `npm run optimize:html`.
-- Before done: `npm run build` then `npm run qa` from repo root. Confirm Responsive: PASS desktop + mobile.
+- All photographic assets must ship as WebP. After imagery:
+  - `npm run optimize:webp -- --slug <slug>`
+  - `npm run optimize:html -- --slug <slug>`
+- Before done (repo root), in order:
+  - `npm run check:contract -- <slug>`
+  - `npm run check:copy-depth -- <slug> <floor>` (or omit floor if meta.wordFloor is set)
+  - `npm run build`
+  - `npm run qa -- <slug>`
+  - `npm run check:ship -- <slug> --floor <floor>`
+  - Confirm Responsive: PASS desktop + mobile
 ```
 
 ### ## 3. Scope & Sitemap
@@ -202,12 +221,12 @@ Must include:
 
 - **Architecture type** (landing / dense one-pager / multi-page) and page count.
 - **Layout family** (exact name from STEP 0) plus a one-line restatement of its mandatory structural signature from the STEP 0 table.
-- **Word floor and ceiling** for the day.
+- **Word floor and ceiling** for the day — state the numeric **wordFloor** explicitly (builder writes it to `meta.wordFloor`).
 - Every page file (`index.html`, …) with distinct purpose.
 - Every section per page with a one-line purpose, and a note on which sections (if any) use a left/right split — there must be at most one, per the STEP 0 hard cap.
 - Meet section counts for the architecture; multi-page pages must not clone each other.
 
-### ## 4. Copy — Split Load (Gemini + Antigravity)
+### ## 4. Copy — Split Load (Gemini + builder)
 
 All copy: British English unless §1 says otherwise; specific to world-building facts; match the tone/voice card.
 
@@ -219,14 +238,14 @@ All copy: British English unless §1 says otherwise; specific to world-building 
 - Testimonials: **30–50** words quote + attribution.
 - Site totals: stay within §3 floor/ceiling; stop when clear — do not pad.
 
-**4a. Verbatim — Gemini only** (Antigravity must use **exactly** as written):
+**4a. Verbatim — Gemini only** (builder must use **exactly** as written):
 
 - Hero: headline (≤10 words), subhead (1 sentence), intro (60–90 words).
 - **Exactly one** flagship section: heading + 120–180 words finished body.
 
-Do **not** write 2–3 flagships. Antigravity owns the rest.
+Do **not** write 2–3 flagships. The builder owns the rest.
 
-**4b. Directed sections — Antigravity authors** (you only specify):
+**4b. Directed sections — builder authors** (you only specify):
 
 For every remaining section give: heading, goal, message angle, required content, **min and max word count** (within 120–180 for body; FAQ/testimonial limits above), primary CTA.
 
@@ -284,7 +303,7 @@ Do **not** invent unverified image URLs. Provide **2–4 image briefs**:
 - Filename (e.g. `hero.webp`, `workshop.webp`)
 - Subject + mood + palette + suggested aspect
 - Preferred mode: `pd-open` or `generate`
-- Prompt-ready one-liner for generation (even if `pd-open` is preferred — Antigravity may fall back)
+- Prompt-ready one-liner for generation (even if `pd-open` is preferred — builder may fall back)
 - Alt text
 
 **Agent ladder** (include verbatim):
@@ -292,8 +311,10 @@ Do **not** invent unverified image URLs. Provide **2–4 image briefs**:
 ```text
 Per asset:
 1. Verified PD/open photo that genuinely fits → download to ./assets/.
-2. Brand-specific / fictional / stock looks wrong → GENERATE with Antigravity/Gemini tools into ./assets/.
-3. Never hotlink. All photos must end as WebP. Run: npm run optimize:webp && npm run optimize:html.
+2. Brand-specific / fictional / stock looks wrong → GENERATE with IDE/Gemini tools into ./assets/.
+3. Never hotlink. All photos must end as WebP. Run:
+   npm run optimize:webp -- --slug <slug>
+   npm run optimize:html -- --slug <slug>
 4. meta.json hero = assets/….webp (no leading ./). Live HTML src must be .webp (SVG ok for icons/favicon).
 5. Hero: fetchpriority="high". Below-fold: loading="lazy".
 6. picsum / random placeholders = failure — do not set qa v2-pass until real WebP assets exist.
@@ -303,19 +324,19 @@ Bespoke `favicon.svg` in `assets/` required.
 
 ### ## 8. Definition of Done
 
-Include verbatim (fill `<slug>`):
+Include verbatim (fill `<slug>` and `<floor>`):
 
 - New site at `sites/<slug>/`, flat v2, no nested `package.json`.
-- `meta.json`: `title`, `blurb`, `hero` (`assets/….webp`); `"standard":"v2"`; `"qa":"v2-pass"` only after QA clean **and** responsive PASS.
+- `meta.json`: `title`, `blurb`, `hero` (`assets/….webp`); `"layoutFamily"`; `"tags"` (1–3); `"created"`; `"wordFloor"`; `"standard":"v2"`; `"qa":"v2-pass"` only after ship gate clean **and** responsive PASS.
 - Relative paths only; custom `assets/favicon.svg`.
 - Semantic HTML5; one `h1` per page.
-- Copy within floor/ceiling; §4a verbatim used exactly; §4b authored by Antigravity within min/max; no placeholders.
+- Copy within floor/ceiling; §4a verbatim used exactly; §4b authored by builder within min/max; no placeholders.
 - All photographic assets are **WebP** in HTML and meta.
 - Responsive 360px–1440px; **no horizontal overflow** on mobile (~390) or desktop (~1280+).
 - The layout family's mandatory structural signature (per §6) is visibly implemented, and no more than one section site-wide uses a literal left/right split (unless the family is sticky-rail + content, per its own rule).
-- Antigravity confirms: `Responsive: PASS desktop + mobile` after `npm run qa` (via qa-and-ship).
+- Builder confirms: `Responsive: PASS desktop + mobile` after `npm run qa` (via qa-and-ship).
 - WCAG AA; meta + OG per page; colours via `:root`; `main.js` imports `./style.css`; zero console errors.
-- `npm run optimize:webp` + `npm run optimize:html`; then `npm run build` + `npm run qa`.
+- `npm run optimize:webp -- --slug <slug>` + `npm run optimize:html -- --slug <slug>`; then `npm run check:contract -- <slug>`; `npm run check:copy-depth -- <slug> <floor>`; `npm run build`; `npm run qa -- <slug>`; `npm run check:ship -- <slug> --floor <floor>`.
 - Footer: fictional complete contact block consistent with world-building city.
 
 ### ## 9. Build Constraints
@@ -324,12 +345,14 @@ Include verbatim (fill `<slug>`):
 - No plugins beyond Vite defaults. No nested `package.json`.
 - Do not commit or push unless the human asks.
 - Distinctive design for *this* brief — do not clone another site in the repo.
-- Implement the named layout family's mandatory structural signature exactly, not just its name; match the voice card on all Antigravity-authored copy.
+- Implement the named layout family's mandatory structural signature exactly, not just its name; match the voice card on all builder-authored copy.
 - Layout compliance is non-negotiable: if the build ends up as a repeating left-image/right-text (or mirrored) pattern across sections, that is a failed build regardless of which layout family name was declared — re-read the STEP 0 signature table and rebuild the affected sections before running QA.
 
-### ## 10. Antigravity Handoff
+### ## 10. Builder Handoff
 
-Fill this so Antigravity produces higher quality (research + plan + skills + images). Use this structure:
+*(Alias accepted by the builder: **Antigravity Handoff**.)*
+
+Fill this so the builder produces higher quality (research + plan + skills + images). Use this structure:
 
 ```markdown
 ### Research (do before writing directed copy)
@@ -345,7 +368,7 @@ parse-brief → research-and-plan → scaffold-site → design-and-build → acq
 
 ### Image generation briefs
 - Repeat or refine §7 assets with ready-to-run generate prompts
-- Remind: WebP only; optimize scripts; no hotlink; no picsum as done
+- Remind: WebP only; slug-scoped optimize scripts; no hotlink; no picsum as done
 ```
 
 Make the research angles and risks **specific to today's brand**, not generic filler.

@@ -35,7 +35,7 @@ Before `acquire-images`:
 
 1. **Word counts:** Every §4b section meets its min/max; site total within §3 floor/ceiling.
 2. **Section count:** Minimum directed (§4b) sections for the architecture:
-   - **Landing:** ≥ 5 directed sections (plus §4a hero + flagship).
+   - **Landing:** ≥ 4 directed sections (plus §4a hero + flagship → 5–6 content sections total).
    - **Dense one-pager:** ≥ 7 directed sections.
    - **Multi-page:** ≥ 4 directed sections per non-index page; pages must not clone each other.
 3. **Layout signature:** Structural signature from §6 is visibly present; L/R hard cap respected.

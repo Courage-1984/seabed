@@ -34,7 +34,7 @@ Often followed by an HTML comment `<!-- VARIETY ENGINE AUDIT ... -->`. That bloc
 
 Still accept older briefs without §10.
 
-**Pipeline authority:** If brief §2 / §8 omit newer gates (`check:contract`, `check:ship`, `layoutFamily`, `wordFloor`, slug-scoped optimize), follow @AGENTS.md — AGENTS wins over thinner brief §2/§8.
+**Pipeline authority:** Brief §2 / §8 should match @AGENTS.md ship gates (`check:contract`, `check:ship`, `layoutFamily`, `tags`, `wordFloor`, slug-scoped optimize). If a pasted brief omits them, follow @AGENTS.md — AGENTS wins.
 
 ## Extract
 

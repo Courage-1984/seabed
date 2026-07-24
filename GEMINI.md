@@ -11,7 +11,7 @@ Daily creative briefs arrive from a **Google Gemini Scheduled Action** (operator
 
 ### Sites index for Gemini (manual-weekly)
 
-Gemini has **no repo access**. Regenerate @./.agents/prompts/_sites-index.md with `npm run sites:index` and paste the **Existing sites** table into your Saved Scheduled Action instructions (~weekly) so briefs avoid slug/layout collisions.
+Gemini has **no repo access**. After shipping new sites (or ~weekly), regenerate @./.agents/prompts/_sites-index.md with `npm run sites:index` and paste **both** the **Existing sites** table **and** the **Roster** block into your Saved Scheduled Action / live prompt (and keep @./.agents/prompts/daily-brief-generator.md in sync). That is the only cross-run collision memory Gemini gets.
 
 ## Stack
 
