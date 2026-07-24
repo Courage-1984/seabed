@@ -239,6 +239,30 @@ function renderDiscoveryStrip(sorted) {
       }, 150);
     }
   }, { passive: false });
+
+  // Auto Scroll Logic
+  let autoScrollInterval;
+  const startAutoScroll = () => {
+    clearInterval(autoScrollInterval);
+    autoScrollInterval = setInterval(() => {
+      if (isDown) return; // don't scroll if dragging
+      if (stripEl.scrollLeft >= stripEl.scrollWidth - stripEl.clientWidth - 10) {
+        stripEl.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        stripEl.scrollBy({ left: scrollByAmount(), behavior: 'smooth' });
+      }
+    }, 3500);
+  };
+
+  const stopAutoScroll = () => clearInterval(autoScrollInterval);
+
+  const carouselSection = stripEl.closest('.discovery');
+  if (carouselSection) {
+    carouselSection.addEventListener('mouseenter', stopAutoScroll);
+    carouselSection.addEventListener('mouseleave', startAutoScroll);
+  }
+  
+  startAutoScroll();
 }
 
 function renderLatestDrop(site) {
@@ -301,17 +325,22 @@ function uniqueTags(siteList) {
   return [...set].sort((a, b) => a.localeCompare(b));
 }
 
-function filterSites(siteList, filter, newestDate) {
-  if (filter === 'all') return siteList;
-  if (filter === 'recent') {
+function filterSites(siteList, category, subFilter, newestDate) {
+  if (category === 'all') return siteList;
+  if (category === 'recent') {
     if (!newestDate) return siteList;
     return siteList.filter((site) => {
       const d = parseCreated(site.created);
       return d && daysBetween(d, newestDate) <= RECENT_DAYS;
     });
   }
-  // Check if it matches a layout family or a tag
-  return siteList.filter((site) => site.layoutFamily === filter || site.tags.includes(filter));
+  if (category === 'layout' && subFilter) {
+    return siteList.filter((site) => site.layoutFamily === subFilter);
+  }
+  if (category === 'tag' && subFilter) {
+    return siteList.filter((site) => site.tags && site.tags.includes(subFilter));
+  }
+  return siteList;
 }
 
 function archiveSpanClass(index) {
@@ -421,8 +450,8 @@ function observeArchiveCards(cards) {
   cards.forEach((card) => io.observe(card));
 }
 
-function renderArchive(siteList, filter, newestDate) {
-  const filtered = filterSites(siteList, filter, newestDate);
+function renderArchive(siteList, category, subFilter, newestDate) {
+  const filtered = filterSites(siteList, category, subFilter, newestDate);
   gridEl.classList.add('is-fading');
 
   window.setTimeout(() => {
@@ -442,42 +471,78 @@ function renderArchive(siteList, filter, newestDate) {
   }, 160);
 }
 
-function renderFilters(siteList, activeFilter, onChange) {
+function renderFilters(siteList, onChange) {
   if (!filtersEl) return;
-
-  const families = uniqueLayoutFamilies(siteList);
-  const tags = uniqueTags(siteList);
-  
-  const chips = [
-    { id: 'all', label: 'All' },
-    ...families.map((f) => ({ id: f, label: f })),
-    ...tags.map((t) => ({ id: t, label: '#' + t })),
-    { id: 'recent', label: 'Recent' },
-  ];
-
   filtersEl.hidden = false;
   filtersEl.replaceChildren();
 
-  for (const chip of chips) {
+  // Category Row
+  const catRow = document.createElement('div');
+  catRow.className = 'archive-filter-row';
+  
+  const categories = [
+    { id: 'all', label: 'All' },
+    { id: 'recent', label: 'Recent' },
+    { id: 'layout', label: 'By Layout' },
+    { id: 'tag', label: 'By Tag' },
+  ];
+  
+  for (const cat of categories) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'archive-filter-chip';
-    btn.dataset.filter = chip.id;
-    btn.setAttribute('aria-pressed', chip.id === activeFilter ? 'true' : 'false');
-    btn.textContent = chip.label;
-    btn.addEventListener('click', () => onChange(chip.id));
-    filtersEl.appendChild(btn);
+    btn.dataset.category = cat.id;
+    btn.setAttribute('aria-pressed', cat.id === activeCategory ? 'true' : 'false');
+    btn.textContent = cat.label;
+    btn.addEventListener('click', () => onChange(cat.id, null));
+    catRow.appendChild(btn);
+  }
+  filtersEl.appendChild(catRow);
+
+  // Sub-filter Row
+  if (activeCategory === 'layout' || activeCategory === 'tag') {
+    const subRow = document.createElement('div');
+    subRow.className = 'archive-filter-row archive-filter-row--sub';
+    
+    const items = activeCategory === 'layout' 
+      ? uniqueLayoutFamilies(siteList).map(f => ({ id: f, label: f }))
+      : uniqueTags(siteList).map(t => ({ id: t, label: '#' + t }));
+
+    for (const item of items) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'archive-filter-chip archive-filter-chip--sub';
+      btn.setAttribute('aria-pressed', item.id === activeSubFilter ? 'true' : 'false');
+      btn.textContent = item.label;
+      btn.addEventListener('click', () => onChange(activeCategory, item.id));
+      subRow.appendChild(btn);
+    }
+    filtersEl.appendChild(subRow);
   }
 }
 
 const sorted = await loadSiteEntries();
 const newestDate = parseCreated(sorted[0]?.created);
-let activeFilter = 'all';
 
-const applyFilter = (filter) => {
-  activeFilter = filter;
-  renderFilters(sorted, activeFilter, applyFilter);
-  renderArchive(sorted, activeFilter, newestDate);
+let activeCategory = 'all';
+let activeSubFilter = null;
+
+const applyFilter = (category, subFilter = null) => {
+  activeCategory = category;
+  activeSubFilter = subFilter;
+
+  // If a category is selected but no subfilter is active, default to the first one so it's not empty
+  if (category === 'layout' && !subFilter) {
+    const families = uniqueLayoutFamilies(sorted);
+    if (families.length) activeSubFilter = families[0];
+  }
+  if (category === 'tag' && !subFilter) {
+    const tags = uniqueTags(sorted);
+    if (tags.length) activeSubFilter = tags[0];
+  }
+
+  renderFilters(sorted, applyFilter);
+  renderArchive(sorted, activeCategory, activeSubFilter, newestDate);
 };
 
 renderDiscoveryStrip(sorted);
