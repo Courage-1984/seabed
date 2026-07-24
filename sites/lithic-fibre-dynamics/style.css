@@ -18,7 +18,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-weight: 400;
   background-color: var(--color-background);
   color: var(--color-text);
@@ -233,7 +233,7 @@ header {
   padding: 1rem;
   border: 1px solid var(--color-border);
   background-color: var(--color-background);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-size: 1rem;
   color: var(--color-text);
   transition: border-color 0.2s ease;

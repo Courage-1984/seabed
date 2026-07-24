@@ -1,0 +1,9 @@
+{
+  "title": "Null-State Cryogenics",
+  "blurb": "Absolute thermal stability through industrial-scale cryogenic compression.",
+  "hero": "assets/hero-hydraulic-press.webp",
+  "layoutFamily": "sticky-rail + content",
+  "created": "2026-07-02",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

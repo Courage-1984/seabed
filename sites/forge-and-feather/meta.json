@@ -2,6 +2,8 @@
   "title": "Forge & Feather",
   "blurb": "Bespoke Culinary Blacksmithing & Open-Fire Dining.",
   "hero": "assets/hero.webp",
+  "layoutFamily": "bento",
+  "created": "2026-06-15",
   "standard": "v2",
   "qa": "v2-pass"
 }

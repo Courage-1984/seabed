@@ -2,6 +2,8 @@
   "title": "Abyssal Hardware Co.",
   "blurb": "Unyielding storage for the ocean's most unforgiving depths.",
   "hero": "assets/hero.webp",
+  "layoutFamily": "sticky-rail + content",
+  "created": "2026-05-29",
   "standard": "v2",
   "qa": "v2-pass"
 }

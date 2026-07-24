@@ -1,7 +1,9 @@
 {
   "title": "Drosera Vault",
   "blurb": "Time-locked drops of rare, legally propagated carnivorous plant seeds.",
-  "hero": "./assets/drosera_macro.webp",
+  "hero": "assets/drosera_macro.webp",
+  "layoutFamily": "brutalist stacked",
+  "created": "2026-06-13",
   "standard": "v2",
   "qa": "v2-pass"
 }

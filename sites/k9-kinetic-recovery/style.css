@@ -736,3 +736,6 @@ footer {
   .card { padding: 1.5rem; }
   nav ul { flex-direction: column; align-items: center; gap: 0.5rem; }
 }
+.table-container { width: 100%; overflow-x: auto; }
+
+.table-container { width: 100%; overflow-x: auto; }

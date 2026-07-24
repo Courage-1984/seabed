@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   color: var(--color-text);
   background-color: var(--color-background);
   line-height: 1.6;

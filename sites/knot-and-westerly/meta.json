@@ -2,6 +2,8 @@
   "title": "Knot & Westerly",
   "blurb": "Defiantly stable arboreal architecture pinned to the absolute edge of the habitable world.",
   "hero": "assets/hero-canopy-pod.webp",
+  "layoutFamily": "brutalist stacked",
+  "created": "2026-06-24",
   "standard": "v2",
   "qa": "v2-pass"
 }

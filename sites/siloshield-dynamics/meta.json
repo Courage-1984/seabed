@@ -1,7 +1,9 @@
 {
   "title": "SiloShield Dynamics",
   "blurb": "On-site penetration testing and ransomware hardening exclusively for automated farming infrastructure.",
-  "hero": "./assets/autonomous_harvester.webp",
+  "hero": "assets/autonomous_harvester.webp",
+  "layoutFamily": "bento",
+  "created": "2026-07-10",
   "standard": "v2",
   "qa": "v2-pass"
 }

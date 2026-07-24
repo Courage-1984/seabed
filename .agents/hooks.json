@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "_comment": "Lightweight governance warnings — scripts exit 0 (warn only, do not block).",
+  "hooks": {
+    "postToolUse": [
+      {
+        "matcher": "Write|StrReplace|EditNotebook",
+        "command": "node .agents/hooks/governance-post-edit.js"
+      }
+    ]
+  }
+}

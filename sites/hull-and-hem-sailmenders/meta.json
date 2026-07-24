@@ -1,5 +1,9 @@
 {
   "title": "Hull & Hem Sailmenders",
   "blurb": "A working sail loft run out of a Cornish signal box, mending gaff mainsails, storm jibs and cruising genoas for skippers who want the old stitch back.",
-  "hero": "./assets/hero-signalbox.webp"
+  "hero": "assets/hero-signalbox.webp",
+  "layoutFamily": "brutalist stacked",
+  "created": "2026-06-19",
+  "standard": "v2",
+  "qa": "v2-pass"
 }

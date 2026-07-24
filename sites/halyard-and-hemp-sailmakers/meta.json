@@ -1,5 +1,9 @@
 {
   "title": "Halyard & Hemp Sailmakers",
   "blurb": "Flax and hemp canvas for wooden boats that were never meant to carry Dacron. Hand-stitched traditional sails from the Isle of Bute.",
-  "hero": "./assets/loft-hero.webp"
+  "hero": "assets/loft-hero.webp",
+  "layoutFamily": "editorial magazine",
+  "created": "2026-06-17",
+  "standard": "v2",
+  "qa": "v2-pass"
 }

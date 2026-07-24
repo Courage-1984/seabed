@@ -1,7 +1,9 @@
 {
   "title": "Signal & Silo",
   "blurb": "Off-Grid Silo Telemetry Built for Remote Agriculture. Solar-powered radio networks safeguarding grain reserves in areas completely bypassed by cellular coverage.",
-  "hero": "./assets/hero.webp",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "bento",
+  "created": "2026-07-08",
   "standard": "v2",
   "qa": "v2-pass"
 }

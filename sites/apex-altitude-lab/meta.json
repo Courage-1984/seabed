@@ -1,7 +1,9 @@
 {
   "title": "Apex Altitude Lab",
   "blurb": "High-Performance Hypoxic Conditioning for extreme depths.",
-  "hero": "./assets/chamber.webp",
+  "hero": "assets/chamber.webp",
+  "layoutFamily": "horizontal-scroll band",
+  "created": "2026-05-31",
   "standard": "v2",
   "qa": "v2-pass"
 }

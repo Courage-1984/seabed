@@ -1,5 +1,9 @@
 {
   "title": "Abyssal Data Recovery",
   "blurb": "Rescuing critical telemetry and high-definition visual logs from the crushing depths of the ocean floor.",
-  "hero": "./assets/hero.webp"
+  "hero": "assets/hero.webp",
+  "layoutFamily": "brutalist stacked",
+  "created": "2026-05-27",
+  "standard": "v2",
+  "qa": "v2-pass"
 }

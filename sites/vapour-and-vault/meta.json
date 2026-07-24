@@ -2,6 +2,8 @@
   "title": "Vapour & Vault",
   "blurb": "Maturing culinary stocks inside a 350-metre deep geothermal granite fissure using raw earth pressure and thermal vapor.",
   "hero": "assets/hero-shaft-vat.webp",
+  "layoutFamily": "ultra-minimal full-bleed",
+  "created": "2026-07-19",
   "standard": "v2",
   "qa": "v2-pass"
 }

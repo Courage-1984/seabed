@@ -1,5 +1,9 @@
 {
   "title": "Nepenthes Forge & Flight",
   "blurb": "Transporting and sustaining fragile predatory flora in absolute, climate-controlled isolation.",
-  "hero": "./assets/hero.webp"
+  "hero": "assets/hero.webp",
+  "layoutFamily": "bento",
+  "created": "2026-06-30",
+  "standard": "v2",
+  "qa": "v2-pass"
 }

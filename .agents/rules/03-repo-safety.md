@@ -25,4 +25,4 @@ description: Repo safety — off-limits paths, no nested scaffolds, secrets, git
 ## Generated / local noise
 
 - Prefer not to commit `qa-screenshots/` or `qa-visual/` (gitignored).
-- `qa-report.json` may update during QA; include it in commits only if the user wants QA artifacts tracked.
+- `qa-report.json` is gitignored (local + CI artifact only). Do not force-add it.

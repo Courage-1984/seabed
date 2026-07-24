@@ -1,18 +1,24 @@
 ---
 name: research-and-plan
-description: Executes the brief section Antigravity Handoff research and planning before scaffolding — gathers realism notes, risks, and a build checklist. Use after parse-brief when a Website Build Brief includes section 10 handoff, research angles, or planning checklist.
+description: Executes the brief section Builder Handoff (§10) research and planning before scaffolding — gathers realism notes, risks, and a build checklist. Use after parse-brief when a Website Build Brief includes section 10 handoff (Builder Handoff or Antigravity Handoff), research angles, or planning checklist.
 ---
 
 # Research and plan
 
 ## Goal
 
-Run a **short** research-and-planning pass from brief §10 (Antigravity Handoff) before creating files. Improve directed copy realism and reduce build risks. Do not spiral into open-ended research.
+Run a **short** research-and-planning pass from brief §10 (**Builder Handoff** / legacy **Antigravity Handoff**) before creating files. Improve directed copy realism and reduce build risks. Do not spiral into open-ended research.
 
 ## Preconditions
 
 - Checklist from `parse-brief` (brand, slug, tone, architecture, layout family).
 - Prefer §10 content when present; if missing (older brief), invent a minimal 3-bullet research list + risk list from §1/§3/§7.
+
+## Codebase awareness (mandatory)
+
+1. Use the repo scan from `parse-brief` (existing slugs, titles, layout families).
+2. If slug collision or near-duplicate brand flagged, carry into planning risks and confirm user intent before `scaffold-site`.
+3. Add §10 research angle: compare niche to existing `sites/**` — avoid layout clone and trope repeat.
 
 ## Research (bounded)
 
@@ -23,9 +29,9 @@ Run a **short** research-and-planning pass from brief §10 (Antigravity Handoff)
 
 ## Planning
 
-1. Confirm skill order: scaffold → design-and-build → acquire-images → qa-and-ship.
-2. List risks from §10 (overflow, thin FAQ, generic hero, copy ceiling, WebP).
-3. Note layout family + architecture so design-and-build does not invent a different structure.
+1. Confirm skill order per @AGENTS.md (full pipeline).
+2. List risks from §10 (overflow, thin FAQ, generic hero, copy ceiling, WebP, slug/layout collision, **collapsing into a generic repeating two-column layout instead of the declared layout family’s mandatory signature**).
+3. Note layout family + architecture + structural signature so design-and-build does not invent a different structure.
 4. Note image prefs (`pd-open` vs `generate`) for acquire-images.
 
 ## Output

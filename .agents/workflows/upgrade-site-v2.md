@@ -4,7 +4,7 @@ description: Flatten a legacy nested Vite site folder into the flat v2 static la
 
 # /upgrade-site-v2
 
-Use when a site under `sites/<slug>/` still has a nested Vite scaffold (`package.json`, `src/`, `public/`) or non-v2 layout.
+**Legacy recovery only.** The current tree is already flat v2 — do not run this on healthy sites. Use only when a site under `sites/<slug>/` still has a nested Vite scaffold (`package.json`, `src/`, `public/`) or non-v2 layout.
 
 ## Steps
 
@@ -25,7 +25,7 @@ sites/<slug>/
 
 4. Move assets out of `src/assets` / `public` into `assets/`; fix relative paths.
 5. Delete nested `package.json`, `package-lock.json`, `src/`, Vite leftovers, and per-site `.gitignore` if it only existed for the scaffold.
-6. Write/update `meta.json` with `title`, `blurb`, `hero`, `"standard": "v2"`.
+6. Write/update `meta.json` with `title`, `blurb`, `hero`, `layoutFamily`, `"standard": "v2"`.
 7. Run `npm run optimize:webp` and `npm run optimize:html` as needed.
-8. Run `/qa-sweep` (or `qa-and-ship` steps); set `"qa": "v2-pass"` only when clean.
-9. Confirm the hub card resolves; do not commit unless asked.
+8. Run `/qa-sweep` (or @.agents/skills/qa-and-ship/SKILL.md steps); `"qa": "v2-pass"` per qa-and-ship gate only.
+9. Confirm the hub card resolves; do not commit unless asked — @.agents/rules/03-repo-safety.md.
