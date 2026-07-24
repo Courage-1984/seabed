@@ -86,6 +86,7 @@ function accumulateCounts(pagesList) {
     brokenImages: 0,
     nonWebpPhotos: 0,
     missingAltTags: 0,
+    missingFavicon: 0,
     consoleErrors: 0,
     networkErrors: 0,
     brokenLinks: 0,
@@ -286,10 +287,23 @@ const waitForServer = async (url, timeout = 20000) => {
             [...document.images].filter((i) => !i.hasAttribute('alt')).map((i) => i.src)
           );
 
-          const missingFavicon = await page.evaluate(() => {
+          const missingFavicon = await page.evaluate(async () => {
             const iconLink = document.querySelector('link[rel="icon"], link[rel="shortcut icon"]');
             if (!iconLink) return ['No favicon link found'];
             if (!iconLink.href.includes('favicon')) return ['Favicon href invalid'];
+            
+            try {
+              const res = await fetch(iconLink.href);
+              if (!res.ok) return [`Favicon HTTP ${res.status}`];
+              
+              const text = await res.text();
+              if (iconLink.href.endsWith('.svg') || iconLink.type === 'image/svg+xml') {
+                if (!text.includes('<svg')) return ['Favicon is not a valid SVG'];
+                if (text.includes('xmlns="http://www.svg.org/2000/svg"')) return ['Favicon SVG has invalid xmlns (svg.org instead of w3.org)'];
+              }
+            } catch (e) {
+              return [`Favicon fetch failed: ${e.message}`];
+            }
             return [];
           });
 
