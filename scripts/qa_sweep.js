@@ -161,10 +161,11 @@ const waitForServer = async (url, timeout = 20000) => {
     await new Promise(r => setTimeout(r, 2000));
 
     const headed = process.env.QA_HEADED === '1' || process.env.QA_HEADED === 'true';
+    const onCi = process.env.CI === 'true';
     const concurrency =
       Number.isFinite(opts.concurrency) && opts.concurrency > 0
         ? opts.concurrency
-        : headed
+        : headed || onCi
           ? 1
           : 2;
 
@@ -175,8 +176,10 @@ const waitForServer = async (url, timeout = 20000) => {
     browser = await puppeteer.launch({
       headless: headed ? false : true,
       defaultViewport: headed ? null : { width: 1440, height: 900 },
+      // Hub + many site cards can keep evaluate() busy longer than the 180s default.
+      protocolTimeout: 300_000,
       // GitHub Actions / container runners need sandbox disabled for Chrome.
-      args: process.env.CI === 'true' ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
+      args: onCi ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
     });
 
     async function checkPage(pagePath) {
@@ -214,34 +217,45 @@ const waitForServer = async (url, timeout = 20000) => {
         const checkViewport = async (width, height, label, { checkLinks }) => {
           await page.setViewport({ width, height });
 
+          // Parallel + overall budget — sequential per-image waits on the hub
+          // (34+ cards) can exceed Puppeteer's protocolTimeout under CI load.
           await page.evaluate(async () => {
             const withTimeout = (p, ms) => Promise.race([p, new Promise((r) => setTimeout(r, ms))]);
             const imgs = [...document.images];
             for (const img of imgs) {
               if (img.loading === 'lazy') img.loading = 'eager';
-              if (!img.complete) {
-                await withTimeout(
-                  new Promise((resolve) => {
-                    img.addEventListener('load', resolve, { once: true });
-                    img.addEventListener('error', resolve, { once: true });
-                  }),
-                  8000
-                );
-              }
-              try {
-                await withTimeout(img.decode(), 4000);
-              } catch {
-                /* ignore */
-              }
             }
+            await withTimeout(
+              Promise.all(
+                imgs.map(async (img) => {
+                  if (!img.complete) {
+                    await withTimeout(
+                      new Promise((resolve) => {
+                        img.addEventListener('load', resolve, { once: true });
+                        img.addEventListener('error', resolve, { once: true });
+                      }),
+                      3000
+                    );
+                  }
+                  try {
+                    await withTimeout(img.decode(), 2000);
+                  } catch {
+                    /* ignore */
+                  }
+                })
+              ),
+              25000
+            );
           });
 
           const scrollHeight = await page.evaluate(() =>
             Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)
           );
-          for (let pos = 0; pos < scrollHeight; pos += height) {
+          const maxScrollSteps = 40;
+          let steps = 0;
+          for (let pos = 0; pos < scrollHeight && steps < maxScrollSteps; pos += height, steps++) {
             await page.evaluate((p) => window.scrollTo(0, p), pos);
-            await new Promise((r) => setTimeout(r, 150));
+            await new Promise((r) => setTimeout(r, 100));
           }
           await page.evaluate(() => window.scrollTo(0, 0));
           await new Promise((r) => setTimeout(r, 200));
@@ -370,12 +384,27 @@ const waitForServer = async (url, timeout = 20000) => {
           };
         };
 
-        pageResult.mobile = await checkViewport(390, 844, 'mobile', { checkLinks: true });
-        consoleErrors.length = 0;
-        networkErrors.length = 0;
-        pageResult.desktop = await checkViewport(1440, 900, 'desktop', { checkLinks: false });
-        // Carry link results to desktop view for consistent hasIssues (links checked once)
-        pageResult.desktop.brokenLinks = pageResult.mobile.brokenLinks;
+        const runViewports = async () => {
+          pageResult.mobile = await checkViewport(390, 844, 'mobile', { checkLinks: true });
+          consoleErrors.length = 0;
+          networkErrors.length = 0;
+          pageResult.desktop = await checkViewport(1440, 900, 'desktop', { checkLinks: false });
+          // Carry link results to desktop view for consistent hasIssues (links checked once)
+          pageResult.desktop.brokenLinks = pageResult.mobile.brokenLinks;
+        };
+
+        try {
+          await runViewports();
+        } catch (err) {
+          if (String(err?.message || err).includes('protocolTimeout') || err?.name === 'ProtocolError') {
+            console.warn(`Protocol timeout on ${pagePath}; retrying once...`);
+            await new Promise((r) => setTimeout(r, 1500));
+            await page.reload({ waitUntil: 'domcontentloaded' });
+            await runViewports();
+          } else {
+            throw err;
+          }
+        }
       } catch (err) {
         console.error(`Error processing ${pagePath}:`, err);
         pageResult.error = err.message;
