@@ -32,11 +32,13 @@ sites/<slug>/
   "title": "<Brand Name>",
   "blurb": "<One-line blurb from brief>",
   "hero": "assets/hero.webp",
+  "layoutFamily": "<exact layout family from brief §3>",
+  "created": "<YYYY-MM-DD UTC today>",
   "standard": "v2"
 }
 ```
 
-Omit `"qa": "v2-pass"` until @.agents/skills/qa-and-ship/SKILL.md gate passes.
+Omit `"qa": "v2-pass"` until @.agents/skills/qa-and-ship/SKILL.md gate passes. `layoutFamily` must be one of the **eleven** names in @.agents/rules/01-site-v2-standard.md / `scripts/lib/layout-families.js`. Set `"created"` to today’s UTC date (`YYYY-MM-DD`). When the brief §3 word floor is known, you may add `"wordFloor": <n>` now or at ship.
 
 ### index.html (stub)
 
@@ -44,7 +46,12 @@ Minimal valid document: `lang` default `en-GB` (see @GEMINI.md Defaults), charse
 
 ### style.css / main.js
 
-Empty or minimal reset placeholders — `design-and-build` fills them in.
+- `style.css`: empty or minimal reset placeholders — `design-and-build` fills them in.
+- `main.js` **must** start with:
+
+```js
+import './style.css';
+```
 
 ### assets/
 

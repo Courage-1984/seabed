@@ -28,6 +28,12 @@ Apply when creating or substantially editing HTML/CSS/JS under `sites/`.
 - Default: no cards. Cards only when they contain a real user interaction. Never cards in the hero.
 - Imagery should show product, place, atmosphere, or context — decorative blobs alone are not the main idea.
 
+## Layout signature (brief-driven)
+
+- Implement the brief’s **mandatory structural signature** for the named layout family — not a generic two-column page dressed with the family name.
+- **Hard cap:** at most one literal left-image/right-text (or mirrored) split section site-wide; never in the hero. `sticky-rail + content` is the one family where a two-pane sticky region is correct (one region, with a real sticky mechanic).
+- Repeating image/text split stacks across sections = failed layout; rebuild before QA.
+
 ## Motion
 
 - Ship at least 2–3 intentional motions (scroll reveal, hover, ambient, etc.) that create hierarchy — not noise.

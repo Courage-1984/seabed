@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800&family=Satoshi:wght@400;500&family=Syne:wght@700;800&family=General+Sans:wght@400;500&display=swap');
+
+:root {
+  --color-bg-primary: #121110;
+  --color-bg-secondary: #1E1B18;
+  --color-accent-forge: #E05A2B;
+  --color-text-primary: #EAE6E1;
+  --color-text-muted: #9E968D;
+  --color-border-industrial: #332D27;
+
+  --font-heading: 'Syne', sans-serif;
+  --font-body: 'Satoshi', sans-serif;
+}
+
+/* Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-accent-forge);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-text-primary);
+}
+
+/* Typography Scale */
+h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; margin-bottom: 1rem; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 1.5rem; }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+
+.section-padding {
+  padding: 6rem 5%;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Section 1: Hero */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 5% 5% 8%;
+  background-color: var(--color-bg-primary);
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0;
+}
+.hero-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0.5;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero-content h2 {
+  color: var(--color-accent-forge);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  margin-bottom: 2rem;
+}
+
+.hero .intro {
+  font-size: 1.125rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  color: var(--color-text-muted);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--color-accent-forge);
+  color: var(--color-bg-primary);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid var(--color-accent-forge);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: transparent;
+  color: var(--color-accent-forge);
+}
+
+/* Section 2: Flagship Manifesto */
+.manifesto {
+  background-color: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border-industrial);
+  border-bottom: 1px solid var(--color-border-industrial);
+}
+
+.manifesto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.manifesto-text p {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .manifesto-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Section 3: Asymmetric Split Layout Signature */
+#asymmetric-spec-split {
+  padding: 8rem 5%;
+  background-color: var(--color-bg-primary);
+}
+
+.split-container {
+  display: grid;
+  grid-template-columns: 68fr 32fr;
+  gap: 0;
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.split-line {
+  position: absolute;
+  left: 68%;
+  top: 0;
+  width: 1px;
+  height: 0;
+  background-color: var(--color-accent-forge);
+  transition: height 0.6s ease;
+  z-index: 5;
+}
+
+.split-container.visible .split-line {
+  height: 100%;
+}
+
+.main-pane {
+  padding-right: 4rem;
+}
+
+.narrow-rail {
+  padding-left: 3rem;
+  border-left: 1px solid transparent; /* Replaced by absolute split-line */
+}
+
+.grid-breaker {
+  position: absolute;
+  top: 50%;
+  left: 68%;
+  transform: translateY(-50%);
+  margin-left: -8rem; /* Breaks the split line */
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-accent-forge);
+  padding: 1.5rem;
+  z-index: 10;
+  width: 16rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.grid-breaker h4 {
+  color: var(--color-accent-forge);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.grid-breaker p {
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+}
+
+.spec-item {
+  margin-bottom: 2rem;
+}
+.spec-item h4 {
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+.spec-item p {
+  color: var(--color-text-muted);
+}
+
+.temp-counter {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--color-accent-forge);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 992px) {
+  .split-container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .split-line {
+    display: none;
+  }
+  .main-pane {
+    padding-right: 0;
+  }
+  .narrow-rail {
+    padding-left: 0;
+    border-top: 1px solid var(--color-border-industrial);
+    padding-top: 2rem;
+  }
+  .grid-breaker {
+    position: relative;
+    top: auto; left: auto; transform: none; margin-left: 0;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+}
+
+/* Section 4: Credentials */
+.credentials {
+  background-color: var(--color-bg-secondary);
+}
+
+.cred-stats {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--color-text-primary);
+  max-width: 800px;
+  margin: 3rem 0;
+  line-height: 1.2;
+}
+
+.cred-stats span {
+  color: var(--color-accent-forge);
+}
+
+.cred-content {
+  color: var(--color-text-muted);
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+/* Section 5: FAQ */
+.faq {
+  background-color: var(--color-bg-primary);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 800px;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border-industrial);
+  padding-bottom: 1.5rem;
+}
+
+.faq-item h4 {
+  color: var(--color-accent-forge);
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.faq-item p {
+  color: var(--color-text-muted);
+}
+
+/* Section 6: Dispatch Contact */
+.dispatch {
+  background-color: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border-industrial);
+}
+
+.dispatch .container {
+  text-align: center;
+}
+
+.dispatch-intro {
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+.dispatch-steps {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.step {
+  background: var(--color-bg-primary);
+  padding: 2rem;
+  border: 1px solid var(--color-border-industrial);
+  flex: 1;
+  min-width: 250px;
+}
+
+.step-num {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-accent-forge);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.step p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+  background-color: var(--color-bg-primary);
+  padding: 4rem 5%;
+  border-top: 1px solid var(--color-border-industrial);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+footer address {
+  font-style: normal;
+  margin-bottom: 1rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}

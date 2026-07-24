@@ -2,6 +2,8 @@
   "title": "Karoo Brass & Glass | Mechanical Weather Instruments",
   "blurb": "Fully restored, mechanically calibrated antique barometers engineered for extreme South African altitudes and zero-signal environments.",
   "hero": "assets/home_hero.webp",
+  "layoutFamily": "horizontal-scroll band",
+  "created": "2026-06-23",
   "standard": "v2",
   "qa": "v2-pass"
 }

@@ -1,0 +1,10 @@
+{
+  "title": "Substratum Signals",
+  "blurb": "High-resolution acoustic sub-surface waveform inversion and real-time seafloor telemetry without invasive seismic drilling.",
+  "hero": "assets/hero-seabed.webp",
+  "layoutFamily": "bento",
+  "created": "2026-07-24",
+  "standard": "v2",
+  "wordFloor": 1100,
+  "qa": "v2-pass"
+}

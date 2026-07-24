@@ -7,20 +7,22 @@ description: Runs the Puppeteer QA sweep for a single site and visually verifies
 
 ## Goal
 
-Run the QA sweep script for a single site slug, check for technical errors in the report, and visually verify that the site displays properly on mobile and desktop by inspecting the generated screenshots.
+Run the QA sweep for one site slug, check `qa-report.json` `summary` and page entries, and visually verify mobile/desktop screenshots.
 
 ## Preconditions
 
 - The site must exist under `sites/<slug>/`.
-- The site must be fully built (e.g., `npm run build`).
+- Built: `npm run build`.
 
 ## Procedure
 
-1. **Run Sweep:** Execute `node scripts/qa_sweep.js <slug>` from the repository root. This runs Puppeteer and generates screenshots in `qa-screenshots/`.
-2. **Technical Check:** Read `qa-report.json` to verify if there are any technical failures (such as `overflow: true`, missing WebP images, or broken links).
-3. **Visual Verification:** Locate the mobile and desktop `.webp` screenshots for the site in the `qa-screenshots/` folder. Load these screenshots into your context to visually inspect them.
-4. **Assessment:** Confirm there are no visual artifacts, text overlapping, or improper styling. 
+1. **Run Sweep:** `npm run qa -- <slug>` (includes hub; use `-- --no-hub` to skip hub). Generates `qa-screenshots/*_{mobile,desktop}.png` unless `CI=true`.
+2. **Technical Check:** Read `qa-report.json`:
+   - Prefer top-level `summary.pass` and `summary.counts`
+   - For `pages` under `sites/<slug>/`: fail on `overflowingElements`, `brokenImages`, `nonWebpPhotos`, `missingAltTags`, console/network/brokenLinks, or `error`
+3. **Visual Verification:** Load `qa-screenshots/*_mobile.png` and `*_desktop.png` for the site and inspect for overlap/clipping.
+4. **Assessment:** Confirm no visual artifacts or improper styling.
 
 ## Next
 
-If the sweep passes and the visual verification is pristine, you can proceed to update `meta.json` with `"qa": "v2-pass"`.
+If clean, finish via @.agents/skills/qa-and-ship/SKILL.md (`check:ship` + meta gates) before `"qa": "v2-pass"`.

@@ -2,6 +2,8 @@
   "title": "Patch & Parcel",
   "blurb": "Premium repair kits, heritage fabrics, and visible mending supplies from West Yorkshire.",
   "hero": "assets/hero.webp",
+  "layoutFamily": "editorial magazine",
+  "created": "2026-07-06",
   "standard": "v2",
   "qa": "v2-pass"
 }

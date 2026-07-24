@@ -24,7 +24,7 @@ Fill `sites/<slug>/assets/` with working imagery. Prefer the best source per ass
   - `npm run optimize:html`
 - Update HTML/CSS/JS so live photo `src`s are **`.webp` only** (SVG allowed for favicon/icons).
 - `meta.json` `"hero"` must be `assets/<file>.webp` (no leading `./`).
-- **Do not hand off** while hero or section photos still use `.webp`, `.webp`, or `.webp` as the live source — convert to `.webp` first.
+- **Do not hand off** while hero or section photos still use `.png`, `.jpg`, or `.jpeg` as the live source — convert to `.webp` first.
 
 ## Report
 

@@ -2,6 +2,8 @@
   "title": "The Slate & Chisel",
   "blurb": "Preserving the structural integrity and quiet permanence of architectural heritage through hand-chiselled British stone.",
   "hero": "assets/hero_stone.webp",
+  "layoutFamily": "asymmetric split",
+  "created": "2026-07-15",
   "standard": "v2",
   "qa": "v2-pass"
 }

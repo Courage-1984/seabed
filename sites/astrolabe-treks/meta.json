@@ -2,6 +2,8 @@
   "title": "Astrolabe Desert Treks",
   "blurb": "Guided, multi-day nocturnal sandboarding and desert trekking expeditions.",
   "hero": "assets/desert_night_dunes.webp",
+  "layoutFamily": "brutalist stacked",
+  "created": "2026-06-05",
   "standard": "v2",
   "qa": "v2-pass"
 }

@@ -2,6 +2,8 @@
   "title": "Lithic Fibre Dynamics",
   "blurb": "Gigabit connectivity mapped and routed invisibly through the Victorian circulatory systems of historic architecture.",
   "hero": "assets/hero.webp",
+  "layoutFamily": "asymmetric split",
+  "created": "2026-06-26",
   "standard": "v2",
   "qa": "v2-pass"
 }

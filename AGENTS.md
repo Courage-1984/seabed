@@ -15,15 +15,21 @@ Only pause to ask **one** clarifying question when critical fields are missing (
 3. Load skill `scaffold-site` — create `sites/<slug>/` tree.
 4. Load skill `design-and-build` — implement HTML/CSS/JS; author §4b directed copy; apply layout family.
 5. Load skill `acquire-images` — PD/open vs generate (WebP per @.agents/skills/acquire-images/SKILL.md).
-6. Optimize assets:
-   - `npm run optimize:webp`
-   - `npm run optimize:html`
+6. Optimize assets (prefer slug scope):
+   - `npm run optimize:webp -- --slug <slug>`
+   - `npm run optimize:html -- --slug <slug>`
 7. Load skill `qa-and-ship`:
+   - `npm run check:contract -- <slug>`
+   - `npm run check:copy-depth -- <slug> <floor>` (or rely on `meta.wordFloor`)
    - `npm run build`
-   - `npm run qa`
+   - `npm run qa -- <slug>`
+   - `npm run check:ship -- <slug> --floor <floor>`
+   - Confirm layout family’s structural signature from the brief was implemented (self-check)
    - Confirm `Responsive: PASS desktop + mobile` and WebP per @.agents/skills/acquire-images/SKILL.md
-8. Set `meta.json` `"standard": "v2"` and `"qa": "v2-pass"` per @.agents/skills/qa-and-ship/SKILL.md gate only.
-9. Summarize: slug, pages, image strategy per asset, responsive status, QA status, remaining risks.
+
+**Note:** Pasted briefs §2/§8 may lag behind these commands — **this file wins** over thinner brief repo-integration blocks.
+8. Set `meta.json` `"standard": "v2"`, `"layoutFamily"`, `"created"` (UTC `YYYY-MM-DD`), optional `"wordFloor"`, and `"qa": "v2-pass"` per @.agents/skills/qa-and-ship/SKILL.md gate only.
+9. Summarize: slug, pages, layout family, created date, image strategy per asset, copy depth, responsive status, QA status, remaining risks.
 
 ## Commands
 
@@ -32,13 +38,15 @@ Only pause to ask **one** clarifying question when critical fields are missing (
 | Dev server | `npm run dev` |
 | Production build | `npm run build` |
 | Preview build | `npm run preview` |
-| PNG/JPEG → WebP | `npm run optimize:webp` |
-| Lazy-load / dimensions | `npm run optimize:html` |
-| Puppeteer QA sweep | `npm run qa` |
+| PNG/JPEG → WebP | `npm run optimize:webp` (`-- --slug <slug>` to scope) |
+| Lazy-load / dimensions | `npm run optimize:html` (`-- --slug <slug>` to scope) |
+| Puppeteer QA sweep | `npm run qa` (`-- <slug>`; `CI=true` skips screenshots) |
+| Static site contract | `npm run check:contract -- <slug\|--all>` |
+| Ship gate (copy + contract + report) | `npm run check:ship -- <slug> [--floor N]` |
 | Regenerate sites index (Gemini paste) | `npm run sites:index` |
-| Copy depth check (floor from brief §3) | `npm run check:copy-depth -- <slug> <floor>` |
+| Copy depth check | `npm run check:copy-depth -- <slug> [floor]` |
 
-`npm run qa` starts preview against the built `dist/` — always `npm run build` first. QA fails on overflow, broken images, non-WebP photos, or console errors.
+`npm run qa` starts preview against the built `dist/` — always `npm run build` first. QA fails on overflow, broken images, non-WebP photos (img + CSS), missing alt, console/network errors, or broken internal links. Report shape: `{ summary, pages }` in `qa-report.json`.
 
 ## Hub contract
 
@@ -54,4 +62,4 @@ Primary path is brief auto-detect. Slash workflows exist only for recovery:
 
 - `/qa-sweep` — rebuild + QA + interpret `qa-report.json`
 - `/optimize-assets` — WebP + HTML optimize for a slug or all
-- `/upgrade-site-v2` — flatten a legacy nested Vite site to v2
+- `/upgrade-site-v2` — legacy recovery only: flatten a nested Vite site to v2 (current tree is already flat)

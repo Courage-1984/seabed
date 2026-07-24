@@ -2,7 +2,7 @@
 /**
  * Lightweight PostToolUse governance warnings (exit 0 always — warn only).
  * (a) meta.json with qa:v2-pass without clean qa-report for slug
- * (b) HTML with photographic img src ending in .webp/.webp/.webp
+ * (b) HTML with photographic img src ending in .png/.jpg/.jpeg
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -37,6 +37,23 @@ function extractPathAndContent(payload) {
   return { filePath: filePath.replace(/\\/g, '/'), content };
 }
 
+function viewHasIssues(view) {
+  if (!view) return false;
+  return Boolean(
+    view.overflowingElements?.length ||
+      view.brokenImages?.length ||
+      view.nonWebpPhotos?.length ||
+      view.missingAltTags?.length ||
+      view.consoleErrors?.length ||
+      view.networkErrors?.length ||
+      view.brokenLinks?.length
+  );
+}
+
+function pageFailed(p) {
+  return Boolean(p.error || viewHasIssues(p.mobile) || viewHasIssues(p.desktop));
+}
+
 const raw = readStdin();
 let payload = {};
 if (raw.trim()) {
@@ -58,20 +75,9 @@ if (filePath.includes('sites/') && filePath.endsWith('meta.json') && content.inc
     if (existsSync(reportPath) && slug) {
       try {
         const report = JSON.parse(readFileSync(reportPath, 'utf8'));
-        const sitePages = report.filter((r) => r.path.startsWith(`sites/${slug}/`));
-        const hasFailure = sitePages.some((p) => {
-          const m = p.mobile || {};
-          const d = p.desktop || {};
-          return (
-            p.error ||
-            m.overflow ||
-            d.overflow ||
-            (m.brokenImages && m.brokenImages.length) ||
-            (d.brokenImages && d.brokenImages.length) ||
-            (m.nonWebpPhotos && m.nonWebpPhotos.length) ||
-            (d.nonWebpPhotos && d.nonWebpPhotos.length)
-          );
-        });
+        const pages = Array.isArray(report) ? report : report.pages || [];
+        const sitePages = pages.filter((r) => r.path?.startsWith(`sites/${slug}/`));
+        const hasFailure = sitePages.some(pageFailed);
         if (hasFailure || sitePages.length === 0) {
           warnings.push(
             `[governance-hook] WARN: setting qa:v2-pass on sites/${slug}/ but qa-report.json shows failures or no pages for this slug.`

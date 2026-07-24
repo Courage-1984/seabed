@@ -11,7 +11,9 @@
     "optimize:webp": "node scripts/convert-webp.js",
     "optimize:html": "node scripts/optimize-html.js",
     "sites:index": "node scripts/export-sites-index.js",
-    "check:copy-depth": "node scripts/check-copy-depth.js"
+    "check:copy-depth": "node scripts/check-copy-depth.js",
+    "check:contract": "node scripts/check-site-contract.js",
+    "check:ship": "node scripts/ship-gate.js"
   },
   "devDependencies": {
     "cheerio": "^1.2.0",

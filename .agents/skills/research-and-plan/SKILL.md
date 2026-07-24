@@ -1,13 +1,13 @@
 ---
 name: research-and-plan
-description: Executes the brief section Antigravity Handoff research and planning before scaffolding — gathers realism notes, risks, and a build checklist. Use after parse-brief when a Website Build Brief includes section 10 handoff, research angles, or planning checklist.
+description: Executes the brief section Builder Handoff (§10) research and planning before scaffolding — gathers realism notes, risks, and a build checklist. Use after parse-brief when a Website Build Brief includes section 10 handoff (Builder Handoff or Antigravity Handoff), research angles, or planning checklist.
 ---
 
 # Research and plan
 
 ## Goal
 
-Run a **short** research-and-planning pass from brief §10 (Antigravity Handoff) before creating files. Improve directed copy realism and reduce build risks. Do not spiral into open-ended research.
+Run a **short** research-and-planning pass from brief §10 (**Builder Handoff** / legacy **Antigravity Handoff**) before creating files. Improve directed copy realism and reduce build risks. Do not spiral into open-ended research.
 
 ## Preconditions
 
@@ -30,8 +30,8 @@ Run a **short** research-and-planning pass from brief §10 (Antigravity Handoff)
 ## Planning
 
 1. Confirm skill order per @AGENTS.md (full pipeline).
-2. List risks from §10 (overflow, thin FAQ, generic hero, copy ceiling, WebP, slug/layout collision).
-3. Note layout family + architecture so design-and-build does not invent a different structure.
+2. List risks from §10 (overflow, thin FAQ, generic hero, copy ceiling, WebP, slug/layout collision, **collapsing into a generic repeating two-column layout instead of the declared layout family’s mandatory signature**).
+3. Note layout family + architecture + structural signature so design-and-build does not invent a different structure.
 4. Note image prefs (`pd-open` vs `generate`) for acquire-images.
 
 ## Output

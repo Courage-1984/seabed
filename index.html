@@ -1,22 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Build Directory v2</title>
+  <title>Daily Builds — Discovery Hub</title>
+  <meta name="description" content="A portfolio of fictional brand websites built daily — discover the latest drops first.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./hub.css">
-  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg">
 </head>
 <body>
-  <div class="hub-container">
-    <header class="hub-header">
-      <h1>Daily Builds</h1>
-      <p>A collection of isolated frontend environments</p>
+  <div class="hub-atmosphere" aria-hidden="true"></div>
+
+  <header class="hub-header">
+    <p class="hub-kicker">Portfolio</p>
+    <h1>Daily Builds</h1>
+    <p class="hub-lede">Fictional brands, real craft — newest drops first.</p>
+  </header>
+
+  <section class="discovery" aria-label="Infinite discovery strip">
+    <div class="discovery-fade discovery-fade--start" aria-hidden="true"></div>
+    <div class="discovery-fade discovery-fade--end" aria-hidden="true"></div>
+    <div class="discovery-viewport" id="discovery-strip">
+      <!-- filled by hub.js: two identical tracks for seamless loop -->
+    </div>
+  </section>
+
+  <section class="latest-drop" id="latest-drop" aria-label="Latest drop">
+    <!-- filled by hub.js -->
+  </section>
+
+  <main class="hub-main">
+    <header class="hub-main-head">
+      <h2>Archive</h2>
+      <p>Every fictional brand drop in this collection.</p>
     </header>
-    <main id="hub-grid" class="hub-grid">
-      <!-- Generated dynamically by hub.js -->
-    </main>
-  </div>
+    <div id="archive-filters" class="archive-filters" hidden></div>
+    <div id="hub-grid" class="hub-grid" aria-live="polite">
+      <p class="loading">Loading sites…</p>
+    </div>
+  </main>
+
   <script type="module" src="./hub.js"></script>
 </body>
 </html>

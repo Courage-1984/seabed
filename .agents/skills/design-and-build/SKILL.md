@@ -12,8 +12,12 @@ Ship a distinctive, production-quality static site inside the scaffold. Follow @
 ## Structure and layout
 
 1. Implement the **architecture** from the brief (§3): page files and section list — do not invent extra pages.
-2. Implement the named **layout family** (asymmetric split, editorial magazine, bento, brutalist stacked, horizontal-scroll band, ultra-minimal full-bleed, sticky-rail + content).
-3. Multi-page: copy shared nav/footer into each HTML file; each page keeps a distinct purpose.
+2. Implement the named **layout family** from §3/§6 — **name alone is not enough**. Apply the brief’s **mandatory structural signature** and avoid the **forbidden pattern**. Allowed family names (exact):
+   - `asymmetric split`, `editorial magazine`, `bento`, `brutalist stacked`, `horizontal-scroll band`, `ultra-minimal full-bleed`, `sticky-rail + content`, `diagonal-cut`, `overlapping card-stack`, `terminal / data-readout`, `kinetic ticker / marquee bands`
+3. Write `"layoutFamily"` (exact name) into `meta.json`. When brief §3 word floor is known, set `"wordFloor"` as well.
+4. **L/R split hard cap:** at most **one** section site-wide may use a literal left-image/right-text (or mirrored) split. The hero is **never** that section. If the family is `sticky-rail + content`, that two-pane sticky mechanic is the allowed exception (one page region, not every section). If the build collapses into repeating image-left/text-right across sections, **rebuild** those sections before QA — that is a failed layout regardless of the family name declared.
+5. Multi-page: copy shared nav/footer into each HTML file; each page keeps a distinct purpose.
+6. `main.js` **must** begin with `import './style.css';` (Vite entry). Keep `<link rel="stylesheet" href="./style.css">` in HTML as well if the brief/scaffold uses it — both are fine; the import is required.
 
 ## Copy (split load)
 
@@ -34,7 +38,8 @@ Before `acquire-images`:
    - **Landing:** ≥ 5 directed sections (plus §4a hero + flagship).
    - **Dense one-pager:** ≥ 7 directed sections.
    - **Multi-page:** ≥ 4 directed sections per non-index page; pages must not clone each other.
-3. Run `node scripts/check-copy-depth.js <slug> <floor>` using §3 word floor — must pass before QA.
+3. **Layout signature:** Structural signature from §6 is visibly present; L/R hard cap respected.
+4. Run `node scripts/check-copy-depth.js <slug> <floor>` using §3 word floor — must pass before QA.
 
 ## Requirements
 

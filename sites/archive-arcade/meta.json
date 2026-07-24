@@ -2,6 +2,8 @@
   "title": "Archive Arcade",
   "blurb": "Carefully restored Japanese and European coin-operated photo booths.",
   "hero": "assets/hero.webp",
+  "layoutFamily": "asymmetric split",
+  "created": "2026-06-02",
   "standard": "v2",
   "qa": "v2-pass"
 }

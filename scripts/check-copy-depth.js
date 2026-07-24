@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Fail when visible copy count is below brief §3 floor − 10%.
- * Usage: node scripts/check-copy-depth.js <slug> <floor>
+ * Usage: node scripts/check-copy-depth.js <slug> [floor]
+ * If floor omitted, reads sites/<slug>/meta.json → wordFloor.
  * Exit 0 = pass, 1 = fail, 2 = usage error.
  */
 import { readdir, readFile } from 'node:fs/promises';
@@ -9,15 +10,32 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as cheerio from 'cheerio';
 
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const [slug, floorStr] = process.argv.slice(2);
-const floor = Number(floorStr);
 
-if (!slug || !Number.isFinite(floor) || floor <= 0) {
-  console.error('Usage: node scripts/check-copy-depth.js <slug> <floor>');
+if (!slug) {
+  console.error('Usage: node scripts/check-copy-depth.js <slug> [floor]');
   process.exit(2);
 }
 
-const dir = join(dirname(fileURLToPath(import.meta.url)), '..', 'sites', slug);
+let floor = Number(floorStr);
+if (!Number.isFinite(floor) || floor <= 0) {
+  try {
+    const meta = JSON.parse(await readFile(join(ROOT, 'sites', slug, 'meta.json'), 'utf8'));
+    floor = Number(meta.wordFloor);
+  } catch {
+    floor = NaN;
+  }
+}
+
+if (!Number.isFinite(floor) || floor <= 0) {
+  console.error(
+    'Usage: node scripts/check-copy-depth.js <slug> [floor]\nProvide floor or set meta.wordFloor.'
+  );
+  process.exit(2);
+}
+
+const dir = join(ROOT, 'sites', slug);
 
 let htmlFiles;
 try {

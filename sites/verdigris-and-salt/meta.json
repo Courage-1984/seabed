@@ -1,0 +1,10 @@
+{
+  "title": "Verdigris & Salt",
+  "blurb": "Clinical hyperbaric reoxygenation and halide skin rehabilitation engineered for the specific physiological trauma of commercial saturation diving.",
+  "hero": "assets/hero-chamber.webp",
+  "layoutFamily": "overlapping card-stack",
+  "created": "2026-07-23",
+  "standard": "v2",
+  "wordFloor": 1900,
+  "qa": "v2-pass"
+}

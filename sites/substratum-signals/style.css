@@ -1,0 +1,202 @@
+:root {
+  --color-bg-primary: #080E14;
+  --color-bg-secondary: #101A24;
+  --color-accent-signal: #00A896;
+  --color-text-primary: #E2E8F0;
+  --color-text-muted: #7A8B9E;
+  --color-border-subsea: #1C2B38;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; line-height: 1.2; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--color-accent-signal); text-decoration: none; transition: opacity 0.3s ease; }
+a:hover { opacity: 0.8; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+section { padding: 6rem 0; border-bottom: 1px solid var(--color-border-subsea); }
+
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 2rem 4rem;
+  overflow: hidden;
+  border-bottom: none;
+}
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -1;
+  background: var(--color-bg-primary);
+}
+.hero-bg img {
+  width: 100%; height: 100%; object-fit: cover; opacity: 0.35;
+}
+.hero-content {
+  max-width: 850px;
+  position: relative;
+  z-index: 1;
+}
+.hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+.hero h2 { font-size: clamp(1.2rem, 2.5vw, 1.8rem); color: var(--color-accent-signal); margin-bottom: 2rem; font-weight: 500; }
+.hero p { font-size: 1.15rem; max-width: 750px; margin-bottom: 3rem; color: var(--color-text-muted); }
+.cta-btn {
+  display: inline-block;
+  background: transparent;
+  color: var(--color-accent-signal);
+  border: 1px solid var(--color-accent-signal);
+  padding: 1rem 2rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cta-btn:hover { background: var(--color-accent-signal); color: var(--color-bg-primary); }
+
+#bento-telemetry-grid .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  auto-rows: minmax(220px, auto);
+}
+.bento-tile {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-subsea);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.bento-tile:hover {
+  border-color: var(--color-accent-signal);
+}
+.bento-tile-header {
+  position: relative;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border-subsea);
+  overflow: hidden;
+}
+.bento-tile-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: -100%;
+  width: 50%; height: 1px;
+  background: var(--color-accent-signal);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.bento-tile:hover .bento-tile-header::after {
+  opacity: 1;
+  animation: pulse-wave 2s infinite linear;
+}
+@keyframes pulse-wave {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.tile-1 { grid-column: span 3; grid-row: span 2; }
+.tile-2 { grid-column: span 1; grid-row: span 2; }
+.tile-3 { grid-column: span 2; grid-row: span 1; }
+.tile-4 { grid-column: span 2; grid-row: span 2; }
+.tile-5 { grid-column: span 2; grid-row: span 1; }
+
+.bento-tile h3 { font-size: 1.35rem; color: var(--color-text-primary); }
+.bento-tile p { font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+.bento-metric { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; color: var(--color-accent-signal); font-weight: 700; margin-top: auto; line-height: 1; }
+
+.section-header { margin-bottom: 4rem; max-width: 800px; text-align: center; margin-inline: auto; }
+.section-header h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
+.section-header p { color: var(--color-text-muted); font-size: 1.15rem; }
+
+.content-block {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-subsea);
+  padding: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.content-block p {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+.content-block p:last-child { margin-bottom: 0; }
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+.content-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-subsea);
+  padding: 2.5rem;
+}
+.content-card h3 { margin-bottom: 1rem; font-size: 1.4rem; color: var(--color-text-primary); }
+.content-card p { color: var(--color-text-muted); font-size: 1.05rem; }
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+}
+.faq-item {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-subsea);
+  padding: 2rem;
+}
+.faq-item h3 { font-size: 1.15rem; color: var(--color-accent-signal); margin-bottom: 1rem; line-height: 1.4; }
+.faq-item p { color: var(--color-text-muted); font-size: 1rem; }
+
+.intake-box {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-subsea);
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.intake-box h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+.intake-box p { color: var(--color-text-muted); margin-bottom: 1.5rem; font-size: 1.1rem; }
+.intake-contact { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border-subsea); }
+
+footer {
+  padding: 4rem 2rem;
+  background: #04080b;
+  text-align: center;
+  border-top: 1px solid var(--color-border-subsea);
+}
+.footer-content { color: var(--color-text-muted); font-size: 0.95rem; }
+.footer-content p { margin-bottom: 0.5rem; }
+
+@media (max-width: 1024px) {
+  #bento-telemetry-grid .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tile-1, .tile-4 { grid-column: span 2; }
+  .tile-2, .tile-3, .tile-5 { grid-column: span 1; }
+}
+@media (max-width: 768px) {
+  #bento-telemetry-grid .container {
+    grid-template-columns: 1fr;
+  }
+  .tile-1, .tile-2, .tile-3, .tile-4, .tile-5 { grid-column: span 1; grid-row: auto; }
+  .hero { padding: 6rem 1rem 3rem; }
+  section { padding: 4rem 0; }
+  .content-block { padding: 2rem 1.5rem; }
+}

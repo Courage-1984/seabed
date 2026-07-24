@@ -1,42 +1,68 @@
+#!/usr/bin/env node
+/**
+ * Convert PNG/JPEG under the repo (or one site) to WebP and rewrite path-like refs.
+ * Usage: node scripts/convert-webp.js [--slug <slug>]
+ */
 import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
 
-const IGNORE_DIRS = ['node_modules', 'dist', 'qa-screenshots', 'qa-visual', '.git', 'scripts', '.github'];
+const IGNORE_DIRS = new Set([
+  'node_modules',
+  'dist',
+  'qa-screenshots',
+  'qa-visual',
+  '.git',
+  'scripts',
+  '.github',
+  '.agents',
+  '.firecrawl',
+]);
+
+function parseArgs(argv) {
+  let slug = null;
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === '--slug') slug = argv[++i];
+    else {
+      console.error(`Unknown arg: ${argv[i]}`);
+      console.error('Usage: node scripts/convert-webp.js [--slug <slug>]');
+      process.exit(2);
+    }
+  }
+  return { slug };
+}
+
+const { slug } = parseArgs(process.argv.slice(2));
+const root = slug ? path.join('sites', slug) : '.';
+
+if (slug && !fs.existsSync(root)) {
+  console.error(`sites/${slug}/ not found`);
+  process.exit(1);
+}
 
 function walkSync(dir, callback) {
-  const files = fs.readdirSync(dir);
-  for (const file of files) {
+  if (!fs.existsSync(dir)) return;
+  for (const file of fs.readdirSync(dir)) {
+    if (IGNORE_DIRS.has(file)) continue;
     const fullPath = path.join(dir, file);
-    if (fs.statSync(fullPath).isDirectory()) {
-      if (!IGNORE_DIRS.includes(file)) {
-        walkSync(fullPath, callback);
-      }
-    } else {
-      callback(fullPath);
-    }
+    if (fs.statSync(fullPath).isDirectory()) walkSync(fullPath, callback);
+    else callback(fullPath);
   }
 }
 
 async function convertImages() {
   const imagePaths = [];
-  walkSync('.', (filePath) => {
-    if (/\.(png|jpe?g)$/i.test(filePath)) {
-      imagePaths.push(filePath);
-    }
+  walkSync(root, (filePath) => {
+    if (/\.(png|jpe?g)$/i.test(filePath)) imagePaths.push(filePath);
   });
 
-  console.log(`Found ${imagePaths.length} images to convert.`);
+  console.log(`Found ${imagePaths.length} images to convert under ${root}.`);
 
   for (const imgPath of imagePaths) {
     const ext = path.extname(imgPath);
     const outPath = imgPath.slice(0, -ext.length) + '.webp';
-    
     try {
-      await sharp(imgPath)
-        .webp({ quality: 80 })
-        .toFile(outPath);
-      
+      await sharp(imgPath).webp({ quality: 80 }).toFile(outPath);
       fs.unlinkSync(imgPath);
       console.log(`Converted and deleted: ${imgPath} -> ${outPath}`);
     } catch (err) {
@@ -47,29 +73,30 @@ async function convertImages() {
 
 function updateReferences() {
   const filePaths = [];
-  walkSync('.', (filePath) => {
-    if (/\.(html|css|js|json|md)$/i.test(filePath) && path.basename(filePath) !== 'qa-report.json' && path.basename(filePath) !== 'qa_sweep.js' && path.basename(filePath) !== 'package.json' && path.basename(filePath) !== 'package-lock.json') {
+  const skipNames = new Set(['qa-report.json', 'package.json', 'package-lock.json']);
+  walkSync(root, (filePath) => {
+    if (/\.(html|css|js|json)$/i.test(filePath) && !skipNames.has(path.basename(filePath))) {
       filePaths.push(filePath);
     }
   });
 
-  console.log(`Checking ${filePaths.length} text files for image references.`);
+  console.log(`Checking ${filePaths.length} text files for image path references.`);
   let updatedCount = 0;
 
+  // Path-like refs only: assets/foo.png, ./bar.jpg, url(...), src="..."
+  const pathExtRe =
+    /((?:(?:\.\/|\.\.\/|\/)?(?:[\w.-]+\/)*)[\w.-]+)\.(png|jpg|jpeg)(?=["')\s?]|$)/gi;
+
   for (const filePath of filePaths) {
-    let content = fs.readFileSync(filePath, 'utf-8');
-    
-    // Replace .png, .jpg, .jpeg with .webp
-    // Be careful to match it gracefully, ensuring it's an extension.
-    const newContent = content.replace(/\.(png|jpg|jpeg)/gi, '.webp');
-    
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const newContent = content.replace(pathExtRe, '$1.webp');
     if (content !== newContent) {
       fs.writeFileSync(filePath, newContent, 'utf-8');
       console.log(`Updated references in: ${filePath}`);
       updatedCount++;
     }
   }
-  
+
   console.log(`Updated ${updatedCount} files.`);
 }
 
