@@ -5,5 +5,9 @@
   "layoutFamily": "editorial magazine",
   "created": "2026-07-17",
   "standard": "v2",
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "tags": [
+    "storage",
+    "logistics"
+  ]
 }

@@ -6,5 +6,9 @@
   "created": "2026-07-24",
   "wordFloor": 650,
   "standard": "v2",
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "tags": [
+    "industrial",
+    "hardware"
+  ]
 }

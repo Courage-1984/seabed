@@ -5,5 +5,9 @@
   "layoutFamily": "sticky-rail + content",
   "created": "2026-07-04",
   "standard": "v2",
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "tags": [
+    "brand",
+    "concept"
+  ]
 }

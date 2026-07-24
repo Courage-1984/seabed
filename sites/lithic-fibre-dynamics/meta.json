@@ -5,5 +5,9 @@
   "layoutFamily": "asymmetric split",
   "created": "2026-06-26",
   "standard": "v2",
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "tags": [
+    "technology",
+    "research"
+  ]
 }

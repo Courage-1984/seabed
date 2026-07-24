@@ -6,5 +6,9 @@
   "created": "2026-07-23",
   "standard": "v2",
   "wordFloor": 1900,
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "tags": [
+    "brand",
+    "concept"
+  ]
 }

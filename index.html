@@ -20,11 +20,24 @@
     <p class="hub-lede">Fictional brands, real craft — newest drops first.</p>
   </header>
 
-  <section class="discovery" aria-label="Infinite discovery strip">
+  <section class="discovery" aria-label="Discovery carousel">
     <div class="discovery-fade discovery-fade--start" aria-hidden="true"></div>
     <div class="discovery-fade discovery-fade--end" aria-hidden="true"></div>
+    
+    <button class="discovery-nav discovery-nav--prev" id="discovery-prev" aria-label="Previous slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    
     <div class="discovery-viewport" id="discovery-strip">
-      <!-- filled by hub.js: two identical tracks for seamless loop -->
+      <!-- filled by hub.js -->
+    </div>
+
+    <button class="discovery-nav discovery-nav--next" id="discovery-next" aria-label="Next slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+    
+    <div class="discovery-dots" id="discovery-dots" aria-hidden="true">
+      <!-- filled by hub.js -->
     </div>
   </section>
 

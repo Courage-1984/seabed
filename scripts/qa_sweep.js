@@ -69,6 +69,7 @@ function viewHasIssues(view) {
       view.brokenImages?.length ||
       view.nonWebpPhotos?.length ||
       view.missingAltTags?.length ||
+      view.missingFavicon?.length ||
       view.consoleErrors?.length ||
       view.networkErrors?.length ||
       view.brokenLinks?.length
@@ -96,6 +97,7 @@ function accumulateCounts(pagesList) {
       counts.brokenImages += view.brokenImages?.length || 0;
       counts.nonWebpPhotos += view.nonWebpPhotos?.length || 0;
       counts.missingAltTags += view.missingAltTags?.length || 0;
+      counts.missingFavicon += view.missingFavicon?.length || 0;
       counts.consoleErrors += view.consoleErrors?.length || 0;
       counts.networkErrors += view.networkErrors?.length || 0;
       counts.brokenLinks += view.brokenLinks?.length || 0;
@@ -284,6 +286,13 @@ const waitForServer = async (url, timeout = 20000) => {
             [...document.images].filter((i) => !i.hasAttribute('alt')).map((i) => i.src)
           );
 
+          const missingFavicon = await page.evaluate(() => {
+            const iconLink = document.querySelector('link[rel="icon"], link[rel="shortcut icon"]');
+            if (!iconLink) return ['No favicon link found'];
+            if (!iconLink.href.includes('favicon')) return ['Favicon href invalid'];
+            return [];
+          });
+
           const nonWebpPhotos = await page.evaluate(() => {
             const isBadPhoto = (src) =>
               src &&
@@ -337,6 +346,7 @@ const waitForServer = async (url, timeout = 20000) => {
             overflowingElements,
             brokenImages,
             missingAltTags,
+            missingFavicon,
             nonWebpPhotos,
             consoleErrors: [...consoleErrors],
             networkErrors: [...networkErrors],

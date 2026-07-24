@@ -79,6 +79,7 @@ Near-duplicates: none / flagged: …
 Tone: sharp industrial
 Architecture: dense one-pager
 Layout family: diagonal-cut
+Tags: [technology, research] (or generate 1-3 semantic tags)
 Layout signature: (one-line from §3/§6)
 L/R splits allowed: 0 or 1
 Word range: 1100–1450

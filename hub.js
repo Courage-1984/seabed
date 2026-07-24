@@ -50,7 +50,7 @@ async function loadSiteEntries() {
     Object.entries(sites).map(async ([path, meta]) => {
       const siteFolder = path.replace('/meta.json', '');
       const metaData = meta.default || meta;
-      const { title, blurb, hero, created, layoutFamily } = metaData;
+      const { title, blurb, hero, created, layoutFamily, tags } = metaData;
 
       const normalizedHero = (hero || '').replace(/^\.\//, '');
       const imageGlobPath = `${siteFolder}/${normalizedHero}`;
@@ -68,6 +68,7 @@ async function loadSiteEntries() {
         blurb: blurb || '',
         created: created || '1970-01-01',
         layoutFamily: String(layoutFamily || '').trim(),
+        tags: Array.isArray(tags) ? tags : [],
         href: `${siteFolder}/index.html`,
         heroUrl: resolvedImageUrl,
         faviconUrl: resolvedFaviconUrl,
@@ -94,16 +95,29 @@ function buildDiscoveryCell(site) {
   const img = document.createElement('img');
   img.src = site.heroUrl;
   img.alt = '';
+  img.className = 'discovery-cell-hero';
   img.loading = 'lazy';
   img.decoding = 'async';
+  img.draggable = false;
 
   const meta = document.createElement('div');
   meta.className = 'discovery-cell-meta';
+
+  const metaTop = document.createElement('div');
+  metaTop.className = 'discovery-cell-meta-top';
+  const favicon = document.createElement('img');
+  favicon.src = site.faviconUrl;
+  favicon.className = 'discovery-cell-favicon';
+  favicon.alt = '';
+  favicon.loading = 'lazy';
   const strong = document.createElement('strong');
   strong.textContent = site.title;
+  metaTop.append(favicon, strong);
+
   const span = document.createElement('span');
   span.textContent = formatDate(site.created);
-  meta.append(strong, span);
+  
+  meta.append(metaTop, span);
 
   a.append(img, meta);
   return a;
@@ -112,14 +126,119 @@ function buildDiscoveryCell(site) {
 function renderDiscoveryStrip(sorted) {
   const track = document.createElement('div');
   track.className = 'discovery-track';
-  track.setAttribute('aria-hidden', 'false');
 
-  const sequence = [...sorted, ...sorted];
-  for (const site of sequence) {
+  for (const site of sorted) {
     track.appendChild(buildDiscoveryCell(site));
   }
 
   stripEl.replaceChildren(track);
+
+  // Setup Carousel Logic
+  const prevBtn = document.getElementById('discovery-prev');
+  const nextBtn = document.getElementById('discovery-next');
+  const dotsContainer = document.getElementById('discovery-dots');
+
+  // Generate dots
+  if (dotsContainer) {
+    const dotsFrag = document.createDocumentFragment();
+    sorted.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'discovery-dot';
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      dot.addEventListener('click', () => {
+        const cellWidth = track.children[0]?.offsetWidth || 0;
+        const gap = 16;
+        stripEl.scrollTo({ left: i * (cellWidth + gap), behavior: 'smooth' });
+      });
+      dotsFrag.appendChild(dot);
+    });
+    dotsContainer.replaceChildren(dotsFrag);
+  }
+
+  // Update dots and buttons on scroll
+  const updateState = () => {
+    const cellWidth = track.children[0]?.offsetWidth || 0;
+    const gap = 16;
+    const itemWidth = cellWidth + gap;
+    const index = Math.round(stripEl.scrollLeft / itemWidth);
+    
+    if (dotsContainer) {
+      Array.from(dotsContainer.children).forEach((dot, i) => {
+        dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
+      });
+    }
+
+    if (prevBtn) prevBtn.disabled = stripEl.scrollLeft <= 0;
+    if (nextBtn) nextBtn.disabled = stripEl.scrollLeft >= stripEl.scrollWidth - stripEl.clientWidth - 10;
+  };
+
+  stripEl.addEventListener('scroll', updateState, { passive: true });
+  window.addEventListener('resize', updateState, { passive: true });
+  updateState();
+
+  // Navigation Arrows
+  const scrollByAmount = () => (track.children[0]?.offsetWidth || 0) + 16;
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      stripEl.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' });
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      stripEl.scrollBy({ left: scrollByAmount(), behavior: 'smooth' });
+    });
+  }
+
+  // Drag to scroll
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  stripEl.addEventListener('mousedown', (e) => {
+    isDown = true;
+    stripEl.style.scrollBehavior = 'auto'; // disable smooth snap while dragging
+    stripEl.style.scrollSnapType = 'none';
+    startX = e.pageX - stripEl.offsetLeft;
+    scrollLeft = stripEl.scrollLeft;
+  });
+
+  const endDrag = () => {
+    if (!isDown) return;
+    isDown = false;
+    stripEl.style.scrollBehavior = 'smooth';
+    stripEl.style.scrollSnapType = 'x mandatory';
+    // snap to nearest
+    const cellWidth = track.children[0]?.offsetWidth || 0;
+    const gap = 16;
+    const index = Math.round(stripEl.scrollLeft / (cellWidth + gap));
+    stripEl.scrollTo({ left: index * (cellWidth + gap), behavior: 'smooth' });
+  };
+
+  stripEl.addEventListener('mouseleave', endDrag);
+  stripEl.addEventListener('mouseup', endDrag);
+  stripEl.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - stripEl.offsetLeft;
+    const walk = (x - startX) * 1.5; // scrolling speed
+    stripEl.scrollLeft = scrollLeft - walk;
+  });
+
+  // Shift + Scroll wheel support (some browsers do this natively, but this ensures it)
+  stripEl.addEventListener('wheel', (e) => {
+    if (!e.shiftKey && e.deltaY !== 0) {
+      e.preventDefault();
+      stripEl.style.scrollBehavior = 'auto';
+      stripEl.scrollBy({ left: e.deltaY > 0 ? 100 : -100 });
+      // Restore snap after a short delay
+      clearTimeout(stripEl._wheelTimeout);
+      stripEl._wheelTimeout = setTimeout(() => {
+        stripEl.style.scrollBehavior = 'smooth';
+        endDrag();
+      }, 150);
+    }
+  }, { passive: false });
 }
 
 function renderLatestDrop(site) {
@@ -174,6 +293,14 @@ function uniqueLayoutFamilies(siteList) {
   return [...set].sort((a, b) => a.localeCompare(b));
 }
 
+function uniqueTags(siteList) {
+  const set = new Set();
+  for (const site of siteList) {
+    if (site.tags) site.tags.forEach(t => set.add(t));
+  }
+  return [...set].sort((a, b) => a.localeCompare(b));
+}
+
 function filterSites(siteList, filter, newestDate) {
   if (filter === 'all') return siteList;
   if (filter === 'recent') {
@@ -183,7 +310,8 @@ function filterSites(siteList, filter, newestDate) {
       return d && daysBetween(d, newestDate) <= RECENT_DAYS;
     });
   }
-  return siteList.filter((site) => site.layoutFamily === filter);
+  // Check if it matches a layout family or a tag
+  return siteList.filter((site) => site.layoutFamily === filter || site.tags.includes(filter));
 }
 
 function archiveSpanClass(index) {
@@ -237,6 +365,14 @@ function renderArchiveCard(site, index) {
     familyPill.className = 'archive-pill';
     familyPill.textContent = site.layoutFamily;
     pills.appendChild(familyPill);
+  }
+  if (site.tags && site.tags.length > 0) {
+    site.tags.forEach(tag => {
+      const tagPill = document.createElement('span');
+      tagPill.className = 'archive-pill archive-pill--muted';
+      tagPill.textContent = '#' + tag;
+      pills.appendChild(tagPill);
+    });
   }
   const month = formatMonthLabel(site.created);
   if (month) {
@@ -310,9 +446,12 @@ function renderFilters(siteList, activeFilter, onChange) {
   if (!filtersEl) return;
 
   const families = uniqueLayoutFamilies(siteList);
+  const tags = uniqueTags(siteList);
+  
   const chips = [
     { id: 'all', label: 'All' },
     ...families.map((f) => ({ id: f, label: f })),
+    ...tags.map((t) => ({ id: t, label: '#' + t })),
     { id: 'recent', label: 'Recent' },
   ];
 
