@@ -175,6 +175,8 @@ const waitForServer = async (url, timeout = 20000) => {
     browser = await puppeteer.launch({
       headless: headed ? false : true,
       defaultViewport: headed ? null : { width: 1440, height: 900 },
+      // GitHub Actions / container runners need sandbox disabled for Chrome.
+      args: process.env.CI === 'true' ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
     });
 
     async function checkPage(pagePath) {
