@@ -1,0 +1,11 @@
+{
+  "title": "Halcyon Tare",
+  "blurb": "A returnable-container weight ledger retail model where you pay only for contents, never packaging.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "diagonal-cut",
+  "tags": ["retail", "ecommerce", "sustainability"],
+  "created": "2026-07-25",
+  "wordFloor": 1900,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

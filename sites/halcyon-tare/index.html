@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halcyon Tare — You pay for what's inside</title>
+  <meta name="description" content="Halcyon Tare is a returnable-container weight ledger refill counter and delivery service in Bristol. Steel canisters we lend, staples we sell by weight.">
+  <meta property="og:title" content="Halcyon Tare — Returnable-Container Weight Ledger">
+  <meta property="og:description" content="You pay for what's inside — the container is always ours. Zero packaging waste household staples in Bedminster and across Bristol.">
+  <meta property="og:image" content="./assets/hero.webp">
+  <meta property="og:type" content="website">
+  
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="./index.html" class="brand-logo">
+        <svg class="brand-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" rx="12" fill="#2C4A43"/>
+          <rect x="18" y="16" width="28" height="34" rx="4" fill="#F4F2EC" stroke="#8A9A5B" stroke-width="2"/>
+          <rect x="16" y="12" width="32" height="5" rx="2" fill="#8A9A5B"/>
+          <line x1="24" y1="26" x2="40" y2="26" stroke="#2C4A43" stroke-width="2" stroke-linecap="round"/>
+          <line x1="24" y1="32" x2="36" y2="32" stroke="#2C4A43" stroke-width="2" stroke-linecap="round"/>
+          <line x1="24" y1="38" x2="32" y2="38" stroke="#C6552B" stroke-width="2" stroke-linecap="round"/>
+          <polygon points="12,52 52,52 56,56 8,56" fill="#C6552B"/>
+        </svg>
+        <span class="brand-name">Halcyon Tare</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="./index.html" class="active" aria-current="page">The Model</a></li>
+          <li><a href="./ranges.html">Ranges & Pricing</a></li>
+          <li><a href="./how-it-works.html">How It Works</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- §1 Hero Section (Verbatim §4a) -->
+    <section class="hero">
+      <div class="container hero-content-wrapper">
+        <div class="hero-text-plane">
+          <span class="hero-brand-tag">Bristol Refill Ledger</span>
+          <h1>You pay for what's inside.</h1>
+          <p class="hero-subhead">Steel canisters we lend, staples we sell by weight, packaging you never take home.</p>
+          <p class="hero-intro">Halcyon Tare is a refill counter and delivery service built around a single rule: the container is always ours. You take home rice, oats, laundry liquid or hand soap by weight, sealed in a brushed-steel canister loaned against a small deposit. Every refill is settled on a certified scale against your canister's recorded empty weight, so you are charged for contents alone. Return the canister and your deposit comes back in full.</p>
+          <div class="btn-group">
+            <a href="./ranges.html" class="btn btn-primary">Browse Available Staples</a>
+            <a href="./how-it-works.html" class="btn btn-secondary">See How Returns Work</a>
+          </div>
+        </div>
+      </div>
+      <!-- Image bleeding across the first diagonal cut into the flagship section -->
+      <div class="hero-visual-bleed container">
+        <img src="./assets/hero.webp" alt="Two brushed-steel Halcyon Tare canisters on a retail weighing scale." class="hero-img" fetchpriority="high" width="1240" height="620">
+      </div>
+    </section>
+
+    <!-- §2 Flagship Section: How the Tare Ledger works (Verbatim §4a) -->
+    <section class="section diagonal-angle-right-primary motion-reveal" id="ledger-flagship">
+      <div class="container">
+        <h2>How the Tare Ledger works</h2>
+        <div class="price-prose-block">
+          <p>Every canister we lend carries a laser-etched six-digit ID and its exact empty weight — its tare. That figure is stored once, when the canister is first issued, on a certified Class II retail scale accurate to the gram. From then on, refilling is simple arithmetic. We place your canister on the scale, read the gross weight, subtract the stored tare, and charge you for the contents only. The steel, the gasket, the lid: none of it ever appears on your receipt.</p>
+          <p>Because the tare is fixed to the ID rather than measured afresh each visit, a worn label or a damp lid never inflates your bill. If a canister is damaged and re-issued, it is re-weighed and the ledger updated. Your account shows every refill by ID, weight and date, so a household can see exactly what it has drawn down over a month — grams in, deposit unchanged, packaging at zero.</p>
+        </div>
+        
+        <!-- Interactive Scale Ledger Widget -->
+        <div class="scale-ledger-widget" id="tare-ledger-counter" aria-label="Live tare subtraction scale readout">
+          <div class="ledger-metric">
+            <span class="metric-label">Vessel ID: HT-084291</span>
+            <span class="metric-value" id="tare-val">0240g</span>
+            <span class="metric-sub">Laser-Etched Empty Tare</span>
+          </div>
+          <div class="ledger-metric">
+            <span class="metric-label">Scale Reading</span>
+            <span class="metric-value" id="gross-val">0990g</span>
+            <span class="metric-sub">Gross Measured Mass</span>
+          </div>
+          <div class="ledger-metric">
+            <span class="metric-label">Billed Contents</span>
+            <span class="metric-value" id="net-val" style="color: var(--color-secondary);">0750g</span>
+            <span class="metric-sub">Net Mass Invoiced (£0.00 container charge)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- §3 What you can refill — the staple ranges (Directed) -->
+    <section class="section diagonal-angle-left-light motion-reveal">
+      <div class="container">
+        <h2>Everyday household staples without packaging waste</h2>
+        <p class="price-prose-block">Our stockroom supplies dependable staples that dispense cleanly by weight into returnable brushed steel, focusing on repeat weekly household essentials. In our dry pantry range, you will find kitchen essentials including basmati rice and organic jumbo oats, best matched to our expansive HT-1200 canister for household cooking. For laundry and home cleaning, we supply unfragranced biological laundry liquid and concentrated washing-up liquid decanted safely into our signature HT-750 steel vessel, which features a leak-tested silicone gasket rated for hundreds of transport cycles. Within personal care, our botanic hand soap and vegetable shampoo dispense smoothly into our compact HT-500 canister for bathroom surfaces. You draw down precisely what your shelves demand without collecting disposable plastic detergent bottles.</p>
+        
+        <div class="btn-group">
+          <a href="./ranges.html" class="btn btn-primary">See the full ranges</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- §4 The canister deposit & returns explained (Directed) -->
+    <section class="section diagonal-angle-right-bg motion-reveal">
+      <div class="container">
+        <h2>A transparent container loan that protects your budget</h2>
+        <p class="price-prose-block">You receive your household staples in sealed brushed-steel vessels that remain our permanent property, loaned against a simple, fully refundable deposit. Our compact HT-500 container carries a three-pound deposit, the flagship HT-750 canister sits at four pounds, and our expansive HT-1200 vessel requires five pounds fifty. When your supply runs low, return the empty canister at our Bedminster counter or hand it to our delivery driver during your next scheduled round. We swap full containers for your spent units immediately, and your deposit balance transfers across without extra fees. Should a canister incur surface dents during ordinary rotation, our workshop accepts the unit without penalty while leaving your full refund intact.</p>
+        
+        <div class="btn-group">
+          <a href="./how-it-works.html" class="btn btn-secondary">How returns work</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- §5 Trust & measurement (The single permitted Left/Right split) -->
+    <section class="section diagonal-angle-left-primary motion-reveal" id="metrology">
+      <div class="container">
+        <div class="permitted-lr-split">
+          <!-- Left Col: Metrology Certificate Panel -->
+          <div class="metrology-badge-panel">
+            <h3 class="metrology-badge-title">Class II Trading Certification</h3>
+            <p style="color: var(--color-text); margin-bottom: 1rem;">Operating under formal UK non-automatic weighing instruments regulations for single-gram retail accounting.</p>
+            <ul class="metrology-spec-list">
+              <li><span class="spec-key">Scale Accuracy</span><span class="spec-val">Class II Certified (±1g)</span></li>
+              <li><span class="spec-key">Sanitisation Standard</span><span class="spec-val">3-Stage Thermal Wash</span></li>
+              <li><span class="spec-key">Gasket Maintenance</span><span class="spec-val">100% Inspection & Swap</span></li>
+              <li><span class="spec-key">Vessel Integrity</span><span class="spec-val">Laser Tare Verification</span></li>
+            </ul>
+          </div>
+          
+          <!-- Right Col: Explanatory Copy & CTA -->
+          <div class="trust-content">
+            <h2 style="color: var(--color-bg); margin-top: 0;">Metrology standards and commercial sanitisation</h2>
+            <p>Every calculation recorded inside our digital ledger rests upon rigorous legal metrology and strict sanitisation protocols. Our weighing instruments operate under formal Trading Standards Class II certification, undergoing regular calibration to maintain single-gram accuracy across every refill. You never pay for residual air or container mass when restocking your pantry. Between customer circulations, returned canisters pass through a three-stage thermal wash inside our commercial sanitisation chamber, dissolving residue and eliminating contaminants completely. Once inspected under bright laboratory illumination, each vessel receives a fresh silicone sealing ring and a tamper-evident lid strip before returning to the dispensing floor. This separation between stockroom filling and container washing guarantees that every canister arriving at your doorstep meets professional food hygiene standards.</p>
+            <div class="btn-group">
+              <a href="./ranges.html#faq" class="btn btn-primary">Read our FAQ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- §6 Named social proof + one stat line (Directed) -->
+    <section class="section diagonal-angle-right-bg motion-reveal">
+      <div class="container">
+        <h2>Proven across Bristol households since 2021</h2>
+        
+        <div class="testimonials-band">
+          <blockquote class="testimonial-item">
+            <p class="testimonial-quote">"We live near North Street where storing plastic laundry bottles was frustrating. Having oats and laundry detergent delivered in clean steel jars simplifies our kitchen shelves and eliminates household recycling trips completely."</p>
+            <cite class="testimonial-author">— Martha V., Southville</cite>
+          </blockquote>
+          
+          <blockquote class="testimonial-item">
+            <p class="testimonial-quote">"The tare ledger is brilliant for our budget. Because the empty weight of each steel jar is laser-etched into the metal, we only pay for the exact grams of basmati rice we consume."</p>
+            <cite class="testimonial-author">— David K., Bedminster</cite>
+          </blockquote>
+          
+          <blockquote class="testimonial-item">
+            <p class="testimonial-quote">"Returning empty canisters to the rider for freshly sealed replacements feels effortless. We stopped buying plastic detergent tubs three years ago and never looked back at supermarket shelves."</p>
+            <cite class="testimonial-author">— Elena G., Redland</cite>
+          </blockquote>
+        </div>
+        
+        <!-- Stat Line Banner -->
+        <div class="stat-line-banner">
+          Since autumn 2021, the Halcyon Tare ledger has logged 84,320 exact refills and diverted over 14,200 kilograms of disposable packaging away from Bristol waste streams.
+        </div>
+        
+        <div class="btn-group" style="margin-top: 2.5rem;">
+          <a href="./how-it-works.html#contact" class="btn btn-primary">Start an account</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Halcyon Tare</h3>
+        <p>Returnable-container weight ledger retail. You pay solely for contents; containers remain our property.</p>
+        <p><strong>Founded 2021 in Bedminster, Bristol.</strong></p>
+      </div>
+      <div>
+        <h3>Bristol Counter</h3>
+        <p>44 Bedminster Parade, Bristol, BS3 4HS<br>Tuesday–Saturday: 08:00–18:00<br>Tel: 0117 496 0284</p>
+      </div>
+      <div>
+        <h3>Delivery Area</h3>
+        <p>Zero-emissions electric cargo rounds servicing Bristol postcodes BS1, BS3, BS6, BS7, and BS8.<br>Email: <a href="mailto:desk@halcyon-tare.co.uk">desk@halcyon-tare.co.uk</a></p>
+      </div>
+      <div>
+        <h3>Ledger Links</h3>
+        <ul>
+          <li><a href="./index.html">The Tare Model</a></li>
+          <li><a href="./ranges.html">Staple Ranges</a></li>
+          <li><a href="./ranges.html#faq">FAQ</a></li>
+          <li><a href="./how-it-works.html">How It Works</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Halcyon Tare Retail Ltd. Fictional demonstration site. Class II Legal Metrology Compliant.</p>
+    </div>
+  </footer>
+</body>
+</html>

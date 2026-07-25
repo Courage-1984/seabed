@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ranges & Pricing — Halcyon Tare Refill Ledger</title>
+  <meta name="description" content="Explore our dry pantry, home cleaning, and personal care staples priced strictly by net mass per 100g or 100ml. Zero packaging surcharges.">
+  <meta property="og:title" content="Ranges & Pricing — Halcyon Tare">
+  <meta property="og:description" content="Transparent contents-only pricing per 100g and 100ml. Returnable steel containers with zero packaging costs.">
+  <meta property="og:image" content="./assets/ranges-shelf.webp">
+  <meta property="og:type" content="website">
+  
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="./index.html" class="brand-logo">
+        <svg class="brand-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" rx="12" fill="#2C4A43"/>
+          <rect x="18" y="16" width="28" height="34" rx="4" fill="#F4F2EC" stroke="#8A9A5B" stroke-width="2"/>
+          <rect x="16" y="12" width="32" height="5" rx="2" fill="#8A9A5B"/>
+          <line x1="24" y1="26" x2="40" y2="26" stroke="#2C4A43" stroke-width="2" stroke-linecap="round"/>
+          <line x1="24" y1="32" x2="36" y2="32" stroke="#2C4A43" stroke-width="2" stroke-linecap="round"/>
+          <line x1="24" y1="38" x2="32" y2="38" stroke="#C6552B" stroke-width="2" stroke-linecap="round"/>
+          <polygon points="12,52 52,52 56,56 8,56" fill="#C6552B"/>
+        </svg>
+        <span class="brand-name">Halcyon Tare</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="./index.html">The Model</a></li>
+          <li><a href="./ranges.html" class="active" aria-current="page">Ranges & Pricing</a></li>
+          <li><a href="./how-it-works.html">How It Works</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- §1 Hero Section -->
+    <section class="hero">
+      <div class="container hero-content-wrapper">
+        <div class="hero-text-plane">
+          <span class="hero-brand-tag">Contents-Only Pricing</span>
+          <h1>Plain staples by exact weight.</h1>
+          <p class="hero-subhead">Our complete stockroom inventory, dispensed per hundred grams into returnable brushed steel.</p>
+          <p class="hero-intro">Our Bedminster dispensary stocks the essential dry goods and liquid formulas that power urban kitchens, bathrooms, and laundry routines. We eschew fancy branding and artificial fillers in favour of pure, reliable ingredients priced strictly by net weight. Whether you need wholesome grains or powerful surface cleaners, your bill reflects only the net contents dispensed into our returnable canisters, leaving zero packaging surcharges on your weekly household invoice.</p>
+          <div class="btn-group">
+            <a href="#pantry-dry-goods" class="btn btn-primary">View Dry Pantry Prices</a>
+            <a href="#pricing-tiers" class="btn btn-secondary">See Deposit Tiers</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-visual-bleed container">
+        <img src="./assets/ranges-shelf.webp" alt="Shelf of identical steel refill canisters with etched ID labels." class="hero-img" fetchpriority="high" width="1000" height="750">
+      </div>
+    </section>
+
+    <!-- §2 Pantry & dry goods range (Directed) -->
+    <section class="section diagonal-angle-right-primary motion-reveal" id="pantry-dry-goods">
+      <div class="container">
+        <h2>Pantry & dry goods inventory</h2>
+        <p class="price-prose-block">Our dry pantry department focuses on nutritionally dense staples sourced from dependable British growers, kept protected from humidity inside sealed steel canisters. All prices are displayed per hundred grams without brand markup or packaging overhead. Organic jumbo rolled oats sit at thirty-five pence per hundred grams, ideally matched to our generous HT-1200 canister for daily breakfasts. Aromatic basmati rice is priced at forty-two pence per hundred grams, while green whole lentils run at thirty-eight pence per hundred grams for evening cooking. For daily baking, fine cornflour costs thirty-two pence per hundred grams in our compact HT-500 jar, and whole roasted coffee beans from local Bristol roasters sit at one pound twenty per hundred grams inside our HT-750 container.</p>
+        
+        <!-- Staple Group Band Display -->
+        <div class="staples-layout-band">
+          <div class="staple-group">
+            <h3 class="staple-group-title" style="color: var(--color-bg);">Organic Jumbo Oats</h3>
+            <p style="margin-bottom: 0.25rem; color: var(--color-secondary); font-weight: 500;">£0.35 per 100g &middot; HT-1200 Canister</p>
+          </div>
+          <div class="staple-group">
+            <h3 class="staple-group-title" style="color: var(--color-bg);">Aromatic Basmati Rice</h3>
+            <p style="margin-bottom: 0.25rem; color: var(--color-secondary); font-weight: 500;">£0.42 per 100g &middot; HT-1200 Canister</p>
+          </div>
+          <div class="staple-group">
+            <h3 class="staple-group-title" style="color: var(--color-bg);">Bristol Roasted Coffee</h3>
+            <p style="margin-bottom: 0.25rem; color: var(--color-secondary); font-weight: 500;">£1.20 per 100g &middot; HT-750 Canister</p>
+          </div>
+        </div>
+        
+        <div class="btn-group" style="margin-top: 3rem;">
+          <a href="./how-it-works.html" class="btn btn-secondary" style="color: var(--color-bg) !important; border-color: var(--color-bg);">Add to a standing order</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- §3 Cleaning & personal-care range (Directed) -->
+    <section class="section diagonal-angle-left-light motion-reveal" id="cleaning-personal-care">
+      <div class="container">
+        <h2>Cleaning & personal care liquids</h2>
+        <p class="price-prose-block">Handling potent detergents and delicate personal soaps requires strict containment procedures and chemical compatibility. We decant cleaning formulas directly on-site inside our converted dairy counter, utilising gravity valves that eliminate spilling and aeration. Our unfragranced biological laundry liquid sells for forty-five pence per hundred millilitres, providing dependable cold-water cleaning without optical brighteners. For kitchen dishes, our concentrated citrus washing-up liquid sits at thirty-eight pence per hundred millilitres, cutting heavy grease effectively. Within personal care, pure liquid castile soap costs sixty-five pence per hundred millilitres, serving as a versatile skin wash or general surface cleaner. Every liquid vessel departs our counter sealed by our silicone gasket lid, which undergoes vacuum leak testing to ensure secure upright storage during transit across city streets.</p>
+        
+        <div class="staples-layout-band">
+          <div class="staple-group">
+            <h3 class="staple-group-title">Biological Laundry Liquid</h3>
+            <p style="margin-bottom: 0.25rem; color: var(--color-accent); font-weight: 600;">£0.45 per 100ml &middot; HT-750 Canister</p>
+          </div>
+          <div class="staple-group">
+            <h3 class="staple-group-title">Washing-Up Liquid</h3>
+            <p style="margin-bottom: 0.25rem; color: var(--color-accent); font-weight: 600;">£0.38 per 100ml &middot; HT-750 Canister</p>
+          </div>
+          <div class="staple-group">
+            <h3 class="staple-group-title">Pure Castile Soap</h3>
+            <p style="margin-bottom: 0.25rem; color: var(--color-accent); font-weight: 600;">£0.65 per 100ml &middot; HT-500 Canister</p>
+          </div>
+        </div>
+
+        <div class="btn-group" style="margin-top: 2.5rem;">
+          <a href="#pricing-tiers" class="btn btn-primary">Understand our pricing structure</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- §4 How pricing is set — deposit tiers & account credit (Directed) -->
+    <section class="section diagonal-angle-right-bg motion-reveal" id="pricing-tiers">
+      <div class="container">
+        <h2>How container deposits and credit accrue</h2>
+        <p class="price-prose-block">Your invoice divides plainly into two open components: consumable net weight and a refundable container deposit, with zero hidden packaging fees. Our deposit tier system applies three rates across our lineup: the compact HT-500 vessel requires a three-pound deposit, our flagship HT-750 medium canister requires four pounds, and the expansive HT-1200 large container holds a five-pound-fifty deposit. As you return spent canisters to our counter or delivery driver, these values immediately rebound into your ledger account as store credit or an instant refund. For scheduled Bristol delivery rounds, we apply a twenty-five pound minimum order threshold, keeping transport free of extra fuel supplements.</p>
+        
+        <div class="btn-group">
+          <a href="./how-it-works.html#contact" class="btn btn-primary">Open an account</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- §5 FAQ (Directed) -->
+    <section class="section diagonal-angle-left-primary motion-reveal" id="faq">
+      <div class="container">
+        <h2 style="color: var(--color-bg);">Frequently Asked Questions</h2>
+        <p style="color: var(--color-secondary); max-width: 700px;">Clear answers regarding container ownership, legal metrology, hygiene standards, and our Bristol delivery logistics.</p>
+        
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3 class="faq-question" style="color: var(--color-bg);">Can I bring my own glass jars or plastic tubs for refilling?</h3>
+            <p class="faq-answer" style="color: rgba(244,242,236,0.9);">No, our automated weighbridge system only functions with our issued brushed-steel canisters. Every Halcyon Tare vessel carries a laser-etched six-digit identification code and a certified tare weight. Using external jars would introduce measurement variances and bypass the arithmetic that keeps our checkout accurate.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3 class="faq-question" style="color: var(--color-bg);">How do you guarantee hygiene and sanitisation between different customers?</h3>
+            <p class="faq-answer" style="color: rgba(244,242,236,0.9);">Every canister returned to our Bedminster facility undergoes a three-stage thermal wash and chemical disinfection process within our commercial sanitisation chamber. We replace every silicone sealing gasket before visual inspection under laboratory lighting, ensuring each vessel is completely sterile before stockroom replenishment.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3 class="faq-question" style="color: var(--color-bg);">What happens if a canister is lost or suffers accidental damage?</h3>
+            <p class="faq-answer" style="color: rgba(244,242,236,0.9);">If a canister is permanently misplaced, the associated initial deposit remains on our ledger to fund a replacement steel vessel from our foundry suppliers. Minor surface dents incurred during normal household use are accepted without penalty and never impact your deposit refund.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3 class="faq-question" style="color: var(--color-bg);">What is your local delivery radius across Bristol neighbourhoods?</h3>
+            <p class="faq-answer" style="color: rgba(244,242,236,0.9);">Our electric cargo delivery rounds operate from our Bedminster base across postal districts BS1, BS3, BS6, BS7, and BS8. If your home resides outside these core Bristol delivery zones, you can select our counter collection option to pick up filled orders from our dairy.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3 class="faq-question" style="color: var(--color-bg);">How easy is it to modify or cancel a standing subscription order?</h3>
+            <p class="faq-answer" style="color: rgba(244,242,236,0.9);">You can adjust your selected staples, change delivery frequencies, or cancel your standing refill order entirely through your online account portal with zero notice periods. Upon closure, simply hand back accumulated empty canisters at our counter to receive your remaining deposit balance immediately.</p>
+          </div>
+        </div>
+        
+        <div class="btn-group" style="margin-top: 3.5rem;">
+          <a href="./how-it-works.html#contact" class="btn btn-secondary" style="color: var(--color-bg) !important; border-color: var(--color-bg);">Still unsure? Contact us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Halcyon Tare</h3>
+        <p>Returnable-container weight ledger retail. You pay solely for contents; containers remain our property.</p>
+        <p><strong>Founded 2021 in Bedminster, Bristol.</strong></p>
+      </div>
+      <div>
+        <h3>Bristol Counter</h3>
+        <p>44 Bedminster Parade, Bristol, BS3 4HS<br>Tuesday–Saturday: 08:00–18:00<br>Tel: 0117 496 0284</p>
+      </div>
+      <div>
+        <h3>Delivery Area</h3>
+        <p>Zero-emissions electric cargo rounds servicing Bristol postcodes BS1, BS3, BS6, BS7, and BS8.<br>Email: <a href="mailto:desk@halcyon-tare.co.uk">desk@halcyon-tare.co.uk</a></p>
+      </div>
+      <div>
+        <h3>Ledger Links</h3>
+        <ul>
+          <li><a href="./index.html">The Tare Model</a></li>
+          <li><a href="./ranges.html">Staple Ranges</a></li>
+          <li><a href="./ranges.html#faq">FAQ</a></li>
+          <li><a href="./how-it-works.html">How It Works</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Halcyon Tare Retail Ltd. Fictional demonstration site. Class II Legal Metrology Compliant.</p>
+    </div>
+  </footer>
+</body>
+</html>
