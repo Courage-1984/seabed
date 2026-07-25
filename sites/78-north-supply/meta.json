@@ -1,0 +1,11 @@
+{
+  "title": "78 North Supply",
+  "blurb": "Field-hardened gear dispatched from the world’s northernmost functional settlement — no lifestyle branding, no unnecessary features.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "ultra-minimal full-bleed",
+  "tags": ["expedition-gear", "ecommerce", "arctic"],
+  "created": "2026-07-25",
+  "wordFloor": 650,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

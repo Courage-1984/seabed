@@ -1,0 +1,474 @@
+/* ==========================================================================
+   78 North Supply — Ultra-Minimal Full-Bleed Stylesheet
+   ========================================================================== */
+
+:root {
+  --color-primary: #1A1F26;
+  --color-secondary: #F4F6F9;
+  --color-accent: #FF5A1F;
+  --color-background: #FFFFFF;
+  --color-text: #1A1F26;
+  --color-muted: #5A6573;
+  --color-border: #DDE2EC;
+
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+
+  --col-max-width: 720px;
+}
+
+/* Base & Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.65;
+  overflow-x: hidden; /* Safety net per responsive rules */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-primary);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Structural Layout Signature: Ultra-Minimal Full-Bleed
+   - Single centred column (max-width: 720px)
+   - Ample vertical whitespace
+   - Full-bleed imagery breaking the grid edge-to-edge
+   - ZERO persistent sidebars or L/R split-panes
+   ========================================================================== */
+.centered-column {
+  width: 100%;
+  max-width: var(--col-max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.content-section {
+  padding: 6rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  position: relative;
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Full-Bleed Media Outlier */
+.full-bleed-media {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+  position: relative;
+  background-color: var(--color-primary);
+}
+
+.full-bleed-img {
+  width: 100%;
+  max-height: 75vh;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Section Kickers & Helpers */
+.section-kicker {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section-body {
+  font-size: 1.125rem;
+}
+
+.lead-text {
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  padding: 1.5rem 0;
+  color: #FFFFFF;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.brand-mark {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.nav-links a {
+  position: relative;
+  transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   Hero Section & Ken Burns Motion
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  min-height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 0 6rem;
+  color: #FFFFFF;
+  overflow: hidden;
+  background-color: var(--color-primary);
+}
+
+.hero-background-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform-origin: center;
+}
+
+/* Ken Burns Animation per §6 (20s loop, zoom 1 to 1.05) */
+@keyframes kenBurns {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.ken-burns {
+  animation: kenBurns 20s ease-in-out infinite;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(26, 31, 38, 0.65) 0%, rgba(26, 31, 38, 0.85) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.latitude-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.subhead {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 500;
+  color: var(--color-secondary);
+  margin-bottom: 2.5rem;
+}
+
+.hero-text-block {
+  text-align: left;
+  background: rgba(26, 31, 38, 0.6);
+  padding: 2rem;
+  border-left: 3px solid var(--color-accent);
+  margin-bottom: 2.5rem;
+  backdrop-filter: blur(4px);
+}
+
+.hero-text-block p {
+  margin-bottom: 0;
+  font-size: 1.05rem;
+  color: #E2E8F0;
+}
+
+/* CTA & Hover Transitions (§6 Accent Underline Hover) */
+.cta-group {
+  margin-top: 1rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  border-radius: 2px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(255, 90, 31, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: #E0480E;
+  transform: translateY(-2px);
+}
+
+/* Functional CTA Underline Transition */
+.cta-link {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.cta-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width 0.25s ease, left 0.25s ease;
+}
+
+.cta-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* ==========================================================================
+   Content Sections Styling
+   ========================================================================== */
+.range-item {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.range-item:last-of-type {
+  border-bottom: none;
+  margin-bottom: 1rem;
+}
+
+.section-action {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+}
+
+/* FAQ Item Structure */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.faq-item {
+  border-left: 2px solid var(--color-border);
+  padding-left: 1.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.faq-item:hover {
+  border-color: var(--color-accent);
+}
+
+.faq-item p {
+  margin-bottom: 0;
+  color: var(--color-muted);
+}
+
+/* ==========================================================================
+   Scroll Reveal Motion (§6 Intersection Observer targeted classes)
+   ========================================================================== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  padding: 5rem 0 3rem;
+  border-top: 4px solid var(--color-accent);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.footer-brand strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.footer-brand span {
+  color: #94A3B8;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.footer-address {
+  font-style: normal;
+  color: #CBD5E1;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.footer-address a {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+}
+
+.footer-legal {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #64748B;
+  font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints (360px – 1440px)
+   ========================================================================== */
+@media (max-width: 640px) {
+  .content-section {
+    padding: 4rem 0;
+    gap: 2rem;
+  }
+  
+  .hero-section {
+    padding: 6rem 0 4rem;
+  }
+  
+  .hero-text-block {
+    padding: 1.25rem;
+  }
+
+  .nav-bar {
+    justify-content: center;
+  }
+  
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+/* Prevent image blowout & overflow on all devices */
+img {
+  max-width: 100%;
+  height: auto;
+}
