@@ -138,30 +138,32 @@ function renderDiscoveryStrip(sorted) {
   const nextBtn = document.getElementById('discovery-next');
   const dotsContainer = document.getElementById('discovery-dots');
 
-  // Generate dots
-  if (dotsContainer) {
-    const dotsFrag = document.createDocumentFragment();
-    sorted.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = 'discovery-dot';
-      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-      dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-      dot.addEventListener('click', () => {
-        const cellWidth = track.children[0]?.offsetWidth || 0;
-        const gap = 16;
-        stripEl.scrollTo({ left: i * (cellWidth + gap), behavior: 'smooth' });
-      });
-      dotsFrag.appendChild(dot);
-    });
-    dotsContainer.replaceChildren(dotsFrag);
-  }
-
   // Update dots and buttons on scroll
   const updateState = () => {
     const cellWidth = track.children[0]?.offsetWidth || 0;
     const gap = 16;
     const itemWidth = cellWidth + gap;
-    const index = Math.round(stripEl.scrollLeft / itemWidth);
+    
+    const maxScroll = stripEl.scrollWidth - stripEl.clientWidth;
+    const maxIndex = itemWidth > 0 ? Math.max(0, Math.ceil(maxScroll / itemWidth)) : 0;
+    const numDots = maxIndex + 1;
+    
+    if (dotsContainer && dotsContainer.children.length !== numDots) {
+      const dotsFrag = document.createDocumentFragment();
+      for (let i = 0; i < numDots; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'discovery-dot';
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.setAttribute('aria-selected', 'false');
+        dot.addEventListener('click', () => {
+          stripEl.scrollTo({ left: Math.min(i * itemWidth, maxScroll), behavior: 'smooth' });
+        });
+        dotsFrag.appendChild(dot);
+      }
+      dotsContainer.replaceChildren(dotsFrag);
+    }
+
+    const index = itemWidth > 0 ? Math.round(stripEl.scrollLeft / itemWidth) : 0;
     
     if (dotsContainer) {
       Array.from(dotsContainer.children).forEach((dot, i) => {
@@ -169,24 +171,36 @@ function renderDiscoveryStrip(sorted) {
       });
     }
 
-    if (prevBtn) prevBtn.disabled = stripEl.scrollLeft <= 0;
-    if (nextBtn) nextBtn.disabled = stripEl.scrollLeft >= stripEl.scrollWidth - stripEl.clientWidth - 10;
+    // Keep buttons enabled for looping
+    if (prevBtn) prevBtn.disabled = false;
+    if (nextBtn) nextBtn.disabled = false;
   };
 
   stripEl.addEventListener('scroll', updateState, { passive: true });
   window.addEventListener('resize', updateState, { passive: true });
-  updateState();
+  
+  // Need to wait for layout before initial update so widths are correct
+  requestAnimationFrame(updateState);
 
   // Navigation Arrows
   const scrollByAmount = () => (track.children[0]?.offsetWidth || 0) + 16;
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
-      stripEl.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' });
+      if (stripEl.scrollLeft <= 10) {
+        stripEl.scrollTo({ left: stripEl.scrollWidth, behavior: 'smooth' });
+      } else {
+        stripEl.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' });
+      }
     });
   }
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
-      stripEl.scrollBy({ left: scrollByAmount(), behavior: 'smooth' });
+      const maxScroll = stripEl.scrollWidth - stripEl.clientWidth;
+      if (stripEl.scrollLeft >= maxScroll - 10) {
+        stripEl.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        stripEl.scrollBy({ left: scrollByAmount(), behavior: 'smooth' });
+      }
     });
   }
 
@@ -548,3 +562,14 @@ const applyFilter = (category, subFilter = null) => {
 renderDiscoveryStrip(sorted);
 renderLatestDrop(sorted[0]);
 applyFilter('all');
+
+const btnLucky = document.getElementById('btn-lucky');
+if (btnLucky && sorted.length > 0) {
+  btnLucky.addEventListener('click', () => {
+    const randomIndex = Math.floor(Math.random() * sorted.length);
+    const randomSite = sorted[randomIndex];
+    if (randomSite && randomSite.href) {
+      window.open(randomSite.href, '_blank', 'noopener,noreferrer');
+    }
+  });
+}
