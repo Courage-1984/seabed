@@ -1,0 +1,15 @@
+{
+  "title": "Katabatic Shelter Systems",
+  "blurb": "Unyielding thermal retention and structural continuity in the planet's most hostile meteorological wind corridors.",
+  "hero": "assets/hero-katabatic.webp",
+  "layoutFamily": "sticky-rail + content",
+  "tags": [
+    "industrial",
+    "outdoors",
+    "scientific"
+  ],
+  "created": "2026-07-26",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

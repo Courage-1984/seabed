@@ -3,23 +3,22 @@
  * Regenerates .agents/prompts/_sites-index.md from sites meta.json files.
  * Operator pastes sections into the external Gemini brief prompt (~weekly).
  */
-import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { findAllSiteDirs } from './lib/resolve-slug.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SITES = join(ROOT, 'sites');
 const OUT = join(ROOT, '.agents/prompts/_sites-index.md');
 
-const dirs = (await readdir(SITES, { withFileTypes: true }))
-  .filter((d) => d.isDirectory())
-  .map((d) => d.name)
-  .sort();
+const allSites = findAllSiteDirs(ROOT);
+const slugs = allSites.map((s) => s.slug).sort();
 
 const rows = [];
-for (const slug of dirs) {
+for (const site of allSites) {
+  const { slug, absolutePath } = site;
   try {
-    const raw = await readFile(join(SITES, slug, 'meta.json'), 'utf8');
+    const raw = await readFile(join(absolutePath, 'meta.json'), 'utf8');
     const meta = JSON.parse(raw);
     const layout = meta.layoutFamily ?? meta.layout ?? '—';
     const created = meta.created ?? '—';
@@ -31,7 +30,7 @@ for (const slug of dirs) {
 
 const rosterLines = [];
 let line = '';
-for (const slug of dirs) {
+for (const slug of slugs) {
   const piece = line ? `, ${slug}` : slug;
   if (line && (line + piece).length > 88) {
     rosterLines.push(line + ',');
@@ -55,7 +54,6 @@ ${rows.join('\n')}
 ## Roster (paste into brief prompt)
 
 Replace the fenced slug list in your external Variety Engine **Roster** section with:
-
 \`\`\`
 ${rosterLines.join('\n')}
 \`\`\`

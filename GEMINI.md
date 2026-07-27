@@ -23,10 +23,10 @@ Gemini has **no repo access**. After shipping new sites (or ~weekly), regenerate
 
 ## Site layout (v2)
 
-See @./.agents/rules/01-site-v2-standard.md and @./.agents/skills/design-and-build/SKILL.md.
+See @./.agents/rules/01-site-v2-standard.md and @./.agents/skills/design-and-build/SKILL.md. Sites are organized by creation date into chronological Year-Month subfolders:
 
 ```
-sites/<kebab-slug>/
+sites/<YYYY-MM>/<kebab-slug>/
   meta.json
   index.html
   style.css
@@ -36,7 +36,7 @@ sites/<kebab-slug>/
     *.webp
 ```
 
-Hub cards require `title`, `blurb`, `hero`, `created` (`YYYY-MM-DD`), plus `layoutFamily` / `standard` / `qa` at ship. See @./.agents/rules/01-site-v2-standard.md.
+Hub cards require `title`, `blurb`, `hero`, `created` (`YYYY-MM-DD`), plus `layoutFamily` / `standard` / `qa` at ship. See @./.agents/rules/01-site-v2-standard.md. Note: CLI commands dynamically resolve bare slugs regardless of bucket folder depth.
 
 ## Defaults
 

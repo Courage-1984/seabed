@@ -2,13 +2,14 @@
 /**
  * Fail when visible copy count is below brief §3 floor − 10%.
  * Usage: node scripts/check-copy-depth.js <slug> [floor]
- * If floor omitted, reads sites/<slug>/meta.json → wordFloor.
+ * If floor omitted, reads site meta.json → wordFloor.
  * Exit 0 = pass, 1 = fail, 2 = usage error.
  */
 import { readdir, readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as cheerio from 'cheerio';
+import { resolveSlugPath } from './lib/resolve-slug.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const [slug, floorStr] = process.argv.slice(2);
@@ -18,10 +19,16 @@ if (!slug) {
   process.exit(2);
 }
 
+const site = resolveSlugPath(ROOT, slug);
+if (!site) {
+  console.error(`COPY_DEPTH_FAIL: site not found for slug "${slug}"`);
+  process.exit(1);
+}
+
 let floor = Number(floorStr);
 if (!Number.isFinite(floor) || floor <= 0) {
   try {
-    const meta = JSON.parse(await readFile(join(ROOT, 'sites', slug, 'meta.json'), 'utf8'));
+    const meta = JSON.parse(await readFile(join(site.absolutePath, 'meta.json'), 'utf8'));
     floor = Number(meta.wordFloor);
   } catch {
     floor = NaN;
@@ -35,18 +42,18 @@ if (!Number.isFinite(floor) || floor <= 0) {
   process.exit(2);
 }
 
-const dir = join(ROOT, 'sites', slug);
+const dir = site.absolutePath;
 
 let htmlFiles;
 try {
   htmlFiles = (await readdir(dir)).filter((f) => f.endsWith('.html'));
 } catch {
-  console.error(`COPY_DEPTH_FAIL: sites/${slug}/ not found`);
+  console.error(`COPY_DEPTH_FAIL: ${site.relativePath}/ not found`);
   process.exit(1);
 }
 
 if (htmlFiles.length === 0) {
-  console.error(`COPY_DEPTH_FAIL: no HTML files in sites/${slug}/`);
+  console.error(`COPY_DEPTH_FAIL: no HTML files in ${site.relativePath}/`);
   process.exit(1);
 }
 
@@ -62,7 +69,7 @@ for (const file of htmlFiles) {
 const min = Math.floor(floor * 0.9);
 if (words < min) {
   console.error(
-    `COPY_DEPTH_FAIL: ${words} words < ${min} (floor ${floor} −10%) in sites/${slug}/`
+    `COPY_DEPTH_FAIL: ${words} words < ${min} (floor ${floor} −10%) in ${site.relativePath}/`
   );
   process.exit(1);
 }

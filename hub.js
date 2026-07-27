@@ -1,6 +1,6 @@
 // Hub: load sites, sort by created (newest first), render strip + featured + filterable archive
-const sites = import.meta.glob('./sites/*/meta.json', { eager: true });
-const images = import.meta.glob('./sites/*/assets/**/*.{jpg,png,jpeg,webp,svg,gif}', {
+const sites = import.meta.glob('./sites/**/meta.json', { eager: true });
+const images = import.meta.glob('./sites/**/assets/**/*.{jpg,png,jpeg,webp,svg,gif}', {
   query: '?url',
   import: 'default',
 });

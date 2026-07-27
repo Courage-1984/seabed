@@ -1,6 +1,6 @@
 # Agent Instructions — illegal-automation
 
-Static Vite MPA hub of daily fictional brand websites, deployed to GitHub Pages. Each site lives under `sites/<kebab-slug>/` and appears on the hub via `meta.json` discovery in `hub.js`.
+Static Vite MPA hub of daily fictional brand websites, deployed to GitHub Pages. Each site lives under a chronological bucket `sites/<YYYY-MM>/<kebab-slug>/` and appears on the hub via recursive `meta.json` discovery in `hub.js`. All CLI scripts accept bare `<kebab-slug>` names across subdirectories.
 
 ## Brief auto-detection (mandatory)
 

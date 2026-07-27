@@ -1,0 +1,15 @@
+{
+  "title": "Gimbal & Hoist",
+  "blurb": "High-altitude rigging and masonry repair launched straight from the heavy swell, entirely bypassing the need for roads or helicopters.",
+  "hero": "assets/hero-trawler.webp",
+  "layoutFamily": "bento",
+  "tags": [
+    "industrial",
+    "maritime",
+    "maintenance"
+  ],
+  "created": "2026-07-27",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

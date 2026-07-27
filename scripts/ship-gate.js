@@ -11,6 +11,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
+import { resolveSlugPath } from './lib/resolve-slug.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -36,9 +37,15 @@ if (!slug) {
   process.exit(2);
 }
 
-const metaPath = join(ROOT, 'sites', slug, 'meta.json');
+const site = resolveSlugPath(ROOT, slug);
+if (!site) {
+  console.error(`SHIP_FAIL: site "${slug}" not found across ./sites/`);
+  process.exit(1);
+}
+
+const metaPath = join(site.absolutePath, 'meta.json');
 if (!existsSync(metaPath)) {
-  console.error(`SHIP_FAIL: sites/${slug}/meta.json not found`);
+  console.error(`SHIP_FAIL: ${site.relativePath}/meta.json not found`);
   process.exit(1);
 }
 
@@ -101,11 +108,11 @@ if (!existsSync(reportPath)) {
 
   if (report) {
     const pages = Array.isArray(report) ? report : report.pages || [];
-    const sitePages = pages.filter((p) => p.path?.startsWith(`sites/${slug}/`));
+    const sitePages = pages.filter((p) => p.path?.startsWith(`${site.relativePath}/`));
     const hub = pages.find((p) => p.path === 'index.html');
 
     if (!sitePages.length) {
-      console.error(`SHIP_FAIL: no qa-report pages for sites/${slug}/`);
+      console.error(`SHIP_FAIL: no qa-report pages for ${site.relativePath}/`);
       failures.push('qa-slug-pages');
     } else {
       const dirty = sitePages.filter(pageFailed);
@@ -115,7 +122,7 @@ if (!existsSync(reportPath)) {
         );
         failures.push('qa-slug-dirty');
       } else {
-        console.log(`SHIP_QA_PASS: ${sitePages.length} page(s) clean for sites/${slug}/`);
+        console.log(`SHIP_QA_PASS: ${sitePages.length} page(s) clean for ${site.relativePath}/`);
       }
     }
 

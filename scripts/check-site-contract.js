@@ -8,9 +8,9 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LAYOUT_FAMILIES, LAYOUT_FAMILY_SET } from './lib/layout-families.js';
+import { findAllSiteDirs, resolveSlugPath } from './lib/resolve-slug.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SITES = join(ROOT, 'sites');
 
 const arg = process.argv[2];
 if (!arg) {
@@ -18,16 +18,12 @@ if (!arg) {
   process.exit(2);
 }
 
-function listSlugs() {
-  return readdirSync(SITES, { withFileTypes: true })
-    .filter((d) => d.isDirectory())
-    .map((d) => d.name)
-    .sort();
-}
+const siteDescriptors = arg === '--all' 
+  ? findAllSiteDirs(ROOT) 
+  : [resolveSlugPath(ROOT, arg)].filter(Boolean);
 
-const slugs = arg === '--all' ? listSlugs() : [arg];
-if (arg !== '--all' && !existsSync(join(SITES, arg))) {
-  console.error(`CONTRACT_FAIL: sites/${arg}/ not found`);
+if (arg !== '--all' && siteDescriptors.length === 0) {
+  console.error(`CONTRACT_FAIL: site not found for target "${arg}"`);
   process.exit(1);
 }
 
@@ -41,9 +37,9 @@ function walkFiles(dir, pred, out = []) {
   return out;
 }
 
-function checkSlug(slug) {
+function checkSite(site) {
   const issues = [];
-  const siteDir = join(SITES, slug);
+  const siteDir = site.absolutePath;
   const metaPath = join(siteDir, 'meta.json');
 
   if (!existsSync(metaPath)) {
@@ -138,20 +134,20 @@ function checkSlug(slug) {
 }
 
 let failed = 0;
-for (const slug of slugs) {
-  const issues = checkSlug(slug);
+for (const site of siteDescriptors) {
+  const issues = checkSite(site);
   if (issues.length) {
     failed++;
-    console.error(`CONTRACT_FAIL: sites/${slug}/`);
+    console.error(`CONTRACT_FAIL: ${site.relativePath}/`);
     for (const issue of issues) console.error(`  - ${issue}`);
   } else {
-    console.log(`CONTRACT_PASS: sites/${slug}/`);
+    console.log(`CONTRACT_PASS: ${site.relativePath}/`);
   }
 }
 
 if (failed) {
-  console.error(`\nCONTRACT_FAIL: ${failed}/${slugs.length} site(s)`);
+  console.error(`\nCONTRACT_FAIL: ${failed}/${siteDescriptors.length} site(s)`);
   process.exit(1);
 }
-console.log(`\nCONTRACT_PASS: ${slugs.length}/${slugs.length} site(s)`);
+console.log(`\nCONTRACT_PASS: ${siteDescriptors.length}/${siteDescriptors.length} site(s)`);
 process.exit(0);

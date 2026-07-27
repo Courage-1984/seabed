@@ -7,6 +7,7 @@ import fs from 'fs';
 import path from 'path';
 import * as cheerio from 'cheerio';
 import sharp from 'sharp';
+import { resolveSlugPath } from './lib/resolve-slug.js';
 
 const IGNORE_DIRS = new Set([
   'node_modules',
@@ -34,11 +35,14 @@ function parseArgs(argv) {
 }
 
 const { slug } = parseArgs(process.argv.slice(2));
-const root = slug ? path.join('sites', slug) : '.';
-
-if (slug && !fs.existsSync(root)) {
-  console.error(`sites/${slug}/ not found`);
-  process.exit(1);
+let root = '.';
+if (slug) {
+  const site = resolveSlugPath(path.resolve('.'), slug);
+  if (!site || !fs.existsSync(site.absolutePath)) {
+    console.error(`sites/${slug}/ not found across ./sites/`);
+    process.exit(1);
+  }
+  root = site.relativePath;
 }
 
 function walkSync(dir, callback) {

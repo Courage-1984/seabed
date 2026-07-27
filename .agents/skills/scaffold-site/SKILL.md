@@ -1,23 +1,24 @@
 ---
 name: scaffold-site
-description: Creates a new flat v2 site folder under sites/<slug>/ with meta.json, index.html, style.css, main.js, and assets/. Use after parse-brief when adding a daily website, scaffolding a new brand site, or starting the build pipeline.
+description: Creates a new flat v2 site folder under sites/<YYYY-MM>/<slug>/ with meta.json, index.html, style.css, main.js, and assets/ within its corresponding chronological bucket. Use after parse-brief when adding a daily website, scaffolding a new brand site, or starting the build pipeline.
 ---
 
 # Scaffold site
 
 ## Goal
 
-Create the empty v2 tree for a new site without nested Vite apps.
+Create the empty v2 tree for a new site without nested Vite apps, placing it inside a chronological Year-Month bucket (`sites/YYYY-MM/<slug>/`) based on today's UTC date or the brief's date.
 
 ## Preconditions
 
-- Checklist from `parse-brief` (brand, slug, blurb).
-- Confirm `sites/<slug>/` does not exist. If it does: ask whether to **upgrade in place** or choose a new slug — do not overwrite silently.
+- Checklist from `parse-brief` (brand, slug, blurb, date).
+- Determine bucket folder: extract `YYYY-MM` from today's UTC date (or brief date).
+- Confirm `sites/<YYYY-MM>/<slug>/` (or any existing folder across `./sites/` matching `<slug>`) does not already exist. If it does: ask whether to **upgrade in place** or choose a new slug — do not overwrite silently.
 
 ## Create
 
 ```
-sites/<slug>/
+sites/<YYYY-MM>/<slug>/
   meta.json
   index.html
   style.css
@@ -66,4 +67,4 @@ Empty directory. Add `favicon.svg` during design or image pass (required before 
 
 ## Next
 
-Hand off to `design-and-build`.
+Hand off to `design-and-build`. Note: all CLI scripts (e.g. `npm run optimize:webp -- --slug <slug>`, `npm run qa -- <slug>`, `check:ship`) accept the bare `<slug>` without typing the month prefix!

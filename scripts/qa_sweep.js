@@ -7,8 +7,9 @@
  */
 import puppeteer from 'puppeteer';
 import { readdirSync, writeFileSync, mkdirSync, existsSync } from 'fs';
-import { join } from 'path';
+import { join, resolve } from 'path';
 import { spawn } from 'child_process';
+import { resolveSlugPath } from './lib/resolve-slug.js';
 
 function parseArgs(argv) {
   const flags = {
@@ -40,12 +41,13 @@ const opts = parseArgs(process.argv.slice(2));
 const targetSlug = opts.slug;
 const baseUrl = 'http://127.0.0.1:4173/';
 const outDir = './qa-screenshots';
+const ROOT = resolve('.');
 
 function findHtmlFiles(dir, fileList = []) {
+  if (!existsSync(dir)) return fileList;
   const files = readdirSync(dir, { withFileTypes: true });
   for (const file of files) {
     if (file.isDirectory()) {
-      if (targetSlug && dir === 'sites' && file.name !== targetSlug) continue;
       findHtmlFiles(join(dir, file.name), fileList);
     } else if (file.name.endsWith('.html')) {
       fileList.push(join(dir, file.name).replace(/\\/g, '/'));
@@ -54,7 +56,17 @@ function findHtmlFiles(dir, fileList = []) {
   return fileList;
 }
 
-const sitePages = findHtmlFiles('sites');
+let searchDir = 'sites';
+if (targetSlug) {
+  const resolvedSite = resolveSlugPath(ROOT, targetSlug);
+  if (!resolvedSite) {
+    console.error(`QA Sweep error: site not found for slug "${targetSlug}"`);
+    process.exit(1);
+  }
+  searchDir = resolvedSite.relativePath;
+}
+
+const sitePages = findHtmlFiles(searchDir);
 const pages =
   targetSlug && opts.noHub
     ? sitePages
