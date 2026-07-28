@@ -1,0 +1,15 @@
+{
+  "title": "Centrifugal Larder",
+  "blurb": "Mathematically precise, non-thermal flavor clarification and extraction via high-G mechanical shear force.",
+  "hero": "assets/hero-centrifuge.webp",
+  "layoutFamily": "bento",
+  "tags": [
+    "food-tech",
+    "industrial",
+    "ecommerce"
+  ],
+  "created": "2026-07-28",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}
