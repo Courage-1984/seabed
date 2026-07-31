@@ -24,10 +24,14 @@ Ship a distinctive, production-quality static site inside the scaffold. Follow @
 1. Use §4a **verbatim** exactly (hero + one flagship) — no paraphrasing.
 2. **Author all §4b directed sections** yourself in the brand voice card / tone.
 3. Respect density:
-   - Body sections: 120–180 words (do not exceed ceiling; do not pad).
-   - FAQ answers: 40–80 words; testimonials: 30–50 words + attribution.
-   - Stay within site word floor/ceiling from §3.
-4. Apply brief §4c copy rules (anti-AI-tells, British English, no placeholders).
+   - Body sections: follow structural constraints (e.g. 2-3 short paragraphs max).
+   - FAQ answers/testimonials: follow short sentence constraints.
+   - Stay within site word floor for `meta.json` from §3.
+4. Apply the following copy rules:
+   - British English spelling (unless brief overrides). No lorem ipsum, no placeholders.
+   - Concrete over generic: real-sounding figures, timeframes, place names, named methods, materials, tiers.
+   - BANNED AI-tells: "in today's fast-paced world", "whether you're… or…", "look no further", "seamless", "elevate", "unlock", "nestled", "in the realm of", "it's not just X, it's Y", empty superlatives, rule-of-three padding.
+   - Vary sentence and paragraph length. Match the voice card. Do not pad to the word ceiling.
 
 ## Pre-handoff self-check (mandatory)
 
