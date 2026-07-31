@@ -49,17 +49,17 @@ npm run check:copy-depth -- <slug> [floor]   # word-floor gate (or meta.wordFloo
 
 ## Antigravity / Cursor / Gemini agent files
 
-| Path | Role |
-|------|------|
-| [`AGENTS.md`](AGENTS.md) | Operating procedure — brief auto-detect + pipeline |
-| [`GEMINI.md`](GEMINI.md) | Project context and defaults |
-| [`.agents/rules/`](.agents/rules/) | Always-on / model-decision constraints |
-| [`.agents/skills/`](.agents/skills/) | Pipeline: parse-brief → research-and-plan → scaffold-site → design-and-build → acquire-images → qa-and-ship; optional: qa-sweep-single, qa-sweep-all |
-| [`.agents/workflows/`](.agents/workflows/) | Optional recovery: `/qa-sweep`, `/optimize-assets`, `/upgrade-site-v2` (legacy) |
-| [`.agents/mcp_config.json`](.agents/mcp_config.json) | Workspace MCP servers (empty by default) |
-| [`.agents/prompts/daily-brief-generator.md`](.agents/prompts/daily-brief-generator.md) | Gemini system prompt **snapshot** (live prompt may be external) |
-| [`.agents/prompts/_sites-index.md`](.agents/prompts/_sites-index.md) | Generated sites list — paste into Scheduled Action (~weekly) |
-| [`.agents/hooks.json`](.agents/hooks.json) | Lightweight governance warnings on edit |
+| Path                                                                                   | Role                                                                                                                                                 |
+| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`AGENTS.md`](AGENTS.md)                                                               | Operating procedure — brief auto-detect + pipeline                                                                                                   |
+| [`GEMINI.md`](GEMINI.md)                                                               | Project context and defaults                                                                                                                         |
+| [`.agents/rules/`](.agents/rules/)                                                     | Always-on / model-decision constraints                                                                                                               |
+| [`.agents/skills/`](.agents/skills/)                                                   | Pipeline: parse-brief → research-and-plan → scaffold-site → design-and-build → acquire-images → qa-and-ship; optional: qa-sweep-single, qa-sweep-all |
+| [`.agents/workflows/`](.agents/workflows/)                                             | Optional recovery: `/qa-sweep`, `/optimize-assets`, `/upgrade-site-v2` (legacy)                                                                      |
+| [`.agents/mcp_config.json`](.agents/mcp_config.json)                                   | Workspace MCP servers (empty by default)                                                                                                             |
+| [`.agents/prompts/daily-brief-generator.md`](.agents/prompts/daily-brief-generator.md) | Gemini system prompt **snapshot** (live prompt may be external)                                                                                      |
+| [`.agents/prompts/_sites-index.md`](.agents/prompts/_sites-index.md)                   | Generated sites list — paste into Scheduled Action (~weekly)                                                                                         |
+| [`.agents/hooks.json`](.agents/hooks.json)                                             | Lightweight governance warnings on edit                                                                                                              |
 
 **Cursor** is an alternate builder IDE using the same [`AGENTS.md`](AGENTS.md) and [`.agents/skills/`](.agents/skills/) as Antigravity. Workspace customizations live under [`.agents/`](.agents/) (Antigravity-native); do not duplicate into a portable plugin unless packaging for reuse.
 

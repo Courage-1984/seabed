@@ -24,16 +24,30 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Cinzel', serif;
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
 
-h1 { font-size: 3rem; font-weight: 800; letter-spacing: -0.02em; }
-h2 { font-size: 2.25rem; letter-spacing: -0.01em; }
-h3 { font-size: 1.5rem; }
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+h2 {
+  font-size: 2.25rem;
+  letter-spacing: -0.01em;
+}
+h3 {
+  font-size: 1.5rem;
+}
 
 p {
   margin-bottom: 1.5rem;
@@ -109,7 +123,9 @@ a {
   color: #b5b5b5;
 }
 
-.grid-cell-dark h1, .grid-cell-dark h2, .grid-cell-dark h3 {
+.grid-cell-dark h1,
+.grid-cell-dark h2,
+.grid-cell-dark h3 {
   color: var(--color-white);
 }
 
@@ -238,11 +254,19 @@ a {
 }
 
 @media (max-width: 768px) {
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 2rem; }
-  .grid-cell { padding: 3rem 2rem; }
-  .hero-section .grid-cell { padding: 4rem 2rem; }
-  
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  .grid-cell {
+    padding: 3rem 2rem;
+  }
+  .hero-section .grid-cell {
+    padding: 4rem 2rem;
+  }
+
   .site-header {
     flex-direction: column;
     gap: 1rem;

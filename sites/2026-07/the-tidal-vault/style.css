@@ -24,13 +24,21 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6, .brand-font {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.brand-font {
   font-family: 'Cinzel', serif;
   font-weight: 500;
   line-height: 1.2;
 }
 
-h1 strong, h2 strong, h3 strong {
+h1 strong,
+h2 strong,
+h3 strong {
   font-weight: 700;
 }
 
@@ -81,25 +89,56 @@ img {
   }
 }
 
-.border-top { border-top: 1px solid var(--color-border); }
-.border-bottom { border-bottom: 1px solid var(--color-border); }
-.border-right { border-right: 1px solid var(--color-border); }
+.border-top {
+  border-top: 1px solid var(--color-border);
+}
+.border-bottom {
+  border-bottom: 1px solid var(--color-border);
+}
+.border-right {
+  border-right: 1px solid var(--color-border);
+}
 
 /* Typography */
-.text-primary { color: var(--color-primary); }
-.text-secondary { color: var(--color-secondary); }
-.text-accent { color: var(--color-accent); }
-.text-muted { color: var(--color-text-muted); }
-.text-white { color: var(--color-white); }
+.text-primary {
+  color: var(--color-primary);
+}
+.text-secondary {
+  color: var(--color-secondary);
+}
+.text-accent {
+  color: var(--color-accent);
+}
+.text-muted {
+  color: var(--color-text-muted);
+}
+.text-white {
+  color: var(--color-white);
+}
 
-.bg-primary { background-color: var(--color-primary); color: var(--color-white); }
-.bg-primary .text-muted { color: var(--color-secondary); }
-.bg-primary h1, .bg-primary h2, .bg-primary h3 { color: var(--color-white); }
-.bg-background { background-color: var(--color-background); }
+.bg-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.bg-primary .text-muted {
+  color: var(--color-secondary);
+}
+.bg-primary h1,
+.bg-primary h2,
+.bg-primary h3 {
+  color: var(--color-white);
+}
+.bg-background {
+  background-color: var(--color-background);
+}
 
-.section-padding { padding: 6rem 0; }
+.section-padding {
+  padding: 6rem 0;
+}
 @media (min-width: 1024px) {
-  .section-padding { padding: 8rem 0; }
+  .section-padding {
+    padding: 8rem 0;
+  }
 }
 
 /* Navigation */
@@ -288,7 +327,9 @@ img {
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
-  .hero h1 { font-size: 4.5rem; }
+  .hero h1 {
+    font-size: 4.5rem;
+  }
 }
 
 .hero h2 {

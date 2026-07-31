@@ -79,12 +79,12 @@ function viewHasIssues(view) {
   if (!view) return false;
   return Boolean(
     view.overflowingElements?.length ||
-      view.brokenImages?.length ||
-      view.nonWebpPhotos?.length ||
-      view.missingAltTags?.length ||
-      view.consoleErrors?.length ||
-      view.networkErrors?.length ||
-      view.brokenLinks?.length
+    view.brokenImages?.length ||
+    view.nonWebpPhotos?.length ||
+    view.missingAltTags?.length ||
+    view.consoleErrors?.length ||
+    view.networkErrors?.length ||
+    view.brokenLinks?.length
   );
 }
 
@@ -117,9 +117,7 @@ if (!existsSync(reportPath)) {
     } else {
       const dirty = sitePages.filter(pageFailed);
       if (dirty.length) {
-        console.error(
-          `SHIP_FAIL: ${dirty.length} qa page(s) dirty for slug: ${dirty.map((d) => d.path).join(', ')}`
-        );
+        console.error(`SHIP_FAIL: ${dirty.length} qa page(s) dirty for slug: ${dirty.map((d) => d.path).join(', ')}`);
         failures.push('qa-slug-dirty');
       } else {
         console.log(`SHIP_QA_PASS: ${sitePages.length} page(s) clean for ${site.relativePath}/`);

@@ -1,20 +1,22 @@
 :root {
-  --color-bg-primary: #0F172A;
-  --color-bg-secondary: #1E293B;
-  --color-accent-distillate: #F59E0B;
-  --color-text-primary: #F8FAFC;
-  --color-text-muted: #94A3B8;
-  
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-accent-distillate: #f59e0b;
+  --color-text-primary: #f8fafc;
+  --color-text-muted: #94a3b8;
+
   --color-border: #334155;
   --color-border-accent: rgba(245, 158, 11, 0.4);
-  
+
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  
+
   --layout-max-width: 1240px;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -35,12 +37,17 @@ body {
   font-weight: 400;
   overflow-x: hidden;
   position: relative;
-  background-image: 
+  background-image:
     radial-gradient(circle at 15% 10%, rgba(30, 41, 59, 0.7) 0%, transparent 40%),
     radial-gradient(circle at 85% 60%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   color: var(--color-text-primary);
   font-weight: 700;
@@ -51,7 +58,9 @@ h1, h2, h3, h4, h5, h6 {
 a {
   color: var(--color-accent-distillate);
   text-decoration: none;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
 }
 
 a:hover {
@@ -162,7 +171,10 @@ a:hover {
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .btn-primary:hover {
@@ -189,7 +201,9 @@ a:hover {
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .btn-secondary:hover {
@@ -225,7 +239,7 @@ a:hover {
 }
 
 .hero-tagline::before {
-  content: "";
+  content: '';
   display: inline-block;
   width: 8px;
   height: 8px;
@@ -361,7 +375,10 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -743,12 +760,12 @@ a:hover {
 .terminal-output {
   display: none;
   margin-top: 1.5rem;
-  background-color: #0B1120;
+  background-color: #0b1120;
   border: 1px solid var(--color-border);
   padding: 1.25rem;
   font-family: monospace;
   font-size: 0.88rem;
-  color: #10B981;
+  color: #10b981;
   line-height: 1.5;
 }
 
@@ -756,22 +773,28 @@ a:hover {
   display: inline-block;
   width: 8px;
   height: 8px;
-  background-color: #10B981;
+  background-color: #10b981;
   border-radius: 50%;
   margin-right: 0.5rem;
   animation: pulse 1s infinite;
 }
 
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.3; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .status-badge {
   display: inline-block;
   background-color: rgba(16, 185, 129, 0.2);
-  color: #10B981;
+  color: #10b981;
   padding: 0.2rem 0.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
@@ -785,7 +808,7 @@ a:hover {
 
 /* Footer */
 .site-footer {
-  background-color: #0B1120;
+  background-color: #0b1120;
   border-top: 1px solid var(--color-border);
   padding: 4rem 0 2.5rem;
   font-size: 0.88rem;
@@ -850,27 +873,27 @@ a:hover {
   .bento-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .bento-large {
     grid-column: span 2;
     grid-row: span 1;
   }
-  
+
   .bento-medium {
     grid-column: span 2;
     grid-row: span 1;
   }
-  
+
   .bento-small {
     grid-column: span 1;
     grid-row: span 1;
   }
-  
+
   .catalogue-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -881,37 +904,37 @@ a:hover {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .site-nav {
     flex-wrap: wrap;
     gap: 1rem;
   }
-  
+
   .hero-section {
     padding: 3rem 0 2rem;
   }
-  
+
   /* Collapse Bento grid to single column on tablet/mobile without overlapping text */
   .bento-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .bento-large,
   .bento-medium,
   .bento-small {
     grid-column: span 1;
     grid-row: span 1;
   }
-  
+
   .form-row {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .intake-wrapper {
     padding: 2rem 1.5rem;
   }
-  
+
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -922,23 +945,24 @@ a:hover {
   .container {
     padding: 0 1.25rem;
   }
-  
+
   .bento-tile,
   .product-card,
   .faq-item,
   .data-callout-panel {
     padding: 1.5rem;
   }
-  
+
   .cta-group {
     flex-direction: column;
     align-items: stretch;
   }
-  
-  .btn-primary, .btn-secondary {
+
+  .btn-primary,
+  .btn-secondary {
     width: 100%;
   }
-  
+
   .faq-answer {
     padding-left: 0;
     border-left: none;

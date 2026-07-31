@@ -29,8 +29,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        ...getHtmlEntries(path.resolve(__dirname, 'sites'))
-      }
-    }
-  }
+        ...getHtmlEntries(path.resolve(__dirname, 'sites')),
+      },
+    },
+  },
 });

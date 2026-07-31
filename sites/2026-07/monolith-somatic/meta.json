@@ -1,0 +1,10 @@
+{
+  "title": "Monolith Somatic",
+  "blurb": "Clinical silence and nervous-system stabilization delivered to the center of the world's most deafening industrial environments.",
+  "hero": "assets/hero-monolith.webp",
+  "layoutFamily": "brutalist stacked",
+  "tags": ["health", "industrial", "wellness"],
+  "created": "2026-07-29",
+  "wordFloor": 1900,
+  "standard": "v2"
+}

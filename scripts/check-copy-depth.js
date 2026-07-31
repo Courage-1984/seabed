@@ -36,9 +36,7 @@ if (!Number.isFinite(floor) || floor <= 0) {
 }
 
 if (!Number.isFinite(floor) || floor <= 0) {
-  console.error(
-    'Usage: node scripts/check-copy-depth.js <slug> [floor]\nProvide floor or set meta.wordFloor.'
-  );
+  console.error('Usage: node scripts/check-copy-depth.js <slug> [floor]\nProvide floor or set meta.wordFloor.');
   process.exit(2);
 }
 
@@ -68,9 +66,7 @@ for (const file of htmlFiles) {
 
 const min = Math.floor(floor * 0.9);
 if (words < min) {
-  console.error(
-    `COPY_DEPTH_FAIL: ${words} words < ${min} (floor ${floor} −10%) in ${site.relativePath}/`
-  );
+  console.error(`COPY_DEPTH_FAIL: ${words} words < ${min} (floor ${floor} −10%) in ${site.relativePath}/`);
   process.exit(1);
 }
 

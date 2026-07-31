@@ -1,22 +1,24 @@
 /* Halcyon Tare — Diagonal-Cut Design System */
 :root {
-  --color-primary: #2C4A43;
-  --color-secondary: #8A9A5B;
-  --color-accent: #C6552B;
-  --color-bg: #F4F2EC;
-  --color-text: #1E2622;
-  --color-white: #FFFFFF;
-  --color-dark-teal: #1F342F;
-  --color-light-bg: #EBE7DC;
-  
+  --color-primary: #2c4a43;
+  --color-secondary: #8a9a5b;
+  --color-accent: #c6552b;
+  --color-bg: #f4f2ec;
+  --color-text: #1e2622;
+  --color-white: #ffffff;
+  --color-dark-teal: #1f342f;
+  --color-light-bg: #ebe7dc;
+
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Public Sans', -apple-system, sans-serif;
-  
+
   --cut-angle-1: 3.5vw;
   --cut-angle-2: 4.5vw;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -43,7 +45,12 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 600;
   line-height: 1.2;
@@ -85,10 +92,13 @@ a {
   text-decoration: underline;
   text-decoration-color: var(--color-accent);
   text-underline-offset: 4px;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
   color: var(--color-accent);
 }
 
@@ -431,7 +441,7 @@ img {
   font-size: 2.4rem;
   font-weight: 600;
   color: var(--color-white);
-  font-feature-settings: "tnum";
+  font-feature-settings: 'tnum';
   font-variant-numeric: tabular-nums;
 }
 
@@ -486,7 +496,7 @@ img {
   color: var(--color-text);
   padding: 2.5rem;
   border-left: 6px solid var(--color-accent);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .metrology-badge-title {
@@ -674,7 +684,8 @@ img {
   margin-bottom: 1.25rem;
 }
 
-.footer-col p, .footer-col li {
+.footer-col p,
+.footer-col li {
   color: rgba(244, 242, 236, 0.85);
   font-size: 0.95rem;
   line-height: 1.6;
@@ -711,9 +722,11 @@ img {
   .motion-reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  
+
   .motion-reveal.revealed {
     opacity: 1;
     transform: translateY(0);
@@ -725,7 +738,7 @@ img {
   .section {
     padding: 6rem 0;
   }
-  
+
   .diagonal-angle-right-primary,
   .diagonal-angle-left-light,
   .diagonal-angle-right-bg,
@@ -734,15 +747,15 @@ img {
     padding-top: calc(5rem + 5vw);
     padding-bottom: calc(5rem + 5vw);
   }
-  
+
   .nav-links {
     gap: 1rem;
   }
-  
+
   .hero {
     padding: 3.5rem 0 5rem 0;
   }
-  
+
   .hero-visual-bleed {
     margin-bottom: -12vw;
   }

@@ -1,4 +1,11 @@
 {
-  "mcpServers": {},
+  "mcpServers": {
+    "__comment": "Add MCP server configurations here to extend the agent's capabilities.",
+    "_exampleLocalServer": {
+      "command": "node",
+      "args": ["path/to/server/index.js"],
+      "env": {}
+    }
+  },
   "_comment": "Intentionally empty; image generation uses built-in Antigravity/Gemini tools per README."
 }

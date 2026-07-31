@@ -1,12 +1,14 @@
 :root {
-  --color-bg-primary: #F4F4F4;
-  --color-bg-secondary: #E0E0E0;
+  --color-bg-primary: #f4f4f4;
+  --color-bg-secondary: #e0e0e0;
   --color-text-primary: #111111;
-  --color-accent-amber: #FFB300;
-  --color-accent-red: #D32F2F;
+  --color-accent-amber: #ffb300;
+  --color-accent-red: #d32f2f;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -51,7 +53,12 @@ body {
 }
 
 /* Massive scale contrasts */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0 0 1.5rem 0;
   line-height: 1.1;
   text-transform: uppercase;
@@ -107,13 +114,15 @@ p {
 }
 
 /* Images as full-width rigid blocks */
-.hero-image-wrapper, .full-width-image-wrapper {
+.hero-image-wrapper,
+.full-width-image-wrapper {
   width: 100%;
   border-top: 4px solid var(--color-text-primary); /* hard rules between text and images */
   display: block; /* strictly block, no floats or inline flex */
 }
 
-.hero-image-wrapper img, .full-width-image-wrapper img {
+.hero-image-wrapper img,
+.full-width-image-wrapper img {
   display: block;
   width: 100%;
   height: auto;
@@ -185,8 +194,12 @@ p {
 }
 
 @keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 footer p {

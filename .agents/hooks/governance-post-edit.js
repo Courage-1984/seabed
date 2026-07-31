@@ -41,12 +41,12 @@ function viewHasIssues(view) {
   if (!view) return false;
   return Boolean(
     view.overflowingElements?.length ||
-      view.brokenImages?.length ||
-      view.nonWebpPhotos?.length ||
-      view.missingAltTags?.length ||
-      view.consoleErrors?.length ||
-      view.networkErrors?.length ||
-      view.brokenLinks?.length
+    view.brokenImages?.length ||
+    view.nonWebpPhotos?.length ||
+    view.missingAltTags?.length ||
+    view.consoleErrors?.length ||
+    view.networkErrors?.length ||
+    view.brokenLinks?.length
   );
 }
 

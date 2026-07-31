@@ -30,7 +30,12 @@ body {
   font-size: 16px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   color: var(--color-primary);
   margin-bottom: 1rem;
@@ -75,7 +80,8 @@ header {
   border-bottom: 2px solid var(--color-secondary);
 }
 
-header h1, header h2 {
+header h1,
+header h2 {
   color: var(--color-background);
 }
 
@@ -147,7 +153,7 @@ nav a:hover {
 .hero h2 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   color: var(--color-secondary);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin-bottom: 0.5rem;
 }
 
@@ -156,13 +162,13 @@ nav a:hover {
   font-family: var(--font-heading);
   font-style: italic;
   margin-bottom: 1.5rem;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .hero p {
   font-size: 1.1rem;
   font-weight: 400;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 @media (max-width: 768px) {
@@ -224,12 +230,14 @@ nav a:hover {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .bento-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
 .bento-item.primary-bg {
@@ -238,7 +246,7 @@ nav a:hover {
   border-color: var(--color-primary);
 }
 
-.bento-item.primary-bg h2, 
+.bento-item.primary-bg h2,
 .bento-item.primary-bg h3 {
   color: var(--color-secondary);
 }
@@ -267,16 +275,24 @@ nav a:hover {
 
 .bento-item.primary-bg .bento-image,
 .bento-item.accent-bg .bento-image {
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Specific Grid Spans */
 @media (min-width: 1024px) {
-  .span-2 { grid-column: span 2; }
-  .span-3 { grid-column: span 3; }
-  .span-4 { grid-column: span 4; }
-  
-  .row-span-2 { grid-row: span 2; }
+  .span-2 {
+    grid-column: span 2;
+  }
+  .span-3 {
+    grid-column: span 3;
+  }
+  .span-4 {
+    grid-column: span 4;
+  }
+
+  .row-span-2 {
+    grid-row: span 2;
+  }
 }
 
 /* Typography specifics */
@@ -329,10 +345,10 @@ nav a:hover {
 .menu-list li {
   margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 .primary-bg .menu-list li {
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .menu-list li:last-child {
   margin-bottom: 0;

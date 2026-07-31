@@ -34,19 +34,22 @@ Before marking pass: confirm the brief’s **layout structural signature** is vi
    - Emit: `Responsive: PASS desktop + mobile` **or** `Responsive: FAIL` with what you will fix
 9. Re-run build + QA + `check:ship` until clean **and** responsive PASS **and** copy depth PASS.
 10. Update `sites/<slug>/meta.json`:
-   - `"standard": "v2"`
-   - `"layoutFamily": "<exact family from brief §3 / design-and-build>"`
-   - `"created": "<YYYY-MM-DD>"` — UTC ship/build day (set at scaffold; confirm here if missing)
-   - `"wordFloor": <n>` when known from brief §3 (helps future `check:copy-depth` / `check:ship`)
-   - `"qa": "v2-pass"` — **only** after step 9
+
+- `"standard": "v2"`
+- `"layoutFamily": "<exact family from brief §3 / design-and-build>"`
+- `"created": "<YYYY-MM-DD>"` — UTC ship/build day (set at scaffold; confirm here if missing)
+- `"wordFloor": <n>` when known from brief §3 (helps future `check:copy-depth` / `check:ship`)
+- `"qa": "v2-pass"` — **only** after step 9
+
 11. Summarize for the user:
-   - Slug and pages added
-   - Image strategy per major asset + WebP confirmed
-   - Copy depth result (`COPY_DEPTH_PASS` wording)
-   - `Responsive: PASS desktop + mobile` (required wording when shipping)
-   - QA / `SHIP_PASS` status
-   - Remaining risks
-   - Commit/push waiting on their request
+
+- Slug and pages added
+- Image strategy per major asset + WebP confirmed
+- Copy depth result (`COPY_DEPTH_PASS` wording)
+- `Responsive: PASS desktop + mobile` (required wording when shipping)
+- QA / `SHIP_PASS` status
+- Remaining risks
+- Commit/push waiting on their request
 
 ## Do not
 

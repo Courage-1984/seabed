@@ -6,8 +6,5 @@
   "created": "2026-06-30",
   "standard": "v2",
   "qa": "v2-pass",
-  "tags": [
-    "industrial",
-    "hardware"
-  ]
+  "tags": ["industrial", "hardware"]
 }

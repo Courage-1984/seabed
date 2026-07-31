@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
 
 :root {
-  --color-bg-primary: #0D1112;
+  --color-bg-primary: #0d1112;
   --color-bg-secondary: #182022;
-  --color-text-primary: #E8ECEB;
-  --color-text-muted: #9BA3A1;
-  --color-accent-copper: #D97736;
-  --color-accent-green: #4A7C59;
-  --color-border-dark: #2A3437;
-  
+  --color-text-primary: #e8eceb;
+  --color-text-muted: #9ba3a1;
+  --color-accent-copper: #d97736;
+  --color-accent-green: #4a7c59;
+  --color-border-dark: #2a3437;
+
   --font-heading: 'Cinzel Decorative', serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
-  
+
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 4rem;
@@ -33,7 +33,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 600;
   line-height: 1.2;
@@ -181,13 +186,15 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .bento-tile:hover {
   transform: translateY(-4px);
   border-color: var(--color-accent-copper);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .bento-tile h3 {

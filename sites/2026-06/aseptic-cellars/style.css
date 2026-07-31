@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-  --color-primary: #FFFFFF;
+  --color-primary: #ffffff;
   --color-secondary: #000000;
-  --color-accent: #0A24DB;
-  --color-background: #F2F4F7;
-  --color-text: #0C0F12;
+  --color-accent: #0a24db;
+  --color-background: #f2f4f7;
+  --color-text: #0c0f12;
 }
 
 * {
@@ -22,7 +22,12 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Archivo', sans-serif;
   font-weight: 900;
   text-transform: uppercase;
@@ -203,8 +208,12 @@ footer h3 {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Hero structural tweaks */

@@ -7,8 +7,5 @@
   "wordFloor": 650,
   "standard": "v2",
   "qa": "v2-pass",
-  "tags": [
-    "industrial",
-    "hardware"
-  ]
+  "tags": ["industrial", "hardware"]
 }

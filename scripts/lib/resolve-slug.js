@@ -31,7 +31,7 @@ export function findAllSiteDirs(root) {
           absolutePath: fullPath,
           relativePath: relPath,
           slug,
-          bucket
+          bucket,
         });
       } else {
         // If meta.json doesn't exist here, recurse into subdirectories (e.g. year-month buckets)
@@ -54,14 +54,19 @@ export function findAllSiteDirs(root) {
  */
 export function resolveSlugPath(root, target) {
   if (!target) return null;
-  const normalizedTarget = target.replace(/\\/g, '/').replace(/^sites\//, '').replace(/\/$/, '');
+  const normalizedTarget = target
+    .replace(/\\/g, '/')
+    .replace(/^sites\//, '')
+    .replace(/\/$/, '');
   const allSites = findAllSiteDirs(root);
 
   // First try matching simple slug name exactly
-  let match = allSites.find(s => s.slug === normalizedTarget);
+  let match = allSites.find((s) => s.slug === normalizedTarget);
   if (match) return match;
 
   // Next try matching against the full relative path (e.g. 2026-07/gimbal-and-hoist)
-  match = allSites.find(s => s.relativePath === `sites/${normalizedTarget}` || s.relativePath.endsWith(`/${normalizedTarget}`));
+  match = allSites.find(
+    (s) => s.relativePath === `sites/${normalizedTarget}` || s.relativePath.endsWith(`/${normalizedTarget}`)
+  );
   return match || null;
 }

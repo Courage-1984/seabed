@@ -26,7 +26,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   line-height: 1.2;
@@ -257,15 +262,16 @@ footer p {
 }
 
 @media (max-width: 1024px) {
-  .hero-grid, .section-grid {
+  .hero-grid,
+  .section-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .section-grid.reverse .content {
     order: 1;
   }
-  
+
   .section-grid.reverse .image-wrapper {
     order: 2;
   }
@@ -275,11 +281,11 @@ footer p {
   section {
     padding: 4rem 0;
   }
-  
+
   h1 {
     font-size: 2.5rem;
   }
-  
+
   h2 {
     font-size: 2rem;
   }

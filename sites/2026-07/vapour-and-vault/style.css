@@ -1,13 +1,13 @@
 :root {
-  --color-primary: #2B231F;
-  --color-secondary: #1A1D20;
-  --color-accent: #D47A3E;
-  --color-background: #F2EFEA;
-  --color-text: #0E1012;
-  
+  --color-primary: #2b231f;
+  --color-secondary: #1a1d20;
+  --color-accent: #d47a3e;
+  --color-background: #f2efea;
+  --color-text: #0e1012;
+
   --font-head: 'Space Grotesk', sans-serif;
   --font-body: 'Space Mono', monospace;
-  
+
   --spacing-sm: 1rem;
   --spacing-md: 2.5rem;
   --spacing-lg: 5rem;
@@ -30,7 +30,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-head);
   line-height: 1.1;
   color: var(--color-secondary);
@@ -82,8 +85,8 @@ a:hover {
   padding: var(--spacing-md);
   position: relative;
 }
-.panel-left h1, 
-.panel-left h2, 
+.panel-left h1,
+.panel-left h2,
 .panel-left h3 {
   color: var(--color-background);
   border-bottom: none;
@@ -123,7 +126,8 @@ a:hover {
   margin-top: var(--spacing-sm);
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
   display: inline-block;
   padding: 0.8rem 1.5rem;
   font-family: var(--font-head);
@@ -234,8 +238,8 @@ a:hover {
   align-items: flex-start;
   margin-bottom: var(--spacing-md);
   padding: var(--spacing-md);
-  border: 1px solid rgba(255,255,255,0.1);
-  background-color: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.02);
 }
 .metric-val {
   font-family: var(--font-head);
@@ -258,7 +262,7 @@ a:hover {
 .field-review {
   font-style: italic;
   font-size: 0.95rem;
-  border-left: 2px solid rgba(255,255,255,0.2);
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
   padding-left: 1rem;
 }
 .field-review cite {
@@ -277,15 +281,21 @@ a:hover {
   gap: var(--spacing-md);
 }
 .faq-item {
-  border-top: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 1rem;
 }
 
 /* Animations */
 @keyframes pulse {
-  0% { opacity: 0.7; }
-  50% { opacity: 1; }
-  100% { opacity: 0.7; }
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
 }
 .pulse-anim {
   animation: pulse 4s infinite ease-in-out;
@@ -314,7 +324,7 @@ a:hover {
     overflow-y: auto;
     scroll-behavior: smooth;
   }
-  
+
   .depth-gauge-container {
     display: block;
     position: absolute;
@@ -334,11 +344,12 @@ a:hover {
     border-radius: 50%;
     transition: top 0.1s linear;
   }
-  
-  .content-block, .intro-block {
+
+  .content-block,
+  .intro-block {
     padding: var(--spacing-lg);
   }
-  
+
   .mobile-footer {
     display: none;
   }

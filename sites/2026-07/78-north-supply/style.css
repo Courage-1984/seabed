@@ -3,13 +3,13 @@
    ========================================================================== */
 
 :root {
-  --color-primary: #1A1F26;
-  --color-secondary: #F4F6F9;
-  --color-accent: #FF5A1F;
-  --color-background: #FFFFFF;
-  --color-text: #1A1F26;
-  --color-muted: #5A6573;
-  --color-border: #DDE2EC;
+  --color-primary: #1a1f26;
+  --color-secondary: #f4f6f9;
+  --color-accent: #ff5a1f;
+  --color-background: #ffffff;
+  --color-text: #1a1f26;
+  --color-muted: #5a6573;
+  --color-border: #dde2ec;
 
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'IBM Plex Sans', sans-serif;
@@ -18,7 +18,9 @@
 }
 
 /* Base & Resets */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -39,7 +41,12 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.25;
@@ -51,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 h2 {
@@ -152,7 +159,7 @@ a {
   width: 100%;
   z-index: 50;
   padding: 1.5rem 0;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .nav-bar {
@@ -168,7 +175,7 @@ a {
   font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: 0.05em;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .nav-links {
@@ -199,7 +206,7 @@ a {
   align-items: center;
   justify-content: center;
   padding: 8rem 0 6rem;
-  color: #FFFFFF;
+  color: #ffffff;
   overflow: hidden;
   background-color: var(--color-primary);
 }
@@ -224,9 +231,15 @@ a {
 
 /* Ken Burns Animation per §6 (20s loop, zoom 1 to 1.05) */
 @keyframes kenBurns {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .ken-burns {
@@ -278,7 +291,7 @@ a {
 .hero-text-block p {
   margin-bottom: 0;
   font-size: 1.05rem;
-  color: #E2E8F0;
+  color: #e2e8f0;
 }
 
 /* CTA & Hover Transitions (§6 Accent Underline Hover) */
@@ -289,18 +302,20 @@ a {
 .btn-primary {
   display: inline-block;
   background-color: var(--color-accent);
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
   padding: 1rem 2.5rem;
   border-radius: 2px;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
   box-shadow: 0 4px 12px rgba(255, 90, 31, 0.25);
 }
 
 .btn-primary:hover {
-  background-color: #E0480E;
+  background-color: #e0480e;
   transform: translateY(-2px);
 }
 
@@ -323,7 +338,9 @@ a {
   width: 0;
   height: 2px;
   background-color: var(--color-accent);
-  transition: width 0.25s ease, left 0.25s ease;
+  transition:
+    width 0.25s ease,
+    left 0.25s ease;
 }
 
 .cta-link:hover::after {
@@ -379,7 +396,9 @@ a {
 .scroll-reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal.is-revealed {
@@ -392,7 +411,7 @@ a {
    ========================================================================== */
 .site-footer {
   background-color: var(--color-primary);
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 5rem 0 3rem;
   border-top: 4px solid var(--color-accent);
 }
@@ -412,7 +431,7 @@ a {
 }
 
 .footer-brand span {
-  color: #94A3B8;
+  color: #94a3b8;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -420,13 +439,13 @@ a {
 
 .footer-address {
   font-style: normal;
-  color: #CBD5E1;
+  color: #cbd5e1;
   line-height: 1.8;
   font-size: 1rem;
 }
 
 .footer-address a {
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: underline;
   text-decoration-color: var(--color-accent);
 }
@@ -435,7 +454,7 @@ a {
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: #64748B;
+  color: #64748b;
   font-size: 0.875rem;
 }
 
@@ -447,11 +466,11 @@ a {
     padding: 4rem 0;
     gap: 2rem;
   }
-  
+
   .hero-section {
     padding: 6rem 0 4rem;
   }
-  
+
   .hero-text-block {
     padding: 1.25rem;
   }
@@ -459,7 +478,7 @@ a {
   .nav-bar {
     justify-content: center;
   }
-  
+
   .nav-links {
     flex-wrap: wrap;
     justify-content: center;

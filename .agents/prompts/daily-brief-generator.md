@@ -24,6 +24,7 @@ Stack the agent will use: Vite MPA + static HTML + CSS + Vanilla JS. No framewor
   `# Website Build Brief — <Brand Name> — <YYYY-MM-DD>`
 
   Use today's date in UTC as `YYYY-MM-DD`.
+
 - Immediately after the title line, emit the **Variety Engine Audit block** specified in STEP 0 — an HTML comment, not visible prose.
 - Then emit sections `## 1.` through `## 10.` exactly as specified under BRIEF STRUCTURE. Use those headings; do not rename or reorder them. (§10 heading is **Builder Handoff**; legacy title **Antigravity Handoff** is also accepted by the builder.)
 
@@ -62,11 +63,11 @@ The multipliers exist to stop the seed moving in obvious lockstep with the calen
 
 `(seed + 1) % 3`:
 
-| Result | Architecture | Sections | Word floor | Word ceiling |
-|--------|--------------|----------|------------|--------------|
-| `0` | **Landing** — 1 page | hero + 5–6 content sections (1 flagship §4a + 4–5 directed §4b) | 650 | 950 |
-| `1` | **Dense one-pager** — 1 page | hero + 7–9 sections (1 flagship + ≥7 directed) | 1,100 | 1,450 |
-| `2` | **Multi-page** — 3 pages (index + 2 distinct; shared nav/footer); each page hero + 4–6 sections | 1,900 total | 2,500 total |
+| Result | Architecture                                                                                    | Sections                                                        | Word floor  | Word ceiling |
+| ------ | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- | ------------ |
+| `0`    | **Landing** — 1 page                                                                            | hero + 5–6 content sections (1 flagship §4a + 4–5 directed §4b) | 650         | 950          |
+| `1`    | **Dense one-pager** — 1 page                                                                    | hero + 7–9 sections (1 flagship + ≥7 directed)                  | 1,100       | 1,450        |
+| `2`    | **Multi-page** — 3 pages (index + 2 distinct; shared nav/footer); each page hero + 4–6 sections | 1,900 total                                                     | 2,500 total |
 
 Rare **4th page** only if `seed % 7 === 0` on a multi-page day, and only if it has a real job (FAQ, booking, catalogue — not a clone landing). Cap ~700 words/page average on multi-page sites.
 
@@ -76,21 +77,21 @@ Stop when copy is clear — **do not pad to the ceiling**. Ceiling = "too much";
 
 `(seed + 3) % 11` picks the **primary layout**. Each one carries a **mandatory structural signature** — a name alone is not a spec, and none of these may be implemented as "image on one side, text block on the other, repeated down the page." That generic pattern is the default failure mode this table exists to block.
 
-| Result | Layout family | Mandatory structural signature | Explicitly forbidden |
-|--------|----------------|-------------------------------|----------------------|
-| `0` | asymmetric split | Uneven split (e.g. 62/38, never 50/50); content bleeds across the split line at least once; at least one element breaks the grid entirely | A clean, even two-pane layout repeated section after section |
-| `1` | editorial magazine | Multi-column body text (CSS `columns: 2–3` on desktop) for at least one section; drop cap or pull-quote breaking across columns | A persistent single left/right image-text pane used as the whole page's structure |
-| `2` | bento | CSS grid with at least 5 distinctly-sized tiles in one section; irregular, not a uniform 2-column or 3-column matrix | Any section that is just two equal boxes side by side |
-| `3` | brutalist stacked | Full-width single-column stacked blocks, oversized type, hard rules/borders between blocks | Any side-by-side columns anywhere on desktop |
-| `4` | horizontal-scroll band | At least one section using horizontal scroll-snap / overflow-x | Vertical two-column arrangements as the page's structure |
-| `5` | ultra-minimal full-bleed | Generous whitespace, single centred column, large full-bleed imagery breaking the grid | Any persistent sidebar or split-pane |
-| `6` | sticky-rail + content | This is the **one family where a two-pane layout is correct** — sticky rail at a stated ratio (e.g. 30/70) with a specific mechanic (sticky section index, progress dots, or similar), used for exactly one page region, not the whole site | Using the sticky rail for every section, or applying it to the hero |
-| `7` | diagonal-cut | Sections divided by angled edges (`clip-path: polygon(...)` or skew transforms) instead of straight horizontal lines; at least one image bleeds across a diagonal cut | Any straight full-width horizontal divider used as the sole section boundary; rectangular two-pane panels |
-| `8` | overlapping card-stack | Content presented as a stack of overlapping panels with real depth (z-index layering, slight rotation or offset, partial peek of the card behind), advanced by scroll or interaction | A flat single-layer grid; static side-by-side panels with no overlap |
-| `9` | terminal / data-readout | Monospace-led, dense "spec sheet" or console aesthetic; content as labelled data rows, readouts, or bordered table-like blocks, stacked full width | Decorative hero imagery as the dominant element; soft rounded cards |
-| `10` | kinetic ticker / marquee bands | Full-width continuously-scrolling marquee/ticker bands (pure CSS animation) interspersed between static full-width sections; strong sense of industrial motion/signage | Static sections with no motion element anywhere on the page; side-by-side split panels |
+| Result | Layout family                  | Mandatory structural signature                                                                                                                                                                                                              | Explicitly forbidden                                                                                      |
+| ------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `0`    | asymmetric split               | Uneven split (e.g. 62/38, never 50/50); content bleeds across the split line at least once; at least one element breaks the grid entirely                                                                                                   | A clean, even two-pane layout repeated section after section                                              |
+| `1`    | editorial magazine             | Multi-column body text (CSS `columns: 2–3` on desktop) for at least one section; drop cap or pull-quote breaking across columns                                                                                                             | A persistent single left/right image-text pane used as the whole page's structure                         |
+| `2`    | bento                          | CSS grid with at least 5 distinctly-sized tiles in one section; irregular, not a uniform 2-column or 3-column matrix                                                                                                                        | Any section that is just two equal boxes side by side                                                     |
+| `3`    | brutalist stacked              | Full-width single-column stacked blocks, oversized type, hard rules/borders between blocks                                                                                                                                                  | Any side-by-side columns anywhere on desktop                                                              |
+| `4`    | horizontal-scroll band         | At least one section using horizontal scroll-snap / overflow-x                                                                                                                                                                              | Vertical two-column arrangements as the page's structure                                                  |
+| `5`    | ultra-minimal full-bleed       | Generous whitespace, single centred column, large full-bleed imagery breaking the grid                                                                                                                                                      | Any persistent sidebar or split-pane                                                                      |
+| `6`    | sticky-rail + content          | This is the **one family where a two-pane layout is correct** — sticky rail at a stated ratio (e.g. 30/70) with a specific mechanic (sticky section index, progress dots, or similar), used for exactly one page region, not the whole site | Using the sticky rail for every section, or applying it to the hero                                       |
+| `7`    | diagonal-cut                   | Sections divided by angled edges (`clip-path: polygon(...)` or skew transforms) instead of straight horizontal lines; at least one image bleeds across a diagonal cut                                                                       | Any straight full-width horizontal divider used as the sole section boundary; rectangular two-pane panels |
+| `8`    | overlapping card-stack         | Content presented as a stack of overlapping panels with real depth (z-index layering, slight rotation or offset, partial peek of the card behind), advanced by scroll or interaction                                                        | A flat single-layer grid; static side-by-side panels with no overlap                                      |
+| `9`    | terminal / data-readout        | Monospace-led, dense "spec sheet" or console aesthetic; content as labelled data rows, readouts, or bordered table-like blocks, stacked full width                                                                                          | Decorative hero imagery as the dominant element; soft rounded cards                                       |
+| `10`   | kinetic ticker / marquee bands | Full-width continuously-scrolling marquee/ticker bands (pure CSS animation) interspersed between static full-width sections; strong sense of industrial motion/signage                                                                      | Static sections with no motion element anywhere on the page; side-by-side split panels                    |
 
-**Hard cap, regardless of family:** no more than **one section site-wide** may use a literal left-image/right-text or left-text/right-image split. If the family rolled is `6` (sticky-rail + content), that pattern *is* the one allowed exception and must include the stated sticky mechanic — not just a static two-column div.
+**Hard cap, regardless of family:** no more than **one section site-wide** may use a literal left-image/right-text or left-text/right-image split. If the family rolled is `6` (sticky-rail + content), that pattern _is_ the one allowed exception and must include the stated sticky mechanic — not just a static two-column div.
 
 **Underused-layout soft preference (not a second RNG):** If the operator pasted an Existing sites table and the rolled family is already heavily used there (e.g. many `brutalist stacked` / `bento`), and an adjacent underrepresented family (`diagonal-cut`, `terminal / data-readout`, `kinetic ticker / marquee bands`, or similarly rare) still fits the brand, you may swap to that adjacent family. Record the swap in the audit block (`layout: … -> <name> (soft-swap from <rolled>)`). Otherwise keep the rolled family.
 
@@ -98,14 +99,14 @@ Stop when copy is clear — **do not pad to the ceiling**. Ceiling = "too much";
 
 `seed % 6` picks voice; state it in §1 and the brand voice card:
 
-| Result | Tone |
-|--------|------|
-| `0` | dry expert |
-| `1` | warm maker |
-| `2` | sharp industrial |
-| `3` | wry editorial |
-| `4` | calm clinical |
-| `5` | adventurous field |
+| Result | Tone              |
+| ------ | ----------------- |
+| `0`    | dry expert        |
+| `1`    | warm maker        |
+| `2`    | sharp industrial  |
+| `3`    | wry editorial     |
+| `4`    | calm clinical     |
+| `5`    | adventurous field |
 
 ### Niche + twist
 
@@ -162,7 +163,7 @@ Fill in the real numbers and names. This is the audit trail that lets Dennis con
 
 `# Website Build Brief — <Brand Name> — <YYYY-MM-DD>`
 
-*(followed immediately by the Variety Engine Audit block above)*
+_(followed immediately by the Variety Engine Audit block above)_
 
 ### ## 1. Business Profile
 
@@ -262,8 +263,8 @@ Draw from this module pool as fits — enough modules to clear the word **floor*
 
 ### ## 5. Colour Palette
 
-1. Markdown table: Element (Primary, Secondary, Accent, Background, Text) | Hex | Reasoning.
-2. Ready-to-paste `:root { --color-…: …; }` block.
+1. Markdown table: Element (Primary, Secondary, Accent, Background, Text) | HSL Value | Hex Equivalent | Reasoning. (Prefer HSL for easier theme manipulation).
+2. Ready-to-paste `:root { --color-…: …; }` block containing both base and interactive states (e.g. `--color-hover`, `--color-focus`).
 3. Implement palette **exclusively** as CSS custom properties in `:root`.
 4. WCAG AA contrast for Text on Background and primary UI text on its surfaces.
 
@@ -292,9 +293,10 @@ Draw from this module pool as fits — enough modules to clear the word **floor*
 
 **Anti-clichés** (avoid unless twist requires): purple-on-white / purple–indigo gradients; cream (~#F4F1EA) + terracotta + generic serif broadsheet; default dark + glow + pill clusters + emoji decoration; and — regardless of layout family — a generic repeating "image left, text right" (or mirrored) section pattern used more than once on the page.
 
-**Motion**
+**Motion & Micro-interactions**
 
 Specify **2–3 intentional motion ideas** for CSS/`main.js`. Hierarchy, not noise.
+Also specify **1–2 micro-interactions** (e.g., specific hover states, focus rings, or button press feedbacks) to make the UI feel tactile.
 
 ### ## 7. Asset Specs
 
@@ -344,29 +346,33 @@ Include verbatim (fill `<slug>` and `<floor>`):
 - Vite + HTML + CSS + Vanilla JS only. No React/Vue/Svelte. No Tailwind/Bootstrap.
 - No plugins beyond Vite defaults. No nested `package.json`.
 - Do not commit or push unless the human asks.
-- Distinctive design for *this* brief — do not clone another site in the repo.
+- Distinctive design for _this_ brief — do not clone another site in the repo.
 - Implement the named layout family's mandatory structural signature exactly, not just its name; match the voice card on all builder-authored copy.
 - Layout compliance is non-negotiable: if the build ends up as a repeating left-image/right-text (or mirrored) pattern across sections, that is a failed build regardless of which layout family name was declared — re-read the STEP 0 signature table and rebuild the affected sections before running QA.
 
 ### ## 10. Builder Handoff
 
-*(Alias accepted by the builder: **Antigravity Handoff**.)*
+_(Alias accepted by the builder: **Antigravity Handoff**.)_
 
 Fill this so the builder produces higher quality (research + plan + skills + images). Use this structure:
 
 ```markdown
 ### Research (do before writing directed copy)
+
 - [3–5 search angles / realism checks: materials, regs, regional colour, tropes to avoid]
 - Fictional brand: research informs realism; do not copy real trademarks or living companies' unique claims.
 
 ### Planning
+
 - Ordered checklist referencing skills by name
 - Risks to watch (overflow, thin FAQ, generic hero, exceeding copy ceiling, collapsing into a generic two-column layout instead of the declared layout family's mandatory signature)
 
 ### Skills to load (in order)
+
 parse-brief → research-and-plan → scaffold-site → design-and-build → acquire-images → qa-and-ship
 
 ### Image generation briefs
+
 - Repeat or refine §7 assets with ready-to-run generate prompts
 - Remind: WebP only; slug-scoped optimize scripts; no hotlink; no picsum as done
 ```

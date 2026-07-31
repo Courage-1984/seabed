@@ -1,10 +1,10 @@
 :root {
-  --color-primary: #1A1B20;
-  --color-secondary: #2E3039;
-  --color-accent: #00E5FF;
-  --color-background: #08080A;
-  --color-text: #F8F9FA;
-  
+  --color-primary: #1a1b20;
+  --color-secondary: #2e3039;
+  --color-accent: #00e5ff;
+  --color-background: #08080a;
+  --color-text: #f8f9fa;
+
   --font-heading: 'Archivo', sans-serif;
   --font-body: 'JetBrains Mono', monospace;
 }
@@ -77,9 +77,15 @@ body {
 }
 
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.4; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .clock {
@@ -88,7 +94,10 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-heading);
   text-transform: uppercase;
 }
@@ -242,7 +251,8 @@ form {
   gap: 1rem;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   background-color: var(--color-primary);
   border: 1px solid var(--color-secondary);
@@ -253,7 +263,8 @@ input, select {
   border-radius: 4px;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
   outline: none;
   border-color: var(--color-accent);
 }
@@ -309,15 +320,15 @@ footer a:hover {
   .bento-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .span-2 {
     grid-column: span 2;
   }
-  
+
   .tall {
     grid-row: span 1;
   }
-  
+
   .image-block {
     min-height: 250px;
   }
@@ -327,35 +338,35 @@ footer a:hover {
   body {
     padding: 0;
   }
-  
+
   #dispatch-terminal {
     border-radius: 0;
     border: none;
     min-height: 100vh;
   }
-  
+
   .terminal-header {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
   }
-  
+
   .bento-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .span-2 {
     grid-column: span 1;
   }
-  
+
   .specs-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .form-row {
     flex-direction: column;
   }
-  
+
   footer {
     flex-direction: column;
     align-items: center;

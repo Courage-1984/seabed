@@ -4,17 +4,17 @@ Use this when choosing public-domain or openly licensed photos. Always verify th
 
 ## Preferred sources
 
-| Source | Typical license | Notes |
-|--------|-----------------|-------|
-| [Wikimedia Commons](https://commons.wikimedia.org/) | Varies — filter for Public Domain / CC0 / CC BY | Check each file’s license tab; prefer PD and CC0 when attribution is hard to surface on a fictional brand site |
-| [NASA Image and Video Library](https://images.nasa.gov/) | Usually public domain (US gov) | Excellent for space, aviation, science textures |
-| [Unsplash](https://unsplash.com/) | Unsplash License (permissive) | Good atmospheric photos; not PD — still OK for this portfolio if license terms are respected |
-| [Pexels](https://www.pexels.com/) | Pexels License | Similar to Unsplash for atmosphere shots |
+| Source                                                   | Typical license                                 | Notes                                                                                                          |
+| -------------------------------------------------------- | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| [Wikimedia Commons](https://commons.wikimedia.org/)      | Varies — filter for Public Domain / CC0 / CC BY | Check each file’s license tab; prefer PD and CC0 when attribution is hard to surface on a fictional brand site |
+| [NASA Image and Video Library](https://images.nasa.gov/) | Usually public domain (US gov)                  | Excellent for space, aviation, science textures                                                                |
+| [Unsplash](https://unsplash.com/)                        | Unsplash License (permissive)                   | Good atmospheric photos; not PD — still OK for this portfolio if license terms are respected                   |
+| [Pexels](https://www.pexels.com/)                        | Pexels License                                  | Similar to Unsplash for atmosphere shots                                                                       |
 
 ## When PD/open is a good fit
 
 - Landscapes, weather, forests, coastlines
-- Generic industrial textures (metal, weld sparks *without* branded UI)
+- Generic industrial textures (metal, weld sparks _without_ branded UI)
 - Food ingredients, materials, workshop ambience
 - Historical or documentary feel when the brief is not product-hero focused
 

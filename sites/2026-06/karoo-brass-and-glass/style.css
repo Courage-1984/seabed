@@ -25,7 +25,12 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Lora', serif;
   color: var(--color-text);
   line-height: 1.2;
@@ -50,13 +55,18 @@ img {
 }
 
 /* Typography specifics */
-strong, b {
+strong,
+b {
   font-weight: 700;
   color: var(--color-text);
 }
 
-.text-primary { color: var(--color-primary); }
-.text-secondary { color: var(--color-secondary); }
+.text-primary {
+  color: var(--color-primary);
+}
+.text-secondary {
+  color: var(--color-secondary);
+}
 
 /* Layout Grid */
 .container {
@@ -196,7 +206,8 @@ table {
   font-family: 'Chivo', sans-serif;
 }
 
-th, td {
+th,
+td {
   padding: 1rem;
   border-bottom: 1px solid var(--color-border);
   text-align: left;
@@ -250,7 +261,7 @@ ul.mechanical-list li::before {
   background-color: #fff;
   padding: 2rem;
   border-left: 4px solid var(--color-accent);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .testimonial p {
@@ -290,7 +301,9 @@ label {
   color: var(--color-text);
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   width: 100%;
   padding: 1rem;
   border: 1px solid var(--color-border);
@@ -299,10 +312,18 @@ input, textarea, select {
   color: var(--color-text);
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   outline: 2px solid var(--color-primary);
   border-color: transparent;
 }
-.table-container { width: 100%; overflow-x: auto; }
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
 
-.table-container { width: 100%; overflow-x: auto; }
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}

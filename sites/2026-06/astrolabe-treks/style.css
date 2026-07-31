@@ -1,13 +1,13 @@
 :root {
-  --color-primary: #0B0C10;
-  --color-secondary: #1F2833;
-  --color-accent: #C5A880;
+  --color-primary: #0b0c10;
+  --color-secondary: #1f2833;
+  --color-accent: #c5a880;
   --color-background: #050608;
-  --color-text: #EBEBEB;
-  
+  --color-text: #ebebeb;
+
   --font-heading: 'Cormorant Garamond', serif;
   --font-body: 'Work Sans', sans-serif;
-  
+
   --transition-speed: 0.5s;
 }
 
@@ -27,7 +27,11 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, .logo {
+h1,
+h2,
+h3,
+h4,
+.logo {
   font-family: var(--font-heading);
   color: var(--color-accent);
   font-weight: 400;
@@ -100,7 +104,8 @@ nav a {
 }
 
 /* Buttons and Links */
-.btn-primary, .btn-outline {
+.btn-primary,
+.btn-outline {
   display: inline-block;
   padding: 1rem 2rem;
   font-family: var(--font-heading);
@@ -261,7 +266,8 @@ nav a {
   gap: 10%;
 }
 
-.col-left, .col-right {
+.col-left,
+.col-right {
   width: 45%;
 }
 
@@ -348,7 +354,9 @@ label {
   letter-spacing: 1px;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid var(--color-secondary);
@@ -359,7 +367,9 @@ input, select, textarea {
   transition: border-color var(--transition-speed);
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
   border-bottom-color: var(--color-accent);
 }
@@ -413,29 +423,32 @@ footer {
   .hero-section {
     padding-top: 4rem;
   }
-  
+
   .hero-content {
     width: 80%;
   }
-  
-  .overlap-right .section-text, .overlap-left .section-text {
+
+  .overlap-right .section-text,
+  .overlap-left .section-text {
     width: 70%;
     margin: 0 auto;
     margin-top: -5rem;
   }
-  
-  .overlap-right .section-image, .overlap-left .section-image {
+
+  .overlap-right .section-image,
+  .overlap-left .section-image {
     width: 100%;
   }
-  
+
   .double-column {
     flex-direction: column;
   }
-  
-  .col-left, .col-right {
+
+  .col-left,
+  .col-right {
     width: 100%;
   }
-  
+
   .col-right {
     margin-top: 4rem;
   }
@@ -445,33 +458,33 @@ footer {
   .asymmetric-section {
     padding: 6rem 5%;
   }
-  
+
   .hero-section {
     padding-top: 12rem;
   }
-  
+
   .hero-content {
     width: 100%;
   }
-  
+
   .hero-image {
     opacity: 0.2;
     mask-image: none;
     -webkit-mask-image: none;
     width: 100%;
   }
-  
+
   nav {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
   }
-  
+
   .form-row {
     flex-direction: column;
     gap: 2rem;
   }
-  
+
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2rem;

@@ -1,13 +1,13 @@
 :root {
-  --color-primary: #1E1E2E;
+  --color-primary: #1e1e2e;
   --color-secondary: #313244;
-  --color-accent: #A6E3A1;
-  --color-background: #11111B;
-  --color-text: #CDD6F4;
-  
+  --color-accent: #a6e3a1;
+  --color-background: #11111b;
+  --color-text: #cdd6f4;
+
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Source Sans 3', sans-serif;
-  
+
   --transition-speed: 0.4s;
 }
 
@@ -30,7 +30,11 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, .brand-logo {
+h1,
+h2,
+h3,
+h4,
+.brand-logo {
   font-family: var(--font-heading);
   font-weight: 500;
   color: var(--color-text);
@@ -110,7 +114,8 @@ nav a {
   color: var(--color-text);
 }
 
-nav a:hover, nav a.active {
+nav a:hover,
+nav a.active {
   color: var(--color-accent);
 }
 
@@ -120,7 +125,8 @@ main {
 }
 
 /* Buttons */
-.btn-primary, .btn-outline {
+.btn-primary,
+.btn-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -292,22 +298,22 @@ footer {
   .hero-text {
     width: 100%;
   }
-  
+
   .hero-image {
     width: 100%;
     opacity: 0.3;
     mask-image: none;
     -webkit-mask-image: none;
   }
-  
+
   .spec-grid {
     grid-template-columns: 1fr;
   }
-  
+
   nav {
     display: none; /* simple mobile nav approach for minimal site */
   }
-  
+
   footer {
     flex-direction: column;
     gap: 2rem;

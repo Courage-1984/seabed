@@ -1,10 +1,10 @@
 /* Agent Implementation: Inject exclusively into :root */
 :root {
-  --color-primary: #0B131F;
-  --color-secondary: #1C2A39;
-  --color-accent: #D4AF37;
-  --color-background: #050A10;
-  --color-text: #E5E9F0;
+  --color-primary: #0b131f;
+  --color-secondary: #1c2a39;
+  --color-accent: #d4af37;
+  --color-background: #050a10;
+  --color-text: #e5e9f0;
 
   --font-heading: 'Cinzel Decorative', serif;
   --font-body: 'Literata', sans-serif;
@@ -14,7 +14,7 @@
   --spacing-lg: 4rem;
   --spacing-xl: 8rem;
   --spacing-xxl: 12rem;
-  
+
   --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -38,7 +38,11 @@ body {
   font-weight: 300;
 }
 
-h1, h2, h3, h4, .logo {
+h1,
+h2,
+h3,
+h4,
+.logo {
   font-family: var(--font-heading);
   font-weight: 400;
   color: var(--color-text);
@@ -58,11 +62,30 @@ img {
 }
 
 /* Typography Scales */
-h1 { font-size: clamp(3rem, 8vw, 6rem); text-transform: uppercase; letter-spacing: 0.05em; }
-h2 { font-size: clamp(2rem, 5vw, 4rem); margin-bottom: var(--spacing-md); }
-h3 { font-size: clamp(1.25rem, 3vw, 2rem); margin-bottom: var(--spacing-sm); color: var(--color-accent); }
-p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
-.section-lead { font-size: 1.5rem; font-style: italic; opacity: 0.8; }
+h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: var(--spacing-md);
+}
+h3 {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-accent);
+}
+p {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-md);
+  max-width: 60ch;
+}
+.section-lead {
+  font-size: 1.5rem;
+  font-style: italic;
+  opacity: 0.8;
+}
 
 /* Buttons */
 .btn-primary {
@@ -122,7 +145,9 @@ p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
   width: 100%;
   padding: var(--spacing-md) 5%;
   z-index: 100;
-  transition: background-color 0.4s ease, padding 0.4s ease;
+  transition:
+    background-color 0.4s ease,
+    padding 0.4s ease;
 }
 
 .site-header.scrolled {
@@ -262,7 +287,9 @@ p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
   background: rgba(28, 42, 57, 0.4);
   padding: 1.5rem;
   border-left: 2px solid var(--color-accent);
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .value-card:hover {
@@ -341,12 +368,20 @@ p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
   background: var(--color-accent);
   color: var(--color-background);
 }
-.prev-btn { left: 0.75rem; }
-.next-btn { right: 0.75rem; }
+.prev-btn {
+  left: 0.75rem;
+}
+.next-btn {
+  right: 0.75rem;
+}
 
 @media (min-width: 900px) {
-  .prev-btn { left: -1.5rem; }
-  .next-btn { right: -1.5rem; }
+  .prev-btn {
+    left: -1.5rem;
+  }
+  .next-btn {
+    right: -1.5rem;
+  }
 }
 
 /* TMF Feature List */
@@ -418,7 +453,7 @@ p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
 
 .itinerary-list li::before {
   counter-increment: itinerary-counter;
-  content: "0" counter(itinerary-counter);
+  content: '0' counter(itinerary-counter);
   position: absolute;
   left: 0;
   top: 0;
@@ -496,7 +531,7 @@ p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
 
 .month-status.limited {
   background: rgba(230, 95, 43, 0.15);
-  color: #E65F2B;
+  color: #e65f2b;
 }
 
 .month-status.open {
@@ -603,7 +638,7 @@ p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
   position: relative;
   z-index: 2;
   margin-right: -10%;
-  box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
+  box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.5);
 }
 
 .menu-items {
@@ -756,7 +791,9 @@ p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
+  transition:
+    opacity 1s ease-out,
+    transform 1s ease-out;
 }
 
 .animate-on-scroll.visible {
@@ -768,49 +805,56 @@ p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
    RESPONSIVE
    ========================================== */
 @media (max-width: 1024px) {
-  h1 { font-size: 4rem; }
-  .hero-image-wrapper { width: 100%; opacity: 0.3; }
-  .hero-image-wrapper::before { background: rgba(5, 10, 16, 0.6); }
-  
+  h1 {
+    font-size: 4rem;
+  }
+  .hero-image-wrapper {
+    width: 100%;
+    opacity: 0.3;
+  }
+  .hero-image-wrapper::before {
+    background: rgba(5, 10, 16, 0.6);
+  }
+
   .concept-grid,
   .expedition-grid,
   .menu-container,
   .booking-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .offset-image {
     transform: translateY(0);
     margin-top: var(--spacing-md);
   }
-  
+
   .expedition-image {
     position: relative;
     top: 0;
     margin-bottom: var(--spacing-md);
   }
-  
+
   .menu-content {
     margin-right: 0;
     margin-bottom: -10%;
   }
-  
+
   .overlapping-image {
     margin-top: 0;
   }
-  
+
   .footer-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .calendar-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-  
+
   .tmf-stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .safety-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -845,40 +889,58 @@ p { font-size: 1.1rem; margin-bottom: var(--spacing-md); max-width: 60ch; }
     padding-top: 2rem;
     padding-bottom: 3rem;
   }
-  
+
   .section {
     padding: var(--spacing-lg) 5%;
   }
-  
-  h1 { font-size: 3rem; }
-  h2 { font-size: 2.5rem; }
-  
+
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+
   .menu-content {
     margin-bottom: 0;
   }
-  
+
   .calendar-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .tmf-stats-grid {
     grid-template-columns: 1fr 1fr;
   }
-  
+
   .safety-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .value-grid-4 {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 2rem; }
-  .tmf-stats-grid { grid-template-columns: 1fr; }
-  .calendar-grid { grid-template-columns: repeat(2, 1fr); }
-  .nav-links { flex-direction: column; align-items: center; gap: 0.5rem; }
-  .value-card { padding: 1.25rem; }
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  .tmf-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .calendar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .value-card {
+    padding: 1.25rem;
+  }
 }

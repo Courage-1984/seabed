@@ -1,21 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&family=Space+Grotesk:wght@600;700&display=swap');
 
 :root {
-  --color-primary: #1E1E2E;
+  --color-primary: #1e1e2e;
   --color-secondary: #313244;
-  --color-accent: #CBA6F7;
-  --color-background: #11111B;
-  --color-text: #CDD6F4;
+  --color-accent: #cba6f7;
+  --color-background: #11111b;
+  --color-text: #cdd6f4;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   border-radius: 0 !important; /* Enforce zero border-radius for brutalist look */
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
@@ -27,7 +30,12 @@ html, body {
   font-size: 16px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   line-height: 1.1;
@@ -43,12 +51,8 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
-  background-image: linear-gradient(
-      to bottom,
-      rgba(17, 17, 27, 0.7),
-      rgba(17, 17, 27, 0.95)
-    ),
-    url('./assets/hero-bg.webp');
+  background-image:
+    linear-gradient(to bottom, rgba(17, 17, 27, 0.7), rgba(17, 17, 27, 0.95)), url('./assets/hero-bg.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -130,7 +134,7 @@ label {
   color: var(--color-text);
 }
 
-input[type="email"] {
+input[type='email'] {
   background-color: var(--color-background);
   color: var(--color-text);
   border: 2px solid var(--color-secondary);
@@ -141,7 +145,7 @@ input[type="email"] {
   transition: border-color 0.2s ease;
 }
 
-input[type="email"]:focus {
+input[type='email']:focus {
   border-color: var(--color-accent);
 }
 
@@ -155,7 +159,9 @@ button {
   border: none;
   cursor: pointer;
   text-transform: uppercase;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
 }
 
 button:hover {
@@ -179,7 +185,8 @@ footer {
   color: var(--color-secondary);
 }
 
-.contact-details, .legal {
+.contact-details,
+.legal {
   color: var(--color-text);
   opacity: 0.7;
 }
@@ -190,11 +197,11 @@ footer {
     flex-direction: row;
     align-items: flex-end;
   }
-  
+
   .form-group {
     flex-grow: 1;
   }
-  
+
   button {
     height: 3.5rem;
   }
@@ -205,11 +212,11 @@ footer {
     padding: 1rem;
     border-width: 5px;
   }
-  
+
   .manifesto {
     padding-left: 1rem;
   }
-  
+
   footer {
     flex-direction: column;
     gap: 0.5rem;

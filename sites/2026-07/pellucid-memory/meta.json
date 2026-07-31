@@ -1,0 +1,11 @@
+{
+  "title": "Pellucid Memory",
+  "blurb": "Enterprise cold storage physically burned into synthetic quartz, because relying on decaying magnetic tape for fifty-year compliance is corporate negligence.",
+  "hero": "assets/hero-quartz.webp",
+  "layoutFamily": "sticky-rail + content",
+  "tags": ["tech", "b2b", "hardware"],
+  "created": "2026-07-31",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

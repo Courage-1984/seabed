@@ -3,15 +3,18 @@ import './style.css';
 document.addEventListener('DOMContentLoaded', () => {
   // Overlapping Card-Stack unfold on scroll
   const stacks = document.querySelectorAll('.card-stack');
-  const stackObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('unfolded');
-      }
-    });
-  }, { threshold: 0.2 });
-  
-  stacks.forEach(stack => stackObserver.observe(stack));
+  const stackObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('unfolded');
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  stacks.forEach((stack) => stackObserver.observe(stack));
 
   // Pressure Gauge Telemetry
   const ataDisplay = document.getElementById('telemetry-ata');

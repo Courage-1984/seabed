@@ -1,5 +1,5 @@
-// Hub: load sites, sort by created (newest first), render strip + featured + filterable archive
-const sites = import.meta.glob('./sites/**/meta.json', { eager: true });
+// Hub: fetch sites.json, sort by created (newest first), render strip + featured + filterable archive
+// We still use import.meta.glob for images so Vite hashes and resolves their final URLs.
 const images = import.meta.glob('./sites/**/assets/**/*.{jpg,png,jpeg,webp,svg,gif}', {
   query: '?url',
   import: 'default',
@@ -46,10 +46,12 @@ function daysBetween(a, b) {
 }
 
 async function loadSiteEntries() {
+  const res = await fetch('./sites.json');
+  const sitesData = await res.json();
+
   const entries = await Promise.all(
-    Object.entries(sites).map(async ([path, meta]) => {
-      const siteFolder = path.replace('/meta.json', '');
-      const metaData = meta.default || meta;
+    sitesData.map(async (metaData) => {
+      const siteFolder = metaData.siteFolder;
       const { title, blurb, hero, created, layoutFamily, tags } = metaData;
 
       const normalizedHero = (hero || '').replace(/^\.\//, '');
@@ -116,7 +118,7 @@ function buildDiscoveryCell(site) {
 
   const span = document.createElement('span');
   span.textContent = formatDate(site.created);
-  
+
   meta.append(metaTop, span);
 
   a.append(img, meta);
@@ -143,11 +145,11 @@ function renderDiscoveryStrip(sorted) {
     const cellWidth = track.children[0]?.offsetWidth || 0;
     const gap = 16;
     const itemWidth = cellWidth + gap;
-    
+
     const maxScroll = stripEl.scrollWidth - stripEl.clientWidth;
     const maxIndex = itemWidth > 0 ? Math.max(0, Math.ceil(maxScroll / itemWidth)) : 0;
     const numDots = maxIndex + 1;
-    
+
     if (dotsContainer && dotsContainer.children.length !== numDots) {
       const dotsFrag = document.createDocumentFragment();
       for (let i = 0; i < numDots; i++) {
@@ -164,7 +166,7 @@ function renderDiscoveryStrip(sorted) {
     }
 
     const index = itemWidth > 0 ? Math.round(stripEl.scrollLeft / itemWidth) : 0;
-    
+
     if (dotsContainer) {
       Array.from(dotsContainer.children).forEach((dot, i) => {
         dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
@@ -178,7 +180,7 @@ function renderDiscoveryStrip(sorted) {
 
   stripEl.addEventListener('scroll', updateState, { passive: true });
   window.addEventListener('resize', updateState, { passive: true });
-  
+
   // Need to wait for layout before initial update so widths are correct
   requestAnimationFrame(updateState);
 
@@ -240,19 +242,23 @@ function renderDiscoveryStrip(sorted) {
   });
 
   // Shift + Scroll wheel support (some browsers do this natively, but this ensures it)
-  stripEl.addEventListener('wheel', (e) => {
-    if (!e.shiftKey && e.deltaY !== 0) {
-      e.preventDefault();
-      stripEl.style.scrollBehavior = 'auto';
-      stripEl.scrollBy({ left: e.deltaY > 0 ? 100 : -100 });
-      // Restore snap after a short delay
-      clearTimeout(stripEl._wheelTimeout);
-      stripEl._wheelTimeout = setTimeout(() => {
-        stripEl.style.scrollBehavior = 'smooth';
-        endDrag();
-      }, 150);
-    }
-  }, { passive: false });
+  stripEl.addEventListener(
+    'wheel',
+    (e) => {
+      if (!e.shiftKey && e.deltaY !== 0) {
+        e.preventDefault();
+        stripEl.style.scrollBehavior = 'auto';
+        stripEl.scrollBy({ left: e.deltaY > 0 ? 100 : -100 });
+        // Restore snap after a short delay
+        clearTimeout(stripEl._wheelTimeout);
+        stripEl._wheelTimeout = setTimeout(() => {
+          stripEl.style.scrollBehavior = 'smooth';
+          endDrag();
+        }, 150);
+      }
+    },
+    { passive: false }
+  );
 
   // Auto Scroll Logic
   let autoScrollInterval;
@@ -275,7 +281,7 @@ function renderDiscoveryStrip(sorted) {
     carouselSection.addEventListener('mouseenter', stopAutoScroll);
     carouselSection.addEventListener('mouseleave', startAutoScroll);
   }
-  
+
   startAutoScroll();
 }
 
@@ -334,7 +340,7 @@ function uniqueLayoutFamilies(siteList) {
 function uniqueTags(siteList) {
   const set = new Set();
   for (const site of siteList) {
-    if (site.tags) site.tags.forEach(t => set.add(t));
+    if (site.tags) site.tags.forEach((t) => set.add(t));
   }
   return [...set].sort((a, b) => a.localeCompare(b));
 }
@@ -410,7 +416,7 @@ function renderArchiveCard(site, index) {
     pills.appendChild(familyPill);
   }
   if (site.tags && site.tags.length > 0) {
-    site.tags.forEach(tag => {
+    site.tags.forEach((tag) => {
       const tagPill = document.createElement('span');
       tagPill.className = 'archive-pill archive-pill--muted';
       tagPill.textContent = '#' + tag;
@@ -442,8 +448,7 @@ function renderArchiveCard(site, index) {
 
 function observeArchiveCards(cards) {
   const reduce =
-    typeof window.matchMedia === 'function' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (reduce || !('IntersectionObserver' in window)) {
     cards.forEach((card) => card.classList.add('is-visible'));
@@ -493,14 +498,14 @@ function renderFilters(siteList, onChange) {
   // Category Row
   const catRow = document.createElement('div');
   catRow.className = 'archive-filter-row';
-  
+
   const categories = [
     { id: 'all', label: 'All' },
     { id: 'recent', label: 'Recent' },
     { id: 'layout', label: 'By Layout' },
     { id: 'tag', label: 'By Tag' },
   ];
-  
+
   for (const cat of categories) {
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -517,10 +522,11 @@ function renderFilters(siteList, onChange) {
   if (activeCategory === 'layout' || activeCategory === 'tag') {
     const subRow = document.createElement('div');
     subRow.className = 'archive-filter-row archive-filter-row--sub';
-    
-    const items = activeCategory === 'layout' 
-      ? uniqueLayoutFamilies(siteList).map(f => ({ id: f, label: f }))
-      : uniqueTags(siteList).map(t => ({ id: t, label: '#' + t }));
+
+    const items =
+      activeCategory === 'layout'
+        ? uniqueLayoutFamilies(siteList).map((f) => ({ id: f, label: f }))
+        : uniqueTags(siteList).map((t) => ({ id: t, label: '#' + t }));
 
     for (const item of items) {
       const btn = document.createElement('button');

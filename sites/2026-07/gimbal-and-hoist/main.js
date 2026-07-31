@@ -4,14 +4,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Lazy-Load Fog Clearing Animation via IntersectionObserver
   const fogImages = document.querySelectorAll('.lazy-fog');
   if (fogImages.length > 0) {
-    const imgObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fog-cleared');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { root: null, threshold: 0.1 });
+    const imgObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fog-cleared');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { root: null, threshold: 0.1 }
+    );
 
     fogImages.forEach((img) => imgObserver.observe(img));
   }
@@ -26,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const assetInput = document.getElementById('input-asset');
       const managerInput = document.getElementById('input-manager');
-      
+
       const asset = assetInput ? assetInput.value.trim() : 'Specified Coastal Asset';
       const manager = managerInput ? managerInput.value.trim() : 'Operations Authority';
 

@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "node scripts/build-sites-json.js",
     "dev": "vite",
+    "prebuild": "node scripts/build-sites-json.js",
     "build": "vite build",
     "preview": "vite preview",
     "qa": "node scripts/qa_sweep.js",
@@ -13,10 +15,14 @@
     "sites:index": "node scripts/export-sites-index.js",
     "check:copy-depth": "node scripts/check-copy-depth.js",
     "check:contract": "node scripts/check-site-contract.js",
-    "check:ship": "node scripts/ship-gate.js"
+    "check:ship": "node scripts/ship-gate.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "cheerio": "^1.2.0",
+    "eslint": "^9.39.5",
+    "prettier": "^3.9.6",
     "puppeteer": "^25.3.0",
     "sharp": "^0.35.3",
     "vite": "^8.1.3"

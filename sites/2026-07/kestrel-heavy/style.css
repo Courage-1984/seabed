@@ -1,12 +1,14 @@
 :root {
-  --color-bg-primary: #FCFCFC;
-  --color-bg-secondary: #F2F2F2;
-  --color-accent-aviation: #E64A19;
-  --color-text-primary: #0F1115;
-  --color-text-muted: #666A73;
+  --color-bg-primary: #fcfcfc;
+  --color-bg-secondary: #f2f2f2;
+  --color-accent-aviation: #e64a19;
+  --color-text-primary: #0f1115;
+  --color-text-muted: #666a73;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -20,7 +22,12 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 800;
   margin-top: 0;
   margin-bottom: 1rem;
@@ -44,7 +51,8 @@ p:last-child {
   margin-bottom: 0;
 }
 
-ul, ol {
+ul,
+ol {
   margin-bottom: 1.5rem;
   padding-left: 1.5rem;
 }
@@ -118,7 +126,8 @@ a {
   text-align: center;
 }
 
-.text-content ul, .text-content ol {
+.text-content ul,
+.text-content ol {
   text-align: left;
 }
 
@@ -170,7 +179,8 @@ a {
   position: relative;
 }
 
-.image-bleed img, .hero-image-wrapper img {
+.image-bleed img,
+.hero-image-wrapper img {
   width: 100%;
   height: 120%; /* for parallax overflow */
   object-fit: cover;
@@ -198,7 +208,9 @@ a {
 .fade-up {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
 }
 
 .fade-up.visible {

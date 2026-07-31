@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
       const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.textContent;
-      
+
       btn.textContent = 'Submitting...';
       btn.disabled = true;
 
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.textContent = 'Brief Submitted';
         btn.style.backgroundColor = '#4caf50';
         btn.style.color = '#fff';
-        
+
         setTimeout(() => {
           form.reset();
           btn.textContent = originalText;
@@ -34,16 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // Smooth Scrolling for Anchor Links
   // ==========================================
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const targetId = this.getAttribute('href').substring(1);
       const targetElement = document.getElementById(targetId);
-      
+
       if (targetElement) {
         window.scrollTo({
           top: targetElement.offsetTop - 80,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
     });
@@ -69,20 +69,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // Timeline Animation (IntersectionObserver)
   // ==========================================
   const timelineItems = document.querySelectorAll('.timeline-item');
-  
-  if (timelineItems.length > 0) {
-    const timelineObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, index * 150);
-          timelineObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
 
-    timelineItems.forEach(item => {
+  if (timelineItems.length > 0) {
+    const timelineObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, index * 150);
+            timelineObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    timelineItems.forEach((item) => {
       timelineObserver.observe(item);
     });
   }
@@ -91,14 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Bento Item Hover Parallax Effect
   // ==========================================
   const bentoItems = document.querySelectorAll('.bento-item:not(.image-cell)');
-  
-  bentoItems.forEach(item => {
+
+  bentoItems.forEach((item) => {
     item.addEventListener('mouseenter', () => {
       item.style.transition = 'transform 0.4s ease, box-shadow 0.4s ease';
       item.style.transform = 'translateY(-4px)';
       item.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.3)';
     });
-    
+
     item.addEventListener('mouseleave', () => {
       item.style.transform = 'translateY(0)';
       item.style.boxShadow = 'none';

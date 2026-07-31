@@ -6,6 +6,7 @@
  * npm: npm run qa -- <slug>
  */
 import puppeteer from 'puppeteer';
+import * as cheerio from 'cheerio';
 import { readdirSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join, resolve } from 'path';
 import { spawn } from 'child_process';
@@ -68,23 +69,19 @@ if (targetSlug) {
 
 const sitePages = findHtmlFiles(searchDir);
 const pages =
-  targetSlug && opts.noHub
-    ? sitePages
-    : targetSlug
-      ? ['index.html', ...sitePages]
-      : ['index.html', ...sitePages];
+  targetSlug && opts.noHub ? sitePages : targetSlug ? ['index.html', ...sitePages] : ['index.html', ...sitePages];
 
 function viewHasIssues(view) {
   if (!view) return false;
   return Boolean(
     view.overflowingElements?.length ||
-      view.brokenImages?.length ||
-      view.nonWebpPhotos?.length ||
-      view.missingAltTags?.length ||
-      view.missingFavicon?.length ||
-      view.consoleErrors?.length ||
-      view.networkErrors?.length ||
-      view.brokenLinks?.length
+    view.brokenImages?.length ||
+    view.nonWebpPhotos?.length ||
+    view.missingAltTags?.length ||
+    view.missingFavicon?.length ||
+    view.consoleErrors?.length ||
+    view.networkErrors?.length ||
+    view.brokenLinks?.length
   );
 }
 
@@ -152,6 +149,81 @@ const waitForServer = async (url, timeout = 20000) => {
   throw new Error(`Server did not start at ${url}`);
 };
 
+async function runStaticChecks(url) {
+  const res = await fetch(url);
+  const html = await res.text();
+  const $ = cheerio.load(html);
+
+  const missingAltTags = [];
+  $('img:not([alt])').each((_, el) => {
+    missingAltTags.push($(el).attr('src') || 'unknown');
+  });
+
+  const missingFavicon = [];
+  const iconLink = $('link[rel="icon"], link[rel="shortcut icon"]');
+  if (iconLink.length === 0) {
+    missingFavicon.push('No favicon link found');
+  } else {
+    const href = iconLink.attr('href');
+    if (!href || !href.includes('favicon')) {
+      missingFavicon.push('Favicon href invalid');
+    } else {
+      try {
+        const fetchHref = new URL(href, url).href;
+        const iconRes = await fetch(fetchHref);
+        if (!iconRes.ok) {
+          missingFavicon.push(`Favicon HTTP ${iconRes.status}`);
+        } else {
+          const text = await iconRes.text();
+          if (href.endsWith('.svg') || iconLink.attr('type') === 'image/svg+xml') {
+            if (!text.includes('<svg')) missingFavicon.push('Favicon is not a valid SVG');
+            if (text.includes('xmlns="http://www.svg.org/2000/svg"'))
+              missingFavicon.push('Favicon SVG has invalid xmlns (svg.org instead of w3.org)');
+          }
+        }
+      } catch (e) {
+        missingFavicon.push(`Favicon fetch failed: ${e.message}`);
+      }
+    }
+  }
+
+  const isBadPhoto = (src) =>
+    src &&
+    !/\.webp(\?|$)/i.test(src) &&
+    !/\.svg(\?|$)/i.test(src) &&
+    !src.startsWith('data:image/') &&
+    !/favicon/i.test(src) &&
+    /\.(png|jpe?g|gif|avif|bmp)(\?|$)/i.test(src);
+
+  const nonWebpPhotos = [];
+  $('img[src], source[srcset]').each((_, el) => {
+    const src = $(el).attr('src') || $(el).attr('srcset') || '';
+    src.split(',').forEach((part) => {
+      const pUrl = part.trim().split(/\s+/)[0];
+      if (isBadPhoto(pUrl)) nonWebpPhotos.push(pUrl);
+    });
+  });
+
+  const urlRe = /url\(\s*['"]?([^'")]+)['"]?\s*\)/gi;
+  $('*[style*="background"]').each((_, el) => {
+    const style = $(el).attr('style') || '';
+    let m;
+    urlRe.lastIndex = 0;
+    while ((m = urlRe.exec(style)) !== null) {
+      if (isBadPhoto(m[1])) nonWebpPhotos.push(m[1]);
+    }
+  });
+
+  // Extract links for broken links check (can also be done here or in Puppeteer)
+  // Let's keep brokenLinks in Puppeteer as it was, but we can do it here too if we want.
+  // We'll leave brokenLinks in Puppeteer for now, since it checks relative to the page.
+  return {
+    missingAltTags,
+    missingFavicon,
+    nonWebpPhotos: [...new Set(nonWebpPhotos)],
+  };
+}
+
 (async () => {
   let server;
   let browser;
@@ -170,16 +242,12 @@ const waitForServer = async (url, timeout = 20000) => {
     server = spawn('npm', ['run', 'preview', '--', '--host', '127.0.0.1'], { shell: true, stdio: 'inherit' });
     await waitForServer(baseUrl);
     console.log('Server is ready. Waiting 2s for stability...');
-    await new Promise(r => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 2000));
 
     const headed = process.env.QA_HEADED === '1' || process.env.QA_HEADED === 'true';
     const onCi = process.env.CI === 'true';
     const concurrency =
-      Number.isFinite(opts.concurrency) && opts.concurrency > 0
-        ? opts.concurrency
-        : headed || onCi
-          ? 1
-          : 2;
+      Number.isFinite(opts.concurrency) && opts.concurrency > 0 ? opts.concurrency : headed || onCi ? 1 : 2;
 
     console.log(
       `Launching browser (${headed ? 'headed' : 'headless'}); concurrency=${concurrency}; screenshots=${opts.noScreenshots ? 'off' : 'on'}; pages=${pages.length}`
@@ -198,6 +266,9 @@ const waitForServer = async (url, timeout = 20000) => {
       console.log(`\nChecking ${pagePath}...`);
       const url = pagePath === 'index.html' ? baseUrl : `${baseUrl}${pagePath}`;
       const pageResult = { path: pagePath, mobile: {}, desktop: {} };
+
+      const staticResults = await runStaticChecks(url);
+
       const page = await browser.newPage();
 
       const consoleErrors = [];
@@ -219,7 +290,7 @@ const waitForServer = async (url, timeout = 20000) => {
         } catch (err) {
           if (err.message.includes('ERR_ABORTED') || err.message.includes('Target closed')) {
             console.warn(`Flaky navigation error on ${url}: ${err.message}. Retrying in 2s...`);
-            await new Promise(r => setTimeout(r, 2000));
+            await new Promise((r) => setTimeout(r, 2000));
             await page.goto(url, { waitUntil: 'networkidle2' });
           } else {
             throw err;
@@ -293,11 +364,7 @@ const waitForServer = async (url, timeout = 20000) => {
                 .map((el) => {
                   const cls =
                     typeof el.className === 'string'
-                      ? el.className
-                          .split(/\s+/)
-                          .filter(Boolean)
-                          .slice(0, 4)
-                          .join('.')
+                      ? el.className.split(/\s+/).filter(Boolean).slice(0, 4).join('.')
                       : '';
                   return `${el.tagName.toLowerCase()}${el.id ? '#' + el.id : ''}${cls ? '.' + cls : ''}`;
                 });
@@ -310,58 +377,6 @@ const waitForServer = async (url, timeout = 20000) => {
               .map((i) => i.src)
               .filter((src) => !src.includes('favicon'))
           );
-
-          const missingAltTags = await page.evaluate(() =>
-            [...document.images].filter((i) => !i.hasAttribute('alt')).map((i) => i.src)
-          );
-
-          const missingFavicon = await page.evaluate(async () => {
-            const iconLink = document.querySelector('link[rel="icon"], link[rel="shortcut icon"]');
-            if (!iconLink) return ['No favicon link found'];
-            if (!iconLink.href.includes('favicon')) return ['Favicon href invalid'];
-            
-            try {
-              const res = await fetch(iconLink.href);
-              if (!res.ok) return [`Favicon HTTP ${res.status}`];
-              
-              const text = await res.text();
-              if (iconLink.href.endsWith('.svg') || iconLink.type === 'image/svg+xml') {
-                if (!text.includes('<svg')) return ['Favicon is not a valid SVG'];
-                if (text.includes('xmlns="http://www.svg.org/2000/svg"')) return ['Favicon SVG has invalid xmlns (svg.org instead of w3.org)'];
-              }
-            } catch (e) {
-              return [`Favicon fetch failed: ${e.message}`];
-            }
-            return [];
-          });
-
-          const nonWebpPhotos = await page.evaluate(() => {
-            const isBadPhoto = (src) =>
-              src &&
-              !/\.webp(\?|$)/i.test(src) &&
-              !/\.svg(\?|$)/i.test(src) &&
-              !src.startsWith('data:image/') &&
-              !/favicon/i.test(src) &&
-              /\.(png|jpe?g|gif|avif|bmp)(\?|$)/i.test(src);
-
-            const fromDom = [...document.querySelectorAll('img[src], source[srcset]')]
-              .map((el) => el.getAttribute('src') || el.getAttribute('srcset') || '')
-              .flatMap((s) => s.split(',').map((part) => part.trim().split(/\s+/)[0]))
-              .filter(isBadPhoto);
-
-            const fromCss = [];
-            const urlRe = /url\(\s*['"]?([^'")]+)['"]?\s*\)/gi;
-            for (const el of document.querySelectorAll('*')) {
-              const bg = window.getComputedStyle(el).backgroundImage;
-              if (!bg || bg === 'none') continue;
-              let m;
-              urlRe.lastIndex = 0;
-              while ((m = urlRe.exec(bg)) !== null) {
-                if (isBadPhoto(m[1])) fromCss.push(m[1]);
-              }
-            }
-            return [...new Set([...fromDom, ...fromCss])];
-          });
 
           let brokenLinks = [];
           if (checkLinks) {
@@ -387,9 +402,9 @@ const waitForServer = async (url, timeout = 20000) => {
           return {
             overflowingElements,
             brokenImages,
-            missingAltTags,
-            missingFavicon,
-            nonWebpPhotos,
+            missingAltTags: staticResults.missingAltTags,
+            missingFavicon: staticResults.missingFavicon,
+            nonWebpPhotos: staticResults.nonWebpPhotos,
             consoleErrors: [...consoleErrors],
             networkErrors: [...networkErrors],
             brokenLinks,

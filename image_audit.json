@@ -1,0 +1,279 @@
+[
+  {
+    "slug": "stake-and-bind",
+    "hero": "assets/hero-hedge.webp",
+    "imgs": [
+      "./assets/hero-hedge.webp",
+      "./assets/billhook-hands.webp",
+      "./assets/stone-cottage.webp",
+      "./assets/hedging-group.webp"
+    ]
+  },
+  {
+    "slug": "abyssal-data-recovery",
+    "hero": "assets/hero.webp",
+    "imgs": [
+      "./assets/favicon.svg",
+      "./assets/hero.webp",
+      "./assets/brine_wash.webp",
+      "./assets/nand_micro_soldering.webp",
+      "./assets/rov_abyss.webp"
+    ]
+  },
+  {
+    "slug": "abyssal-hardware",
+    "hero": "assets/hero.webp",
+    "imgs": ["./assets/hero.webp", "./assets/bathypelagic-trunk.webp", "./assets/chamber-test.webp"]
+  },
+  {
+    "slug": "apex-altitude-lab",
+    "hero": "assets/chamber.webp",
+    "imgs": ["./assets/chamber.webp", "./assets/chamber.webp", "./assets/biometrics.webp", "./assets/deepsea.webp"]
+  },
+  {
+    "slug": "archive-arcade",
+    "hero": "assets/hero-booth.webp",
+    "imgs": [
+      "./assets/favicon.svg",
+      "./assets/hero-booth.webp",
+      "./assets/mori-front.webp",
+      "./assets/auto-reflex.webp",
+      "./assets/studio-omatic.webp",
+      "./assets/tools-strip.webp",
+      "./assets/favicon.svg"
+    ]
+  },
+  {
+    "slug": "aseptic-cellars",
+    "hero": "assets/hero-chamber.webp",
+    "imgs": ["./assets/favicon.svg", "./assets/hero-chamber.webp", "./assets/cleanroom-technician.webp"]
+  },
+  {
+    "slug": "astrolabe-treks",
+    "hero": "assets/desert_night_dunes.webp",
+    "imgs": [
+      "./assets/desert_night_dunes.webp",
+      "./assets/star_trails.webp",
+      "./assets/desert_night_dunes.webp",
+      "./assets/brass_astrolabe.webp"
+    ]
+  },
+  {
+    "slug": "backhaul-field-co",
+    "hero": "assets/hero-uplink.webp",
+    "imgs": []
+  },
+  {
+    "slug": "copper-cloche",
+    "hero": "assets/hero-vault.webp",
+    "imgs": ["./assets/venison-plate.webp", "./assets/bedford-truck.webp"]
+  },
+  {
+    "slug": "cryotex-isolates",
+    "hero": "assets/hero-vitrification.webp",
+    "imgs": ["./assets/hero-vitrification.webp"]
+  },
+  {
+    "slug": "drosera-vault",
+    "hero": "assets/drosera_macro.webp",
+    "imgs": ["./assets/drosera_macro.webp", "./assets/flytrap_macro.webp", "./assets/pinguicula_macro.webp"]
+  },
+  {
+    "slug": "forge-and-feather",
+    "hero": "assets/hero.webp",
+    "imgs": [
+      "./assets/hero.webp",
+      "./assets/craft.webp",
+      "./assets/hearth.webp",
+      "./assets/craft.webp",
+      "./assets/hero.webp",
+      "./assets/hearth.webp",
+      "./assets/specs.webp"
+    ]
+  },
+  {
+    "slug": "halyard-and-hemp-sailmakers",
+    "hero": "assets/loft-hero.webp",
+    "imgs": ["./assets/loft-hero.webp", "./assets/cringle-detail.webp"]
+  },
+  {
+    "slug": "hull-and-hem-sailmenders",
+    "hero": "assets/hero-signalbox.webp",
+    "imgs": ["./assets/favicon.svg", "./assets/hero-signalbox.webp"]
+  },
+  {
+    "slug": "k9-kinetic-recovery",
+    "hero": "assets/k9/hero.webp",
+    "imgs": ["./assets/k9/hero.webp", "./assets/k9/hydro.webp", "./assets/k9/container.webp"]
+  },
+  {
+    "slug": "karoo-brass-and-glass",
+    "hero": "assets/home_hero.webp",
+    "imgs": ["./assets/home_hero.webp", "./assets/home_hero.webp"]
+  },
+  {
+    "slug": "knot-and-westerly",
+    "hero": "assets/hero-canopy-pod.webp",
+    "imgs": ["./assets/material-detail.webp", "./assets/hero-canopy-pod.webp"]
+  },
+  {
+    "slug": "lithic-fibre-dynamics",
+    "hero": "assets/hero.webp",
+    "imgs": ["./assets/hero.webp", "./assets/hero.webp", "./assets/drone.webp", "./assets/kevlar.webp"]
+  },
+  {
+    "slug": "lithic-resonance",
+    "hero": "assets/hero-bg.webp",
+    "imgs": []
+  },
+  {
+    "slug": "nepenthes-forge",
+    "hero": "assets/hero.webp",
+    "imgs": ["./assets/favicon.svg", "./assets/hero.webp"]
+  },
+  {
+    "slug": "78-north-supply",
+    "hero": "assets/hero.webp",
+    "imgs": ["./assets/hero.webp", "./assets/polaris-parka.webp", "./assets/dispatch.webp"]
+  },
+  {
+    "slug": "apiary-mesh-kinetics",
+    "hero": "assets/hero-telemetry.webp",
+    "imgs": ["./assets/hero-telemetry.webp", "./assets/hardware-hex-node.webp", "./assets/commercial-apiary.webp"]
+  },
+  {
+    "slug": "centrifugal-larder",
+    "hero": "assets/hero-centrifuge.webp",
+    "imgs": ["./assets/hero-centrifuge.webp", "./assets/bento-clarity.webp", "./assets/isolate-bottles.webp"]
+  },
+  {
+    "slug": "gimbal-and-hoist",
+    "hero": "assets/hero-trawler.webp",
+    "imgs": ["./assets/hero-trawler.webp", "./assets/bento-hardware.webp", "./assets/rope-ascent.webp"]
+  },
+  {
+    "slug": "halcyon-tare",
+    "hero": "assets/hero.webp",
+    "imgs": ["./assets/hero.webp"]
+  },
+  {
+    "slug": "hearth-and-anvil",
+    "hero": "assets/hero-foundry.webp",
+    "imgs": ["./assets/hero-foundry.webp", "./assets/mobile-container-unit.webp", "./assets/bronze-casting-detail.webp"]
+  },
+  {
+    "slug": "isocline-preservation",
+    "hero": "assets/hero-strata.webp",
+    "imgs": ["./assets/hero-strata.webp"]
+  },
+  {
+    "slug": "katabatic-shelters",
+    "hero": "assets/hero-katabatic.webp",
+    "imgs": ["./assets/hero-katabatic.webp", "./assets/dyneema-texture.webp", "./assets/twin-otter-drop.webp"]
+  },
+  {
+    "slug": "kestrel-heavy",
+    "hero": "assets/hero-drone-drop.webp",
+    "imgs": ["./assets/hero-drone-drop.webp", "./assets/carbide-teeth.webp", "./assets/highlands-site.webp"]
+  },
+  {
+    "slug": "monolith-somatic",
+    "hero": "assets/hero-monolith.webp",
+    "imgs": ["./assets/hero-monolith.webp", "./assets/deployment-truck.webp"]
+  },
+  {
+    "slug": "null-state-cryogenics",
+    "hero": "assets/hero-hydraulic-press.webp",
+    "imgs": ["./assets/hero-hydraulic-press.webp", "./assets/vitrine-hardware.webp"]
+  },
+  {
+    "slug": "oxide-and-tide",
+    "hero": "assets/hero-workshop.webp",
+    "imgs": ["./assets/hero-workshop.webp"]
+  },
+  {
+    "slug": "patch-parcel",
+    "hero": "assets/hero.webp",
+    "imgs": [
+      "./assets/hero.webp",
+      "./assets/hero.webp",
+      "./assets/hero.webp",
+      "./assets/hero.webp",
+      "./assets/hero.webp"
+    ]
+  },
+  {
+    "slug": "pellucid-memory",
+    "hero": "assets/hero-quartz.webp",
+    "imgs": ["./assets/hero-quartz.webp", "./assets/tape-decay.webp", "./assets/laser-etching.webp"]
+  },
+  {
+    "slug": "signal-and-silo",
+    "hero": "assets/hero.webp",
+    "imgs": ["./assets/hero.webp", "./assets/mesh.webp", "./assets/node.webp"]
+  },
+  {
+    "slug": "siloshield-dynamics",
+    "hero": "assets/autonomous_harvester.webp",
+    "imgs": [
+      "./assets/autonomous_harvester.webp",
+      "./assets/server_rack_farm.webp",
+      "./assets/drone_deployment.webp",
+      "./assets/motherboard_macro.webp"
+    ]
+  },
+  {
+    "slug": "substratum-signals",
+    "hero": "assets/hero-seabed.webp",
+    "imgs": ["./assets/hero-seabed.webp", "./assets/strata-waveform.webp", "./assets/buoy-telemetry.webp"]
+  },
+  {
+    "slug": "the-brass-and-thistle",
+    "hero": "assets/hero.webp",
+    "imgs": ["./assets/favicon.svg", "./assets/hero.webp", "./assets/fermentary.webp", "./assets/trench_pie.webp"]
+  },
+  {
+    "slug": "the-midnight-forager",
+    "hero": "assets/hero.webp",
+    "imgs": [
+      "./assets/hero.webp",
+      "./assets/concept.webp",
+      "./assets/concept.webp",
+      "./assets/menu.webp",
+      "./assets/expedition.webp",
+      "./assets/expedition.webp",
+      "./assets/menu.webp",
+      "./assets/booking.webp"
+    ]
+  },
+  {
+    "slug": "the-slate-and-chisel",
+    "hero": "assets/hero_stone.webp",
+    "imgs": [
+      "./assets/hero_stone.webp",
+      "./assets/deep_v_detail.webp",
+      "./assets/millstone_block.webp",
+      "./assets/mason_sketch.webp"
+    ]
+  },
+  {
+    "slug": "the-tidal-vault",
+    "hero": "assets/hero.webp",
+    "imgs": ["./assets/favicon.svg", "./assets/hero.webp"]
+  },
+  {
+    "slug": "vapour-and-vault",
+    "hero": "assets/hero-shaft-vat.webp",
+    "imgs": ["./assets/hero-shaft-vat.webp", "./assets/broth-reduction-flask.webp"]
+  },
+  {
+    "slug": "verdigris-and-salt",
+    "hero": "assets/hero-chamber.webp",
+    "imgs": []
+  },
+  {
+    "slug": "xenon-arc",
+    "hero": "assets/tig_arc.webp",
+    "imgs": ["./assets/tig_arc.webp", "./assets/cleanroom.webp", "./assets/glowing_seam.webp"]
+  }
+]

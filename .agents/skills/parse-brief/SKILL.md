@@ -21,15 +21,15 @@ Often followed by an HTML comment `<!-- VARIETY ENGINE AUDIT ... -->`. That bloc
 
 **Sections (prefer when present):**
 
-1. Business Profile (+ brand voice card, tone)  
-2. Repo Integration  
-3. Scope & Sitemap (architecture, layout family + structural signature, word floor/ceiling, L/R split note)  
-4. Copy — Split Load (4a Gemini verbatim; 4b builder directed; 4c rules)  
-5. Colour Palette  
-6. Typography, Layout & Motion (signature + forbidden + hard cap)  
-7. Asset Specs  
-8. Definition of Done  
-9. Build Constraints  
+1. Business Profile (+ brand voice card, tone)
+2. Repo Integration
+3. Scope & Sitemap (architecture, layout family + structural signature, word floor/ceiling, L/R split note)
+4. Copy — Split Load (4a Gemini verbatim; 4b builder directed; 4c rules)
+5. Colour Palette
+6. Typography, Layout & Motion (signature + forbidden + hard cap)
+7. Asset Specs
+8. Definition of Done
+9. Build Constraints
 10. **Antigravity Handoff** (or Builder Handoff) — research, planning, skills, image gen
 
 Still accept older briefs without §10.
@@ -38,25 +38,25 @@ Still accept older briefs without §10.
 
 ## Extract
 
-| Field | Notes |
-|-------|--------|
-| Brand name | Required — from title line or §1 |
-| Slug | kebab-case from §1 or brand; unique under `sites/` |
-| Tone | From §1 / voice card |
-| Voice card | Do/don’t, reading level, rhythm |
-| Blurb | Hub one-liner |
-| Architecture | landing / dense one-pager / multi-page + page files |
-| Layout family | Exact name from §3/§6 — one of the **eleven** in @.agents/rules/01-site-v2-standard.md / `scripts/lib/layout-families.js` |
-| Layout signature | Mandatory structural signature + forbidden pattern from §3/§6 (carry into design) |
-| L/R split count | From §3/§6 — hard cap ≤1 site-wide (sticky-rail is the special two-pane case) |
-| Word floor / ceiling | From §3 |
-| Verbatim copy | §4a only — hero + exactly one flagship; use exactly |
-| Directed sections | §4b — builder authors within min/max |
-| Motion ideas | §6 |
-| CTAs | Primary / secondary |
-| Locale | Default `en-GB` |
-| Image specs | §7 + §10 image briefs |
-| Handoff | §10 research angles, risks, skill order |
+| Field                | Notes                                                                                                                     |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Brand name           | Required — from title line or §1                                                                                          |
+| Slug                 | kebab-case from §1 or brand; unique under `sites/`                                                                        |
+| Tone                 | From §1 / voice card                                                                                                      |
+| Voice card           | Do/don’t, reading level, rhythm                                                                                           |
+| Blurb                | Hub one-liner                                                                                                             |
+| Architecture         | landing / dense one-pager / multi-page + page files                                                                       |
+| Layout family        | Exact name from §3/§6 — one of the **eleven** in @.agents/rules/01-site-v2-standard.md / `scripts/lib/layout-families.js` |
+| Layout signature     | Mandatory structural signature + forbidden pattern from §3/§6 (carry into design)                                         |
+| L/R split count      | From §3/§6 — hard cap ≤1 site-wide (sticky-rail is the special two-pane case)                                             |
+| Word floor / ceiling | From §3                                                                                                                   |
+| Verbatim copy        | §4a only — hero + exactly one flagship; use exactly                                                                       |
+| Directed sections    | §4b — builder authors within min/max                                                                                      |
+| Motion ideas         | §6                                                                                                                        |
+| CTAs                 | Primary / secondary                                                                                                       |
+| Locale               | Default `en-GB`                                                                                                           |
+| Image specs          | §7 + §10 image briefs                                                                                                     |
+| Handoff              | §10 research angles, risks, skill order                                                                                   |
 
 ## Procedure
 

@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
   // Live UTC Clock
   const clockElement = document.getElementById('live-clock');
-  
+
   function updateClock() {
     const now = new Date();
     const h = String(now.getUTCHours()).padStart(2, '0');
@@ -10,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const s = String(now.getUTCSeconds()).padStart(2, '0');
     clockElement.textContent = `${h}:${m}:${s} UTC`;
   }
-  
+
   setInterval(updateClock, 1000);
   updateClock();
 
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (dispatchForm) {
     dispatchForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
       const submitBtn = dispatchForm.querySelector('button[type="submit"]');
       submitBtn.textContent = 'TRANSMITTING PROTOCOLS...';
       submitBtn.style.backgroundColor = 'var(--color-secondary)';
@@ -31,12 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
       // Simulate a network dispatch delay
       setTimeout(() => {
         formResponse.innerHTML = 'DEPLOYMENT AUTHORISED.<br>A LOGISTICS COMMANDER IS REVIEWING COORDINATES.';
-        
+
         submitBtn.textContent = 'Initiate Clean-Room Deployment';
         submitBtn.style.backgroundColor = '';
         submitBtn.style.color = '';
         submitBtn.disabled = false;
-        
+
         dispatchForm.reset();
 
         setTimeout(() => {

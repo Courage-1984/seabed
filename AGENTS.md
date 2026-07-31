@@ -27,25 +27,24 @@ Only pause to ask **one** clarifying question when critical fields are missing (
    - Confirm layout family’s structural signature from the brief was implemented (self-check)
    - Confirm `Responsive: PASS desktop + mobile` and WebP per @.agents/skills/acquire-images/SKILL.md
 
-**Note:** Pasted briefs §2/§8 should match this command list (see `.agents/prompts/daily-brief-generator.md`). If a brief is somehow thinner, **this file wins**.
-8. Set `meta.json` `"standard": "v2"`, `"layoutFamily"`, `"tags"`, `"created"` (UTC `YYYY-MM-DD`), `"wordFloor"` when known, and `"qa": "v2-pass"` per @.agents/skills/qa-and-ship/SKILL.md gate only.
-9. Summarize: slug, pages, layout family, created date, image strategy per asset, copy depth, responsive status, QA status, remaining risks.
-10. After ship (operator): `npm run sites:index` and paste Roster + Existing sites table into the live Gemini prompt (~weekly).
+**Note:** Pasted briefs §2/§8 should match this command list (see `.agents/prompts/daily-brief-generator.md`). If a brief is somehow thinner, **this file wins**. 8. Set `meta.json` `"standard": "v2"`, `"layoutFamily"`, `"tags"`, `"created"` (UTC `YYYY-MM-DD`), `"wordFloor"` when known, and `"qa": "v2-pass"` per @.agents/skills/qa-and-ship/SKILL.md gate only. 9. Summarize: slug, pages, layout family, created date, image strategy per asset, copy depth, responsive status, QA status, remaining risks. 10. After ship (operator): `npm run sites:index` and paste Roster + Existing sites table into the live Gemini prompt (~weekly).
 
 ## Commands
 
-| Task | Command |
-|------|---------|
-| Dev server | `npm run dev` |
-| Production build | `npm run build` |
-| Preview build | `npm run preview` |
-| PNG/JPEG → WebP | `npm run optimize:webp` (`-- --slug <slug>` to scope) |
-| Lazy-load / dimensions | `npm run optimize:html` (`-- --slug <slug>` to scope) |
-| Puppeteer QA sweep | `npm run qa` (`-- <slug>`; `CI=true` skips screenshots) |
-| Static site contract | `npm run check:contract -- <slug\|--all>` |
-| Ship gate (copy + contract + report) | `npm run check:ship -- <slug> [--floor N]` |
-| Regenerate sites index (Gemini paste) | `npm run sites:index` |
-| Copy depth check | `npm run check:copy-depth -- <slug> [floor]` |
+| Task                                  | Command                                                 |
+| ------------------------------------- | ------------------------------------------------------- |
+| Dev server                            | `npm run dev`                                           |
+| Production build                      | `npm run build`                                         |
+| Preview build                         | `npm run preview`                                       |
+| PNG/JPEG → WebP                       | `npm run optimize:webp` (`-- --slug <slug>` to scope)   |
+| Lazy-load / dimensions                | `npm run optimize:html` (`-- --slug <slug>` to scope)   |
+| Puppeteer QA sweep                    | `npm run qa` (`-- <slug>`; `CI=true` skips screenshots) |
+| Static site contract                  | `npm run check:contract -- <slug\|--all>`               |
+| Ship gate (copy + contract + report)  | `npm run check:ship -- <slug> [--floor N]`              |
+| Regenerate sites index (Gemini paste) | `npm run sites:index`                                   |
+| Copy depth check                      | `npm run check:copy-depth -- <slug> [floor]`            |
+| Code Quality: Lint                    | `npm run lint`                                          |
+| Code Quality: Format                  | `npm run format`                                        |
 
 `npm run qa` starts preview against the built `dist/` — always `npm run build` first. QA fails on overflow, broken images, non-WebP photos (img + CSS), missing alt, console/network errors, or broken internal links. Report shape: `{ summary, pages }` in `qa-report.json`.
 

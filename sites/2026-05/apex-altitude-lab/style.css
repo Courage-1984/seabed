@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;600&family=Share+Tech+Mono&display=swap');
 
 :root {
-  --color-primary: #0D1E2D;
-  --color-secondary: #1F3A52;
-  --color-accent: #00E5FF;
-  --color-background: #04090E;
-  --color-text: #E2E8F0;
+  --color-primary: #0d1e2d;
+  --color-secondary: #1f3a52;
+  --color-accent: #00e5ff;
+  --color-background: #04090e;
+  --color-text: #e2e8f0;
 }
 
 * {
@@ -24,7 +24,12 @@ body {
   flex-direction: column;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Share Tech Mono', monospace;
   font-weight: 400;
   text-transform: uppercase;
@@ -177,7 +182,8 @@ nav a {
   transition: color 0.3s;
 }
 
-nav a:hover, nav a.active {
+nav a:hover,
+nav a.active {
   color: var(--color-accent);
 }
 
@@ -234,7 +240,9 @@ footer {
   text-decoration: none;
   font-size: 0.85rem;
   opacity: 0.7;
-  transition: opacity 0.3s, color 0.3s;
+  transition:
+    opacity 0.3s,
+    color 0.3s;
 }
 
 .footer-col ul a:hover {
@@ -268,7 +276,9 @@ footer {
   color: var(--color-accent);
 }
 
-.form-group input, .form-group textarea, .form-group select {
+.form-group input,
+.form-group textarea,
+.form-group select {
   width: 100%;
   padding: 0.9rem;
   background: rgba(13, 30, 45, 0.6);
@@ -276,10 +286,14 @@ footer {
   color: var(--color-text);
   font-family: 'Albert Sans', sans-serif;
   font-size: 1rem;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
 }
 
-.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
   outline: none;
   border-color: var(--color-accent);
   box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
@@ -301,7 +315,7 @@ footer {
   cursor: pointer;
 }
 
-.checkbox-label input[type="checkbox"] {
+.checkbox-label input[type='checkbox'] {
   width: auto;
   margin-top: 0.25rem;
   accent-color: var(--color-accent);
@@ -370,7 +384,9 @@ footer {
   border: 1px solid var(--color-secondary);
   padding: 2rem;
   border-top: 3px solid var(--color-accent);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .value-card:hover {
@@ -451,8 +467,12 @@ footer {
   background: var(--color-accent);
   color: var(--color-background);
 }
-.prev-btn { left: -1.5rem; }
-.next-btn { right: -1.5rem; }
+.prev-btn {
+  left: -1.5rem;
+}
+.next-btn {
+  right: -1.5rem;
+}
 
 /* Scannable Features */
 .feature-list {
@@ -549,7 +569,9 @@ footer {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
   text-align: left;
 }
 
@@ -558,7 +580,7 @@ footer {
   color: var(--color-accent);
 }
 
-.accordion-trigger[aria-expanded="true"] {
+.accordion-trigger[aria-expanded='true'] {
   background: rgba(0, 229, 255, 0.08);
   color: var(--color-accent);
   border-bottom: 1px solid var(--color-secondary);
@@ -572,7 +594,7 @@ footer {
   margin-left: 1rem;
 }
 
-.accordion-trigger[aria-expanded="true"] .accordion-icon {
+.accordion-trigger[aria-expanded='true'] .accordion-icon {
   transform: rotate(45deg);
 }
 
@@ -638,8 +660,14 @@ footer {
 }
 
 @keyframes fadeInStep {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .form-step h3 {
@@ -765,8 +793,12 @@ footer {
   .form-row {
     grid-template-columns: 1fr;
   }
-  .prev-btn { left: 0; }
-  .next-btn { right: 0; }
+  .prev-btn {
+    left: 0;
+  }
+  .next-btn {
+    right: 0;
+  }
   .value-grid-4 {
     grid-template-columns: 1fr;
   }
@@ -779,11 +811,27 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .ui-grid { grid-template-columns: 1fr; }
-  .split-content h1 { font-size: 2rem; }
-  .hero-compact h1 { font-size: 2rem; }
-  .metric-value { font-size: 1.5rem; }
-  .value-card { padding: 1.5rem; }
-  header { padding: 1rem; }
-  nav ul { flex-direction: column; align-items: center; gap: 0.5rem; }
+  .ui-grid {
+    grid-template-columns: 1fr;
+  }
+  .split-content h1 {
+    font-size: 2rem;
+  }
+  .hero-compact h1 {
+    font-size: 2rem;
+  }
+  .metric-value {
+    font-size: 1.5rem;
+  }
+  .value-card {
+    padding: 1.5rem;
+  }
+  header {
+    padding: 1rem;
+  }
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
 }

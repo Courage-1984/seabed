@@ -6,8 +6,5 @@
   "created": "2026-07-21",
   "standard": "v2",
   "qa": "v2-pass",
-  "tags": [
-    "technology",
-    "research"
-  ]
+  "tags": ["technology", "research"]
 }

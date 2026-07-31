@@ -4,12 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Parallax Effect on Hero Image
   const heroImage = document.querySelector('.hero-image');
   if (heroImage) {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY || window.pageYOffset;
-      if (scrollY <= window.innerHeight) {
-        document.documentElement.style.setProperty('--scroll-y', `${scrollY}px`);
-      }
-    }, { passive: true });
+    window.addEventListener(
+      'scroll',
+      () => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        if (scrollY <= window.innerHeight) {
+          document.documentElement.style.setProperty('--scroll-y', `${scrollY}px`);
+        }
+      },
+      { passive: true }
+    );
   }
 
   // 2. Sticky Rail Active State Tracker via IntersectionObserver
@@ -20,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {
       root: null,
       rootMargin: '-20% 0px -60% 0px',
-      threshold: 0
+      threshold: 0,
     };
 
     const specObserver = new IntersectionObserver((entries) => {
@@ -61,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (procurementForm && formFeedback) {
     procurementForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
       const institutionInput = document.getElementById('input-institution');
       const directorInput = document.getElementById('input-director');
       const institution = institutionInput ? institutionInput.value.trim() : 'Institutional Client';
@@ -75,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
       formFeedback.className = 'form-feedback success';
 
       procurementForm.reset();
-      
+
       // Smooth scroll to feedback message
       formFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });

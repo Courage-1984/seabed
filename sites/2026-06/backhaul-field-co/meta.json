@@ -1,13 +1,10 @@
 {
   "title": "Backhaul Field Co.",
   "blurb": "Studio-grade connectivity and on-set data infrastructure for productions shooting where the mobile signal gives out.",
-  "hero": "assets/hero.webp",
+  "hero": "assets/hero-uplink.webp",
   "layoutFamily": "bento",
   "created": "2026-06-07",
   "standard": "v2",
   "qa": "v2-pass",
-  "tags": [
-    "brand",
-    "concept"
-  ]
+  "tags": ["brand", "concept"]
 }

@@ -6,8 +6,5 @@
   "created": "2026-06-04",
   "standard": "v2",
   "qa": "v2-pass",
-  "tags": [
-    "storage",
-    "logistics"
-  ]
+  "tags": ["storage", "logistics"]
 }

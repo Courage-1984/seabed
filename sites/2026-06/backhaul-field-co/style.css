@@ -1,9 +1,9 @@
 :root {
-  --color-primary: #16323C;
-  --color-secondary: #A9522E;
-  --color-accent: #F5A623;
-  --color-bg: #F3EFE6;
-  --color-text: #14191C;
+  --color-primary: #16323c;
+  --color-secondary: #a9522e;
+  --color-accent: #f5a623;
+  --color-bg: #f3efe6;
+  --color-text: #14191c;
 }
 
 * {
@@ -20,7 +20,13 @@ body {
   padding: 1rem;
 }
 
-h1, h2, h3, h4, .eyebrow, .logo, .btn {
+h1,
+h2,
+h3,
+h4,
+.eyebrow,
+.logo,
+.btn {
   font-family: 'Space Grotesk', sans-serif;
 }
 
@@ -246,28 +252,65 @@ p {
   }
 }
 
-.tile-what-we-do { grid-column: span 12; }
-.tile-meerkat { grid-column: span 12; }
-.tile-first-light { grid-column: span 12; }
-.tile-services { grid-column: span 12; }
-.tile-standards { grid-column: span 12; }
-.tile-social-proof { grid-column: span 12; }
-.tile-coverage { grid-column: span 12; }
-.tile-faq { grid-column: span 12; }
-.tile-contact { grid-column: span 12; }
+.tile-what-we-do {
+  grid-column: span 12;
+}
+.tile-meerkat {
+  grid-column: span 12;
+}
+.tile-first-light {
+  grid-column: span 12;
+}
+.tile-services {
+  grid-column: span 12;
+}
+.tile-standards {
+  grid-column: span 12;
+}
+.tile-social-proof {
+  grid-column: span 12;
+}
+.tile-coverage {
+  grid-column: span 12;
+}
+.tile-faq {
+  grid-column: span 12;
+}
+.tile-contact {
+  grid-column: span 12;
+}
 
 @media (min-width: 768px) {
-  .tile-what-we-do { grid-column: span 6; }
-  .tile-coverage { grid-column: span 6; }
-  
-  .tile-services { grid-column: span 7; }
-  .tile-social-proof { grid-column: span 5; }
-  
-  .tile-standards { grid-column: span 12; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .tile-standards .tile-image { margin-top: 0; }
-  
-  .tile-faq { grid-column: span 7; }
-  .tile-contact { grid-column: span 5; }
+  .tile-what-we-do {
+    grid-column: span 6;
+  }
+  .tile-coverage {
+    grid-column: span 6;
+  }
+
+  .tile-services {
+    grid-column: span 7;
+  }
+  .tile-social-proof {
+    grid-column: span 5;
+  }
+
+  .tile-standards {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .tile-standards .tile-image {
+    margin-top: 0;
+  }
+
+  .tile-faq {
+    grid-column: span 7;
+  }
+  .tile-contact {
+    grid-column: span 5;
+  }
 }
 
 @media (min-width: 900px) {
@@ -275,9 +318,9 @@ p {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 2rem;
-    grid-template-areas: 
-      "eyebrow eyebrow"
-      "image content";
+    grid-template-areas:
+      'eyebrow eyebrow'
+      'image content';
   }
   .tile-meerkat .eyebrow {
     grid-area: eyebrow;
@@ -298,7 +341,9 @@ p {
   color: var(--color-bg);
 }
 
-.feature-tile h2, .feature-tile p, .feature-tile .eyebrow {
+.feature-tile h2,
+.feature-tile p,
+.feature-tile .eyebrow {
   color: var(--color-bg);
 }
 .feature-tile .eyebrow {
@@ -313,7 +358,8 @@ p {
   color: var(--color-text);
   border: 1px solid var(--color-primary); /* keeping 1px for consistency with other tiles, maybe thicker but prompt asked for 1px primary borders */
 }
-.alt-feature h2, .alt-feature .eyebrow {
+.alt-feature h2,
+.alt-feature .eyebrow {
   color: var(--color-primary);
 }
 .alt-feature p {

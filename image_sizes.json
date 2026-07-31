@@ -1,0 +1,773 @@
+[
+  {
+    "slug": "stake-and-bind",
+    "images": [
+      {
+        "name": "accommodation.webp",
+        "size": 77506
+      },
+      {
+        "name": "group.webp",
+        "size": 626860
+      },
+      {
+        "name": "hero.webp",
+        "size": 195010
+      },
+      {
+        "name": "workshop.webp",
+        "size": 63314
+      }
+    ]
+  },
+  {
+    "slug": "abyssal-data-recovery",
+    "images": [
+      {
+        "name": "brine_wash.webp",
+        "size": 180282
+      },
+      {
+        "name": "hero.webp",
+        "size": 106104
+      },
+      {
+        "name": "nand_micro_soldering.webp",
+        "size": 67654
+      },
+      {
+        "name": "rov_abyss.webp",
+        "size": 143640
+      }
+    ]
+  },
+  {
+    "slug": "abyssal-hardware",
+    "images": [
+      {
+        "name": "bathypelagic-trunk.webp",
+        "size": 152422
+      },
+      {
+        "name": "chamber-test.webp",
+        "size": 119972
+      },
+      {
+        "name": "hero.webp",
+        "size": 172166
+      }
+    ]
+  },
+  {
+    "slug": "apex-altitude-lab",
+    "images": [
+      {
+        "name": "biometrics.webp",
+        "size": 98272
+      },
+      {
+        "name": "chamber.webp",
+        "size": 151054
+      },
+      {
+        "name": "deepsea.webp",
+        "size": 212194
+      }
+    ]
+  },
+  {
+    "slug": "archive-arcade",
+    "images": [
+      {
+        "name": "hero.webp",
+        "size": 203426
+      },
+      {
+        "name": "machine1.webp",
+        "size": 145126
+      },
+      {
+        "name": "workshop.webp",
+        "size": 153276
+      }
+    ]
+  },
+  {
+    "slug": "aseptic-cellars",
+    "images": [
+      {
+        "name": "cleanroom-technician.webp",
+        "size": 62294
+      },
+      {
+        "name": "hero-chamber.webp",
+        "size": 126142
+      },
+      {
+        "name": "protein-isolate.webp",
+        "size": 101466
+      }
+    ]
+  },
+  {
+    "slug": "astrolabe-treks",
+    "images": [
+      {
+        "name": "brass_astrolabe.webp",
+        "size": 214676
+      },
+      {
+        "name": "desert_night_dunes.webp",
+        "size": 153610
+      },
+      {
+        "name": "star_trails.webp",
+        "size": 160046
+      }
+    ]
+  },
+  {
+    "slug": "backhaul-field-co",
+    "images": [
+      {
+        "name": "crew.webp",
+        "size": 147860
+      },
+      {
+        "name": "hero.webp",
+        "size": 180626
+      },
+      {
+        "name": "texture.webp",
+        "size": 133328
+      }
+    ]
+  },
+  {
+    "slug": "copper-cloche",
+    "images": [
+      {
+        "name": "hero.webp",
+        "size": 237514
+      },
+      {
+        "name": "plate-detail.webp",
+        "size": 99908
+      },
+      {
+        "name": "rigging-truck.webp",
+        "size": 106398
+      }
+    ]
+  },
+  {
+    "slug": "cryotex-isolates",
+    "images": [
+      {
+        "name": "cryo-isolate.webp",
+        "size": 126276
+      },
+      {
+        "name": "facility-tech.webp",
+        "size": 128614
+      },
+      {
+        "name": "hero-vitrification.webp",
+        "size": 102668
+      }
+    ]
+  },
+  {
+    "slug": "drosera-vault",
+    "images": [
+      {
+        "name": "drosera_macro.webp",
+        "size": 83740
+      },
+      {
+        "name": "flytrap_macro.webp",
+        "size": 125314
+      },
+      {
+        "name": "pinguicula_macro.webp",
+        "size": 148598
+      }
+    ]
+  },
+  {
+    "slug": "forge-and-feather",
+    "images": [
+      {
+        "name": "craft.webp",
+        "size": 84024
+      },
+      {
+        "name": "hearth.webp",
+        "size": 227892
+      },
+      {
+        "name": "hero.webp",
+        "size": 465892
+      },
+      {
+        "name": "specs.webp",
+        "size": 253704
+      }
+    ]
+  },
+  {
+    "slug": "halyard-and-hemp-sailmakers",
+    "images": [
+      {
+        "name": "contact-hero.webp",
+        "size": 78294
+      },
+      {
+        "name": "craft-hero.webp",
+        "size": 131480
+      },
+      {
+        "name": "cringle-detail.webp",
+        "size": 27556
+      },
+      {
+        "name": "gaff-cutter.webp",
+        "size": 19474
+      },
+      {
+        "name": "hemp-coil.webp",
+        "size": 25550
+      },
+      {
+        "name": "loft-hero.webp",
+        "size": 221506
+      },
+      {
+        "name": "sails-hero.webp",
+        "size": 205970
+      }
+    ]
+  },
+  {
+    "slug": "hull-and-hem-sailmenders",
+    "images": [
+      {
+        "name": "bosuns-box.webp",
+        "size": 931983
+      },
+      {
+        "name": "grace-of-percuil.webp",
+        "size": 887686
+      },
+      {
+        "name": "hero-signalbox.webp",
+        "size": 1079694
+      },
+      {
+        "name": "marta-at-bench.webp",
+        "size": 867433
+      },
+      {
+        "name": "singer-45k.webp",
+        "size": 893500
+      },
+      {
+        "name": "tanbark-swatch.webp",
+        "size": 1015447
+      }
+    ]
+  },
+  {
+    "slug": "k9-kinetic-recovery",
+    "images": []
+  },
+  {
+    "slug": "karoo-brass-and-glass",
+    "images": [
+      {
+        "name": "catalogue_hero.webp",
+        "size": 326592
+      },
+      {
+        "name": "home_hero.webp",
+        "size": 169574
+      },
+      {
+        "name": "process_hero.webp",
+        "size": 115814
+      }
+    ]
+  },
+  {
+    "slug": "knot-and-westerly",
+    "images": [
+      {
+        "name": "hero-canopy-pod.webp",
+        "size": 224066
+      },
+      {
+        "name": "material-detail.webp",
+        "size": 157720
+      }
+    ]
+  },
+  {
+    "slug": "lithic-fibre-dynamics",
+    "images": [
+      {
+        "name": "drone.webp",
+        "size": 178816
+      },
+      {
+        "name": "hero.webp",
+        "size": 184362
+      },
+      {
+        "name": "kevlar.webp",
+        "size": 185814
+      }
+    ]
+  },
+  {
+    "slug": "lithic-resonance",
+    "images": [
+      {
+        "name": "hero-bg.webp",
+        "size": 206012
+      }
+    ]
+  },
+  {
+    "slug": "nepenthes-forge",
+    "images": [
+      {
+        "name": "hardware.webp",
+        "size": 96276
+      },
+      {
+        "name": "hero.webp",
+        "size": 156362
+      },
+      {
+        "name": "substrates.webp",
+        "size": 107846
+      }
+    ]
+  },
+  {
+    "slug": "78-north-supply",
+    "images": [
+      {
+        "name": "dispatch.webp",
+        "size": 108872
+      },
+      {
+        "name": "hero.webp",
+        "size": 183414
+      },
+      {
+        "name": "polaris-parka.webp",
+        "size": 122570
+      }
+    ]
+  },
+  {
+    "slug": "apiary-mesh-kinetics",
+    "images": [
+      {
+        "name": "commercial-apiary.webp",
+        "size": 221760
+      },
+      {
+        "name": "hardware-hex-node.webp",
+        "size": 301172
+      },
+      {
+        "name": "hero-telemetry.webp",
+        "size": 242244
+      }
+    ]
+  },
+  {
+    "slug": "centrifugal-larder",
+    "images": [
+      {
+        "name": "bento-clarity.webp",
+        "size": 101466
+      },
+      {
+        "name": "hero-centrifuge.webp",
+        "size": 126142
+      },
+      {
+        "name": "isolate-bottles.webp",
+        "size": 126276
+      }
+    ]
+  },
+  {
+    "slug": "gimbal-and-hoist",
+    "images": [
+      {
+        "name": "bento-hardware.webp",
+        "size": 14416
+      },
+      {
+        "name": "hero-trawler.webp",
+        "size": 122438
+      },
+      {
+        "name": "rope-ascent.webp",
+        "size": 209042
+      }
+    ]
+  },
+  {
+    "slug": "halcyon-tare",
+    "images": [
+      {
+        "name": "hero.webp",
+        "size": 58068
+      },
+      {
+        "name": "ranges-shelf.webp",
+        "size": 83114
+      },
+      {
+        "name": "refill-hands.webp",
+        "size": 72288
+      }
+    ]
+  },
+  {
+    "slug": "hearth-and-anvil",
+    "images": [
+      {
+        "name": "bronze-casting-detail.webp",
+        "size": 152928
+      },
+      {
+        "name": "hero-foundry.webp",
+        "size": 106660
+      },
+      {
+        "name": "mobile-container-unit.webp",
+        "size": 190910
+      }
+    ]
+  },
+  {
+    "slug": "isocline-preservation",
+    "images": [
+      {
+        "name": "halite-vault.webp",
+        "size": 243064
+      },
+      {
+        "name": "hero-strata.webp",
+        "size": 173876
+      },
+      {
+        "name": "lab-diagnostics.webp",
+        "size": 66706
+      }
+    ]
+  },
+  {
+    "slug": "katabatic-shelters",
+    "images": [
+      {
+        "name": "dyneema-texture.webp",
+        "size": 150166
+      },
+      {
+        "name": "hero-katabatic.webp",
+        "size": 930492
+      },
+      {
+        "name": "twin-otter-drop.webp",
+        "size": 1024634
+      }
+    ]
+  },
+  {
+    "slug": "kestrel-heavy",
+    "images": [
+      {
+        "name": "carbide-teeth.webp",
+        "size": 177568
+      },
+      {
+        "name": "hero-drone-drop.webp",
+        "size": 175734
+      },
+      {
+        "name": "highlands-site.webp",
+        "size": 189134
+      }
+    ]
+  },
+  {
+    "slug": "monolith-somatic",
+    "images": [
+      {
+        "name": "clinical-data-scan.webp",
+        "size": 926
+      },
+      {
+        "name": "deployment-truck.webp",
+        "size": 926
+      },
+      {
+        "name": "hero-monolith.webp",
+        "size": 926
+      },
+      {
+        "name": "interior-anechoic.webp",
+        "size": 926
+      }
+    ]
+  },
+  {
+    "slug": "null-state-cryogenics",
+    "images": [
+      {
+        "name": "hero-hydraulic-press.webp",
+        "size": 203722
+      },
+      {
+        "name": "vitrine-hardware.webp",
+        "size": 60224
+      }
+    ]
+  },
+  {
+    "slug": "oxide-and-tide",
+    "images": [
+      {
+        "name": "hero-workshop.webp",
+        "size": 134460
+      },
+      {
+        "name": "hydrostatic-chamber.webp",
+        "size": 142934
+      },
+      {
+        "name": "metallurgy-close-up.webp",
+        "size": 132448
+      }
+    ]
+  },
+  {
+    "slug": "patch-parcel",
+    "images": [
+      {
+        "name": "hero.webp",
+        "size": 159240
+      }
+    ]
+  },
+  {
+    "slug": "pellucid-memory",
+    "images": [
+      {
+        "name": "hero-quartz.webp",
+        "size": 97314
+      },
+      {
+        "name": "laser-etching.webp",
+        "size": 49922
+      },
+      {
+        "name": "tape-decay.webp",
+        "size": 167652
+      }
+    ]
+  },
+  {
+    "slug": "signal-and-silo",
+    "images": [
+      {
+        "name": "hero.webp",
+        "size": 233268
+      },
+      {
+        "name": "mesh.webp",
+        "size": 192542
+      },
+      {
+        "name": "node.webp",
+        "size": 176630
+      }
+    ]
+  },
+  {
+    "slug": "siloshield-dynamics",
+    "images": [
+      {
+        "name": "autonomous_harvester.webp",
+        "size": 158174
+      },
+      {
+        "name": "drone_deployment.webp",
+        "size": 221194
+      },
+      {
+        "name": "motherboard_macro.webp",
+        "size": 136634
+      },
+      {
+        "name": "server_rack_farm.webp",
+        "size": 160812
+      }
+    ]
+  },
+  {
+    "slug": "substratum-signals",
+    "images": [
+      {
+        "name": "buoy-telemetry.webp",
+        "size": 149342
+      },
+      {
+        "name": "hero-seabed.webp",
+        "size": 95878
+      },
+      {
+        "name": "strata-waveform.webp",
+        "size": 133156
+      }
+    ]
+  },
+  {
+    "slug": "the-brass-and-thistle",
+    "images": [
+      {
+        "name": "fermentary.webp",
+        "size": 156190
+      },
+      {
+        "name": "hero.webp",
+        "size": 178036
+      },
+      {
+        "name": "trench_pie.webp",
+        "size": 102106
+      }
+    ]
+  },
+  {
+    "slug": "the-midnight-forager",
+    "images": [
+      {
+        "name": "booking.webp",
+        "size": 149852
+      },
+      {
+        "name": "concept.webp",
+        "size": 456044
+      },
+      {
+        "name": "expedition.webp",
+        "size": 118204
+      },
+      {
+        "name": "hero.webp",
+        "size": 11922
+      },
+      {
+        "name": "menu.webp",
+        "size": 220650
+      }
+    ]
+  },
+  {
+    "slug": "the-slate-and-chisel",
+    "images": [
+      {
+        "name": "deep_v_detail.webp",
+        "size": 336252
+      },
+      {
+        "name": "hero_stone.webp",
+        "size": 143274
+      },
+      {
+        "name": "mason_sketch.webp",
+        "size": 159166
+      },
+      {
+        "name": "millstone_block.webp",
+        "size": 191224
+      }
+    ]
+  },
+  {
+    "slug": "the-tidal-vault",
+    "images": [
+      {
+        "name": "acoustic.webp",
+        "size": 160522
+      },
+      {
+        "name": "flotation.webp",
+        "size": 133304
+      },
+      {
+        "name": "hero.webp",
+        "size": 230462
+      },
+      {
+        "name": "mud.webp",
+        "size": 124528
+      }
+    ]
+  },
+  {
+    "slug": "vapour-and-vault",
+    "images": [
+      {
+        "name": "broth-reduction-flask.webp",
+        "size": 184658
+      },
+      {
+        "name": "hero-shaft-vat.webp",
+        "size": 190270
+      }
+    ]
+  },
+  {
+    "slug": "verdigris-and-salt",
+    "images": [
+      {
+        "name": "facility-dockyard.webp",
+        "size": 164124
+      },
+      {
+        "name": "halide-therapy.webp",
+        "size": 87812
+      },
+      {
+        "name": "hero-chamber.webp",
+        "size": 135932
+      }
+    ]
+  },
+  {
+    "slug": "xenon-arc",
+    "images": [
+      {
+        "name": "cleanroom.webp",
+        "size": 109602
+      },
+      {
+        "name": "glowing_seam.webp",
+        "size": 136716
+      },
+      {
+        "name": "tig_arc.webp",
+        "size": 79664
+      }
+    ]
+  }
+]

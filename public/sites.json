@@ -1,0 +1,642 @@
+[
+  {
+    "title": "Stake & Bind",
+    "blurb": "Trade your sprint board for a billhook — learn to lay hedges the slow way, sleep deeply, remember what your hands are for.",
+    "hero": "assets/hero-hedge.webp",
+    "layoutFamily": "asymmetric split",
+    "tags": [
+      "outdoor-skills",
+      "executive-wellbeing",
+      "heritage-craft"
+    ],
+    "created": "2025-01-26",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2025-01/stake-and-bind"
+  },
+  {
+    "title": "Abyssal Data Recovery",
+    "blurb": "Rescuing critical telemetry and high-definition visual logs from the crushing depths of the ocean floor.",
+    "hero": "assets/hero-lab.webp",
+    "layoutFamily": "brutalist stacked",
+    "created": "2026-05-27",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "brand",
+      "concept"
+    ],
+    "siteFolder": "./sites/2026-05/abyssal-data-recovery"
+  },
+  {
+    "title": "Abyssal Hardware Co.",
+    "blurb": "Unyielding storage for the ocean's most unforgiving depths.",
+    "hero": "assets/hero-trunk.webp",
+    "layoutFamily": "sticky-rail + content",
+    "created": "2026-05-29",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "brand",
+      "concept"
+    ],
+    "siteFolder": "./sites/2026-05/abyssal-hardware"
+  },
+  {
+    "title": "Apex Altitude Lab",
+    "blurb": "High-Performance Hypoxic Conditioning for extreme depths.",
+    "hero": "assets/hyperbaric-chamber.webp",
+    "layoutFamily": "horizontal-scroll band",
+    "created": "2026-05-31",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "brand",
+      "concept"
+    ],
+    "siteFolder": "./sites/2026-05/apex-altitude-lab"
+  },
+  {
+    "title": "Archive Arcade",
+    "blurb": "Carefully restored Japanese and European coin-operated photo booths.",
+    "hero": "assets/hero-booth.webp",
+    "layoutFamily": "asymmetric split",
+    "created": "2026-06-02",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "storage",
+      "logistics"
+    ],
+    "siteFolder": "./sites/2026-06/archive-arcade"
+  },
+  {
+    "title": "Aseptic Cellars",
+    "blurb": "Absolute protein desiccation and aging without the unpredictability of biological fungal cultures.",
+    "hero": "assets/hero-chamber.webp",
+    "layoutFamily": "brutalist stacked",
+    "created": "2026-06-04",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "storage",
+      "logistics"
+    ],
+    "siteFolder": "./sites/2026-06/aseptic-cellars"
+  },
+  {
+    "title": "Astrolabe Desert Treks",
+    "blurb": "Guided, multi-day nocturnal sandboarding and desert trekking expeditions.",
+    "hero": "assets/desert_night_dunes.webp",
+    "layoutFamily": "brutalist stacked",
+    "created": "2026-06-05",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "brand",
+      "concept"
+    ],
+    "siteFolder": "./sites/2026-06/astrolabe-treks"
+  },
+  {
+    "title": "Backhaul Field Co.",
+    "blurb": "Studio-grade connectivity and on-set data infrastructure for productions shooting where the mobile signal gives out.",
+    "hero": "assets/hero-uplink.webp",
+    "layoutFamily": "bento",
+    "created": "2026-06-07",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "brand",
+      "concept"
+    ],
+    "siteFolder": "./sites/2026-06/backhaul-field-co"
+  },
+  {
+    "title": "The Copper Cloche",
+    "blurb": "Michelin-grade subterranean dining delivered to the most remote coastal adits and forgotten granite vaults of South West Britain.",
+    "hero": "assets/hero-vault.webp",
+    "layoutFamily": "asymmetric split",
+    "created": "2026-06-09",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "brand",
+      "concept"
+    ],
+    "siteFolder": "./sites/2026-06/copper-cloche"
+  },
+  {
+    "title": "Cryotex Isolates",
+    "blurb": "Absolute flavour preservation through minus-196°C liquid nitrogen vitrification and micro-milling.",
+    "hero": "assets/hero-vitrification.webp",
+    "layoutFamily": "brutalist stacked",
+    "created": "2026-06-11",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "industrial",
+      "hardware"
+    ],
+    "siteFolder": "./sites/2026-06/cryotex-isolates"
+  },
+  {
+    "title": "Drosera Vault",
+    "blurb": "Time-locked drops of rare, legally propagated carnivorous plant seeds.",
+    "hero": "assets/drosera_macro.webp",
+    "layoutFamily": "brutalist stacked",
+    "created": "2026-06-13",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "storage",
+      "logistics"
+    ],
+    "siteFolder": "./sites/2026-06/drosera-vault"
+  },
+  {
+    "title": "Forge & Feather",
+    "blurb": "Bespoke Culinary Blacksmithing & Open-Fire Dining.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "bento",
+    "created": "2026-06-15",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "industrial",
+      "hardware"
+    ],
+    "siteFolder": "./sites/2026-06/forge-and-feather"
+  },
+  {
+    "title": "Halyard & Hemp Sailmakers",
+    "blurb": "Flax and hemp canvas for wooden boats that were never meant to carry Dacron. Hand-stitched traditional sails from the Isle of Bute.",
+    "hero": "assets/loft-hero.webp",
+    "layoutFamily": "editorial magazine",
+    "created": "2026-06-17",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "maritime",
+      "services"
+    ],
+    "siteFolder": "./sites/2026-06/halyard-and-hemp-sailmakers"
+  },
+  {
+    "title": "Hull & Hem Sailmenders",
+    "blurb": "A working sail loft run out of a Cornish signal box, mending gaff mainsails, storm jibs and cruising genoas for skippers who want the old stitch back.",
+    "hero": "assets/hero-signalbox.webp",
+    "layoutFamily": "brutalist stacked",
+    "created": "2026-06-19",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "maritime",
+      "services"
+    ],
+    "siteFolder": "./sites/2026-06/hull-and-hem-sailmenders"
+  },
+  {
+    "title": "K9 Kinetic Recovery",
+    "blurb": "Mobile hydrotherapy & acoustic resonance for retired working dogs.",
+    "hero": "assets/k9/hero.webp",
+    "layoutFamily": "horizontal-scroll band",
+    "created": "2026-06-21",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "brand",
+      "concept"
+    ],
+    "siteFolder": "./sites/2026-06/k9-kinetic-recovery"
+  },
+  {
+    "title": "Karoo Brass & Glass | Mechanical Weather Instruments",
+    "blurb": "Fully restored, mechanically calibrated antique barometers engineered for extreme South African altitudes and zero-signal environments.",
+    "hero": "assets/home_hero.webp",
+    "layoutFamily": "horizontal-scroll band",
+    "created": "2026-06-23",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "industrial",
+      "hardware"
+    ],
+    "siteFolder": "./sites/2026-06/karoo-brass-and-glass"
+  },
+  {
+    "title": "Knot & Westerly",
+    "blurb": "Defiantly stable arboreal architecture pinned to the absolute edge of the habitable world.",
+    "hero": "assets/hero-canopy-pod.webp",
+    "layoutFamily": "brutalist stacked",
+    "created": "2026-06-24",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "brand",
+      "concept"
+    ],
+    "siteFolder": "./sites/2026-06/knot-and-westerly"
+  },
+  {
+    "title": "Lithic Fibre Dynamics",
+    "blurb": "Gigabit connectivity mapped and routed invisibly through the Victorian circulatory systems of historic architecture.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "asymmetric split",
+    "created": "2026-06-26",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "technology",
+      "research"
+    ],
+    "siteFolder": "./sites/2026-06/lithic-fibre-dynamics"
+  },
+  {
+    "title": "Lithic Resonance",
+    "blurb": "Bespoke, brutalist sound diffusers and bass traps cast from repurposed Johannesburg gold mine tailings.",
+    "hero": "assets/hero-bg.webp",
+    "layoutFamily": "brutalist stacked",
+    "created": "2026-06-28",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "brand",
+      "concept"
+    ],
+    "siteFolder": "./sites/2026-06/lithic-resonance"
+  },
+  {
+    "title": "Nepenthes Forge & Flight",
+    "blurb": "Transporting and sustaining fragile predatory flora in absolute, climate-controlled isolation.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "bento",
+    "created": "2026-06-30",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "industrial",
+      "hardware"
+    ],
+    "siteFolder": "./sites/2026-06/nepenthes-forge"
+  },
+  {
+    "title": "78 North Supply",
+    "blurb": "Field-hardened gear dispatched from the world’s northernmost functional settlement — no lifestyle branding, no unnecessary features.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "ultra-minimal full-bleed",
+    "tags": [
+      "expedition-gear",
+      "ecommerce",
+      "arctic"
+    ],
+    "created": "2026-07-25",
+    "wordFloor": 650,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-07/78-north-supply"
+  },
+  {
+    "title": "Apiary Mesh Kinetics",
+    "blurb": "Deterministic hive telemetry and acoustic pathogen detection without disrupting the colony's propolis seal.",
+    "hero": "assets/hero-telemetry.webp",
+    "layoutFamily": "brutalist stacked",
+    "tags": [
+      "agriculture",
+      "technology",
+      "data"
+    ],
+    "created": "2026-07-24",
+    "standard": "v2",
+    "wordFloor": 1100,
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-07/apiary-mesh-kinetics"
+  },
+  {
+    "title": "Centrifugal Larder",
+    "blurb": "Mathematically precise, non-thermal flavor clarification and extraction via high-G mechanical shear force.",
+    "hero": "assets/hero-centrifuge.webp",
+    "layoutFamily": "bento",
+    "tags": [
+      "food-tech",
+      "industrial",
+      "ecommerce"
+    ],
+    "created": "2026-07-28",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-07/centrifugal-larder"
+  },
+  {
+    "title": "Gimbal & Hoist",
+    "blurb": "High-altitude rigging and masonry repair launched straight from the heavy swell, entirely bypassing the need for roads or helicopters.",
+    "hero": "assets/hero-trawler.webp",
+    "layoutFamily": "bento",
+    "tags": [
+      "industrial",
+      "maritime",
+      "maintenance"
+    ],
+    "created": "2026-07-27",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-07/gimbal-and-hoist"
+  },
+  {
+    "title": "Halcyon Tare",
+    "blurb": "A returnable-container weight ledger retail model where you pay only for contents, never packaging.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "diagonal-cut",
+    "tags": [
+      "retail",
+      "ecommerce",
+      "sustainability"
+    ],
+    "created": "2026-07-25",
+    "wordFloor": 1900,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-07/halcyon-tare"
+  },
+  {
+    "title": "Hearth & Anvil Foundry",
+    "blurb": "On-site architectural forging and precision lost-wax bronze casting delivered straight to historic restoration scaffolds in a self-contained mobile foundry.",
+    "hero": "assets/hero-foundry.webp",
+    "layoutFamily": "asymmetric split",
+    "created": "2026-07-24",
+    "wordFloor": 650,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "industrial",
+      "hardware"
+    ],
+    "siteFolder": "./sites/2026-07/hearth-and-anvil"
+  },
+  {
+    "title": "Isocline Preservation",
+    "blurb": "Absolute atmospheric stability and clinical art preservation, engineered 150 metres beneath the surface.",
+    "hero": "assets/hero-strata.webp",
+    "layoutFamily": "asymmetric split",
+    "tags": [
+      "creative",
+      "logistics",
+      "industrial"
+    ],
+    "created": "2026-07-30",
+    "wordFloor": 1900,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-07/isocline-preservation"
+  },
+  {
+    "title": "Katabatic Shelter Systems",
+    "blurb": "Unyielding thermal retention and structural continuity in the planet's most hostile meteorological wind corridors.",
+    "hero": "assets/hero-katabatic.webp",
+    "layoutFamily": "sticky-rail + content",
+    "tags": [
+      "industrial",
+      "outdoors",
+      "scientific"
+    ],
+    "created": "2026-07-26",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-07/katabatic-shelters"
+  },
+  {
+    "title": "Kestrel Heavy Parts",
+    "blurb": "Critical heavy-machinery replacement parts ordered online and air-dropped directly to your site within six hours.",
+    "hero": "assets/hero-drone-drop.webp",
+    "layoutFamily": "ultra-minimal full-bleed",
+    "tags": [
+      "ecommerce",
+      "industrial",
+      "aviation"
+    ],
+    "created": "2026-07-25",
+    "wordFloor": 650,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-07/kestrel-heavy"
+  },
+  {
+    "title": "Monolith Somatic",
+    "blurb": "Clinical silence and nervous-system stabilization delivered to the center of the world's most deafening industrial environments.",
+    "hero": "assets/hero-monolith.webp",
+    "layoutFamily": "brutalist stacked",
+    "tags": [
+      "health",
+      "industrial",
+      "wellness"
+    ],
+    "created": "2026-07-29",
+    "wordFloor": 1900,
+    "standard": "v2",
+    "siteFolder": "./sites/2026-07/monolith-somatic"
+  },
+  {
+    "title": "Null-State Cryogenics",
+    "blurb": "Absolute thermal stability through industrial-scale cryogenic compression.",
+    "hero": "assets/hero-hydraulic-press.webp",
+    "layoutFamily": "sticky-rail + content",
+    "created": "2026-07-02",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "industrial",
+      "hardware"
+    ],
+    "siteFolder": "./sites/2026-07/null-state-cryogenics"
+  },
+  {
+    "title": "Oxide & Tide",
+    "blurb": "Breathing structural integrity back into deep-water brass using materials reclaimed from the sea bed.",
+    "hero": "assets/hero-workshop.webp",
+    "layoutFamily": "sticky-rail + content",
+    "created": "2026-07-04",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "brand",
+      "concept"
+    ],
+    "siteFolder": "./sites/2026-07/oxide-and-tide"
+  },
+  {
+    "title": "Patch & Parcel",
+    "blurb": "Premium repair kits, heritage fabrics, and visible mending supplies from West Yorkshire.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "editorial magazine",
+    "created": "2026-07-06",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "technology",
+      "research"
+    ],
+    "siteFolder": "./sites/2026-07/patch-parcel"
+  },
+  {
+    "title": "Pellucid Memory",
+    "blurb": "Enterprise cold storage physically burned into synthetic quartz, because relying on decaying magnetic tape for fifty-year compliance is corporate negligence.",
+    "hero": "assets/hero-quartz.webp",
+    "layoutFamily": "sticky-rail + content",
+    "tags": [
+      "tech",
+      "b2b",
+      "hardware"
+    ],
+    "created": "2026-07-31",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-07/pellucid-memory"
+  },
+  {
+    "title": "Signal & Silo",
+    "blurb": "Off-Grid Silo Telemetry Built for Remote Agriculture. Solar-powered radio networks safeguarding grain reserves in areas completely bypassed by cellular coverage.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "bento",
+    "created": "2026-07-08",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "technology",
+      "research"
+    ],
+    "siteFolder": "./sites/2026-07/signal-and-silo"
+  },
+  {
+    "title": "SiloShield Dynamics",
+    "blurb": "On-site penetration testing and ransomware hardening exclusively for automated farming infrastructure.",
+    "hero": "assets/autonomous_harvester.webp",
+    "layoutFamily": "bento",
+    "created": "2026-07-10",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "technology",
+      "research"
+    ],
+    "siteFolder": "./sites/2026-07/siloshield-dynamics"
+  },
+  {
+    "title": "Substratum Signals",
+    "blurb": "High-resolution acoustic sub-surface waveform inversion and real-time seafloor telemetry without invasive seismic drilling.",
+    "hero": "assets/hero-seabed.webp",
+    "layoutFamily": "bento",
+    "created": "2026-07-24",
+    "standard": "v2",
+    "wordFloor": 1100,
+    "qa": "v2-pass",
+    "tags": [
+      "technology",
+      "research"
+    ],
+    "siteFolder": "./sites/2026-07/substratum-signals"
+  },
+  {
+    "title": "The Brass & Thistle",
+    "blurb": "Heritage British pub fare, wild-fermented and wood-fired on the historic waters of the Kennet & Avon Canal.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "bento",
+    "created": "2026-07-12",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "industrial",
+      "hardware"
+    ],
+    "siteFolder": "./sites/2026-07/the-brass-and-thistle"
+  },
+  {
+    "title": "The Midnight Forager",
+    "blurb": "Nocturnal Culinary Expeditions in the Scottish Highlands.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "horizontal-scroll band",
+    "created": "2026-07-13",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "brand",
+      "concept"
+    ],
+    "siteFolder": "./sites/2026-07/the-midnight-forager"
+  },
+  {
+    "title": "The Slate & Chisel",
+    "blurb": "Preserving the structural integrity and quiet permanence of architectural heritage through hand-chiselled British stone.",
+    "hero": "assets/hero_stone.webp",
+    "layoutFamily": "asymmetric split",
+    "created": "2026-07-15",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "brand",
+      "concept"
+    ],
+    "siteFolder": "./sites/2026-07/the-slate-and-chisel"
+  },
+  {
+    "title": "The Tidal Vault | Offshore Grounding Sanctuary",
+    "blurb": "A dedicated, subterranean vestibular sanctuary engineered inside a historic Kent tidal pool to restore maritime professionals from the silent strain of offshore industry.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "editorial magazine",
+    "created": "2026-07-17",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "storage",
+      "logistics"
+    ],
+    "siteFolder": "./sites/2026-07/the-tidal-vault"
+  },
+  {
+    "title": "Vapour & Vault",
+    "blurb": "Maturing culinary stocks inside a 350-metre deep geothermal granite fissure using raw earth pressure and thermal vapor.",
+    "hero": "assets/hero-shaft-vat.webp",
+    "layoutFamily": "ultra-minimal full-bleed",
+    "created": "2026-07-19",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "storage",
+      "logistics"
+    ],
+    "siteFolder": "./sites/2026-07/vapour-and-vault"
+  },
+  {
+    "title": "Verdigris & Salt",
+    "blurb": "Clinical hyperbaric reoxygenation and halide skin rehabilitation engineered for the specific physiological trauma of commercial saturation diving.",
+    "hero": "assets/hero-chamber.webp",
+    "layoutFamily": "overlapping card-stack",
+    "created": "2026-07-23",
+    "standard": "v2",
+    "wordFloor": 1900,
+    "qa": "v2-pass",
+    "tags": [
+      "brand",
+      "concept"
+    ],
+    "siteFolder": "./sites/2026-07/verdigris-and-salt"
+  },
+  {
+    "title": "Xenon Arc Mobile Metallurgy",
+    "blurb": "Rapid-deployment, ISO 4 mobile clean-room welding units for onsite, zero-defect titanium and inconel fabrication.",
+    "hero": "assets/tig_arc.webp",
+    "layoutFamily": "bento",
+    "created": "2026-07-21",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "tags": [
+      "technology",
+      "research"
+    ],
+    "siteFolder": "./sites/2026-07/xenon-arc"
+  }
+]

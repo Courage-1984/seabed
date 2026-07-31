@@ -44,7 +44,39 @@ Omit `"qa": "v2-pass"` until @.agents/skills/qa-and-ship/SKILL.md gate passes. `
 
 ### index.html (stub)
 
-Minimal valid document: `lang` default `en-GB` (see @GEMINI.md Defaults), charset, viewport, title, description, favicon link to `./assets/favicon.svg`, stylesheet `./style.css`, script `./main.js` (defer), empty `<main>`.
+Minimal valid document with proper SEO and semantic landmarks:
+
+```html
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><Brand Name> | <Tagline></title>
+  <meta name="description" content="<One-line blurb from brief>">
+  <meta property="og:title" content="<Brand Name>">
+  <meta property="og:description" content="<One-line blurb from brief>">
+  <meta property="og:image" content="./assets/hero.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand"><Brand Name></div>
+  </header>
+  
+  <main id="main-content">
+    <!-- design-and-build fills this -->
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <YYYY> <Brand Name></p>
+  </footer>
+</body>
+</html>
+```
 
 ### style.css / main.js
 

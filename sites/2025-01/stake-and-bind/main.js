@@ -11,23 +11,27 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Subtle Parallax on Hero Image
   const heroImage = document.querySelector('.hero-media-fullbleed img');
   if (heroImage) {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY || window.pageYOffset;
-      // 0.5x scroll speed downward translation for depth without distraction
-      if (scrollY < 1200) {
-        heroImage.style.transform = `translate3d(0, ${scrollY * 0.4}px, 0)`;
-      }
-    }, { passive: true });
+    window.addEventListener(
+      'scroll',
+      () => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        // 0.5x scroll speed downward translation for depth without distraction
+        if (scrollY < 1200) {
+          heroImage.style.transform = `translate3d(0, ${scrollY * 0.4}px, 0)`;
+        }
+      },
+      { passive: true }
+    );
   }
 
   // 2. Staggered Fade-In on Section Entries
   const animatedSections = document.querySelectorAll('.section-animate');
-  
+
   if ('IntersectionObserver' in window) {
     const observerOptions = {
       root: null,
       rootMargin: '0px 0px -10% 0px',
-      threshold: 0.1
+      threshold: 0.1,
     };
 
     const sectionObserver = new IntersectionObserver((entries, observer) => {

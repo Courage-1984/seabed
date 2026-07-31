@@ -1,16 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;500;600&display=swap');
 
 :root {
-  --color-primary: #7A2E1F;
-  --color-secondary: #25405B;
-  --color-accent: #C89F5A;
-  --color-background: #F4EDDC;
-  --color-text: #1B1B18;
+  --color-primary: #7a2e1f;
+  --color-secondary: #25405b;
+  --color-accent: #c89f5a;
+  --color-background: #f4eddc;
+  --color-text: #1b1b18;
   --font-serif: 'Fraunces', serif;
   --font-sans: 'Source Sans 3', sans-serif;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -25,7 +27,12 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
   font-weight: 500;
   line-height: 1.2;
@@ -249,13 +256,13 @@ footer p {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .nav-links {
     flex-direction: column;
     gap: 1rem;
     width: 100%;
   }
-  
+
   h1 {
     font-size: 2.5rem;
   }

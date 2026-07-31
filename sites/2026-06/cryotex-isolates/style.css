@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap');
 
 :root {
-  --color-primary: #FFFFFF;
+  --color-primary: #ffffff;
   --color-secondary: #000000;
-  --color-accent: #0044FF;
-  --color-background: #F4F5F7;
+  --color-accent: #0044ff;
+  --color-background: #f4f5f7;
   --color-text: #111315;
 }
 
@@ -23,7 +23,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Space Grotesk', sans-serif;
   text-transform: uppercase;
   color: var(--color-secondary);
@@ -36,7 +41,8 @@ img {
   display: block;
 }
 
-a, button {
+a,
+button {
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 500;
   color: var(--color-secondary);
@@ -50,7 +56,8 @@ a, button {
   transition: none;
 }
 
-a:hover, button:hover {
+a:hover,
+button:hover {
   background-color: var(--color-accent);
   color: var(--color-primary);
   border-color: var(--color-accent);
@@ -63,7 +70,9 @@ main {
   width: 100%;
 }
 
-section, header, footer {
+section,
+header,
+footer {
   width: 100%;
   border-bottom: 8px solid var(--color-secondary);
   padding: 4rem 2rem;
@@ -203,8 +212,12 @@ nav .links a:last-child {
   font-size: 1.25rem;
 }
 @keyframes marquee {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-100%, 0); }
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
 }
 
 /* Footer */

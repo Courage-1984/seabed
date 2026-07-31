@@ -1,16 +1,19 @@
 :root {
-  --color-primary: #1C2B24;
-  --color-secondary: #2C3539;
-  --color-accent: #D4A373;
-  --color-background: #F8F9FA;
-  --color-text: #0B0F12;
+  --color-primary: #1c2b24;
+  --color-secondary: #2c3539;
+  --color-accent: #d4a373;
+  --color-background: #f8f9fa;
+  --color-text: #0b0f12;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   background-color: var(--color-background);
@@ -20,7 +23,12 @@ body, html {
   scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Fraunces', serif;
   margin-top: 0;
   color: var(--color-primary);
@@ -377,7 +385,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .site-footer {
   padding-top: 4rem;
-  border-top: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   margin-top: 6rem;
 }
 
@@ -416,7 +424,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-bottom {
   padding: 2rem 0;
-  border-top: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   font-size: 0.85rem;
   color: var(--color-secondary);
 }
@@ -425,7 +433,9 @@ h1, h2, h3, h4, h5, h6 {
 .reveal-text {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-text.is-visible {

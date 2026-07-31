@@ -1,13 +1,10 @@
 {
   "title": "Apex Altitude Lab",
   "blurb": "High-Performance Hypoxic Conditioning for extreme depths.",
-  "hero": "assets/chamber.webp",
+  "hero": "assets/hyperbaric-chamber.webp",
   "layoutFamily": "horizontal-scroll band",
   "created": "2026-05-31",
   "standard": "v2",
   "qa": "v2-pass",
-  "tags": [
-    "brand",
-    "concept"
-  ]
+  "tags": ["brand", "concept"]
 }

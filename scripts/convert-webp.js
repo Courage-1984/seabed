@@ -88,8 +88,7 @@ function updateReferences() {
   let updatedCount = 0;
 
   // Path-like refs only: assets/foo.png, ./bar.jpg, url(...), src="..."
-  const pathExtRe =
-    /((?:(?:\.\/|\.\.\/|\/)?(?:[\w.-]+\/)*)[\w.-]+)\.(png|jpg|jpeg)(?=["')\s?]|$)/gi;
+  const pathExtRe = /((?:(?:\.\/|\.\.\/|\/)?(?:[\w.-]+\/)*)[\w.-]+)\.(png|jpg|jpeg)(?=["')\s?]|$)/gi;
 
   for (const filePath of filePaths) {
     const content = fs.readFileSync(filePath, 'utf-8');

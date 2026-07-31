@@ -6,19 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const cards = document.querySelectorAll('.card');
   if (cards.length > 0) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-          }, index * 100);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.style.opacity = 1;
+              entry.target.style.transform = 'translateY(0)';
+            }, index * 100);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-    cards.forEach(card => {
+    cards.forEach((card) => {
       card.style.opacity = 0;
       card.style.transform = 'translateY(20px)';
       card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -46,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Data Table Expandable Rows
   // ==========================================
   const expandableRows = document.querySelectorAll('.table-row-expandable');
-  
-  expandableRows.forEach(row => {
+
+  expandableRows.forEach((row) => {
     const detailId = row.dataset.detail;
     const detailRow = document.getElementById(detailId);
     const expandBtn = row.querySelector('.expand-btn');
@@ -64,10 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const isHidden = detailRow.hidden;
 
     // Close all detail rows
-    document.querySelectorAll('.table-detail').forEach(dr => {
+    document.querySelectorAll('.table-detail').forEach((dr) => {
       dr.hidden = true;
     });
-    document.querySelectorAll('.expand-btn').forEach(b => {
+    document.querySelectorAll('.expand-btn').forEach((b) => {
       b.textContent = '+';
     });
 
@@ -89,14 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentStep = 1;
 
     function showK9Step(stepNumber) {
-      steps.forEach(step => {
+      steps.forEach((step) => {
         step.classList.remove('active');
         if (parseInt(step.dataset.step) === stepNumber) {
           step.classList.add('active');
         }
       });
 
-      progressSteps.forEach(ps => {
+      progressSteps.forEach((ps) => {
         const psStep = parseInt(ps.dataset.step);
         ps.classList.remove('active', 'completed');
         if (psStep === stepNumber) {
@@ -110,14 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Next buttons
-    k9Form.querySelectorAll('.k9-btn-next').forEach(btn => {
+    k9Form.querySelectorAll('.k9-btn-next').forEach((btn) => {
       btn.addEventListener('click', () => {
         const nextStep = parseInt(btn.dataset.next);
         const currentStepEl = k9Form.querySelector(`.k9-form-step[data-step="${currentStep}"]`);
         const requiredFields = currentStepEl.querySelectorAll('[required]');
         let valid = true;
 
-        requiredFields.forEach(field => {
+        requiredFields.forEach((field) => {
           if (!field.checkValidity()) {
             field.reportValidity();
             valid = false;
@@ -131,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Prev buttons
-    k9Form.querySelectorAll('.k9-btn-prev').forEach(btn => {
+    k9Form.querySelectorAll('.k9-btn-prev').forEach((btn) => {
       btn.addEventListener('click', () => {
         const prevStep = parseInt(btn.dataset.prev);
         showK9Step(prevStep);
@@ -141,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form submission
     k9Form.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
       const submitBtn = k9Form.querySelector('.k9-btn-submit');
       const originalText = submitBtn.textContent;
       submitBtn.textContent = 'Submitting...';
@@ -150,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         submitBtn.textContent = 'Application Submitted';
         submitBtn.style.backgroundColor = '#4caf50';
-        
+
         setTimeout(() => {
           k9Form.reset();
           showK9Step(1);
@@ -169,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const k9AccordionTriggers = document.querySelectorAll('.k9-accordion-trigger');
 
-  k9AccordionTriggers.forEach(trigger => {
+  k9AccordionTriggers.forEach((trigger) => {
     trigger.addEventListener('click', () => {
       const panel = document.getElementById(trigger.getAttribute('aria-controls'));
       const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
@@ -177,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Close all panels in the same accordion
       const accordion = trigger.closest('.k9-accordion');
       if (accordion) {
-        accordion.querySelectorAll('.k9-accordion-trigger').forEach(otherTrigger => {
+        accordion.querySelectorAll('.k9-accordion-trigger').forEach((otherTrigger) => {
           const otherPanel = document.getElementById(otherTrigger.getAttribute('aria-controls'));
           otherTrigger.setAttribute('aria-expanded', 'false');
           if (otherPanel) {

@@ -18,9 +18,7 @@ if (!arg) {
   process.exit(2);
 }
 
-const siteDescriptors = arg === '--all' 
-  ? findAllSiteDirs(ROOT) 
-  : [resolveSlugPath(ROOT, arg)].filter(Boolean);
+const siteDescriptors = arg === '--all' ? findAllSiteDirs(ROOT) : [resolveSlugPath(ROOT, arg)].filter(Boolean);
 
 if (arg !== '--all' && siteDescriptors.length === 0) {
   console.error(`CONTRACT_FAIL: site not found for target "${arg}"`);
@@ -99,9 +97,7 @@ function checkSite(site) {
       issues.push(`${rel}: absolute /assets/ path (breaks GitHub Pages)`);
     }
 
-    const imgSrcs = [...html.matchAll(/<(?:img|source)[^>]+(?:src|srcset)=["']([^"']+)["']/gi)].map(
-      (m) => m[1]
-    );
+    const imgSrcs = [...html.matchAll(/<(?:img|source)[^>]+(?:src|srcset)=["']([^"']+)["']/gi)].map((m) => m[1]);
     for (const src of imgSrcs) {
       const first = src.split(',')[0].trim().split(/\s+/)[0];
       if (/\.(png|jpe?g|gif)(\?|$)/i.test(first) && !/favicon/i.test(first)) {

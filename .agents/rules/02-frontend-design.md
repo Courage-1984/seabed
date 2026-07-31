@@ -20,7 +20,8 @@ Apply when creating or substantially editing HTML/CSS/JS under `sites/`.
 
 - Expressive, purposeful font pairs (e.g. Google Fonts). Do **not** use Inter, Roboto, Arial, or system-ui as the primary display face for new sites.
 - Do not rely on flat single-color backgrounds — use gradients, imagery, or subtle patterns.
-- Define a clear palette via CSS variables on `:root`.
+- Define a clear palette via CSS variables on `:root` (e.g., `--color-bg-base`, `--color-text-main`, `--color-accent`). Consider using HSL or exact hex codes for precision.
+- Define interactive states standardly (e.g., `--color-hover`, `--color-focus`).
 
 ## Sections and cards
 

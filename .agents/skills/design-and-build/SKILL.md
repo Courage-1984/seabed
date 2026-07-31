@@ -55,6 +55,8 @@ Before `acquire-images`:
 
 ## Responsive mindset
 
+- Use a **mobile-first CSS architecture**: default styles for mobile, `min-width` media queries for larger screens.
+- Leverage **CSS logical properties** (e.g., `margin-block`, `padding-inline`, `inset`) instead of physical directions for robust, modern layouts.
 - No fixed widths that blow out mobile; prefer `max-width`, flex/grid, `clamp()` for type where helpful.
 - Images: `max-width: 100%; height: auto`.
 - Test mentally at ~390 and ~1280; `qa-and-ship` confirms.

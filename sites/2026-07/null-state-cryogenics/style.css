@@ -1,12 +1,14 @@
 :root {
-  --color-primary: #12161A;
-  --color-secondary: #2B353D;
-  --color-accent: #00E5FF;
-  --color-background: #F0F4F8;
-  --color-text: #080B0E;
+  --color-primary: #12161a;
+  --color-secondary: #2b353d;
+  --color-accent: #00e5ff;
+  --color-background: #f0f4f8;
+  --color-text: #080b0e;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -25,7 +27,11 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, .telemetry, .brand {
+h1,
+h2,
+h3,
+.telemetry,
+.brand {
   font-family: 'Chakra Petch', sans-serif;
 }
 
@@ -71,7 +77,8 @@ h1, h2, h3, .telemetry, .brand {
   margin-bottom: 3rem;
 }
 
-.rail-nav a, .text-link {
+.rail-nav a,
+.text-link {
   color: var(--color-background);
   text-decoration: none;
   font-weight: 600;
@@ -80,7 +87,9 @@ h1, h2, h3, .telemetry, .brand {
   width: fit-content;
 }
 
-.rail-nav a:hover, .text-link:hover, .btn:hover {
+.rail-nav a:hover,
+.text-link:hover,
+.btn:hover {
   color: var(--color-accent);
   border-color: var(--color-accent);
 }
@@ -94,7 +103,7 @@ h1, h2, h3, .telemetry, .brand {
 }
 
 .telemetry-label {
-  color: #88939C;
+  color: #88939c;
   font-weight: 500;
   margin-bottom: 0.25rem;
 }
@@ -118,7 +127,7 @@ h1, h2, h3, .telemetry, .brand {
 }
 
 .hero-statement p {
-  color: #A0AAB2;
+  color: #a0aab2;
   font-size: 1.125rem;
   max-width: 40ch;
 }
@@ -140,7 +149,8 @@ h1, h2, h3, .telemetry, .brand {
   margin-top: 4rem;
 }
 
-.hero-image-section img, .image-break img {
+.hero-image-section img,
+.image-break img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -223,7 +233,7 @@ blockquote {
 
 .faq-item {
   margin-bottom: 2rem;
-  border-bottom: 1px solid #D0D8DF;
+  border-bottom: 1px solid #d0d8df;
   padding-bottom: 1rem;
 }
 
@@ -240,7 +250,7 @@ blockquote {
 
 .site-footer {
   padding: 4rem 2rem;
-  background-color: #E2E8F0;
+  background-color: #e2e8f0;
   color: var(--color-secondary);
   font-size: 0.875rem;
 }
@@ -269,7 +279,7 @@ blockquote {
     flex-direction: row;
     height: 100vh;
   }
-  
+
   .left-rail {
     width: 40%;
     position: sticky;
@@ -283,7 +293,7 @@ blockquote {
     width: 60%;
     overflow-y: auto;
   }
-  
+
   .content-section {
     padding: 6rem 4rem;
   }
@@ -293,7 +303,7 @@ blockquote {
   .hero-image-section {
     aspect-ratio: 1;
   }
-  
+
   .left-rail {
     border-right: none;
     border-bottom: 1px solid var(--color-secondary);

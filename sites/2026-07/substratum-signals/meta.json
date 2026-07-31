@@ -7,8 +7,5 @@
   "standard": "v2",
   "wordFloor": 1100,
   "qa": "v2-pass",
-  "tags": [
-    "technology",
-    "research"
-  ]
+  "tags": ["technology", "research"]
 }
