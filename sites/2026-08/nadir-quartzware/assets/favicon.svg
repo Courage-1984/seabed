@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Outer cuvette wall -->
+  <rect x="25" y="25" width="50" height="50" fill="none" stroke="#eff2f5" stroke-width="4" />
+  <!-- Inner bore -->
+  <rect x="40" y="40" width="20" height="20" fill="none" stroke="#eff2f5" stroke-width="2" />
+  <!-- Laser beam -->
+  <line x1="0" y1="50" x2="100" y2="50" stroke="#0bc2d9" stroke-width="4" />
+</svg>

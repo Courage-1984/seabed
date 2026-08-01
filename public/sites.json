@@ -346,6 +346,22 @@
     "siteFolder": "./sites/2026-07/gimbal-and-hoist"
   },
   {
+    "title": "GlacierMesh Infrastructure",
+    "blurb": "Server architecture engineered to run continuously where diesel generators freeze and standard enterprise silicon snaps like dry twigs.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "bento",
+    "tags": [
+      "tech",
+      "digital-services",
+      "edge-computing"
+    ],
+    "created": "2026-07-31",
+    "standard": "v2",
+    "wordFloor": 1100,
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-07/glaciermesh-infrastructure"
+  },
+  {
     "title": "Halcyon Tare",
     "blurb": "A returnable-container weight ledger retail model where you pay only for contents, never packaging.",
     "hero": "assets/hero.webp",
@@ -638,5 +654,20 @@
       "research"
     ],
     "siteFolder": "./sites/2026-07/xenon-arc"
+  },
+  {
+    "title": "Nadir Quartzware Direct",
+    "blurb": "Direct-to-laboratory online e-commerce catalog of synthetic fused-silica optical cuvettes, micro-bore flow cells, and spectroscopic calibration standards.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "terminal / data-readout",
+    "tags": [
+      "ecommerce",
+      "scientific",
+      "marine-tech"
+    ],
+    "created": "2026-08-01",
+    "wordFloor": 1900,
+    "standard": "v2",
+    "siteFolder": "./sites/2026-08/nadir-quartzware"
   }
 ]

@@ -1,0 +1,15 @@
+{
+  "title": "GlacierMesh Infrastructure",
+  "blurb": "Server architecture engineered to run continuously where diesel generators freeze and standard enterprise silicon snaps like dry twigs.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "bento",
+  "tags": [
+    "tech",
+    "digital-services",
+    "edge-computing"
+  ],
+  "created": "2026-07-31",
+  "standard": "v2",
+  "wordFloor": 1100,
+  "qa": "v2-pass"
+}

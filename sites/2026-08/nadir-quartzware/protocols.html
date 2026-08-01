@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nadir Quartzware Direct | Protocols</title>
+  <meta name="description" content="Cleaning, calibration & maintenance protocols for deep-sea optical cells.">
+  <meta property="og:title" content="Nadir Quartzware Direct Protocols">
+  <meta property="og:description" content="Cleaning, calibration & maintenance protocols for deep-sea optical cells.">
+  <meta property="og:image" content="./assets/hero.webp">
+  <meta property="og:type" content="website">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-container">
+      <div class="brand">NADIR QUARTZWARE DIRECT</div>
+      <div class="status-indicator">STATUS: ALL SYSTEMS NOMINAL | INVENTORY: 1,420 UNITS</div>
+    </div>
+    <nav class="site-nav">
+      <a href="./index.html" class="nav-link">[ TERMINAL ]</a>
+      <a href="./catalog.html" class="nav-link">[ CATALOG ]</a>
+      <a href="./protocols.html" class="nav-link active">[ PROTOCOLS ]</a>
+    </nav>
+  </header>
+  
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="terminal-block">
+      <div class="terminal-header">Optical Care & Decontamination Protocols</div>
+      <div class="terminal-body" style="padding-bottom: 1rem;">
+        <p>Stringent chemical resistance and handling procedures must be adhered to in order to maintain the optical integrity of Suprasil 3001 fused-silica cells.</p>
+        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#decontamination" class="btn-terminal">1. Decontamination</a>
+          <a href="#calibration" class="btn-terminal">2. Calibration</a>
+          <a href="#inspection" class="btn-terminal">3. Seal Inspection</a>
+          <a href="#faq" class="btn-terminal">4. Technical FAQ</a>
+          <a href="#verification" class="btn-terminal">5. Performance Data</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1 -->
+    <section id="decontamination" class="terminal-block">
+      <div class="terminal-header">Standard Operating Procedure: Optical Decontamination</div>
+      <div class="terminal-body">
+        <p>Following these step-by-step cleaning protocols prevents window etching and eliminates protein residue.</p>
+        
+        <div style="border-left: 2px solid var(--color-accent); padding-left: 1rem; margin-bottom: 1.5rem; background: hsla(38, 95%, 50%, 0.1); padding: 1rem; font-family: var(--font-mono); font-size: 0.9rem;">
+          <strong style="color: var(--color-accent);">[ WARNING ]</strong> Avoid dichromate cleaning solutions entirely. Hexavalent chromium compounds will permanently bind to the synthetic quartz lattice, destroying UV transparency.
+        </div>
+
+        <div style="font-family: var(--font-mono); font-size: 0.9rem;">
+          <div style="margin-bottom: 1rem; border-bottom: 1px solid var(--color-panel-border); padding-bottom: 0.5rem;">
+            <span style="color: var(--color-primary);">1. Solvent Rinse:</span> Flush the interior cavity with Reagent-Grade Ethanol or Acetone to dissolve organic lipids.
+          </div>
+          <div style="margin-bottom: 1rem; border-bottom: 1px solid var(--color-panel-border); padding-bottom: 0.5rem;">
+            <span style="color: var(--color-primary);">2. Nitric Acid Bath:</span> Submerge cuvette in a 10% (v/v) Nitric Acid solution and apply mild ultrasonic cleaning (max 35kHz) for 5 minutes.
+          </div>
+          <div style="margin-bottom: 1rem; border-bottom: 1px solid var(--color-panel-border); padding-bottom: 0.5rem;">
+            <span style="color: var(--color-primary);">3. Deionised Water Flush:</span> Thoroughly rinse the interior and exterior using 18.2 MΩ·cm Type-1 ultra-pure water.
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <span style="color: var(--color-primary);">4. Nitrogen Gas Blow-Dry:</span> Dry the optical windows using filtered, oil-free Nitrogen gas. Do not use wiping tissues.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="calibration" class="terminal-block">
+      <div class="terminal-header">Protocol 02: Blank Calibration & Autofluorescence Logging</div>
+      <div class="terminal-body">
+        <p>Proper zero-referencing is critical for deep UV fluorescence profiling. To establish an instrument baseline, fill the cuvette with fresh, degassed Type-1 ultra-pure water. Ensure no micro-bubbles adhere to the optical windows.</p>
+        <p>Excite the blank sample using your instrument's primary UV laser (e.g., 266nm or 280nm) and monitor the water Raman peak (approx. 294nm to 300nm depending on excitation). The autofluorescence signal outside the Raman scatter should remain indistinguishable from the detector's dark noise.</p>
+        
+        <div style="background: #0a0c10; padding: 1.5rem; border: 1px solid var(--color-panel-border); font-family: var(--font-mono); font-size: 0.85rem; color: #7ee787; margin-top: 1.5rem; overflow-x: auto;">
+          <pre><code>> INITIATING BASELINE SCAN...
+> EXCITATION: 280nm | DETECTOR: PMT-01
+> INTEGRATION TIME: 1000ms
+> RAMAN PEAK SIGNAL: 4,192 cps @ 308nm
+> BACKGROUND AUTOFLUORESCENCE (320-500nm): < 15 cps
+> BASELINE STATUS: APPROVED [NO QUARTZ FLUORESCENCE DETECTED]</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section id="inspection" class="terminal-block">
+      <div class="terminal-header">Protocol 03: High-Pressure O-Ring Maintenance & Inspection</div>
+      <div class="terminal-body">
+        <p>Series-6 abyssal flow cells require periodic seal replacement to prevent catastrophic ingress during hydrostatic descent.</p>
+        
+        <div style="overflow-x: auto; margin: 1.5rem 0;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Seal Material</th>
+                <th>Chemical Resistance</th>
+                <th>Max Pressure (Bar)</th>
+                <th>Replacement Cycle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Viton (FKM)</td>
+                <td>Standard Seawater / Acids</td>
+                <td>600</td>
+                <td>100 Dives</td>
+              </tr>
+              <tr>
+                <td>Kalrez 6375</td>
+                <td>Aggressive Solvents (HPLC)</td>
+                <td>600</td>
+                <td>150 Dives</td>
+              </tr>
+              <tr>
+                <td>Silicone (VMQ)</td>
+                <td>Low-temp Biology</td>
+                <td>200</td>
+                <td>50 Dives</td>
+              </tr>
+              <tr>
+                <td>PTFE Encapsulated</td>
+                <td>Universal Solvent inert</td>
+                <td>400</td>
+                <td>200 Dives</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="font-family: var(--font-mono); font-size: 0.9rem;">
+          <strong style="color: var(--color-primary);">[ INSPECTION CHECKLIST ]</strong><br>
+          After every 100 pressure cycles, inspect the titanium seal seats for salt crystal abrasion. Examine the removed O-ring under 10x magnification for micro-fissures or permanent compression set. Always lubricate lightly with Krytox before re-assembly.
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section id="faq" class="terminal-block">
+      <div class="terminal-header">Technical & Chemical Compatibility FAQ</div>
+      <div class="terminal-body">
+        <div style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--color-panel-border); padding-bottom: 1rem;">
+          <h4 style="margin-bottom: 0.5rem; color: var(--color-primary); font-size: 1rem;">Q: What is the maximum operating temperature for Suprasil cuvettes?</h4>
+          <p style="margin-bottom: 0;">A: Suprasil 3001 can operate continuously at up to 1,000°C without devitrification. Ensure heating ramps do not exceed 200°C per hour to prevent thermal shock.</p>
+        </div>
+        <div style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--color-panel-border); padding-bottom: 1rem;">
+          <h4 style="margin-bottom: 0.5rem; color: var(--color-primary); font-size: 1rem;">Q: Can Nadir cuvettes be autoclaved at 121°C?</h4>
+          <p style="margin-bottom: 0;">A: Yes. Because our cells are molecularly fused without frits or adhesives, they withstand repeated 121°C / 15 psi steam autoclaving cycles indefinitely.</p>
+        </div>
+        <div style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--color-panel-border); padding-bottom: 1rem;">
+          <h4 style="margin-bottom: 0.5rem; color: var(--color-primary); font-size: 1rem;">Q: How do I remove protein film buildup from micro-bore apertures?</h4>
+          <p style="margin-bottom: 0;">A: We recommend a 30-minute soak in an enzymatic cleaner like Tergazyme, followed by standard acid washing and thorough ultrasonic deionized water flushing.</p>
+        </div>
+        <div style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--color-panel-border); padding-bottom: 1rem;">
+          <h4 style="margin-bottom: 0.5rem; color: var(--color-primary); font-size: 1rem;">Q: What is the refractive index mismatch between seawater and fused silica?</h4>
+          <p style="margin-bottom: 0;">A: The refractive index of Suprasil is approx 1.458 (at 589nm), while standard seawater is roughly 1.339. This difference must be accounted for in highly sensitive angular scattering configurations.</p>
+        </div>
+        <div style="margin-bottom: 0;">
+          <h4 style="margin-bottom: 0.5rem; color: var(--color-primary); font-size: 1rem;">Q: Are optical windows resistant to hydrofluoric acid?</h4>
+          <p style="margin-bottom: 0;">A: No. Hydrofluoric acid (HF) rapidly etches all forms of silica, including Suprasil quartz, permanently destroying the optical polish. Do not expose cuvettes to HF.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section id="verification" class="terminal-block">
+      <div class="terminal-header">Third-Party Metrology Verification</div>
+      <div class="terminal-body split-layout">
+        <div>
+          <p>Comparative proof of Nadir optical purity against standard commercial grade cuvettes. Our high-temperature molecular bonding and stringent material sourcing ensure analytical dominance in the abyssal testing environment.</p>
+          <div style="padding: 1rem; background: var(--color-panel-border); border-left: 2px solid var(--color-primary); margin-top: 1.5rem;">
+            <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-text); margin-bottom: 0;">
+              "Verification statement: The Nadir Quartzware Series-6 Abyssal cuvettes exhibited statistically negligible autofluorescence and superior deep-UV transmittance during our 6,000-metre simulated benthic deployments."<br><br>
+              <span style="color: var(--color-primary);">— GEOMAR Marine Spectroscopy Testing Unit</span>
+            </p>
+          </div>
+        </div>
+        
+        <div style="overflow-x: auto; margin: 1.5rem 0;">
+            <table class="data-table">
+            <thead>
+              <tr>
+                <th>Test Metric</th>
+                <th>Nadir Suprasil 3001</th>
+                <th>Commercial Grade-A</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>200nm UV Transmittance</td>
+                <td><strong style="color: var(--color-primary);">91.8%</strong></td>
+                <td>82.4%</td>
+              </tr>
+              <tr>
+                <td>Autofluorescence Count</td>
+                <td><strong style="color: var(--color-primary);">< 50 cps</strong></td>
+                <td>1,200 cps</td>
+              </tr>
+              <tr>
+                <td>Window Flatness</td>
+                <td><strong style="color: var(--color-primary);">λ/4</strong></td>
+                <td>λ/2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2026 Nadir Quartzware Direct</p>
+      <p class="contact-block">Wischhofstraße 1-3, Building 4, 24148 Kiel, Germany</p>
+    </div>
+  </footer>
+</body>
+</html>

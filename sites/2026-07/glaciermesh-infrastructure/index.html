@@ -1,0 +1,300 @@
+<!DOCTYPE html><html lang="en-GB"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlacierMesh Infrastructure | Server Architecture Built for the Bottom of the World</title>
+  <meta name="description" content="Server architecture engineered to run continuously where diesel generators freeze and standard enterprise silicon snaps like dry twigs.">
+  <meta property="og:title" content="GlacierMesh Infrastructure">
+  <meta property="og:description" content="Server architecture engineered to run continuously where diesel generators freeze and standard enterprise silicon snaps like dry twigs.">
+  <meta property="og:image" content="./assets/hero.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js" defer=""></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">GlacierMesh Infrastructure</div>
+  </header>
+
+  <div class="telemetry-ticker-wrap">
+    <div class="telemetry-ticker">
+      <span class="ticker-item">SYS_STATUS: OPTIMAL</span>
+      <span class="ticker-item">EXT_TEMP: -54.2°C AMBIENT</span>
+      <span class="ticker-item">CORE_TEMP: 18.1°C STABLE</span>
+      <span class="ticker-item">BURST_QUEUE: 100% CLEAR</span>
+      <span class="ticker-item">PIEZO_HEATERS: STNDBY</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="ticker-item">SYS_STATUS: OPTIMAL</span>
+      <span class="ticker-item">EXT_TEMP: -54.2°C AMBIENT</span>
+      <span class="ticker-item">CORE_TEMP: 18.1°C STABLE</span>
+      <span class="ticker-item">BURST_QUEUE: 100% CLEAR</span>
+      <span class="ticker-item">PIEZO_HEATERS: STNDBY</span>
+    </div>
+  </div>
+  
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-background">
+        <img src="./assets/hero.webp" alt="GlacierMesh Boreas-9 titanium edge server chassis operating on Antarctic ice shelf under polar night sky." fetchpriority="high" width="1024" height="1024">
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <div class="telemetry-badge">
+          <span class="pulse-dot"></span>
+          <span class="telemetry-text">LIVE: KINETIC TELEMETRY SYSTEM ONLINE</span>
+        </div>
+        <h1 id="hero-title">Server Architecture Built for the Bottom of the World</h1>
+        <p class="hero-subhead">GlacierMesh supplies liquid-chilled edge arrays and satellite burst telemetry for polar glaciologists operating where standard silicon fails.</p>
+        <p class="hero-intro">Standard enterprise rack servers are wonderfully efficient until the ambient air drops to -45°C and condensed humidity welds optical couplings shut. We build self-contained, fluorinert-immersed edge computing nodes that treat catabatic blizzards as routine heat sinks rather than hardware emergencies. From the Ross Ice Shelf to Svalbard boreholes, GlacierMesh delivers local telemetry processing before snowdrifts bury your base station.</p>
+        <div class="hero-cta-group">
+          <a href="#requisition" class="btn btn-primary">Deploy Hardware</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1 (Flagship §4a): Cryogenic Edge Engineering -->
+    <section class="section-bento" aria-labelledby="flagship-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="flagship-title">Cryogenic Edge Engineering &amp; Ross Ice Shelf Protocols</h2>
+        </header>
+        <div class="bento-grid flagship-grid">
+          <div class="bento-tile tile-span-3 tile-img">
+            <img src="./assets/bento-chassis-core.webp" alt="Submerged server motherboard inside GlacierMesh non-conductive dielectric immersion cooling tank." loading="lazy" width="1024" height="1024">
+          </div>
+          <div class="bento-tile tile-span-2 tile-dark">
+            <p>High-throughput seismic sensors and deep-ice radar arrays produce terabytes of uncompressed acoustic data every hour. Transmitting raw sensor feeds directly over low-orbit satellite constellations during polar night is both financially ruinous and power-prohibitive when your generator relies on aviation fuel dragged across 400 kilometres of sea ice.</p>
+          </div>
+          <div class="bento-tile tile-span-2 tile-glass">
+            <p>GlacierMesh edge nodes sit directly at the borehole head, running real-time spectral reduction and error correction inside sealed, double-walled titanium chassis maintained at a constant 18°C by internal thermodynamic loops.</p>
+          </div>
+          <div class="bento-tile tile-span-1 tile-accent">
+            <p>Our signature Boreas-9 chassis bypasses moving mechanical cooling fans entirely, utilizing passive dielectric immersion fluids that absorb CPU thermals and dump them into external ground-loop coils buried in the firn layer.</p>
+          </div>
+          <div class="bento-tile tile-span-4 tile-dark">
+            <p>When ambient temperatures plunge below -55°C, piezoelectric heating elements along the fiber interface engage automatically, preventing micro-fractures in the glass substrate without drawing down precious battery banks. The result is continuous, uncorrupted data ingestion that remains online even when katabatic winds sever primary satellite dishes for weeks at a time. Your field team receives pre-processed anomaly alerts via low-frequency mesh radios, preserving battery reserves for critical drilling operations while ensuring no seismic event goes unrecorded.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2 (§4b): Field Telemetry & Satellite Burst Relays -->
+    <section class="section-stacked" aria-labelledby="telemetry-title">
+      <div class="container">
+        <header class="section-header text-center">
+          <h2 id="telemetry-title">High-Latitude Burst Telemetry &amp; Local Queue Resilience</h2>
+        </header>
+        <div class="stacked-band">
+          <div class="band-content">
+            <p>When low-orbit satellite constellations dip below the polar horizon, or brutal atmospheric interference degrades K-band connectivity, standard data uplinks simply drop packets or freeze. GlacierMesh architecture employs extreme-endurance local flash buffers rated for structural integrity down to -60°C. Storage is cheap at the edge, but polar satellite bandwidth is sacred—we process deep acoustic and seismic telemetry directly at the ice face, meaning you transmit only the heavily compressed spectral deltas.</p>
+            <p>During a blizzard blackout, our resilient local queues automatically stockpile structured data without human intervention. The moment orbital alignment is restored, the array blasts a synchronized telemetry burst, ensuring you acquire complete time-series continuity without squandering vital generator fuel on failed reconnection handshakes.</p>
+            <ul class="spec-list">
+              <li><strong>Algorithmic Compression:</strong> Achieves a 100:1 raw acoustic to spectral delta ratio, slashing transmission time.</li>
+              <li><strong>Deep-Cold Buffering:</strong> SSD enclosures are thermally jacketed to prevent freezing during prolonged blackouts.</li>
+              <li><strong>Asynchronous Synchronization:</strong> Prioritises anomaly spikes over ambient noise thresholds when bandwidth is limited.</li>
+            </ul>
+            <div class="stat-callout">
+              <span class="stat-value">99.98%</span>
+              <span class="stat-label">Telemetry Retention through 72-Hour Katabatic Storm Blackouts</span>
+            </div>
+            <a href="#telemetry-protocols" class="btn btn-secondary mt-4">Explore Telemetry Protocols</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3 (§4b): Hardened Hardware Specifications -->
+    <section class="section-bento" aria-labelledby="hardware-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="hardware-title">Anatomy of a Sub-Zero Titanium Immersion Chassis</h2>
+        </header>
+        <div class="bento-grid specs-grid">
+          <div class="bento-tile spec-tile">
+            <h3>Grade-5 Titanium Shell</h3>
+            <p>Milled from a solid billet, the enclosure delivers absolute pressure resistance and blocks salt-fog corrosion in aggressive coastal Antarctic deployments. No external vents, no compromised gaskets.</p>
+          </div>
+          <div class="bento-tile spec-tile">
+            <h3>Fluorinert FC-3283 Immersion Bath</h3>
+            <p>The entire mainboard is submerged in a non-conductive dielectric fluid transfer medium. It eliminates condensation shorts and aggressively channels heat away from critical processors without mechanical fans.</p>
+          </div>
+          <div class="bento-tile spec-tile">
+            <h3>Piezoelectric Optical Couplers</h3>
+            <p>Fiber optic data lines entering the chassis are safeguarded by self-deicing glass connectors. High-frequency piezoelectric vibration combined with localized thermal induction prevents catastrophic ice splintering.</p>
+          </div>
+          <div class="bento-tile spec-tile">
+            <h3>Solid-State Thermoelectric Heat Pumps</h3>
+            <p>Dual-mode heating and cooling solid-state modules automatically balance internal temperature gradients, leveraging the extreme external cold as an infinite heatsink while keeping CPUs above minimum boot thresholds.</p>
+          </div>
+          <div class="bento-tile tile-span-4 tile-text-heavy">
+            <p>By enforcing a strict design policy of no mechanical fans, no exposed copper contacts, and absolutely zero moving parts to seize in the arctic air, the Boreas-9 redefines hardware longevity. The internal thermodynamic loop continuously monitors the ambient delta—when the outside air acts as a perfect cryogenic sink, the system idles the thermal pumps and relies entirely on passive fluid convection.</p>
+            <p>Conversely, if localized solar radiation inside a weather tent briefly spikes the external temperature, the solid-state thermoelectric array instantly engages to maintain the internal immersion fluid at an optimal 18°C. This extreme thermal dynamic range guarantees your telemetry array simply ignores whatever chaotic weather patterns develop outside.</p>
+            <a href="#spec-sheet" class="btn btn-secondary mt-2">Download Full Hardware Spec Sheet</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4 (§4b): Sub-Glacial Deployment Case Studies -->
+    <section class="section-asymmetric-cards" aria-labelledby="case-studies-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="case-studies-title">Operational Notes from the Field</h2>
+          <p class="section-lead">Tested rigorously where human rescue is impossible for six months of the year.</p>
+        </header>
+        <div class="asymmetric-grid">
+          <div class="case-card case-large">
+            <img src="./assets/field-outpost.webp" alt="Antarctic scientific research outpost and borehole drilling rig during polar blizzard." loading="lazy" width="1024" height="1024">
+            <div class="case-content">
+              <h3>Ross Ice Shelf Borehole Array (Antarctica)</h3>
+              <p>Deployed 320 metres deep inside a glacial borehole, this monitoring station was subjected to crushing hydrostatic pressures and ambient temperatures stalling at -48°C. The array was tasked with mapping localized ice shelf calving events and seismic fracturing under the Ross Ice Shelf, requiring uninterrupted acoustic processing.</p>
+              <p>The Boreas-9 chassis maintained internal fluid temperatures perfectly, filtering out background tidal noise and successfully bursting compressed seismic deltas to an overhead satellite pass. The continuous data output allowed researchers to chart stress fractures in real-time without once requiring a technician to descend and unfreeze a seized data logger.</p>
+            </div>
+          </div>
+          <div class="case-card case-medium">
+            <div class="case-content">
+              <h3>Pyramiden Permafrost Seismic Mesh (Svalbard)</h3>
+              <p>Operating near an abandoned mining settlement on Svalbard, this mesh of edge nodes records year-round continuous tremor data in shifting permafrost. High humidity combined with extreme freezing cycles typically destroys standard sensor logic boards within four weeks due to micro-condensation.</p>
+              <p>Our titanium enclosures and dielectric immersion neutralized the moisture threat completely. The mesh correctly identified three distinct sub-surface shifts over an eight-month winter, transmitting the findings seamlessly via low-frequency radio links to the main research vessel moored offshore.</p>
+            </div>
+          </div>
+          <div class="case-card case-medium">
+            <div class="case-content">
+              <h3>Summit Station High-Altitude Node (Greenland)</h3>
+              <p>Positioned on the highest point of the Greenland ice sheet, this node faced extreme wind shear exceeding 130 km/h and intense solar flare electromagnetic interference. Standard telemetry dishes were repeatedly torn away by the katabatic winds.</p>
+              <p>The GlacierMesh node relied on its massive local flash buffering to endure three distinct multi-week communications blackouts. Once conditions subsided, it transmitted a flawless backlog of atmospheric telemetry, completely validating our decentralized queue compression protocols.</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a href="#deployment-logs" class="btn btn-secondary">View Deployment Logs</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5 (§4b): Testimonials (Left/Right Split - ONLY ONE) -->
+    <section class="section-split-testimonials" aria-labelledby="testimonials-title">
+      <div class="container split-layout">
+        <div class="split-left">
+          <h2 id="testimonials-title">Verified Field Reports</h2>
+          <p class="split-lead">Unfiltered feedback from scientists who stopped worrying about server maintenance and started focusing on ice cores.</p>
+          <div class="testimonial-stat">
+            <span class="stat-value">4.2 PB</span>
+            <span class="stat-label">Over 4.2 Petabytes Processed Across 14 Polar Seasons Without a Single Thermal Seizure.</span>
+          </div>
+          <a href="#research-references" class="btn btn-primary mt-4">Read Full Research References</a>
+        </div>
+        <div class="split-right">
+          <div class="testimonial-block">
+            <blockquote>"When the 80-knot storms hit, our primary concern used to be whether the data logger would freeze solid before we could extract the SSDs. With the GlacierMesh nodes, we simply retreated to the mess tent and watched the telemetry stream uninterrupted on our localized network."</blockquote>
+            <cite>— Dr. Elena Vance, Lead Glaciologist, British Antarctic Survey</cite>
+          </div>
+          <div class="testimonial-block">
+            <blockquote>"The self-deicing optical connectors are nothing short of an engineering marvel in the field. Not having to expose our hands to -50°C air to scrape ice off a fiber coupling has fundamentally changed our winter deployment strategies."</blockquote>
+            <cite>— Prof. Lars Lindqvist, Polar Seismic Institute, Tromsø</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6 (§4b): Technical FAQ -->
+    <section class="section-faq" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="section-header text-center">
+          <h2 id="faq-title">Expedition Technical Enquiries</h2>
+          <p class="section-lead">Straight answers for expedition logisticians and field engineers.</p>
+        </header>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>What is the cold-boot procedure if power drops to zero at -50°C?</summary>
+            <div class="faq-answer">
+              <p>If primary power fails entirely and internal temperatures equalize with the outside air, the system will not immediately boot the CPU upon power restoration. Instead, the piezoelectric heating circuits intelligently engage first, slowly raising the dielectric fluid temperature to a safe -10°C threshold. Only then does the logic board execute a controlled cold-start, preventing immediate thermal shock to the silicon.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>How much power does the internal piezoelectric heating circuit draw?</summary>
+            <div class="faq-answer">
+              <p>The heating circuit is strictly regulated and only draws a baseline of 45 watts during a heavy de-icing cycle. Because the titanium chassis is thoroughly double-walled with a vacuum insulation layer, thermal retention is extremely high. The heater typically pulses for less than six minutes every hour to maintain optimal operating viscosity in the immersion fluid.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>Can GlacierMesh chassis be integrated with solar/wind hybrid generator setups?</summary>
+            <div class="faq-answer">
+              <p>Absolutely. Our power intake controllers accept wildly fluctuating DC inputs ranging from 12V up to 72V, smoothing out the erratic spikes typical of wind turbines in katabatic storms. The integrated battery management system ensures that priority telemetry storage receives power first, even if the solar panels are heavily obscured by frost.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>What fluid maintenance is required for the Fluorinert immersion core?</summary>
+            <div class="faq-answer">
+              <p>Zero in-field maintenance is required. The Fluorinert FC-3283 is sealed within the chassis at our Longyearbyen facility under a strict nitrogen-purged atmosphere. The fluid will not degrade, evaporate, or require topping up for the entire operational lifespan of the node, typically exceeding ten years.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>How are optical fiber cables protected against glacier movement and firn creep?</summary>
+            <div class="faq-answer">
+              <p>External fiber runs are shielded in articulated Kevlar-reinforced conduits that absorb immense lateral pressure. At the junction box on the chassis, our proprietary piezoelectric optical couplers prevent rigid ice from forming, allowing the connection to flex slightly alongside the glacial movement without shattering the inner glass core.</p>
+            </div>
+          </details>
+        </div>
+        <div class="text-center mt-4">
+          <a href="#engineering" class="btn btn-secondary">Contact Field Engineering</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7 (§4b): Expedition Dispatch Requisition Form -->
+    <section class="section-requisition" aria-labelledby="requisition-title" id="requisition">
+      <div class="container">
+        <div class="requisition-panel">
+          <header class="section-header text-center">
+            <h2 id="requisition-title">Requisition a GlacierMesh Field Array</h2>
+            <p>Book equipment allocations 6 months prior to vessel departure from Hobart or Christchurch. Due to custom titanium chassis manufacturing lead times in Longyearbyen, advanced scheduling is critical for polar field seasons.</p>
+          </header>
+          <form class="requisition-form" onsubmit="event.preventDefault();">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required="">
+              </div>
+              <div class="form-group">
+                <label for="affiliation">Institutional Affiliation</label>
+                <input type="text" id="affiliation" name="affiliation" required="">
+              </div>
+              <div class="form-group">
+                <label for="region">Target Deployment Region</label>
+                <select id="region" name="region" required="">
+                  <option value="">Select a region...</option>
+                  <option value="antarctica">Antarctica</option>
+                  <option value="arctic">Arctic / Svalbard</option>
+                  <option value="high-alpine">High Alpine</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="seasonStart">Estimated Season Start</label>
+                <input type="month" id="seasonStart" name="seasonStart" required="">
+              </div>
+              <div class="form-group full-width">
+                <label for="hardware">Hardware Requirements &amp; Array Scope</label>
+                <textarea id="hardware" name="hardware" rows="3" required=""></textarea>
+              </div>
+              <div class="form-group full-width">
+                <label for="powerBudget">Expected Power Budget (Generators / Wind / Solar)</label>
+                <input type="text" id="powerBudget" name="powerBudget" required="">
+              </div>
+            </div>
+            <div class="form-actions text-center">
+              <button type="submit" class="btn btn-primary">Submit Field Requisition</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 GlacierMesh Infrastructure. 9170 Longyearbyen, Svalbard, Norway.</p>
+  </footer>
+
+
+</body></html>

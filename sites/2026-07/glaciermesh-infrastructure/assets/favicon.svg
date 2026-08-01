@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="glacier" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1070b8" />
+      <stop offset="100%" stop-color="#333d4a" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Hexagon (Snow Crystal Base) -->
+  <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" fill="none" stroke="url(#glacier)" stroke-width="4" stroke-linejoin="round"/>
+  
+  <!-- Inner Server Node Frame -->
+  <rect x="35" y="30" width="30" height="40" fill="none" stroke="#f26d0a" stroke-width="3" rx="2" ry="2"/>
+  <line x1="40" y1="38" x2="60" y2="38" stroke="#1070b8" stroke-width="2"/>
+  <line x1="40" y1="50" x2="60" y2="50" stroke="#1070b8" stroke-width="2"/>
+  <line x1="40" y1="62" x2="60" y2="62" stroke="#1070b8" stroke-width="2"/>
+  
+  <!-- Connecting Lines -->
+  <line x1="50" y1="5" x2="50" y2="30" stroke="url(#glacier)" stroke-width="2"/>
+  <line x1="50" y1="95" x2="50" y2="70" stroke="url(#glacier)" stroke-width="2"/>
+  <line x1="10" y1="25" x2="35" y2="40" stroke="url(#glacier)" stroke-width="2"/>
+  <line x1="90" y1="25" x2="65" y2="40" stroke="url(#glacier)" stroke-width="2"/>
+  <line x1="10" y1="75" x2="35" y2="60" stroke="url(#glacier)" stroke-width="2"/>
+  <line x1="90" y1="75" x2="65" y2="60" stroke="url(#glacier)" stroke-width="2"/>
+  
+  <!-- Blinking Node Dot -->
+  <circle cx="50" cy="50" r="4" fill="#f26d0a" />
+</svg>

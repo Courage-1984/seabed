@@ -1,0 +1,15 @@
+{
+  "title": "Nadir Quartzware Direct",
+  "blurb": "Direct-to-laboratory online e-commerce catalog of synthetic fused-silica optical cuvettes, micro-bore flow cells, and spectroscopic calibration standards.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "terminal / data-readout",
+  "tags": [
+    "ecommerce",
+    "scientific",
+    "marine-tech"
+  ],
+  "created": "2026-08-01",
+  "wordFloor": 1900,
+  "standard": "v2",
+  "qa": "v2-pass"
+}
