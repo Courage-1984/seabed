@@ -245,7 +245,7 @@ function renderDiscoveryStrip(sorted) {
   stripEl.addEventListener(
     'wheel',
     (e) => {
-      if (!e.shiftKey && e.deltaY !== 0) {
+      if (e.shiftKey && e.deltaY !== 0) {
         e.preventDefault();
         stripEl.style.scrollBehavior = 'auto';
         stripEl.scrollBy({ left: e.deltaY > 0 ? 100 : -100 });

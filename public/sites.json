@@ -656,6 +656,22 @@
     "siteFolder": "./sites/2026-07/xenon-arc"
   },
   {
+    "title": "Kajak-Lauget Outer Archipelago",
+    "blurb": "Traditional skin-on-frame watercraft that weigh less than eighteen kilograms, flex naturally with North Atlantic swells, and rest in keycard-locked boathouses along the island chain.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "sticky-rail + content",
+    "tags": [
+      "outdoors",
+      "maritime",
+      "cooperative"
+    ],
+    "created": "2026-08-02",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/kajak-lauget"
+  },
+  {
     "title": "Nadir Quartzware Direct",
     "blurb": "Direct-to-laboratory online e-commerce catalog of synthetic fused-silica optical cuvettes, micro-bore flow cells, and spectroscopic calibration standards.",
     "hero": "assets/hero.webp",
@@ -668,6 +684,7 @@
     "created": "2026-08-01",
     "wordFloor": 1900,
     "standard": "v2",
+    "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/nadir-quartzware"
   }
 ]

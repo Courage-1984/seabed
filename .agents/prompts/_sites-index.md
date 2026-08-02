@@ -51,6 +51,7 @@
 | vapour-and-vault | Vapour & Vault | ultra-minimal full-bleed | 2026-07-19 |
 | verdigris-and-salt | Verdigris & Salt | overlapping card-stack | 2026-07-23 |
 | xenon-arc | Xenon Arc Mobile Metallurgy | bento | 2026-07-21 |
+| kajak-lauget | Kajak-Lauget Outer Archipelago | sticky-rail + content | 2026-08-02 |
 | nadir-quartzware | Nadir Quartzware Direct | terminal / data-readout | 2026-08-01 |
 
 ## Roster (paste into brief prompt)
@@ -62,10 +63,11 @@ apiary-mesh-kinetics, archive-arcade, aseptic-cellars, astrolabe-treks,
 backhaul-field-co, centrifugal-larder, copper-cloche, cryotex-isolates, drosera-vault,
 forge-and-feather, gimbal-and-hoist, glaciermesh-infrastructure, halcyon-tare,
 halyard-and-hemp-sailmakers, hearth-and-anvil, hull-and-hem-sailmenders,
-isocline-preservation, k9-kinetic-recovery, karoo-brass-and-glass, katabatic-shelters,
-kestrel-heavy, knot-and-westerly, lithic-fibre-dynamics, lithic-resonance,
-monolith-somatic, nadir-quartzware, nepenthes-forge, null-state-cryogenics,
-oxide-and-tide, patch-parcel, pellucid-memory, signal-and-silo, siloshield-dynamics,
-stake-and-bind, substratum-signals, the-brass-and-thistle, the-midnight-forager,
-the-slate-and-chisel, the-tidal-vault, vapour-and-vault, verdigris-and-salt, xenon-arc
+isocline-preservation, k9-kinetic-recovery, kajak-lauget, karoo-brass-and-glass,
+katabatic-shelters, kestrel-heavy, knot-and-westerly, lithic-fibre-dynamics,
+lithic-resonance, monolith-somatic, nadir-quartzware, nepenthes-forge,
+null-state-cryogenics, oxide-and-tide, patch-parcel, pellucid-memory, signal-and-silo,
+siloshield-dynamics, stake-and-bind, substratum-signals, the-brass-and-thistle,
+the-midnight-forager, the-slate-and-chisel, the-tidal-vault, vapour-and-vault,
+verdigris-and-salt, xenon-arc
 ```

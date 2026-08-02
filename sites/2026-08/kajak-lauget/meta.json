@@ -1,0 +1,11 @@
+{
+  "title": "Kajak-Lauget Outer Archipelago",
+  "blurb": "Traditional skin-on-frame watercraft that weigh less than eighteen kilograms, flex naturally with North Atlantic swells, and rest in keycard-locked boathouses along the island chain.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "sticky-rail + content",
+  "tags": ["outdoors", "maritime", "cooperative"],
+  "created": "2026-08-02",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

@@ -61,7 +61,8 @@ body {
 
 .hub-header {
   text-align: center;
-  padding: 3.5rem 1.5rem 2rem;
+  padding: 3.5rem 0 2rem;
+  width: 90%;
   max-width: 40rem;
   margin: 0 auto;
 }
@@ -148,7 +149,7 @@ body {
 .discovery-viewport {
   overflow-x: auto;
   overflow-y: hidden;
-  width: 100%;
+  margin: 0 3.5rem;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
@@ -181,12 +182,12 @@ body {
 }
 
 .discovery-fade--start {
-  left: 0;
+  left: 3.5rem;
   background: linear-gradient(90deg, var(--bg-deep), transparent);
 }
 
 .discovery-fade--end {
-  right: 0;
+  right: 3.5rem;
   background: linear-gradient(270deg, var(--bg-deep), transparent);
 }
 
@@ -336,9 +337,10 @@ body {
 
 /* —— Latest drop —— */
 .latest-drop {
+  width: 90%;
   max-width: 1200px;
   margin: 0 auto 4rem;
-  padding: 0 1.25rem;
+  padding: 0;
 }
 
 .latest-drop-inner {
@@ -430,9 +432,10 @@ body {
 
 /* —— Archive —— */
 .hub-main {
+  width: 90%;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 1.25rem 4rem;
+  padding: 0 0 4rem;
 }
 
 .hub-main-head {
