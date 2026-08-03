@@ -656,6 +656,22 @@
     "siteFolder": "./sites/2026-07/xenon-arc"
   },
   {
+    "title": "Brimstone & Basalt Structural Castings",
+    "blurb": "Direct volcanic basalt rock liquification and high-density centrifugal casting for chemical-slurry pipes, underground mine shaft liners, and acidic pump casings.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "bento",
+    "tags": [
+      "industrial",
+      "mining",
+      "materials"
+    ],
+    "created": "2026-08-03",
+    "standard": "v2",
+    "wordFloor": 1100,
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/brimstone-basalt"
+  },
+  {
     "title": "Kajak-Lauget Outer Archipelago",
     "blurb": "Traditional skin-on-frame watercraft that weigh less than eighteen kilograms, flex naturally with North Atlantic swells, and rest in keycard-locked boathouses along the island chain.",
     "hero": "assets/hero.webp",
@@ -686,5 +702,21 @@
     "standard": "v2",
     "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/nadir-quartzware"
+  },
+  {
+    "title": "Stave & Hoops Millwright Guild",
+    "blurb": "Hand-milled English oak and Douglas fir stave restoration powered by a shared master-artisan timber bank.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "asymmetric split",
+    "tags": [
+      "industrial",
+      "restoration",
+      "cooperative"
+    ],
+    "created": "2026-08-03",
+    "standard": "v2",
+    "wordFloor": 1900,
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/stave-and-hoops"
   }
 ]

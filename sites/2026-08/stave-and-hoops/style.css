@@ -1,0 +1,465 @@
+/*
+  Stave & Hoops Millwright Guild
+  Layout Family: asymmetric split
+*/
+
+:root {
+  --color-primary: hsl(28, 55%, 34%);
+  --color-primary-hover: hsl(28, 55%, 40%);
+  --color-secondary: hsl(215, 18%, 22%);
+  --color-accent: hsl(18, 80%, 48%);
+  --color-accent-hover: hsl(18, 80%, 54%);
+  --color-accent-focus: hsla(18, 80%, 48%, 0.4);
+  --color-bg: hsl(38, 30%, 94%);
+  --color-panel: hsl(36, 22%, 86%);
+  --color-panel-border: hsl(32, 20%, 75%);
+  --color-text: hsl(20, 25%, 14%);
+  --color-text-muted: hsl(25, 18%, 45%);
+  --color-focus-ring: hsl(18, 80%, 52%);
+  
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+  --spacing-2xl: 8rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Young Serif', serif;
+  margin-top: 0;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Layout Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.section-padding {
+  padding: var(--spacing-xl) 0;
+}
+
+.bg-panel {
+  background-color: var(--color-panel);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-bg);
+}
+.bg-secondary h1, .bg-secondary h2, .bg-secondary h3, .bg-secondary h4 {
+  color: var(--color-bg);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 2px;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+.btn-accent:hover {
+  background-color: var(--color-accent-hover);
+}
+
+/* Interactive States: Tactile Wood-Grain Active State */
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 0 var(--color-primary);
+}
+
+/* Iron Rivet Hover Effect for cards and buttons */
+.iron-rivet-hover {
+  position: relative;
+  transition: border 0.3s ease;
+}
+.iron-rivet-hover:hover {
+  border: 2px solid var(--color-primary);
+}
+.iron-rivet-hover::before, .iron-rivet-hover::after,
+.iron-rivet-hover span::before, .iron-rivet-hover span::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.iron-rivet-hover:hover::before, .iron-rivet-hover:hover::after,
+.iron-rivet-hover:hover span::before, .iron-rivet-hover:hover span::after {
+  opacity: 1;
+}
+.iron-rivet-hover span {
+  display: block;
+  position: relative;
+}
+.iron-rivet-hover::before { top: 4px; left: 4px; }
+.iron-rivet-hover::after { top: 4px; right: 4px; }
+.iron-rivet-hover span::before { bottom: 4px; left: 4px; }
+.iron-rivet-hover span::after { bottom: 4px; right: 4px; }
+
+
+/* Header & Navigation */
+.site-header {
+  background-color: var(--color-secondary);
+  color: var(--color-bg);
+  padding: var(--spacing-lg) 0;
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  font-family: 'Young Serif', serif;
+  font-size: 1.8rem;
+  color: var(--color-bg);
+}
+
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.main-nav a {
+  color: var(--color-panel);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover, .main-nav a.active {
+  color: var(--color-accent);
+}
+
+/* Hero Generic (Full width, stacked) */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-secondary);
+  color: var(--color-bg);
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(46, 54, 64, 0.95) 0%, rgba(46, 54, 64, 0.7) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  text-align: center;
+  margin: 0 auto;
+}
+.hero-content h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--color-bg);
+  line-height: 1.1;
+  margin-bottom: var(--spacing-md);
+}
+
+.hero-content p.subhead {
+  font-size: 1.25rem;
+  color: var(--color-panel);
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero-intro {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto var(--spacing-xl);
+  color: var(--color-panel-border);
+}
+
+/* Page 1: Asymmetric Split Section (62/38) */
+.asymmetric-section {
+  display: grid;
+  grid-template-columns: 62% 38%;
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+.asymmetric-left {
+  position: relative;
+}
+
+.stave-graphic-overlap {
+  position: relative;
+  z-index: 2;
+  margin-right: -2rem; /* Bleed into right column */
+  margin-top: 2rem;
+  border: 4px solid var(--color-bg);
+  box-shadow: 10px 10px 0 var(--color-secondary);
+  will-change: transform;
+}
+
+.asymmetric-right {
+  background-color: var(--color-panel);
+  padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-xl) 4rem; /* Extra padding for overlap */
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* General Content Grids */
+.grid-3-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-panel-border);
+  padding: var(--spacing-lg);
+}
+
+.card h4 {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.card p {
+  color: var(--color-text-muted);
+}
+
+.stacked-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+.stacked-block {
+  padding: var(--spacing-lg);
+  border-left: 4px solid var(--color-primary);
+  background-color: var(--color-panel);
+}
+.stacked-block h3 { margin-bottom: 0.5rem; }
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--spacing-lg);
+}
+
+.spec-table th, .spec-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-panel-border);
+  text-align: left;
+}
+.spec-table th {
+  background-color: var(--color-panel);
+  font-family: 'Young Serif', serif;
+  color: var(--color-primary);
+}
+
+/* Accordion */
+.accordion {
+  border-bottom: 1px solid var(--color-panel-border);
+}
+.accordion summary {
+  padding: 1rem 0;
+  font-family: 'Young Serif', serif;
+  font-size: 1.25rem;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+}
+.accordion summary::-webkit-details-marker { display: none; }
+.accordion summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+.accordion[open] summary::after { content: '-'; }
+.accordion p { padding-bottom: 1rem; color: var(--color-text-muted); }
+
+/* Left/Right Split (The only one allowed, in guild.html) */
+.testimonial-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+.testimonial-card {
+  background-color: var(--color-panel);
+  padding: var(--spacing-lg);
+  border-left: 4px solid var(--color-primary);
+}
+.testimonial-card blockquote {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--color-text);
+}
+.testimonial-card cite {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Forms */
+.requisition-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing-md);
+}
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--color-secondary);
+}
+.form-group input, .form-group select, .form-group textarea {
+  padding: 0.75rem;
+  border: 1px solid var(--color-panel-border);
+  background-color: var(--color-bg);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: 2px solid var(--color-focus-ring);
+  border-color: transparent;
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--color-secondary);
+  color: var(--color-panel);
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+}
+.site-footer p { margin: 0.5rem 0; }
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .asymmetric-section {
+    grid-template-columns: 1fr;
+  }
+  .stave-graphic-overlap {
+    margin-right: 0;
+  }
+  .asymmetric-right {
+    padding: var(--spacing-lg);
+  }
+}
+@media (min-width: 769px) {
+  .projects-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 1rem;
+  }
+  .card-wide {
+    grid-column: span 2;
+  }
+}
+@media (max-width: 768px) {
+  .site-header .container {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .spec-table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .grid-3-col {
+    grid-template-columns: 1fr;
+  }
+  .testimonial-split {
+    grid-template-columns: 1fr;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

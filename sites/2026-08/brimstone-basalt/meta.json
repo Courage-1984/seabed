@@ -1,0 +1,11 @@
+{
+  "title": "Brimstone & Basalt Structural Castings",
+  "blurb": "Direct volcanic basalt rock liquification and high-density centrifugal casting for chemical-slurry pipes, underground mine shaft liners, and acidic pump casings.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "bento",
+  "tags": ["industrial", "mining", "materials"],
+  "created": "2026-08-03",
+  "standard": "v2",
+  "wordFloor": 1100,
+  "qa": "v2-pass"
+}
