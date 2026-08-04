@@ -672,6 +672,21 @@
     "siteFolder": "./sites/2026-08/brimstone-basalt"
   },
   {
+    "title": "Hverir Geothermal Hearth",
+    "blurb": "Rye bread and wild Arctic ferments slow-cooked by the raw heat of the Earth inside a natural basalt lava chamber.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "bento",
+    "tags": [
+      "food",
+      "hospitality",
+      "adventure"
+    ],
+    "created": "2026-08-04",
+    "wordFloor": 650,
+    "standard": "v2",
+    "siteFolder": "./sites/2026-08/hverir-hearth"
+  },
+  {
     "title": "Kajak-Lauget Outer Archipelago",
     "blurb": "Traditional skin-on-frame watercraft that weigh less than eighteen kilograms, flex naturally with North Atlantic swells, and rest in keycard-locked boathouses along the island chain.",
     "hero": "assets/hero.webp",
@@ -686,6 +701,22 @@
     "standard": "v2",
     "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/kajak-lauget"
+  },
+  {
+    "title": "Marion Fissure Fermentary",
+    "blurb": "Sub-Antarctic geothermal heat meets sub-zero gale spray to yield Earth's most isolated mineral umami.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "brutalist stacked",
+    "tags": [
+      "food",
+      "hospitality",
+      "extreme-artisanal"
+    ],
+    "created": "2026-08-04",
+    "wordFloor": 650,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/marion-fissure"
   },
   {
     "title": "Nadir Quartzware Direct",

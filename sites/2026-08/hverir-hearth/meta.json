@@ -1,0 +1,11 @@
+{
+  "title": "Hverir Geothermal Hearth",
+  "blurb": "Rye bread and wild Arctic ferments slow-cooked by the raw heat of the Earth inside a natural basalt lava chamber.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "bento",
+  "tags": ["food", "hospitality", "adventure"],
+  "created": "2026-08-04",
+  "wordFloor": 650,
+  "standard": "v2",
+  "qa": "v2-pass"
+}
