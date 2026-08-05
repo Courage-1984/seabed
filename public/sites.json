@@ -656,6 +656,21 @@
     "siteFolder": "./sites/2026-07/xenon-arc"
   },
   {
+    "title": "Aegir Thermal Lugger",
+    "blurb": "Deep thermal contrast and sea-immersion recovery delivered aboard a sailing wooden vessel at secluded fjord anchorages.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "sticky-rail + content",
+    "tags": [
+      "wellness",
+      "maritime",
+      "outdoor-recovery"
+    ],
+    "created": "2026-08-05",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "siteFolder": "./sites/2026-08/aegir-thermal-lugger"
+  },
+  {
     "title": "Brimstone & Basalt Structural Castings",
     "blurb": "Direct volcanic basalt rock liquification and high-density centrifugal casting for chemical-slurry pipes, underground mine shaft liners, and acidic pump casings.",
     "hero": "assets/hero.webp",
@@ -672,6 +687,22 @@
     "siteFolder": "./sites/2026-08/brimstone-basalt"
   },
   {
+    "title": "Deep Crust Mycelial Bio-Lining",
+    "blurb": "Breathing walls grown from deep-forest fungal strains, shielding subterranean sanctuaries from damp, radon, and harsh mineral glare.",
+    "hero": "assets/hero.webp",
+    "layoutFamily": "overlapping card-stack",
+    "tags": [
+      "wellness",
+      "bio-materials",
+      "subterranean"
+    ],
+    "created": "2026-08-05",
+    "wordFloor": 650,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/deep-crust-mycelial"
+  },
+  {
     "title": "Hverir Geothermal Hearth",
     "blurb": "Rye bread and wild Arctic ferments slow-cooked by the raw heat of the Earth inside a natural basalt lava chamber.",
     "hero": "assets/hero.webp",
@@ -684,6 +715,7 @@
     "created": "2026-08-04",
     "wordFloor": 650,
     "standard": "v2",
+    "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/hverir-hearth"
   },
   {

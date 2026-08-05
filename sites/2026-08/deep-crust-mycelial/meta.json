@@ -1,0 +1,15 @@
+{
+  "title": "Deep Crust Mycelial Bio-Lining",
+  "blurb": "Breathing walls grown from deep-forest fungal strains, shielding subterranean sanctuaries from damp, radon, and harsh mineral glare.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "overlapping card-stack",
+  "tags": [
+    "wellness",
+    "bio-materials",
+    "subterranean"
+  ],
+  "created": "2026-08-05",
+  "wordFloor": 650,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

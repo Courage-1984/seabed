@@ -1,0 +1,15 @@
+{
+  "title": "Aegir Thermal Lugger",
+  "blurb": "Deep thermal contrast and sea-immersion recovery delivered aboard a sailing wooden vessel at secluded fjord anchorages.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "sticky-rail + content",
+  "tags": [
+    "wellness",
+    "maritime",
+    "outdoor-recovery"
+  ],
+  "created": "2026-08-05",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}
