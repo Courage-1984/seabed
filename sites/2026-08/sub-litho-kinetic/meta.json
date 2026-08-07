@@ -1,0 +1,15 @@
+{
+  "title": "Sub-Litho Kinetic Calibration",
+  "blurb": "Isolating subterranean kinetic art from planetary seismic drift down to sub-micron tolerances.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "terminal / data-readout",
+  "tags": [
+    "arts",
+    "sculpture",
+    "engineering"
+  ],
+  "created": "2026-08-06",
+  "standard": "v2",
+  "qa": "v2-pass",
+  "wordFloor": 1100
+}

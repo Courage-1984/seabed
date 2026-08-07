@@ -51,23 +51,31 @@
 | vapour-and-vault | Vapour & Vault | ultra-minimal full-bleed | 2026-07-19 |
 | verdigris-and-salt | Verdigris & Salt | overlapping card-stack | 2026-07-23 |
 | xenon-arc | Xenon Arc Mobile Metallurgy | bento | 2026-07-21 |
+| aegir-thermal-lugger | Aegir Thermal Lugger | sticky-rail + content | 2026-08-05 |
+| brimstone-basalt | Brimstone & Basalt Structural Castings | bento | 2026-08-03 |
+| deep-crust-mycelial | Deep Crust Mycelial Bio-Lining | overlapping card-stack | 2026-08-05 |
+| hverir-hearth | Hverir Geothermal Hearth | bento | 2026-08-04 |
 | kajak-lauget | Kajak-Lauget Outer Archipelago | sticky-rail + content | 2026-08-02 |
+| marion-fissure | Marion Fissure Fermentary | brutalist stacked | 2026-08-04 |
 | nadir-quartzware | Nadir Quartzware Direct | terminal / data-readout | 2026-08-01 |
+| stave-and-hoops | Stave & Hoops Millwright Guild | asymmetric split | 2026-08-03 |
+| sub-litho-kinetic | Sub-Litho Kinetic Calibration | terminal / data-readout | 2026-08-06 |
 
 ## Roster (paste into brief prompt)
 
 Replace the fenced slug list in your external Variety Engine **Roster** section with:
 ```
-78-north-supply, abyssal-data-recovery, abyssal-hardware, apex-altitude-lab,
-apiary-mesh-kinetics, archive-arcade, aseptic-cellars, astrolabe-treks,
-backhaul-field-co, centrifugal-larder, copper-cloche, cryotex-isolates, drosera-vault,
-forge-and-feather, gimbal-and-hoist, glaciermesh-infrastructure, halcyon-tare,
-halyard-and-hemp-sailmakers, hearth-and-anvil, hull-and-hem-sailmenders,
-isocline-preservation, k9-kinetic-recovery, kajak-lauget, karoo-brass-and-glass,
-katabatic-shelters, kestrel-heavy, knot-and-westerly, lithic-fibre-dynamics,
-lithic-resonance, monolith-somatic, nadir-quartzware, nepenthes-forge,
+78-north-supply, abyssal-data-recovery, abyssal-hardware, aegir-thermal-lugger,
+apex-altitude-lab, apiary-mesh-kinetics, archive-arcade, aseptic-cellars,
+astrolabe-treks, backhaul-field-co, brimstone-basalt, centrifugal-larder, copper-cloche,
+cryotex-isolates, deep-crust-mycelial, drosera-vault, forge-and-feather,
+gimbal-and-hoist, glaciermesh-infrastructure, halcyon-tare, halyard-and-hemp-sailmakers,
+hearth-and-anvil, hull-and-hem-sailmenders, hverir-hearth, isocline-preservation,
+k9-kinetic-recovery, kajak-lauget, karoo-brass-and-glass, katabatic-shelters,
+kestrel-heavy, knot-and-westerly, lithic-fibre-dynamics, lithic-resonance,
+marion-fissure, monolith-somatic, nadir-quartzware, nepenthes-forge,
 null-state-cryogenics, oxide-and-tide, patch-parcel, pellucid-memory, signal-and-silo,
-siloshield-dynamics, stake-and-bind, substratum-signals, the-brass-and-thistle,
-the-midnight-forager, the-slate-and-chisel, the-tidal-vault, vapour-and-vault,
-verdigris-and-salt, xenon-arc
+siloshield-dynamics, stake-and-bind, stave-and-hoops, sub-litho-kinetic,
+substratum-signals, the-brass-and-thistle, the-midnight-forager, the-slate-and-chisel,
+the-tidal-vault, vapour-and-vault, verdigris-and-salt, xenon-arc
 ```
