@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .frame { fill: none; stroke: #3d332d; stroke-width: 8; stroke-linecap: round; }
+      .weave { fill: none; stroke: #b16f27; stroke-width: 4; }
+    </style>
+  </defs>
+  <path class="frame" d="M 20 80 V 40 C 20 20 80 20 80 40 V 80" />
+  <path class="weave" d="M 30 50 L 50 70 L 70 50" />
+  <path class="weave" d="M 30 60 L 50 80 L 70 60" />
+</svg>

@@ -1,0 +1,15 @@
+{
+  "title": "MantleCut Deep-Geology Sawing",
+  "blurb": "Slicing un-weathered granite and solid basalt three kilometres underground without shaking a single quantum sensor.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "sticky-rail + content",
+  "tags": [
+    "industrial",
+    "trades",
+    "engineering"
+  ],
+  "created": "2026-08-10",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

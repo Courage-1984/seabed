@@ -1,0 +1,388 @@
+:root {
+  --color-primary: hsl(32, 65%, 42%);
+  --color-primary-hover: hsl(32, 65%, 48%);
+  --color-secondary: hsl(25, 20%, 20%);
+  --color-accent: hsl(42, 85%, 52%);
+  --color-accent-hover: hsl(42, 85%, 58%);
+  --color-accent-focus: hsla(42, 85%, 52%, 0.4);
+  --color-bg: hsl(40, 25%, 94%);
+  --color-panel: hsl(38, 15%, 86%);
+  --color-panel-border: hsl(38, 12%, 75%);
+  --color-text: hsl(25, 30%, 12%);
+  --color-text-muted: hsl(30, 10%, 45%);
+  --color-focus-ring: hsl(32, 65%, 42%);
+
+  --font-heading: 'Fraunces', serif;
+  --font-body: 'Source Serif 4', serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2.5rem;
+  --space-lg: 5rem;
+  --space-xl: 8rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  font-size: 1.125rem;
+}
+
+h1, h2, h3, h4, .brand, .hero-headline {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  color: var(--color-secondary);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-inline: var(--space-md);
+}
+
+/* Header */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding-block: var(--space-md);
+}
+.brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-bg);
+  letter-spacing: 0.02em;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  box-shadow: 0 4px 0 var(--color-secondary);
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-bg);
+}
+.btn-primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--color-secondary);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-lg);
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(37, 30, 24, 0.6);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  color: var(--color-bg);
+}
+.hero-headline {
+  color: var(--color-bg);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: var(--space-sm);
+  text-wrap: balance;
+}
+.hero-subhead {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: var(--space-md);
+  font-family: var(--font-body);
+  color: var(--color-bg);
+  opacity: 0.9;
+}
+.hero-intro {
+  font-size: 1.125rem;
+  margin-bottom: var(--space-lg);
+  color: var(--color-bg);
+  opacity: 0.85;
+}
+
+/* Section Basics */
+section {
+  padding-block: var(--space-lg);
+}
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: var(--space-sm);
+}
+.text-column {
+  max-width: 75ch;
+  margin-inline: auto;
+}
+.text-column p {
+  margin-bottom: 1.5rem;
+}
+
+/* Flagship Editorial (Section 1) */
+.flagship-section {
+  text-align: center;
+}
+.flagship-section .text-column {
+  text-align: left;
+}
+
+/* Sticky-Rail Dossier (Section 2 - ONLY split layout) */
+.dossier-section {
+  background-color: var(--color-panel);
+  border-top: 1px solid var(--color-panel-border);
+  border-bottom: 1px solid var(--color-panel-border);
+}
+.dossier-layout {
+  display: grid;
+  gap: var(--space-md);
+}
+@media (min-width: 900px) {
+  .dossier-layout {
+    grid-template-columns: 300px 1fr;
+  }
+}
+.sticky-rail {
+  display: none;
+}
+@media (min-width: 900px) {
+  .sticky-rail {
+    display: block;
+    position: sticky;
+    top: var(--space-md);
+    align-self: start;
+  }
+}
+.sticky-index {
+  list-style: none;
+}
+.sticky-index li {
+  margin-bottom: var(--space-sm);
+}
+.sticky-index a {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+.sticky-index a.active {
+  color: var(--color-text);
+}
+.sticky-index a::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: transparent;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+}
+.sticky-index a.active::before {
+  background-color: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+.dossier-content {
+  padding-bottom: var(--space-md);
+}
+.dossier-block {
+  margin-bottom: var(--space-lg);
+}
+.dossier-block:last-child {
+  margin-bottom: 0;
+}
+.block-title {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-panel-border);
+  padding-bottom: 0.5rem;
+}
+
+/* 3-Column Spec Grid (Section 3) */
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+.spec-item {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-panel-border);
+  padding: var(--space-md);
+}
+.spec-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: var(--space-xs);
+  color: var(--color-primary);
+}
+
+/* Article Stack & Quotes (Section 5 & 6) */
+.article-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.article-card {
+  padding: var(--space-md);
+  border-left: 4px solid var(--color-primary);
+  background-color: var(--color-panel);
+}
+.article-title {
+  font-size: 1.4rem;
+  margin-bottom: var(--space-xs);
+}
+.quote-card {
+  text-align: center;
+  padding: var(--space-md);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-panel-border);
+  margin-bottom: var(--space-sm);
+}
+.quote-text {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+.quote-author {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Accordion FAQ (Section 7) */
+.faq-list {
+  max-width: 800px;
+  margin-inline: auto;
+}
+.faq-item {
+  border-bottom: 1px solid var(--color-panel-border);
+  padding-block: var(--space-sm);
+}
+.faq-question {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Requisition Form (Section 8) */
+.requisition-section {
+  background-color: var(--color-secondary);
+  color: var(--color-bg);
+}
+.requisition-section .section-title {
+  color: var(--color-bg);
+}
+.form-panel {
+  max-width: 800px;
+  margin-inline: auto;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.form-label {
+  font-size: 0.9rem;
+  color: var(--color-panel);
+}
+.form-input, .form-select {
+  padding: 0.8rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border: 1px solid var(--color-text-muted);
+  background-color: rgba(255,255,255,0.05);
+  color: var(--color-bg);
+}
+.form-input:focus, .form-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+.form-select option {
+  background-color: var(--color-secondary);
+  color: var(--color-bg);
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--color-bg);
+  padding-block: var(--space-md);
+  border-top: 1px solid var(--color-panel-border);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+.footer-brand {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}

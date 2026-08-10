@@ -1,0 +1,15 @@
+{
+  "title": "Sub-Lithic Archive Seals",
+  "blurb": "Vitrified volcanic canisters engineered to keep digital data readable through ten thousand years of geological movement.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "asymmetric split",
+  "tags": [
+    "retail",
+    "ecommerce",
+    "archival"
+  ],
+  "created": "2026-08-08",
+  "wordFloor": 650,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

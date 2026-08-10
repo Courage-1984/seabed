@@ -56,9 +56,13 @@
 | deep-crust-mycelial | Deep Crust Mycelial Bio-Lining | overlapping card-stack | 2026-08-05 |
 | hverir-hearth | Hverir Geothermal Hearth | bento | 2026-08-04 |
 | kajak-lauget | Kajak-Lauget Outer Archipelago | sticky-rail + content | 2026-08-02 |
+| lock-and-sluice | Lock & Sluice Millwright Forge | horizontal-scroll band | 2026-08-10 |
+| mantlecut-geology | MantleCut Deep-Geology Sawing | sticky-rail + content | 2026-08-10 |
 | marion-fissure | Marion Fissure Fermentary | brutalist stacked | 2026-08-04 |
 | nadir-quartzware | Nadir Quartzware Direct | terminal / data-readout | 2026-08-01 |
+| sarek-bark-gear | Sarek Birch-Bark Gear Guild | sticky-rail + content | 2026-08-09 |
 | stave-and-hoops | Stave & Hoops Millwright Guild | asymmetric split | 2026-08-03 |
+| sub-lithic-seals | Sub-Lithic Archive Seals | asymmetric split | 2026-08-08 |
 | sub-litho-kinetic | Sub-Litho Kinetic Calibration | terminal / data-readout | 2026-08-06 |
 
 ## Roster (paste into brief prompt)
@@ -73,9 +77,10 @@ gimbal-and-hoist, glaciermesh-infrastructure, halcyon-tare, halyard-and-hemp-sai
 hearth-and-anvil, hull-and-hem-sailmenders, hverir-hearth, isocline-preservation,
 k9-kinetic-recovery, kajak-lauget, karoo-brass-and-glass, katabatic-shelters,
 kestrel-heavy, knot-and-westerly, lithic-fibre-dynamics, lithic-resonance,
-marion-fissure, monolith-somatic, nadir-quartzware, nepenthes-forge,
-null-state-cryogenics, oxide-and-tide, patch-parcel, pellucid-memory, signal-and-silo,
-siloshield-dynamics, stake-and-bind, stave-and-hoops, sub-litho-kinetic,
-substratum-signals, the-brass-and-thistle, the-midnight-forager, the-slate-and-chisel,
-the-tidal-vault, vapour-and-vault, verdigris-and-salt, xenon-arc
+lock-and-sluice, mantlecut-geology, marion-fissure, monolith-somatic, nadir-quartzware,
+nepenthes-forge, null-state-cryogenics, oxide-and-tide, patch-parcel, pellucid-memory,
+sarek-bark-gear, signal-and-silo, siloshield-dynamics, stake-and-bind, stave-and-hoops,
+sub-lithic-seals, sub-litho-kinetic, substratum-signals, the-brass-and-thistle,
+the-midnight-forager, the-slate-and-chisel, the-tidal-vault, vapour-and-vault,
+verdigris-and-salt, xenon-arc
 ```

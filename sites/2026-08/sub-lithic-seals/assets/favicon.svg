@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .stone { fill: #dd5218; stroke: #40474e; stroke-width: 4; stroke-linejoin: round; }
+      .laser { fill: #17d1d1; filter: drop-shadow(0 0 4px #17d1d1); }
+    </style>
+  </defs>
+  <path class="stone" d="M15 15 L85 15 L70 85 L30 85 Z" />
+  <circle class="laser" cx="50" cy="50" r="10"/>
+</svg>

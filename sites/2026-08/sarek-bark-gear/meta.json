@@ -1,0 +1,15 @@
+{
+  "title": "Sarek Birch-Bark Gear Guild",
+  "blurb": "Rot-proof, ultra-light sub-arctic packbaskets hand-woven from winter birch bark without synthetic nylon or plastic hardware.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "sticky-rail + content",
+  "tags": [
+    "outdoors",
+    "craftsmanship",
+    "subarctic"
+  ],
+  "created": "2026-08-09",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .bg { fill: #252d36; }
+      .gear { fill: #996824; }
+      .hammer { fill: #f2580d; }
+    </style>
+  </defs>
+  <rect class="bg" width="100" height="100" rx="20"/>
+  <!-- 6-toothed gear -->
+  <path class="gear" d="M50 20c-16.5 0-30 13.5-30 30s13.5 30 30 30 30-13.5 30-30-13.5-30-30-30zm0 45c-8.3 0-15-6.7-15-15s6.7-15 15-15 15 6.7 15 15-6.7 15-15 15z"/>
+  <circle class="gear" cx="50" cy="12" r="10"/>
+  <circle class="gear" cx="50" cy="88" r="10"/>
+  <circle class="gear" cx="17" cy="31" r="10"/>
+  <circle class="gear" cx="83" cy="31" r="10"/>
+  <circle class="gear" cx="17" cy="69" r="10"/>
+  <circle class="gear" cx="83" cy="69" r="10"/>
+  <!-- crossed hammer -->
+  <rect class="hammer" x="46" y="30" width="8" height="60" rx="2" transform="rotate(45 50 50)"/>
+  <rect class="hammer" x="35" y="20" width="30" height="15" rx="3" transform="rotate(45 50 50)"/>
+</svg>
