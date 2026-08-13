@@ -1,0 +1,11 @@
+{
+  "title": "Codex Parallax Laboratory",
+  "blurb": "Non-destructive spectral recovery of erased ancient texts and clinical collagen stabilization for historic vellum codices.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "overlapping card-stack",
+  "tags": ["arts", "textile-conservation", "archival"],
+  "created": "2026-08-13",
+  "standard": "v2",
+  "wordFloor": 1900,
+  "qa": "v2-pass"
+}

@@ -51,11 +51,14 @@
 | vapour-and-vault | Vapour & Vault | ultra-minimal full-bleed | 2026-07-19 |
 | verdigris-and-salt | Verdigris & Salt | overlapping card-stack | 2026-07-23 |
 | xenon-arc | Xenon Arc Mobile Metallurgy | bento | 2026-07-21 |
+| abyssal-crust-vaults | Abyssal Crust Salt Vaults | brutalist stacked | 2026-08-12 |
 | aegir-thermal-lugger | Aegir Thermal Lugger | sticky-rail + content | 2026-08-05 |
 | brimstone-basalt | Brimstone & Basalt Structural Castings | bento | 2026-08-03 |
+| cedar-and-salt | Cedar & Salt Hydro-Cooperage | sticky-rail + content | 2026-08-12 |
 | deep-crust-mycelial | Deep Crust Mycelial Bio-Lining | overlapping card-stack | 2026-08-05 |
 | hverir-hearth | Hverir Geothermal Hearth | bento | 2026-08-04 |
 | kajak-lauget | Kajak-Lauget Outer Archipelago | sticky-rail + content | 2026-08-02 |
+| litho-acoustic-labs | Litho-Acoustic Resonance Laboratories | ultra-minimal full-bleed | 2026-08-13 |
 | lock-and-sluice | Lock & Sluice Millwright Forge | horizontal-scroll band | 2026-08-10 |
 | mantlecut-geology | MantleCut Deep-Geology Sawing | sticky-rail + content | 2026-08-10 |
 | marion-fissure | Marion Fissure Fermentary | brutalist stacked | 2026-08-04 |
@@ -69,18 +72,18 @@
 
 Replace the fenced slug list in your external Variety Engine **Roster** section with:
 ```
-78-north-supply, abyssal-data-recovery, abyssal-hardware, aegir-thermal-lugger,
-apex-altitude-lab, apiary-mesh-kinetics, archive-arcade, aseptic-cellars,
-astrolabe-treks, backhaul-field-co, brimstone-basalt, centrifugal-larder, copper-cloche,
-cryotex-isolates, deep-crust-mycelial, drosera-vault, forge-and-feather,
-gimbal-and-hoist, glaciermesh-infrastructure, halcyon-tare, halyard-and-hemp-sailmakers,
-hearth-and-anvil, hull-and-hem-sailmenders, hverir-hearth, isocline-preservation,
-k9-kinetic-recovery, kajak-lauget, karoo-brass-and-glass, katabatic-shelters,
-kestrel-heavy, knot-and-westerly, lithic-fibre-dynamics, lithic-resonance,
-lock-and-sluice, mantlecut-geology, marion-fissure, monolith-somatic, nadir-quartzware,
-nepenthes-forge, null-state-cryogenics, oxide-and-tide, patch-parcel, pellucid-memory,
-sarek-bark-gear, signal-and-silo, siloshield-dynamics, stake-and-bind, stave-and-hoops,
-sub-lithic-seals, sub-litho-kinetic, substratum-signals, the-brass-and-thistle,
-the-midnight-forager, the-slate-and-chisel, the-tidal-vault, vapour-and-vault,
-verdigris-and-salt, xenon-arc
+78-north-supply, abyssal-crust-vaults, abyssal-data-recovery, abyssal-hardware,
+aegir-thermal-lugger, apex-altitude-lab, apiary-mesh-kinetics, archive-arcade,
+aseptic-cellars, astrolabe-treks, backhaul-field-co, brimstone-basalt, cedar-and-salt,
+centrifugal-larder, copper-cloche, cryotex-isolates, deep-crust-mycelial, drosera-vault,
+forge-and-feather, gimbal-and-hoist, glaciermesh-infrastructure, halcyon-tare,
+halyard-and-hemp-sailmakers, hearth-and-anvil, hull-and-hem-sailmenders, hverir-hearth,
+isocline-preservation, k9-kinetic-recovery, kajak-lauget, karoo-brass-and-glass,
+katabatic-shelters, kestrel-heavy, knot-and-westerly, lithic-fibre-dynamics,
+lithic-resonance, litho-acoustic-labs, lock-and-sluice, mantlecut-geology,
+marion-fissure, monolith-somatic, nadir-quartzware, nepenthes-forge,
+null-state-cryogenics, oxide-and-tide, patch-parcel, pellucid-memory, sarek-bark-gear,
+signal-and-silo, siloshield-dynamics, stake-and-bind, stave-and-hoops, sub-lithic-seals,
+sub-litho-kinetic, substratum-signals, the-brass-and-thistle, the-midnight-forager,
+the-slate-and-chisel, the-tidal-vault, vapour-and-vault, verdigris-and-salt, xenon-arc
 ```

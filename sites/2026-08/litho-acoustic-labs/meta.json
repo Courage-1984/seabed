@@ -1,0 +1,15 @@
+{
+  "title": "Litho-Acoustic Resonance Laboratories",
+  "blurb": "Reconstructing the precise resonant harmonics of prehistoric stone instruments without physical contact or structural excitation.",
+  "hero": "assets/hero.webp",
+  "layoutFamily": "ultra-minimal full-bleed",
+  "tags": [
+    "arts",
+    "acoustics",
+    "science"
+  ],
+  "created": "2026-08-13",
+  "standard": "v2",
+  "wordFloor": 1900,
+  "qa": "v2-pass"
+}

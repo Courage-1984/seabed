@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Young+Serif&display=swap');
+
+:root {
+  --color-primary: hsl(25, 55%, 32%);
+  --color-primary-hover: hsl(25, 55%, 38%);
+  --color-secondary: hsl(210, 18%, 20%);
+  --color-accent: hsl(38, 90%, 50%);
+  --color-accent-hover: hsl(38, 90%, 56%);
+  --color-accent-focus: hsla(38, 90%, 50%, 0.4);
+  --color-bg: hsl(36, 25%, 94%);
+  --color-panel: hsl(34, 18%, 86%);
+  --color-panel-border: hsl(34, 15%, 75%);
+  --color-text: hsl(20, 30%, 12%);
+  --color-text-muted: hsl(30, 12%, 45%);
+  --color-focus-ring: hsl(38, 90%, 50%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Young Serif', serif;
+    font-weight: 400;
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); color: var(--color-bg); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h4 { font-size: 1.25rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted); }
+
+p { margin-bottom: 1.5rem; }
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Animations */
+@keyframes steam-pulse {
+    0% { box-shadow: 0 0 0 0 var(--color-accent-focus); }
+    70% { box-shadow: 0 0 0 15px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.steam-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    animation: steam-pulse 2.5s infinite;
+    margin-right: 0.5rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    padding: 1.25rem 2.5rem;
+    text-decoration: none;
+    border: 2px solid var(--color-accent);
+    border-radius: 4px;
+    box-shadow: 0 6px 0 var(--color-secondary);
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.2s ease;
+    cursor: pointer;
+    margin-top: 1.5rem;
+}
+
+.btn:hover, .btn:focus {
+    transform: translateY(2px);
+    box-shadow: 0 4px 0 var(--color-secondary);
+    background-color: var(--color-primary-hover);
+    outline: none;
+}
+
+.btn:active {
+    transform: translateY(6px);
+    box-shadow: 0 0 0 var(--color-secondary);
+}
+
+/* Header & Nav */
+.site-header {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Young Serif', serif;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--color-bg);
+}
+
+.brand-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.main-nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.main-nav a {
+    color: var(--color-bg);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.main-nav a:hover, .main-nav a:focus {
+    color: var(--color-accent);
+}
+
+/* Layout Utilities */
+.section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.bg-panel { background-color: var(--color-panel); }
+.bg-dark { background-color: var(--color-secondary); color: var(--color-bg); }
+.bg-dark h2, .bg-dark h3 { color: var(--color-accent); }
+.bg-dark p { color: var(--color-bg); }
+
+/* Hero */
+.hero-section {
+    position: relative;
+    background-color: var(--color-secondary);
+    color: var(--color-bg);
+    text-align: center;
+    padding: 8rem 2rem;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-intro {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 2rem auto;
+}
+
+/* Flagship / Editorial */
+.editorial-text {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Sticky-Rail Dossier Layout */
+.dossier-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 4rem;
+}
+
+.rail-nav {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+    background: var(--color-panel);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-panel-border);
+}
+
+.rail-list {
+    list-style: none;
+}
+
+.rail-list li {
+    margin-bottom: 1rem;
+}
+
+.rail-link {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: monospace; /* Fallback for monospaced look requested in brief */
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    transition: color 0.2s ease;
+}
+
+.rail-link.active {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.rail-link.active::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    animation: steam-pulse 2.5s infinite;
+}
+
+.dossier-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.dossier-block h3 {
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 0.5rem;
+}
+
+/* Feature Grids */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background: var(--color-panel);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-panel-border);
+}
+
+.feature-card h3 {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+/* Spec Tables */
+.spec-table-wrapper {
+    overflow-x: auto;
+    margin-top: 2rem;
+}
+
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-surface);
+}
+
+.spec-table th, .spec-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-panel-border);
+    text-align: left;
+}
+
+.spec-table th {
+    background-color: var(--color-panel);
+    color: var(--color-text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* Testimonial Split (The ONE allowed left/right split) */
+.testimonial-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin: 3rem 0;
+}
+
+.testimonial-card {
+    background: var(--color-panel);
+    padding: 3rem;
+    border-left: 6px solid var(--color-primary);
+    border-radius: 0 8px 8px 0;
+}
+
+.quote-text {
+    font-size: 1.25rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.quote-author {
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+}
+
+/* Accordions (FAQ) */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: var(--color-panel);
+    border: 1px solid var(--color-panel-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.faq-item h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.faq-item p {
+    margin-bottom: 0;
+}
+
+/* Forms */
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--color-panel);
+    padding: 3rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-panel-border);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--color-panel-border);
+    border-radius: 4px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    background: var(--color-bg);
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+/* Process Steps */
+.process-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.process-step {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-panel);
+    padding: 2rem;
+    border-left: 6px solid var(--color-accent);
+    border-radius: 0 8px 8px 0;
+}
+
+.step-number {
+    font-family: 'Young Serif', serif;
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--color-secondary);
+    color: var(--color-panel-border);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-address {
+    margin-top: 2rem;
+    font-style: normal;
+}
+
+.content-image {
+    width: 100%;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+@media (max-width: 900px) {
+    .dossier-layout {
+        grid-template-columns: 1fr;
+    }
+    .rail-nav {
+        position: static;
+        margin-bottom: 2rem;
+    }
+    .testimonial-split {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-inner { padding: 4rem 1.5rem; }
+    .hero-content { padding: 4rem 1.5rem; }
+    .main-nav { flex-direction: column; gap: 1rem; text-align: center; display: none; /* In a real app we'd have a toggle */ }
+    /* Just keeping them wrapped is fine for now */
+    .site-header { flex-direction: column; gap: 1rem; }
+    .main-nav { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codex Parallax Laboratory | Multispectral Recovery</title>
+  <meta name="description" content="Non-destructive spectral recovery of erased ancient texts and clinical collagen stabilization for historic vellum codices.">
+  <meta property="og:title" content="Codex Parallax Laboratory">
+  <meta property="og:description" content="Non-destructive spectral recovery of erased ancient texts and clinical collagen stabilization for historic vellum codices.">
+  <meta property="og:image" content="./assets/hero.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,600;0,6..72,700;1,6..72,600;1,6..72,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">Codex Parallax Laboratory</div>
+      <nav class="nav-links">
+        <a href="./index.html">Laboratory Terminal</a>
+        <a href="./imaging.html">Multispectral Technology</a>
+        <a href="./conservation.html">Vellum Conservation</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main id="main-content">
+    <section class="hero-parallax layered-parallax">
+      <div class="parallax-bg" style="background-image: url('./assets/hero.webp');"></div>
+      <div class="hero-content parallax-fg">
+        <h1>Multispectral Recovery and Archival Conservation of Ancient Palimpsest Manuscripts</h1>
+        <p class="subhead">Codex Parallax Laboratory recovers erased lower-layer texts and stabilizes medieval vellum codices for monastic archives and Vatican libraries.</p>
+        <div class="hero-cta">
+          <a href="#flagship" class="btn">Explore Spectral Conservation</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="flagship" class="flagship-parallax layered-parallax">
+      <div class="parallax-bg" style="background-image: url('./assets/spectral-scan-detail.webp');"></div>
+      <div class="flagship-content parallax-fg">
+        <h2 class="section-title">Multispectral Palimpsest Recovery & Enzymatic Vellum Stabilization</h2>
+        <p>In medieval scriptoria, costly calfskin parchment was routinely scraped clean with pumice stone and overwritten with newer liturgical texts, burying priceless classical and early Christian treatises beneath visible script. We utilize narrow-band multispectral imaging from 365nm ultraviolet to 1050nm near-infrared to excite the chemical residual fluorescence of erased iron-gall inks without touching the delicate vellum. Combined with rigid gellan-gum enzymatic cleaning, our laboratory restores unreadable palimpsests while preserving the structural integrity of ancient animal-skin collagen.</p>
+        <p>Recovering the <em>scriptio inferior</em>—the erased lower text of a palimpsest—requires isolating the minute chemical residues of iron-gall ink embedded deep within the collagen matrix of the parchment. When illuminated by narrow-band 365nm ultraviolet LEDs, iron tannate compounds absorb UV radiation and quench the natural fluorescence of the surrounding vellum, causing buried letters to appear as high-contrast dark silhouettes against a glowing background. Our sixteen-channel multispectral camera captures these discrete spectral bands at fifty-micron resolution, processing the raw image stack through principal component analysis to separate overlapping text layers cleanly.</p>
+        <p>Parchment conservation demands an equally non-destructive physical approach. Standard aqueous cleaning methods introduce free water into gelatinized vellum, causing irreversible collagen swelling, cockling, and pigment flaking. Codex Parallax utilizes rigid, pre-hydrated gellan-gum gels that act as molecular sponges. Placed directly onto the manuscript surface, the gel releases micro-titrated moisture into dirty surface accretions while simultaneously absorbing solubilized soot and wax, leaving the underlying parchment dry, flat, and chemically stable.</p>
+        <p>Once imaged and stabilized, each folium is mounted in a custom micro-tension housing lined with acid-free Japanese tissue and UV-filtering museum acrylic. This floating mounting system allows the vellum to expand and contract naturally with ambient relative humidity shifts, preventing mechanical stress on fragile binding structures. Through this fusion of optical physics and non-aqueous conservation science, we ensure that recovered ancient texts remain legibly visible and physically secure for future paleographical study.</p>
+      </div>
+    </section>
+
+    <section class="stacked-cards">
+      <div class="container parallax-depth">
+        <h2 class="section-title">16-Band Spectral Imaging & Image Processing</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>16-Channel Narrow-Band LED Array</h3>
+            <p>Our imaging rig utilizes a highly calibrated LED array capable of emitting sixteen discrete spectral bands, extending from 365nm ultraviolet to 1050nm near-infrared. This extensive bandwidth allows us to target specific molecular absorption rates. Because iron-gall ink absorbs UV light while carbon soot transmits near-infrared frequencies, the system can selectively expose text hidden beneath severe dirt and centuries of carbon buildup without altering the parchment.</p>
+          </div>
+          <div class="card">
+            <h3>150MP Monochrome Metrology Sensor</h3>
+            <p>We deploy a 150-megapixel medium-format monochrome sensor specifically designed for scientific metrology. Stripped of typical Bayer color filters, this sensor records raw photon counts with absolute fidelity, delivering 16-bit dynamic range per channel. The fifty-micron spatial resolution ensures that even the most microscopic pen strokes, heavily degraded by pumice scraping, are captured with clinical precision.</p>
+          </div>
+          <div class="card">
+            <h3>Principal Component Analysis (PCA) Software</h3>
+            <p>The sixteen discrete images generated during a single scan are not simply stacked; they are processed via complex statistical extraction. Principal Component Analysis software identifies the variance between the spectral layers, algorithmically separating the overlapping upper text from the erased lower text based on their differing chemical signatures, creating a pristine mathematical reconstruction of the original script.</p>
+          </div>
+        </div>
+        <div class="false-color-explanation">
+          <p>By applying false-colour compositing to the PCA outputs, our laboratory effectively isolates the <em>scriptio inferior</em> from the overwriting. By assigning distinct, non-overlapping colour channels (typically cyan and red) to the separated statistical layers, the illegible mass of overlapping medieval ink is transformed into a highly legible, high-contrast digital map. The erased text illuminates brilliantly against the background, rendering complex linguistic analysis possible.</p>
+          <p>This false-colour methodology is entirely non-destructive and requires absolutely zero chemical reagents to be applied to the vellum. Archivists can thereby access the lost classical treatises without risking the structural integrity of the upper liturgical texts, achieving a perfect balance between modern digital extraction and rigorous physical conservation.</p>
+        </div>
+        <div class="cta-wrap">
+          <a href="./imaging.html" class="btn">Explore Imaging Technology</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-grid">
+      <div class="container parallax-depth">
+        <h2 class="section-title">Non-Aqueous Gellan Gel & Collagen Conservation</h2>
+        <div class="stat-line">Over 1,400 Folios Imaged and Stabilized Without Water Damage.</div>
+        <div class="three-column">
+          <div class="feature-col">
+            <h3>Rigid Gellan Gels</h3>
+            <p>We employ 4% rigid gellan-gum cast into perfectly flat gel slabs. These acting molecular sponges sit upon the vellum, drawing out ingrained carbon soot and surface dirt through capillary action. Crucially, the gel matrix prevents free water from penetrating the collagen structure, ensuring the parchment remains dimensionally stable and eliminating the risk of catastrophic cockling associated with traditional aqueous baths.</p>
+          </div>
+          <div class="feature-col">
+            <h3>Proteolytic Enzyme Baths</h3>
+            <p>For heavily degraded manuscripts suffering from severe animal-glue adhesions or fungal accretions, the gellan gels can be pre-loaded with highly specific proteolytic enzymes. These enzymes operate at the gel-parchment interface, chemically digesting the targeted organic adhesives without affecting the underlying keratin and collagen networks of the calfskin, allowing for the safe separation of bound folios.</p>
+          </div>
+          <div class="feature-col">
+            <h3>Micro-Tension Humidification</h3>
+            <p>Following cleaning, desiccated vellum is relaxed in a controlled Gore-Tex chamber that permits only water vapor—not liquid droplets—to interact with the fibers. Once optimal flexibility is achieved, the folio is mounted using non-adhesive Japanese tissue hinges on an anodized aluminum micro-tension frame. This frame dynamically responds to ambient climate shifts, preserving the document's elasticity indefinitely.</p>
+          </div>
+        </div>
+        <div class="cta-wrap">
+          <a href="./conservation.html" class="btn">Read Conservation Methods</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-grid">
+      <div class="container parallax-depth">
+        <h2 class="section-title">Featured Manuscript Recovery Projects</h2>
+        <div class="card-grid">
+          <div class="card showcase-card">
+            <h3>The St. Gall Palimpsest (8th Century Greek Geometry)</h3>
+            <p>Originally overwritten in the 12th century with common liturgical chants, this severely scraped codex revealed an exceptional 8th-century Greek mathematical treatise under 365nm UV excitation. The iron-gall ink residue, though invisible to the naked eye, fluoresced strongly enough for our PCA algorithms to generate a complete, high-contrast false-colour map of the original diagrams.</p>
+          </div>
+          <div class="card showcase-card">
+            <h3>Vatican Rescriptus Codices (10th Century Liturgy)</h3>
+            <p>This collection suffered from profound collagen hydrolysis and severe mold staining. Our team deployed pre-hydrated gellan gels to safely lift the fungal accretions without wetting the vellum. Subsequent multispectral scanning penetrated the remaining carbon soot, allowing Vatican archivists to translate the hidden 10th-century script entirely.</p>
+          </div>
+          <div class="card showcase-card">
+            <h3>Sardinian Monastic Charter (12th Century Legal Text)</h3>
+            <p>Severely damaged by fire and water, the blackened parchment was completely unreadable. Utilizing the 1050nm near-infrared bandwidth, which penetrates deep carbon char, we successfully separated the legible ink strokes from the burned substrate. The fragile folios were then secured in micro-tension acrylic mounts to prevent further fragmentation.</p>
+          </div>
+        </div>
+        <div class="showcase-details">
+          <p>The initial state of these palimpsests typically presents as a chaotic, impenetrable mass of faded ink and severe physical degradation. However, by strictly separating the optical recovery from the physical stabilization, we guarantee that the original artifact suffers absolutely zero mechanical stress. The multispectral arrays extract the data mathematically, while the enzymatic gels perform surgical cleaning without altering the parchment's native chemistry.</p>
+          <p>These case studies represent the pinnacle of modern forensic paleography. By delivering uncompressed 16-bit digital matrices to international archivists, we provide them with the definitive toolset to decipher erased histories. The physical codices remain safely stabilized in our micro-tension frames, ensuring their survival for future generations of scholars.</p>
+        </div>
+        <div class="cta-wrap">
+          <a href="#" class="btn">View Case Study Archive</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="intake-console">
+      <div class="container">
+        <h2 class="section-title">Requisition a Spectral Manuscript Assessment</h2>
+        <p>The Codex Parallax Laboratory offers secure, climate-controlled intake protocols for international archival institutions. For extremely fragile codices, we deploy our portable field scanner directly to monastic and library vaults. Please note that all transported manuscripts require rigorous insurance verification and travel exclusively within sealed, nitrogen-purged climate-controlled cases.</p>
+        <form class="clinical-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="institution">Institution / Monastery Name</label>
+              <input type="text" id="institution" required>
+            </div>
+            <div class="form-group">
+              <label for="archivist">Lead Archivist / Curator</label>
+              <input type="text" id="archivist" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="codex">Codex Title / Signature</label>
+              <input type="text" id="codex" required>
+            </div>
+            <div class="form-group">
+              <label for="date-script">Estimated Date / Script Type</label>
+              <input type="text" id="date-script" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="issue">Primary Issue</label>
+              <select id="issue">
+                <option>Erased Text (Palimpsest)</option>
+                <option>Fire / Carbon Damage</option>
+                <option>Mold / Fungal Accretions</option>
+                <option>Collagen Hydrolysis / Warping</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="service">Preferred Service</label>
+              <select id="service">
+                <option>Laboratory Intake (St. Gallen)</option>
+                <option>On-Site Field Scan Deployment</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-submit">Submit Manuscript Assessment Request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">Codex Parallax Laboratory</div>
+      <div class="footer-address">Klosterhof 6, 9000 St. Gallen, Switzerland</div>
+      <p>&copy; 2026 Codex Parallax Laboratory</p>
+    </div>
+  </footer>
+</body>
+</html>

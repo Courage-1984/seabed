@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multispectral Technology | Codex Parallax Laboratory</title>
+  <meta name="description" content="Technical metrology and 16-band spectral imaging systems for erased palimpsest text recovery.">
+  <meta property="og:title" content="Codex Parallax Laboratory - Multispectral Technology">
+  <meta property="og:description" content="Technical metrology and 16-band spectral imaging systems for erased palimpsest text recovery.">
+  <meta property="og:image" content="./assets/hero.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,600;0,6..72,700;1,6..72,600;1,6..72,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">Codex Parallax Laboratory</div>
+      <nav class="nav-links">
+        <a href="./index.html">Laboratory Terminal</a>
+        <a href="./imaging.html" class="active">Multispectral Technology</a>
+        <a href="./conservation.html">Vellum Conservation</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main id="main-content">
+    <section class="hero-parallax layered-parallax">
+      <div class="parallax-bg" style="background-image: url('./assets/hero.webp');"></div>
+      <div class="hero-content parallax-fg">
+        <h1>365nm UV to 1050nm Near-IR Spectral Scanning</h1>
+        <p class="subhead">High-fidelity multi-layer false-colour rendering for completely erased ancient codices.</p>
+      </div>
+    </section>
+
+    <section class="spec-table-section">
+      <div class="container parallax-depth">
+        <h2 class="section-title">Technical Metrology: 16-Channel Spectral Bandwidths</h2>
+        <p>Our custom optical rig spans the full analytical spectrum, utilizing 16 specific narrow-band LEDs to target the distinct absorption and fluorescence profiles of medieval inks and pigments. The ultraviolet bands specifically excite iron-gall degradation products, while the near-infrared spectrum penetrates heavy carbon and soot layers that otherwise obscure the vellum. This extreme spectral precision ensures that no chemical residue escapes detection, maximizing the statistical data available for principal component analysis.</p>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Band Designation</th>
+                <th>Wavelength (nm)</th>
+                <th>FWHM (±5nm)</th>
+                <th>Primary Diagnostic Target</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>UV Excitation</td>
+                <td>365, 385, 400</td>
+                <td>Narrow</td>
+                <td>Iron-Gall Ink Fluorescence Quenching</td>
+              </tr>
+              <tr>
+                <td>Visible Light</td>
+                <td>450 - 700</td>
+                <td>Broad</td>
+                <td>Vermilion, Lapis Lazuli, Copper Pigments</td>
+              </tr>
+              <tr>
+                <td>Near-Infrared (NIR)</td>
+                <td>730 - 1050</td>
+                <td>Narrow</td>
+                <td>Carbon Soot Penetration & Water Absorption</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The system's metrology sensor features a 3.76µm pixel pitch and operates at a full 16-bit dynamic range, capturing 65,536 shades of gray per channel. This extreme sensitivity allows the camera to detect the most marginal fluorescence variations—often the only remaining evidence of heavily pumiced scriptio inferior—without requiring intense, damaging light output from the LED arrays.</p>
+      </div>
+    </section>
+
+    <section class="stacked-guide">
+      <div class="container parallax-depth">
+        <h2 class="section-title">Statistical Processing: Independent Component Analysis</h2>
+        <p>Raw multispectral frames are visually useless until mathematically processed. Our pipeline begins with precise sub-pixel registration alignment, ensuring that all 16 frames stack perfectly despite microscopic thermal drift during the scanning session. Following alignment, we apply rigorous flat-field correction to eliminate any uneven LED illumination or lens vignetting, guaranteeing that intensity values represent true chemical fluorescence.</p>
+        <p>The registered data matrix is then subjected to Independent Component Analysis (ICA) or Principal Component Analysis (PCA). These algorithms mathematically isolate the variables that differ most significantly across the 16 spectral bands. Because the upper liturgical text and the erased lower text possess distinct chemical compositions, the algorithms successfully assign them to entirely separate output layers. We then map these isolated data layers to false-colour channels—rendering the erased script in vivid cyan against a dark background—creating a highly legible composite image without artificial hallucination or generative approximation.</p>
+      </div>
+    </section>
+
+    <section class="card-grid-section">
+      <div class="container parallax-depth">
+        <h2 class="section-title">Environmental Controls: 18°C & 50% RH Scanning Stage</h2>
+        <p>Maintaining the structural integrity of ancient vellum during prolonged imaging sessions is our paramount concern. Fluctuating humidity rapidly alters the dimensional stability of animal skin, causing microscopic shrinkage that degrades image registration and permanently damages the artifact. To mitigate this risk, our imaging stage operates under an absolute, zero-tolerance environmental envelope, continuously monitoring the collagen shrinkage temperature throughout the session.</p>
+        <p>This strict climate isolation guarantees that the physical codex experiences zero thermal or hygroscopic stress, even during exhaustive 16-band scans. Archivists can confidently release their most fragile palimpsests knowing the physical substrate remains entirely uncompromised.</p>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Cold LED Light Sources</h3>
+            <p>We exclusively utilize narrow-band LED arrays that emit zero infrared heat radiation, preventing thermal shock and desiccation of the delicate parchment surface during prolonged exposures.</p>
+          </div>
+          <div class="card">
+            <h3>Vacuum Suction Stage</h3>
+            <p>The manuscript folium rests upon a low-pressure vacuum table that gently flattens cockled vellum without requiring physical weights or glass plates, eliminating abrasive surface friction.</p>
+          </div>
+          <div class="card">
+            <h3>Sealed Nitrogen Purge Box</h3>
+            <p>The entire optical stage is enclosed within a sealed acrylic chamber purged with inert nitrogen gas, strictly maintaining 50% Relative Humidity and 18°C regardless of external ambient conditions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-list">
+      <div class="container parallax-depth">
+        <h2 class="section-title">Chemical Metrology: Iron-Gall & Carbon Ink Spectroscopy</h2>
+        <ul class="metrology-list">
+          <li><strong>Iron-Gall Fluorescence Quenching:</strong> Historic iron-tannate inks absorb 365nm UV radiation, appearing as stark black voids against the naturally glowing keratin of the calfskin parchment.</li>
+          <li><strong>Carbon Black Absorption:</strong> Standard soot-based inks remain opaque across the visible spectrum but become highly transparent in the upper Near-IR bands (1050nm), allowing us to "see through" heavy medieval redactions.</li>
+          <li><strong>Vermilion Red Refraction:</strong> Cinnabar-based rubrics and illuminated initials exhibit unique spectral drop-offs between 550nm and 650nm, instantly distinguishing them from organic red dyes like madder or cochineal.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="spec-table-section">
+      <div class="container parallax-depth">
+        <h2 class="section-title">Portable Multispectral Field Scanner</h2>
+        <p>For Vatican archives, monastic libraries, and international museums unable to transport highly restricted codices, Codex Parallax Laboratory maintains a fully portable field unit. This ruggedized system delivers the exact 16-band metrology of our St. Gallen facility directly to your secure reading room, powered by independent battery matrices to ensure clean, uninterruptible operation.</p>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Specification</th>
+                <th>Parameter</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Flight-Case Weight</td>
+                <td>42kg (Fully Padded ATA Rating)</td>
+              </tr>
+              <tr>
+                <td>Setup & Calibration Time</td>
+                <td>45 Minutes (Includes Dark-Field Calibration)</td>
+              </tr>
+              <tr>
+                <td>Power Draw</td>
+                <td>120W (Battery or Clean Mains Power)</td>
+              </tr>
+              <tr>
+                <td>Data Storage Array</td>
+                <td>Dual 8TB Encrypted NVMe SSD</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="cta-wrap">
+          <button class="btn">Book Field Scan</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">Codex Parallax Laboratory</div>
+      <div class="footer-address">Klosterhof 6, 9000 St. Gallen, Switzerland</div>
+      <p>&copy; 2026 Codex Parallax Laboratory</p>
+    </div>
+  </footer>
+</body>
+</html>
