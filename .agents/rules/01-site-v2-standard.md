@@ -38,7 +38,7 @@ sites/<YYYY-MM>/<kebab-slug>/
 
 - `title`, `blurb`, `hero` are required for hub cards.
 - `hero` is relative to the site folder, **without** a leading `./` (e.g. `assets/tig_arc.webp`).
-- `layoutFamily` — one of the eleven names (exact): `asymmetric split`, `editorial magazine`, `bento`, `brutalist stacked`, `horizontal-scroll band`, `ultra-minimal full-bleed`, `sticky-rail + content`, `diagonal-cut`, `overlapping card-stack`, `terminal / data-readout`, `kinetic ticker / marquee bands`. Required at ship so `npm run sites:index` can feed Gemini collision avoidance. Canonical list: `scripts/lib/layout-families.js`.
+- `layoutFamily` — one of the fourteen names (exact): `asymmetric split`, `editorial magazine`, `bento`, `brutalist stacked`, `horizontal-scroll band`, `ultra-minimal full-bleed`, `sticky-rail + content`, `diagonal-cut`, `overlapping card-stack`, `terminal / data-readout`, `kinetic ticker / marquee bands`, `layered-parallax`, `split-screen scroll`, `neo-brutalist masonry`. Required at ship so `npm run sites:index` can feed Gemini collision avoidance. Canonical list: `scripts/lib/layout-families.js`.
 - `tags` — required array of 1-3 semantic tags categorizing the site (e.g., `saas`, `medical`, `industrial`, `ecommerce`, `fintech`, `lifestyle`). These are rendered as filter chips on the hub archive.
 - `created` — required `YYYY-MM-DD` (UTC day the site was built/shipped). Hub sorts newest-first by this field. Set at scaffold; confirm at ship. The site resides inside the matching `sites/YYYY-MM/` directory bucket.
 - `wordFloor` (optional number) — brief §3 word floor; used by `check:copy-depth` / `check:ship` when CLI floor is omitted. Set at ship when known; do not invent for legacy sites.
