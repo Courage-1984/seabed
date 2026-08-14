@@ -723,7 +723,7 @@
     "title": "Codex Parallax Laboratory",
     "blurb": "Non-destructive spectral recovery of erased ancient texts and clinical collagen stabilization for historic vellum codices.",
     "hero": "assets/hero.webp",
-    "layoutFamily": "layered-parallax",
+    "layoutFamily": "overlapping card-stack",
     "tags": [
       "arts",
       "textile-conservation",
@@ -732,6 +732,7 @@
     "created": "2026-08-13",
     "standard": "v2",
     "wordFloor": 1900,
+    "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/codex-parallax"
   },
   {
@@ -765,6 +766,21 @@
     "standard": "v2",
     "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/hverir-hearth"
+  },
+  {
+    "title": "K-44 Ordnance & Canvas",
+    "blurb": "Ballistic-grade protection spliced with deep-sea rigging resilience.",
+    "hero": "assets/hero-deck-smock.webp",
+    "layoutFamily": "sticky-rail + content",
+    "tags": [
+      "specialty-retail",
+      "direct-to-consumer",
+      "apparel"
+    ],
+    "created": "2026-08-14",
+    "standard": "v2",
+    "wordFloor": 650,
+    "siteFolder": "./sites/2026-08/k-44-ordnance-canvas"
   },
   {
     "title": "Kajak-Lauget Outer Archipelago",
@@ -925,5 +941,21 @@
     "qa": "v2-pass",
     "wordFloor": 1100,
     "siteFolder": "./sites/2026-08/sub-litho-kinetic"
+  },
+  {
+    "title": "The Hardpan Outfitter",
+    "blurb": "Heavy-rated transit stowage and ground-recovery hardware engineered jointly by North Sea saturation divers and sub-Arctic rail crews.",
+    "hero": "assets/hero-sled-ballast.webp",
+    "layoutFamily": "asymmetric split",
+    "tags": [
+      "specialty-retail",
+      "engineering",
+      "gear"
+    ],
+    "created": "2026-08-14",
+    "standard": "v2",
+    "wordFloor": 1100,
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/the-hardpan-outfitter"
   }
 ]

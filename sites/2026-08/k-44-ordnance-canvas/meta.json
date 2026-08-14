@@ -1,0 +1,15 @@
+{
+  "title": "K-44 Ordnance & Canvas",
+  "blurb": "Ballistic-grade protection spliced with deep-sea rigging resilience.",
+  "hero": "assets/hero-deck-smock.webp",
+  "layoutFamily": "sticky-rail + content",
+  "tags": [
+    "specialty-retail",
+    "direct-to-consumer",
+    "apparel"
+  ],
+  "created": "2026-08-14",
+  "standard": "v2",
+  "wordFloor": 650,
+  "qa": "v2-pass"
+}

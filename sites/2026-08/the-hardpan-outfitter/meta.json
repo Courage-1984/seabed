@@ -1,0 +1,15 @@
+{
+  "title": "The Hardpan Outfitter",
+  "blurb": "Heavy-rated transit stowage and ground-recovery hardware engineered jointly by North Sea saturation divers and sub-Arctic rail crews.",
+  "hero": "assets/hero-sled-ballast.webp",
+  "layoutFamily": "asymmetric split",
+  "tags": [
+    "specialty-retail",
+    "engineering",
+    "gear"
+  ],
+  "created": "2026-08-14",
+  "standard": "v2",
+  "wordFloor": 1100,
+  "qa": "v2-pass"
+}
