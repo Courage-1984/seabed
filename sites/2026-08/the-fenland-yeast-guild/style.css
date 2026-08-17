@@ -1,0 +1,668 @@
+:root {
+  --color-primary: hsl(148, 28%, 18%);
+  --color-primary-hover: hsl(148, 28%, 24%);
+  --color-secondary: hsl(28, 32%, 26%);
+  --color-accent: hsl(48, 94%, 55%);
+  --color-accent-hover: hsl(48, 94%, 48%);
+  --color-accent-focus: hsl(48, 100%, 62%);
+  --color-bg: hsl(40, 20%, 94%);
+  --color-surface: hsl(0, 0%, 100%);
+  --color-surface-subtle: hsl(40, 14%, 88%);
+  --color-border: hsl(148, 16%, 78%);
+  --color-text: hsl(150, 25%, 12%);
+  --color-text-muted: hsl(150, 12%, 38%);
+  --color-focus: hsl(48, 94%, 55%);
+  
+  --font-heading: 'Fraunces', serif;
+  --font-body: 'Hanken Grotesk', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  margin-block-start: 0;
+  margin-block-end: 1rem;
+  line-height: 1.2;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+/* Layout Utilities */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+}
+
+.full-bleed {
+  width: 100%;
+}
+
+/* Header & Footer */
+.site-header {
+  padding: 1.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  text-align: center;
+}
+
+.site-header .brand {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.site-footer {
+  background-color: var(--color-secondary);
+  color: var(--color-surface-subtle);
+  text-align: center;
+  padding: 3rem 1.5rem;
+  margin-top: 4rem;
+}
+
+/* CTAs - Tactile Wax Stamp */
+.cta-primary, .cta-secondary {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  border-radius: 4px;
+}
+
+.cta-primary {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.cta-primary:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.cta-secondary {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.cta-secondary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.wax-seal {
+  box-shadow: 3px 3px 0 var(--color-secondary);
+}
+
+.wax-seal:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--color-secondary);
+}
+
+/* 1. Hero */
+.hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--color-primary);
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  text-align: center;
+  color: var(--color-surface);
+  padding: 2rem;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  margin-bottom: 1.5rem;
+  color: var(--color-surface);
+}
+
+.hero-content .subhead {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 500;
+  color: var(--color-accent);
+  margin-bottom: 2rem;
+}
+
+.hero-content .intro {
+  font-size: 1.125rem;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  color: var(--color-surface-subtle);
+}
+
+/* 2. Flagship Feature */
+.flagship {
+  padding-block: 6rem;
+  background-color: var(--color-surface);
+}
+
+.flagship .container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .flagship .container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.flagship-img {
+  border-radius: 4px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.flagship h2 {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.flagship p {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  color: var(--color-text-muted);
+}
+
+/* 3. The Fenland Field Dossier Container (30/70 Sticky Rail Region) */
+.dossier-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .dossier-wrapper {
+    grid-template-columns: 30% minmax(0, 1fr);
+  }
+}
+
+.sticky-rail {
+  /* On mobile it's static, on desktop sticky */
+}
+
+@media (min-width: 1024px) {
+  .sticky-rail {
+    position: sticky;
+    top: 2rem;
+    height: max-content;
+  }
+}
+
+.rail-content {
+  background-color: var(--color-surface);
+  padding: 2rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+}
+
+.rail-content h3 {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-indicator {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.section-indicator li {
+  margin-bottom: 0.5rem;
+}
+
+.spy-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.spy-link:hover {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+}
+
+.spy-link.active {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  box-shadow: 0 0 12px rgba(251, 224, 30, 0.35); /* Soft golden glow */
+}
+
+.live-metrics h4 {
+  font-size: 1.125rem;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 0.5rem;
+  border-bottom: 1px solid var(--color-bg);
+  font-size: 0.875rem;
+}
+
+.metric .label {
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.metric .val {
+  font-family: monospace;
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
+.dossier-section {
+  margin-bottom: 5rem;
+  scroll-margin-top: 2rem;
+}
+
+.dossier-section:last-child {
+  margin-bottom: 0;
+}
+
+.dossier-section h2 {
+  font-size: 2.25rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.dossier-section > p {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2.5rem;
+}
+
+/* 3a. Culture Grid */
+.culture-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .culture-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.culture-card {
+  background-color: var(--color-surface);
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Culture Flask Hover Shift */
+.culture-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
+
+.culture-card h3 {
+  font-size: 1.25rem;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+
+.culture-card p {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.culture-card .price {
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-size: 1.125rem;
+}
+
+/* 3b. Capture Protocol */
+.capture-steps {
+  list-style: none;
+  padding: 0;
+  counter-reset: step-counter;
+  margin-bottom: 2rem;
+}
+
+.capture-steps li {
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+}
+
+.capture-steps li::before {
+  counter-increment: step-counter;
+  content: "0" counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-accent);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.capture-steps strong {
+  color: var(--color-primary);
+}
+
+/* 3c. Micro-Matrix */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.micro-matrix {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  background-color: var(--color-surface);
+}
+
+.micro-matrix th, .micro-matrix td {
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+}
+
+.micro-matrix th {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.micro-matrix td {
+  color: var(--color-text-muted);
+}
+
+.micro-matrix tr:nth-child(even) {
+  background-color: var(--color-bg);
+}
+
+/* 3d. Viability Tiers */
+.viability-tiers {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.viability-tiers li {
+  background-color: var(--color-surface);
+  padding: 1.5rem;
+  border-left: 4px solid var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.viability-tiers strong {
+  display: block;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.viability-tiers span {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+}
+
+.content-img {
+  margin-block: 2rem;
+  border-radius: 4px;
+}
+
+/* 4. Guild Field Notes & Endorsements */
+.testimonials {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  padding-block: 6rem;
+  text-align: center;
+}
+
+.testimonials h2 {
+  color: var(--color-accent);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.stat-line {
+  font-size: 1.25rem;
+  color: var(--color-surface-subtle);
+  margin-bottom: 4rem;
+  font-family: var(--font-heading);
+}
+
+.quotes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .quotes-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.quote {
+  margin: 0;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  text-align: left;
+}
+
+.quote p {
+  font-size: 1.125rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.quote cite {
+  display: block;
+  font-weight: 600;
+  color: var(--color-accent);
+  font-style: normal;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 5. Field Inoculation & Storage FAQ */
+.faq {
+  padding-block: 6rem;
+}
+
+.faq h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 3rem;
+}
+
+.faq-grid {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.faq details {
+  background-color: var(--color-surface);
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.faq summary {
+  padding: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  cursor: pointer;
+  list-style-position: inside;
+}
+
+.faq summary::marker {
+  color: var(--color-accent);
+}
+
+.faq details p {
+  padding: 0 1.5rem 1.5rem;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+}
+
+.faq-cta-wrapper {
+  text-align: center;
+}
+
+/* 6. Harvest Requisition & Dispatch Terminal */
+.requisition {
+  padding-block: 4rem 6rem;
+}
+
+.bento-box {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .bento-box {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.requisition-info {
+  padding: 3rem;
+  background-color: var(--color-secondary);
+  color: var(--color-surface);
+}
+
+.requisition-info h2 {
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+}
+
+.requisition-info p {
+  font-size: 1.125rem;
+  color: var(--color-surface-subtle);
+  margin-bottom: 2rem;
+}
+
+.requisition-info address {
+  font-style: normal;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--color-surface);
+}
+
+.requisition-form {
+  padding: 3rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.form-group select, .form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.form-group select:focus, .form-group input:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}

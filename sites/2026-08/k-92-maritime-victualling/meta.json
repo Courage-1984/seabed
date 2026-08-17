@@ -1,0 +1,15 @@
+{
+  "title": "K-92 Maritime Victualling",
+  "blurb": "Bio-fermented pelagic nutrition engineered for zero-spoilage maritime deployment.",
+  "hero": "assets/hero-cold-store-casks.webp",
+  "layoutFamily": "sticky-rail + content",
+  "tags": [
+    "fermentation",
+    "specialty-food",
+    "provenance"
+  ],
+  "created": "2026-08-17",
+  "standard": "v2",
+  "wordFloor": 1100,
+  "qa": "v2-pass"
+}

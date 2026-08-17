@@ -780,7 +780,23 @@
     "created": "2026-08-14",
     "standard": "v2",
     "wordFloor": 650,
+    "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/k-44-ordnance-canvas"
+  },
+  {
+    "title": "K-92 Maritime Victualling",
+    "blurb": "Bio-fermented pelagic nutrition engineered for zero-spoilage maritime deployment.",
+    "hero": "assets/hero-cold-store-casks.webp",
+    "layoutFamily": "sticky-rail + content",
+    "tags": [
+      "fermentation",
+      "specialty-food",
+      "provenance"
+    ],
+    "created": "2026-08-17",
+    "standard": "v2",
+    "wordFloor": 1100,
+    "siteFolder": "./sites/2026-08/k-92-maritime-victualling"
   },
   {
     "title": "Kajak-Lauget Outer Archipelago",
@@ -941,6 +957,21 @@
     "qa": "v2-pass",
     "wordFloor": 1100,
     "siteFolder": "./sites/2026-08/sub-litho-kinetic"
+  },
+  {
+    "title": "The Fenland Yeast Guild",
+    "blurb": "Uncultivated wild yeast cultures harvested strictly during three-night autumn fog windows in the Cambridgeshire black fens.",
+    "hero": "assets/hero-fenland-fog.webp",
+    "layoutFamily": "sticky-rail + content",
+    "tags": [
+      "fermentation",
+      "specialty-food",
+      "provenance"
+    ],
+    "created": "2026-08-17",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "siteFolder": "./sites/2026-08/the-fenland-yeast-guild"
   },
   {
     "title": "The Hardpan Outfitter",

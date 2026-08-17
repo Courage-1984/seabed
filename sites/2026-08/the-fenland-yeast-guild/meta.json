@@ -1,0 +1,14 @@
+{
+  "title": "The Fenland Yeast Guild",
+  "blurb": "Uncultivated wild yeast cultures harvested strictly during three-night autumn fog windows in the Cambridgeshire black fens.",
+  "hero": "assets/hero-fenland-fog.webp",
+  "layoutFamily": "sticky-rail + content",
+  "tags": [
+    "fermentation",
+    "specialty-food",
+    "provenance"
+  ],
+  "created": "2026-08-17",
+  "wordFloor": 1100,
+  "standard": "v2"
+}
