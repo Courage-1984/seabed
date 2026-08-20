@@ -1,0 +1,11 @@
+{
+  "title": "Pentland Acoustic Telemetry Works",
+  "blurb": "Certified high-salinity acoustic data relay nodes and benthic modems engineered via an operational pact between Pentland Firth tidal turbine crews and Royal Navy sonar technicians.",
+  "hero": "assets/hero-pentland-transducer.webp",
+  "layoutFamily": "split-screen scroll",
+  "tags": ["networking", "hardware", "infrastructure"],
+  "created": "2026-08-20",
+  "standard": "v2",
+  "wordFloor": 1100,
+  "qa": "v2-pass"
+}

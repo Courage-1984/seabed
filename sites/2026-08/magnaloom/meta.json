@@ -1,0 +1,15 @@
+{
+  "title": "MagnaLoom",
+  "blurb": "Unhackable, immortal machine code woven by hand in copper and ferrite.",
+  "hero": "assets/hero-core-rope-loom.webp",
+  "layoutFamily": "bento",
+  "tags": [
+    "hardware",
+    "security",
+    "networking"
+  ],
+  "created": "2026-08-20",
+  "standard": "v2",
+  "wordFloor": 1100,
+  "qa": "v2-pass"
+}

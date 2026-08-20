@@ -796,6 +796,7 @@
     "created": "2026-08-17",
     "standard": "v2",
     "wordFloor": 1100,
+    "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/k-92-maritime-victualling"
   },
   {
@@ -847,6 +848,37 @@
     "siteFolder": "./sites/2026-08/lock-and-sluice"
   },
   {
+    "title": "LV-74 Marine Apothecary",
+    "blurb": "Hand-crafted coastal balms and seawater remedies made in rhythm with the tides.",
+    "hero": "assets/hero-lightvessel-lantern.webp",
+    "layoutFamily": "sticky-rail + content",
+    "tags": [
+      "recovery",
+      "therapy",
+      "rehabilitation"
+    ],
+    "created": "2026-08-18",
+    "standard": "v2",
+    "wordFloor": 1100,
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/lv-74-marine-apothecary"
+  },
+  {
+    "title": "MagnaLoom",
+    "blurb": "Unhackable, immortal machine code woven by hand in copper and ferrite.",
+    "hero": "assets/hero-core-rope-loom.webp",
+    "layoutFamily": "bento",
+    "tags": [
+      "hardware",
+      "security",
+      "networking"
+    ],
+    "created": "2026-08-20",
+    "standard": "v2",
+    "wordFloor": 1100,
+    "siteFolder": "./sites/2026-08/magnaloom"
+  },
+  {
     "title": "MantleCut Deep-Geology Sawing",
     "blurb": "Slicing un-weathered granite and solid basalt three kilometres underground without shaking a single quantum sensor.",
     "hero": "assets/hero.webp",
@@ -893,6 +925,22 @@
     "standard": "v2",
     "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/nadir-quartzware"
+  },
+  {
+    "title": "Pentland Acoustic Telemetry Works",
+    "blurb": "Certified high-salinity acoustic data relay nodes and benthic modems engineered via an operational pact between Pentland Firth tidal turbine crews and Royal Navy sonar technicians.",
+    "hero": "assets/hero-pentland-transducer.webp",
+    "layoutFamily": "split-screen scroll",
+    "tags": [
+      "networking",
+      "hardware",
+      "infrastructure"
+    ],
+    "created": "2026-08-20",
+    "standard": "v2",
+    "wordFloor": 1100,
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/pentland-acoustic-telemetry-works"
   },
   {
     "title": "Sarek Birch-Bark Gear Guild",
@@ -957,6 +1005,21 @@
     "qa": "v2-pass",
     "wordFloor": 1100,
     "siteFolder": "./sites/2026-08/sub-litho-kinetic"
+  },
+  {
+    "title": "The Cryo-Pelagic Cell",
+    "blurb": "Heavy-duty neuromuscular decompression and hyper-saline cold recovery engineered via an operational alliance between Shetland salmon-farm divers and Norwegian naval physiotherapists.",
+    "hero": "assets/hero-bunker-facility.webp",
+    "layoutFamily": "overlapping card-stack",
+    "tags": [
+      "recovery",
+      "clinical",
+      "rehabilitation"
+    ],
+    "created": "2026-08-18",
+    "standard": "v2",
+    "wordFloor": 650,
+    "siteFolder": "./sites/2026-08/the-cryo-pelagic-cell"
   },
   {
     "title": "The Fenland Yeast Guild",

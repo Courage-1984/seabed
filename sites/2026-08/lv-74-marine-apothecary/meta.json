@@ -1,0 +1,15 @@
+{
+  "title": "LV-74 Marine Apothecary",
+  "blurb": "Hand-crafted coastal balms and seawater remedies made in rhythm with the tides.",
+  "hero": "assets/hero-lightvessel-lantern.webp",
+  "layoutFamily": "sticky-rail + content",
+  "tags": [
+    "recovery",
+    "therapy",
+    "rehabilitation"
+  ],
+  "created": "2026-08-18",
+  "standard": "v2",
+  "wordFloor": 1100,
+  "qa": "v2-pass"
+}

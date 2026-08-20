@@ -1,0 +1,10 @@
+{
+  "title": "The Cryo-Pelagic Cell",
+  "blurb": "Heavy-duty neuromuscular decompression and hyper-saline cold recovery engineered via an operational alliance between Shetland salmon-farm divers and Norwegian naval physiotherapists.",
+  "hero": "assets/hero-bunker-facility.webp",
+  "layoutFamily": "overlapping card-stack",
+  "tags": ["recovery", "clinical", "rehabilitation"],
+  "created": "2026-08-18",
+  "standard": "v2",
+  "wordFloor": 650
+}
