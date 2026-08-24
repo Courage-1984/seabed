@@ -1,0 +1,15 @@
+{
+  "title": "Mash & Manifold",
+  "blurb": "Pure live sourdough biocultures propagated in industrial bioreactors and delivered under pressure directly to automated mixing lines.",
+  "hero": "assets/hero-stainless-manifold-depot.webp",
+  "layoutFamily": "brutalist stacked",
+  "tags": [
+    "fermentation",
+    "specialty-food",
+    "provenance"
+  ],
+  "created": "2026-08-24",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

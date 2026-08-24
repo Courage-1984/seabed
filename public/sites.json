@@ -876,6 +876,7 @@
     "created": "2026-08-20",
     "standard": "v2",
     "wordFloor": 1100,
+    "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/magnaloom"
   },
   {
@@ -909,6 +910,21 @@
     "standard": "v2",
     "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/marion-fissure"
+  },
+  {
+    "title": "Mash & Manifold",
+    "blurb": "Pure live sourdough biocultures propagated in industrial bioreactors and delivered under pressure directly to automated mixing lines.",
+    "hero": "assets/hero-stainless-manifold-depot.webp",
+    "layoutFamily": "brutalist stacked",
+    "tags": [
+      "fermentation",
+      "specialty-food",
+      "provenance"
+    ],
+    "created": "2026-08-24",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "siteFolder": "./sites/2026-08/mash-and-manifold"
   },
   {
     "title": "Nadir Quartzware Direct",
@@ -1051,5 +1067,21 @@
     "wordFloor": 1100,
     "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/the-hardpan-outfitter"
+  },
+  {
+    "title": "The Salt-Barrow Malt Shieling",
+    "blurb": "Heritage Bere barley steeped in North Sea intertidal brine and kilned over coastal salt-turf, restoring the unwashed maritime character lost to industrial malting.",
+    "hero": "assets/hero-islay-malt-floor.webp",
+    "layoutFamily": "overlapping card-stack",
+    "tags": [
+      "provenance",
+      "distillery",
+      "specialty-food"
+    ],
+    "created": "2026-08-24",
+    "standard": "v2",
+    "wordFloor": 1900,
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/the-salt-barrow-malt-shieling"
   }
 ]

@@ -63,9 +63,12 @@
 | kajak-lauget | Kajak-Lauget Outer Archipelago | sticky-rail + content | 2026-08-02 |
 | litho-acoustic-labs | Litho-Acoustic Resonance Laboratories | ultra-minimal full-bleed | 2026-08-13 |
 | lock-and-sluice | Lock & Sluice Millwright Forge | horizontal-scroll band | 2026-08-10 |
+| lv-74-marine-apothecary | LV-74 Marine Apothecary | sticky-rail + content | 2026-08-18 |
+| magnaloom | MagnaLoom | bento | 2026-08-20 |
 | mantlecut-geology | MantleCut Deep-Geology Sawing | sticky-rail + content | 2026-08-10 |
 | marion-fissure | Marion Fissure Fermentary | brutalist stacked | 2026-08-04 |
 | nadir-quartzware | Nadir Quartzware Direct | terminal / data-readout | 2026-08-01 |
+| pentland-acoustic-telemetry-works | Pentland Acoustic Telemetry Works | split-screen scroll | 2026-08-20 |
 | sarek-bark-gear | Sarek Birch-Bark Gear Guild | sticky-rail + content | 2026-08-09 |
 | stave-and-hoops | Stave & Hoops Millwright Guild | asymmetric split | 2026-08-03 |
 | sub-lithic-seals | Sub-Lithic Archive Seals | asymmetric split | 2026-08-08 |
@@ -73,6 +76,7 @@
 | the-cryo-pelagic-cell | The Cryo-Pelagic Cell | overlapping card-stack | 2026-08-18 |
 | the-fenland-yeast-guild | The Fenland Yeast Guild | sticky-rail + content | 2026-08-17 |
 | the-hardpan-outfitter | The Hardpan Outfitter | asymmetric split | 2026-08-14 |
+| the-salt-barrow-malt-shieling | The Salt-Barrow Malt Shieling | overlapping card-stack | 2026-08-24 |
 
 ## Roster (paste into brief prompt)
 
@@ -87,11 +91,12 @@ halcyon-tare, halyard-and-hemp-sailmakers, hearth-and-anvil, hull-and-hem-sailme
 hverir-hearth, isocline-preservation, k-44-ordnance-canvas, k-92-maritime-victualling,
 k9-kinetic-recovery, kajak-lauget, karoo-brass-and-glass, katabatic-shelters,
 kestrel-heavy, knot-and-westerly, lithic-fibre-dynamics, lithic-resonance,
-litho-acoustic-labs, lock-and-sluice, mantlecut-geology, marion-fissure,
-monolith-somatic, nadir-quartzware, nepenthes-forge, null-state-cryogenics,
-oxide-and-tide, patch-parcel, pellucid-memory, sarek-bark-gear, signal-and-silo,
-siloshield-dynamics, stake-and-bind, stave-and-hoops, sub-lithic-seals,
-sub-litho-kinetic, substratum-signals, the-brass-and-thistle, the-cryo-pelagic-cell,
-the-fenland-yeast-guild, the-hardpan-outfitter, the-midnight-forager,
+litho-acoustic-labs, lock-and-sluice, lv-74-marine-apothecary, magnaloom,
+mantlecut-geology, marion-fissure, monolith-somatic, nadir-quartzware, nepenthes-forge,
+null-state-cryogenics, oxide-and-tide, patch-parcel, pellucid-memory,
+pentland-acoustic-telemetry-works, sarek-bark-gear, signal-and-silo, siloshield-dynamics,
+stake-and-bind, stave-and-hoops, sub-lithic-seals, sub-litho-kinetic, substratum-signals,
+the-brass-and-thistle, the-cryo-pelagic-cell, the-fenland-yeast-guild,
+the-hardpan-outfitter, the-midnight-forager, the-salt-barrow-malt-shieling,
 the-slate-and-chisel, the-tidal-vault, vapour-and-vault, verdigris-and-salt, xenon-arc
 ```

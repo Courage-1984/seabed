@@ -1,0 +1,15 @@
+{
+  "title": "The Salt-Barrow Malt Shieling",
+  "blurb": "Heritage Bere barley steeped in North Sea intertidal brine and kilned over coastal salt-turf, restoring the unwashed maritime character lost to industrial malting.",
+  "hero": "assets/hero-islay-malt-floor.webp",
+  "layoutFamily": "overlapping card-stack",
+  "tags": [
+    "provenance",
+    "distillery",
+    "specialty-food"
+  ],
+  "created": "2026-08-24",
+  "standard": "v2",
+  "wordFloor": 1900,
+  "qa": "v2-pass"
+}
