@@ -752,6 +752,22 @@
     "siteFolder": "./sites/2026-08/deep-crust-mycelial"
   },
   {
+    "title": "Gigaglyph",
+    "blurb": "Monumental, crane-mounted physical typesetting and structural bronze letterforms scaled for legible reading from low Earth orbit.",
+    "hero": "assets/hero-iron-letterform.webp",
+    "layoutFamily": "terminal / data-readout",
+    "tags": [
+      "typography",
+      "studio",
+      "printmaking"
+    ],
+    "created": "2026-08-26",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/gigaglyph"
+  },
+  {
     "title": "Hverir Geothermal Hearth",
     "blurb": "Rye bread and wild Arctic ferments slow-cooked by the raw heat of the Earth inside a natural basalt lava chamber.",
     "hero": "assets/hero.webp",
@@ -814,6 +830,21 @@
     "standard": "v2",
     "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/kajak-lauget"
+  },
+  {
+    "title": "LeafBind",
+    "blurb": "Bespoke hand-bound books and deckled botanical papers crafted aboard an 1898 Thames sailing barge.",
+    "hero": "assets/hero-barge-bindery-hold.webp",
+    "layoutFamily": "overlapping card-stack",
+    "tags": [
+      "publishing",
+      "printmaking",
+      "studio"
+    ],
+    "created": "2026-08-26",
+    "standard": "v2",
+    "wordFloor": 1900,
+    "siteFolder": "./sites/2026-08/leafbind"
   },
   {
     "title": "Litho-Acoustic Resonance Laboratories",
@@ -924,6 +955,7 @@
     "created": "2026-08-24",
     "wordFloor": 1100,
     "standard": "v2",
+    "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/mash-and-manifold"
   },
   {
@@ -1021,6 +1053,38 @@
     "qa": "v2-pass",
     "wordFloor": 1100,
     "siteFolder": "./sites/2026-08/sub-litho-kinetic"
+  },
+  {
+    "title": "TendonForge",
+    "blurb": "Heavy-duty physical remobilisation pods delivered directly to industrial jobsites by flatbed freight.",
+    "hero": "assets/hero-corten-pod-crane.webp",
+    "layoutFamily": "editorial magazine",
+    "tags": [
+      "recovery",
+      "rehabilitation",
+      "biotech"
+    ],
+    "created": "2026-08-25",
+    "standard": "v2",
+    "wordFloor": 1900,
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/tendonforge"
+  },
+  {
+    "title": "The Cryo-Biome Crypt",
+    "blurb": "Pre-morbid baseline microbiome banking preserved at -196°C in liquid nitrogen vapour cassettes, delivered as enteric-coated targeted bio-capsules.",
+    "hero": "assets/hero-cryo-vault.webp",
+    "layoutFamily": "diagonal-cut",
+    "tags": [
+      "clinical",
+      "diagnostics",
+      "biotech"
+    ],
+    "created": "2026-08-25",
+    "standard": "v2",
+    "wordFloor": 650,
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/the-cryo-biome-crypt"
   },
   {
     "title": "The Cryo-Pelagic Cell",

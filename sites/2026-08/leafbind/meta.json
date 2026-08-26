@@ -1,0 +1,15 @@
+{
+  "title": "LeafBind",
+  "blurb": "Bespoke hand-bound books and deckled botanical papers crafted aboard an 1898 Thames sailing barge.",
+  "hero": "assets/hero-barge-bindery-hold.webp",
+  "layoutFamily": "overlapping card-stack",
+  "tags": [
+    "publishing",
+    "printmaking",
+    "studio"
+  ],
+  "created": "2026-08-26",
+  "standard": "v2",
+  "wordFloor": 1900,
+  "qa": "v2-pass"
+}

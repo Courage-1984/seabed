@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" fill="#1D2A36" rx="20"/>
+  <!-- Barge Hull/Open Book shape in white/oat -->
+  <path d="M 20 70 Q 50 85 80 70 L 70 30 Q 50 45 30 30 Z" fill="#F3F0EB" />
+  <!-- Oak Leaf Bookmark in Gold Ochre -->
+  <path d="M 50 20 C 60 20 65 35 50 60 C 35 35 40 20 50 20 Z" fill="#E8970D" />
+</svg>

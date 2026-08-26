@@ -1,0 +1,15 @@
+{
+  "title": "Gigaglyph",
+  "blurb": "Monumental, crane-mounted physical typesetting and structural bronze letterforms scaled for legible reading from low Earth orbit.",
+  "hero": "assets/hero-iron-letterform.webp",
+  "layoutFamily": "terminal / data-readout",
+  "tags": [
+    "typography",
+    "studio",
+    "printmaking"
+  ],
+  "created": "2026-08-26",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

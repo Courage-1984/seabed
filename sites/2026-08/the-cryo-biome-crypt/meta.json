@@ -1,0 +1,11 @@
+{
+  "title": "The Cryo-Biome Crypt",
+  "blurb": "Pre-morbid baseline microbiome banking preserved at -196°C in liquid nitrogen vapour cassettes, delivered as enteric-coated targeted bio-capsules.",
+  "hero": "assets/hero-cryo-vault.webp",
+  "layoutFamily": "diagonal-cut",
+  "tags": ["clinical", "diagnostics", "biotech"],
+  "created": "2026-08-25",
+  "standard": "v2",
+  "wordFloor": 650,
+  "qa": "v2-pass"
+}

@@ -1,0 +1,11 @@
+{
+  "title": "TendonForge",
+  "blurb": "Heavy-duty physical remobilisation pods delivered directly to industrial jobsites by flatbed freight.",
+  "hero": "assets/hero-corten-pod-crane.webp",
+  "layoutFamily": "editorial magazine",
+  "tags": ["recovery", "rehabilitation", "biotech"],
+  "created": "2026-08-25",
+  "standard": "v2",
+  "wordFloor": 1900,
+  "qa": "v2-pass"
+}
