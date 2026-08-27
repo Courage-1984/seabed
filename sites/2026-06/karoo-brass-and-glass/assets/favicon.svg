@@ -1,6 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="45" fill="#f4f1ea" stroke="#8a6327" stroke-width="6"/>
-  <circle cx="50" cy="50" r="35" fill="none" stroke="#2a3b4c" stroke-width="2" stroke-dasharray="2 4"/>
-  <line x1="50" y1="50" x2="70" y2="30" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="50" cy="50" r="4" fill="#4a2011"/>
+  <defs>
+    <linearGradient id="brass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="50%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="45" fill="#1C1917" stroke="url(#brass)" stroke-width="10"/>
+  <circle cx="50" cy="50" r="35" fill="none" stroke="#A8A29E" stroke-width="2" stroke-dasharray="4,8"/>
+  <!-- Needle -->
+  <path d="M 50,60 L 46,60 L 50,15 L 54,60 Z" fill="#EF4444"/>
+  <circle cx="50" cy="60" r="8" fill="url(#brass)"/>
 </svg>

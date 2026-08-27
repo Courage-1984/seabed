@@ -844,6 +844,7 @@
     "created": "2026-08-26",
     "standard": "v2",
     "wordFloor": 1900,
+    "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/leafbind"
   },
   {
@@ -1149,4 +1150,3 @@
     "siteFolder": "./sites/2026-08/the-salt-barrow-malt-shieling"
   }
 ]
-

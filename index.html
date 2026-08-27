@@ -18,12 +18,26 @@
     <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
   </head>
   <body>
+    <div id="news-ticker-container" class="news-ticker-container" aria-hidden="true">
+      <div class="news-ticker-wrap">
+        <div class="news-ticker-move" id="news-ticker-move">
+          <!-- filled by hub.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Ticker Preview Tooltip -->
+    <div id="ticker-preview" class="ticker-preview">
+      <div class="ticker-preview-title" id="ticker-preview-title"></div>
+      <div id="ticker-preview-img" class="ticker-preview-img"></div>
+    </div>
+
     <div class="hub-atmosphere" aria-hidden="true"></div>
 
     <header class="hub-header">
       <p class="hub-kicker">Portfolio</p>
       <h1>Daily Builds</h1>
-      <p class="hub-lede">Fictional brands, real craft — newest drops first.</p>
+      <p class="hub-lede">Fictional brands, real craft.</p>
       <div class="hub-header-actions">
         <button id="btn-lucky" class="btn-lucky">
           <svg
@@ -44,6 +58,8 @@
         </button>
       </div>
     </header>
+
+    <div id="discovery-filters" class="discovery-filters" hidden aria-label="Carousel filters"></div>
 
     <section class="discovery" aria-label="Discovery carousel">
       <div class="discovery-fade discovery-fade--start" aria-hidden="true"></div>
@@ -83,8 +99,19 @@
         </svg>
       </button>
 
-      <div class="discovery-dots" id="discovery-dots" aria-hidden="true">
-        <!-- filled by hub.js -->
+      <div class="discovery-controls" id="discovery-controls">
+        <button class="discovery-auto-toggle" id="discovery-auto-toggle" aria-label="Toggle auto scroll" title="Toggle auto scroll">
+          <svg class="icon-pause" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+          <svg class="icon-play" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+        </button>
+        <div class="discovery-dots" id="discovery-dots" aria-hidden="true">
+          <!-- filled by hub.js -->
+        </div>
       </div>
     </section>
 

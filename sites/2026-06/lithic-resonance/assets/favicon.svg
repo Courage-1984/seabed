@@ -1,6 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#0A0A0A"/>
-  <rect x="20" y="20" width="20" height="60" fill="#333333"/>
-  <rect x="45" y="40" width="10" height="40" fill="#D32F2F"/>
-  <rect x="60" y="10" width="20" height="70" fill="#333333"/>
+  <rect width="100" height="100" rx="12" fill="#1C1C1C" />
+  <!-- Brutalist geometric diffuser pattern -->
+  <path d="M 20,20 L 40,20 L 40,40 L 20,40 Z" fill="#71717A"/>
+  <path d="M 40,20 L 60,30 L 60,50 L 40,40 Z" fill="#52525B"/>
+  <path d="M 60,30 L 80,20 L 80,40 L 60,50 Z" fill="#3F3F46"/>
+  <path d="M 20,40 L 40,40 L 40,80 L 20,80 Z" fill="#52525B"/>
+  <path d="M 40,40 L 60,50 L 60,70 L 40,60 Z" fill="#A1A1AA"/>
+  <path d="M 60,50 L 80,40 L 80,80 L 60,70 Z" fill="#71717A"/>
 </svg>

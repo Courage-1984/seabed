@@ -1,5 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#7a1a21"/>
-  <rect x="25" y="25" width="50" height="50" fill="none" stroke="#9ba4b5" stroke-width="8"/>
-  <circle cx="50" cy="50" r="12" fill="#f5f5f2"/>
+  <defs>
+    <linearGradient id="plant" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ADE80"/>
+      <stop offset="100%" stop-color="#16A34A"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#71717A"/>
+      <stop offset="100%" stop-color="#3F3F46"/>
+    </linearGradient>
+  </defs>
+  <!-- Transit Case Background -->
+  <rect x="15" y="15" width="70" height="70" rx="8" fill="url(#metal)" stroke="#27272A" stroke-width="4"/>
+  <!-- Screen Glow -->
+  <rect x="25" y="25" width="50" height="50" rx="4" fill="#064E3B" />
+  <!-- Stylized Pitcher Plant -->
+  <path d="M 50,30 C 65,30 70,50 60,65 C 50,80 35,70 40,50 C 45,35 45,35 50,30 Z" fill="url(#plant)"/>
+  <!-- Pitcher Lid -->
+  <path d="M 45,30 C 50,20 60,20 65,30 C 60,35 50,35 45,30 Z" fill="#22C55E"/>
 </svg>

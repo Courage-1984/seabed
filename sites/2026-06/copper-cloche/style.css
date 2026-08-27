@@ -103,7 +103,7 @@ header {
   display: flex;
   align-items: flex-end;
   padding-bottom: var(--spacing-xl);
-  background-image: linear-gradient(to top, var(--color-bg-primary), rgba(13, 17, 18, 0.2)), url('./assets/hero.webp');
+  background-image: linear-gradient(to top, var(--color-bg-primary), rgba(13, 17, 18, 0.2)), url('./assets/hero-vault.webp');
   background-size: cover;
   background-position: center;
   position: relative;

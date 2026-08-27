@@ -9,6 +9,7 @@ const stripEl = document.getElementById('discovery-strip');
 const latestEl = document.getElementById('latest-drop');
 const gridEl = document.getElementById('hub-grid');
 const filtersEl = document.getElementById('archive-filters');
+const discoveryFiltersEl = document.getElementById('discovery-filters');
 
 const RECENT_DAYS = 14;
 
@@ -57,7 +58,10 @@ async function loadSiteEntries() {
       const normalizedHero = (hero || '').replace(/^\.\//, '');
       const imageGlobPath = `${siteFolder}/${normalizedHero}`;
       const imagePath = hero?.startsWith('/') ? '.' + hero : imageGlobPath;
-      const faviconGlobPath = `${siteFolder}/assets/favicon.svg`;
+      
+      const svgFavicon = `${siteFolder}/assets/favicon.svg`;
+      const webpFavicon = `${siteFolder}/assets/favicon.webp`;
+      const faviconGlobPath = images[webpFavicon] ? webpFavicon : svgFavicon;
 
       const [resolvedImageUrl, resolvedFaviconUrl] = await Promise.all([
         images[imageGlobPath] ? images[imageGlobPath]() : Promise.resolve(imagePath),
@@ -82,6 +86,12 @@ async function loadSiteEntries() {
     if (a.created !== b.created) return a.created < b.created ? 1 : -1;
     return a.title.localeCompare(b.title);
   });
+
+  // Assign build numbers (chronological, oldest is 1)
+  let counter = entries.length;
+  for (const entry of entries) {
+    entry.buildNumber = counter--;
+  }
 
   return entries;
 }
@@ -116,12 +126,29 @@ function buildDiscoveryCell(site) {
   strong.textContent = site.title;
   metaTop.append(favicon, strong);
 
-  const span = document.createElement('span');
-  span.textContent = formatDate(site.created);
+  const metaBottom = document.createElement('div');
+  metaBottom.className = 'discovery-cell-meta-bottom';
 
-  meta.append(metaTop, span);
+  const dateSpan = document.createElement('span');
+  dateSpan.textContent = formatDate(site.created);
 
-  a.append(img, meta);
+  metaBottom.append(dateSpan);
+  meta.append(metaTop, metaBottom);
+
+  const badges = document.createElement('div');
+  badges.className = 'discovery-cell-badges';
+
+  const layoutSpan = document.createElement('span');
+  layoutSpan.className = 'discovery-cell-layout';
+  layoutSpan.textContent = site.layoutFamily || 'Standard';
+
+  const buildNo = document.createElement('span');
+  buildNo.className = 'discovery-cell-buildno';
+  buildNo.textContent = `No. ${String(site.buildNumber).padStart(3, '0')}`;
+
+  badges.append(layoutSpan, buildNo);
+
+  a.append(badges, img, meta);
   return a;
 }
 
@@ -262,7 +289,14 @@ function renderDiscoveryStrip(sorted) {
 
   // Auto Scroll Logic
   let autoScrollInterval;
+  let isAutoScrolling = true;
+  
+  const toggleBtn = document.getElementById('discovery-auto-toggle');
+  const iconPause = toggleBtn?.querySelector('.icon-pause');
+  const iconPlay = toggleBtn?.querySelector('.icon-play');
+
   const startAutoScroll = () => {
+    if (!isAutoScrolling) return;
     clearInterval(autoScrollInterval);
     autoScrollInterval = setInterval(() => {
       if (isDown) return; // don't scroll if dragging
@@ -276,13 +310,33 @@ function renderDiscoveryStrip(sorted) {
 
   const stopAutoScroll = () => clearInterval(autoScrollInterval);
 
+  if (toggleBtn) {
+    // Prevent dragging interactions from toggling
+    toggleBtn.addEventListener('mousedown', (e) => e.stopPropagation());
+    
+    toggleBtn.addEventListener('click', () => {
+      isAutoScrolling = !isAutoScrolling;
+      if (isAutoScrolling) {
+        if (iconPause) iconPause.style.display = 'block';
+        if (iconPlay) iconPlay.style.display = 'none';
+        startAutoScroll();
+      } else {
+        if (iconPause) iconPause.style.display = 'none';
+        if (iconPlay) iconPlay.style.display = 'block';
+        stopAutoScroll();
+      }
+    });
+  }
+
   const carouselSection = stripEl.closest('.discovery');
   if (carouselSection) {
     carouselSection.addEventListener('mouseenter', stopAutoScroll);
-    carouselSection.addEventListener('mouseleave', startAutoScroll);
+    carouselSection.addEventListener('mouseleave', () => {
+      if (isAutoScrolling) startAutoScroll();
+    });
   }
 
-  startAutoScroll();
+  if (isAutoScrolling) startAutoScroll();
 }
 
 function renderLatestDrop(site) {
@@ -544,6 +598,225 @@ function renderFilters(siteList, onChange) {
 const sorted = await loadSiteEntries();
 const newestDate = parseCreated(sorted[0]?.created);
 
+// --- News Ticker Generation ---
+const renderTicker = (siteList) => {
+  const tickerEl = document.getElementById('news-ticker-move');
+  if (!tickerEl) return;
+
+  const templates = [
+    "Is this the future?",
+    "Have you seen this?",
+    "What's the secret here?",
+    "Rewriting the rules.",
+    "A radical new approach.",
+    "Inside the operation.",
+    "Discover the truth.",
+    "Explore the latest drop.",
+    "Step into the unknown."
+  ];
+
+  // Create a randomized copy of the site list for the ticker
+  const shuffledSites = [...siteList].sort(() => Math.random() - 0.5);
+
+  const itemsHtml = shuffledSites.map((site, index) => {
+    const template = templates[index % templates.length];
+    
+    // Create a very concise, punchy snippet (max 50 chars)
+    let snippet = site.blurb.split('.')[0].trim();
+    if (snippet.length > 50) snippet = snippet.substring(0, 47) + '...';
+    if (!snippet.endsWith('.') && !snippet.endsWith('?') && !snippet.endsWith('!')) snippet += '.';
+    
+    return `<a href="${site.href}" class="ticker-item" target="_blank" rel="noopener noreferrer" data-title="${site.title}" data-img="${site.heroUrl}">
+      <img src="${site.faviconUrl}" alt="" class="ticker-favicon" loading="lazy" width="14" height="14" />
+      <span class="ticker-text">${template} ${snippet}</span>
+    </a>`;
+  });
+
+  // Duplicate for infinite scroll loop
+  tickerEl.innerHTML = itemsHtml.join('') + itemsHtml.join('');
+
+  // Tooltip Logic
+  const tooltip = document.getElementById('ticker-preview');
+  const tooltipTitle = document.getElementById('ticker-preview-title');
+  const tooltipImg = document.getElementById('ticker-preview-img');
+
+  tickerEl.addEventListener('mouseover', (e) => {
+    const item = e.target.closest('.ticker-item');
+    if (item) {
+      tooltipTitle.textContent = item.dataset.title;
+      // Use the image URL resolved directly from Vite
+      tooltipImg.style.backgroundImage = `url('${item.dataset.img}')`;
+      tooltip.classList.add('is-visible');
+    }
+  });
+
+  tickerEl.addEventListener('mouseout', (e) => {
+    const item = e.target.closest('.ticker-item');
+    if (item) {
+      tooltip.classList.remove('is-visible');
+    }
+  });
+
+  tickerEl.addEventListener('mousemove', (e) => {
+    if (tooltip.classList.contains('is-visible')) {
+      // Position the tooltip slightly below and to the right of the cursor
+      tooltip.style.left = `${e.clientX + 15}px`;
+      tooltip.style.top = `${e.clientY + 25}px`;
+    }
+  });
+
+  // Interactive JS Animation Loop
+  let tickerX = 0;
+  let tickerSpeed = 0.5; // pixels per frame
+  let isHovered = false;
+  let tickerWidth = 0;
+
+  // Measure the width of half the content (one full set)
+  // We use a small timeout to ensure DOM layout is complete
+  setTimeout(() => {
+    tickerWidth = tickerEl.scrollWidth / 2;
+  }, 100);
+
+  const animateTicker = () => {
+    if (!isHovered) {
+      tickerX -= tickerSpeed;
+    }
+    
+    if (tickerWidth > 0) {
+      // Loop seamlessly
+      if (tickerX <= -tickerWidth) {
+        tickerX += tickerWidth;
+      } else if (tickerX > 0) {
+        tickerX -= tickerWidth;
+      }
+    }
+    
+    tickerEl.style.transform = `translate3d(${tickerX}px, 0, 0)`;
+    requestAnimationFrame(animateTicker);
+  };
+  requestAnimationFrame(animateTicker);
+
+  tickerEl.addEventListener('mouseenter', () => isHovered = true);
+  tickerEl.addEventListener('mouseleave', () => isHovered = false);
+
+  // Allow manual scrolling with Shift+Scroll or Trackpad
+  const container = document.getElementById('news-ticker-container');
+  if (container) {
+    container.addEventListener('wheel', (e) => {
+      // Check for horizontal trackpad scroll or shift+vertical scroll
+      if (e.shiftKey || Math.abs(e.deltaX) > 0) {
+        e.preventDefault();
+        const delta = Math.abs(e.deltaX) > 0 ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
+        if (delta !== 0) {
+          tickerX -= delta;
+        }
+      }
+    }, { passive: false });
+  }
+};
+
+renderTicker(sorted);
+
+// --- Discovery Carousel Filtering ---
+let discoveryActiveCategory = localStorage.getItem('discoveryActiveCategory') || 'all';
+let discoveryActiveSubFilter = localStorage.getItem('discoveryActiveSubFilter') || null;
+let discoverySortOrder = localStorage.getItem('discoverySortOrder') || 'desc'; // 'desc' (newest first) or 'asc' (oldest first)
+
+function renderDiscoveryFilters(siteList, onChange) {
+  if (!discoveryFiltersEl) return;
+  discoveryFiltersEl.hidden = false;
+  discoveryFiltersEl.replaceChildren();
+
+  // We want a very sleek, single-row compact filter strip for the carousel.
+  const categories = [
+    { id: 'all', label: 'All' },
+    { id: 'recent', label: 'Recent' },
+    { id: 'layout', label: 'By Layout' },
+    { id: 'tag', label: 'By Tag' },
+  ];
+
+  const row = document.createElement('div');
+  row.className = 'discovery-filter-row';
+
+  // Category buttons
+  for (const cat of categories) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'discovery-filter-chip';
+    btn.dataset.category = cat.id;
+    btn.setAttribute('aria-pressed', cat.id === discoveryActiveCategory ? 'true' : 'false');
+    btn.textContent = cat.label;
+    btn.addEventListener('click', () => onChange(cat.id, null, discoverySortOrder));
+    row.appendChild(btn);
+  }
+
+  // Sort toggle button
+  const sortBtn = document.createElement('button');
+  sortBtn.type = 'button';
+  sortBtn.className = 'discovery-filter-chip discovery-filter-chip--sort';
+  sortBtn.textContent = discoverySortOrder === 'desc' ? 'Sort: Newest' : 'Sort: Oldest';
+  sortBtn.addEventListener('click', () => {
+    const newOrder = discoverySortOrder === 'desc' ? 'asc' : 'desc';
+    onChange(discoveryActiveCategory, discoveryActiveSubFilter, newOrder);
+  });
+  row.appendChild(sortBtn);
+
+  discoveryFiltersEl.appendChild(row);
+
+  // Sub-filter row
+  if (discoveryActiveCategory === 'layout' || discoveryActiveCategory === 'tag') {
+    const subRow = document.createElement('div');
+    subRow.className = 'discovery-filter-row discovery-filter-row--sub';
+
+    const items =
+      discoveryActiveCategory === 'layout'
+        ? uniqueLayoutFamilies(siteList).map((f) => ({ id: f, label: f }))
+        : uniqueTags(siteList).map((t) => ({ id: t, label: '#' + t }));
+
+    for (const item of items) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'discovery-filter-chip discovery-filter-chip--sub';
+      btn.setAttribute('aria-pressed', item.id === discoveryActiveSubFilter ? 'true' : 'false');
+      btn.textContent = item.label;
+      btn.addEventListener('click', () => onChange(discoveryActiveCategory, item.id, discoverySortOrder));
+      subRow.appendChild(btn);
+    }
+    discoveryFiltersEl.appendChild(subRow);
+  }
+}
+
+const applyDiscoveryFilter = (category, subFilter = null, sortOrder = 'desc') => {
+  discoveryActiveCategory = category;
+  discoveryActiveSubFilter = subFilter;
+  discoverySortOrder = sortOrder;
+
+  localStorage.setItem('discoveryActiveCategory', category);
+  if (subFilter) {
+    localStorage.setItem('discoveryActiveSubFilter', subFilter);
+  } else {
+    localStorage.removeItem('discoveryActiveSubFilter');
+  }
+  localStorage.setItem('discoverySortOrder', sortOrder);
+
+  if (category === 'layout' && !subFilter) {
+    const families = uniqueLayoutFamilies(sorted);
+    if (families.length) discoveryActiveSubFilter = families[0];
+  }
+  if (category === 'tag' && !subFilter) {
+    const tags = uniqueTags(sorted);
+    if (tags.length) discoveryActiveSubFilter = tags[0];
+  }
+
+  renderDiscoveryFilters(sorted, applyDiscoveryFilter);
+  const filtered = filterSites(sorted, discoveryActiveCategory, discoveryActiveSubFilter, newestDate);
+  if (discoverySortOrder === 'asc') {
+    filtered.reverse();
+  }
+  renderDiscoveryStrip(filtered);
+};
+
+// --- Archive Grid Filtering ---
 let activeCategory = 'all';
 let activeSubFilter = null;
 
@@ -551,7 +824,6 @@ const applyFilter = (category, subFilter = null) => {
   activeCategory = category;
   activeSubFilter = subFilter;
 
-  // If a category is selected but no subfilter is active, default to the first one so it's not empty
   if (category === 'layout' && !subFilter) {
     const families = uniqueLayoutFamilies(sorted);
     if (families.length) activeSubFilter = families[0];
@@ -565,7 +837,7 @@ const applyFilter = (category, subFilter = null) => {
   renderArchive(sorted, activeCategory, activeSubFilter, newestDate);
 };
 
-renderDiscoveryStrip(sorted);
+applyDiscoveryFilter(discoveryActiveCategory, discoveryActiveSubFilter, discoverySortOrder);
 renderLatestDrop(sorted[0]);
 applyFilter('all');
 

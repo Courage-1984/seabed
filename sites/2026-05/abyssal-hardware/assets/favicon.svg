@@ -1,10 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#FF5722" stroke-width="8" stroke-linecap="square">
-  <!-- A geometric heavy-duty padlock -->
-  <!-- Shackle -->
-  <path d="M30 45V30C30 19 39 10 50 10C61 10 70 19 70 30V45" />
-  <!-- Body -->
-  <rect x="20" y="45" width="60" height="45" rx="5" fill="#0B131C" />
-  <!-- Keyhole (inner detail) -->
-  <circle cx="50" cy="60" r="5" fill="#FF5722" stroke="none" />
-  <path d="M47 64 L53 64 L52 75 L48 75 Z" fill="#FF5722" stroke="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="iconGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  
+  <rect width="32" height="32" rx="6" fill="url(#bg)" />
+  
+  <g filter="url(#shadow)">
+    <rect x="6" y="14" width="20" height="14" rx="2" stroke="url(#iconGlow)" stroke-width="2" fill="none" />
+    <path d="M10 14V10C10 6.68629 12.6863 4 16 4C19.3137 4 22 6.68629 22 10V14" stroke="url(#iconGlow)" stroke-width="2" fill="none" />
+    <circle cx="16" cy="21" r="2" fill="url(#iconGlow)" />
+  </g>
 </svg>
