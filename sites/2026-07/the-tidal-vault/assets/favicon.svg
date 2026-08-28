@@ -1,5 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#162e25" />
-  <circle cx="50" cy="50" r="30" fill="none" stroke="#79988d" stroke-width="4" />
-  <path d="M 30 50 Q 40 30 50 50 T 70 50" fill="none" stroke="#faf9f6" stroke-width="4" />
+  <rect width="100" height="100" fill="#0C1B2B" />
+  <!-- Vault Door -->
+  <circle cx="50" cy="50" r="35" fill="none" stroke="#64748B" stroke-width="6" />
+  <circle cx="50" cy="50" r="25" fill="none" stroke="#94A3B8" stroke-width="2" />
+  <circle cx="50" cy="50" r="10" fill="#E2E8F0" />
+  <!-- Locking Bars -->
+  <line x1="20" y1="50" x2="35" y2="50" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+  <line x1="65" y1="50" x2="80" y2="50" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+  <line x1="50" y1="20" x2="50" y2="35" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+  <line x1="50" y1="65" x2="50" y2="80" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+  <!-- Waves -->
+  <path d="M 20,85 Q 35,75 50,85 T 80,85" fill="none" stroke="#0EA5E9" stroke-width="3" stroke-linecap="round" />
 </svg>

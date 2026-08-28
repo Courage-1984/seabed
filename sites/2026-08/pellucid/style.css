@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&display=swap');
+
+:root {
+  --color-primary: hsl(215, 32%, 16%);
+  --color-primary-hover: hsl(215, 32%, 22%);
+  --color-secondary: hsl(175, 30%, 40%);
+  --color-secondary-hover: hsl(175, 30%, 48%);
+  --color-accent: hsl(28, 92%, 50%);
+  --color-accent-hover: hsl(28, 92%, 42%);
+  --color-accent-focus: hsl(28, 95%, 60%);
+  --color-bg: hsl(190, 16%, 95%);
+  --color-surface: hsl(0, 0%, 100%);
+  --color-surface-muted: hsl(190, 12%, 90%);
+  --color-text: hsl(220, 24%, 10%);
+  --color-text-muted: hsl(215, 14%, 38%);
+  --color-border: hsl(205, 15%, 82%);
+  --color-border-strong: hsl(215, 32%, 24%);
+
+  --font-heading: 'Fraunces', serif;
+  --font-body: 'Albert Sans', sans-serif;
+
+  --spacing-section: clamp(4rem, 10vw, 8rem);
+  --container-width: 1100px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  font-size: 1.1rem;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  margin-block-start: 0;
+  margin-block-end: 1rem;
+  color: var(--color-primary);
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  color: var(--color-primary);
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 1.5rem;
+}
+
+/* Links & Focus */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--color-accent-focus);
+  outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Interactive Elements */
+.cta-button {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1rem 2rem;
+  border: 1px solid var(--color-primary);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 0 var(--color-accent);
+  transition: background-color 0.1s ease, color 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.cta-button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.cta-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 0 var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  border-color: var(--color-accent);
+}
+
+/* Structural Components */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-block: 2rem;
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-surface);
+  letter-spacing: 0.02em;
+}
+
+.site-header a:hover {
+  text-decoration: none;
+}
+
+/* Parallax Utilities */
+.parallax-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-block: var(--spacing-section);
+}
+
+.fixed-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.overlay-dark {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(28, 41, 54, 0.4);
+}
+
+/* Hero Section */
+.hero {
+  color: var(--color-surface);
+  text-align: center;
+  padding-inline: 1.5rem;
+}
+
+.hero .fixed-bg {
+  background-image: url('./assets/hero-glassblower-sea-cliff.webp');
+}
+
+.hero h1 {
+  color: var(--color-surface);
+  text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.hero h2 {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-block-end: 2rem;
+  color: var(--color-surface-muted);
+}
+
+.hero-intro {
+  max-width: 700px;
+  margin-inline: auto;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  margin-block-end: 2.5rem;
+}
+
+/* Kiln Status Indicator */
+.kiln-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: rgba(28, 41, 54, 0.6);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-block-end: 3rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+  animation: crucibleGlow 3s infinite ease-in-out;
+}
+
+@keyframes crucibleGlow {
+  0% { opacity: 0.4; transform: scale(0.9); box-shadow: 0 0 4px var(--color-accent); }
+  50% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 12px var(--color-accent); }
+  100% { opacity: 0.4; transform: scale(0.9); box-shadow: 0 0 4px var(--color-accent); }
+}
+
+/* Content Sections */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: clamp(2rem, 5vw, 4rem);
+  box-shadow: 0 24px 48px rgba(28, 41, 54, 0.1);
+  border: 1px solid rgba(255,255,255,0.4);
+  max-width: 800px;
+  margin-inline: auto;
+  will-change: transform;
+}
+
+.section-cliff-charter {
+  background-color: var(--color-bg);
+}
+
+.section-cliff-charter .fixed-bg {
+  background-image: url('./assets/st-agnes-glasshouse-exterior.webp');
+  opacity: 0.5; /* Lighter background for text contrast */
+}
+
+/* Glassware Cards - Parallax Array */
+.section-homeware-collection {
+  background-color: var(--color-primary);
+  padding-block: var(--spacing-section);
+  position: relative;
+}
+
+.collection-grid {
+  display: grid;
+  gap: 3rem;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .collection-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.glass-card {
+  background: rgba(238, 244, 246, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2.5rem;
+  color: var(--color-surface);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  will-change: transform;
+}
+
+.glass-card h3 {
+  color: var(--color-surface);
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-block-end: 1rem;
+  margin-block-end: 1.5rem;
+}
+
+.price {
+  font-family: var(--font-body);
+  color: var(--color-secondary);
+  font-weight: 600;
+  display: block;
+  margin-block-start: 1rem;
+}
+
+.collection-cta {
+  text-align: center;
+  margin-block-start: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Physics & Process */
+.section-marine-glass-physics {
+  background-color: var(--color-surface);
+}
+
+.section-marine-glass-physics .fixed-bg {
+  background-image: url('./assets/molten-glass-applewood-block.webp');
+  opacity: 0.15;
+}
+
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.step {
+  padding: 2rem;
+  background: var(--color-surface);
+  border-left: 4px solid var(--color-accent);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.step h4 {
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  margin-block-end: 0.5rem;
+}
+
+/* Curator Proof */
+.section-curator-proof {
+  background-color: var(--color-bg);
+}
+
+.section-curator-proof .fixed-bg {
+  background-image: url('./assets/macro-sea-glass-decanter.webp');
+  opacity: 0.3;
+}
+
+.curator-grid {
+  display: grid;
+  gap: 2rem;
+  margin-block: 3rem;
+}
+
+@media (min-width: 768px) {
+  .curator-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.quote-block {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+}
+
+.quote-text {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+}
+
+.quote-author {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-block-start: 1rem;
+  display: block;
+}
+
+.provenance-bar {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  margin-block-end: 2rem;
+}
+
+@media (min-width: 768px) {
+  .provenance-bar {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+/* Forms */
+.section-commission-terminal {
+  background-color: var(--color-surface);
+  padding-block: var(--spacing-section);
+}
+
+.form-container {
+  max-width: 600px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.form-group {
+  margin-block-end: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-input, .form-select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus, .form-select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.directions-panel {
+  background-color: var(--color-bg);
+  padding: 2rem;
+  margin-block-start: 3rem;
+  border-left: 4px solid var(--color-secondary);
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--color-primary);
+  color: var(--color-surface-muted);
+  padding-block: var(--spacing-section);
+  text-align: center;
+}
+
+.site-footer a {
+  color: var(--color-surface);
+}
+
+/* Reduced Motion Fallbacks */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-section, .fixed-bg {
+    background-attachment: scroll;
+  }
+  
+  [data-speed] {
+    transform: none !important;
+  }
+}

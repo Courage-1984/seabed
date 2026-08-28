@@ -1,4 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <path d="M10 90 L40 50 L30 50 L60 10 L50 45 L65 45 Z" fill="#00E5FF" stroke="#FFFFFF" stroke-width="2"/>
-  <circle cx="65" cy="15" r="5" fill="#FFFFFF"/>
+  <rect width="100" height="100" fill="#0A0A0A" />
+  <!-- Welding Arc / Torch -->
+  <path d="M 15,85 L 45,55 L 50,55 L 45,60 L 15,85 Z" fill="#64748B" />
+  <path d="M 45,55 L 60,40 L 55,45 Z" fill="#94A3B8" />
+  <!-- Spark/Arc Glow -->
+  <circle cx="65" cy="35" r="8" fill="#38BDF8" opacity="0.8" />
+  <circle cx="65" cy="35" r="4" fill="#E0F2FE" />
+  <path d="M 65,15 L 65,25 M 65,45 L 65,55 M 45,35 L 55,35 M 75,35 L 85,35 M 50,20 L 58,28 M 72,42 L 80,50 M 50,50 L 58,42 M 72,20 L 80,28" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" />
 </svg>

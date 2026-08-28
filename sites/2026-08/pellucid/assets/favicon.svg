@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Abyssal Slate Background -->
+  <rect width="64" height="64" rx="12" fill="#1C2936"/>
+  <!-- Blowpipe -->
+  <rect x="28" y="10" width="8" height="30" fill="#EEF4F6"/>
+  <!-- Amber Gather -->
+  <path d="M24 38 C 16 50, 48 50, 40 38 Q 32 32, 24 38 Z" fill="#F5760A"/>
+</svg>

@@ -976,6 +976,21 @@
     "siteFolder": "./sites/2026-08/nadir-quartzware"
   },
   {
+    "title": "Pellucid",
+    "blurb": "Hand-blown sea crystal gathered at twelve hundred degrees and tempered in the open Atlantic gales.",
+    "hero": "assets/hero-glassblower-sea-cliff.webp",
+    "layoutFamily": "layered-parallax",
+    "tags": [
+      "homeware",
+      "specialty-retail",
+      "luxury"
+    ],
+    "created": "2026-08-28",
+    "standard": "v2",
+    "wordFloor": 650,
+    "siteFolder": "./sites/2026-08/pellucid"
+  },
+  {
     "title": "Pentland Acoustic Telemetry Works",
     "blurb": "Certified high-salinity acoustic data relay nodes and benthic modems engineered via an operational pact between Pentland Firth tidal turbine crews and Royal Navy sonar technicians.",
     "hero": "assets/hero-pentland-transducer.webp",
@@ -1148,5 +1163,21 @@
     "wordFloor": 1900,
     "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/the-salt-barrow-malt-shieling"
+  },
+  {
+    "title": "The Sub-Solway Bismuth Foundries",
+    "blurb": "High-purity crystalline bismuth cast blocks and diamagnetic isolation masses engineered to eliminate micro-vibrational resonance and stray electromagnetic interference in precision apparatus.",
+    "hero": "assets/hero-solway-cavern.webp",
+    "layoutFamily": "ultra-minimal full-bleed",
+    "tags": [
+      "engineering",
+      "specialty-retail",
+      "precision"
+    ],
+    "created": "2026-08-28",
+    "standard": "v2",
+    "wordFloor": 1900,
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/the-sub-solway-bismuth-foundries"
   }
 ]

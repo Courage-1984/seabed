@@ -1,0 +1,15 @@
+{
+  "title": "Pellucid",
+  "blurb": "Hand-blown sea crystal gathered at twelve hundred degrees and tempered in the open Atlantic gales.",
+  "hero": "assets/hero-glassblower-sea-cliff.webp",
+  "layoutFamily": "layered-parallax",
+  "tags": [
+    "homeware",
+    "specialty-retail",
+    "luxury"
+  ],
+  "created": "2026-08-28",
+  "standard": "v2",
+  "wordFloor": 650,
+  "qa": "v2-pass"
+}

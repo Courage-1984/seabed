@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap');
+
+:root {
+  --color-primary: hsl(215, 22%, 16%);
+  --color-primary-hover: hsl(215, 22%, 22%);
+  --color-secondary: hsl(190, 18%, 34%);
+  --color-accent: hsl(285, 75%, 52%);
+  --color-accent-hover: hsl(285, 75%, 44%);
+  --color-accent-focus: hsl(285, 85%, 60%);
+  --color-bg: hsl(210, 12%, 95%);
+  --color-surface: hsl(0, 0%, 100%);
+  --color-surface-subtle: hsl(210, 10%, 88%);
+  --color-border: hsl(215, 14%, 78%);
+  --color-text: hsl(215, 30%, 12%);
+  --color-text-muted: hsl(215, 12%, 40%);
+  --color-focus: hsl(285, 75%, 52%);
+
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --spacing-section: clamp(4.5rem, 8vw, 8rem);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  font-size: 1.05rem;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  margin-block-start: 0;
+  margin-block-end: 1rem;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+  margin-block-start: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--color-secondary);
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 1.5rem;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.site-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding-block: 1.5rem;
+  padding-inline: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: clamp(2rem, 5vw, 4rem);
+  }
+}
+
+.brand {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.main-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.main-nav a {
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+  color: var(--color-primary);
+}
+
+#main-content {
+  flex-grow: 1;
+}
+
+.center-column {
+  max-width: 760px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  padding-block: var(--spacing-section);
+}
+
+/* Full-Bleed Break */
+.full-bleed-container {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+}
+
+.full-bleed-media {
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  object-fit: cover;
+  transition: transform 10s ease-out;
+}
+
+.full-bleed-container:hover .full-bleed-media {
+  transform: scale(1.02);
+}
+
+/* Action Buttons */
+.cta-button {
+  display: inline-block;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1rem 2rem;
+  border: 2px solid var(--color-primary);
+  cursor: pointer;
+  transition: all 0.1s ease;
+  margin-block-start: 1rem;
+}
+
+.cta-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.cta-button:active {
+  transform: translateY(2px);
+}
+
+/* Data / Spec Rows */
+.spec-table {
+  width: 100%;
+  margin-block: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.spec-row {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-bottom: 3px solid var(--color-border);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+@media (min-width: 600px) {
+  .spec-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.spec-row:hover {
+  transform: translateY(-2px);
+  border-bottom-color: var(--color-accent);
+}
+
+.spec-label {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.spec-value {
+  font-family: var(--font-mono);
+  color: var(--color-secondary);
+  font-size: 0.95rem;
+}
+
+/* Form Styles */
+.form-group {
+  margin-block-end: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.form-input, .form-select, .form-textarea {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-radius: 0;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.site-footer {
+  background-color: var(--color-primary);
+  color: var(--color-surface-subtle);
+  padding-block: var(--spacing-section);
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 760px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.footer-contact {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--color-border);
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  color: var(--color-surface);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
