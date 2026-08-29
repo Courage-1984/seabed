@@ -48,6 +48,10 @@ ul {
   margin-block-end: 1rem;
 }
 
+p {
+  max-width: 75ch;
+}
+
 /* Utilities */
 .table-responsive {
   width: 100%;

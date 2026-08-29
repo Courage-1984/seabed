@@ -9,7 +9,7 @@
   --color-panel: hsl(192, 18%, 88%);
   --color-panel-border: hsl(190, 15%, 78%);
   --color-text: hsl(200, 30%, 12%);
-  --color-text-muted: hsl(180, 10%, 45%);
+  --color-text-muted: hsl(180, 10%, 35%);
   --color-focus-ring: hsl(192, 55%, 40%);
   --font-heading: 'Fraunces', serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
@@ -193,6 +193,7 @@ img {
 .split-section p {
   margin-bottom: 1.5rem;
   color: var(--color-text-muted);
+  font-size: 1.15rem;
 }
 .split-section ul {
   list-style-type: square;

@@ -41,6 +41,7 @@ h1, h2, h3, h4, .brand, .badge, .matrix-label, .protocol-stage h3 {
 p {
   margin-block-start: 0;
   margin-block-end: 1rem;
+  max-width: 75ch;
 }
 
 a {

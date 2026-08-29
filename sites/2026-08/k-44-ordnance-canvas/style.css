@@ -48,6 +48,10 @@ img {
   display: block;
 }
 
+p {
+  max-width: 75ch;
+}
+
 button {
   font-family: var(--font-display);
   font-weight: 700;

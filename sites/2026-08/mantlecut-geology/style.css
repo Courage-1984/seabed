@@ -56,6 +56,10 @@ img {
   display: block;
 }
 
+p {
+  max-width: 75ch;
+}
+
 /* Base Components */
 .btn {
   display: inline-flex;

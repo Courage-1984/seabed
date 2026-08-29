@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <rect width="100" height="100" fill="#232B34"/>
+  
+  <!-- Vertical plumb line -->
+  <line x1="50" y1="10" x2="50" y2="90" stroke="#EB780C" stroke-width="2"/>
+  
+  <!-- Plumb bob / Lichen spore quadrant -->
+  <path d="M50 70 L60 85 L50 95 L40 85 Z" fill="#EB780C" />
+  <circle cx="55" cy="80" r="3" fill="#232B34" />
+  
+  <!-- Quadrant marks -->
+  <line x1="40" y1="50" x2="60" y2="50" stroke="#EB780C" stroke-width="2"/>
+  <line x1="45" y1="40" x2="55" y2="40" stroke="#EB780C" stroke-width="1"/>
+  <line x1="45" y1="60" x2="55" y2="60" stroke="#EB780C" stroke-width="1"/>
+  
+  <!-- Spores in quadrant -->
+  <circle cx="55" cy="45" r="2" fill="#EB780C" />
+  <circle cx="45" cy="55" r="1.5" fill="#EB780C" />
+  <circle cx="58" cy="55" r="1" fill="#EB780C" />
+</svg>

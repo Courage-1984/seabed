@@ -58,6 +58,10 @@ img {
   display: block;
 }
 
+p {
+  max-width: 75ch;
+}
+
 .container {
   width: 100%;
   max-width: var(--max-width);

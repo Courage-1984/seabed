@@ -277,7 +277,7 @@ a:hover {
 .subhead {
   font-family: var(--font-heading);
   font-size: clamp(1.5rem, 2.2vw, 2.2rem);
-  color: var(--color-secondary);
+  color: var(--color-accent);
   font-weight: 500;
   margin-bottom: 1.5rem;
   line-height: 1.3;

@@ -75,6 +75,10 @@ img {
   display: block;
 }
 
+p {
+  max-width: 75ch;
+}
+
 /* Layout constraints: Generous whitespace, single centred column, max-width: 800px */
 .container {
   max-width: 800px;

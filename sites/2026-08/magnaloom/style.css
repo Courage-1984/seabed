@@ -68,6 +68,7 @@ p {
   margin-block-start: 0;
   margin-block-end: var(--spacing-sm);
   color: var(--color-text-muted);
+  max-width: 75ch;
 }
 
 img {

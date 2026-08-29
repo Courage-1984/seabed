@@ -1,0 +1,15 @@
+{
+  "title": "SpireTrace",
+  "blurb": "Suspended cliff-face field stations and technical access engineered for delicate vertical botanical taxonomy.",
+  "hero": "assets/hero-portaledge-sea-cliff.webp",
+  "layoutFamily": "editorial magazine",
+  "tags": [
+    "expedition",
+    "conservation",
+    "climbing"
+  ],
+  "created": "2026-08-29",
+  "wordFloor": 650,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

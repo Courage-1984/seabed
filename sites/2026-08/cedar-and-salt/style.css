@@ -43,7 +43,10 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); }
 h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
 h4 { font-size: 1.25rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted); }
 
-p { margin-bottom: 1.5rem; }
+p {
+  margin-bottom: 1.5rem;
+  max-width: 75ch;
+}
 
 img {
     max-width: 100%;

@@ -1,0 +1,15 @@
+{
+  "title": "The Outer-Isles Kelp-Weave Guild",
+  "blurb": "Hand-plaited storm-cast kelp cordage and salt-hardened natural packcloth crafted on the tidal rocks of North Uist to withstand continuous Atlantic gale saturation.",
+  "hero": "assets/hero-hebrides-kelp-shore.webp",
+  "layoutFamily": "kinetic ticker / marquee bands",
+  "tags": [
+    "expedition",
+    "gear",
+    "adventure"
+  ],
+  "created": "2026-08-29",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

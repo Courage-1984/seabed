@@ -28,7 +28,10 @@ h1, h2, h3, .brand, .footer-brand {
   margin-bottom: 1rem;
 }
 
-p { margin-bottom: 1.25rem; }
+p {
+  margin-bottom: 1.25rem;
+  max-width: 75ch;
+}
 
 a { color: var(--color-accent); text-decoration: none; }
 a:hover { color: var(--color-accent-hover); }

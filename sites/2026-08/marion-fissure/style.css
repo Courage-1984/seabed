@@ -55,6 +55,7 @@ h3 {
 p {
   margin: 0 0 1.5rem;
   font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 75ch;
 }
 
 a {

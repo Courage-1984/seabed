@@ -43,6 +43,10 @@ img {
   display: block;
 }
 
+p {
+  max-width: 75ch;
+}
+
 a {
   color: var(--color-primary);
   text-decoration: underline;

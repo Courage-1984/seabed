@@ -53,6 +53,10 @@ img {
   display: block;
 }
 
+p {
+  max-width: 75ch;
+}
+
 /* Layout Utilities */
 .container {
   max-width: 1200px;

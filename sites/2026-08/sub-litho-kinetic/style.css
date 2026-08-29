@@ -27,6 +27,10 @@ body {
   padding: 20px;
 }
 
+p {
+  max-width: 75ch;
+}
+
 h1, h2, h3, h4, h5, h6, .brand, .terminal-headline, .block-header, .log-header {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 600;

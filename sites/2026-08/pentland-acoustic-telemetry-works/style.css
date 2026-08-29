@@ -67,6 +67,7 @@ p {
   margin-block-start: 0;
   margin-block-end: var(--spacing-md);
   font-size: 1.125rem;
+  max-width: 75ch;
 }
 
 img {
