@@ -162,7 +162,7 @@ nav a.active {
 
 @media (max-width: 1024px) {
   .grid-cards-4 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 
@@ -349,7 +349,7 @@ nav a.active {
 /* Deployment Page */
 .deployment-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 7fr;
   gap: 4rem;
 }
 

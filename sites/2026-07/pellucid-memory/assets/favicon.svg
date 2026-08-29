@@ -1,8 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#09090B" />
-  <circle cx="50" cy="50" r="38" fill="none" stroke="#2DD4BF" stroke-width="4" stroke-linecap="round" stroke-dasharray="20,8"/>
-  <circle cx="50" cy="50" r="28" fill="none" stroke="#14B8A6" stroke-width="2" />
-  <circle cx="50" cy="50" r="12" fill="#0F766E" />
-  <path d="M 50,38 L 50,62 M 38,50 L 62,50" stroke="#042F2E" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="50" cy="50" r="4" fill="#5EEAD4" />
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="#09090b" d="M0 0h100v100H0z"/><circle cx="50" cy="50" r="38" fill="none" stroke="#2dd4bf" stroke-dasharray="20,8" stroke-linecap="round" stroke-width="4"/><circle cx="50" cy="50" r="28" fill="none" stroke="#14b8a6" stroke-width="2"/><circle cx="50" cy="50" r="12" fill="#0f766e"/><path stroke="#042f2e" stroke-linecap="round" stroke-width="4" d="M50 38v24M38 50h24"/><circle cx="50" cy="50" r="4" fill="#5eead4"/></svg>

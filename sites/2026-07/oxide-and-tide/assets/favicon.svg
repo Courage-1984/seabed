@@ -1,16 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#0F172A" />
-  <!-- Wave backdrop -->
-  <path d="M 0,60 Q 25,40 50,60 T 100,60 L 100,100 L 0,100 Z" fill="#1E3A8A" opacity="0.6"/>
-  <path d="M 0,70 Q 25,50 50,70 T 100,70 L 100,100 L 0,100 Z" fill="#1D4ED8" opacity="0.8"/>
-  <!-- Brass Gear/Valve Handle -->
-  <circle cx="50" cy="50" r="30" fill="none" stroke="#D97706" stroke-width="8"/>
-  <circle cx="50" cy="50" r="10" fill="none" stroke="#D97706" stroke-width="6"/>
-  <!-- Spokes -->
-  <line x1="50" y1="20" x2="50" y2="40" stroke="#D97706" stroke-width="6"/>
-  <line x1="50" y1="60" x2="50" y2="80" stroke="#D97706" stroke-width="6"/>
-  <line x1="20" y1="50" x2="40" y2="50" stroke="#D97706" stroke-width="6"/>
-  <line x1="60" y1="50" x2="80" y2="50" stroke="#D97706" stroke-width="6"/>
-  <!-- Central Nut -->
-  <polygon points="46,46 54,46 54,54 46,54" fill="#B45309"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="#0f172a" d="M0 0h100v100H0z"/><path fill="#1e3a8a" d="M0 60q25-20 50 0t50 0v40H0Z" opacity=".6"/><path fill="#1d4ed8" d="M0 70q25-20 50 0t50 0v30H0Z" opacity=".8"/><circle cx="50" cy="50" r="30" fill="none" stroke="#d97706" stroke-width="8"/><circle cx="50" cy="50" r="10" fill="none" stroke="#d97706" stroke-width="6"/><path stroke="#d97706" stroke-width="6" d="M50 20v20m0 20v20M20 50h20m20 0h20"/><path fill="#b45309" d="M46 46h8v8h-8z"/></svg>

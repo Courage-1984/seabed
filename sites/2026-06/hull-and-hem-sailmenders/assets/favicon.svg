@@ -1,14 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <defs>
-    <linearGradient id="needle-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#CBD5E1"/>
-      <stop offset="100%" stop-color="#475569"/>
-    </linearGradient>
-  </defs>
-  <rect width="100" height="100" rx="16" fill="#1E293B" stroke="#0F172A" stroke-width="2"/>
-  <!-- Needle -->
-  <path d="M 20,80 L 75,25 L 80,20 L 75,20 Z" fill="url(#needle-grad)"/>
-  <circle cx="72" cy="28" r="2" fill="#1E293B"/>
-  <!-- Thread -->
-  <path d="M 72,28 C 80,40 60,60 50,70 C 40,80 30,70 15,90" fill="none" stroke="#F87171" stroke-width="3" stroke-linecap="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="needle-grad" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="#cbd5e1"/><stop offset="100%" stop-color="#475569"/></linearGradient></defs><rect width="100" height="100" fill="#1e293b" stroke="#0f172a" stroke-width="2" rx="16"/><path fill="url(#needle-grad)" d="m20 80 55-55 5-5h-5Z"/><circle cx="72" cy="28" r="2" fill="#1e293b"/><path fill="none" stroke="#f87171" stroke-linecap="round" stroke-width="3" d="M72 28c8 12-12 32-22 42s-20 0-35 20"/></svg>

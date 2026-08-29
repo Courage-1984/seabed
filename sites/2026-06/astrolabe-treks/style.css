@@ -266,9 +266,12 @@ nav a {
   gap: 10%;
 }
 
-.col-left,
+.col-left {
+  width: 55%;
+}
+
 .col-right {
-  width: 45%;
+  width: 35%;
 }
 
 .col-right {

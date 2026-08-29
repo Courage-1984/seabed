@@ -1,18 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <defs>
-    <linearGradient id="fluid" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EAB308"/>
-      <stop offset="100%" stop-color="#CA8A04"/>
-    </linearGradient>
-  </defs>
-  <rect width="100" height="100" fill="#09090B" />
-  <!-- Centrifuge Spin -->
-  <circle cx="50" cy="50" r="35" fill="none" stroke="#27272A" stroke-width="4"/>
-  <path d="M 50,15 A 35,35 0 0,1 85,50" fill="none" stroke="url(#fluid)" stroke-width="6" stroke-linecap="round"/>
-  <path d="M 50,85 A 35,35 0 0,1 15,50" fill="none" stroke="#A1A1AA" stroke-width="6" stroke-linecap="round"/>
-  <!-- Central Hub -->
-  <circle cx="50" cy="50" r="10" fill="#52525B"/>
-  <circle cx="50" cy="50" r="4" fill="url(#fluid)"/>
-  <!-- Droplet -->
-  <path d="M 50,65 Q 50,75 56,75 Q 62,75 50,90 Q 38,75 44,75 Q 50,75 50,65 Z" fill="url(#fluid)"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="fluid" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="#eab308"/><stop offset="100%" stop-color="#ca8a04"/></linearGradient></defs><path fill="#09090b" d="M0 0h100v100H0z"/><circle cx="50" cy="50" r="35" fill="none" stroke="#27272a" stroke-width="4"/><path fill="none" stroke="url(#fluid)" stroke-linecap="round" stroke-width="6" d="M50 15a35 35 0 0 1 35 35"/><path fill="none" stroke="#a1a1aa" stroke-linecap="round" stroke-width="6" d="M50 85a35 35 0 0 1-35-35"/><circle cx="50" cy="50" r="10" fill="#52525b"/><circle cx="50" cy="50" r="4" fill="url(#fluid)"/><path fill="url(#fluid)" d="M50 65q0 10 6 10t-6 15q-12-15-6-15t6-10"/></svg>

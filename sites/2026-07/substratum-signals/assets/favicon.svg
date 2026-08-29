@@ -1,11 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#0C1B2B" />
-  <!-- Seabed -->
-  <path d="M 0,80 Q 25,75 50,85 T 100,75 L 100,100 L 0,100 Z" fill="#1E3A5F" />
-  <!-- Hydrophone Node -->
-  <rect x="45" y="70" width="10" height="15" fill="#38BDF8" rx="2" />
-  <!-- Acoustic Waves -->
-  <path d="M 35,65 A 30,30 0 0,1 65,65" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round"/>
-  <path d="M 25,55 A 45,45 0 0,1 75,55" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round"/>
-  <path d="M 15,45 A 60,60 0 0,1 85,45" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="#0c1b2b" d="M0 0h100v100H0z"/><path fill="#1e3a5f" d="M0 80q25-5 50 5t50-10v25H0Z"/><rect width="10" height="15" x="45" y="70" fill="#38bdf8" rx="2"/><path fill="none" stroke="#0ea5e9" stroke-linecap="round" stroke-width="2" d="M35 65a30 30 0 0 1 30 0M25 55a45 45 0 0 1 50 0"/><path fill="none" stroke="#0ea5e9" stroke-linecap="round" stroke-width="2" d="M15 45a60 60 0 0 1 70 0"/></svg>

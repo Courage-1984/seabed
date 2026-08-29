@@ -97,11 +97,34 @@ async function optimizeHtml() {
 
         try {
           if (fs.existsSync(absPath) && (!$img.attr('width') || !$img.attr('height'))) {
-            const metadata = await sharp(absPath).metadata();
-            if (metadata.width && metadata.height) {
-              if (!$img.attr('width')) $img.attr('width', metadata.width.toString());
-              if (!$img.attr('height')) $img.attr('height', metadata.height.toString());
-              modified = true;
+            if (absPath.toLowerCase().endsWith('.svg')) {
+              const svgContent = fs.readFileSync(absPath, 'utf-8');
+              const $svg = cheerio.load(svgContent, { xmlMode: true });
+              const svgEl = $svg('svg').first();
+              let w = svgEl.attr('width');
+              let h = svgEl.attr('height');
+              if (!w || !h) {
+                const viewBox = svgEl.attr('viewBox');
+                if (viewBox) {
+                  const parts = viewBox.split(/[\s,]+/);
+                  if (parts.length >= 4) {
+                    w = Math.round(parseFloat(parts[2]));
+                    h = Math.round(parseFloat(parts[3]));
+                  }
+                }
+              }
+              if (w && h && !isNaN(w) && !isNaN(h)) {
+                if (!$img.attr('width')) $img.attr('width', w.toString());
+                if (!$img.attr('height')) $img.attr('height', h.toString());
+                modified = true;
+              }
+            } else {
+              const metadata = await sharp(absPath).metadata();
+              if (metadata.width && metadata.height) {
+                if (!$img.attr('width')) $img.attr('width', metadata.width.toString());
+                if (!$img.attr('height')) $img.attr('height', metadata.height.toString());
+                modified = true;
+              }
             }
           }
         } catch (e) {

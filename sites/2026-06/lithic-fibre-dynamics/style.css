@@ -126,7 +126,7 @@ header {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 7fr 5fr;
   gap: 4rem;
   align-items: center;
 }
@@ -148,7 +148,7 @@ header {
 
 .section-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 7fr;
   gap: 4rem;
 }
 

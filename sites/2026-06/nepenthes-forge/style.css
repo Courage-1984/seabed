@@ -148,8 +148,11 @@ nav {
   max-width: 800px;
 }
 
-.bento-item--half {
-  grid-column: span 6;
+.bento-item--seven {
+  grid-column: span 7;
+}
+.bento-item--five {
+  grid-column: span 5;
 }
 .bento-item--third {
   grid-column: span 4;
@@ -157,21 +160,27 @@ nav {
 .bento-item--two-thirds {
   grid-column: span 8;
 }
+.bento-item--half {
+  grid-column: span 6;
+}
 .bento-item--full {
   grid-column: span 12;
 }
 
 @media (max-width: 1024px) {
   .bento-item--third,
-  .bento-item--two-thirds {
+  .bento-item--two-thirds,
+  .bento-item--half {
     grid-column: span 6;
   }
 }
 
 @media (max-width: 768px) {
-  .bento-item--half,
+  .bento-item--seven,
+  .bento-item--five,
   .bento-item--third,
-  .bento-item--two-thirds {
+  .bento-item--two-thirds,
+  .bento-item--half {
     grid-column: span 12;
   }
   .bento-grid {

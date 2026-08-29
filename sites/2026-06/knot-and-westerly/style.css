@@ -54,7 +54,7 @@ h6 {
 
 @media (min-width: 900px) {
   .left-pane {
-    width: 50vw;
+    width: 45vw;
     position: sticky;
     top: 0;
     height: 100vh;
@@ -208,7 +208,7 @@ h6 {
 }
 @media (min-width: 900px) {
   .right-pane {
-    width: 50vw;
+    width: 55vw;
   }
 }
 
@@ -397,7 +397,7 @@ h6 {
 }
 @media (min-width: 600px) {
   .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 6fr 5fr;
   }
 }
 @media (min-width: 1200px) {

@@ -315,7 +315,7 @@ button {
 
 @media (min-width: 1024px) {
   .technical-grid .section-body {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 4fr 6fr;
     gap: 4rem;
   }
 }

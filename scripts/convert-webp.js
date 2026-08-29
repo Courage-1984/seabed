@@ -6,6 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
+import { optimize } from 'svgo';
 import { resolveSlugPath } from './lib/resolve-slug.js';
 
 const IGNORE_DIRS = new Set([
@@ -103,8 +104,46 @@ function updateReferences() {
   console.log(`Updated ${updatedCount} files.`);
 }
 
+async function optimizeSvgs() {
+  const svgPaths = [];
+  walkSync(root, (filePath) => {
+    if (/\.svg$/i.test(filePath)) svgPaths.push(filePath);
+  });
+
+  console.log(`Found ${svgPaths.length} SVGs to optimize under ${root}.`);
+
+  for (const svgPath of svgPaths) {
+    try {
+      const content = fs.readFileSync(svgPath, 'utf-8');
+      const result = optimize(content, {
+        path: svgPath,
+        multipass: true,
+        plugins: [
+          {
+            name: 'preset-default',
+            params: {
+              overrides: {
+                cleanupIds: false,
+              },
+            },
+          },
+        ],
+      });
+      if (result.error) {
+        console.error(`SVGO Error in ${svgPath}:`, result.error);
+        continue;
+      }
+      fs.writeFileSync(svgPath, result.data, 'utf-8');
+      console.log(`Optimized SVG: ${svgPath}`);
+    } catch (err) {
+      console.error(`Failed to optimize SVG ${svgPath}:`, err);
+    }
+  }
+}
+
 async function main() {
   await convertImages();
+  await optimizeSvgs();
   updateReferences();
   console.log('Done!');
 }

@@ -1,10 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#18181B" />
-  <!-- Silo Base -->
-  <rect x="35" y="40" width="30" height="40" fill="#71717A" rx="2" />
-  <path d="M 35,40 Q 50,30 65,40" fill="#A1A1AA" />
-  <!-- Signal Waves -->
-  <path d="M 50,15 A 20,20 0 0,1 70,35" fill="none" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/>
-  <path d="M 50,5 A 30,30 0 0,1 80,35" fill="none" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="50" cy="35" r="4" fill="#F59E0B" />
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="#18181b" d="M0 0h100v100H0z"/><rect width="30" height="40" x="35" y="40" fill="#71717a" rx="2"/><path fill="#a1a1aa" d="M35 40q15-10 30 0"/><path fill="none" stroke="#f59e0b" stroke-linecap="round" stroke-width="3" d="M50 15a20 20 0 0 1 20 20"/><path fill="none" stroke="#f59e0b" stroke-linecap="round" stroke-width="3" d="M50 5a30 30 0 0 1 30 30"/><circle cx="50" cy="35" r="4" fill="#f59e0b"/></svg>

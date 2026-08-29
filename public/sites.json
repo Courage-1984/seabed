@@ -1036,6 +1036,7 @@
     "created": "2026-08-29",
     "wordFloor": 650,
     "standard": "v2",
+    "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/spiretrace"
   },
   {

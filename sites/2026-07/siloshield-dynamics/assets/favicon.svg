@@ -1,12 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#0A0A0A" />
-  <!-- Shield Outline -->
-  <path d="M50 10 L90 25 L85 65 Q50 95 50 95 Q15 65 10 25 Z" fill="none" stroke="#22C55E" stroke-width="3" stroke-linejoin="round"/>
-  <!-- Circuit Lines inside shield -->
-  <path d="M 50,20 L 50,85" stroke="#16A34A" stroke-width="2" stroke-dasharray="4,4"/>
-  <path d="M 25,45 L 45,45 L 50,50" fill="none" stroke="#4ADE80" stroke-width="2" stroke-linejoin="round"/>
-  <path d="M 75,45 L 55,45 L 50,50" fill="none" stroke="#4ADE80" stroke-width="2" stroke-linejoin="round"/>
-  <circle cx="25" cy="45" r="3" fill="#22C55E" />
-  <circle cx="75" cy="45" r="3" fill="#22C55E" />
-  <circle cx="50" cy="50" r="5" fill="#4ADE80" />
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="#0a0a0a" d="M0 0h100v100H0z"/><path fill="none" stroke="#22c55e" stroke-linejoin="round" stroke-width="3" d="m50 10 40 15-5 40-35 30Q15 65 10 25Z"/><path stroke="#16a34a" stroke-dasharray="4,4" stroke-width="2" d="M50 20v65"/><path fill="none" stroke="#4ade80" stroke-linejoin="round" stroke-width="2" d="M25 45h20l5 5m25-5H55l-5 5"/><circle cx="25" cy="45" r="3" fill="#22c55e"/><circle cx="75" cy="45" r="3" fill="#22c55e"/><circle cx="50" cy="50" r="5" fill="#4ade80"/></svg>

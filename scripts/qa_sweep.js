@@ -81,7 +81,10 @@ function viewHasIssues(view) {
     view.missingFavicon?.length ||
     view.consoleErrors?.length ||
     view.networkErrors?.length ||
-    view.brokenLinks?.length
+    view.brokenLinks?.length ||
+    view.visualIssues?.smallFonts?.length ||
+    view.visualIssues?.overlappingText?.length ||
+    view.visualIssues?.repetitiveLayout
   );
 }
 
@@ -99,6 +102,9 @@ function accumulateCounts(pagesList) {
     consoleErrors: 0,
     networkErrors: 0,
     brokenLinks: 0,
+    smallFonts: 0,
+    overlappingText: 0,
+    repetitiveLayouts: 0,
   };
   for (const r of pagesList) {
     for (const view of [r.mobile, r.desktop]) {
@@ -111,6 +117,9 @@ function accumulateCounts(pagesList) {
       counts.consoleErrors += view.consoleErrors?.length || 0;
       counts.networkErrors += view.networkErrors?.length || 0;
       counts.brokenLinks += view.brokenLinks?.length || 0;
+      counts.smallFonts += view.visualIssues?.smallFonts?.length || 0;
+      counts.overlappingText += view.visualIssues?.overlappingText?.length || 0;
+      if (view.visualIssues?.repetitiveLayout) counts.repetitiveLayouts++;
     }
   }
   return counts;
@@ -239,7 +248,7 @@ async function runStaticChecks(url) {
     if (!opts.noScreenshots && !existsSync(outDir)) mkdirSync(outDir);
 
     console.log('\nStarting preview server...');
-    server = spawn('npm', ['run', 'preview', '--', '--host', '127.0.0.1'], { shell: true, stdio: 'inherit' });
+    server = spawn('npm', ['run', 'preview', '--', '--host', '127.0.0.1', '--port', '4173', '--strictPort'], { shell: true, stdio: 'inherit' });
     await waitForServer(baseUrl);
     console.log('Server is ready. Waiting 2s for stability...');
     await new Promise((r) => setTimeout(r, 2000));
@@ -392,6 +401,64 @@ async function runStaticChecks(url) {
             }
           }
 
+          const visualIssues = await page.evaluate(() => {
+            const issues = {
+              overlappingText: [],
+              smallFonts: [],
+              repetitiveLayout: false
+            };
+            
+            const elements = [...document.body.querySelectorAll('*')];
+            let split5050Count = 0;
+
+            for (const el of elements) {
+              const style = window.getComputedStyle(el);
+              if (style.display === 'none' || style.visibility === 'hidden') continue;
+              
+              const fontSize = parseFloat(style.fontSize);
+              
+              // Only check font size if this element directly contains text (not just child elements)
+              let hasDirectText = false;
+              for (const node of el.childNodes) {
+                if (node.nodeType === 3 && node.nodeValue.trim().length > 0) {
+                  hasDirectText = true;
+                  break;
+                }
+              }
+
+              if (fontSize > 0 && fontSize < 12 && hasDirectText) {
+                issues.smallFonts.push(el.tagName.toLowerCase());
+              }
+
+              // Overlap check: only check elements with direct text that are constrained
+              if (hasDirectText && el.scrollHeight > el.clientHeight + 2 && (style.overflow === 'hidden' || style.overflowY === 'hidden')) {
+                issues.overlappingText.push(el.tagName.toLowerCase() + '#clipped');
+              }
+              
+              if (el.tagName.toLowerCase() === 'section' || (el.tagName.toLowerCase() === 'div' && el.parentElement === document.querySelector('main'))) {
+                if (style.display === 'flex' || style.display === 'grid') {
+                  const children = [...el.children].filter(child => {
+                    const cStyle = window.getComputedStyle(child);
+                    return cStyle.display !== 'none' && cStyle.position !== 'absolute';
+                  });
+                  if (children.length === 2) {
+                    const w1 = children[0].getBoundingClientRect().width;
+                    const w2 = children[1].getBoundingClientRect().width;
+                    const total = el.getBoundingClientRect().width;
+                    if (total > 0 && Math.abs(w1 - w2) < 20 && Math.abs(w1 - total/2) < 40) {
+                      split5050Count++;
+                    }
+                  }
+                }
+              }
+            }
+            if (split5050Count >= 3) {
+              issues.repetitiveLayout = true;
+            }
+
+            return issues;
+          });
+
           if (!opts.noScreenshots) {
             await page.screenshot({
               path: `${outDir}/${pagePath.replace(/\//g, '_')}_${label}.png`,
@@ -408,6 +475,7 @@ async function runStaticChecks(url) {
             consoleErrors: [...consoleErrors],
             networkErrors: [...networkErrors],
             brokenLinks,
+            visualIssues,
           };
         };
 

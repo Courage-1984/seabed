@@ -52,7 +52,7 @@ main {
 }
 
 .stacked-section-header {
-  font-size: clamp(3rem, 8vw, 8rem);
+  font-size: clamp(2rem, 8vw, 8rem);
   margin-bottom: 2rem;
   word-break: break-word;
 }

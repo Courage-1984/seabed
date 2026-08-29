@@ -1,16 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <defs>
-    <linearGradient id="ice" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#E0F2FE"/>
-      <stop offset="100%" stop-color="#7DD3FC"/>
-    </linearGradient>
-  </defs>
-  <rect width="100" height="100" fill="#0F172A" />
-  <!-- Compass Needle pointing North -->
-  <path d="M 50,15 L 65,50 L 50,85 L 35,50 Z" fill="#334155"/>
-  <path d="M 50,15 L 65,50 L 50,50 Z" fill="url(#ice)"/>
-  <path d="M 50,15 L 35,50 L 50,50 Z" fill="#BAE6FD"/>
-  <!-- Crosshairs -->
-  <line x1="20" y1="50" x2="80" y2="50" stroke="#475569" stroke-width="2"/>
-  <line x1="50" y1="20" x2="50" y2="80" stroke="#475569" stroke-width="2"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="ice" x1="0%" x2="0%" y1="0%" y2="100%"><stop offset="0%" stop-color="#e0f2fe"/><stop offset="100%" stop-color="#7dd3fc"/></linearGradient></defs><path fill="#0f172a" d="M0 0h100v100H0z"/><path fill="#334155" d="m50 15 15 35-15 35-15-35Z"/><path fill="url(#ice)" d="m50 15 15 35H50Z"/><path fill="#bae6fd" d="M50 15 35 50h15Z"/><path stroke="#475569" stroke-width="2" d="M20 50h60M50 20v60"/></svg>

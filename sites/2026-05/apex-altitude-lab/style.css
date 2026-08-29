@@ -301,7 +301,7 @@ footer {
 
 .form-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
@@ -375,7 +375,7 @@ footer {
 
 @media (max-width: 1024px) {
   .value-grid-4 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 

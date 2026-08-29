@@ -26,8 +26,19 @@ Only pause to ask **one** clarifying question when critical fields are missing (
    - `npm run check:ship -- <slug> --floor <floor>`
    - Confirm layout family’s structural signature from the brief was implemented (self-check)
    - Confirm `Responsive: PASS desktop + mobile` and WebP per @.agents/skills/acquire-images/SKILL.md
+   - **Extreme Visual Audit**: Review the generated screenshots in `qa-screenshots/` (or run a visual accessibility tool) to independently verify that every page renders flawlessly from top to bottom (no overlapping text, correct minimum font sizes, and unbroken flex/grid containers) before marking `qa: "v2-pass"`.
 
 **Note:** Pasted briefs §2/§8 should match this command list (see `.agents/prompts/daily-brief-generator.md`). If a brief is somehow thinner, **this file wins**. 8. Set `meta.json` `"standard": "v2"`, `"layoutFamily"`, `"tags"`, `"created"` (UTC `YYYY-MM-DD`), `"wordFloor"` when known, and `"qa": "v2-pass"` per @.agents/skills/qa-and-ship/SKILL.md gate only. 9. Summarize: slug, pages, layout family, created date, image strategy per asset, copy depth, responsive status, QA status, remaining risks. 10. After ship (operator): `npm run sites:index` and paste Roster + Existing sites table into the live Gemini prompt (~weekly).
+
+## CSS Best Practices (Mandatory)
+
+The builder must codify and adhere strictly to the following CSS spacing and layout rules for all responsive breakpoints:
+- **padding:** Use for internal click targets and spacing (shares background).
+- **margin:** Use ONLY to push unrelated sections apart or center blocks. Never use hacky margins for flex/grid gaps.
+- **gap:** MUST be used for equal spacing between flex/grid items.
+- **inset / logical spacing:** Use logical properties (`margin-block`, `padding-inline`, `block-size`, `inset`) instead of physical directions (`top`, `width`) wherever applicable.
+- **Scroll Boundaries:** Implement `scroll-padding` or `scroll-margin` to ensure fixed headers do not obscure anchor links.
+- **Justification:** Use `justify-content` (space-between/around/evenly) for dynamic gap distribution.
 
 ## Commands
 

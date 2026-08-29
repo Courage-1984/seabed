@@ -479,7 +479,7 @@ img {
 /* The SINGLE permitted Left/Right Split (index.html §5: Trust & measurement) */
 .permitted-lr-split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 7fr;
   gap: 4rem;
   align-items: start;
 }

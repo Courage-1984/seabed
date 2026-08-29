@@ -239,7 +239,7 @@ p {
 /* Concept Section */
 .concept-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 7fr;
   gap: var(--spacing-xl);
   align-items: center;
 }
@@ -279,7 +279,7 @@ p {
 
 @media (max-width: 1024px) {
   .value-grid-4 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 5fr 7fr;
   }
 }
 
@@ -517,7 +517,7 @@ p {
 
 .month-status {
   font-family: var(--font-body);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   padding: 0.2rem 0.5rem;
@@ -679,7 +679,7 @@ p {
 
 .booking-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 6fr 5fr;
   gap: 0;
 }
 

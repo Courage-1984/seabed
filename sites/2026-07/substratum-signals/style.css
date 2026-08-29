@@ -316,7 +316,7 @@ footer {
 
 @media (max-width: 1024px) {
   #bento-telemetry-grid .container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 5fr 7fr;
   }
   .tile-1,
   .tile-4 {

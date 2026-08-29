@@ -74,6 +74,7 @@
 | pellucid | Pellucid | layered-parallax | 2026-08-28 |
 | pentland-acoustic-telemetry-works | Pentland Acoustic Telemetry Works | split-screen scroll | 2026-08-20 |
 | sarek-bark-gear | Sarek Birch-Bark Gear Guild | sticky-rail + content | 2026-08-09 |
+| spiretrace | SpireTrace | editorial magazine | 2026-08-29 |
 | stave-and-hoops | Stave & Hoops Millwright Guild | asymmetric split | 2026-08-03 |
 | sub-lithic-seals | Sub-Lithic Archive Seals | asymmetric split | 2026-08-08 |
 | sub-litho-kinetic | Sub-Litho Kinetic Calibration | terminal / data-readout | 2026-08-06 |
@@ -82,6 +83,7 @@
 | the-cryo-pelagic-cell | The Cryo-Pelagic Cell | overlapping card-stack | 2026-08-18 |
 | the-fenland-yeast-guild | The Fenland Yeast Guild | sticky-rail + content | 2026-08-17 |
 | the-hardpan-outfitter | The Hardpan Outfitter | asymmetric split | 2026-08-14 |
+| the-outer-isles-kelp-weave-guild | The Outer-Isles Kelp-Weave Guild | kinetic ticker / marquee bands | 2026-08-29 |
 | the-salt-barrow-malt-shieling | The Salt-Barrow Malt Shieling | overlapping card-stack | 2026-08-24 |
 | the-sub-solway-bismuth-foundries | The Sub-Solway Bismuth Foundries | ultra-minimal full-bleed | 2026-08-28 |
 
@@ -102,10 +104,11 @@ lithic-resonance, litho-acoustic-labs, lock-and-sluice, lv-74-marine-apothecary,
 magnaloom, mantlecut-geology, marion-fissure, mash-and-manifold, monolith-somatic,
 nadir-quartzware, nepenthes-forge, null-state-cryogenics, oxide-and-tide, patch-parcel,
 pellucid, pellucid-memory, pentland-acoustic-telemetry-works, sarek-bark-gear,
-signal-and-silo, siloshield-dynamics, stake-and-bind, stave-and-hoops, sub-lithic-seals,
-sub-litho-kinetic, substratum-signals, tendonforge, the-brass-and-thistle,
-the-cryo-biome-crypt, the-cryo-pelagic-cell, the-fenland-yeast-guild,
-the-hardpan-outfitter, the-midnight-forager, the-salt-barrow-malt-shieling,
-the-slate-and-chisel, the-sub-solway-bismuth-foundries, the-tidal-vault,
-vapour-and-vault, verdigris-and-salt, xenon-arc
+signal-and-silo, siloshield-dynamics, spiretrace, stake-and-bind, stave-and-hoops,
+sub-lithic-seals, sub-litho-kinetic, substratum-signals, tendonforge,
+the-brass-and-thistle, the-cryo-biome-crypt, the-cryo-pelagic-cell,
+the-fenland-yeast-guild, the-hardpan-outfitter, the-midnight-forager,
+the-outer-isles-kelp-weave-guild, the-salt-barrow-malt-shieling, the-slate-and-chisel,
+the-sub-solway-bismuth-foundries, the-tidal-vault, vapour-and-vault, verdigris-and-salt,
+xenon-arc
 ```

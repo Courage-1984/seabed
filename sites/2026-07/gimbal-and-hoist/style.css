@@ -204,7 +204,7 @@ img {
 }
 
 .brand-subtext {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--color-text-muted);
   background-color: var(--color-bg-secondary);
@@ -788,7 +788,7 @@ img {
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 5fr 7fr;
   gap: 2rem;
   margin-bottom: 2.5rem;
 }
