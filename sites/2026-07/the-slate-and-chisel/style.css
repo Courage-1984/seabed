@@ -100,7 +100,7 @@ a {
 
 .grid-2 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 6fr;
   gap: 1px; /* border thickness inside the grid */
   background-color: var(--color-border); /* creates borders via gap */
   border: 1px solid var(--color-border);

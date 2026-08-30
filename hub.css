@@ -247,7 +247,7 @@ body {
   background: rgba(20, 20, 20, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.1);
   text-transform: capitalize;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -258,7 +258,7 @@ body {
   border-radius: 4px;
   background: rgba(20, 20, 20, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
   color: var(--text-muted);
   backdrop-filter: blur(4px);
@@ -296,7 +296,7 @@ body {
 }
 
 .discovery-cell-meta span {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   letter-spacing: 0.04em;
 }
@@ -514,7 +514,7 @@ body {
 }
 
 .latest-drop-label {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
@@ -735,7 +735,7 @@ body {
 }
 
 .archive-card-meta time {
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -765,7 +765,7 @@ body {
 
 .archive-pill {
   display: inline-block;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   letter-spacing: 0.03em;
   color: var(--accent);
   border: 1px solid rgba(196, 165, 116, 0.35);

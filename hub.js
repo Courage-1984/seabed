@@ -487,7 +487,9 @@ function renderArchiveCard(site, index) {
 
   const blurbEl = document.createElement('p');
   blurbEl.className = 'archive-card-blurb';
-  blurbEl.textContent = site.blurb;
+  const blurbSpan = document.createElement('span');
+  blurbSpan.textContent = site.blurb;
+  blurbEl.appendChild(blurbSpan);
 
   const cta = document.createElement('span');
   cta.className = 'archive-card-cta';

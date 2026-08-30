@@ -1242,6 +1242,7 @@
     "created": "2026-08-30",
     "wordFloor": 1100,
     "standard": "v2",
+    "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/uhv-74-precision"
   }
 ]
