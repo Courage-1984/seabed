@@ -752,6 +752,22 @@
     "siteFolder": "./sites/2026-08/deep-crust-mycelial"
   },
   {
+    "title": "Forge & Fallow",
+    "blurb": "Heavy-duty intertidal horseshoeing and salt-marsh harness ironmongery forged on mobile amphibious anvil skiffs strictly during four-hour low-water spring tide windows.",
+    "hero": "assets/hero-intertidal-forge.webp",
+    "layoutFamily": "bento",
+    "tags": [
+      "fabrication",
+      "metalwork",
+      "tooling"
+    ],
+    "created": "2026-08-30",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-08/forge-and-fallow"
+  },
+  {
     "title": "Gigaglyph",
     "blurb": "Monumental, crane-mounted physical typesetting and structural bronze letterforms scaled for legible reading from low Earth orbit.",
     "hero": "assets/hero-iron-letterform.webp",
@@ -1212,5 +1228,20 @@
     "wordFloor": 1900,
     "qa": "v2-pass",
     "siteFolder": "./sites/2026-08/the-sub-solway-bismuth-foundries"
+  },
+  {
+    "title": "UHV-74 Precision",
+    "blurb": "Monolithic ultra-high vacuum vessels machined to sub-micron tolerances for particle physics research.",
+    "hero": "assets/hero-vacuum-chamber-cleanroom.webp",
+    "layoutFamily": "neo-brutalist masonry",
+    "tags": [
+      "precision",
+      "engineering",
+      "tooling"
+    ],
+    "created": "2026-08-30",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "siteFolder": "./sites/2026-08/uhv-74-precision"
   }
 ]

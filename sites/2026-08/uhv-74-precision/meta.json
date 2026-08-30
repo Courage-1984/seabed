@@ -1,0 +1,15 @@
+{
+  "title": "UHV-74 Precision",
+  "blurb": "Monolithic ultra-high vacuum vessels machined to sub-micron tolerances for particle physics research.",
+  "hero": "assets/hero-vacuum-chamber-cleanroom.webp",
+  "layoutFamily": "neo-brutalist masonry",
+  "tags": [
+    "precision",
+    "engineering",
+    "tooling"
+  ],
+  "created": "2026-08-30",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

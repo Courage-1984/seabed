@@ -1,0 +1,15 @@
+{
+  "title": "Forge & Fallow",
+  "blurb": "Heavy-duty intertidal horseshoeing and salt-marsh harness ironmongery forged on mobile amphibious anvil skiffs strictly during four-hour low-water spring tide windows.",
+  "hero": "assets/hero-intertidal-forge.webp",
+  "layoutFamily": "bento",
+  "tags": [
+    "fabrication",
+    "metalwork",
+    "tooling"
+  ],
+  "created": "2026-08-30",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}
