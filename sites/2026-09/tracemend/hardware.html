@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TraceMend | Hardware Registry</title>
+  <meta name="description" content="Open-hardware telemetry nodes and solar packet repeaters built for the mountains.">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="./index.html" class="brand">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="currentColor">
+        <path d="M 4 28 L 12 16 L 22 22 L 32 6 L 44 24 L 54 18 L 60 28 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+        <path d="M 12 28 C 12 38, 20 42, 28 44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M 22 28 C 22 36, 26 40, 32 42" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M 54 28 C 54 38, 46 42, 38 44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M 44 28 C 44 36, 40 40, 34 42" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        <polygon points="32,40 42,50 32,60 22,50" fill="currentColor" />
+        <path d="M 32 44 C 34 44, 36 47, 36 50 C 36 52.2, 34.2 54, 32 54 C 29.8 54, 28 52.2, 28 50 C 28 47, 30 44, 32 44 Z" fill="#1e2633" />
+        <line x1="32" y1="28" x2="32" y2="40" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+        <circle cx="12" cy="28" r="3" />
+        <circle cx="22" cy="28" r="2.5" />
+        <circle cx="44" cy="28" r="2.5" />
+        <circle cx="54" cy="28" r="3" />
+      </svg>
+      TraceMend
+    </a>
+    <nav class="site-nav">
+      <a href="./hardware.html">Hardware Registry</a>
+      <a href="./field-craft.html">Field Craft</a>
+    </nav>
+  </header>
+  
+  <main id="main-content">
+    <section class="hero-section" style="min-height: 60vh;">
+      <!-- Placeholder SVG -->
+      <img src="./assets/flagship-workbench-solder.webp" alt="Hand-soldering through-hole electronics components onto a circuit board in the workshop." class="hero-bg" fetchpriority="high">
+      <div class="hero-content">
+        <h1>The Open Specimen & Casing Registry</h1>
+        <p>Complete component transparency. Every TraceMend circuit board is a handcrafted specimen of rugged electronics, bolted into milled slate and beeswaxed oak. We do not glue our chassis; we engineer them for decades of harsh atmospheric exposure.</p>
+      </div>
+    </section>
+
+    <section class="card-stack-container">
+      <h2>Modular Hardware Registry</h2>
+      
+      <article class="stack-card">
+        <div class="card-rim">
+          <span>TX-868-MK4</span>
+          <span>RIDGE NODE MK IV</span>
+          <span>REV 4.2</span>
+        </div>
+        <div class="card-body">
+          <div class="card-content-grid">
+            <div>
+              <h3>Ridge Node Mk IV</h3>
+              <p>The core relay of the Upland Mesh. Built on an oversized double-layer FR4 board with thick 2oz copper traces to handle substantial temperature swings without delamination. The Mk IV utilizes a precision crystal oscillator that remains stable even at twenty-five degrees below freezing.</p>
+              <div style="margin-top: 1.5rem;">
+                <button class="btn btn-accent">Commission Custom Build</button>
+              </div>
+            </div>
+            <ul class="spec-list">
+              <li><span class="spec-key">Current Draw</span> <span class="spec-val">12mA (Sleep) / 120mA (TX)</span></li>
+              <li><span class="spec-key">Frequency Band</span> <span class="spec-val">868 MHz LoRa</span></li>
+              <li><span class="spec-key">Enclosure Weight</span> <span class="spec-val">2.8 kg (Slate & Brass)</span></li>
+              <li><span class="spec-key">Base Unit Price</span> <span class="spec-val">£420.00</span></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="stack-card">
+        <div class="card-rim">
+          <span>TBM-868-1</span>
+          <span>TARN BEACON MINI</span>
+          <span>REV 1.4</span>
+        </div>
+        <div class="card-body">
+          <div class="card-content-grid">
+            <div>
+              <h3>Tarn Beacon Mini</h3>
+              <p>A stripped-down, lightweight node designed for temporary deployment on high crags. The Beacon Mini sacrifices internal battery capacity for a radically reduced footprint, relying instead on a high-efficiency monocrystalline solar foil mounted directly to its bevelled oak housing.</p>
+              <div style="margin-top: 1.5rem;">
+                <button class="btn btn-accent">Commission Custom Build</button>
+              </div>
+            </div>
+            <ul class="spec-list">
+              <li><span class="spec-key">Current Draw</span> <span class="spec-val">8mA (Sleep) / 95mA (TX)</span></li>
+              <li><span class="spec-key">Frequency Band</span> <span class="spec-val">868 MHz LoRa</span></li>
+              <li><span class="spec-key">Enclosure Weight</span> <span class="spec-val">0.6 kg (Sealed Oak)</span></li>
+              <li><span class="spec-key">Base Unit Price</span> <span class="spec-val">£210.00</span></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="stack-card">
+        <div class="card-rim">
+          <span>WSG-144-2</span>
+          <span>WATERSHED SENSOR GATEWAY</span>
+          <span>REV 3.0</span>
+        </div>
+        <div class="card-body">
+          <div class="card-content-grid">
+            <div>
+              <h3>Watershed Sensor Gateway</h3>
+              <p>An intricate interface hub capable of gathering data from ten distinct analogue sensors—measuring flood levels, soil saturation, and freezing rain accumulation. The Gateway processes raw voltage differentials and compresses them into tiny telemetry packets for transmission down the valley.</p>
+              <div style="margin-top: 1.5rem;">
+                <button class="btn btn-accent">Commission Custom Build</button>
+              </div>
+            </div>
+            <ul class="spec-list">
+              <li><span class="spec-key">Current Draw</span> <span class="spec-val">45mA (Active Sensing)</span></li>
+              <li><span class="spec-key">Frequency Band</span> <span class="spec-val">144 MHz VHF / 868 MHz</span></li>
+              <li><span class="spec-key">Enclosure Weight</span> <span class="spec-val">3.4 kg (Double Slate)</span></li>
+              <li><span class="spec-key">Base Unit Price</span> <span class="spec-val">£580.00</span></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="stack-card">
+        <div class="card-rim">
+          <span>HTC-01</span>
+          <span>HYDRO-TURBINE CHARGE CONTROLLER</span>
+          <span>REV 1.1</span>
+        </div>
+        <div class="card-body">
+          <div class="card-content-grid">
+            <div>
+              <h3>Hydro-Turbine Charge Controller</h3>
+              <p>Harness the kinetic energy of mountain streams. This robust charge regulator converts the wild, variable AC output of micro-hydro turbines into a clean, smooth DC curve suitable for charging sensitive LiFePO4 chemistry batteries without over-voltage damage.</p>
+              <div style="margin-top: 1.5rem;">
+                <button class="btn btn-accent">Commission Custom Build</button>
+              </div>
+            </div>
+            <ul class="spec-list">
+              <li><span class="spec-key">Current Draw</span> <span class="spec-val">Passive Routing Logic</span></li>
+              <li><span class="spec-key">Input Tolerance</span> <span class="spec-val">Up to 90V Spikes</span></li>
+              <li><span class="spec-key">Enclosure Weight</span> <span class="spec-val">1.2 kg (Vented Brass)</span></li>
+              <li><span class="spec-key">Base Unit Price</span> <span class="spec-val">£310.00</span></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="maker-column">
+      <h2>The Pelton-Powered Bench Sequence</h2>
+      <p>Our manufacturing lifecycle is intrinsically tied to the mountain topography. Every TraceMend circuit is built using 2.4 kW of continuous clean DC power, generated by the heavy glacial runoff spinning our antique 1894 Pelton wheel turbine.</p>
+      
+      <div class="schedule-grid">
+        <div class="schedule-item">
+          <span class="schedule-date">Stage 01</span>
+          <h3>Slate Block Slicing & Diamond Milling</h3>
+          <p>We source raw off-cut blocks directly from the Blaenau quarries. The heavy slate is sliced using water-cooled diamond saws and precisely milled to accept our brass threaded inserts, forming a virtually indestructible outer shell.</p>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-date">Stage 02</span>
+          <h3>Through-Hole Lead Bending & Soldering</h3>
+          <p>Guided by brass calipers and paper schematics, every resistor, capacitor, and IC socket is manually bent and seated. The boards are hand-soldered using high-quality leaded rosin-core solder for maximum mechanical strength and thermal resilience.</p>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-date">Stage 03</span>
+          <h3>Dual-Coat Conformal Beeswax Sealing</h3>
+          <p>To defeat the relentless montane damp, each finished logic board is slowly lowered into a steaming pot of unrefined Welsh beeswax. This dual-coat process completely seals the copper traces from oxidative rot and condensation shorts.</p>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-date">Stage 04</span>
+          <h3>Cryogenic Cold-Box Burn-In Test</h3>
+          <p>Before a node leaves the winding house, it spends forty-eight hours inside our bespoke cold-box. Held at a sustained -25°C, we monitor the oscillator drift and battery sag to guarantee flawless performance when the real winter arrives.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-block-start: 1rem;">
+        <button class="btn">View Manufacturing Documentation</button>
+      </div>
+    </section>
+
+    <section class="maker-column-wide">
+      <h2>Bespoke Quarry Enclosures & Slate Joinery</h2>
+      <p>Modern plastics shatter when frozen and subjected to the violent impacts of gale-flung debris. Thin cast aluminium conducts extreme cold directly to the battery cells. We build with the geology of the mountain itself.</p>
+      <p>Our enclosures utilise 25 mm thick slabs of dense Blaenau slate. The sheer thermal inertia of this mass acts as a passive buffer, dramatically slowing the rate at which freezing external temperatures reach the internal electronics. This protects the battery chemistry from sudden thermal shock during rapid weather fronts.</p>
+      <p>Furthermore, the immense weight of the slate provides exceptional vibration damping against the intense mast shudder induced by 90-knot winds, preventing the destructive mechanical harmonics that rattle standard enclosures to pieces. Every slab is bound by marine-grade brass threaded inserts, guaranteeing that the case can be opened, repaired, and resealed endlessly without stripping the threads.</p>
+      <div style="text-align: center; margin-block-start: 2rem;">
+        <button class="btn btn-accent">Download Enclosure CAD Files</button>
+      </div>
+    </section>
+
+    <section class="maker-column">
+      <h2>Hardware Selection & Maintenance FAQ</h2>
+      
+      <div style="margin-block-end: 1.5rem;">
+        <h4 style="margin-block-end: 0.25rem;">Why specify LiFePO4 battery chemistries over standard Lithium-Ion?</h4>
+        <p>Lithium-Ion cells suffer severe voltage sag and permanent capacity loss when charged below freezing. LiFePO4 cells offer superior thermal stability, allowing safe charging curves even at -20°C, ensuring your node recovers power immediately when the morning sun breaks the clouds.</p>
+      </div>
+      
+      <div style="margin-block-end: 1.5rem;">
+        <h4 style="margin-block-end: 0.25rem;">How do you protect the nodes from lightning strikes on exposed crags?</h4>
+        <p>Every Ridge Node incorporates heavy-duty gas-discharge tube arrestors across the antenna lines. We provide thick braided copper grounding straps and instructions for driving earth spikes deep into the shallow mountain peat to safely shunt atmospheric electrical surges.</p>
+      </div>
+      
+      <div style="margin-block-end: 1.5rem;">
+        <h4 style="margin-block-end: 0.25rem;">Can the antenna mast stays survive ice loading?</h4>
+        <p>Yes. Our mast rigging doctrine relies on oversized stainless steel guy-wires and dynamic tensioners that accommodate the massive weight of rime ice buildup without snapping, allowing the ice to eventually fracture and shed during the thaw.</p>
+      </div>
+      
+      <div style="margin-block-end: 1.5rem;">
+        <h4 style="margin-block-end: 0.25rem;">Is the firmware open for custom modification?</h4>
+        <p>Absolutely. Every trace of code is licensed openly. You can re-flash the main microcontrollers in the field via an exposed internal serial header using nothing but a standard USB TTL cable and an open-source terminal application.</p>
+      </div>
+      
+      <div style="margin-block-end: 1.5rem;">
+        <h4 style="margin-block-end: 0.25rem;">Are replacement components available if I damage the board?</h4>
+        <p>We publish a complete Bill of Materials (BOM) alongside our KiCad schematics. Every resistor, capacitor, and regulator is a standard through-hole part available from major global electronics suppliers. You are never locked into our supply chain.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>TraceMend</h4>
+        <p>Cwmorthin Incline, Slate Quarry</p>
+        <p>Blaenau Ffestiniog</p>
+        <p>Gwynedd, Wales, LL41</p>
+      </div>
+      <div class="footer-section">
+        <h4>Hardware Licensing</h4>
+        <p>All schematics and PCB Gerber files are distributed under the CERN-OHL-S open-hardware license.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Communications</h4>
+        <p>Radio: Callsign MW0TMD</p>
+        <p>Mesh: TRACE-CWM-1</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

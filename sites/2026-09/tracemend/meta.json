@@ -1,0 +1,15 @@
+{
+  "title": "TraceMend",
+  "blurb": "Hand-built, open-hardware mesh repeaters and low-power telemetry nodes built to outlast Atlantic gales and sub-zero montane damp.",
+  "hero": "assets/hero-quarry-winding-house.webp",
+  "layoutFamily": "overlapping card-stack",
+  "tags": [
+    "hardware",
+    "networking",
+    "open-source"
+  ],
+  "created": "2026-09-02",
+  "wordFloor": 1900,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

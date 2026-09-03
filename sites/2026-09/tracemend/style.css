@@ -1,0 +1,461 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800&family=Hanken+Grotesk:wght@400;500;600&display=swap');
+
+:root {
+  --color-primary: hsl(215, 26%, 16%);
+  --color-primary-hover: hsl(215, 26%, 22%);
+  --color-secondary: hsl(25, 38%, 32%);
+  --color-accent: hsl(42, 95%, 52%);
+  --color-accent-hover: hsl(42, 95%, 44%);
+  --color-accent-focus: hsl(42, 100%, 62%);
+  --color-bg: hsl(210, 14%, 94%);
+  --color-surface: hsl(0, 0%, 100%);
+  --color-surface-subtle: hsl(210, 16%, 88%);
+  --color-border: hsl(215, 16%, 76%);
+  --color-text: hsl(215, 30%, 12%);
+  --color-text-muted: hsl(215, 14%, 40%);
+  --color-focus: hsl(42, 95%, 52%);
+
+  --font-heading: 'Cabinet Grotesk', sans-serif;
+  --font-body: 'Hanken Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  margin-block-start: 0;
+  margin-block-end: 0.5em;
+  line-height: 1.1;
+  color: var(--color-primary);
+}
+
+h1 { font-size: clamp(2.5rem, 2rem + 2.5vw, 4rem); font-weight: 800; }
+h2 { font-size: clamp(2rem, 1.7rem + 1.5vw, 2.75rem); font-weight: 800; }
+h3 { font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem); font-weight: 700; }
+
+a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+a:hover, a:focus-visible {
+  color: var(--color-accent);
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Base Layout & Spacing */
+.site-header {
+  padding-block: 1.5rem;
+  padding-inline: 5vw;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand svg {
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-accent);
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.site-nav a {
+  color: var(--color-surface);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-nav a:hover, .site-nav a:focus-visible {
+  color: var(--color-accent);
+}
+
+.site-footer {
+  padding-block: 4rem;
+  padding-inline: 5vw;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  margin-block-start: 6rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.footer-section h4 {
+  color: var(--color-accent);
+}
+
+.footer-section p {
+  color: var(--color-surface-subtle);
+  margin-block: 0.5rem;
+}
+
+/* Button Component */
+button, .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 0.75rem;
+  padding-inline: 1.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: var(--color-primary-hover);
+}
+
+button:active, .btn:active {
+  transform: translateY(2px);
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  border-color: var(--color-accent);
+}
+
+.btn-accent:hover, .btn-accent:focus-visible {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  box-shadow: 0 0 14px rgba(251, 168, 13, 0.35); /* Rosin Spark Pulse */
+}
+
+/* Interactive Data Badges */
+.data-badge {
+  display: inline-flex;
+  padding-block: 0.25rem;
+  padding-inline: 0.75rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  transition: all 0.2s ease;
+}
+
+.data-badge:hover, .data-badge:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-primary);
+  box-shadow: 0 0 14px rgba(251, 168, 13, 0.35); /* Rosin Spark Pulse */
+  cursor: default;
+}
+
+/* Heroes */
+.hero-section {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: flex-end;
+  padding-inline: 5vw;
+  padding-block-end: 4rem;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  color: var(--color-surface);
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: var(--color-surface-subtle);
+  max-width: 600px;
+  margin-block-end: 2rem;
+}
+
+.hero-content .btn {
+  margin-block-start: 1rem;
+}
+
+/* Containers */
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 5vw;
+}
+
+.maker-column {
+  max-width: 800px;
+  margin-inline: auto;
+  padding-inline: 5vw;
+  padding-block: 4rem;
+}
+
+.maker-column p {
+  margin-block-end: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.maker-column-wide {
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-inline: 5vw;
+  padding-block: 4rem;
+}
+
+/* Overlapping Card Stack (The Mandatory Structural Signature) */
+.card-stack-container {
+  padding-block: 4rem;
+  padding-inline: 5vw;
+  max-width: 900px;
+  margin-inline: auto;
+  position: relative;
+}
+
+.card-stack-container h2 {
+  text-align: center;
+  margin-block-end: 3rem;
+}
+
+.stack-card {
+  position: sticky;
+  top: 14vh;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0; /* Padding inside the card body instead */
+  margin-block-end: 2rem;
+  box-shadow: 0 -12px 32px rgba(30, 38, 51, 0.14);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  /* The "seat" effect would ideally trigger via IntersectionObserver or scroll timeline,
+     but we'll implement the rotation pattern here via nth-child */
+}
+
+/* Top rim with technical stamps */
+.card-rim {
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding-inline: 1.5rem;
+  padding-block: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card-body {
+  padding: 2.5rem;
+}
+
+.stack-card:nth-child(even) {
+  transform: rotate(-0.75deg);
+}
+
+.stack-card:nth-child(odd) {
+  transform: rotate(0.75deg);
+}
+
+/* Hover effect on stack cards to simulate the "seat" effect */
+.stack-card:hover {
+  transform: rotate(0deg) scale(1.01);
+  z-index: 10;
+}
+.stack-card:hover ~ .stack-card {
+  transform: scale(0.975);
+}
+
+/* Data Matrix Table */
+.data-matrix {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: 2rem;
+  background-color: var(--color-surface);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.data-matrix th, .data-matrix td {
+  padding-block: 1.25rem;
+  padding-inline: 1rem;
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.data-matrix th {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.data-matrix tbody tr:nth-child(even) {
+  background-color: var(--color-bg);
+}
+
+/* Two-column internal layout inside cards (not section split) */
+.card-content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .card-content-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.spec-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.spec-list li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--color-border);
+  padding-block-end: 0.25rem;
+}
+
+.spec-key {
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.spec-val {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+/* Logs / Testimonials grid */
+.logs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-block: 3rem;
+}
+
+.log-entry {
+  background-color: var(--color-surface);
+  padding: 2rem;
+  border-top: 4px solid var(--color-secondary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.log-meta {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-block-end: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-block {
+  background-color: var(--color-secondary);
+  color: var(--color-surface);
+  padding: 2rem;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-block: 2rem;
+}
+
+/* Workshop Schedule Grid */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-block: 2rem;
+}
+
+.schedule-item {
+  background-color: var(--color-bg);
+  padding: 1.5rem;
+  border-left: 4px solid var(--color-accent);
+}
+
+.schedule-date {
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-block-end: 0.5rem;
+  display: block;
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}

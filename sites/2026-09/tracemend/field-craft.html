@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TraceMend | Field Craft</title>
+  <meta name="description" content="Topologies, Open Schematics & Upland Protocols for TraceMend infrastructure.">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="./index.html" class="brand">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="currentColor">
+        <path d="M 4 28 L 12 16 L 22 22 L 32 6 L 44 24 L 54 18 L 60 28 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+        <path d="M 12 28 C 12 38, 20 42, 28 44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M 22 28 C 22 36, 26 40, 32 42" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M 54 28 C 54 38, 46 42, 38 44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M 44 28 C 44 36, 40 40, 34 42" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        <polygon points="32,40 42,50 32,60 22,50" fill="currentColor" />
+        <path d="M 32 44 C 34 44, 36 47, 36 50 C 36 52.2, 34.2 54, 32 54 C 29.8 54, 28 52.2, 28 50 C 28 47, 30 44, 32 44 Z" fill="#1e2633" />
+        <line x1="32" y1="28" x2="32" y2="40" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+        <circle cx="12" cy="28" r="3" />
+        <circle cx="22" cy="28" r="2.5" />
+        <circle cx="44" cy="28" r="2.5" />
+        <circle cx="54" cy="28" r="3" />
+      </svg>
+      TraceMend
+    </a>
+    <nav class="site-nav">
+      <a href="./hardware.html">Hardware Registry</a>
+      <a href="./field-craft.html">Field Craft</a>
+    </nav>
+  </header>
+  
+  <main id="main-content">
+    <section class="hero-section" style="min-height: 60vh;">
+      <img src="./assets/field-mast-installation.webp" alt="Technicians installing a radio antenna mast on an exposed mountain summit." class="hero-bg" fetchpriority="high">
+      <div class="hero-content">
+        <h1>Topologies, Open Schematics & Upland Protocols</h1>
+        <p>Software and operational doctrine written with the same patience and resilience as our physical timber and slate. Explore the mechanics of Delay-Tolerant Networking and our rigorous rigging manuals for exposed summit deployments.</p>
+      </div>
+    </section>
+
+    <section class="card-stack-container">
+      <h2>The Store-and-Forward Mesh Protocol</h2>
+      
+      <article class="stack-card">
+        <div class="card-rim">
+          <span>PRT-01</span>
+          <span>DELAY-TOLERANT ROUTING</span>
+          <span>RFC-5050</span>
+        </div>
+        <div class="card-body">
+          <div class="card-content-grid">
+            <div>
+              <h3>Delay-Tolerant Routing (DTN)</h3>
+              <p>Traditional networks assume continuous, unbroken links. When a storm front passes over the Moelwyns, atmospheric attenuation can sever radio links for hours. Our DTN firmware abandons the assumption of constant connectivity. It actively monitors link quality and holds data indefinitely, only attempting transmission when the path clears, ensuring absolute zero data loss during extreme weather events.</p>
+              <div style="margin-top: 1.5rem;">
+                <button class="btn btn-accent">Inspect Firmware Source Code</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="stack-card">
+        <div class="card-rim">
+          <span>PRT-02</span>
+          <span>MICRO-FLASH QUEUE STORAGE</span>
+          <span>30-DAY BUFFER</span>
+        </div>
+        <div class="card-body">
+          <div class="card-content-grid">
+            <div>
+              <h3>Micro-Flash Queue Storage</h3>
+              <p>When the mesh fractures into isolated islands, every node becomes a secure data vault. We utilise robust SLC micro-flash storage chips capable of queuing up to thirty days of disconnected holding traffic. As soon as a neighbouring node comes back online or a mobile Tarn Beacon enters range, the queued packets automatically flush and propagate down the valley toward the main gateway.</p>
+              <div style="margin-top: 1.5rem;">
+                <button class="btn btn-accent">Inspect Firmware Source Code</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="stack-card">
+        <div class="card-rim">
+          <span>PRT-03</span>
+          <span>CRYPTOGRAPHIC NODE IDENTITY</span>
+          <span>ED25519 SEC</span>
+        </div>
+        <div class="card-body">
+          <div class="card-content-grid">
+            <div>
+              <h3>Cryptographic Node Identity</h3>
+              <p>Operating in an open radio environment demands unforgeable trust. Every piece of hardware is flashed with a unique Ed25519 hardware signing key. The mesh operates with Zero-Master Discovery; nodes dynamically authenticate their peers in a decentralised manner. Malicious packet injection is cryptographically impossible, guaranteeing the integrity of critical rescue telemetry.</p>
+              <div style="margin-top: 1.5rem;">
+                <button class="btn btn-accent">Inspect Firmware Source Code</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="maker-column-wide">
+      <h2>Field Deployments & Mountain Rigging Doctrine</h2>
+      <p>Hauling heavy slate and batteries up a jagged ridge in driving rain is a miserable endeavour if your rigging plan fails. We have codified the pragmatic outdoor craft learned through hard mountain winters into a strict operational doctrine.</p>
+      <p>Grounding is non-negotiable. When deploying a mast, always drive the thick copper grounding rods directly into the shallow peat surrounding the rock base. If soil depth is insufficient, we mandate laying out radial grounding straps across the damp rock surface to safely dissipate the inevitable static build-up from passing storm clouds.</p>
+      <p>Do not trust single-point anchors in fractured slate. Our mast erection procedure requires a minimum of three disparate guy-wire anchor points, utilising expansive pitons driven deep into solid fissures. The tension must be continually monitored and adjusted during the first seventy-two hours as the stainless steel wire rope settles.</p>
+      <p>Finally, consider the wildlife and the weather. Every antenna tip is fitted with our signature bird anti-perch whisker mounts to deter raptors from damaging the fragile dipole elements. For winter operations, the mast itself must be treated with a hydrophobic coating to encourage rapid rime-ice shedding during brief periods of midday thaw.</p>
+      <div style="text-align: center; margin-block-start: 2rem;">
+        <button class="btn btn-accent">Download Field Rigging Manual</button>
+      </div>
+    </section>
+
+    <section class="maker-column">
+      <h2>Open-Hardware Repository & Gerber Download Hub</h2>
+      <p>We believe in absolute transparency. Every piece of hardware designed in the Cwmorthin workshop is released under the CERN-OHL-S open-hardware license. You have the right to study, modify, and manufacture our designs for your own mesh networks without restriction.</p>
+      <p>Our repository contains complete KiCad schematics, meticulously routed PCB Gerber files ready for fabrication, and exhaustive Bill-of-Materials breakdowns. For those new to electronics, we also provide step-by-step soldering build guides and video demonstrations of our beeswax conformal sealing process.</p>
+      <div style="text-align: center; margin-block-start: 1rem;">
+        <button class="btn">Access the Open Repository</button>
+      </div>
+    </section>
+
+    <section class="maker-column-wide">
+      <h2>Bench Consultation & Node Allocation Form</h2>
+      <p style="text-align: center; max-width: 800px; margin-inline: auto;">Whether you are designing a custom scientific mesh array for a remote glacier, or simply need to order spare beeswaxed enclosures for your local search-and-rescue team, our bench is open. Fill out the intake form below to initiate a consultation or request volunteer dispatch.</p>
+      
+      <form style="max-width: 600px; margin-inline: auto; margin-block-start: 2rem; display: grid; gap: 1.5rem; background-color: var(--color-surface); padding: 2.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid var(--color-border);">
+        <div>
+          <label for="org-name" style="display: block; margin-block-end: 0.5rem; font-weight: 600;">Organisation / Syndicate Name</label>
+          <input type="text" id="org-name" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); font-family: var(--font-body);">
+        </div>
+        <div>
+          <label for="deployment-type" style="display: block; margin-block-end: 0.5rem; font-weight: 600;">Deployment Type</label>
+          <select id="deployment-type" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); font-family: var(--font-body);">
+            <option>Scientific Telemetry Array</option>
+            <option>Mountain Rescue Comms</option>
+            <option>Off-Grid Community Mesh</option>
+            <option>Spare Parts / Repair Request</option>
+          </select>
+        </div>
+        <div>
+          <label for="details" style="display: block; margin-block-end: 0.5rem; font-weight: 600;">Operational Requirements</label>
+          <textarea id="details" rows="5" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); font-family: var(--font-body);"></textarea>
+        </div>
+        <button type="button" class="btn btn-accent" style="width: 100%;">Submit Dispatch Request</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>TraceMend</h4>
+        <p>Cwmorthin Incline, Slate Quarry</p>
+        <p>Blaenau Ffestiniog</p>
+        <p>Gwynedd, Wales, LL41</p>
+      </div>
+      <div class="footer-section">
+        <h4>Hardware Licensing</h4>
+        <p>All schematics and PCB Gerber files are distributed under the CERN-OHL-S open-hardware license.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Communications</h4>
+        <p>Radio: Callsign MW0TMD</p>
+        <p>Mesh: TRACE-CWM-1</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
