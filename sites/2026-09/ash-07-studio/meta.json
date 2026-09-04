@@ -1,0 +1,16 @@
+{
+  "title": "ASH-07 Studio",
+  "blurb": "Hand-thrown Welsh stoneware clay aged sixty metres underground and wood-fired with raw volcanic basalt ash.",
+  "hero": "assets/hero-subterranean-potters-wheel.webp",
+  "layoutFamily": "neo-brutalist masonry",
+  "tags": [
+    "ceramics",
+    "wood-fired",
+    "ash-glaze",
+    "subterranean"
+  ],
+  "qa": "v2-pass",
+  "created": "2026-09-01",
+  "wordFloor": 650,
+  "standard": "v2"
+}

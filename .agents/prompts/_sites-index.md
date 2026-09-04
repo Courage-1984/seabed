@@ -57,6 +57,7 @@
 | cedar-and-salt | Cedar & Salt Hydro-Cooperage | sticky-rail + content | 2026-08-12 |
 | codex-parallax | Codex Parallax Laboratory | overlapping card-stack | 2026-08-13 |
 | deep-crust-mycelial | Deep Crust Mycelial Bio-Lining | overlapping card-stack | 2026-08-05 |
+| forge-and-fallow | Forge & Fallow | bento | 2026-08-30 |
 | gigaglyph | Gigaglyph | terminal / data-readout | 2026-08-26 |
 | hverir-hearth | Hverir Geothermal Hearth | bento | 2026-08-04 |
 | k-44-ordnance-canvas | K-44 Ordnance & Canvas | sticky-rail + content | 2026-08-14 |
@@ -86,6 +87,10 @@
 | the-outer-isles-kelp-weave-guild | The Outer-Isles Kelp-Weave Guild | kinetic ticker / marquee bands | 2026-08-29 |
 | the-salt-barrow-malt-shieling | The Salt-Barrow Malt Shieling | overlapping card-stack | 2026-08-24 |
 | the-sub-solway-bismuth-foundries | The Sub-Solway Bismuth Foundries | ultra-minimal full-bleed | 2026-08-28 |
+| uhv-74-precision | UHV-74 Precision | neo-brutalist masonry | 2026-08-30 |
+| ash-07-studio | ASH-07 Studio | neo-brutalist masonry | 2026-09-01 |
+| the-sub-oolite-salt-cellar | The Sub-Oolite Salt-Cellar | asymmetric split | 2026-09-03 |
+| tracemend | TraceMend | overlapping card-stack | 2026-09-02 |
 
 ## Roster (paste into brief prompt)
 
@@ -93,22 +98,23 @@ Replace the fenced slug list in your external Variety Engine **Roster** section 
 ```
 78-north-supply, abyssal-crust-vaults, abyssal-data-recovery, abyssal-hardware,
 aegir-thermal-lugger, apex-altitude-lab, apiary-mesh-kinetics, archive-arcade,
-aseptic-cellars, astrolabe-treks, backhaul-field-co, brimstone-basalt, cedar-and-salt,
-centrifugal-larder, codex-parallax, copper-cloche, cryotex-isolates, deep-crust-mycelial,
-drosera-vault, forge-and-feather, gigaglyph, gimbal-and-hoist,
-glaciermesh-infrastructure, halcyon-tare, halyard-and-hemp-sailmakers, hearth-and-anvil,
-hull-and-hem-sailmenders, hverir-hearth, isocline-preservation, k-44-ordnance-canvas,
-k-92-maritime-victualling, k9-kinetic-recovery, kajak-lauget, karoo-brass-and-glass,
-katabatic-shelters, kestrel-heavy, knot-and-westerly, leafbind, lithic-fibre-dynamics,
-lithic-resonance, litho-acoustic-labs, lock-and-sluice, lv-74-marine-apothecary,
-magnaloom, mantlecut-geology, marion-fissure, mash-and-manifold, monolith-somatic,
-nadir-quartzware, nepenthes-forge, null-state-cryogenics, oxide-and-tide, patch-parcel,
-pellucid, pellucid-memory, pentland-acoustic-telemetry-works, sarek-bark-gear,
-signal-and-silo, siloshield-dynamics, spiretrace, stake-and-bind, stave-and-hoops,
-sub-lithic-seals, sub-litho-kinetic, substratum-signals, tendonforge,
-the-brass-and-thistle, the-cryo-biome-crypt, the-cryo-pelagic-cell,
-the-fenland-yeast-guild, the-hardpan-outfitter, the-midnight-forager,
-the-outer-isles-kelp-weave-guild, the-salt-barrow-malt-shieling, the-slate-and-chisel,
-the-sub-solway-bismuth-foundries, the-tidal-vault, vapour-and-vault, verdigris-and-salt,
+aseptic-cellars, ash-07-studio, astrolabe-treks, backhaul-field-co, brimstone-basalt,
+cedar-and-salt, centrifugal-larder, codex-parallax, copper-cloche, cryotex-isolates,
+deep-crust-mycelial, drosera-vault, forge-and-fallow, forge-and-feather, gigaglyph,
+gimbal-and-hoist, glaciermesh-infrastructure, halcyon-tare, halyard-and-hemp-sailmakers,
+hearth-and-anvil, hull-and-hem-sailmenders, hverir-hearth, isocline-preservation,
+k-44-ordnance-canvas, k-92-maritime-victualling, k9-kinetic-recovery, kajak-lauget,
+karoo-brass-and-glass, katabatic-shelters, kestrel-heavy, knot-and-westerly, leafbind,
+lithic-fibre-dynamics, lithic-resonance, litho-acoustic-labs, lock-and-sluice,
+lv-74-marine-apothecary, magnaloom, mantlecut-geology, marion-fissure, mash-and-manifold,
+monolith-somatic, nadir-quartzware, nepenthes-forge, null-state-cryogenics,
+oxide-and-tide, patch-parcel, pellucid, pellucid-memory,
+pentland-acoustic-telemetry-works, sarek-bark-gear, signal-and-silo, siloshield-dynamics,
+spiretrace, stake-and-bind, stave-and-hoops, sub-lithic-seals, sub-litho-kinetic,
+substratum-signals, tendonforge, the-brass-and-thistle, the-cryo-biome-crypt,
+the-cryo-pelagic-cell, the-fenland-yeast-guild, the-hardpan-outfitter,
+the-midnight-forager, the-outer-isles-kelp-weave-guild, the-salt-barrow-malt-shieling,
+the-slate-and-chisel, the-sub-oolite-salt-cellar, the-sub-solway-bismuth-foundries,
+the-tidal-vault, tracemend, uhv-74-precision, vapour-and-vault, verdigris-and-salt,
 xenon-arc
 ```

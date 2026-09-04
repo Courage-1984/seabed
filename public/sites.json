@@ -1246,6 +1246,55 @@
     "siteFolder": "./sites/2026-08/uhv-74-precision"
   },
   {
+    "title": "ASH-07 Studio",
+    "blurb": "Hand-thrown Welsh stoneware clay aged sixty metres underground and wood-fired with raw volcanic basalt ash.",
+    "hero": "assets/hero-subterranean-potters-wheel.webp",
+    "layoutFamily": "neo-brutalist masonry",
+    "tags": [
+      "ceramics",
+      "wood-fired",
+      "ash-glaze",
+      "subterranean"
+    ],
+    "qa": "v2-pass",
+    "created": "2026-09-01",
+    "wordFloor": 650,
+    "standard": "v2",
+    "siteFolder": "./sites/2026-09/ash-07-studio"
+  },
+  {
+    "title": "The Sub-Oolite Salt-Cellar",
+    "blurb": "Triassic halite blocks and deep-mine dry-curing vaults engineered jointly by Cheshire brine-miners and Royal Navy cold-stores logistics officers.",
+    "hero": "assets/hero-salt-mine-gallery.webp",
+    "layoutFamily": "asymmetric split",
+    "tags": [
+      "specialty-retail",
+      "engineering",
+      "provenance"
+    ],
+    "created": "2026-09-03",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-09/the-sub-oolite-salt-cellar"
+  },
+  {
+    "title": "Trace & Tungsten",
+    "blurb": "Ballistic-grade timber extraction harnesses and drop-forged draft rigging engineered for heavy working horses.",
+    "hero": "assets/hero-clydesdale-ballistic-harness.webp",
+    "layoutFamily": "kinetic ticker / marquee bands",
+    "tags": [
+      "specialty-retail",
+      "direct-to-consumer",
+      "apparel"
+    ],
+    "created": "2026-09-03",
+    "wordFloor": 650,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-09/trace-and-tungsten"
+  },
+  {
     "title": "TraceMend",
     "blurb": "Hand-built, open-hardware mesh repeaters and low-power telemetry nodes built to outlast Atlantic gales and sub-zero montane damp.",
     "hero": "assets/hero-quarry-winding-house.webp",

@@ -1,0 +1,15 @@
+{
+  "title": "The Sub-Oolite Salt-Cellar",
+  "blurb": "Triassic halite blocks and deep-mine dry-curing vaults engineered jointly by Cheshire brine-miners and Royal Navy cold-stores logistics officers.",
+  "hero": "assets/hero-salt-mine-gallery.webp",
+  "layoutFamily": "asymmetric split",
+  "tags": [
+    "specialty-retail",
+    "engineering",
+    "provenance"
+  ],
+  "created": "2026-09-03",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass"
+}

@@ -28,7 +28,18 @@ Only pause to ask **one** clarifying question when critical fields are missing (
    - Confirm `Responsive: PASS desktop + mobile` and WebP per @.agents/skills/acquire-images/SKILL.md
    - **Extreme Visual Audit**: Review the generated screenshots in `qa-screenshots/` (or run a visual accessibility tool) to independently verify that every page renders flawlessly from top to bottom (no overlapping text, correct minimum font sizes, and unbroken flex/grid containers) before marking `qa: "v2-pass"`.
 
-**Note:** Pasted briefs §2/§8 should match this command list (see `.agents/prompts/daily-brief-generator.md`). If a brief is somehow thinner, **this file wins**. 8. Set `meta.json` `"standard": "v2"`, `"layoutFamily"`, `"tags"`, `"created"` (UTC `YYYY-MM-DD`), `"wordFloor"` when known, and `"qa": "v2-pass"` per @.agents/skills/qa-and-ship/SKILL.md gate only. 9. Summarize: slug, pages, layout family, created date, image strategy per asset, copy depth, responsive status, QA status, remaining risks. 10. After ship (operator): `npm run sites:index` and paste Roster + Existing sites table into the live Gemini prompt (~weekly).
+**Note:** Pasted briefs §2/§8 should match this command list (see `.agents/prompts/daily-brief-generator.md`). If a brief is somehow thinner, **this file wins**. 
+8. Set `meta.json` `"standard": "v2"`, `"layoutFamily"`, `"tags"`, `"created"` (UTC `YYYY-MM-DD`), `"wordFloor"` when known, and `"qa": "v2-pass"` per @.agents/skills/qa-and-ship/SKILL.md gate only. 
+   - **CRITICAL RULE**: Do not set `"qa": "v2-pass"` unless ALL image assets AND the implemented video (webm/mp4) are physically present and integrated into the new website build.
+9. Summarize: slug, pages, layout family, created date, image strategy per asset, copy depth, responsive status, QA status, remaining risks. 
+10. After ship (operator): `npm run sites:index` and paste Roster + Existing sites table into the live Gemini prompt (~weekly).
+11. **Video Generation Handoff**: At the very end of the build summary, you MUST provide the user with a detailed text prompt to generate a cinematic video for the site. The prompt MUST explicitly request "720p" and "16:9 aspect ratio". The user will download the generated video into `./videos_new/`. When they notify you, you must web-optimize the video (e.g. ffmpeg to webm), move it to the site's `assets/` directory, and implement it on the site.
+   - **Video Integration Matrix (Mandatory Governance Rule)**: Do NOT default to placing the video as the hero background for every site. You MUST determine the video placement based on the day of the month the site is created (e.g. `YYYY-MM-DD` -> DD):
+     - **Days 01-06**: *Hero Background* — Full-bleed looping ambient background behind the primary hero text.
+     - **Days 07-12**: *Inline Product/Process Demo* — Embed prominently in a content section (e.g. Section 2 or 3) as a standalone video player or alongside text.
+     - **Days 13-18**: *Footer Ambient Loop* — Ambient motion backdrop for the final call-to-action or footer elements.
+     - **Days 19-24**: *Sticky Rail / Split Panel* — Place in a sticky rail or fixed side-panel, looping continuously while content scrolls (or in an asymmetric split section).
+     - **Days 25-31**: *Hover / Interaction Reveal* — Video plays on hover over a prominent element, or acts as a dynamic transition background between sections.
 
 ## CSS Best Practices (Mandatory)
 

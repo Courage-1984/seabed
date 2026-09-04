@@ -495,6 +495,24 @@ a:hover, a:focus-visible {
 .console-section {
   background-color: var(--color-secondary);
   color: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.console-ambient-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.console-section .container {
+  position: relative;
+  z-index: 1;
 }
 
 .console-section h2 {

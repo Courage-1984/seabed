@@ -53,6 +53,7 @@ Before marking pass: confirm the brief’s **layout structural signature** is vi
 
 ## Do not
 
-- Set `"qa": "v2-pass"` while overflow, broken images, non-WebP photos, missing alt, or copy below floor −10% remain.
-- Commit, push, or open PRs unless explicitly asked — @.agents/rules/03-repo-safety.md.
-- “Fix” unrelated sites unless you introduced a regression.
+- Set `"qa": "v2-pass"` while overflow, broken images, non-WebP photos, missing alt, or copy below floor -10% remain.
+- Set `"qa": "v2-pass"` if the site is missing ANY image assets or the required optimized video (`.webm` and/or `.mp4`). All image assets and the video MUST be present on the new website build.
+- Commit, push, or open PRs unless explicitly asked - @.agents/rules/03-repo-safety.md.
+- "Fix" unrelated sites unless you introduced a regression.

@@ -39,6 +39,10 @@ Apply when creating or substantially editing HTML/CSS/JS under `sites/`.
 
 - Ship at least 2–3 intentional motions (scroll reveal, hover, ambient, etc.) that create hierarchy — not noise.
 
+## Video Integration (Mandatory Matrix)
+
+- **AI Agent Governance:** Do NOT default to placing the generated video as a hero background. You MUST determine the video placement based on the creation date of the site (e.g. `YYYY-MM-DD` -> DD). Refer to the **Video Integration Matrix** in `AGENTS.md` (Section 11) for the exact logic (e.g. Days 01-06 = Hero Background, Days 07-12 = Inline Demo, etc.).
+
 ## Anti-patterns (avoid unless the brief explicitly demands them)
 
 - Purple-on-white or purple-to-indigo gradient themes
