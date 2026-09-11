@@ -11,5 +11,9 @@
   "created": "2026-09-03",
   "wordFloor": 1100,
   "standard": "v2",
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "split panel",
+  "signatureEffect": "magnetic proximity cursor element",
+  "video": "assets/the-sub-oolite-salt-cellar-split-panel.webm",
+  "contract": "v2.1"
 }

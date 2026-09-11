@@ -528,3 +528,239 @@ section {
     grid-template-columns: 2fr 1fr;
   }
 }
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   The offset travels through a custom property so elements that carry their
+   own transform keep both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-mid) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-mid) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — masked scroll-through type.
+ * Oversized numerals act as a window onto the workshop imagery, which
+ * drifts at a different rate than the page as the band passes through.
+ * ------------------------------------------------------------------ */
+.masked-band {
+  padding-block: clamp(3rem, 7vw, 5rem);
+  padding-inline: 1.5rem;
+  text-align: center;
+  background-color: var(--color-primary, #14171c);
+  border-block: var(--border-brutal, 3px solid #14171c);
+}
+.masked-band__type {
+  margin: 0;
+  font-size: clamp(3.5rem, 15vw, 11rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Solid fallback first: if background-clip:text is unsupported the numerals
+     still read as flat accent type rather than vanishing. */
+  color: var(--color-accent, #f0b429);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .masked-band__type {
+    color: transparent;
+    background-image: url('./assets/five-axis-cnc-diamond-milling.webp');
+    background-size: cover;
+    background-position: center calc(50% + var(--mask-shift, 0px));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+.masked-band__caption {
+  margin: 1.25rem auto 0;
+  max-inline-size: 48ch;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: hsl(210, 14%, 82%);
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — hover reveal.
+ * Poster is the resting state; the loop plays on hover and focus only.
+ * ------------------------------------------------------------------ */
+.hover-reveal-container {
+  cursor: pointer;
+}
+.hover-reveal-poster,
+.hover-reveal-video {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+.hover-reveal-poster {
+  opacity: 0.34;
+  transition: opacity var(--dur-mid) var(--ease-out);
+}
+.hover-reveal-video {
+  opacity: 0;
+  z-index: 1;
+  transition: opacity var(--dur-mid) var(--ease-out);
+}
+.hover-reveal-container.is-revealing .hover-reveal-video {
+  opacity: 1;
+}
+.hover-reveal-container.is-revealing .hover-reveal-poster {
+  opacity: 0;
+}
+/* The copy stays readable throughout: the old behaviour faded it to zero on
+   hover, which hid the price and spec exactly when the user was engaging. */
+.hover-reveal-content {
+  position: relative;
+  z-index: 2;
+}
+.hover-reveal-container.is-revealing .hover-reveal-content {
+  opacity: 1;
+  transform: none;
+  /* Scrim so the copy holds contrast over the moving footage. */
+  background: linear-gradient(to top, hsla(220, 20%, 6%, 0.92) 0%, hsla(220, 20%, 6%, 0.72) 70%, hsla(220, 20%, 6%, 0.5) 100%);
+}
+.hover-reveal-hint {
+  display: block;
+  margin-block-start: 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+.hover-reveal-container:focus-visible {
+  outline: 3px solid var(--color-accent, #f0b429);
+  outline-offset: 3px;
+}
+/* No real hover: keep the poster and drop the prompt. */
+@media (hover: none), (pointer: coarse) {
+  .hover-reveal-hint {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Micro-interactions — hover + focus-visible + active on every control.
+ * ------------------------------------------------------------------ */
+.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+.btn:hover,
+.btn:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translate(-2px, -2px);
+}
+.btn:active,
+.cta-button:active {
+  transform: translate(0, 0);
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, hover loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .masked-band__type {
+    background-position: center;
+  }
+  .hover-reveal-video {
+    display: none;
+  }
+  .hover-reveal-poster {
+    opacity: 0.34;
+  }
+  .hover-reveal-hint {
+    display: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Legibility corrections (visual audit).
+ * ------------------------------------------------------------------ */
+
+/* The accent sits at 4.11:1 in both directions — as a fill under white type
+   and as type on white. One darker step fixes both (5.24:1 either way); the
+   original tone stays available for rules and non-text accents. */
+:root {
+  --color-accent-strong: hsl(25, 75%, 38%);
+}
+.btn-primary,
+.btn.btn-primary,
+button.btn {
+  background-color: var(--color-accent-strong);
+  color: #fff;
+}
+.btn-primary:hover,
+.btn-primary:focus-visible,
+button.btn:hover,
+button.btn:focus-visible {
+  background-color: hsl(25, 75%, 30%);
+}
+.price {
+  color: var(--color-accent-strong);
+}
+
+/* h4 falls below the large-text threshold, so 1.1 is too tight to read. */
+h4 {
+  line-height: 1.3;
+}
+
+/* The header is sticky and the page navigates by in-page anchors, so targets
+   must clear it or they land underneath (AGENTS.md, scroll boundaries). */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+/* Exponents render as real superscripts; line-height: 0 keeps them from
+   opening up the line box they sit in. */
+sup {
+  /* max() puts a 12px floor under it: 0.72em of the mono body copy is
+     about 10.8px, which is below the legibility minimum. */
+  font-size: max(0.8em, 12px);
+  line-height: 0;
+  vertical-align: super;
+}

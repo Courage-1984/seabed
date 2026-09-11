@@ -52,15 +52,10 @@ Before `acquire-images`:
 3. **Brand-first hero** — per @.agents/rules/02-frontend-design.md (hero budget, first viewport).
 4. **CSS** — `:root` colour variables from §5; fluid type/spacing; breakpoints for 360–1440; **no horizontal overflow**.
 5. **Fonts** — §6 pairing only; banned display faces per @.agents/rules/02-frontend-design.md.
-6. **Motion** — implement the 2–3 ideas from §6.
+6. **Motion** — implement the full motion budget in `AGENTS.md` §13: an IntersectionObserver scroll-reveal system, the rolled `signatureEffect`, the layout family's signature motion, the 2–3 ideas from §6, 2 micro-interactions, and a `prefers-reduced-motion` block that neutralises everything.
 7. **Favicon** — custom `assets/favicon.svg`.
 8. **Distinctiveness** — do not clone another site in this repo.
-9. **Video Integration Matrix (Mandatory Governance Rule)**: You MUST determine the video placement based on the day of the month the site is created (e.g. `YYYY-MM-DD` -> DD):
-   - **Days 01-06**: *Hero Background* — Full-bleed looping ambient background behind the primary hero text.
-   - **Days 07-12**: *Inline Product/Process Demo* — Embed prominently in a content section (e.g. Section 2 or 3) as a standalone video player or alongside text.
-   - **Days 13-18**: *Footer Ambient Loop* — Ambient motion backdrop for the final call-to-action or footer elements.
-   - **Days 19-24**: *Sticky Rail / Split Panel* — Place in a sticky rail or fixed side-panel, looping continuously while content scrolls.
-   - **Days 25-31**: *Hover / Interaction Reveal* — Video plays on hover over a prominent element, or acts as a dynamic transition background between sections.
+9. **Video** — build the placement slot so it works with **no video present** (poster/still treatment), then layer the video in when it arrives. Placement comes from the brief and is seeded, not derived from the date — canonical rule in `AGENTS.md` §11, slot specs in `scripts/lib/video-placements.js`. Text over video always needs a scrim.
 10. Reference `./assets/<name>.webp` paths; @.agents/skills/acquire-images/SKILL.md must resolve them before QA.
 
 ## Responsive mindset

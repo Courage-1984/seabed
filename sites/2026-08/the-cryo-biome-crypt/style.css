@@ -29,7 +29,9 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
-  overflow-x: hidden;
+  /* clip, not hidden: overflow-x:hidden makes body a scroll container, which
+     silently disables position:sticky for every descendant. */
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -474,4 +476,180 @@ p {
   padding-top: 2rem;
   font-size: 0.75rem;
   text-align: center;
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only exists while the script that
+   un-hides it is running. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — hero background.
+ * The scrim is sized for the loop that will sit behind it, so headline
+ * contrast holds against the brightest frame rather than only the still.
+ * ------------------------------------------------------------------ */
+.hero-bg {
+  position: relative;
+}
+.hero-video {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(8, 16, 24, 0.9) 0%,
+    rgba(8, 16, 24, 0.72) 52%,
+    rgba(8, 16, 24, 0.42) 100%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — scroll-velocity marquee skew.
+ * ------------------------------------------------------------------ */
+.cryo-marquee {
+  inline-size: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-block: 1rem;
+  background-color: var(--color-primary, #0b1620);
+  color: var(--color-accent, #5fd3e0);
+  border-block: 1px solid rgba(255, 255, 255, 0.14);
+}
+.cryo-marquee__track {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  inline-size: max-content;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  letter-spacing: 0.08em;
+  animation: cryoDrift 26s linear infinite;
+  /* Skew is driven by scroll velocity; the drift stays in the keyframes so
+     the two never fight over the same property. */
+  transform: skewX(var(--marquee-skew, 0deg));
+  transition: transform 220ms var(--ease-out);
+  will-change: transform;
+}
+@keyframes cryoDrift {
+  from { translate: 0 0; }
+  to { translate: -50% 0; }
+}
+.cryo-marquee__sep {
+  opacity: 0.55;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, marquee and loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .cryo-marquee__track {
+    animation: none;
+    transform: none;
+    translate: 0 0;
+    white-space: normal;
+    flex-wrap: wrap;
+  }
+  .hero-video {
+    display: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Legibility corrections (visual audit).
+ * ------------------------------------------------------------------ */
+
+/* Footer body copy sat at 2.48:1 on the dark footer; step numerals used the
+   bright accent as text on white at 1.75:1. Both need the opposite direction. */
+.site-footer p,
+.site-footer li {
+  color: hsl(214, 14%, 78%);
+}
+.step-num {
+  color: hsl(174, 95%, 24%);
+}
+
+/* The header is sticky and the page navigates by in-page anchors, so targets
+   must clear it or they land underneath (AGENTS.md, scroll boundaries). */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }

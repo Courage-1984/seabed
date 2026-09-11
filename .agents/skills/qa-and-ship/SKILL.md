@@ -46,6 +46,8 @@ Before marking pass: confirm the brief’s **layout structural signature** is vi
 - Slug and pages added
 - Image strategy per major asset + WebP confirmed
 - Copy depth result (`COPY_DEPTH_PASS` wording)
+- Video placement slot + signature effect implemented
+- `## Visual Audit` section: each issue found and the fix applied, or the count of artifacts reviewed
 - `Responsive: PASS desktop + mobile` (required wording when shipping)
 - QA / `SHIP_PASS` status
 - Remaining risks
@@ -54,6 +56,9 @@ Before marking pass: confirm the brief’s **layout structural signature** is vi
 ## Do not
 
 - Set `"qa": "v2-pass"` while overflow, broken images, non-WebP photos, missing alt, or copy below floor -10% remain.
-- Set `"qa": "v2-pass"` if the site is missing ANY image assets or the required optimized video (`.webm` and/or `.mp4`). All image assets and the video MUST be present on the new website build.
+- Set `"qa": "v2-pass"` while the site is missing ANY image asset or its optimized video (`.webm` + `.mp4` + poster). All image assets and the video MUST be physically present and integrated before shipping.
+- Set `"qa": "v2-pass"` before completing the **Extreme Visual Audit** in `AGENTS.md` §14 — reviewing every artifact in `qa-screenshots/<slug>/INDEX.md` and watching `qa-recordings/<slug>-walkthrough.webm`.
+- Set `"qa": "v2-pass"` while `npm run check:assets -- <slug>` fails. Assets are site-private (`AGENTS.md` §12).
+- Set `"qa": "v2-pass"` while image-generation quota is exhausted and any asset is still a placeholder (`AGENTS.md` §15).
 - Commit, push, or open PRs unless explicitly asked - @.agents/rules/03-repo-safety.md.
 - "Fix" unrelated sites unless you introduced a regression.

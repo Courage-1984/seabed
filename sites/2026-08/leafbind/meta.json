@@ -11,5 +11,9 @@
   "created": "2026-08-26",
   "standard": "v2",
   "wordFloor": 1900,
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "hero inset frame",
+  "signatureEffect": "text scramble decode on reveal",
+  "video": "assets/leafbind-hero-inset-frame.webm",
+  "contract": "v2.1"
 }

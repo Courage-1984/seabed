@@ -6,5 +6,10 @@
   "created": "2026-06-21",
   "standard": "v2",
   "qa": "v2-pass",
-  "tags": ["brand", "concept"]
+  "tags": [
+    "brand",
+    "concept"
+  ],
+  "videoPlacement": "hover reveal",
+  "signatureEffect": "sticky section pinning with cross-fade"
 }

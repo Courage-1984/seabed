@@ -8,9 +8,22 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LAYOUT_FAMILIES, LAYOUT_FAMILY_SET } from './lib/layout-families.js';
+import { VIDEO_PLACEMENTS, VIDEO_PLACEMENT_SET, PLACEMENT_BY_FAMILY } from './lib/video-placements.js';
+import { SIGNATURE_EFFECTS, SIGNATURE_EFFECT_SET } from './lib/signature-effects.js';
 import { findAllSiteDirs, resolveSlugPath } from './lib/resolve-slug.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+
+/**
+ * Sites created on or after this date must carry the video + motion contract
+ * (meta.video / meta.videoPlacement / meta.signatureEffect, IntersectionObserver
+ * reveal system, prefers-reduced-motion block). Older sites predate the rule and
+ * are checked against the original contract only -- until they are remediated,
+ * at which point they declare `"contract": "v2.1"` in meta.json and are held to
+ * the full contract regardless of age (see audit/REMEDIATION.md).
+ */
+const CONTRACT_V2_1_CUTOFF = '2026-09-07';
+const CONTRACT_V2_1 = 'v2.1';
 
 const arg = process.argv[2];
 if (!arg) {
@@ -37,12 +50,16 @@ function walkFiles(dir, pred, out = []) {
 
 function checkSite(site) {
   const issues = [];
+  const warnings = [];
+  /** Video/motion findings are hard failures for versioned sites, advisory for legacy ones. */
+  const noteVersioned = (msg) => (versioned ? issues : warnings).push(msg);
+  let versioned = false;
   const siteDir = site.absolutePath;
   const metaPath = join(siteDir, 'meta.json');
 
   if (!existsSync(metaPath)) {
     issues.push('missing meta.json');
-    return issues;
+    return { issues, warnings };
   }
 
   let meta;
@@ -50,7 +67,7 @@ function checkSite(site) {
     meta = JSON.parse(readFileSync(metaPath, 'utf8'));
   } catch {
     issues.push('meta.json is not valid JSON');
-    return issues;
+    return { issues, warnings };
   }
 
   for (const key of ['title', 'blurb', 'hero', 'standard']) {
@@ -82,8 +99,54 @@ function checkSite(site) {
     issues.push('missing assets/favicon.svg');
   }
 
+  // --- video + motion contract (remediated sites, or those created on/after the cutoff) ---
+  versioned =
+    meta.contract === CONTRACT_V2_1 || (typeof meta.created === 'string' && meta.created >= CONTRACT_V2_1_CUTOFF);
+
+  if (meta.contract !== undefined && meta.contract !== CONTRACT_V2_1) {
+    issues.push(`meta.contract must be "${CONTRACT_V2_1}" when present (got ${JSON.stringify(meta.contract)})`);
+  }
+
+  if (versioned) {
+    if (!meta.video || typeof meta.video !== 'string') {
+      issues.push('meta missing "video" (assets/<slug>-<slot>.webm) — every site ships exactly one video');
+    } else if (!/^assets\/.+\.webm$/i.test(meta.video)) {
+      issues.push(`meta.video must be assets/*.webm (got ${meta.video})`);
+    } else if (!existsSync(join(siteDir, meta.video))) {
+      issues.push(`meta.video file missing: ${meta.video}`);
+    }
+
+    if (!meta.videoPlacement || !VIDEO_PLACEMENT_SET.has(meta.videoPlacement)) {
+      issues.push(
+        `meta.videoPlacement must be one of: ${VIDEO_PLACEMENTS.join(' | ')} (got ${JSON.stringify(meta.videoPlacement)})`
+      );
+    } else if (LAYOUT_FAMILY_SET.has(meta.layoutFamily)) {
+      const allowed = PLACEMENT_BY_FAMILY[meta.layoutFamily] ?? [];
+      if (!allowed.includes(meta.videoPlacement)) {
+        issues.push(
+          `meta.videoPlacement "${meta.videoPlacement}" is not compatible with layoutFamily "${meta.layoutFamily}" (allowed: ${allowed.join(' | ')})`
+        );
+      }
+    }
+
+    if (!meta.signatureEffect || !SIGNATURE_EFFECT_SET.has(meta.signatureEffect)) {
+      issues.push(
+        `meta.signatureEffect must be one of: ${SIGNATURE_EFFECTS.join(' | ')} (got ${JSON.stringify(meta.signatureEffect)})`
+      );
+    }
+  }
+
   const htmlFiles = walkFiles(siteDir, (name) => name.endsWith('.html'));
   if (!htmlFiles.length) issues.push('no HTML files');
+
+  /* Total tags is informational; the rule below counts distinct clips. */
+  let videoCount = 0;
+  /**
+   * Distinct video files referenced site-wide. The "exactly one video" rule is
+   * about shipping one clip, not one <video> tag: a shared footer or nav loop
+   * legitimately repeats the same element on every page of a multi-page site.
+   */
+  const videoSources = new Set();
 
   for (const htmlPath of htmlFiles) {
     const html = readFileSync(htmlPath, 'utf8');
@@ -104,6 +167,39 @@ function checkSite(site) {
         issues.push(`${rel}: non-WebP photo src ${first}`);
       }
     }
+
+    // <video> markup contract
+    const videoTags = [...html.matchAll(/<video\b[^>]*>/gi)].map((m) => m[0]);
+    videoCount += videoTags.length;
+    for (const m of html.matchAll(/<video\b[^>]*?\bsrc=["']([^"']+)["']/gi)) {
+      videoSources.add(m[1].replace(/\.(webm|mp4)$/i, ''));
+    }
+    for (const m of html.matchAll(/<source\b[^>]*?\bsrc=["']([^"']+\.(?:webm|mp4))["']/gi)) {
+      // The webm and mp4 of one clip are a single video, not two.
+      videoSources.add(m[1].replace(/\.(webm|mp4)$/i, ''));
+    }
+    for (const tag of videoTags) {
+      for (const attr of ['muted', 'loop', 'playsinline']) {
+        if (!new RegExp(`\\b${attr}\\b`, 'i').test(tag)) {
+          noteVersioned(`${rel}: <video> missing required ${attr} attribute`);
+        }
+      }
+      if (!/\bposter=/i.test(tag)) noteVersioned(`${rel}: <video> missing poster attribute`);
+      if (!/\bpreload=/i.test(tag)) noteVersioned(`${rel}: <video> missing preload attribute (use preload="metadata")`);
+      if (/\bcontrols\b/i.test(tag) && /\bautoplay\b/i.test(tag) && /\bloop\b/i.test(tag)) {
+        // ambient loops should not expose controls; a demo player should not autoplay-loop
+        noteVersioned(`${rel}: <video> combines controls with autoplay+loop — pick an ambient loop or a demo player`);
+      }
+    }
+  }
+
+  if (versioned && videoCount === 0) {
+    issues.push('no <video> element found — meta.video must be implemented in the markup');
+  }
+  if (videoSources.size > 1) {
+    noteVersioned(
+      `${videoSources.size} distinct video files referenced (${[...videoSources].join(', ')}) — every site ships exactly one video`
+    );
   }
 
   const cssFiles = walkFiles(siteDir, (name) => name.endsWith('.css'));
@@ -126,12 +222,31 @@ function checkSite(site) {
     issues.push(`leftover raster in assets/: ${r.slice(siteDir.length + 1).replace(/\\/g, '/')}`);
   }
 
-  return issues;
+  // --- motion budget (see AGENTS.md "Motion budget") ---
+  if (versioned) {
+    const jsSource = walkFiles(siteDir, (name) => name.endsWith('.js'))
+      .map((p) => readFileSync(p, 'utf8'))
+      .join('\n');
+    const cssSource = cssFiles.map((p) => readFileSync(p, 'utf8')).join('\n');
+
+    if (!/IntersectionObserver/.test(jsSource)) {
+      issues.push('no IntersectionObserver found — a staggered scroll-reveal system is mandatory');
+    }
+    if (!/prefers-reduced-motion/.test(cssSource + jsSource)) {
+      issues.push('no prefers-reduced-motion handling — motion must be neutralisable');
+    }
+    if (!/@keyframes|transition\s*:|animation\s*:/.test(cssSource)) {
+      issues.push('no CSS transitions/animations found — every site needs an implemented motion system');
+    }
+  }
+
+  return { issues, warnings };
 }
 
 let failed = 0;
+let warned = 0;
 for (const site of siteDescriptors) {
-  const issues = checkSite(site);
+  const { issues, warnings } = checkSite(site);
   if (issues.length) {
     failed++;
     console.error(`CONTRACT_FAIL: ${site.relativePath}/`);
@@ -139,6 +254,15 @@ for (const site of siteDescriptors) {
   } else {
     console.log(`CONTRACT_PASS: ${site.relativePath}/`);
   }
+  if (warnings.length) {
+    warned++;
+    console.warn(`CONTRACT_WARN: ${site.relativePath}/ (legacy — not yet remediated to contract ${CONTRACT_V2_1})`);
+    for (const w of warnings) console.warn(`  ~ ${w}`);
+  }
+}
+
+if (warned) {
+  console.warn(`\nCONTRACT_WARN: ${warned} legacy site(s) with advisory findings (not blocking)`);
 }
 
 if (failed) {

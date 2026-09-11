@@ -11,5 +11,7 @@
   "created": "2026-08-12",
   "standard": "v2",
   "wordFloor": 1900,
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "sticky rail loop",
+  "signatureEffect": "numeric counter roll-up"
 }

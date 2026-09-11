@@ -27,7 +27,9 @@ body {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 16px;
   line-height: 1.5;
-  overflow-x: hidden;
+  /* clip, not hidden: overflow-x:hidden makes body a scroll container, which
+     silently disables position:sticky for every descendant. */
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -239,6 +241,10 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   font-size: 1.5rem;
   letter-spacing: 0.05em;
   animation: marquee 20s linear infinite;
+  /* Skew is driven by scroll velocity (signature effect); the marquee
+     translation stays in the keyframes so the two never fight. */
+  transform: skewX(var(--marquee-skew, 0deg));
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
@@ -614,4 +620,171 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   font-size: 0.875rem;
   color: var(--color-surface-muted);
   margin-block-end: 0.5rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system. */
+.js-reveal [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — masked type fill.
+ * The loop is visible only through the numerals. background-clip: text
+ * is unsupported in some engines, so the solid accent below is the
+ * fallback and the video is simply never revealed there.
+ * ------------------------------------------------------------------ */
+.masked-type-block {
+  padding-block: clamp(3rem, 8vw, 6rem);
+  padding-inline: 1.5rem;
+  background-color: var(--color-primary);
+  border-block-end: var(--border-thick);
+  text-align: center;
+}
+
+/* Video-through-type via an SVG knockout: an opaque plate the colour of the
+   section sits over the loop with the numerals punched out of it, so the video
+   is visible only inside the glyphs. Deterministic wherever SVG masks work,
+   unlike blend-mode tricks; where they do not, the plate simply stays solid and
+   the accent-coloured heading underneath still reads. */
+.masked-type {
+  position: relative;
+  inline-size: min(100%, 60rem);
+  margin-inline: auto;
+  aspect-ratio: 3 / 1;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--color-primary);
+}
+.masked-type__video {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+/* The SVG knockout is the visual; this heading carries the same text for
+   assistive tech and document outline. Rendering it visually as well made its
+   glyphs bleed through the knockout holes, because the HTML and SVG type do not
+   land on identical metrics. */
+.masked-type__text {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.masked-type__knockout {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  inline-size: 100%;
+  block-size: 100%;
+  pointer-events: none;
+}
+.masked-type__caption {
+  margin: 1.5rem auto 0;
+  max-inline-size: 46ch;
+  color: hsl(210, 16%, 86%);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------------ *
+ * Micro-interactions — hover + focus-visible + active on every control.
+ * ------------------------------------------------------------------ */
+.cta-button {
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 var(--color-accent);
+}
+.cta-button:active {
+  transform: translate(0, 0);
+  box-shadow: 0 0 0 0 var(--color-accent);
+}
+
+.telemetry-dot {
+  animation-play-state: paused;
+}
+.telemetry-strip.is-live .telemetry-dot {
+  animation-play-state: running;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, marquee and loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .marquee-content {
+    animation: none;
+    transform: none;
+    white-space: normal;
+  }
+  .telemetry-dot,
+  .telemetry-strip.is-live .telemetry-dot {
+    animation: none;
+    opacity: 1;
+  }
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+  /* Hold the poster frame instead of looping. */
+  .masked-type__video {
+    display: none;
+  }
+  .masked-type {
+    background-image: url('./assets/trace-and-tungsten-masked-type-fill-poster.webp');
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* The header is sticky and the page navigates by in-page anchors, so targets
+   must clear it or they land underneath (AGENTS.md, scroll boundaries). */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height, 5rem) + 1rem);
 }

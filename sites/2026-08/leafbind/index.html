@@ -29,13 +29,13 @@
   <main id="main-content">
     
     <!-- Hero Block (Verbatim 4a) -->
-    <section class="hero container">
+    <section data-reveal class="hero container">
       <div class="hero-content">
         <span class="masthead">LeafBind // Tollesbury Fleet</span>
         <h1 class="hero-title">HAND-MADE BOOKS AND BOTANICAL PAPERS CRAFTED ABOARD A FLOATING BARGE.</h1>
         <p class="hero-subhead">We bind bespoke leather editions and pull handmade reed paper inside the hold of an 1898 Thames sailing vessel in Essex.</p>
         
-        <div class="status-bar">
+        <div data-scramble class="status-bar">
           <div class="status-dot"></div>
           Mooring: Woodrolfe Creek // Paper Vat: Active // Tide: Flooding
         </div>
@@ -45,12 +45,31 @@
         </p>
 
         <a href="./editions.html" class="btn">Explore The Editions</a>
+
+        <figure class="hero-inset">
+          <video
+            class="hero-inset__video"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata"
+            poster="./assets/leafbind-hero-inset-frame-poster.webp"
+            aria-labelledby="hero-inset-caption"
+          >
+            <source src="./assets/leafbind-hero-inset-frame.webm" type="video/webm">
+            <source src="./assets/leafbind-hero-inset-frame.mp4" type="video/mp4">
+          </video>
+          <figcaption class="hero-inset__caption" id="hero-inset-caption">
+            Sewing a signature on the frame &mdash; aboard SB Resolute, Woodrolfe Creek
+          </figcaption>
+        </figure>
       </div>
       <img src="./assets/hero-barge-bindery-hold.webp" alt="Hand bookbinding workshop inside the timber hold of the Thames sailing barge SB Resolute in Tollesbury Fleet." class="hero-image" fetchpriority="high" width="1376" height="768">
     </section>
 
     <!-- Flagship Section (Verbatim 4a) -->
-    <section class="container mb-lg" id="section-barge-charter">
+    <section data-reveal class="container mb-lg" id="section-barge-charter">
       <div class="section-header">
         <h2 class="section-title">01 // THE FLOATING TIMBER BINDERY</h2>
       </div>
@@ -62,28 +81,28 @@
     </section>
 
     <!-- Overlapping Card Stack Section (4b) -->
-    <section class="container card-stack-container" id="section-card-stack">
+    <section data-reveal class="container card-stack-container" id="section-card-stack">
       <div class="section-header">
         <span class="section-label">The Floating Studio Disciplines</span>
         <h2 class="section-title">Patient Mastery Across the Book</h2>
       </div>
       
-      <article class="card-stack-item">
+      <article data-reveal class="card-stack-item">
         <h3 class="card-title font-display">01. LETTERPRESS FOLIO EDITIONS</h3>
         <p class="card-text">Every letter is set by hand using cast metal type, meticulously locked into an iron chase, and printed slowly on our 1880 Albion iron hand press. The deep impression into our handmade deckled paper leaves a tactile, physical shadow that modern digital printing simply cannot replicate.</p>
       </article>
       
-      <article class="card-stack-item">
+      <article data-reveal class="card-stack-item">
         <h3 class="card-title font-display">02. BOTANICAL PAPER VAT</h3>
         <p class="card-text">Deep in the hold, our vat contains a living slurry of harvested marsh reeds and unbleached flax fibers. Through rhythmic, practiced motions, we form custom laid and wove sheets, pulling every individual piece by hand to create paper with unparalleled strength, longevity, and natural texture.</p>
       </article>
       
-      <article class="card-stack-item">
+      <article data-reveal class="card-stack-item">
         <h3 class="card-title font-display">03. FULL-LEATHER BOOKBINDING</h3>
         <p class="card-text">Our bindery sews every signature by hand onto raised hemp cords. We lace these directly into solid oak or millboard boards before covering the volume in British vegetable-tanned calfskin. The final touch is always a resilient, hand-worked silk endband to support the spine for centuries.</p>
       </article>
       
-      <article class="card-stack-item">
+      <article data-reveal class="card-stack-item">
         <h3 class="card-title font-display">04. CONSERVATION RE-CASING</h3>
         <p class="card-text">We provide sympathetic, structurally sound restoration for damaged family bibles, fragile 18th-century antiquarian folios, and ancient parchment manuscripts. We rely exclusively on reversible wheat starch paste, Japanese tissue repairs, and archival methods that honour the book's history.</p>
       </article>
@@ -94,7 +113,7 @@
     </section>
 
     <!-- Estuarine Raw Materials (4b) -->
-    <section class="container py-lg" id="section-estuary-materials">
+    <section data-reveal class="container py-lg" id="section-estuary-materials">
       <div class="section-header text-center">
         <span class="section-label">Sourcing &amp; Sustainability</span>
         <h2 class="section-title">Natural Chemistry &amp; Local Harvest</h2>
@@ -122,7 +141,7 @@
     </section>
 
     <!-- Patron Proof (4b) -->
-    <section class="patron-proof" id="section-patron-proof">
+    <section data-reveal class="patron-proof" id="section-patron-proof">
       <div class="container">
         <div class="section-header text-center">
           <span class="section-label" style="color:var(--color-bg)">Archival Integrity</span>
@@ -155,7 +174,7 @@
     </section>
 
     <!-- Consultation (4b) -->
-    <section class="container py-xl" id="section-barge-consultation">
+    <section data-reveal class="container py-xl" id="section-barge-consultation">
       <div class="section-header text-center">
         <span class="section-label">Visit the Bindery</span>
         <h2 class="section-title">Schedule a Consultation</h2>

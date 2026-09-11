@@ -40,20 +40,41 @@
   
   <main id="main-content">
     <section class="hero-section">
-      <video class="hero-bg" autoplay loop muted playsinline poster="./assets/hero-quarry-winding-house.webp">
-        <source src="./assets/hero-video.webm" type="video/webm">
-        <source src="./assets/hero-video.mp4" type="video/mp4">
-        <!-- Fallback image -->
-        <img src="./assets/hero-quarry-winding-house.webp" alt="TraceMend stone quarry workshop on an Eryri mountain ridge at dawn with radio antennas." class="hero-bg" fetchpriority="high">
-      </video>
+      <img
+        class="hero-bg"
+        src="./assets/hero-quarry-winding-house.webp"
+        alt=""
+        fetchpriority="high"
+        width="1376"
+        height="768"
+      >
       <div class="hero-content">
         <h1>Hand-Soldered Mesh Radios Built for Atlantic Mountain Gales</h1>
         <p>Open-hardware telemetry nodes and solar packet repeaters crafted inside a disused Welsh slate quarry. Commercial communications gear is engineered for air-conditioned office towers and planned obsolescence within three short seasons. We build through-hole radio repeaters and solar battery buffers inside an off-grid mountain workshop, housing each circuit in milled quarry slate and beeswaxed oak. Every node is assembled by hand to ensure when high-ridge gales sever the mains, your mountain telemetry keeps humming.</p>
         <a href="./hardware.html" class="btn btn-accent">Examine Node Hardware</a>
+
+        <figure class="hero-inset">
+          <video
+            class="hero-inset__video"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata"
+            poster="./assets/tracemend-hero-inset-frame-poster.webp"
+            aria-labelledby="hero-inset-caption"
+          >
+            <source src="./assets/tracemend-hero-inset-frame.webm" type="video/webm">
+            <source src="./assets/tracemend-hero-inset-frame.mp4" type="video/mp4">
+          </video>
+          <figcaption class="hero-inset__caption" id="hero-inset-caption">
+            Bench assembly at Cwmorthin — through-hole boards, hand-soldered
+          </figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="maker-column">
+    <section class="maker-column" data-reveal>
       <h2>The Solder Over Silicon Valley Doctrine: Electronics Built to Be Mended</h2>
       <div style="margin-block: 2rem;">
         <img src="./assets/hero-quarry-winding-house.webp" alt="TraceMend stone quarry workshop on an Eryri mountain ridge at dawn with radio antennas." style="width: 100%; height: auto; border-radius: var(--radius-md);">
@@ -66,7 +87,7 @@
     <section class="card-stack-container">
       <h2>The Core Ridge Deck</h2>
       
-      <article class="stack-card">
+      <article class="stack-card" data-reveal>
         <div class="card-rim">
           <span>TX-868-MK4</span>
           <span>RIDGE NODE MK IV</span>
@@ -91,7 +112,7 @@
         </div>
       </article>
 
-      <article class="stack-card">
+      <article class="stack-card" data-reveal>
         <div class="card-rim">
           <span>VHF-TBN-1</span>
           <span>TARN BRIDGE TRANSCEIVER</span>
@@ -116,7 +137,7 @@
         </div>
       </article>
 
-      <article class="stack-card">
+      <article class="stack-card" data-reveal>
         <div class="card-rim">
           <span>EMG-FLR-2</span>
           <span>FIELD FLASHER</span>
@@ -190,11 +211,15 @@
       <p style="text-align: center; max-width: 800px; margin-inline: auto;">Upland packet traffic intercepted and verified from live operational networks deployed across North Wales.</p>
       
       <div class="stat-block">
-        99.98% Upland Packet Delivery &nbsp;&nbsp;|&nbsp;&nbsp; 18 Ridge Nodes Active &nbsp;&nbsp;|&nbsp;&nbsp; 0 Closed Firmware Blocks
+        <span class="stat"><span class="stat__value" data-count-to="99.98" data-decimals="2">99.98</span>% Upland Packet Delivery</span>
+        <span class="stat__rule" aria-hidden="true">|</span>
+        <span class="stat"><span class="stat__value" data-count-to="18">18</span> Ridge Nodes Active</span>
+        <span class="stat__rule" aria-hidden="true">|</span>
+        <span class="stat"><span class="stat__value" data-count-to="0">0</span> Closed Firmware Blocks</span>
       </div>
 
       <div class="logs-grid">
-        <div class="log-entry">
+        <div class="log-entry" data-reveal>
           <div class="log-meta">
             <span>Snowdonia Search & Rescue</span>
             <span>NODE ID: SNOW-74</span>
@@ -202,7 +227,7 @@
           <p><strong>04:22 UTC:</strong> Gale force winds severed the commercial cellular mast on the eastern ridge. Our deployed TraceMend Mk IV nodes successfully formed a secondary mesh over the peak, delivering 140 vital GPS coordination packets from our forward rescue team directly to the valley floor command centre without a single dropped packet.</p>
           <span class="data-badge">Verified Transmission</span>
         </div>
-        <div class="log-entry">
+        <div class="log-entry" data-reveal>
           <div class="log-meta">
             <span>Moelwyn Meteorological Outpost</span>
             <span>NODE ID: MOEL-12</span>
@@ -210,7 +235,7 @@
           <p><strong>11:45 UTC:</strong> Six continuous days of heavy rime ice accumulation. The primary solar arrays are fully occluded, yet the LiFePO4 cold-weather buffer maintains nominal 3.3V logic levels. The Tarn Bridge transceiver continues to punch structural tension reports through the blizzard via VHF burst.</p>
           <span class="data-badge">Autonomous Operation</span>
         </div>
-        <div class="log-entry">
+        <div class="log-entry" data-reveal>
           <div class="log-meta">
             <span>Dyfi Forest Collective</span>
             <span>NODE ID: DYFI-88</span>
@@ -224,7 +249,7 @@
       </div>
     </section>
 
-    <section class="maker-column">
+    <section class="maker-column" data-reveal>
       <h2>Workshop Fellowship & Open Bench Schedule</h2>
       <p>Technology should not be a black box handed down from distant authorities; it must be an open craft shared freely among those who depend on it. We open the heavy oak doors of the Cwmorthin winding house twice a month to train our neighbours in the forgotten arts of circuit repair and structural soldering.</p>
       

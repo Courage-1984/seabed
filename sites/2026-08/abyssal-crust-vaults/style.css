@@ -25,7 +25,7 @@ body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 1rem;
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -365,4 +365,172 @@ img {
     .hero-content { padding: 6rem 1rem; }
     .btn { width: 100%; text-align: center; }
     .data-box { padding: 3rem 1rem; }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — CSS 3D card tilt. */
+[data-tilt] {
+  transform: translate3d(0, var(--reveal-y, 0px), 0) perspective(1000px) rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg));
+  transform-style: preserve-3d;
+  position: relative;
+  transition:
+    transform var(--dur-mid) var(--ease-out),
+    box-shadow var(--dur-mid) var(--ease-out);
+}
+[data-tilt].is-tilting {
+  transition:
+    transform 80ms linear,
+    box-shadow var(--dur-mid) var(--ease-out);
+}
+[data-tilt]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-out);
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0) 55%
+  );
+}
+[data-tilt].is-tilting::after {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-tilt],
+  [data-tilt].is-tilting {
+    transform: none;
+  }
+  [data-tilt]::after {
+    display: none;
+  }
+  [data-slot-video] {
+    display: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — masked type fill: the clip is visible only through the
+   numerals, so the band reads as type first and media second. */
+.masked-band {
+  padding-block: clamp(3rem, 7vw, 5rem);
+  padding-inline: 1.5rem;
+  text-align: center;
+}
+.masked-band__type {
+  margin: 0;
+  font-size: clamp(3.5rem, 14vw, 10rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Solid fallback first: if background-clip:text is unsupported the type
+     still reads as flat accent colour rather than vanishing. */
+  color: var(--color-primary, #00a6cc);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .masked-band__type {
+    color: transparent;
+    background-image: url('./assets/salt-crystals.webp');
+    background-size: cover;
+    background-position: center calc(50% + var(--mask-shift, 0px));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+.masked-band__caption {
+  max-inline-size: 60ch;
+  margin-inline: auto;
+  margin-block: 1rem 0;
+  font-size: 1rem;
+  color: var(--color-secondary, #333);
 }

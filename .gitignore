@@ -4,7 +4,15 @@ dist/
 .env
 
 qa-screenshots/
+qa-recordings/
 qa-visual/
 qa-report.json
+qa-visual-report.json
+
+# Operator drop-box for raw AI-generated video, consumed by npm run optimize:video
+videos_new/
+
+# Stray ffmpeg two-pass logs (optimize-video.js writes these to the OS temp dir)
+ffmpeg2pass*.log
 
 .firecrawl/

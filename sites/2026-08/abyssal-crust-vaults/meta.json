@@ -11,5 +11,7 @@
   "created": "2026-08-12",
   "standard": "v2",
   "wordFloor": 650,
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "masked type fill",
+  "signatureEffect": "CSS 3D card tilt"
 }

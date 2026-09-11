@@ -32,13 +32,20 @@
   
   <main id="main-content">
     <section class="hero-viewport" aria-label="Hero">
-      <video src="./assets/hero-video.webm" class="hero-bg" autoplay loop muted playsinline></video>
+      <img
+        src="./assets/hero-salt-mine-gallery.webp"
+        alt=""
+        class="hero-bg"
+        fetchpriority="high"
+        width="1376"
+        height="768"
+      >
       <div class="hero-content">
         <h1>Triassic Halite Curing Vaults 140 Metres Beneath Surface Humidity</h1>
         <p class="subhead">Certified zero-refrigeration dry-curing salt slabs and mineral blocks engineered by deep-mine extractors and naval logistics officers.</p>
         <p class="intro">Mechanical refrigeration units fluctuate across defrost cycles, introducing moisture spikes that rot hanging meat before deep curing completes. We quarry dense, unbroken halite strata one hundred and forty metres beneath the Cheshire oolite limestone to establish hermetic, moisture-negative curing vaults. Every mineral slab is diamond-sawn, density-graded, and dry-dispatched strictly to commercial preservation specifications.</p>
         <div class="hero-actions">
-          <a href="#requisition" class="btn btn-accent">Immediate Allocation Requisition</a>
+          <a href="#requisition" class="btn btn-accent" data-magnetic>Immediate Allocation Requisition</a>
         </div>
       </div>
     </section>
@@ -46,8 +53,24 @@
     <!-- Asymmetric Layout Container begins here -->
     <div class="asymmetric-layout">
       <!-- Section 2: Flagship -->
-      <section id="flagship" class="split-section">
-        <div class="pane-primary">
+      <section id="flagship" class="split-section video-split">
+        <div class="video-split__pane">
+          <video
+            class="video-split__player"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata"
+            poster="./assets/the-sub-oolite-salt-cellar-split-panel-poster.webp"
+            aria-label="Continuous halite face inside the vault gallery, 140 metres below the Cheshire oolite."
+          >
+            <source src="./assets/the-sub-oolite-salt-cellar-split-panel.webm" type="video/webm">
+            <source src="./assets/the-sub-oolite-salt-cellar-split-panel.mp4" type="video/mp4">
+          </video>
+          <p class="video-split__caption">Vault gallery, 140 m below the Cheshire oolite — continuous halite face</p>
+        </div>
+        <div data-reveal class="pane-primary video-split__content">
           <h2>Provenance: The Northwich–Devonport Subterranean Doctrine</h2>
           <div class="content-image" style="margin-block-end: 2rem;">
             <img src="./assets/hero-salt-mine-gallery.webp" alt="Vast subterranean salt mine gallery carved from solid halite." style="width: 100%; height: auto; display: block;">
@@ -56,7 +79,7 @@
           <p>The two groups pooled operations to construct a zero-power carcass curing cell. By lining subterranean limestone vaults with solid, interlocking five-hundred-millimetre salt masonry blocks, we eliminated the need for mechanical compressors entirely. The massive halite face acts as a natural desiccating engine, drawing unbound water vapor out of hanging primal cuts while maintaining a steady 13.5°C thermal baseline governed entirely by subterranean geothermal equilibrium.</p>
           <img src="./assets/flagship-curing-chamber.webp" alt="Dry-aging charcuterie hanging inside a vault lined with solid halite salt blocks." class="bleeding-graphic" loading="lazy" width="1200" height="896">
         </div>
-        <div class="pane-secondary">
+        <div data-reveal class="pane-secondary">
           <p>Today, every curing block and salt-lined casing shipped from our Cheshire depot adheres to this rigid military standard. Our halite blocks do not sweat, crumble, or harbour surface mould. When installed in commercial curing rooms, they drop the water activity of surrounding proteins below zero point eight five within forty-eight hours, locking in deep savory glutamates and guaranteeing indefinite stability without chemical nitrates.</p>
           <div class="metric-badge out-of-grid">
             <span class="metric-value">a<sub>w</sub> ≤ 0.85</span>
@@ -67,7 +90,7 @@
 
       <!-- Section 3: Registry -->
       <section id="registry" class="split-section inverse-bg">
-        <div class="pane-primary">
+        <div data-reveal class="pane-primary">
           <h2>Halite Ingot &amp; Vault Cask Registry</h2>
           <p>Heavy, dense mineral blocks and cured proteins engineered for commercial food operations. Exacting physical standards guarantee repeatable desiccating action across multiple curing cycles.</p>
           
@@ -127,7 +150,7 @@
 
       <!-- Section 4: Atmospheric Protocol -->
       <section id="protocol" class="split-section">
-        <div class="pane-primary">
+        <div data-reveal class="pane-primary">
           <h2>Subterranean Atmospheric Control Protocol</h2>
           <p>Natural subterranean physics consistently outperforms fallible electrical cooling equipment. Our vaults utilise a four-phase physical control cycle to maintain absolute equilibrium.</p>
           <ul class="protocol-list">
@@ -148,9 +171,7 @@
               Processed primals and slabs undergo moisture-barrier wrapping immediately upon egress to preserve internal equilibrium during transit.
             </li>
           </ul>
-        </div>
-        <div class="pane-secondary">
-          <a href="#requisition" class="btn btn-primary hover-flare">Inspect Vault Engineering Blueprint</a>
+          <a href="#requisition" class="btn btn-primary hover-flare" data-magnetic>Inspect Vault Engineering Blueprint</a>
         </div>
       </section>
 
@@ -215,7 +236,7 @@
 
       <!-- Section 6: Requisitions -->
       <section id="guild-tiers" class="split-section">
-        <div class="pane-primary">
+        <div data-reveal class="pane-primary">
           <h2>Commercial Fleet Requisitions &amp; Guild Tiers</h2>
           <p>Scalable procurement from palletised single units to full-vault lining contracts. We supply craft butcher syndicates, sovereign preservation reserves, and industrial food laboratories.</p>
           <div class="tier-grid">
@@ -236,14 +257,14 @@
             </div>
           </div>
         </div>
-        <div class="pane-secondary">
+        <div data-reveal class="pane-secondary">
           <a href="#requisition" class="btn btn-primary hover-flare">Request Contract Terms</a>
         </div>
       </section>
 
       <!-- Section 7: Testimonials -->
       <section id="testimonials" class="split-section inverse-bg">
-        <div class="pane-primary">
+        <div data-reveal class="pane-primary">
           <h2>Depot Testimonials &amp; Logged Station Records</h2>
           <p>Verified reliability under demanding operational standards across military and commercial sectors.</p>
           <div class="testimonial-block">
@@ -271,7 +292,7 @@
 
       <!-- Section 8: FAQ -->
       <section id="faq" class="split-section">
-        <div class="pane-primary">
+        <div data-reveal class="pane-primary">
           <h2>Technical Halite &amp; Transport FAQ</h2>
           <p>Authoritative guidance for butchers, food safety officers, and warehouse operators regarding handling and maintenance.</p>
           <dl class="faq-list">
@@ -301,7 +322,7 @@
 
       <!-- Section 9: Requisition -->
       <section id="requisition" class="split-section inverse-bg">
-        <div class="pane-primary">
+        <div data-reveal class="pane-primary">
           <h2>Direct Requisition Terminal</h2>
           <p>Direct supply from the Cheshire pit head with fast road freight routing. Enter logistical requirements below.</p>
           <form class="requisition-form">

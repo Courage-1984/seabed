@@ -6,5 +6,10 @@
   "created": "2026-06-24",
   "standard": "v2",
   "qa": "v2-pass",
-  "tags": ["brand", "concept"]
+  "tags": [
+    "brand",
+    "concept"
+  ],
+  "videoPlacement": "masked type fill",
+  "signatureEffect": "scroll-driven clip-path wipe"
 }

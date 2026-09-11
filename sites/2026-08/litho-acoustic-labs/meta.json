@@ -11,5 +11,7 @@
   "created": "2026-08-13",
   "standard": "v2",
   "wordFloor": 1900,
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "hero background",
+  "signatureEffect": "scroll-velocity marquee skew"
 }

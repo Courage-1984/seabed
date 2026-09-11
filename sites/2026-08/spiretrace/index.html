@@ -27,7 +27,7 @@
   </header>
   
   <main id="main-content">
-    <section id="hero" class="hero">
+    <section id="hero" class="hero" data-reveal>
       <div class="hero-overlay">
         <div class="hero-content">
           <div class="masthead">SPIRETRACE // HIGH-ANGLE EXPEDITIONS</div>
@@ -48,7 +48,7 @@
       <img src="./assets/hero-portaledge-sea-cliff.webp" alt="Scientific portaledge field station anchored on a vertical granite sea cliff during a botanical survey." fetchpriority="high" class="hero-image" width="1024" height="1024">
     </section>
 
-    <section id="section-expedition-charter" class="editorial-section">
+    <section id="section-expedition-charter" class="editorial-section" data-reveal>
       <h2 class="section-heading">01 // THE VERTICAL FIELD LABORATORY</h2>
       <div class="two-column-flow">
         <p><span class="drop-cap">R</span>upicolous lichens, calcicolous bryophytes, and cliff-dwelling vascular plants occupy some of the least surveyed microclimates in Western Europe. Standard mountaineering techniques are designed for rapid upward movement and destructive protection placement, frequently damaging the delicate vegetative crust that researchers travel to inspect. SpireTrace re-engineers big-wall climbing logistics into stable, low-impact scientific observation platforms that can remain anchored in place across five-day weather windows.</p>
@@ -60,7 +60,7 @@
       </div>
     </section>
 
-    <section id="section-access-disciplines" class="disciplines-section">
+    <section id="section-access-disciplines" class="disciplines-section" data-reveal>
       <h2 class="section-heading">02 // VERTICAL SURVEY DISCIPLINES</h2>
       <p class="section-lead">Precision access configurations developed exclusively for prolonged botanical taxonomy and high-angle microclimate research missions.</p>
       
@@ -81,11 +81,10 @@
           <p>Advanced non-penetrating clamping arrays and equalised static lines designed explicitly to prevent spalling on fragile limestone and sandstone cliffs. We employ broad surface-area dyneema webbing and tension-distributed mechanical cams to ensure delicate petrophytic flora remain entirely undisturbed. Our rigging guarantees zero permanent trace, satisfying the strictest requirements of national heritage trusts.</p>
         </article>
 
-        <article class="discipline-col group-hover-reveal">
-          <figure class="hover-reveal-container">
-            <img src="./assets/macro-lichen-rock-inspection.webp" alt="Extreme macro photograph of crustose lichens on basalt rock with a scientific millimeter scale." loading="lazy" width="1024" height="1024">
-            <video src="./assets/hover-reveal.webm" class="hover-video" preload="auto" loop muted playsinline></video>
-          </figure>
+        <article class="discipline-col">
+            <figure>
+              <img src="./assets/macro-lichen-rock-inspection.webp" alt="Extreme macro photograph of crustose lichens on basalt rock with a scientific millimeter scale." loading="lazy" width="1024" height="1024">
+            </figure>
           <h3>HIGH-RESOLUTION MACRO PHOTOGRAMMETRY</h3>
           <p>We deploy calibrated 100mm optical camera rigs mounted on micro-geared positioning heads, enabling precise 3D digital surface reconstruction of lichen crusts in situ. Integrated illumination arrays provide forensic-grade lighting against dark basalt formations, allowing taxonomists to capture apothecia structures and spore dispersion patterns with unparalleled metric accuracy.</p>
         </article>
@@ -96,7 +95,45 @@
       </div>
     </section>
 
-    <section id="section-rigging-physics" class="physics-section">
+    <div class="video-feature">
+      <button type="button" class="video-tile" data-video-open aria-haspopup="dialog" aria-controls="pitch-film">
+        <img
+          src="./assets/spiretrace-modal-feature-poster.webp"
+          alt=""
+          loading="lazy"
+          width="1280"
+          height="720"
+        >
+        <span class="video-tile__label">
+          <span class="video-tile__glyph" aria-hidden="true"></span>
+          <span class="video-tile__text">
+            <strong>Watch a portaledge pitch go in</strong>
+            Sea-cliff traverse and anchor set, filmed on the north face
+          </span>
+        </span>
+      </button>
+    </div>
+
+    <div class="video-modal" id="pitch-film" role="dialog" aria-modal="true" aria-label="Portaledge pitch" hidden>
+      <div class="video-modal__backdrop" data-video-close></div>
+      <div class="video-modal__frame">
+        <button type="button" class="video-modal__close" data-video-close aria-label="Close video">&times;</button>
+        <video
+          class="video-modal__player"
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="./assets/spiretrace-modal-feature-poster.webp"
+          aria-label="Climber setting a portaledge anchor on a sea-cliff traverse."
+        >
+          <source src="./assets/spiretrace-modal-feature.webm" type="video/webm">
+          <source src="./assets/spiretrace-modal-feature.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <section id="section-rigging-physics" class="physics-section" data-reveal>
       <h2 class="section-heading">03 // RIGGING MECHANICS &amp; CONSERVATION STANDARDS</h2>
       <p class="section-lead">Empirical structural verification satisfying institutional safety boards and conservation bodies.</p>
       
@@ -128,7 +165,7 @@
       </div>
     </section>
 
-    <section id="section-scientist-proof" class="proof-section">
+    <section id="section-scientist-proof" class="proof-section" data-reveal>
       <h2 class="section-heading">04 // FIELD RESEARCHER PROOF &amp; MISSION LOGS</h2>
       <p class="section-lead">Verified operational reports from institutional alpine ecologists and botanical specialists.</p>
       
@@ -160,7 +197,7 @@
       </div>
     </section>
 
-    <section id="section-expedition-terminal" class="terminal-section">
+    <section id="section-expedition-terminal" class="terminal-section" data-reveal>
       <h2 class="section-heading">05 // EXPEDITION INTAKE &amp; SIDING TERMINAL</h2>
       <p class="section-lead">Initiate survey logistics and reserve technical access hardware from the Fort William gear depot.</p>
       

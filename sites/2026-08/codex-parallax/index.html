@@ -29,13 +29,13 @@
   </header>
   
   <main id="main-content">
-    <section class="hero-parallax layered-parallax">
+    <section data-reveal class="hero-parallax layered-parallax">
       <div class="parallax-bg" style="background-image: url('./assets/hero.webp');"></div>
       <div class="hero-content parallax-fg">
         <h1>Multispectral Recovery and Archival Conservation of Ancient Palimpsest Manuscripts</h1>
         <p class="subhead">Codex Parallax Laboratory recovers erased lower-layer texts and stabilizes medieval vellum codices for monastic archives and Vatican libraries.</p>
         <div class="hero-cta">
-          <a href="#flagship" class="btn">Explore Spectral Conservation</a>
+          <a href="#flagship" class="btn" data-magnetic>Explore Spectral Conservation</a>
         </div>
       </div>
     </section>
@@ -51,7 +51,18 @@
       </div>
     </section>
 
-    <section class="stacked-cards">
+    <div class="slot-hover-wrap">
+      <div class="slot-hover" tabindex="0" data-slot-hover>
+        <img class="slot-hover__poster" src="./assets/uv-manuscript.webp" alt="A palimpsest under ultraviolet illumination, erased text rising through the overtext." loading="lazy" width="1280" height="720">
+        <div class="slot-hover__content">
+          <h3>Under the Erasure</h3>
+          <p>Sixteen narrow bands sweep the leaf from 365nm to 1050nm. The scraped undertext returns band by band.</p>
+          <span class="slot-hover__hint" aria-hidden="true">Hover or focus to watch the sweep</span>
+        </div>
+      </div>
+    </div>
+
+    <section data-reveal class="stacked-cards">
       <div class="container parallax-depth">
         <h2 class="section-title">16-Band Spectral Imaging & Image Processing</h2>
         <div class="card-grid">
@@ -76,12 +87,12 @@
           <p>This false-colour methodology is entirely non-destructive and requires absolutely zero chemical reagents to be applied to the vellum. Archivists can thereby access the lost classical treatises without risking the structural integrity of the upper liturgical texts, achieving a perfect balance between modern digital extraction and rigorous physical conservation.</p>
         </div>
         <div class="cta-wrap">
-          <a href="./imaging.html" class="btn">Explore Imaging Technology</a>
+          <a href="./imaging.html" class="btn" data-magnetic>Explore Imaging Technology</a>
         </div>
       </div>
     </section>
 
-    <section class="feature-grid">
+    <section data-reveal class="feature-grid">
       <div class="container parallax-depth">
         <h2 class="section-title">Non-Aqueous Gellan Gel & Collagen Conservation</h2>
         <div class="stat-line">Over 1,400 Folios Imaged and Stabilized Without Water Damage.</div>
@@ -100,12 +111,12 @@
           </div>
         </div>
         <div class="cta-wrap">
-          <a href="./conservation.html" class="btn">Read Conservation Methods</a>
+          <a href="./conservation.html" class="btn" data-magnetic>Read Conservation Methods</a>
         </div>
       </div>
     </section>
 
-    <section class="showcase-grid">
+    <section data-reveal class="showcase-grid">
       <div class="container parallax-depth">
         <h2 class="section-title">Featured Manuscript Recovery Projects</h2>
         <div class="card-grid">
@@ -127,12 +138,12 @@
           <p>These case studies represent the pinnacle of modern forensic paleography. By delivering uncompressed 16-bit digital matrices to international archivists, we provide them with the definitive toolset to decipher erased histories. The physical codices remain safely stabilized in our micro-tension frames, ensuring their survival for future generations of scholars.</p>
         </div>
         <div class="cta-wrap">
-          <a href="#" class="btn">View Case Study Archive</a>
+          <a href="#" class="btn" data-magnetic>View Case Study Archive</a>
         </div>
       </div>
     </section>
 
-    <section class="intake-console">
+    <section data-reveal class="intake-console">
       <div class="container">
         <h2 class="section-title">Requisition a Spectral Manuscript Assessment</h2>
         <p>The Codex Parallax Laboratory offers secure, climate-controlled intake protocols for international archival institutions. For extremely fragile codices, we deploy our portable field scanner directly to monastic and library vaults. Please note that all transported manuscripts require rigorous insurance verification and travel exclusively within sealed, nitrogen-purged climate-controlled cases.</p>

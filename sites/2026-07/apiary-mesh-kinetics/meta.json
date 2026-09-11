@@ -3,9 +3,15 @@
   "blurb": "Deterministic hive telemetry and acoustic pathogen detection without disrupting the colony's propolis seal.",
   "hero": "assets/hero-telemetry.webp",
   "layoutFamily": "brutalist stacked",
-  "tags": ["agriculture", "technology", "data"],
+  "tags": [
+    "agriculture",
+    "technology",
+    "data"
+  ],
   "created": "2026-07-24",
   "standard": "v2",
   "wordFloor": 1100,
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "marquee strip",
+  "signatureEffect": "staggered letter-by-letter headline"
 }

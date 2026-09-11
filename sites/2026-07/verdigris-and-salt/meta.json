@@ -7,5 +7,10 @@
   "standard": "v2",
   "wordFloor": 1900,
   "qa": "v2-pass",
-  "tags": ["brand", "concept"]
+  "tags": [
+    "brand",
+    "concept"
+  ],
+  "videoPlacement": "grid tile",
+  "signatureEffect": "animated SVG line-draw"
 }

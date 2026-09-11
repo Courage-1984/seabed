@@ -13,6 +13,8 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "footer ambient",
+    "signatureEffect": "magnetic proximity cursor element",
     "siteFolder": "./sites/2025-01/stake-and-bind"
   },
   {
@@ -27,6 +29,8 @@
       "brand",
       "concept"
     ],
+    "videoPlacement": "inline process demo",
+    "signatureEffect": "scroll-velocity marquee skew",
     "siteFolder": "./sites/2026-05/abyssal-data-recovery"
   },
   {
@@ -41,6 +45,8 @@
       "brand",
       "concept"
     ],
+    "videoPlacement": "hero inset frame",
+    "signatureEffect": "sticky section pinning with cross-fade",
     "siteFolder": "./sites/2026-05/abyssal-hardware"
   },
   {
@@ -55,6 +61,8 @@
       "brand",
       "concept"
     ],
+    "videoPlacement": "section transition band",
+    "signatureEffect": "text scramble decode on reveal",
     "siteFolder": "./sites/2026-05/apex-altitude-lab"
   },
   {
@@ -69,6 +77,8 @@
       "storage",
       "logistics"
     ],
+    "videoPlacement": "hover reveal",
+    "signatureEffect": "scroll-driven clip-path wipe",
     "siteFolder": "./sites/2026-06/archive-arcade"
   },
   {
@@ -83,6 +93,8 @@
       "storage",
       "logistics"
     ],
+    "videoPlacement": "masked type fill",
+    "signatureEffect": "progressive blur focus-pull",
     "siteFolder": "./sites/2026-06/aseptic-cellars"
   },
   {
@@ -97,6 +109,8 @@
       "brand",
       "concept"
     ],
+    "videoPlacement": "marquee strip",
+    "signatureEffect": "drifting grain overlay",
     "siteFolder": "./sites/2026-06/astrolabe-treks"
   },
   {
@@ -111,6 +125,8 @@
       "brand",
       "concept"
     ],
+    "videoPlacement": "modal feature",
+    "signatureEffect": "animated SVG line-draw",
     "siteFolder": "./sites/2026-06/backhaul-field-co"
   },
   {
@@ -125,6 +141,8 @@
       "brand",
       "concept"
     ],
+    "videoPlacement": "split panel",
+    "signatureEffect": "staggered letter-by-letter headline",
     "siteFolder": "./sites/2026-06/copper-cloche"
   },
   {
@@ -139,6 +157,8 @@
       "industrial",
       "hardware"
     ],
+    "videoPlacement": "hero background",
+    "signatureEffect": "masked scroll-through type",
     "siteFolder": "./sites/2026-06/cryotex-isolates"
   },
   {
@@ -153,6 +173,8 @@
       "storage",
       "logistics"
     ],
+    "videoPlacement": "footer ambient",
+    "signatureEffect": "CSS 3D card tilt",
     "siteFolder": "./sites/2026-06/drosera-vault"
   },
   {
@@ -167,6 +189,8 @@
       "industrial",
       "hardware"
     ],
+    "videoPlacement": "grid tile",
+    "signatureEffect": "numeric counter roll-up",
     "siteFolder": "./sites/2026-06/forge-and-feather"
   },
   {
@@ -181,6 +205,8 @@
       "maritime",
       "services"
     ],
+    "videoPlacement": "inline process demo",
+    "signatureEffect": "magnetic proximity cursor element",
     "siteFolder": "./sites/2026-06/halyard-and-hemp-sailmakers"
   },
   {
@@ -195,6 +221,8 @@
       "maritime",
       "services"
     ],
+    "videoPlacement": "section transition band",
+    "signatureEffect": "scroll-velocity marquee skew",
     "siteFolder": "./sites/2026-06/hull-and-hem-sailmenders"
   },
   {
@@ -209,6 +237,8 @@
       "brand",
       "concept"
     ],
+    "videoPlacement": "hover reveal",
+    "signatureEffect": "sticky section pinning with cross-fade",
     "siteFolder": "./sites/2026-06/k9-kinetic-recovery"
   },
   {
@@ -223,6 +253,8 @@
       "industrial",
       "hardware"
     ],
+    "videoPlacement": "marquee strip",
+    "signatureEffect": "text scramble decode on reveal",
     "siteFolder": "./sites/2026-06/karoo-brass-and-glass"
   },
   {
@@ -237,6 +269,8 @@
       "brand",
       "concept"
     ],
+    "videoPlacement": "masked type fill",
+    "signatureEffect": "scroll-driven clip-path wipe",
     "siteFolder": "./sites/2026-06/knot-and-westerly"
   },
   {
@@ -251,6 +285,8 @@
       "technology",
       "research"
     ],
+    "videoPlacement": "hero inset frame",
+    "signatureEffect": "progressive blur focus-pull",
     "siteFolder": "./sites/2026-06/lithic-fibre-dynamics"
   },
   {
@@ -265,6 +301,8 @@
       "brand",
       "concept"
     ],
+    "videoPlacement": "hero background",
+    "signatureEffect": "drifting grain overlay",
     "siteFolder": "./sites/2026-06/lithic-resonance"
   },
   {
@@ -279,6 +317,8 @@
       "industrial",
       "hardware"
     ],
+    "videoPlacement": "modal feature",
+    "signatureEffect": "animated SVG line-draw",
     "siteFolder": "./sites/2026-06/nepenthes-forge"
   },
   {
@@ -295,6 +335,8 @@
     "wordFloor": 650,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "footer ambient",
+    "signatureEffect": "numeric counter roll-up",
     "siteFolder": "./sites/2026-07/78-north-supply"
   },
   {
@@ -311,6 +353,8 @@
     "standard": "v2",
     "wordFloor": 1100,
     "qa": "v2-pass",
+    "videoPlacement": "marquee strip",
+    "signatureEffect": "staggered letter-by-letter headline",
     "siteFolder": "./sites/2026-07/apiary-mesh-kinetics"
   },
   {
@@ -327,6 +371,8 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "hero inset frame",
+    "signatureEffect": "scroll-driven clip-path wipe",
     "siteFolder": "./sites/2026-07/centrifugal-larder"
   },
   {
@@ -343,6 +389,8 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "hover reveal",
+    "signatureEffect": "text scramble decode on reveal",
     "siteFolder": "./sites/2026-07/gimbal-and-hoist"
   },
   {
@@ -359,6 +407,8 @@
     "standard": "v2",
     "wordFloor": 1100,
     "qa": "v2-pass",
+    "videoPlacement": "modal feature",
+    "signatureEffect": "animated SVG line-draw",
     "siteFolder": "./sites/2026-07/glaciermesh-infrastructure"
   },
   {
@@ -375,6 +425,8 @@
     "wordFloor": 1900,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "section transition band",
+    "signatureEffect": "magnetic proximity cursor element",
     "siteFolder": "./sites/2026-07/halcyon-tare"
   },
   {
@@ -390,6 +442,8 @@
       "industrial",
       "hardware"
     ],
+    "videoPlacement": "split panel",
+    "signatureEffect": "masked scroll-through type",
     "siteFolder": "./sites/2026-07/hearth-and-anvil"
   },
   {
@@ -406,6 +460,8 @@
     "wordFloor": 1900,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "split panel",
+    "signatureEffect": "drifting grain overlay",
     "siteFolder": "./sites/2026-07/isocline-preservation"
   },
   {
@@ -422,6 +478,8 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "sticky rail loop",
+    "signatureEffect": "sticky section pinning with cross-fade",
     "siteFolder": "./sites/2026-07/katabatic-shelters"
   },
   {
@@ -438,6 +496,8 @@
     "wordFloor": 650,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "masked type fill",
+    "signatureEffect": "scroll-velocity marquee skew",
     "siteFolder": "./sites/2026-07/kestrel-heavy"
   },
   {
@@ -453,6 +513,8 @@
     "created": "2026-07-29",
     "wordFloor": 1900,
     "standard": "v2",
+    "videoPlacement": "hero background",
+    "signatureEffect": "progressive blur focus-pull",
     "siteFolder": "./sites/2026-07/monolith-somatic"
   },
   {
@@ -467,6 +529,8 @@
       "industrial",
       "hardware"
     ],
+    "videoPlacement": "sticky rail loop",
+    "signatureEffect": "staggered letter-by-letter headline",
     "siteFolder": "./sites/2026-07/null-state-cryogenics"
   },
   {
@@ -481,6 +545,8 @@
       "brand",
       "concept"
     ],
+    "videoPlacement": "split panel",
+    "signatureEffect": "masked scroll-through type",
     "siteFolder": "./sites/2026-07/oxide-and-tide"
   },
   {
@@ -495,6 +561,8 @@
       "technology",
       "research"
     ],
+    "videoPlacement": "footer ambient",
+    "signatureEffect": "CSS 3D card tilt",
     "siteFolder": "./sites/2026-07/patch-parcel"
   },
   {
@@ -511,6 +579,8 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "inline process demo",
+    "signatureEffect": "staggered letter-by-letter headline",
     "siteFolder": "./sites/2026-07/pellucid-memory"
   },
   {
@@ -525,6 +595,8 @@
       "technology",
       "research"
     ],
+    "videoPlacement": "grid tile",
+    "signatureEffect": "numeric counter roll-up",
     "siteFolder": "./sites/2026-07/signal-and-silo"
   },
   {
@@ -539,6 +611,8 @@
       "technology",
       "research"
     ],
+    "videoPlacement": "inline process demo",
+    "signatureEffect": "magnetic proximity cursor element",
     "siteFolder": "./sites/2026-07/siloshield-dynamics"
   },
   {
@@ -554,6 +628,8 @@
       "technology",
       "research"
     ],
+    "videoPlacement": "inline process demo",
+    "signatureEffect": "CSS 3D card tilt",
     "siteFolder": "./sites/2026-07/substratum-signals"
   },
   {
@@ -568,6 +644,8 @@
       "industrial",
       "hardware"
     ],
+    "videoPlacement": "hover reveal",
+    "signatureEffect": "scroll-velocity marquee skew",
     "siteFolder": "./sites/2026-07/the-brass-and-thistle"
   },
   {
@@ -582,6 +660,8 @@
       "brand",
       "concept"
     ],
+    "videoPlacement": "section transition band",
+    "signatureEffect": "sticky section pinning with cross-fade",
     "siteFolder": "./sites/2026-07/the-midnight-forager"
   },
   {
@@ -596,6 +676,8 @@
       "brand",
       "concept"
     ],
+    "videoPlacement": "hero inset frame",
+    "signatureEffect": "text scramble decode on reveal",
     "siteFolder": "./sites/2026-07/the-slate-and-chisel"
   },
   {
@@ -610,6 +692,8 @@
       "storage",
       "logistics"
     ],
+    "videoPlacement": "masked type fill",
+    "signatureEffect": "scroll-driven clip-path wipe",
     "siteFolder": "./sites/2026-07/the-tidal-vault"
   },
   {
@@ -624,6 +708,8 @@
       "storage",
       "logistics"
     ],
+    "videoPlacement": "hero background",
+    "signatureEffect": "progressive blur focus-pull",
     "siteFolder": "./sites/2026-07/vapour-and-vault"
   },
   {
@@ -639,6 +725,8 @@
       "brand",
       "concept"
     ],
+    "videoPlacement": "grid tile",
+    "signatureEffect": "animated SVG line-draw",
     "siteFolder": "./sites/2026-07/verdigris-and-salt"
   },
   {
@@ -653,6 +741,8 @@
       "technology",
       "research"
     ],
+    "videoPlacement": "modal feature",
+    "signatureEffect": "drifting grain overlay",
     "siteFolder": "./sites/2026-07/xenon-arc"
   },
   {
@@ -669,6 +759,8 @@
     "standard": "v2",
     "wordFloor": 650,
     "qa": "v2-pass",
+    "videoPlacement": "masked type fill",
+    "signatureEffect": "CSS 3D card tilt",
     "siteFolder": "./sites/2026-08/abyssal-crust-vaults"
   },
   {
@@ -685,6 +777,8 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "sticky rail loop",
+    "signatureEffect": "text scramble decode on reveal",
     "siteFolder": "./sites/2026-08/aegir-thermal-lugger"
   },
   {
@@ -701,6 +795,8 @@
     "standard": "v2",
     "wordFloor": 1100,
     "qa": "v2-pass",
+    "videoPlacement": "hover reveal",
+    "signatureEffect": "numeric counter roll-up",
     "siteFolder": "./sites/2026-08/brimstone-basalt"
   },
   {
@@ -717,6 +813,8 @@
     "standard": "v2",
     "wordFloor": 1900,
     "qa": "v2-pass",
+    "videoPlacement": "sticky rail loop",
+    "signatureEffect": "numeric counter roll-up",
     "siteFolder": "./sites/2026-08/cedar-and-salt"
   },
   {
@@ -733,6 +831,8 @@
     "standard": "v2",
     "wordFloor": 1900,
     "qa": "v2-pass",
+    "videoPlacement": "hover reveal",
+    "signatureEffect": "magnetic proximity cursor element",
     "siteFolder": "./sites/2026-08/codex-parallax"
   },
   {
@@ -749,6 +849,8 @@
     "wordFloor": 650,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "modal feature",
+    "signatureEffect": "scroll-driven clip-path wipe",
     "siteFolder": "./sites/2026-08/deep-crust-mycelial"
   },
   {
@@ -765,6 +867,10 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "grid tile",
+    "signatureEffect": "staggered letter-by-letter headline",
+    "video": "assets/forge-and-fallow-grid-tile.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/forge-and-fallow"
   },
   {
@@ -781,6 +887,10 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "inline process demo",
+    "signatureEffect": "sticky section pinning with cross-fade",
+    "video": "assets/gigaglyph-inline-process-demo.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/gigaglyph"
   },
   {
@@ -797,6 +907,8 @@
     "wordFloor": 650,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "hero inset frame",
+    "signatureEffect": "scroll-velocity marquee skew",
     "siteFolder": "./sites/2026-08/hverir-hearth"
   },
   {
@@ -813,6 +925,8 @@
     "standard": "v2",
     "wordFloor": 650,
     "qa": "v2-pass",
+    "videoPlacement": "inline process demo",
+    "signatureEffect": "sticky section pinning with cross-fade",
     "siteFolder": "./sites/2026-08/k-44-ordnance-canvas"
   },
   {
@@ -829,6 +943,8 @@
     "standard": "v2",
     "wordFloor": 1100,
     "qa": "v2-pass",
+    "videoPlacement": "split panel",
+    "signatureEffect": "scroll-driven clip-path wipe",
     "siteFolder": "./sites/2026-08/k-92-maritime-victualling"
   },
   {
@@ -845,6 +961,8 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "footer ambient",
+    "signatureEffect": "CSS 3D card tilt",
     "siteFolder": "./sites/2026-08/kajak-lauget"
   },
   {
@@ -861,6 +979,10 @@
     "standard": "v2",
     "wordFloor": 1900,
     "qa": "v2-pass",
+    "videoPlacement": "hero inset frame",
+    "signatureEffect": "text scramble decode on reveal",
+    "video": "assets/leafbind-hero-inset-frame.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/leafbind"
   },
   {
@@ -877,6 +999,8 @@
     "standard": "v2",
     "wordFloor": 1900,
     "qa": "v2-pass",
+    "videoPlacement": "hero background",
+    "signatureEffect": "scroll-velocity marquee skew",
     "siteFolder": "./sites/2026-08/litho-acoustic-labs"
   },
   {
@@ -893,6 +1017,8 @@
     "wordFloor": 1900,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "grid tile",
+    "signatureEffect": "staggered letter-by-letter headline",
     "siteFolder": "./sites/2026-08/lock-and-sluice"
   },
   {
@@ -909,6 +1035,8 @@
     "standard": "v2",
     "wordFloor": 1100,
     "qa": "v2-pass",
+    "videoPlacement": "hero inset frame",
+    "signatureEffect": "drifting grain overlay",
     "siteFolder": "./sites/2026-08/lv-74-marine-apothecary"
   },
   {
@@ -925,6 +1053,8 @@
     "standard": "v2",
     "wordFloor": 1100,
     "qa": "v2-pass",
+    "videoPlacement": "grid tile",
+    "signatureEffect": "staggered letter-by-letter headline",
     "siteFolder": "./sites/2026-08/magnaloom"
   },
   {
@@ -941,6 +1071,8 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "hero inset frame",
+    "signatureEffect": "masked scroll-through type",
     "siteFolder": "./sites/2026-08/mantlecut-geology"
   },
   {
@@ -957,6 +1089,8 @@
     "wordFloor": 650,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "marquee strip",
+    "signatureEffect": "sticky section pinning with cross-fade",
     "siteFolder": "./sites/2026-08/marion-fissure"
   },
   {
@@ -973,6 +1107,8 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "marquee strip",
+    "signatureEffect": "CSS 3D card tilt",
     "siteFolder": "./sites/2026-08/mash-and-manifold"
   },
   {
@@ -989,6 +1125,8 @@
     "wordFloor": 1900,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "grid tile",
+    "signatureEffect": "masked scroll-through type",
     "siteFolder": "./sites/2026-08/nadir-quartzware"
   },
   {
@@ -1005,6 +1143,10 @@
     "standard": "v2",
     "wordFloor": 650,
     "qa": "v2-pass",
+    "videoPlacement": "section transition band",
+    "signatureEffect": "scroll-driven clip-path wipe",
+    "video": "assets/pellucid-section-transition-band.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/pellucid"
   },
   {
@@ -1021,6 +1163,8 @@
     "standard": "v2",
     "wordFloor": 1100,
     "qa": "v2-pass",
+    "videoPlacement": "sticky rail loop",
+    "signatureEffect": "masked scroll-through type",
     "siteFolder": "./sites/2026-08/pentland-acoustic-telemetry-works"
   },
   {
@@ -1037,6 +1181,8 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "footer ambient",
+    "signatureEffect": "animated SVG line-draw",
     "siteFolder": "./sites/2026-08/sarek-bark-gear"
   },
   {
@@ -1053,6 +1199,10 @@
     "wordFloor": 650,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "modal feature",
+    "signatureEffect": "drifting grain overlay",
+    "video": "assets/spiretrace-modal-feature.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/spiretrace"
   },
   {
@@ -1069,6 +1219,8 @@
     "standard": "v2",
     "wordFloor": 1900,
     "qa": "v2-pass",
+    "videoPlacement": "section transition band",
+    "signatureEffect": "magnetic proximity cursor element",
     "siteFolder": "./sites/2026-08/stave-and-hoops"
   },
   {
@@ -1085,6 +1237,8 @@
     "wordFloor": 650,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "split panel",
+    "signatureEffect": "drifting grain overlay",
     "siteFolder": "./sites/2026-08/sub-lithic-seals"
   },
   {
@@ -1101,6 +1255,8 @@
     "standard": "v2",
     "qa": "v2-pass",
     "wordFloor": 1100,
+    "videoPlacement": "inline process demo",
+    "signatureEffect": "progressive blur focus-pull",
     "siteFolder": "./sites/2026-08/sub-litho-kinetic"
   },
   {
@@ -1117,6 +1273,8 @@
     "standard": "v2",
     "wordFloor": 1900,
     "qa": "v2-pass",
+    "videoPlacement": "masked type fill",
+    "signatureEffect": "magnetic proximity cursor element",
     "siteFolder": "./sites/2026-08/tendonforge"
   },
   {
@@ -1133,6 +1291,8 @@
     "standard": "v2",
     "wordFloor": 650,
     "qa": "v2-pass",
+    "videoPlacement": "hero background",
+    "signatureEffect": "scroll-velocity marquee skew",
     "siteFolder": "./sites/2026-08/the-cryo-biome-crypt"
   },
   {
@@ -1148,6 +1308,8 @@
     "created": "2026-08-18",
     "standard": "v2",
     "wordFloor": 650,
+    "videoPlacement": "modal feature",
+    "signatureEffect": "animated SVG line-draw",
     "siteFolder": "./sites/2026-08/the-cryo-pelagic-cell"
   },
   {
@@ -1163,6 +1325,8 @@
     "created": "2026-08-17",
     "wordFloor": 1100,
     "standard": "v2",
+    "videoPlacement": "footer ambient",
+    "signatureEffect": "progressive blur focus-pull",
     "siteFolder": "./sites/2026-08/the-fenland-yeast-guild"
   },
   {
@@ -1179,6 +1343,8 @@
     "standard": "v2",
     "wordFloor": 1100,
     "qa": "v2-pass",
+    "videoPlacement": "section transition band",
+    "signatureEffect": "text scramble decode on reveal",
     "siteFolder": "./sites/2026-08/the-hardpan-outfitter"
   },
   {
@@ -1195,6 +1361,10 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "marquee strip",
+    "signatureEffect": "animated SVG line-draw",
+    "video": "assets/the-outer-isles-kelp-weave-guild-marquee-strip.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/the-outer-isles-kelp-weave-guild"
   },
   {
@@ -1211,6 +1381,8 @@
     "standard": "v2",
     "wordFloor": 1900,
     "qa": "v2-pass",
+    "videoPlacement": "hover reveal",
+    "signatureEffect": "numeric counter roll-up",
     "siteFolder": "./sites/2026-08/the-salt-barrow-malt-shieling"
   },
   {
@@ -1227,6 +1399,10 @@
     "standard": "v2",
     "wordFloor": 1900,
     "qa": "v2-pass",
+    "videoPlacement": "footer ambient",
+    "signatureEffect": "progressive blur focus-pull",
+    "video": "assets/the-sub-solway-bismuth-foundries-footer-ambient.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/the-sub-solway-bismuth-foundries"
   },
   {
@@ -1243,6 +1419,10 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "hover reveal",
+    "signatureEffect": "masked scroll-through type",
+    "video": "assets/uhv-74-precision-hover-reveal.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/uhv-74-precision"
   },
   {
@@ -1260,7 +1440,52 @@
     "created": "2026-09-01",
     "wordFloor": 650,
     "standard": "v2",
+    "videoPlacement": "inline process demo",
+    "signatureEffect": "CSS 3D card tilt",
+    "video": "assets/ash-07-studio-inline-process-demo.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-09/ash-07-studio"
+  },
+  {
+    "title": "GrainFold",
+    "blurb": "Heritage sourdough stoneground and wood-fired inside a granite sea-powder house cut off twice daily by the tide.",
+    "hero": "assets/hero-wood-fired-scotch-oven.webp",
+    "layoutFamily": "overlapping card-stack",
+    "tags": [
+      "bakery",
+      "provenance",
+      "fermentation"
+    ],
+    "created": "2026-09-06",
+    "wordFloor": 650,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "videoPlacement": "modal feature",
+    "signatureEffect": "sticky section pinning with cross-fade",
+    "video": "assets/grainfold-modal-feature.webm",
+    "contract": "v2.1",
+    "siteFolder": "./sites/2026-09/grainfold"
+  },
+  {
+    "title": "Marrow & Manifold",
+    "blurb": "Caloric-dense, zero-gas metabolic broths and bioavailable marrow pastes engineered to eliminate high-pressure nervous syndrome tremors and metabolic wasting in 350-metre saturation environments.",
+    "hero": "assets/hero-saturation-chamber-interior.webp",
+    "layoutFamily": "brutalist stacked",
+    "tags": [
+      "nutrition",
+      "hyperbaric",
+      "commercial-diving",
+      "saturation"
+    ],
+    "created": "2026-09-06",
+    "wordFloor": 1100,
+    "standard": "v2",
+    "qa": "v2-pass",
+    "videoPlacement": "hero background",
+    "signatureEffect": "text scramble decode on reveal",
+    "video": "assets/marrow-and-manifold-hero-background.webm",
+    "contract": "v2.1",
+    "siteFolder": "./sites/2026-09/marrow-and-manifold"
   },
   {
     "title": "The Sub-Oolite Salt-Cellar",
@@ -1276,6 +1501,10 @@
     "wordFloor": 1100,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "split panel",
+    "signatureEffect": "magnetic proximity cursor element",
+    "video": "assets/the-sub-oolite-salt-cellar-split-panel.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-09/the-sub-oolite-salt-cellar"
   },
   {
@@ -1292,6 +1521,10 @@
     "wordFloor": 650,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "masked type fill",
+    "signatureEffect": "scroll-velocity marquee skew",
+    "video": "assets/trace-and-tungsten-masked-type-fill.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-09/trace-and-tungsten"
   },
   {
@@ -1308,6 +1541,10 @@
     "wordFloor": 1900,
     "standard": "v2",
     "qa": "v2-pass",
+    "videoPlacement": "hero inset frame",
+    "signatureEffect": "numeric counter roll-up",
+    "video": "assets/tracemend-hero-inset-frame.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-09/tracemend"
   }
 ]

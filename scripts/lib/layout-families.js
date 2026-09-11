@@ -18,6 +18,9 @@ export const LAYOUT_FAMILIES = [
   'layered-parallax',
   'split-screen scroll',
   'neo-brutalist masonry',
+  'cinematic full-bleed canvas',
+  'index / ledger',
+  'modular grid-break collage',
 ];
 
 export const LAYOUT_FAMILY_SET = new Set(LAYOUT_FAMILIES);

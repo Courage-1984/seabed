@@ -42,7 +42,7 @@
     <section class="hero">
       <img src="./assets/hero-intertidal-forge.webp" alt="Mobile tracked forge shoeing a draft horse on the Morecambe Bay sandflats at low tide" class="hero-img" fetchpriority="high">
       <div class="container">
-        <h1>Intertidal Draft Horseshoeing Forged on Open Bay Sands</h1>
+        <h1 data-split-headline>Intertidal Draft Horseshoeing Forged on Open Bay Sands</h1>
         <p class="hero-subhead">Mobile amphibious forge units delivering titanium-reinforced draft shoes and salt-marsh harness ironwork before the tide turns.</p>
         <p class="hero-intro">Conventional mild-steel horseshoes vacuum-lock into tidal silt and disintegrate under daily immersion in corrosive estuarine brine. We tow track-mounted gas forges directly onto the low-water sand flats of Morecambe Bay to fit custom wide-webbed draft shoes and tungsten grip caulkins on working teams. Every shoe is shaped, leveled, and nailed within a strict four-hour tidal window before the sea claims the sandbar.</p>
         <a href="#dispatch" class="btn btn-accent">Dispatch Mobile Forge Skiff</a>
@@ -69,38 +69,56 @@
         <p class="text-center text-muted" style="max-width: 600px; margin-inline: auto; margin-block-end: var(--space-6);">Specialized, heavy-duty coastal draft gear built for severe marine silt and constant saltwater brine immersion. Engineered to withstand the crushing suction and friction of working estuaries.</p>
         
         <div class="bento-grid">
-          <div class="bento-tile bento-tile-1">
+          <div data-reveal class="bento-tile bento-tile-1">
             <img src="./assets/bento-cartmel-shoe.webp" alt="Cartmel wide-web draft horseshoe with tungsten cleats resting on wet sand" loading="lazy">
             <h3>Cartmel Wide-Web Draft Shoe</h3>
             <p>Our flagship laser-cut concave profile plate, weighing exactly 1.4 kg per shoe. The pronounced concave inner rim aggressively sheds clinging estuary mud, entirely eliminating the vacuum lock that typically strains tendons during heavy tidal hauling operations. Constructed from marine-grade titanium-steel alloy for maximum structural durability against submerged limestone rocks.</p>
           </div>
           
-          <div class="bento-tile bento-tile-2">
+          <div data-reveal class="bento-tile bento-tile-2">
             <img src="./assets/bento-tungsten-cleats.webp" alt="Machined tungsten carbide screw-in studs for mud traction on a leather apron" loading="lazy">
             <h3>Screw-in Tungsten Cleats</h3>
             <p>Machined self-cleaning threaded mud caulkins forged from ultra-dense tungsten carbide. They pierce through slick algae layers into the underlying hard-packed quartz sand to provide unparalleled mechanical grip for commercial draft teams.</p>
           </div>
           
-          <div class="bento-tile bento-tile-3">
+          <div data-reveal class="bento-tile bento-tile-3">
             <img src="./assets/bento-harness-hardware.webp" alt="Heavy marine stainless steel and bronze draft harness hardware on weathered wood" loading="lazy">
             <h3>Marine Bronze Couplers</h3>
             <p>Solid 316 stainless steel and cast bronze trace couplers rigorously tested to 35 kN breaking strain, immune to the severe galvanic corrosion of daily seawater exposure.</p>
           </div>
           
-          <div class="bento-tile bento-tile-4">
-            <img src="./assets/favicon.svg" alt="Sacrificial Zinc Anodes" style="object-fit: contain; padding: 2rem;" loading="lazy">
+          <div data-reveal class="bento-tile bento-tile-4">
+            <img src="./assets/product-tracked-tender.webp" alt="Tracked amphibious forge tender parked on the low-water sand flats" loading="lazy">
             <h3>Zinc Sacrificial Anodes</h3>
             <p>Bespoke anti-electrolytic zinc inserts that draw oxidative damage away from the steel nails, preserving hoof wall integrity by acting as a sacrificial galvanic barrier.</p>
           </div>
           
-          <div class="bento-tile bento-tile-5">
+          <div data-reveal class="bento-tile bento-tile-5">
             <h3>Pine-Tar & Alginate Barrier</h3>
             <p>A rigorous waterproof hoof dressing formulated from traditional Stockholm pine tar and locally harvested seaweed alginates. Creates an impermeable, antimicrobial shield against anaerobic saltwater thrush.</p>
           </div>
           
-          <div class="bento-tile bento-tile-6">
+          <div data-reveal class="bento-tile bento-tile-6">
             <h3>Rapid Bay Callout Tool Roll</h3>
             <p>A specialized, compact farriery kit rolled in heavy waxed canvas containing titanium clinchers, an aggressive diamond-cut rasp, and a hardened steel hoof knife for instant on-sand pathology corrections during emergency tidal deployments.</p>
+          </div>
+
+          <div data-reveal class="bento-tile bento-tile-video">
+            <video
+              class="bento-video"
+              autoplay
+              loop
+              muted
+              playsinline
+              preload="metadata"
+              poster="./assets/forge-and-fallow-grid-tile-poster.webp"
+              aria-label="Farrier shaping a draft shoe on an anvil mounted in an amphibious skiff at low water."
+            >
+              <source src="./assets/forge-and-fallow-grid-tile.webm" type="video/webm">
+              <source src="./assets/forge-and-fallow-grid-tile.mp4" type="video/mp4">
+            </video>
+            <h3>The Four-Hour Window</h3>
+            <p>Anvil, gas forge and coal tray ride the skiff onto the bay at slack low water. Every shoe is shaped, levelled and nailed before the flood tide reclaims the sandbar &mdash; there is no second attempt.</p>
           </div>
         </div>
         
@@ -321,9 +339,14 @@
     </section>
 
     <section id="dispatch" class="section console-section">
-      <video class="console-ambient-video" autoplay loop muted playsinline>
-        <source src="./assets/footer-ambient.webm" type="video/webm">
-      </video>
+      <img
+        class="console-ambient-video"
+        src="./assets/console-ambient-still.webp"
+        alt=""
+        loading="lazy"
+        width="1280"
+        height="720"
+      >
       <div class="container console-grid">
         <div class="console-info">
           <h2>Dispatch Desk & Intertidal Booking Console</h2>

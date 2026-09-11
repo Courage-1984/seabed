@@ -11,5 +11,7 @@
   "created": "2026-08-06",
   "standard": "v2",
   "qa": "v2-pass",
-  "wordFloor": 1100
+  "wordFloor": 1100,
+  "videoPlacement": "inline process demo",
+  "signatureEffect": "progressive blur focus-pull"
 }

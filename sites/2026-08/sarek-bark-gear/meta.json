@@ -11,5 +11,7 @@
   "created": "2026-08-09",
   "wordFloor": 1100,
   "standard": "v2",
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "footer ambient",
+  "signatureEffect": "animated SVG line-draw"
 }

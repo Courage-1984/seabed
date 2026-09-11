@@ -11,5 +11,9 @@
   "created": "2026-08-26",
   "wordFloor": 1100,
   "standard": "v2",
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "inline process demo",
+  "signatureEffect": "sticky section pinning with cross-fade",
+  "video": "assets/gigaglyph-inline-process-demo.webm",
+  "contract": "v2.1"
 }

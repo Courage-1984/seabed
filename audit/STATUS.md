@@ -39,6 +39,18 @@ SITES_INDEX_CADENCE: manual-weekly
 | 11 layout families + structural-signature builder rules             | Applied                                                |
 | External brief prompt snapshot + roster paste from `sites:index`    | Applied                                                |
 | Hub discovery strip + `meta.created` (required) + latest-drop stage | Applied                                                |
+| Sector pool 7 -> 12 + rotation reaches all 12 within a month        | Applied                                                |
+| Layout families 14 -> 17 (+ signature-motion column)                | Applied                                                |
+| Layout anti-repetition: hard-ban last 8 + 20%-of-last-25 cap        | Applied; computed by `sites:index`                      |
+| Seeded video placement (12 slots x family compatibility)            | Applied; replaces the day-of-month matrix              |
+| `meta.video` / `videoPlacement` / `signatureEffect`                  | Applied; required for sites created >= 2026-09-07      |
+| `optimize-video.js` (VP9 + mp4 + poster, ffmpeg)                    | Applied                                                |
+| Mandatory motion budget + 12 signature effects                      | Applied; enforced in `check:contract`                   |
+| `visual_qa.js` tiled screenshots + walkthrough recording            | Applied                                                |
+| Per-site asset isolation (`check:assets`, wired into ship gate)     | Applied                                                |
+| Image-generation quota block, last in the response                  | Applied                                                |
+| `<video>` contract checks in `qa_sweep.js`                          | Applied                                                |
+| `_sites-index.md` pipe-escaping bugfix + newest-first ordering      | Fixed                                                  |
 
 ## Residual / deferred (intentional)
 
@@ -49,3 +61,5 @@ SITES_INDEX_CADENCE: manual-weekly
 | Firecrawl (or other) MCP in `mcp_config.json` | Keep empty; image gen uses IDE built-ins          |
 | Hard-fail hooks                               | Warn-only; ship gates live in QA scripts + skills |
 | Invent `wordFloor` for all legacy sites       | Set at ship when brief floor is known             |
+| Backfill `video`/`videoPlacement`/`signatureEffect` on 88 legacy sites | Contract cutoff 2026-09-07; legacy reported as warnings |
+| Deduplicate the 22 existing cross-site asset collisions | `check:assets --all` reports them as advisory; hard-fails per slug |

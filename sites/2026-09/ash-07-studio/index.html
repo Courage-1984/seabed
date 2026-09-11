@@ -39,17 +39,39 @@
           </div>
         </div>
         <div class="hero-image-wrapper">
-          <video src="./assets/hero-video.webm" aria-label="Hand-throwing a stoneware clay bowl inside Chamber 7 of the Oakeley slate mine." preload="auto" width="1280" height="720" autoplay loop muted playsinline></video>
+          <img
+            src="./assets/hero-subterranean-potters-wheel.webp"
+            alt="Potter throwing a stoneware bowl at the wheel inside Chamber 7 of the Oakeley slate mine."
+            fetchpriority="high"
+            width="1280"
+            height="720"
+          >
         </div>
       </div>
     </section>
 
     <section id="section-subterranean-manifesto" class="container" aria-labelledby="manifesto-heading">
-      <div class="brutal-box manifesto-container">
+      <div data-reveal class="brutal-box manifesto-container">
         <h2 id="manifesto-heading">01 // THE SUBTERRANEAN POTTER'S WHEEL</h2>
-        <div class="content-image" style="margin-block-end: 2rem;">
-          <img src="./assets/hero-subterranean-potters-wheel.webp" alt="Subterranean potter's wheel inside a Welsh slate cavern." style="width: 100%; height: auto; display: block;">
-        </div>
+        <figure class="process-demo">
+          <video
+            class="process-demo__video"
+            controls
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="./assets/ash-07-studio-inline-process-demo-poster.webp"
+            aria-labelledby="process-demo-caption"
+          >
+            <source src="./assets/ash-07-studio-inline-process-demo.webm" type="video/webm">
+            <source src="./assets/ash-07-studio-inline-process-demo.mp4" type="video/mp4">
+          </video>
+          <figcaption class="process-demo__caption" id="process-demo-caption">
+            <span class="process-demo__label">CHAMBER 7 // THROWING</span>
+            Wide cantilevered rim pulled at 98% humidity — the elastic density surface studios cannot hold.
+          </figcaption>
+        </figure>
         <div class="manifesto-text">
           <p>Surface air is the mortal enemy of large ceramic vessels. Rapid evaporation, drafty drying rooms, and shifting seasonal temperatures pull moisture from the lip of a wet pot faster than from its base, locking hidden tensile stresses into the clay wall that explode during high-temperature firing. By moving our throwing wheels and aging troughs sixty metres underground into Chamber 7 of the Oakeley slate veins, we eliminated atmospheric fluctuation entirely.</p>
           <p>In this cold, dripping subterranean silence, the humidity never wavers from ninety-eight percent. We blend iron-rich Welsh stoneware clay with thirty percent crushed slate aggregate, kneading the damp mass on slate slabs and leaving it to ferment in dark stone troughs. When thrown on the wheel, the clay exhibits an elastic density and structural memory that permits razor-thin walls and wide cantilevered rims that would slump in a dry surface studio.</p>
@@ -61,29 +83,29 @@
     <section id="section-vessel-masonry" class="container" aria-labelledby="vessel-heading">
       <h2 id="vessel-heading" class="brutal-box" style="margin-block-end: var(--space-lg);">02 // THE CHAMBER 7 VESSEL MANIFEST</h2>
       <div class="masonry-grid">
-        <article class="masonry-tile tile-tall">
+        <article data-reveal class="masonry-tile tile-tall">
           <h3>ASH-07 CHAWAN (TEA BOWL)</h3>
           <img src="./assets/macro-ash-glaze-chawan.webp" alt="Macro photograph of natural wood-ash glaze pooling over coarse stoneware clay." loading="lazy" width="800" height="600">
           <p>Hand-thrown, knife-faceted exterior, pooled olive celadon ash melt on rim, raw grogged slate footring.</p>
           <span class="tile-price">£180</span>
         </article>
-        <article class="masonry-tile tile-medium">
+        <article data-reveal class="masonry-tile tile-medium">
           <h3>FLARED SLATE FEASTING PLATTER</h3>
           <img src="./assets/slate-platter-serving-vessels.webp" alt="Hand-thrown stoneware platters and faceted vases on a slate table." loading="lazy" width="800" height="600">
           <p>380 mm wide shallow dish, 30% slate aggregate body, unglazed rim with flame-flashed orange scorch marks.</p>
           <span class="tile-price">£340</span>
         </article>
-        <article class="masonry-tile tile-short">
+        <article data-reveal class="masonry-tile tile-short">
           <h3>FACETED BASALT VASE</h3>
           <p>Paddle-shaped 280 mm stoneware vase, raw volcanic sand glaze, high-iron reduction.</p>
           <span class="tile-price">£260</span>
         </article>
-        <article class="masonry-tile tile-medium">
+        <article data-reveal class="masonry-tile tile-medium">
           <h3>ARCHITECTURAL SLATE TILES</h3>
           <p>150 × 150 mm hand-pressed stoneware tiles for hearth and wet-room claddings.</p>
           <span class="tile-price">£28 per tile</span>
         </article>
-        <article class="masonry-tile tile-tall">
+        <article data-reveal class="masonry-tile tile-tall">
           <h3>HEAVY POURING PITCHER</h3>
           <img src="./assets/subterranean-clay-aging-troughs.webp" alt="Raw stoneware clay aging in stone troughs inside the underground slate chamber." loading="lazy" width="800" height="600">
           <p>1.4-litre stoneware jug with pulled handle, wood-ash drip trail, non-drip trimmed spout.</p>
@@ -96,7 +118,10 @@
       <div class="brutal-box">
         <h2 id="chemistry-heading">03 // GEOTHERMAL HUMIDITY &amp; BASALT ASH CHEMISTRY</h2>
         <p style="margin-block-end: var(--space-md);">The unyielding geological conditions of Chamber 7 grant our clay an extended structural maturity impossible to replicate in a surface-level studio.</p>
-        <div class="data-box">
+        <div class="content-image" style="margin-block-end: 2rem;">
+          <img src="./assets/anagama-wood-firing-kiln.webp" alt="The mountain anagama wood-firing kiln at peak temperature during the 96-hour reduction cycle." style="width: 100%; height: auto; display: block;">
+        </div>
+        <div data-reveal class="data-box">
           <div class="data-item">
             <h3>36-Month Fermentation</h3>
             <p>Our raw glacial clay rests in slate troughs for a minimum of three years. This extended subterranean fermentation develops a high-plasticity bacterial structure.</p>

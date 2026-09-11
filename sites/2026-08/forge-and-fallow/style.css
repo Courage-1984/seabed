@@ -41,7 +41,9 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
-  overflow-x: hidden;
+  /* clip, not hidden: overflow-x:hidden makes body a scroll container, which
+     silently disables position:sticky for every descendant. */
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -572,4 +574,215 @@ a:hover, a:focus-visible {
   .site-nav {
     display: none;
   }
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   The offset travels through a custom property so tiles that also carry a
+   transform-based hover keep both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+/* Composed so the hover lift survives the reveal rule's specificity. */
+.bento-tile,
+.bento-tile[data-reveal] {
+  transform: translate3d(0, var(--reveal-y, 0px), 0) translateY(var(--tile-lift, 0px));
+}
+.bento-tile:hover,
+.bento-tile:focus-within {
+  --tile-lift: -3px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — staggered letter-by-letter headline.
+ * ------------------------------------------------------------------ */
+.split-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+.split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 0.4em, 0);
+}
+.is-split.is-animated .split-char {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 320ms var(--ease-out) calc(var(--char-index) * 18ms),
+    transform 320ms var(--ease-out) calc(var(--char-index) * 18ms);
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — grid tile.
+ * Sized and gapped identically to its neighbouring bento cells.
+ * ------------------------------------------------------------------ */
+.bento-video {
+  inline-size: 100%;
+  block-size: 200px;
+  object-fit: cover;
+  margin-block-end: var(--space-3);
+  border-radius: var(--radius);
+  display: block;
+  background: var(--color-border);
+}
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-rows: auto auto auto auto;
+  }
+  /* Spans the full row: a 2-column video cell left the other half of row 4
+     empty, which read as a hole rather than deliberate bento asymmetry. */
+  /* Spans the full row: a 2-column video cell left the other half of row 4
+     empty, which read as a hole rather than deliberate bento asymmetry.
+     Grid rather than flex row so the heading stacks above its copy instead
+     of sitting alongside it. */
+  .bento-tile-video {
+    grid-column: 1 / span 4;
+    grid-row: 4 / span 1;
+    display: grid;
+    grid-template-columns: minmax(0, 46%) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: var(--space-4);
+    align-content: center;
+  }
+  .bento-tile-video .bento-video {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    block-size: 100%;
+    min-block-size: 240px;
+    margin-block-end: 0;
+    align-self: stretch;
+  }
+  .bento-tile-video h3 {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+  }
+  .bento-tile-video p {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    max-inline-size: 52ch;
+  }
+  .bento-video {
+    block-size: 260px;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Micro-interactions — hover + focus-visible + active on every control.
+ * ------------------------------------------------------------------ */
+.btn {
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 0 var(--color-accent);
+}
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, grid-tile loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .bento-tile,
+  .bento-tile[data-reveal],
+  .bento-tile:hover {
+    transform: none;
+  }
+  .split-char {
+    opacity: 1;
+    transform: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active {
+    transform: none;
+  }
+  /* Hold the poster frame instead of looping. */
+  .bento-video {
+    display: none;
+  }
+  .bento-tile-video {
+    background-image: url('./assets/forge-and-fallow-grid-tile-poster.webp');
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Legibility corrections (visual audit).
+ * ------------------------------------------------------------------ */
+:root {
+  /* One accent, three jobs. The mid tone is a fill colour, not a text colour:
+     white on it is only 3.25:1 and it is 4.30:1 as text on the dark ground. */
+  --color-accent-cta: hsl(24, 95%, 38%); /* filled buttons, white label */
+  --color-accent-on-dark: hsl(24, 95%, 62%); /* accent text on the dark ground */
+}
+
+/* .brand hard-codes the dark ink, which is invisible in the dark footer
+   (1.00:1). Inheriting the surrounding text colour adapts to either context. */
+.site-footer .brand {
+  color: inherit;
+}
+
+/* Table headers are accent-on-dark, which needs the lighter step.
+   Scoped to .tech-table so it outranks the existing .tech-table th rule. */
+.tech-table th {
+  color: var(--color-accent-on-dark);
+}
+
+.btn-accent {
+  background-color: var(--color-accent-cta);
+  color: #fff;
+}
+.btn-accent:hover,
+.btn-accent:focus-visible {
+  background-color: hsl(24, 95%, 30%);
+}
+
+/* The header is sticky and the page navigates by in-page anchors, so targets
+   must clear it or they land underneath (AGENTS.md, scroll boundaries). */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }

@@ -57,7 +57,9 @@ body {
   font-family: var(--font-body);
   color: var(--color-text);
   background-color: var(--color-bg);
-  overflow-x: hidden;
+  /* clip, not hidden: overflow-x:hidden makes body a scroll container, which
+     silently disables position:sticky for every descendant. */
+  overflow-x: clip;
   overflow-wrap: break-word;
 }
 
@@ -468,4 +470,191 @@ section {
 .footer-container address {
   font-style: normal;
   color: var(--color-surface-muted);
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   The family forbids soft easing, so reveals snap rather than float. */
+/* The offset travels through a custom property rather than being baked into
+   `transform`, so elements that also carry a transform-based effect (the
+   masonry tilt below) can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 16px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-mid) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-mid) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — inline process demo.
+ * A captioned standalone player anchored in the section whose copy
+ * describes the throwing process.
+ * ------------------------------------------------------------------ */
+.process-demo {
+  margin: 0 0 2rem;
+  border: 3px solid var(--color-border, #14110f);
+  background: #14110f;
+  box-shadow: 6px 6px 0 0 var(--color-accent, #b45309);
+}
+.process-demo__video {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #14110f;
+}
+.process-demo__caption {
+  padding: 0.875rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  /* Caption sits on solid panel chrome, never over the footage. */
+  color: hsl(35, 18%, 88%);
+  background: #14110f;
+  border-block-start: 3px solid var(--color-accent, #b45309);
+}
+.process-demo__label {
+  display: block;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--color-accent, #b45309);
+  margin-block-end: 0.25rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — CSS 3D card tilt on the masonry tiles.
+ * ------------------------------------------------------------------ */
+.masonry-grid {
+  perspective: 1000px;
+}
+/* Composes the reveal offset with the tilt. Written as .masonry-tile[data-reveal]
+   so it outranks [data-reveal].is-revealed, which would otherwise reset the
+   transform to a flat translate and silently kill the tilt. */
+.masonry-tile,
+.masonry-tile[data-reveal] {
+  transform: translate3d(0, var(--reveal-y, 0px), 0) perspective(1000px) rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg));
+  transform-style: preserve-3d;
+  transition:
+    transform var(--dur-mid) var(--ease-out),
+    box-shadow var(--dur-mid) var(--ease-out);
+  position: relative;
+}
+.masonry-tile.is-tilting {
+  /* Track the pointer quickly, ease back slowly on leave. */
+  transition:
+    transform 80ms linear,
+    box-shadow var(--dur-mid) var(--ease-out);
+}
+/* Specular highlight follows the pointer across the tile face. */
+.masonry-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-out);
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 50%),
+    hsla(35, 60%, 92%, 0.28) 0%,
+    hsla(35, 60%, 92%, 0) 55%
+  );
+}
+.masonry-tile.is-tilting::after {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Micro-interactions — hover + focus-visible + active on every control.
+ * ------------------------------------------------------------------ */
+.brutal-btn {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+.brutal-btn:hover,
+.brutal-btn:focus-visible {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 0 currentColor;
+}
+.brutal-btn:active {
+  transform: translate(0, 0);
+  box-shadow: 0 0 0 0 currentColor;
+}
+
+.ember-dot {
+  animation-play-state: paused;
+}
+.hero-telemetry.is-live .ember-dot {
+  animation-play-state: running;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, tilt and demo included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .masonry-tile,
+  .masonry-tile[data-reveal],
+  .masonry-tile.is-tilting {
+    transform: none;
+  }
+  .masonry-tile::after {
+    display: none;
+  }
+  .brutal-btn:hover,
+  .brutal-btn:focus-visible,
+  .brutal-btn:active {
+    transform: none;
+  }
+  .ember-dot,
+  .hero-telemetry.is-live .ember-dot {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Legibility corrections (visual audit).
+ * ------------------------------------------------------------------ */
+
+/* h3 falls below the large-text threshold when clamped, so 1.1 is too tight. */
+h3 {
+  line-height: 1.28;
+}
+
+/* The header is sticky and the page navigates by in-page anchors, so targets
+   must clear it or they land underneath (AGENTS.md, scroll boundaries). */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }

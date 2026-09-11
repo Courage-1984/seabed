@@ -3,9 +3,15 @@
   "blurb": "Sub-Antarctic geothermal heat meets sub-zero gale spray to yield Earth's most isolated mineral umami.",
   "hero": "assets/hero.webp",
   "layoutFamily": "brutalist stacked",
-  "tags": ["food", "hospitality", "extreme-artisanal"],
+  "tags": [
+    "food",
+    "hospitality",
+    "extreme-artisanal"
+  ],
   "created": "2026-08-04",
   "wordFloor": 650,
   "standard": "v2",
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "marquee strip",
+  "signatureEffect": "sticky section pinning with cross-fade"
 }

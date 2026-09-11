@@ -36,7 +36,7 @@
             FLEET STATUS: 14 PODS DEPLOYED // TEESSIDE YARD READY // 3-PHASE COMMISSIONS
           </div>
           <div>
-            <a href="./pods.html" class="btn">VIEW POD SPECIFICATIONS</a>
+            <a href="./pods.html" class="btn" data-magnetic>VIEW POD SPECIFICATIONS</a>
           </div>
         </div>
         <div>
@@ -45,7 +45,7 @@
       </div>
     </section>
 
-    <section id="section-manifesto" class="container anim-fade-up" style="animation-delay: 0.1s">
+    <section data-reveal id="section-manifesto" class="container anim-fade-up" style="animation-delay: 0.1s">
       <div class="section-header">
         <h2>01 // REMOBILISING THE HEAVY INDUSTRIAL TRADES</h2>
       </div>
@@ -60,7 +60,7 @@
       </div>
     </section>
 
-    <section id="section-container-format" class="container bg-dark" style="padding-block: 5rem;">
+    <section data-reveal id="section-container-format" class="container bg-dark" style="padding-block: 5rem;">
       <div class="section-header">
         <h2>02 // CONTAINERIZED DELIVERY MODEL</h2>
       </div>
@@ -82,11 +82,53 @@
         </div>
       </div>
       <div style="margin-block-start: 3rem;">
-        <a href="./pods.html" class="btn">VIEW POD SPECIFICATIONS</a>
+        <a href="./pods.html" class="btn" data-magnetic>VIEW POD SPECIFICATIONS</a>
       </div>
     </section>
 
-    <section id="section-recovery-kinetics" class="container">
+    <section class="masked-band" aria-labelledby="masked-band-heading" data-masked-type>
+      <div class="masked-type">
+        <img
+          class="masked-type__still"
+          src="./assets/macro-hydrojet-manifold.webp"
+          alt=""
+          loading="lazy"
+          width="1280"
+          height="720"
+        >
+        <h2 class="masked-type__text" id="masked-band-heading">14 BAR</h2>
+        <svg
+          class="masked-type__knockout"
+          viewBox="0 0 600 200"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <defs>
+            <mask id="tf-knockout">
+              <rect width="600" height="200" fill="#fff"></rect>
+              <text
+                x="300"
+                y="100"
+                text-anchor="middle"
+                dominant-baseline="central"
+                font-family="'Archivo', sans-serif"
+                font-weight="700"
+                font-size="140"
+                letter-spacing="-2"
+                fill="#000"
+              >14 BAR</text>
+            </mask>
+          </defs>
+          <rect width="600" height="200" fill="currentColor" mask="url(#tf-knockout)"></rect>
+        </svg>
+      </div>
+      <p class="masked-band__caption">
+        Hydrojet manifold pressure at the tendon head &mdash; held to within a tenth of a bar for the full protocol.
+      </p>
+    </section>
+
+    <section data-reveal id="section-recovery-kinetics" class="container">
       <div class="section-header">
         <h2>03 // REMODELLING KINETICS &amp; COLD SHOCK DATA</h2>
       </div>
@@ -108,11 +150,11 @@
         </div>
       </div>
       <div style="margin-block-start: 3rem;">
-        <a href="./biomechanics.html" class="btn">DOWNLOAD BIOMECHANICAL WHITEPAPER (PDF)</a>
+        <a href="./biomechanics.html" class="btn" data-magnetic>DOWNLOAD BIOMECHANICAL WHITEPAPER (PDF)</a>
       </div>
     </section>
 
-    <section id="section-site-proof" class="container">
+    <section data-reveal id="section-site-proof" class="container">
       <div class="section-header">
         <h2>04 // PROJECT CONTRACTOR PROOF</h2>
       </div>
@@ -143,11 +185,11 @@
         </div>
       </div>
       <div>
-        <a href="./biomechanics.html" class="btn">READ CONTRACTOR AUDIT REPORTS</a>
+        <a href="./biomechanics.html" class="btn" data-magnetic>READ CONTRACTOR AUDIT REPORTS</a>
       </div>
     </section>
 
-    <section id="section-dispatch-terminal" class="container">
+    <section data-reveal id="section-dispatch-terminal" class="container">
       <div class="section-header">
         <h2>05 // POD MOBILIZATION TERMINAL</h2>
       </div>
@@ -179,7 +221,7 @@
               <label class="form-label" for="lease-duration">Required Lease Duration (Months)</label>
               <input class="form-input" type="number" id="lease-duration" required="">
             </div>
-            <button class="btn" type="submit">REQUEST POD LEASE DEPLOYMENT</button>
+            <button class="btn" data-magnetic type="submit">REQUEST POD LEASE DEPLOYMENT</button>
           </form>
         </div>
       </div>

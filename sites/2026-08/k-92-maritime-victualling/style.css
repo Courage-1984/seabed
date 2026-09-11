@@ -4,6 +4,9 @@
   --color-primary: hsl(215, 28%, 15%);
   --color-primary-hover: hsl(215, 28%, 22%);
   --color-secondary: hsl(210, 14%, 38%);
+  /* --color-secondary is tuned for the light surface; on the dark panels it
+     lands at about 2.4:1, so muted text there uses this instead. */
+  --color-muted-on-dark: hsl(210, 16%, 78%);
   --color-secondary-hover: hsl(210, 14%, 46%);
   --color-accent: hsl(42, 94%, 48%);
   --color-accent-hover: hsl(42, 94%, 40%);
@@ -659,4 +662,198 @@ section {
   .stage-grid {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — scroll-driven clip-path wipe. */
+[data-clip-wipe] {
+  clip-path: inset(0 calc(100% - var(--wipe, 100%)) 0 0);
+  transition: clip-path 90ms linear;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-clip-wipe] {
+    clip-path: none;
+  }
+  [data-slot-video] {
+    display: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — split panel. It rides inside the rail, which is already the
+   pinned half of this layout; as a third flex child it squeezed the spec pane,
+   whose width is calc(100% - rail-width) and so had nowhere to go. */
+.slot-split {
+  margin-block-start: var(--spacing-lg);
+  border: 1px solid var(--color-border, #d6ccbb);
+  background: var(--color-primary, #1d2b2f);
+  overflow: hidden;
+}
+.slot-split__still,
+.slot-split [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.slot-split__caption {
+  margin: 0;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  /* The global `p` rule only caps width at 75ch; inside a narrow rail the
+     caption still needs to be told to wrap, or the panel's `overflow: hidden`
+     silently eats the end of the line. */
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
+  /* On panel chrome, never over the media. */
+  color: hsl(40, 16%, 90%);
+  background: var(--color-primary, #1d2b2f);
+}
+/* The status line is accent-on-light at roughly 2:1; it carries real
+   information, so it takes the primary ink and the accent stays as its dot. */
+.rail-status {
+  color: var(--color-primary);
+}
+
+/* Water-activity notation is a real subscript; line-height: 0 keeps it from
+   opening up the line box it sits in. */
+sub {
+  /* max() puts a 12px floor under it: 0.72em of the mono body copy is
+     about 10.8px, which is below the legibility minimum. */
+  font-size: max(0.8em, 12px);
+  line-height: 0;
+  vertical-align: sub;
+}
+
+/* --------------------------------------------------------------- *
+ * Contrast corrections — muted greys were being reused across both
+ * the light surface and the dark panels, where they fail.
+ * --------------------------------------------------------------- */
+.testimonial-author,
+.terminal-wrapper .form-group label,
+.depot-details p,
+.site-footer {
+  color: var(--color-muted-on-dark);
+}
+.telemetry-value {
+  /* accent-hover is ~2.7:1 on the white telemetry cell. */
+  color: hsl(42, 94%, 26%);
+}
+.stage-number {
+  /* surface-muted on surface is 1.26:1 — the step order is information. */
+  color: var(--color-text-muted);
+}
+/* Every h3 on this site inherits the 1.10 display line-height, which collides
+   when a heading wraps. */
+h3 {
+  line-height: 1.25;
+}
+
+/* --------------------------------------------------------------- *
+ * Overflow guard.
+ * `clip`, never `hidden`: `hidden` makes the body a scroll container,
+ * which silently kills every `position: sticky` inside it.
+ * --------------------------------------------------------------- */
+body {
+  overflow-x: clip;
+}
+
+/* Long single words in display type (e.g. "Physiological") are wider than the
+   column on a 390px viewport and push the document sideways. */
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: break-word;
+  hyphens: auto;
 }

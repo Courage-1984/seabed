@@ -11,5 +11,7 @@
   "created": "2026-08-17",
   "standard": "v2",
   "wordFloor": 1100,
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "split panel",
+  "signatureEffect": "scroll-driven clip-path wipe"
 }

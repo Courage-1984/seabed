@@ -36,7 +36,9 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   font-size: clamp(1rem, 1vw + 0.75rem, 1.125rem);
-  overflow-x: hidden;
+  /* clip, not hidden: overflow-x:hidden makes body a scroll container, which
+     silently disables position:sticky for every descendant. */
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -591,4 +593,316 @@ section {
 .group-hover-reveal:hover .hover-video,
 .hover-reveal-container:hover .hover-video {
   opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — drifting grain overlay.
+ * Sits above the page but below nothing interactive: pointer-events are
+ * off and it never covers focusable content in a way that blocks it.
+ * ------------------------------------------------------------------ */
+.grain-overlay {
+  position: fixed;
+  /* Viewport-sized, drifting via background-position. An oversized box
+     (inset: -150%) drifts the same way but reports as overflow and forces a
+     needlessly large compositing layer. */
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: grainDrift 8s steps(6) infinite;
+}
+.grain-overlay.is-paused {
+  animation-play-state: paused;
+}
+@keyframes grainDrift {
+  0% { background-position: 0 0; }
+  20% { background-position: -40px 24px; }
+  40% { background-position: 28px -36px; }
+  60% { background-position: -24px -28px; }
+  80% { background-position: 36px 16px; }
+  100% { background-position: 0 0; }
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — modal feature.
+ * ------------------------------------------------------------------ */
+.video-feature {
+  max-inline-size: 68rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  margin-block: 3rem;
+}
+.video-tile {
+  display: block;
+  inline-size: 100%;
+  padding: 0;
+  position: relative;
+  border: 1px solid currentColor;
+  overflow: hidden;
+  background: #12140f;
+  color: inherit;
+  cursor: pointer;
+  text-align: start;
+  transition:
+    transform var(--dur-mid) var(--ease-out),
+    box-shadow var(--dur-mid) var(--ease-out);
+}
+.video-tile img {
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  opacity: 0.6;
+  transition: opacity var(--dur-mid) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+}
+.video-tile:hover,
+.video-tile:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+.video-tile:hover img,
+.video-tile:focus-visible img {
+  opacity: 0.78;
+  transform: scale(1.02);
+}
+.video-tile:active {
+  transform: translateY(0);
+}
+.video-tile__label {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  /* Scrim: type over media, so contrast is engineered rather than hoped for. */
+  background: linear-gradient(to top, rgba(12, 14, 10, 0.94) 0%, rgba(12, 14, 10, 0.7) 58%, rgba(12, 14, 10, 0) 100%);
+}
+.video-tile__glyph {
+  flex: 0 0 auto;
+  inline-size: 46px;
+  block-size: 46px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: rgba(12, 14, 10, 0.55);
+  position: relative;
+}
+.video-tile__glyph::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 56%;
+  translate: -50% -50%;
+  border-block: 8px solid transparent;
+  border-inline-start: 13px solid #fff;
+}
+.video-tile__text {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: hsl(60, 12%, 92%);
+}
+.video-tile__text strong {
+  display: block;
+  font-size: 1.125rem;
+  color: #fff;
+}
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-out);
+}
+.video-modal.is-open {
+  opacity: 1;
+}
+/* A class-level display beats the UA [hidden] rule, which would otherwise leave
+   this fixed full-viewport overlay swallowing every click on the page. */
+.video-modal[hidden] {
+  display: none;
+}
+.video-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 9, 0.9);
+  border: 0;
+}
+.video-modal__frame {
+  position: relative;
+  inline-size: min(100%, 1080px);
+  border: 1px solid #fff;
+  overflow: hidden;
+  background: #000;
+  transform: scale(0.97);
+  transition: transform var(--dur-mid) var(--ease-out);
+}
+.video-modal.is-open .video-modal__frame {
+  transform: scale(1);
+}
+.video-modal__player {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+}
+.video-modal__close {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-end: 1rem;
+  z-index: 2;
+  inline-size: 46px;
+  block-size: 46px;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: #fff;
+  background: rgba(12, 14, 10, 0.75);
+  border: 1px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+.video-modal__close:hover,
+.video-modal__close:focus-visible {
+  background: #fff;
+  color: #12140f;
+}
+.video-modal__close:active {
+  transform: scale(0.92);
+}
+body.has-modal-open {
+  overflow: hidden;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, grain and modal included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .grain-overlay {
+    display: none;
+  }
+  .video-tile:hover,
+  .video-tile:focus-visible,
+  .video-tile:active {
+    transform: none;
+  }
+  .video-tile:hover img,
+  .video-tile:focus-visible img {
+    transform: none;
+  }
+  .video-modal__frame {
+    transform: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Legibility corrections (visual audit).
+ * ------------------------------------------------------------------ */
+
+/* The bright orange is 2.1–2.4:1 on the light grounds this site uses. It stays
+   for rules and fills; text takes a darker step that clears 4.5:1 on both. */
+:root {
+  --color-accent-on-light: hsl(32, 95%, 30%);
+}
+.drop-cap,
+.data-value,
+.depot-manifest span,
+.manifest-list li span:last-child {
+  color: var(--color-accent-on-light);
+}
+
+/* Headings clamp below the large-text threshold on narrow viewports, where
+   1.1 is too tight to read comfortably. */
+.masthead,
+.section-heading,
+h2,
+h3,
+h4 {
+  line-height: 1.26;
+}
+@media (min-width: 1024px) {
+  .section-heading {
+    line-height: 1.1;
+  }
+}
+
+/* Touch targets: nav and manifest links must clear 44px. */
+nav a,
+.masthead a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+}
+nav {
+  flex-wrap: wrap;
 }

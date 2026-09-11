@@ -11,5 +11,9 @@
   "created": "2026-08-28",
   "standard": "v2",
   "wordFloor": 1900,
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "footer ambient",
+  "signatureEffect": "progressive blur focus-pull",
+  "video": "assets/the-sub-solway-bismuth-foundries-footer-ambient.webm",
+  "contract": "v2.1"
 }

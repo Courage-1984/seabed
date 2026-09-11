@@ -34,7 +34,9 @@ body {
   background-color: var(--color-bg);
   line-height: 1.6;
   font-size: 1.05rem;
-  overflow-x: hidden;
+  /* clip, not hidden: overflow-x:hidden makes body a scroll container, which
+     silently disables position:sticky for every descendant. */
+  overflow-x: clip;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -320,4 +322,141 @@ img {
 }
 .hover-reveal-container:hover .hover-video {
   opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only exists while the script that
+   un-hides it is running. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — progressive blur focus-pull.
+ * ------------------------------------------------------------------ */
+[data-focus-pull] {
+  filter: blur(var(--focus-blur, 0px));
+  opacity: var(--focus-fade, 1);
+  will-change: filter, opacity;
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — footer ambient.
+ * Low-contrast motion behind the closing block, scrimmed hard so the
+ * footer links stay legible over the brightest frame.
+ * ------------------------------------------------------------------ */
+.site-footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.footer-ambient {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.footer-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(10, 14, 20, 0.9) 0%, rgba(10, 14, 20, 0.82) 100%);
+}
+.site-footer .footer-content,
+.site-footer a,
+.site-footer p,
+.site-footer strong {
+  position: relative;
+  z-index: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.cta-button,
+.footer-nav a,
+button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+.cta-button:hover,
+.cta-button:focus-visible,
+button:hover,
+button:focus-visible {
+  transform: translateY(-2px);
+}
+.cta-button:active,
+button:active {
+  transform: translateY(0);
+}
+.footer-nav a,
+nav a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, footer loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-focus-pull] {
+    filter: none;
+    opacity: 1;
+  }
+  /* Hold the poster frame instead of looping. */
+  .footer-ambient {
+    display: none;
+  }
+  .site-footer {
+    background-image: url('./assets/the-sub-solway-bismuth-foundries-footer-ambient-poster.webp');
+    background-size: cover;
+    background-position: center;
+  }
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active,
+  button:hover,
+  button:focus-visible,
+  button:active {
+    transform: none;
+  }
 }

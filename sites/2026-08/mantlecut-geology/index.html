@@ -28,7 +28,7 @@
   <main id="main-content">
     
     <!-- Section 1: Hero -->
-    <section id="hero" class="hero-section">
+    <section data-reveal id="hero" class="hero-section">
       <div class="hero-bg">
         <img src="./assets/hero.webp" alt="Diamond-wire saw machine cutting solid granite inside an underground physics cavern." fetchpriority="high" class="hero-img" width="1024" height="1024">
         <div class="hero-overlay"></div>
@@ -44,7 +44,7 @@
     </section>
 
     <!-- Section 2: Flagship Section (§4a) -->
-    <section id="flagship" class="flagship-section">
+    <section data-reveal id="flagship" class="flagship-section">
       <div class="editorial-container">
         <h2 class="section-title">Why Explosive Blasting Belongs in the Nineteenth Century.</h2>
         <div class="editorial-body">
@@ -55,7 +55,14 @@
     </section>
 
     <!-- Section 3: Primary Sticky-Rail Section (§4b) -->
-    <section id="capability" class="sticky-rail-section">
+    <div class="slot-inset-wrap">
+      <figure class="slot-inset">
+        <img class="slot-inset__still" src="./assets/diamond-wire-detail.webp" alt="Diamond-wire bead strand running through a granite kerf." loading="lazy" width="1280" height="720">
+        <figcaption class="slot-inset__caption">Diamond-wire bead strand &mdash; continuous cut, zero percussion</figcaption>
+      </figure>
+    </div>
+
+    <section data-reveal id="capability" class="sticky-rail-section">
       <div class="sticky-rail-container">
         
         <div class="sticky-rail">
@@ -105,7 +112,7 @@
     </section>
 
     <!-- Section 4: Machinery & Cable Specifications -->
-    <section id="specs" class="specs-section">
+    <section data-reveal id="specs" class="specs-section">
       <div class="specs-container">
         <div class="specs-header">
           <h2 class="section-title">HydroWire-X9 System Specifications</h2>
@@ -143,7 +150,7 @@
     </section>
 
     <!-- Section 5: Execution Protocol & Safety Workflow -->
-    <section id="workflow" class="workflow-section">
+    <section data-reveal id="workflow" class="workflow-section">
       <div class="workflow-container">
         <div class="workflow-header">
           <h2 class="section-title">The 5-Phase Deep Cut Method</h2>
@@ -195,7 +202,7 @@
     </section>
 
     <!-- Section 6: Subterranean Case Proof -->
-    <section id="proof" class="proof-section">
+    <section data-reveal id="proof" class="proof-section">
       <div class="proof-container">
         <div class="proof-header">
           <h2 class="section-title">Field Audits from Ultra-Deep Caverns</h2>
@@ -239,7 +246,12 @@
     </section>
 
     <!-- Section 7: Technical FAQ -->
-    <section id="faq" class="faq-section">
+    <section class="masked-band" aria-labelledby="masked-band-heading" data-masked-type>
+      <h2 class="masked-band__type" id="masked-band-heading">3 km</h2>
+      <p class="masked-band__caption">Working depth at Carletonville &mdash; cut to sub-millimetre accuracy, with no seismic signature.</p>
+    </section>
+
+    <section data-reveal id="faq" class="faq-section">
       <div class="faq-container">
         <div class="faq-header">
           <h2 class="section-title">Sub-Surface Operations &amp; Safety Enquiries</h2>
@@ -282,7 +294,7 @@
     </section>
 
     <!-- Section 8: Engineering Brief & Project Intake -->
-    <section id="intake" class="intake-section">
+    <section data-reveal id="intake" class="intake-section">
       <div class="intake-container">
         <div class="intake-header">
           <h2 class="section-title">Initiate a Deep-Vault Cutting Specification</h2>

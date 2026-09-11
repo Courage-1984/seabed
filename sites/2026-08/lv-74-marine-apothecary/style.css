@@ -308,7 +308,9 @@ p { margin-block-start: 0; margin-block-end: 1.5rem; max-width: 75ch; }
   font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 700;
-  color: var(--color-accent);
+  /* The accent lands at 2.16:1 on the light surface; the step order is
+     information, so it takes a darkened sibling of the same hue. */
+  color: var(--color-accent-on-light, hsl(38, 90%, 28%));
   line-height: 1;
   padding-top: 0.25rem;
 }
@@ -357,3 +359,231 @@ p { margin-block-start: 0; margin-block-end: 1.5rem; max-width: 75ch; }
 .brand-footer h3 { color: var(--color-accent); }
 .brand-footer p { font-size: 0.95rem; }
 .footer-bottom { text-align: center; font-size: 0.85rem; border-top: 1px solid var(--color-border-strong); padding-block-start: 1.5rem; }
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — drifting grain overlay.
+   Viewport-sized and drifting via background-position: an oversized box drifts
+   the same way but reports as overflow and forces a large compositing layer. */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: grainDrift 8s steps(6) infinite;
+}
+.grain-overlay.is-paused {
+  animation-play-state: paused;
+}
+@keyframes grainDrift {
+  0% { background-position: 0 0; }
+  20% { background-position: -40px 24px; }
+  40% { background-position: 28px -36px; }
+  60% { background-position: -24px -28px; }
+  80% { background-position: 36px 16px; }
+  100% { background-position: 0 0; }
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .grain-overlay {
+    display: none;
+  }
+  [data-slot-video] {
+    display: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — hero inset frame: a framed object, not a background. */
+.slot-inset-wrap {
+  max-inline-size: 1100px;
+  margin: 0 auto 3rem;
+  padding-inline: 1.5rem;
+}
+.slot-inset {
+  margin: 0;
+  max-inline-size: 34rem;
+  border: 2px solid var(--color-primary, #1b2b33);
+  box-shadow: 10px 10px 0 0 var(--color-accent, #c98b3a);
+  background: var(--color-primary, #1b2b33);
+}
+.slot-inset__still,
+.slot-inset [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.slot-inset__caption {
+  margin: 0;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: hsl(196, 18%, 92%);
+  background: var(--color-primary, #1b2b33);
+  border-block-start: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+/* Touch targets: the in-page anchors and the tender-visit checkbox were all
+   under the 44px minimum. */
+nav a,
+.formulation-index li a,
+a.active {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.checkbox-group input[type='checkbox'] {
+  /* A native checkbox ignores padding under `appearance: auto`, so the hit area
+     could not be grown around it. The control is drawn here instead: a 44px
+     target with a 24px box painted into it. */
+  appearance: none;
+  -webkit-appearance: none;
+  inline-size: 44px;
+  block-size: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='1' y='1' width='22' height='22' fill='%23f3f6f6' stroke='%231f303d' stroke-width='2'/%3E%3C/svg%3E");
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+.checkbox-group input[type='checkbox']:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='1' y='1' width='22' height='22' fill='%231f303d' stroke='%231f303d' stroke-width='2'/%3E%3Cpath d='M6 12.5 10.5 17 18 8' fill='none' stroke='%23e9980c' stroke-width='3' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+.checkbox-group input[type='checkbox']:focus-visible {
+  outline: 2px solid var(--color-accent-focus);
+  outline-offset: -6px;
+}
+
+.checkbox-group label {
+  min-block-size: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Short nav labels ("FAQ", "Visit") are only ~31px wide; the target needs
+   width as well as height. */
+.site-header nav a {
+  min-inline-size: 44px;
+  justify-content: center;
+}
+
+/* --------------------------------------------------------------- *
+ * Overflow guard.
+ * `clip`, never `hidden`: `hidden` makes the body a scroll container,
+ * which silently kills every `position: sticky` inside it.
+ * --------------------------------------------------------------- */
+body {
+  overflow-x: clip;
+}
+
+/* Long single words in display type (e.g. "Physiological") are wider than the
+   column on a 390px viewport and push the document sideways. */
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}

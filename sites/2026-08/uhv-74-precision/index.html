@@ -44,7 +44,7 @@
     <section id="hero" class="hero">
       <div class="hero-telemetry">
         <div class="telemetry-dot"></div>
-        <span>VACUUM BASELINE: 1.2 × 10^-11 MBAR // RGA CLEAN // NON-MAGNETIC 316LN</span>
+        <span>VACUUM BASELINE: 1.2 × 10<sup>−11</sup> MBAR // RGA CLEAN // NON-MAGNETIC 316LN</span>
       </div>
       <div class="hero-content">
         <h1>ULTRA-HIGH VACUUM CHAMBERS ENGINEERED FOR SYNCHROTRON BEAMLINES.</h1>
@@ -59,7 +59,7 @@
 
     <!-- 2. Flagship Section -->
     <section id="section-vacuum-charter">
-      <div class="section-header">
+      <div data-reveal class="section-header">
         <h2>01 // THE MOLECULAR DESORPTION THRESHOLD</h2>
       </div>
       <div class="flagship-box">
@@ -71,41 +71,59 @@
 
     <!-- 3. Neo-Brutalist Masonry Section -->
     <section id="section-chamber-masonry">
-      <div class="section-header">
+      <div data-reveal class="section-header">
         <h2>02 // THE VACUUM HARDWARE MANIFEST</h2>
       </div>
       <div class="masonry-grid">
-        <div class="brutal-box hover-reveal-container">
-          <video class="hover-reveal-video" autoplay loop muted playsinline>
-            <source src="./assets/hover-reveal.webm" type="video/webm">
+        <div class="brutal-box hover-reveal-container" tabindex="0" data-hover-reveal>
+          <img
+            class="hover-reveal-poster"
+            src="./assets/uhv-74-precision-hover-reveal-poster.webp"
+            alt="Five-axis diamond milling of a spherical octagon vacuum chamber body."
+            loading="lazy"
+            width="1280"
+            height="720"
+          >
+          <video
+            class="hover-reveal-video"
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="./assets/uhv-74-precision-hover-reveal-poster.webp"
+            aria-hidden="true"
+          >
+            <source src="./assets/uhv-74-precision-hover-reveal.webm" type="video/webm">
+            <source src="./assets/uhv-74-precision-hover-reveal.mp4" type="video/mp4">
           </video>
           <div class="hover-reveal-content">
             <h3>SPHERICAL OCTAGON CHAMBERS</h3>
-            <p>Monolithic 316LN body featuring 8 radial ConFlat ports engineered for complex beamline intersections. Reaches a $1.2 \times 10^{-11}\text{ mbar}$ ultimate vacuum across a 14.2 litre internal volume, with absolute geometric dimensional stability.</p>
+            <p>Monolithic 316LN body featuring 8 radial ConFlat ports engineered for complex beamline intersections. Reaches a 1.2 &times; 10<sup>&minus;11</sup>&nbsp;mbar ultimate vacuum across a 14.2 litre internal volume, with absolute geometric dimensional stability.</p>
             <span class="price">£18,400</span>
+            <span class="hover-reveal-hint" aria-hidden="true">Hover or focus to watch the cut</span>
           </div>
         </div>
-        <div class="brutal-box">
+        <div data-reveal class="brutal-box">
           <h3>BERYLLIUM BEAM WINDOWS</h3>
           <p>Diffusion-bonded 0.2 mm high-purity beryllium foil assemblies. Provides zero X-ray beam attenuation coupled with a vacuum-tight brazed interface capable of withstanding extreme thermal cycles.</p>
           <span class="price">£4,600</span>
         </div>
-        <div class="brutal-box">
+        <div data-reveal class="brutal-box">
           <h3>EDGE-WELDED BELLOWS</h3>
           <p>Precision AM350 non-magnetic stainless steel flexure units. Guaranteed for a 50,000-cycle axial and angular stroke, isolating extreme vibrations from the main beamline axis.</p>
           <span class="price">£2,150</span>
         </div>
-        <div class="brutal-box">
+        <div data-reveal class="brutal-box">
           <h3>PRECISION CONFLAT FLANGES</h3>
           <p>CF40 through CF250 knife-edge sealing flanges featuring a 0.1 mm precision radius profile. Hardened to 190 HB to guarantee uniform crushing of oxygen-free copper gaskets.</p>
           <span class="price">£380 – £1,850</span>
         </div>
-        <div class="brutal-box">
+        <div data-reveal class="brutal-box">
           <h3>CERAMIC MULTI-PIN FEEDTHROUGHS</h3>
           <p>High-density alumina dielectric insulators brazed into titanium bulkheads. Rated for 15 kV isolation thresholds and capable of sustaining 250°C continuous bakeout cycles without micro-cracking.</p>
           <span class="price">£1,420</span>
         </div>
-        <div class="brutal-box">
+        <div data-reveal class="brutal-box">
           <h3>TITANIUM CRYO-SHROUDS</h3>
           <p>Oxygen-free titanium thermal radiation shields for absolute cryogenic control. Operational from 4.2 K to 450 K with verifiable zero ferromagnetic distortion near electron beam trajectories.</p>
           <span class="price">£3,800</span>
@@ -118,7 +136,7 @@
 
     <!-- 4. Metallurgy, Desorption Rates & Surface Chemistry -->
     <section id="section-outgassing-metallurgy">
-      <div class="section-header">
+      <div data-reveal class="section-header">
         <h2>03 // METALLURGY & DESORPTION RATES</h2>
       </div>
       <div class="tech-data-box">
@@ -138,7 +156,7 @@
           </div>
           <div class="data-row">
             <span class="data-label">Hydrocarbon Partial Pressure</span>
-            <span class="data-value">&lt; 10^-14 mbar (RGA Peak)</span>
+            <span class="data-value">&lt; 10<sup>−14</sup> mbar (RGA Peak)</span>
           </div>
           <div class="data-row">
             <span class="data-label">Magnetic Permeability (μr)</span>
@@ -152,14 +170,21 @@
     </section>
 
     <!-- 5. Helium Mass Spectrometry & Verification Protocol -->
+    <section class="masked-band" aria-labelledby="masked-band-heading" data-masked-type>
+      <h2 class="masked-band__type" id="masked-band-heading">10&#8315;&#185;&#185; mbar</h2>
+      <p class="masked-band__caption">
+        Ultimate vacuum, verified by residual gas analysis on every vessel before it leaves Harwell.
+      </p>
+    </section>
+
     <section id="section-leak-testing-protocol">
-      <div class="section-header">
+      <div data-reveal class="section-header">
         <h2>04 // HELIUM MASS SPECTROMETRY PROTOCOL</h2>
       </div>
       <div class="masonry-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
         <div class="brutal-box" style="min-block-size: auto;">
           <h3>01 // Pfeiffer Vacuum Sniffing</h3>
-          <p>We enclose the completed vessel in a global helium envelope. A mass spectrometer actively sniffs the evacuated volume, detecting micro-leaks down to a threshold of 1 × 10^-12 mbar·l/s.</p>
+          <p>We enclose the completed vessel in a global helium envelope. A mass spectrometer actively sniffs the evacuated volume, detecting micro-leaks down to a threshold of 1 × 10<sup>−12</sup> mbar·l/s.</p>
         </div>
         <div class="brutal-box" style="min-block-size: auto;">
           <h3>02 // Residual Gas Analysis (RGA) Scan</h3>
@@ -177,7 +202,7 @@
 
     <!-- 6. Beamline Physicist & Facility Director Verification -->
     <section id="section-physicist-proof">
-      <div class="section-header">
+      <div data-reveal class="section-header">
         <h2>05 // SYNCHROTRON FACILITY VERIFICATION</h2>
       </div>
       <div class="metrics-bar">
@@ -186,7 +211,7 @@
           <span class="metric-label">Seal Failure Rate Across 450 Vessels</span>
         </div>
         <div class="metric-item">
-          <span class="metric-value">1 × 10^-12</span>
+          <span class="metric-value">1 × 10<sup>−12</sup></span>
           <span class="metric-label">mbar·l/s Helium Leak Threshold</span>
         </div>
         <div class="metric-item">
@@ -215,7 +240,7 @@
 
     <!-- 7. The 4-Stage Chamber Commissioning Sequence -->
     <section id="section-commission-workflow">
-      <div class="section-header">
+      <div data-reveal class="section-header">
         <h2>06 // 4-STAGE CHAMBER COMMISSIONING SEQUENCE</h2>
       </div>
       <div class="sequence-grid">
@@ -232,7 +257,7 @@
         <div class="brutal-box" style="min-block-size: auto;">
           <span class="step-number">03</span>
           <h3>950°C High-Vacuum Degassing</h3>
-          <p>The machined components undergo a 48-hour thermal soak in a high-vacuum furnace at 10^-6 mbar, effectively extracting dissolved hydrogen from the steel lattice.</p>
+          <p>The machined components undergo a 48-hour thermal soak in a high-vacuum furnace at 10<sup>−6</sup> mbar, effectively extracting dissolved hydrogen from the steel lattice.</p>
         </div>
         <div class="brutal-box" style="min-block-size: auto;">
           <span class="step-number">04</span>
@@ -247,7 +272,7 @@
 
     <!-- 8. Technical Vacuum Engineering FAQ -->
     <section id="section-vacuum-engineering-faq">
-      <div class="section-header">
+      <div data-reveal class="section-header">
         <h2>07 // TECHNICAL VACUUM ENGINEERING FAQ</h2>
       </div>
       <div class="faq-box">
@@ -285,7 +310,7 @@
 
     <!-- 9. Chamber Specification & Procurement Terminal -->
     <section id="section-chamber-requisition-terminal">
-      <div class="section-header">
+      <div data-reveal class="section-header">
         <h2>08 // CHAMBER SPECIFICATION TERMINAL</h2>
       </div>
       <div class="terminal-box">
@@ -301,7 +326,7 @@
             </div>
             <div class="form-group">
               <label for="req-pressure">Target Base Pressure</label>
-              <input type="text" id="req-pressure" placeholder="e.g. 1 x 10^-11 mbar">
+              <input type="text" id="req-pressure" placeholder="e.g. 1 x 10<sup>−11</sup> mbar">
             </div>
             <div class="form-group">
               <label for="req-flanges">Primary Flange Configuration</label>

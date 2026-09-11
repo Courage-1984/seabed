@@ -9,8 +9,13 @@ import puppeteer from 'puppeteer';
 import * as cheerio from 'cheerio';
 import { readdirSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join, resolve } from 'path';
-import { spawn } from 'child_process';
 import { resolveSlugPath } from './lib/resolve-slug.js';
+import {
+  PREVIEW_URL,
+  mapPool,
+  startPreviewServer,
+  stopPreviewServer,
+} from './lib/preview-server.js';
 
 function parseArgs(argv) {
   const flags = {
@@ -40,7 +45,7 @@ function parseArgs(argv) {
 
 const opts = parseArgs(process.argv.slice(2));
 const targetSlug = opts.slug;
-const baseUrl = 'http://127.0.0.1:4173/';
+const baseUrl = PREVIEW_URL;
 const outDir = './qa-screenshots';
 const ROOT = resolve('.');
 
@@ -84,7 +89,8 @@ function viewHasIssues(view) {
     view.brokenLinks?.length ||
     view.visualIssues?.smallFonts?.length ||
     view.visualIssues?.overlappingText?.length ||
-    view.visualIssues?.repetitiveLayout
+    view.visualIssues?.repetitiveLayout ||
+    view.videoIssues?.length
   );
 }
 
@@ -105,6 +111,7 @@ function accumulateCounts(pagesList) {
     smallFonts: 0,
     overlappingText: 0,
     repetitiveLayouts: 0,
+    videoIssues: 0,
   };
   for (const r of pagesList) {
     for (const view of [r.mobile, r.desktop]) {
@@ -120,6 +127,7 @@ function accumulateCounts(pagesList) {
       counts.smallFonts += view.visualIssues?.smallFonts?.length || 0;
       counts.overlappingText += view.visualIssues?.overlappingText?.length || 0;
       if (view.visualIssues?.repetitiveLayout) counts.repetitiveLayouts++;
+      counts.videoIssues += view.videoIssues?.length || 0;
     }
   }
   return counts;
@@ -129,34 +137,6 @@ function truncateSelector(sel, max = 120) {
   if (!sel || sel.length <= max) return sel;
   return `${sel.slice(0, max)}…`;
 }
-
-async function mapPool(items, concurrency, fn) {
-  const results = new Array(items.length);
-  let next = 0;
-  async function worker() {
-    while (next < items.length) {
-      const i = next++;
-      results[i] = await fn(items[i], i);
-    }
-  }
-  const n = Math.max(1, Math.min(concurrency, items.length));
-  await Promise.all(Array.from({ length: n }, () => worker()));
-  return results;
-}
-
-const waitForServer = async (url, timeout = 20000) => {
-  const start = Date.now();
-  while (Date.now() - start < timeout) {
-    try {
-      const res = await fetch(url);
-      if (res.ok) return true;
-    } catch {
-      /* poll */
-    }
-    await new Promise((r) => setTimeout(r, 500));
-  }
-  throw new Error(`Server did not start at ${url}`);
-};
 
 async function runStaticChecks(url) {
   const res = await fetch(url);
@@ -248,10 +228,8 @@ async function runStaticChecks(url) {
     if (!opts.noScreenshots && !existsSync(outDir)) mkdirSync(outDir);
 
     console.log('\nStarting preview server...');
-    server = spawn('npm', ['run', 'preview', '--', '--host', '127.0.0.1', '--port', '4173', '--strictPort'], { shell: true, stdio: 'inherit' });
-    await waitForServer(baseUrl);
-    console.log('Server is ready. Waiting 2s for stability...');
-    await new Promise((r) => setTimeout(r, 2000));
+    server = await startPreviewServer();
+    console.log('Server is ready.');
 
     const headed = process.env.QA_HEADED === '1' || process.env.QA_HEADED === 'true';
     const onCi = process.env.CI === 'true';
@@ -430,8 +408,21 @@ async function runStaticChecks(url) {
                 issues.smallFonts.push(el.tagName.toLowerCase());
               }
 
+              // Screen-reader-only text is clipped on purpose (1px box + clip-path
+              // or the legacy clip rect), so it must not read as truncated content.
+              const rect = el.getBoundingClientRect();
+              const srOnly =
+                rect.width <= 2 &&
+                rect.height <= 2 &&
+                ((style.clipPath && style.clipPath !== 'none') || (style.clip && style.clip !== 'auto'));
+
               // Overlap check: only check elements with direct text that are constrained
-              if (hasDirectText && el.scrollHeight > el.clientHeight + 2 && (style.overflow === 'hidden' || style.overflowY === 'hidden')) {
+              if (
+                hasDirectText &&
+                !srOnly &&
+                el.scrollHeight > el.clientHeight + 2 &&
+                (style.overflow === 'hidden' || style.overflowY === 'hidden')
+              ) {
                 issues.overlappingText.push(el.tagName.toLowerCase() + '#clipped');
               }
               
@@ -459,11 +450,74 @@ async function runStaticChecks(url) {
             return issues;
           });
 
+          // <video> contract: every site ships exactly one, and it must actually play.
+          const videoIssues = await page.evaluate(async () => {
+            const problems = [];
+            const vids = [...document.querySelectorAll('video')];
+            if (vids.length > 1) {
+              problems.push(`${vids.length} <video> elements — every site ships exactly one`);
+            }
+            for (const v of vids) {
+              const id = v.id ? `video#${v.id}` : v.className ? `video.${String(v.className).split(' ')[0]}` : 'video';
+              for (const attr of ['muted', 'loop', 'playsInline']) {
+                if (!v[attr]) problems.push(`${id}: missing ${attr === 'playsInline' ? 'playsinline' : attr}`);
+              }
+              if (!v.getAttribute('poster')) problems.push(`${id}: missing poster`);
+              if (!v.getAttribute('preload')) problems.push(`${id}: missing preload`);
+              // A video may declare its source either as <source> children or a direct src.
+              const sources = [
+                ...[...v.querySelectorAll('source')].map((s) => s.getAttribute('src')),
+                v.getAttribute('src'),
+              ].filter(Boolean);
+              if (!sources.length) problems.push(`${id}: no source`);
+              else if (!sources.some((src) => /\.webm(\?|$)/i.test(src))) problems.push(`${id}: no .webm source`);
+              // Judge the video in the state a visitor meets it: on screen.
+              // Sites correctly pause background loops while off-screen, and
+              // preload="metadata" means an off-screen element may never get
+              // past readyState 0 -- failing that would punish good code.
+              const restoreY = window.scrollY;
+              v.scrollIntoView({ block: 'center', behavior: 'instant' });
+              await new Promise((r) => setTimeout(r, 150));
+              if (v.readyState < 1) {
+                await new Promise((r) => {
+                  const t = setTimeout(r, 6000);
+                  v.addEventListener('loadedmetadata', () => { clearTimeout(t); r(); }, { once: true });
+                  if (v.networkState === 3 /* NETWORK_NO_SOURCE */) v.load();
+                });
+              }
+              // videoWidth > 0 proves real video metadata was parsed, which a
+              // 404 or corrupt source can never do.
+              if (v.videoWidth === 0) {
+                problems.push(`${id}: no decodable video (readyState ${v.readyState}, networkState ${v.networkState})`);
+              }
+              window.scrollTo(0, restoreY);
+            }
+            return problems;
+          });
+
           if (!opts.noScreenshots) {
-            await page.screenshot({
-              path: `${outDir}/${pagePath.replace(/\//g, '_')}_${label}.png`,
-              fullPage: true,
-            });
+            const shotPath = `${outDir}/${pagePath.replace(/\//g, '_')}_${label}.png`;
+            // Chrome refuses to encode a capture taller than 16384px, and some
+            // of these pages run past 19000px on mobile. Clip to the cap rather
+            // than let the whole sweep fail on a ProtocolError.
+            const CAPTURE_LIMIT = 16384;
+            const metrics = await page.evaluate(() => ({
+              height: document.documentElement.scrollHeight,
+              width: document.documentElement.scrollWidth,
+            }));
+            if (metrics.height > CAPTURE_LIMIT) {
+              await page.screenshot({
+                path: shotPath,
+                captureBeyondViewport: true,
+                clip: { x: 0, y: 0, width: metrics.width, height: CAPTURE_LIMIT },
+              });
+              console.log(
+                `  note: ${pagePath} @${label} is ${metrics.height}px tall; ` +
+                  `screenshot clipped to ${CAPTURE_LIMIT}px (qa:visual tiles the full page)`
+              );
+            } else {
+              await page.screenshot({ path: shotPath, fullPage: true });
+            }
           }
 
           return {
@@ -476,6 +530,7 @@ async function runStaticChecks(url) {
             networkErrors: [...networkErrors],
             brokenLinks,
             visualIssues,
+            videoIssues,
           };
         };
 
@@ -541,13 +596,7 @@ async function runStaticChecks(url) {
     exitCode = 1;
   } finally {
     if (browser) await browser.close().catch(() => {});
-    if (server) {
-      if (process.platform === 'win32') {
-        spawn('taskkill', ['/pid', server.pid, '/f', '/t']);
-      } else {
-        server.kill();
-      }
-    }
+    stopPreviewServer(server);
     process.exit(exitCode);
   }
 })();

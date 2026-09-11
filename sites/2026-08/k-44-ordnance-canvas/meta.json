@@ -11,5 +11,7 @@
   "created": "2026-08-14",
   "standard": "v2",
   "wordFloor": 650,
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "inline process demo",
+  "signatureEffect": "sticky section pinning with cross-fade"
 }

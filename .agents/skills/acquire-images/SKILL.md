@@ -26,9 +26,28 @@ Fill `sites/<slug>/assets/` with working imagery. Prefer the best source per ass
 - `meta.json` `"hero"` must be `assets/<file>.webp` (no leading `./`).
 - **Do not hand off** while hero or section photos still use `.png`, `.jpg`, or `.jpeg` as the live source — convert to `.webp` first.
 
+## Asset isolation (hard rule)
+
+Assets are **site-private**. See `AGENTS.md` §12.
+
+- Never copy, move, symlink, or reference an asset from another site folder — not as a placeholder, not "just for now".
+- Never reuse a generated image or video across sites. If two briefs want a similar shot, generate two.
+- Never hotlink remote media. Download it into this site's `assets/`.
+- Filenames must describe their own subject and be unique repo-wide. `hero.webp`, `image1.webp`, `photo.webp`, `temp*.jpg` are rejected. Prefix with the slug when a name could collide.
+- Verify before handing off: `npm run check:assets -- <slug>`. It hashes every asset in the repo and fails on byte-identical duplicates across sites.
+
+## Generation quota exhausted
+
+If image-generation quota, rate limits, or credits run out mid-build:
+
+1. Finish everything that does not depend on the missing assets.
+2. Fall back to the PD/open route (step 2) for whatever remains and say which assets were substituted.
+3. **Do not** set `qa: "v2-pass"` while any asset is a placeholder — placeholders and picsum remain a hard failure.
+4. Report it as the **last thing in your response**, after the video prompt block, in the bold block specified in `AGENTS.md` §15 — naming every missing asset and the exact commands to resume.
+
 ## Report
 
-List each major asset: **URL** / **PD/open** / **generated**, and confirm WebP.
+List each major asset: **URL** / **PD/open** / **generated**, and confirm WebP. Confirm `check:assets` passes.
 
 ## Next
 

@@ -11,5 +11,7 @@
   "created": "2026-08-18",
   "standard": "v2",
   "wordFloor": 1100,
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "hero inset frame",
+  "signatureEffect": "drifting grain overlay"
 }

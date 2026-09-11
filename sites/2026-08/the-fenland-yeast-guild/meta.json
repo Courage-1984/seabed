@@ -10,5 +10,7 @@
   ],
   "created": "2026-08-17",
   "wordFloor": 1100,
-  "standard": "v2"
+  "standard": "v2",
+  "videoPlacement": "footer ambient",
+  "signatureEffect": "progressive blur focus-pull"
 }

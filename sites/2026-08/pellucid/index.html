@@ -19,9 +19,8 @@
   </header>
   
   <main id="main-content">
-    <section class="parallax-section hero hover-reveal-container">
+    <section class="parallax-section hero">
       <div class="fixed-bg"></div>
-      <video src="./assets/hover-reveal.webm" class="hover-video" preload="auto" loop muted playsinline></video>
       <div class="overlay-dark"></div>
       <div class="glass-panel" data-speed="0.8">
         <div class="kiln-status">
@@ -35,6 +34,24 @@
       </div>
     </section>
 
+    <!-- Video placement: section transition band -->
+    <div class="transition-band" data-transition-band>
+      <video
+        class="transition-band__video"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="metadata"
+        poster="./assets/pellucid-section-transition-band-poster.webp"
+        aria-label="Molten glass gathered from the cliff-edge furnace as sea wind crosses the opening."
+      >
+        <source src="./assets/pellucid-section-transition-band.webm" type="video/webm">
+        <source src="./assets/pellucid-section-transition-band.mp4" type="video/mp4">
+      </video>
+      <p class="transition-band__caption">Gathering into the westerly &mdash; St. Agnes Head furnace</p>
+    </div>
+
     <section class="parallax-section section-cliff-charter">
       <div class="fixed-bg"></div>
       <div class="glass-panel" data-speed="1.2">
@@ -45,7 +62,7 @@
       </div>
     </section>
 
-    <section class="section-homeware-collection">
+    <section data-reveal class="section-homeware-collection">
       <div class="collection-grid">
         <div class="glass-card" data-speed="1.1">
           <h3>THE ST. AGNES TIDE DECANTER</h3>
@@ -125,7 +142,7 @@
       </div>
     </section>
 
-    <section class="section-commission-terminal">
+    <section data-reveal class="section-commission-terminal">
       <div class="form-container">
         <h2>Studio Visiting & Commission Terminal</h2>
         <p style="margin-block-end: 2rem;">We welcome direct dialogue with collectors, fine dining purveyors, and interior architects. Use the terminal below to reserve an allocation from our upcoming lunar kiln firings, or to book a private viewing at our cliff-edge workshop.</p>

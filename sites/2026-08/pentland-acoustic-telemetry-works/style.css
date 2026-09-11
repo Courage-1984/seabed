@@ -30,6 +30,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* The header is fixed, so an in-page anchor would otherwise land with
+     its heading hidden underneath it. */
+  scroll-padding-top: 5.5rem;
 }
 
 body {
@@ -596,4 +599,216 @@ address {
   .site-header nav {
     display: none;
   }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — masked scroll-through type. */
+.masked-band {
+  padding-block: clamp(3rem, 7vw, 5rem);
+  padding-inline: 1.5rem;
+  text-align: center;
+}
+.masked-band__type {
+  margin: 0;
+  font-size: clamp(3.5rem, 14vw, 10rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Solid fallback first: if background-clip:text is unsupported the type
+     still reads as flat accent colour rather than vanishing. */
+  color: var(--color-accent, #888);
+}
+.masked-band__caption {
+  /* The global `p` rule caps width at 75ch with no auto margins, which pulls
+     the caption off the band's centre line. */
+  max-width: 60ch;
+  margin-inline: auto;
+  margin-block: 0;
+  font-size: 1rem;
+  color: var(--color-text-muted, hsl(198, 12%, 38%));
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .masked-band__type {
+    color: transparent;
+    background-size: cover;
+    background-position: center calc(50% + var(--mask-shift, 0px));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .masked-band__type {
+    background-position: center;
+  }
+  [data-slot-video] {
+    display: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — sticky rail loop. The pane it lives in is already pinned
+   for the length of the registry scroll, so the media just fills it and the
+   telemetry overlay reads on top. */
+.left-pane {
+  /* Establishes the containing block for the absolutely-positioned media. This
+     rule must not touch `position` or `block-size` unscoped: the >=1024px rule
+     above turns this pane into the sticky 100vh column, and it comes earlier in
+     the sheet, so anything restated here would silently win over it. */
+  overflow: hidden;
+  isolation: isolate;
+}
+@media (max-width: 1023px) {
+  .left-pane {
+    /* Shown below 1024px too, now that it carries the video placement. */
+    display: block;
+    position: relative;
+    block-size: 42vh;
+  }
+}
+@media (min-width: 1024px) {
+  .left-pane {
+    position: sticky;
+  }
+}
+.slot-rail {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.slot-rail__still,
+.slot-rail [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  /* Held back so the telemetry readouts stay the brightest thing in the pane. */
+  opacity: 0.5;
+}
+.slot-rail__caption {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 0.625rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: hsl(200, 14%, 92%);
+  /* Scrim: the caption sits on media, so its contrast is built, not hoped for. */
+  background: linear-gradient(to top, rgba(9, 17, 25, 0.94) 0%, rgba(9, 17, 25, 0) 100%);
+  padding-block-start: 2.5rem;
+}
+.telemetry-overlay {
+  position: relative;
+  z-index: 1;
+}
+/* The masked band fills its type from the workshop still. */
+.masked-band__type {
+  background-image: url('./assets/flagship-sonar-workshop.webp');
+}
+
+/* --------------------------------------------------------------- *
+ * Overflow guard.
+ * `clip`, never `hidden`: `hidden` makes the body a scroll container,
+ * which silently kills every `position: sticky` inside it.
+ * --------------------------------------------------------------- */
+body {
+  overflow-x: clip;
+}
+
+/* Long single words in display type (e.g. "Physiological") are wider than the
+   column on a 390px viewport and push the document sideways. */
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: break-word;
+  hyphens: auto;
 }

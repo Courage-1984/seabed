@@ -26,7 +26,10 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  /* clip, not hidden: overflow-x:hidden turns the element into a scroll
+     container, which silently disables position:sticky for every descendant --
+     including this site's pinned cast-sequence panel. */
+  overflow-x: clip;
 }
 
 body {
@@ -37,7 +40,7 @@ body {
   font-family: var(--font-mono);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -355,5 +358,187 @@ img {
 @media (min-width: 768px) {
   .hero-content {
     padding: 4rem 2rem;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only exists while the script that
+   un-hides it is running. */
+.js-reveal [data-reveal] {
+  --reveal-y: 16px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-mid) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-mid) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — sticky section pinning with cross-fade.
+ * The section is tall; the panel inside it pins and its four states
+ * cross-fade through as that height is scrolled.
+ * ------------------------------------------------------------------ */
+.pin-section.is-pinned {
+  min-block-size: 320vh;
+}
+.pin-section.is-pinned .pin-section__stage {
+  position: sticky;
+  top: 12vh;
+}
+.pin-panel__states {
+  position: relative;
+  min-block-size: 16rem;
+}
+.pin-section.is-pinned .pin-state {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  pointer-events: none;
+}
+.pin-section.is-pinned .pin-state.is-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  pointer-events: auto;
+}
+/* Unpinned fallback: the states read as ordinary sequential content. */
+.pin-section.is-unpinned .pin-state,
+.pin-section:not(.is-pinned) .pin-state {
+  position: static;
+  opacity: 1;
+  transform: none;
+  margin-block-end: 1.5rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — inline process demo.
+ * ------------------------------------------------------------------ */
+.process-demo {
+  margin: var(--space-2xl, 4rem) 0;
+  border: var(--border-brutal, 3px solid #101010);
+  box-shadow: var(--shadow-brutal, 6px 6px 0 0 #101010);
+  background: #0d0f0d;
+}
+.process-demo__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--color-accent, #d8ff3e);
+  border-block-end: var(--border-brutal, 3px solid #101010);
+  background: #0d0f0d;
+}
+.process-demo__video {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #0d0f0d;
+}
+.process-demo__caption {
+  padding: 0.875rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  /* Caption sits on panel chrome, never over the footage. */
+  color: hsl(80, 8%, 88%);
+  background: #0d0f0d;
+  border-block-start: var(--border-brutal, 3px solid #101010);
+}
+
+/* Supporting motion — cursor blink runs only while on screen. */
+.cursor-blink {
+  animation: cursorBlink 1s steps(2, start) infinite;
+  animation-play-state: paused;
+}
+.cursor-blink.is-live {
+  animation-play-state: running;
+}
+@keyframes cursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible {
+  transform: translate(-2px, -2px);
+}
+.btn:active,
+button:active {
+  transform: translate(0, 0);
+}
+nav a,
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, pinning and blink included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .pin-section.is-pinned {
+    min-block-size: 0;
+  }
+  .pin-section .pin-section__stage {
+    position: static;
+  }
+  .cursor-blink,
+  .cursor-blink.is-live {
+    animation: none;
+    opacity: 1;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active {
+    transform: none;
   }
 }

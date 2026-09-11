@@ -24,7 +24,7 @@
   
   <main id="main-content">
     <!-- Hero Viewport -->
-    <section class="hero-section" aria-labelledby="hero-title">
+    <section data-reveal class="hero-section" aria-labelledby="hero-title">
       <picture class="hero-bg">
         <img src="./assets/hero-bunker-facility.webp" alt="Fortified concrete coastal recovery bunker on a Shetland cliffside with glowing recovery tanks inside." fetchpriority="high" width="1376" height="768">
       </picture>
@@ -37,7 +37,7 @@
     </section>
 
     <!-- Flagship Section -->
-    <section class="flagship-section" aria-labelledby="flagship-title">
+    <section data-reveal class="flagship-section" aria-labelledby="flagship-title">
       <div class="container">
         <div class="flagship-content">
           <h2 id="flagship-title">The Shetland–Bergen Accord: Cold-Water Physiology Without Compromise</h2>
@@ -49,7 +49,7 @@
     </section>
 
     <!-- The Protocol Deck (Overlapping Stack Container) -->
-    <section class="protocol-deck-section" aria-labelledby="protocol-title">
+    <section data-reveal class="protocol-deck-section" aria-labelledby="protocol-title">
       <div class="container stack-container">
         <h2 id="protocol-title" class="sr-only"><span>The Protocol Deck</span></h2>
         <div class="protocol-stack">
@@ -99,7 +99,7 @@
     </section>
 
     <!-- Physiological Telemetry & Biomarker Matrix -->
-    <section class="telemetry-section" aria-labelledby="telemetry-title">
+    <section data-reveal class="telemetry-section" aria-labelledby="telemetry-title">
       <div class="container">
         <h2 id="telemetry-title">Physiological Telemetry &amp; Biomarker Matrix</h2>
         <div class="data-matrix">
@@ -136,7 +136,38 @@
     </section>
 
     <!-- Operational Field Logs & Marine Endorsements -->
-    <section class="logs-section" aria-labelledby="logs-title">
+    <div class="slot-modal-wrap">
+      <button type="button" class="slot-tile-button" data-video-open aria-haspopup="dialog" aria-controls="cell-film">
+        <img src="./assets/flagship-immersion-tank.webp" alt="" loading="lazy" width="1280" height="720">
+        <span class="slot-tile-button__label">
+          <span class="slot-tile-button__glyph" aria-hidden="true"></span>
+          <span class="slot-tile-button__text">
+            <strong>Inside the immersion cell</strong>
+            One descent cycle, filmed from the gantry
+          </span>
+        </span>
+      </button>
+
+      <svg class="line-draw" viewBox="0 0 900 180" fill="none" role="img"
+        aria-label="Diagram of the descent sequence: surface gantry, immersion tank, and cold vault." data-line-draw>
+        <path class="draw-path" d="M40 30 L 300 30" stroke-width="3"></path>
+        <path class="draw-path" d="M300 30 C 360 30, 380 90, 440 90" stroke-width="3"></path>
+        <path class="draw-path" d="M440 90 L 620 90" stroke-width="3"></path>
+        <path class="draw-path" d="M620 90 C 690 90, 700 150, 760 150" stroke-width="3"></path>
+        <path class="draw-path" d="M760 150 L 860 150" stroke-width="3"></path>
+        <path class="draw-path" d="M40 22 L 40 38 M860 142 L 860 158" stroke-width="3"></path>
+      </svg>
+    </div>
+
+    <div class="video-modal" id="cell-film" role="dialog" aria-modal="true" aria-label="Immersion cell descent" hidden>
+      <div class="video-modal__backdrop" data-video-close></div>
+      <div class="video-modal__frame">
+        <button type="button" class="video-modal__close" data-video-close aria-label="Close video">&times;</button>
+        <img class="video-modal__still" src="./assets/flagship-immersion-tank.webp" alt="Immersion tank descent cycle." width="1280" height="720">
+      </div>
+    </div>
+
+    <section data-reveal class="logs-section" aria-labelledby="logs-title">
       <div class="container">
         <h2 id="logs-title">Operational Field Logs</h2>
         <div class="stat-line">
@@ -163,7 +194,7 @@
     </section>
 
     <!-- Technical & Medical Screening FAQ -->
-    <section class="faq-section" aria-labelledby="faq-title">
+    <section data-reveal class="faq-section" aria-labelledby="faq-title">
       <div class="container">
         <h2 id="faq-title">Technical &amp; Medical Screening</h2>
         <div class="faq-grid">
@@ -205,7 +236,7 @@
     </section>
 
     <!-- Clinical Intake & Requisition Desk -->
-    <section id="intake" class="intake-section" aria-labelledby="intake-title">
+    <section data-reveal id="intake" class="intake-section" aria-labelledby="intake-title">
       <div class="container">
         <div class="intake-panel">
           <h2 id="intake-title">Clinical Intake &amp; Requisition Desk</h2>

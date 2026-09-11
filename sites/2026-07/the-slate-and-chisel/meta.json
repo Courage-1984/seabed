@@ -6,5 +6,10 @@
   "created": "2026-07-15",
   "standard": "v2",
   "qa": "v2-pass",
-  "tags": ["brand", "concept"]
+  "tags": [
+    "brand",
+    "concept"
+  ],
+  "videoPlacement": "hero inset frame",
+  "signatureEffect": "text scramble decode on reveal"
 }

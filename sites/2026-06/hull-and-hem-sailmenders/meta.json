@@ -6,5 +6,10 @@
   "created": "2026-06-19",
   "standard": "v2",
   "qa": "v2-pass",
-  "tags": ["maritime", "services"]
+  "tags": [
+    "maritime",
+    "services"
+  ],
+  "videoPlacement": "section transition band",
+  "signatureEffect": "scroll-velocity marquee skew"
 }

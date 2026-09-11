@@ -3,9 +3,15 @@
   "blurb": "Hand-milled English oak and Douglas fir stave restoration powered by a shared master-artisan timber bank.",
   "hero": "assets/hero.webp",
   "layoutFamily": "asymmetric split",
-  "tags": ["industrial", "restoration", "cooperative"],
+  "tags": [
+    "industrial",
+    "restoration",
+    "cooperative"
+  ],
   "created": "2026-08-03",
   "standard": "v2",
   "wordFloor": 1900,
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "section transition band",
+  "signatureEffect": "magnetic proximity cursor element"
 }

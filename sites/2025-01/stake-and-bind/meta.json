@@ -3,9 +3,15 @@
   "blurb": "Trade your sprint board for a billhook — learn to lay hedges the slow way, sleep deeply, remember what your hands are for.",
   "hero": "assets/hero-hedge.webp",
   "layoutFamily": "asymmetric split",
-  "tags": ["outdoor-skills", "executive-wellbeing", "heritage-craft"],
+  "tags": [
+    "outdoor-skills",
+    "executive-wellbeing",
+    "heritage-craft"
+  ],
   "created": "2025-01-26",
   "wordFloor": 1100,
   "standard": "v2",
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "footer ambient",
+  "signatureEffect": "magnetic proximity cursor element"
 }

@@ -11,5 +11,7 @@
   "created": "2026-08-10",
   "wordFloor": 1100,
   "standard": "v2",
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "hero inset frame",
+  "signatureEffect": "masked scroll-through type"
 }

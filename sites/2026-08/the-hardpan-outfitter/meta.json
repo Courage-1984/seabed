@@ -11,5 +11,7 @@
   "created": "2026-08-14",
   "standard": "v2",
   "wordFloor": 1100,
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "section transition band",
+  "signatureEffect": "text scramble decode on reveal"
 }

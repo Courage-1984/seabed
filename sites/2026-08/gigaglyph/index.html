@@ -25,7 +25,7 @@
       
       <!-- HERO -->
       <section class="section-wrapper hero">
-        <div class="terminal-panel">
+        <div data-reveal class="terminal-panel">
           <div class="panel-header">
             <span>[SYS_INIT // BOOT_SEQ]</span>
             <span>CRANE_TELEMETRY: ACTIVE</span>
@@ -56,9 +56,63 @@
         </div>
       </section>
 
+      <!-- Video placement: inline process demo -->
+      <figure class="process-demo">
+        <div class="process-demo__header">
+          <span>[POUR_LOG // MOULD_07]</span>
+          <span>300 KG // 1420&deg;C</span>
+        </div>
+        <video
+          class="process-demo__video"
+          controls
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="./assets/gigaglyph-inline-process-demo-poster.webp"
+          aria-labelledby="process-demo-caption"
+        >
+          <source src="./assets/gigaglyph-inline-process-demo.webm" type="video/webm">
+          <source src="./assets/gigaglyph-inline-process-demo.mp4" type="video/mp4">
+        </video>
+        <figcaption class="process-demo__caption" id="process-demo-caption">
+          Three hundred kilograms of iron entering a bonded sand mould &mdash; the pour that makes a single character.
+        </figcaption>
+      </figure>
+
+      <!-- Signature effect: sticky section pinning with cross-fade -->
+      <section class="section-wrapper pin-section" data-pin-section>
+        <div class="pin-section__stage">
+          <div class="terminal-panel pin-panel">
+            <div class="panel-header">
+              <span>[CAST_SEQUENCE]</span>
+              <span class="pin-panel__step">STATE 1 / 4</span>
+            </div>
+            <div class="panel-body pin-panel__states">
+              <div class="pin-state is-active" data-pin-state>
+                <h2>01 &mdash; Pattern &amp; Mould</h2>
+                <p>The letterform is cut as a timber pattern, rammed into bonded silica sand, and vented by hand. Two tonnes of mould for one character, split along a parting line that will never be seen again.</p>
+              </div>
+              <div class="pin-state" data-pin-state>
+                <h2>02 &mdash; Charge &amp; Melt</h2>
+                <p>Three hundred kilograms of pig iron and returns are charged into the cupola. The melt is held at fourteen hundred and twenty degrees until the slag runs clean off the spout.</p>
+              </div>
+              <div class="pin-state" data-pin-state>
+                <h2>03 &mdash; Pour</h2>
+                <p>The ladle is craned over the mould and tipped in a single continuous movement. Hesitate and the iron freezes mid-runner, taking the counter of the letter with it.</p>
+              </div>
+              <div class="pin-state" data-pin-state>
+                <h2>04 &mdash; Knock-Out &amp; Rig</h2>
+                <p>After thirty hours the sand is broken away, the runners are cut off, and the letterform is rigged to a counter-weighted frame for transport under municipal crane permit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- FLAGSHIP -->
       <section class="section-wrapper">
-        <div class="terminal-panel">
+        <div data-reveal class="terminal-panel">
           <div class="panel-header">
             <span>[ARCH_LOG // SCALE_CRISIS]</span>
             <span>SYSTEM_RECORD: 01</span>
@@ -74,7 +128,7 @@
 
       <!-- TYPEFACE FOUNDRY MATRIX -->
       <section class="section-wrapper">
-        <div class="terminal-panel">
+        <div data-reveal class="terminal-panel">
           <div class="panel-header">
             <span>[FONT_SPEC // CAST_REGISTRY]</span>
             <span>FOUNDRY_ALLOYS: BS_EN_1561</span>
@@ -131,7 +185,7 @@
 
       <!-- CRANE RIGGING PROTOCOL -->
       <section class="section-wrapper">
-        <div class="terminal-panel">
+        <div data-reveal class="terminal-panel">
           <div class="panel-header">
             <span>[RIG_SPEC // TENSION_CALC]</span>
             <span>INSTALLATION_MATRIX: ACTIVE</span>
@@ -169,7 +223,7 @@
 
       <!-- DIMENSIONAL SCALE BENCHMARK -->
       <section class="section-wrapper">
-        <div class="terminal-panel">
+        <div data-reveal class="terminal-panel">
           <div class="panel-header">
             <span>[BENCHMARK // SCALE_COMPARATOR]</span>
             <span>METRICS_AUDIT: COMPLETE</span>
@@ -218,7 +272,7 @@
 
       <!-- CIVIC DISPATCHES -->
       <section class="section-wrapper">
-        <div class="terminal-panel">
+        <div data-reveal class="terminal-panel">
           <div class="panel-header">
             <span>[FIELD_LOG // SITE_REPORTS]</span>
             <span>ACTIVE_DEPLOYMENTS: 3</span>
@@ -259,7 +313,7 @@
 
       <!-- ENGINEERING FAQ -->
       <section class="section-wrapper">
-        <div class="terminal-panel">
+        <div data-reveal class="terminal-panel">
           <div class="panel-header">
             <span>[QUERY_ENGINE // TECH_FAQ]</span>
             <span>KNOWLEDGE_BASE: LOADED</span>
@@ -302,7 +356,7 @@
 
       <!-- REQUISITION TERMINAL -->
       <section class="section-wrapper" id="requisition">
-        <div class="terminal-panel">
+        <div data-reveal class="terminal-panel">
           <div class="panel-header">
             <span>[SYS_EXEC // ALLOCATION_DESK]</span>
             <span>SECURE_CONNECTION: ESTABLISHED</span>

@@ -36,9 +36,14 @@
     
     <section class="hero-block block-container">
       <div class="hero-image-wrapper">
-        <video class="hero-bg" autoplay loop muted playsinline>
-          <source src="./assets/hero-clydesdale.webm" type="video/webm">
-        </video>
+        <img
+          class="hero-bg"
+          src="./assets/hero-clydesdale-ballistic-harness.webp"
+          alt=""
+          fetchpriority="high"
+          width="1376"
+          height="768"
+        >
       </div>
       <div class="hero-content">
         <div class="brand-badge">TRACE &amp; TUNGSTEN // AVIEMORE</div>
@@ -64,7 +69,7 @@
       </div>
     </div>
 
-    <section id="section-consortium-charter" class="content-block block-container">
+    <section id="section-consortium-charter" class="content-block block-container" data-reveal>
       <h2 class="section-title">01 // THE FORESTRY-ARMOUR ALLIANCE</h2>
       <div class="content-image" style="margin-block-end: 2rem;">
         <img src="./assets/hero-clydesdale-ballistic-harness.webp" alt="Clydesdale draft horse hauling Scots pine timber in a ballistic Kevlar extraction harness." style="width: 100%; height: auto; border-radius: var(--radius-md);">
@@ -84,7 +89,7 @@
       </div>
     </div>
 
-    <section id="section-rigging-catalog" class="catalog-block block-container">
+    <section id="section-rigging-catalog" class="catalog-block block-container" data-reveal>
       <h2 class="section-title">02 // BALLISTIC DRAFT HARNESS CATALOG</h2>
       
       <div class="catalog-row">
@@ -134,7 +139,54 @@
       </div>
     </section>
 
-    <section id="section-tensile-telemetry" class="telemetry-block block-container">
+    <section class="masked-type-block" aria-labelledby="masked-type-heading">
+      <div class="masked-type">
+        <video
+          class="masked-type__video"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+          poster="./assets/trace-and-tungsten-masked-type-fill-poster.webp"
+          aria-hidden="true"
+        >
+          <source src="./assets/trace-and-tungsten-masked-type-fill.webm" type="video/webm">
+          <source src="./assets/trace-and-tungsten-masked-type-fill.mp4" type="video/mp4">
+        </video>
+        <h2 class="masked-type__text" id="masked-type-heading">42 KN</h2>
+        <svg
+          class="masked-type__knockout"
+          viewBox="0 0 600 200"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <defs>
+            <mask id="tt-knockout">
+              <rect width="600" height="200" fill="#fff"></rect>
+              <text
+                x="300"
+                y="100"
+                text-anchor="middle"
+                dominant-baseline="central"
+                font-family="'Chakra Petch', sans-serif"
+                font-weight="700"
+                font-size="150"
+                letter-spacing="-3"
+                fill="#000"
+              >42 KN</text>
+            </mask>
+          </defs>
+          <rect width="600" height="200" fill="currentColor" mask="url(#tt-knockout)"></rect>
+        </svg>
+      </div>
+      <p class="masked-type__caption">
+        Minimum breaking strain, verified on the Glenmore hydraulic jig — every trace, every batch.
+      </p>
+    </section>
+
+    <section id="section-tensile-telemetry" class="telemetry-block block-container" data-reveal>
       <h2 class="section-title">03 // TENSILE BENCH TELEMETRY &amp; COLD SHOCK DATA</h2>
       <div class="telemetry-image">
         <img src="./assets/hydraulic-tensile-test-rig.webp" loading="lazy" alt="Hydraulic test rig verifying 42 kN breaking strength on an aramid draft trace." width="1376" height="768">
@@ -173,7 +225,7 @@
       </div>
     </div>
 
-    <section id="section-forester-proof" class="proof-block block-container">
+    <section id="section-forester-proof" class="proof-block block-container" data-reveal>
       <h2 class="section-title">04 // COMMERCIAL FORESTRY VERIFICATION</h2>
       <div class="stat-bar">
         <div class="stat">
@@ -211,7 +263,7 @@
       </div>
     </section>
 
-    <section id="requisition-terminal" class="terminal-block block-container">
+    <section id="requisition-terminal" class="terminal-block block-container" data-reveal>
       <h2 class="section-title">05 // TRADE PROCUREMENT TERMINAL</h2>
       <div class="terminal-grid">
         <div class="terminal-form">

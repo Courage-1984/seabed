@@ -35,7 +35,10 @@ body {
   background-color: var(--color-bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  /* clip, not hidden: overflow-x:hidden turns body into a scroll container,
+     which silently disables position:sticky for every descendant -- including
+     the split-panel video pane. clip suppresses the same overflow without it. */
+  overflow-x: clip;
 }
 
 sub, sup {
@@ -570,4 +573,246 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 .footer-address {
   font-style: normal;
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system. */
+.js-reveal [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — split panel.
+ * The video half is pinned for the section's full duration while the
+ * protocol phases scroll independently beside it.
+ * ------------------------------------------------------------------ */
+.video-split {
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .video-split {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 3rem;
+  }
+  /* Keep the secondary pane in the content column so the video pane's grid
+     area stays the full height of the prose beside it -- that height is the
+     sticky travel. */
+  .video-split > .pane-secondary {
+    grid-column: 2;
+  }
+}
+.video-split__pane {
+  position: relative;
+  align-self: start;
+  border: 1px solid var(--color-border);
+  background: var(--color-primary);
+  overflow: hidden;
+}
+@media (min-width: 900px) {
+  .video-split__pane {
+    position: sticky;
+    top: 6rem;
+  }
+}
+.video-split__player {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+@media (min-width: 900px) {
+  .video-split__player {
+    /* The pane must stay shorter than the section's content column, otherwise
+       the grid row is exactly as tall as the pane and sticky has zero travel --
+       it looks pinned in the CSS but scrolls with the page in practice. */
+    aspect-ratio: auto;
+    block-size: min(56vh, 480px);
+  }
+}
+.video-split__caption {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: hsl(210, 16%, 88%);
+  /* Caption sits on the panel chrome, not the footage, so it stays readable
+     regardless of the frame behind it. */
+  background: hsl(215, 28%, 13%);
+  border-block-start: 1px solid var(--color-border);
+}
+
+/* Supporting motion: the phase level with the pane takes the accent rule. */
+.protocol-list > li {
+  transition:
+    border-color var(--dur-mid) var(--ease-out),
+    transform var(--dur-mid) var(--ease-out);
+}
+.protocol-list > li.is-current {
+  border-inline-start-color: var(--color-accent);
+  transform: translateX(4px);
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — magnetic proximity cursor element.
+ * ------------------------------------------------------------------ */
+[data-magnetic] {
+  translate: var(--magnet-x, 0) var(--magnet-y, 0);
+  transition:
+    translate var(--dur-mid) var(--ease-out),
+    box-shadow var(--dur-mid) var(--ease-out);
+  will-change: translate;
+}
+[data-magnetic].is-magnetised {
+  /* Snappier while tracking the pointer, slow easing back on release. */
+  transition:
+    translate 90ms linear,
+    box-shadow var(--dur-mid) var(--ease-out);
+  box-shadow: 0 0 0 3px hsla(14, 88%, 52%, 0.28);
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn {
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.main-nav a {
+  position: relative;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: -2px;
+  block-size: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-mid) var(--ease-out);
+}
+.main-nav a:hover::after,
+.main-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+.main-nav a:active {
+  color: var(--color-accent-hover);
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, split-panel loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-magnetic],
+  [data-magnetic].is-magnetised {
+    translate: none;
+    box-shadow: none;
+  }
+  .protocol-list > li.is-current {
+    transform: none;
+  }
+  .video-split__pane {
+    position: static;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Legibility corrections (visual audit).
+ * ------------------------------------------------------------------ */
+:root {
+  /* The base accent carries white text at only 3.66:1. Filled CTAs use a
+     darker step so white type clears 4.5:1; the bright accent stays for
+     rules, borders and focus rings where contrast is not a text concern. */
+  --color-accent-cta: hsl(14, 88%, 42%);
+  --color-accent-cta-hover: hsl(14, 88%, 34%);
+}
+.btn-accent {
+  background-color: var(--color-accent-cta);
+  color: var(--color-surface);
+}
+.btn-accent:hover,
+.btn-accent:focus-visible {
+  background-color: var(--color-accent-cta-hover);
+}
+
+/* .btn-outline assumed a light ground, but it is also used inside the dark
+   .pane-secondary of inverse sections, where dark-on-dark rendered the label
+   at 1.00:1 -- literally invisible. Invert it in dark contexts. */
+/* .btn-outline hard-coded a dark label, which rendered at 1.00:1 -- invisible --
+   wherever it sat on a dark pane. Keying the fix off .inverse-bg did not work
+   either: that class does not reliably mean "dark" (e.g. #matrix carries it but
+   renders white). Inheriting the surrounding text colour adapts to any context
+   by construction, and the border follows the label. */
+.btn-outline {
+  color: inherit;
+  border-color: currentColor;
+}
+/* A solid currentColor fill would need the label to flip, and the label is a
+   bare text node with no reliable "opposite" to flip to. A translucent wash
+   plus a thicker rule reads as pressed while keeping the label legible in
+   whatever context the button lands. */
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  background-color: color-mix(in srgb, currentColor 14%, transparent);
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+/* Tap targets: header nav and brand must clear 44x44 on touch. */
+.main-nav a:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+  white-space: nowrap;
+}
+.brand {
+  min-block-size: 44px;
+}
+
+/* The bleeding graphic breaks the grid by +48px to the right. In the split
+   panel the prose column is now the right-hand one, so that bleed ran past the
+   viewport edge (previously hidden by body overflow-x:hidden, which also broke
+   sticky). Bleed it leftward into the gutter instead: same grid-break
+   signature, inside the viewport. */
+@media (min-width: 1024px) {
+  .video-split .bleeding-graphic {
+    margin-inline-start: -48px;
+    width: calc(100% + 48px);
+    max-width: calc(100% + 48px);
+  }
 }

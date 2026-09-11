@@ -37,7 +37,9 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   font-size: 1rem;
-  overflow-x: hidden;
+  /* clip, not hidden: overflow-x:hidden makes body a scroll container, which
+     silently disables position:sticky for every descendant. */
+  overflow-x: clip;
 }
 
 img {
@@ -517,4 +519,162 @@ h1, h2, h3, h4, .font-display {
   font-style: normal;
   line-height: 1.8;
   color: var(--color-surface-muted);
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only exists while the script that
+   un-hides it is running. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Signature effect — text scramble decode. Reserve the line box so the
+   settling glyphs cannot reflow the surrounding layout. */
+[data-scramble] {
+  font-variant-numeric: tabular-nums;
+  white-space: pre-wrap;
+  min-block-size: 1.4em;
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — hero inset frame.
+ * A deliberate framed object beneath the hero copy, not a background.
+ * ------------------------------------------------------------------ */
+.hero-inset {
+  margin: 2rem 0 0;
+  max-inline-size: 32rem;
+  border: var(--border-brutal, 2px solid #241d16);
+  box-shadow: var(--shadow-brutal, 8px 8px 0 0 #241d16);
+  background: #241d16;
+}
+.hero-inset__video {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.hero-inset__caption {
+  margin: 0;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  /* Caption sits on panel chrome, never over the footage. */
+  color: hsl(38, 22%, 90%);
+  background: #241d16;
+  border-block-start: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Supporting motion — card stack lift. */
+.card-stack-item {
+  transition:
+    transform var(--dur-mid) var(--ease-out),
+    box-shadow var(--dur-mid) var(--ease-out);
+}
+.card-stack-item.is-current {
+  transform: translateY(-4px);
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible {
+  transform: translate(-2px, -2px);
+}
+.btn:active,
+button:active {
+  transform: translate(0, 0);
+}
+nav a,
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, hero loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .card-stack-item.is-current,
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active {
+    transform: none;
+  }
+  /* Hold the poster frame instead of looping. */
+  .hero-inset__video {
+    display: none;
+  }
+  .hero-inset {
+    background-image: url('./assets/leafbind-hero-inset-frame-poster.webp');
+    background-size: cover;
+    background-position: center;
+    min-block-size: 11rem;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Legibility corrections (visual audit).
+ * ------------------------------------------------------------------ */
+
+/* Header nav links use the amber accent, which is 2.96:1 on the paper
+   ground. The accent stays for rules and marks; nav text takes a darker step. */
+:root {
+  --color-accent-on-light: hsl(38, 90%, 30%);
+}
+.site-header nav a,
+.site-header a:not(.btn) {
+  color: var(--color-accent-on-light);
+}
+
+/* Buttons must clear the 44px touch target. */
+.btn,
+button {
+  min-block-size: 44px;
 }

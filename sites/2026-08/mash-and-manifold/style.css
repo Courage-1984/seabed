@@ -124,6 +124,9 @@ a {
   color: var(--color-accent);
   padding: 0.5rem 1rem;
   font-size: 1rem;
+  /* Not left at the inherited 1.10: the badge wraps to two lines on narrow
+     viewports and the lines collide. */
+  line-height: 1.3;
   margin-block-end: 2rem;
 }
 
@@ -380,4 +383,234 @@ img {
   text-align: center;
   border-top: var(--border-brutalist);
   font-size: 0.9rem;
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — CSS 3D card tilt. */
+[data-tilt] {
+  transform: translate3d(0, var(--reveal-y, 0px), 0) perspective(1000px) rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg));
+  transform-style: preserve-3d;
+  position: relative;
+  transition:
+    transform var(--dur-mid) var(--ease-out),
+    box-shadow var(--dur-mid) var(--ease-out);
+}
+[data-tilt].is-tilting {
+  transition:
+    transform 80ms linear,
+    box-shadow var(--dur-mid) var(--ease-out);
+}
+[data-tilt]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-out);
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0) 55%
+  );
+}
+[data-tilt].is-tilting::after {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-tilt],
+  [data-tilt].is-tilting {
+    transform: none;
+  }
+  [data-tilt]::after {
+    display: none;
+  }
+  [data-slot-video] {
+    display: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — marquee strip: a drifting band the clip rides inside. */
+.slot-marquee {
+  inline-size: 100%;
+  overflow: hidden;
+  padding-block: 1.25rem;
+  margin-block: 3rem;
+  background-color: var(--color-primary, #14181d);
+  border-block: 2px solid var(--color-accent, #b7d43f);
+}
+.slot-marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  inline-size: max-content;
+  animation: slotDrift 30s linear infinite;
+  will-change: transform;
+}
+@keyframes slotDrift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.slot-marquee:hover .slot-marquee__track,
+.slot-marquee:focus-within .slot-marquee__track {
+  animation-play-state: paused;
+}
+.slot-marquee__item {
+  flex: 0 0 auto;
+  margin: 0;
+  inline-size: min(70vw, 420px);
+  border: 2px solid var(--color-accent, #b7d43f);
+  background: #0f1216;
+}
+.slot-marquee__still,
+.slot-marquee [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.slot-marquee__caption {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  /* Caption sits on panel chrome, never over the media. */
+  color: hsl(75, 12%, 88%);
+  background: #0f1216;
+  border-block-start: 1px solid var(--color-accent, #b7d43f);
+}
+.slot-marquee__word {
+  flex: 0 0 auto;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  letter-spacing: 0.08em;
+  color: var(--color-accent, #b7d43f);
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  .slot-marquee__track {
+    animation: none;
+    transform: none;
+    flex-wrap: wrap;
+    inline-size: 100%;
+    justify-content: center;
+  }
+}
+
+/* Exponents render as real superscripts; line-height: 0 keeps them from
+   opening up the line box they sit in. */
+sup {
+  /* max() puts a 12px floor under it: 0.72em of the mono body copy is
+     about 10.8px, which is below the legibility minimum. */
+  font-size: max(0.8em, 12px);
+  line-height: 0;
+  vertical-align: super;
+}
+
+/* --------------------------------------------------------------- *
+ * Overflow guard.
+ * `clip`, never `hidden`: `hidden` makes the body a scroll container,
+ * which silently kills every `position: sticky` inside it.
+ * --------------------------------------------------------------- */
+body {
+  overflow-x: clip;
+}
+
+/* Long single words in display type (e.g. "Physiological") are wider than the
+   column on a 390px viewport and push the document sideways. */
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: break-word;
+  hyphens: auto;
 }

@@ -33,7 +33,7 @@
     </section>
 
     <!-- Flagship Editorial (§4a) -->
-    <section class="flagship-section">
+    <section data-reveal class="flagship-section">
       <div class="container text-column">
         <h2 class="section-title">Winter Näver Harvest &amp; Hand-Woven Pack Mechanics</h2>
         <p>Peeling birch bark for heavy expedition gear requires waiting for the deep freeze of late arctic winter, when the tree’s sap recedes completely and the inner bark layer hardens into a dense, leather-like sheet. Harvesting during this dormant window ensures that the bark retains its maximum concentration of betulin—a natural resinous compound that renders the material permanently impervious to water, fungal rot, and wood-boring insects. We harvest only from mature timber scheduled for sustainable forestry thinning, taking care never to girdle living trees.</p>
@@ -43,7 +43,7 @@
     </section>
 
     <!-- Section 2: Sticky-Rail Dossier (THE ONLY SPLIT LAYOUT) -->
-    <section class="dossier-section">
+    <section data-reveal class="dossier-section">
       <div class="container dossier-layout">
         <aside class="sticky-rail">
           <ul class="sticky-index">
@@ -119,7 +119,7 @@
     </section>
 
     <!-- Section 4: Pine-Tar -->
-    <section class="flagship-section" style="background-color: var(--color-bg);">
+    <section data-reveal class="flagship-section" style="background-color: var(--color-bg);">
       <div class="container text-column">
         <h2 class="section-title">Kiln-Burned Pine Tar &amp; Reindeer Leather Conditioning</h2>
         <p>True arctic weather demands organic coatings that outperform brittle petroleum waxes. We hand-paint our heavy cotton canvas liners with a boiling mixture of hot Dalarna pine tar and pure linseed oil. As the hot tar cures into the canvas fibres, it creates an impenetrable barrier against standing water that refuses to crack in the bitter cold. The resulting fabric is stiff, remarkably resilient, and redolent with the earthy scent of traditional woodsmoke.</p>
@@ -134,7 +134,7 @@
     </section>
 
     <!-- Section 5: Field Notes -->
-    <section class="dossier-section" style="border-top: none; background-color: var(--color-bg);">
+    <section data-reveal class="dossier-section" style="border-top: none; background-color: var(--color-bg);">
       <div class="container">
         <h2 class="section-title">Field Dispatches from Sarek National Park</h2>
         <img src="./assets/expedition-canoe-portage.webp" alt="Canoeist wearing a woven birch-bark packbasket on a forest portage trail." style="margin-bottom: 2rem; border-radius: 4px;" loading="lazy">
@@ -185,7 +185,7 @@
     </section>
 
     <!-- Section 7: FAQ -->
-    <section class="dossier-section">
+    <section data-reveal class="dossier-section">
       <div class="container">
         <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">Pack Maintenance &amp; Craft Enquiries</h2>
         
@@ -219,7 +219,19 @@
     </section>
 
     <!-- Section 8: Requisition -->
-    <section id="requisition" class="requisition-section">
+    <div class="line-draw-wrap">
+      <svg class="line-draw" viewBox="0 0 900 180" fill="none" role="img"
+        aria-label="Diagram of the sequence: winter bark harvest, soaking and splitting, then weaving the finished packbasket." data-line-draw>
+        <path class="draw-path" d="M40 40 L 280 40" stroke-width="3"></path>
+        <path class="draw-path" d="M280 40 C 340 40, 360 90, 420 90" stroke-width="3"></path>
+        <path class="draw-path" d="M420 90 L 600 90" stroke-width="3"></path>
+        <path class="draw-path" d="M600 90 C 670 90, 680 140, 740 140" stroke-width="3"></path>
+        <path class="draw-path" d="M740 140 L 860 140" stroke-width="3"></path>
+        <path class="draw-path" d="M40 32 L 40 48 M860 132 L 860 148" stroke-width="3"></path>
+      </svg>
+    </div>
+
+    <section data-reveal id="requisition" class="requisition-section">
       <div class="container">
         <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Requisition a Hand-Woven Expedition Pack</h2>
         <p style="text-align: center; margin-bottom: 3rem; opacity: 0.9;">Hand-crafted in limited seasonal batches in Jokkmokk. Current weaving lead times sit at 4 to 6 weeks.</p>
@@ -274,6 +286,10 @@
   </main>
 
   <footer class="site-footer">
+    <div class="slot-footer-media" aria-hidden="true">
+      <img class="slot-footer-media__still" src="./assets/expedition-canoe-portage.webp" alt="" loading="lazy" width="1280" height="720">
+      <div class="slot-footer-media__scrim"></div>
+    </div>
     <div class="container">
       <div class="footer-brand">Sarek Birch-Bark Gear Guild</div>
       <p>Storgatan 12, 962 31 Jokkmokk, Norrbotten, Sweden</p>

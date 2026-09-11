@@ -32,7 +32,9 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
-  overflow-x: hidden;
+  /* clip, not hidden: overflow-x:hidden makes body a scroll container, which
+     silently disables position:sticky for every descendant. */
+  overflow-x: clip;
 }
 
 img {
@@ -583,4 +585,203 @@ h1, h2, h3, h4, .brand {
 }
 .hover-reveal-container:hover .hover-video {
   opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system. */
+/* Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running. Without the gate, a failed or slow script
+   leaves the page blank. */
+.js-reveal [data-reveal] {
+  --reveal-y: 20px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — animated SVG line-draw.
+ * ------------------------------------------------------------------ */
+.frond-draw {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 56rem;
+  margin: 2rem auto 2.5rem;
+  block-size: auto;
+  color: var(--color-accent, #6b7f3a);
+}
+.frond-draw__path {
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition: stroke-dashoffset 1100ms var(--ease-out);
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — marquee strip.
+ * A horizontal band whose track drifts continuously; the video is one
+ * of the items riding inside it.
+ * ------------------------------------------------------------------ */
+.marquee-strip {
+  inline-size: 100%;
+  overflow: hidden;
+  padding-block: 1.25rem;
+  margin-block-start: var(--space-2xl, 4rem);
+  background-color: var(--color-primary, #1d2413);
+  border-block: 2px solid var(--color-accent, #6b7f3a);
+}
+.marquee-strip__track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  inline-size: max-content;
+  animation: stripDrift 30s linear infinite;
+  will-change: transform;
+}
+@keyframes stripDrift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-strip:hover .marquee-strip__track,
+.marquee-strip:focus-within .marquee-strip__track {
+  animation-play-state: paused;
+}
+.marquee-strip__item--video {
+  flex: 0 0 auto;
+  margin: 0;
+  inline-size: min(70vw, 420px);
+  border: 2px solid var(--color-accent, #6b7f3a);
+  background: #0d1109;
+}
+.marquee-strip__video {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.marquee-strip__caption {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  /* Caption sits on panel chrome, never over the footage. */
+  color: hsl(70, 14%, 88%);
+  background: #0d1109;
+  border-block-start: 1px solid var(--color-accent, #6b7f3a);
+  white-space: normal;
+}
+.marquee-strip__word {
+  flex: 0 0 auto;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.08em;
+  color: var(--color-accent, #6b7f3a);
+  white-space: nowrap;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active {
+  transform: translateY(0);
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, strip and loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .frond-draw__path {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+  .marquee-strip__track {
+    animation: none;
+    transform: none;
+    flex-wrap: wrap;
+    inline-size: 100%;
+    justify-content: center;
+  }
+  .ticker-track {
+    animation: none;
+    transform: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Legibility corrections (visual audit).
+ * ------------------------------------------------------------------ */
+
+/* The accent green is 1.86:1 on white — fine as a rule or fill, not as the
+   large step numerals, which still need to clear 3:1 as large text. */
+:root {
+  --color-accent-on-light: hsl(78, 36%, 34%);
+}
+.step-number {
+  color: var(--color-accent-on-light);
+}
+
+/* Touch targets: links must clear 44px. */
+nav a,
+footer a,
+.step-card a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* The header is sticky and the page navigates by in-page anchors, so targets
+   must clear it or they land underneath (AGENTS.md, scroll boundaries). */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }

@@ -31,7 +31,7 @@ body {
   color: var(--color-text);
   font-family: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -340,4 +340,192 @@ a:hover {
     padding: 0.5rem;
     font-size: 0.875rem;
   }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — numeric counter roll-up. */
+[data-count-to] {
+  /* Tabular figures stop the layout jittering while the digits climb. */
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  display: inline-block;
+  min-inline-size: 3ch;
+  text-align: end;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-slot-video] {
+    display: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — hover reveal: poster at rest, clip on hover and focus. */
+.slot-hover {
+  position: relative;
+  overflow: hidden;
+  margin-block: 3rem;
+  border: 1px solid var(--color-border, #cfc6b6);
+  cursor: pointer;
+  min-block-size: 22rem;
+  display: flex;
+  align-items: flex-end;
+}
+.slot-hover__poster,
+.slot-hover [data-slot-video] {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.slot-hover [data-slot-video] {
+  opacity: 0;
+  z-index: 1;
+  transition: opacity var(--dur-mid) var(--ease-out);
+}
+.slot-hover.is-revealing [data-slot-video] {
+  opacity: 1;
+}
+/* The copy stays readable throughout rather than fading out on hover. */
+.slot-hover__content {
+  position: relative;
+  z-index: 2;
+  inline-size: 100%;
+  padding: 1.5rem;
+  color: #fff;
+  background: linear-gradient(to top, rgba(24, 18, 10, 0.92) 0%, rgba(24, 18, 10, 0.7) 65%, rgba(24, 18, 10, 0.25) 100%);
+}
+.slot-hover__hint {
+  display: block;
+  margin-block-start: 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+.slot-hover:focus-visible {
+  outline: 3px solid var(--color-accent, #a8762b);
+  outline-offset: 3px;
+}
+@media (hover: none), (pointer: coarse) {
+  .slot-hover__hint {
+    display: none;
+  }
+}
+
+/* The site-wide `h3 { color: ... }` rule beats inheritance from
+   .slot-hover__content, so the heading has to be told explicitly that it is
+   sitting on media. The scrim is also lifted at its top end to carry it. */
+.slot-hover__content > * {
+  color: #fff;
+}
+.slot-hover__content {
+  background: linear-gradient(
+    to top,
+    rgba(24, 18, 10, 0.94) 0%,
+    rgba(24, 18, 10, 0.86) 55%,
+    rgba(24, 18, 10, 0.62) 100%
+  );
+}
+
+/* Touch targets: the wordmark link and the form controls both sat just under
+   the 44px minimum. */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+input,
+select,
+textarea {
+  min-block-size: 44px;
 }

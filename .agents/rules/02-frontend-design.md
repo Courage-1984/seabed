@@ -37,11 +37,18 @@ Apply when creating or substantially editing HTML/CSS/JS under `sites/`.
 
 ## Motion
 
-- Ship at least 2–3 intentional motions (scroll reveal, hover, ambient, etc.) that create hierarchy — not noise.
+Every site ships a real motion system. The full **motion budget** is canonical in `AGENTS.md` §13 — do not restate it here. In short: one IntersectionObserver scroll-reveal system, the rolled signature effect, the layout family's signature motion, 2–3 supporting motions, 2 micro-interactions, transform/opacity only, 120–400ms with a custom cubic-bezier, and a `prefers-reduced-motion` block that neutralises all of it.
 
-## Video Integration (Mandatory Matrix)
+Signature-effect pool and per-effect specs: `scripts/lib/signature-effects.js`.
 
-- **AI Agent Governance:** Do NOT default to placing the generated video as a hero background. You MUST determine the video placement based on the creation date of the site (e.g. `YYYY-MM-DD` -> DD). Refer to the **Video Integration Matrix** in `AGENTS.md` (Section 11) for the exact logic (e.g. Days 01-06 = Hero Background, Days 07-12 = Inline Demo, etc.).
+## Video Integration
+
+Every site ships exactly one video, generated for that site alone. Placement is **seeded from the brief and constrained by the layout family** — never derived from the day of the month.
+
+- Canonical rule: `AGENTS.md` §11.
+- Slot registry, per-slot implementation specs, and the layout→slot compatibility map: `scripts/lib/video-placements.js`.
+- The site must look and work perfectly with no video present; the video layers into a slot that already works.
+- Text over a video always needs an engineered scrim. This is the single most common legibility failure in this repo.
 
 ## Anti-patterns (avoid unless the brief explicitly demands them)
 

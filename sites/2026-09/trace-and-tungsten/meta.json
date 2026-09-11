@@ -11,5 +11,9 @@
   "created": "2026-09-03",
   "wordFloor": 650,
   "standard": "v2",
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "masked type fill",
+  "signatureEffect": "scroll-velocity marquee skew",
+  "video": "assets/trace-and-tungsten-masked-type-fill.webm",
+  "contract": "v2.1"
 }

@@ -18,6 +18,9 @@ sites/<YYYY-MM>/<kebab-slug>/
   assets/
     favicon.svg
     *.webp
+    <slug>-<slot>.webm          # the site's one video
+    <slug>-<slot>.mp4           # H.264 fallback
+    <slug>-<slot>-poster.webp   # poster frame
 ```
 
 ## meta.json schema
@@ -31,6 +34,9 @@ sites/<YYYY-MM>/<kebab-slug>/
   "tags": ["ecommerce", "apparel"],
   "created": "2026-07-21",
   "wordFloor": 1100,
+  "video": "assets/brand-name-grid-tile.webm",
+  "videoPlacement": "grid tile",
+  "signatureEffect": "scroll-driven clip-path wipe",
   "standard": "v2",
   "qa": "v2-pass"
 }
@@ -38,12 +44,16 @@ sites/<YYYY-MM>/<kebab-slug>/
 
 - `title`, `blurb`, `hero` are required for hub cards.
 - `hero` is relative to the site folder, **without** a leading `./` (e.g. `assets/tig_arc.webp`).
-- `layoutFamily` — one of the fourteen names (exact): `asymmetric split`, `editorial magazine`, `bento`, `brutalist stacked`, `horizontal-scroll band`, `ultra-minimal full-bleed`, `sticky-rail + content`, `diagonal-cut`, `overlapping card-stack`, `terminal / data-readout`, `kinetic ticker / marquee bands`, `layered-parallax`, `split-screen scroll`, `neo-brutalist masonry`. Required at ship so `npm run sites:index` can feed Gemini collision avoidance. Canonical list: `scripts/lib/layout-families.js`.
+- `layoutFamily` — one of the seventeen names (exact): `asymmetric split`, `editorial magazine`, `bento`, `brutalist stacked`, `horizontal-scroll band`, `ultra-minimal full-bleed`, `sticky-rail + content`, `diagonal-cut`, `overlapping card-stack`, `terminal / data-readout`, `kinetic ticker / marquee bands`, `layered-parallax`, `split-screen scroll`, `neo-brutalist masonry`, `cinematic full-bleed canvas`, `index / ledger`, `modular grid-break collage`. Required at ship so `npm run sites:index` can feed Gemini collision avoidance. Canonical list: `scripts/lib/layout-families.js`.
 - `tags` — required array of 1-3 semantic tags categorizing the site (e.g., `saas`, `medical`, `industrial`, `ecommerce`, `fintech`, `lifestyle`). These are rendered as filter chips on the hub archive.
 - `created` — required `YYYY-MM-DD` (UTC day the site was built/shipped). Hub sorts newest-first by this field. Set at scaffold; confirm at ship. The site resides inside the matching `sites/YYYY-MM/` directory bucket.
 - `wordFloor` (optional number) — brief §3 word floor; used by `check:copy-depth` / `check:ship` when CLI floor is omitted. Set at ship when known; do not invent for legacy sites.
+- `video` — required for sites created on/after **2026-09-07**. Path to the site's one video, `assets/<slug>-<slot>.webm`, relative to the site folder without a leading `./`. Produced by `npm run optimize:video`.
+- `videoPlacement` — required from the same date. One of the twelve slots in `scripts/lib/video-placements.js`, and it must be listed in `PLACEMENT_BY_FAMILY[layoutFamily]`. Seeded from the brief; never derived from the day of the month. Canonical rule: `AGENTS.md` §11.
+- `signatureEffect` — required from the same date. One of the twelve effects in `scripts/lib/signature-effects.js`. Implemented for real, per its spec. Canonical rule: `AGENTS.md` §13.
 - Set `"standard": "v2"` when the folder matches this layout.
 - Set `"qa": "v2-pass"` only per the gate in @.agents/skills/qa-and-ship/SKILL.md.
+- Assets are **site-private** — never reused or referenced across sites. Validate with `npm run check:assets -- <slug|--all>` (`AGENTS.md` §12).
 - Validate statically with `npm run check:contract -- <slug|--all>` (note: you can pass bare slugs without year-month prefixes; the scripts locate sites dynamically).
 
 ## Paths

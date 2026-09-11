@@ -1,0 +1,20 @@
+{
+  "title": "Marrow & Manifold",
+  "blurb": "Caloric-dense, zero-gas metabolic broths and bioavailable marrow pastes engineered to eliminate high-pressure nervous syndrome tremors and metabolic wasting in 350-metre saturation environments.",
+  "hero": "assets/hero-saturation-chamber-interior.webp",
+  "layoutFamily": "brutalist stacked",
+  "tags": [
+    "nutrition",
+    "hyperbaric",
+    "commercial-diving",
+    "saturation"
+  ],
+  "created": "2026-09-06",
+  "wordFloor": 1100,
+  "standard": "v2",
+  "qa": "v2-pass",
+  "videoPlacement": "hero background",
+  "signatureEffect": "text scramble decode on reveal",
+  "video": "assets/marrow-and-manifold-hero-background.webm",
+  "contract": "v2.1"
+}

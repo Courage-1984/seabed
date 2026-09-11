@@ -10,14 +10,19 @@
     "build": "vite build",
     "preview": "vite preview",
     "qa": "node scripts/qa_sweep.js",
+    "qa:visual": "node scripts/visual_qa.js",
     "optimize:webp": "node scripts/convert-webp.js",
     "optimize:html": "node scripts/optimize-html.js",
+    "optimize:video": "node scripts/optimize-video.js",
     "sites:index": "node scripts/export-sites-index.js",
     "check:copy-depth": "node scripts/check-copy-depth.js",
     "check:contract": "node scripts/check-site-contract.js",
+    "check:assets": "node scripts/check-asset-isolation.js",
     "check:ship": "node scripts/ship-gate.js",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "status": "node scripts/remediation-status.js",
+    "assign:media": "node scripts/assign-media-plan.js"
   },
   "devDependencies": {
     "cheerio": "^1.2.0",

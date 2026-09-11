@@ -12,5 +12,9 @@
   "qa": "v2-pass",
   "created": "2026-09-01",
   "wordFloor": 650,
-  "standard": "v2"
+  "standard": "v2",
+  "videoPlacement": "inline process demo",
+  "signatureEffect": "CSS 3D card tilt",
+  "video": "assets/ash-07-studio-inline-process-demo.webm",
+  "contract": "v2.1"
 }

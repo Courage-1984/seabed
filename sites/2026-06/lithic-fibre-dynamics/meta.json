@@ -6,5 +6,10 @@
   "created": "2026-06-26",
   "standard": "v2",
   "qa": "v2-pass",
-  "tags": ["technology", "research"]
+  "tags": [
+    "technology",
+    "research"
+  ],
+  "videoPlacement": "hero inset frame",
+  "signatureEffect": "progressive blur focus-pull"
 }

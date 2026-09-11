@@ -21,7 +21,7 @@
   </header>
   
   <main id="main-content">
-    <section id="hero" class="hero-section">
+    <section data-reveal id="hero" class="hero-section">
       <div class="hero-content">
         <h1>DEFENCE-GRADE TEXTILES FOR OFFSHORE CONDITIONS.</h1>
         <p class="subhead">Commercial trawl mechanics combined with military ballistic armor to produce puncture-proof outerwear and rigging hardware.</p>
@@ -34,7 +34,7 @@
       </div>
     </section>
 
-    <section id="section-synthesis" class="synthesis-section full-width">
+    <section data-reveal id="section-synthesis" class="synthesis-section full-width">
       <div class="container">
         <h2>01 // THE CORNISH-MIDLANDS DEFENCE PACT</h2>
         <div class="editorial-manifesto">
@@ -45,7 +45,7 @@
       </div>
     </section>
 
-    <section id="section-catalogue" class="catalogue-section split-layout">
+    <section data-reveal id="section-catalogue" class="catalogue-section split-layout">
       <div class="sticky-rail">
         <nav class="catalogue-index" aria-label="Equipment Catalogue Index">
           <ul class="scrollspy-list">
@@ -107,7 +107,24 @@
       </div>
     </section>
 
-    <section id="section-telemetry" class="telemetry-section full-width">
+    <section data-reveal class="slot-demo-section" aria-labelledby="slot-demo-heading">
+      <div class="container">
+        <h2 id="slot-demo-heading">The Lock-Stitch Pass</h2>
+        <div class="slot-demo">
+          <ol class="slot-demo__steps">
+            <li><span class="slot-demo__num">01</span> Trawl twine laid into the Kevlar 129 frame</li>
+            <li><span class="slot-demo__num">02</span> Double-pass lock-stitch in braided Dyneema</li>
+            <li><span class="slot-demo__num">03</span> Seam vulcanised under neoprene tape</li>
+          </ol>
+          <figure class="slot-demo__media">
+            <img class="slot-demo__still" src="./assets/textile-macro-weave.webp" alt="Continuous-filament trawl twine woven into a Kevlar structural frame." loading="lazy" width="1280" height="720">
+            <figcaption class="slot-demo__caption">Hangar 4, Falmouth Docks &mdash; one continuous stitch pass</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section data-reveal id="section-telemetry" class="telemetry-section full-width">
       <div class="container">
         <h2>STRESS TELEMETRY &amp; MATERIAL BENCHMARKS</h2>
         <div class="table-wrapper">
@@ -154,7 +171,7 @@
       </div>
     </section>
 
-    <section id="section-proof" class="proof-section full-width">
+    <section data-reveal id="section-proof" class="proof-section full-width">
       <div class="container">
         <h2>FIELD VERIFICATION &amp; OPERATIONAL METRICS</h2>
         
@@ -173,19 +190,21 @@
           </div>
         </div>
 
-        <div class="field-reports-grid">
-          <blockquote class="operator-quote">
+        <div class="report-scroller" data-pin-scroller>
+          <div class="field-reports-grid" data-pin-stage>
+          <blockquote class="operator-quote" data-pin-panel>
             <p>"The Kevlar frame withstands direct shear from snapping steel cables without compromising the internal layers."</p>
             <footer>— Chief Rigger E. Tremayne, Celtic Deep Salvage, Falmouth</footer>
           </blockquote>
-          <blockquote class="operator-quote">
+          <blockquote class="operator-quote" data-pin-panel>
             <p>"Standard commercial chainsaws bind against the aramid mesh. We deploy these smocks for all high-risk timber felling operations."</p>
             <footer>— Lead Arborist D. Vance, Highland Forest Clearances, Fort William</footer>
           </blockquote>
-          <blockquote class="operator-quote">
+          <blockquote class="operator-quote" data-pin-panel>
             <p>"It repels diesel, salt, and abrasive trawl twine friction for consecutive months in the North Atlantic without failing once."</p>
             <footer>— Master Netman M. Pascoe, Mount's Bay Trawl Cooperative, Newlyn</footer>
           </blockquote>
+          </div>
         </div>
         <div class="action-row">
           <button class="primary-btn">VIEW FIELD LOGS</button>
@@ -193,7 +212,7 @@
       </div>
     </section>
 
-    <section id="section-requisition-faq" class="faq-section full-width">
+    <section data-reveal id="section-requisition-faq" class="faq-section full-width">
       <div class="container">
         <h2>REQUISITION PROTOCOLS &amp; TECHNICAL FAQ</h2>
         <dl class="technical-faq">
@@ -224,7 +243,7 @@
       </div>
     </section>
 
-    <section id="section-dispatch" class="dispatch-section full-width">
+    <section data-reveal id="section-dispatch" class="dispatch-section full-width">
       <div class="container">
         <h2>DIRECT BATCH REQUISITION</h2>
         <div class="dispatch-grid">

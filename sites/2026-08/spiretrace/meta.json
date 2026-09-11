@@ -11,5 +11,9 @@
   "created": "2026-08-29",
   "wordFloor": 650,
   "standard": "v2",
-  "qa": "v2-pass"
+  "qa": "v2-pass",
+  "videoPlacement": "modal feature",
+  "signatureEffect": "drifting grain overlay",
+  "video": "assets/spiretrace-modal-feature.webm",
+  "contract": "v2.1"
 }

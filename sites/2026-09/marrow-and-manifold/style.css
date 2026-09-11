@@ -1,0 +1,578 @@
+:root {
+  --color-primary: hsl(215, 26%, 12%);
+  --color-primary-hover: hsl(215, 26%, 18%);
+  --color-secondary: hsl(28, 32%, 26%);
+  --color-accent: hsl(48, 95%, 48%);
+  --color-accent-hover: hsl(48, 95%, 40%);
+  --color-accent-focus: hsl(48, 100%, 58%);
+  --color-bg: hsl(210, 10%, 94%);
+  --color-surface: hsl(0, 0%, 100%);
+  --color-surface-subtle: hsl(210, 12%, 88%);
+  --color-border: hsl(215, 26%, 12%);
+  --color-border-bright: hsl(48, 95%, 48%);
+  --color-text: hsl(215, 30%, 10%);
+  --color-text-muted: hsl(215, 14%, 40%);
+  --color-focus: hsl(48, 95%, 48%);
+  
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+
+  /* Motion budget: explicit curves only, never a bare ease. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, p, figure, blockquote, dl, dd {
+    margin: 0;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img, picture {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+/* Base Layout Constraints */
+#main-content {
+    max-width: 1080px;
+    margin-inline: auto;
+    border-inline: 4px solid var(--color-border);
+    background-color: var(--color-surface);
+}
+
+.site-header {
+    max-width: 1080px;
+    margin-inline: auto;
+    border-inline: 4px solid var(--color-border);
+    border-block-start: 4px solid var(--color-border);
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    padding-block: 1rem;
+    padding-inline: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Sections - Brutalist Stacked Rules */
+.section {
+    border-block-end: 4px solid var(--color-border);
+    border-radius: 0;
+    display: flex; /* Ensure block stack */
+    flex-direction: column;
+}
+
+.section-content, .hero-content {
+    padding-block: 4rem;
+    padding-inline: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-block-end: 2rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+h3 {
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    margin-block-end: 1rem;
+}
+
+.section-id {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    margin-block-end: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.intro, p {
+    margin-block-end: 1.5rem;
+    font-size: 1.125rem;
+    max-width: 65ch;
+}
+
+/* Hero Section Specifics */
+.section-hero {
+    position: relative;
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    overflow: hidden;
+}
+
+.video-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.video-container .hero-video {
+    /* 0.3 under a dense scrim rendered the loop invisible -- it cost bandwidth
+       and showed nothing. The scrim below does the contrast work instead. */
+    opacity: 0.55;
+}
+
+/* Engineered scrim: hero type sits on moving footage, so contrast is
+   guaranteed against the video's brightest frame rather than hoped for. */
+.video-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to right, hsla(215, 26%, 8%, 0.9) 0%, hsla(215, 26%, 8%, 0.68) 52%, hsla(215, 26%, 8%, 0.34) 100%);
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-image-wrap {
+    border-block-start: 4px solid var(--color-border);
+    position: relative;
+    z-index: 1;
+}
+
+.hero-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.section-hero .section-id {
+    color: var(--color-accent);
+}
+
+.section-hero h2 {
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-weight: 600;
+    font-family: var(--font-body);
+    text-transform: none;
+    color: var(--color-surface-subtle);
+    max-width: 65ch;
+}
+
+/* Components */
+.cta-btn {
+    display: inline-block;
+    align-self: flex-start;
+    padding-block: 1rem;
+    padding-inline: 2rem;
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border: 3px solid var(--color-border);
+    cursor: pointer;
+    transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.1s ease;
+    margin-block-start: 2rem;
+    max-width: 100%;
+    word-break: break-word;
+    text-align: center;
+}
+
+.cta-btn:hover {
+    box-shadow: 0 0 16px rgba(244, 190, 6, 0.4);
+}
+
+.cta-btn:active {
+    transform: translateY(3px);
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.cta-btn:focus-visible {
+    outline: 2px solid var(--color-accent-focus);
+    outline-offset: 4px;
+}
+
+.primary-cta {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.primary-cta:hover {
+    background-color: var(--color-accent-hover);
+}
+
+/* Matrix & Protocols */
+.product-bands, .protocol-steps, .tier-cards, .log-entries, .faq-grid {
+    display: flex;
+    flex-direction: column;
+    margin-block-end: 2rem;
+}
+
+.product-band, .protocol-step, .tier-card, .log-entry, .faq-item {
+    border-block-start: 4px solid var(--color-border);
+    padding-block: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-bands {
+    border-block-end: 4px solid var(--color-border);
+}
+
+.product-band .band-image, .full-width-image {
+    width: 100%;
+    border: 4px solid var(--color-border);
+    margin-block-end: 2rem;
+}
+
+/* Data Table */
+.table-wrap {
+    overflow-x: auto;
+    border: 4px solid var(--color-border);
+    margin-block-end: 2rem;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 800px;
+}
+
+.data-table th, .data-table td {
+    padding-block: 1rem;
+    padding-inline: 1.5rem;
+    border-block-end: 2px solid var(--color-border);
+}
+
+.data-table th {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.data-table tbody tr {
+    transition: background-color 0.2s ease;
+    border-inline-start: 6px solid transparent;
+}
+
+.data-table tbody tr:hover {
+    background-color: var(--color-surface-subtle);
+    border-inline-start: 6px solid var(--color-accent);
+}
+
+.data-table tbody tr:last-child th,
+.data-table tbody tr:last-child td {
+    border-block-end: none;
+}
+
+/* Stat Bar */
+.stat-bar {
+    background-color: var(--color-primary);
+    color: var(--color-accent);
+    padding-block: 1.5rem;
+    padding-inline: 2rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 4px solid var(--color-border);
+    margin-block-end: 2rem;
+}
+
+.stat-bar .divider {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .stat-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .stat-bar .divider {
+        display: inline;
+        color: var(--color-surface-subtle);
+    }
+}
+
+/* Requisition Terminal */
+.requisition-console {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    border: 4px solid var(--color-border);
+    padding: 2rem;
+    background-color: var(--color-surface-subtle);
+}
+
+.contact-info p {
+    font-size: 1rem;
+}
+
+.requisition-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+.form-group input {
+    padding-block: 0.75rem;
+    padding-inline: 1rem;
+    border: 2px solid var(--color-border);
+    background-color: var(--color-surface);
+}
+
+.form-group input:focus-visible {
+    outline: 2px solid var(--color-accent-focus);
+    outline-offset: 2px;
+}
+
+.site-footer {
+    max-width: 1080px;
+    margin-inline: auto;
+    border-inline: 4px solid var(--color-border);
+    border-block-end: 4px solid var(--color-border);
+    background-color: var(--color-primary);
+    color: var(--color-surface-subtle);
+    padding-block: 3rem;
+    padding-inline: 2rem;
+    text-align: center;
+}
+
+.site-footer p {
+    margin-block-end: 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Responsive constraints to strictly avoid side-by-side splits */
+@media (min-width: 1024px) {
+    .section-content, .hero-content {
+        padding-block: 6rem;
+        padding-inline: 4rem;
+    }
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion budget 1 — staggered scroll-reveal system.
+ * ------------------------------------------------------------------ */
+.js-reveal [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — text scramble decode on reveal.
+ * Reserve the line box so the settling glyphs cannot reflow the page.
+ * ------------------------------------------------------------------ */
+[data-scramble] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  white-space: pre-wrap;
+  min-block-size: 1.4em;
+  color: var(--color-accent);
+  transition: color var(--dur-mid) var(--ease-out);
+}
+/* Settled state keeps the same accessible colour it decoded in -- re-applying
+   the bright accent here silently reintroduced a 1.72:1 contrast failure. */
+[data-scramble].is-decoded {
+  color: inherit;
+}
+.section-hero [data-scramble] {
+  color: var(--color-accent-focus);
+}
+
+/* Supporting motion: the section currently in view lights its left rule. */
+.section[id] {
+  position: relative;
+}
+.section.is-current > .section-content::before,
+.section.is-current > .hero-content::before {
+  transform: scaleY(1);
+}
+.section > .section-content::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: 3px;
+  background: var(--color-accent);
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+/* ------------------------------------------------------------------ *
+ * Micro-interactions — hover + focus-visible + active on every control.
+ * ------------------------------------------------------------------ */
+.cta-btn {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+.cta-btn:hover,
+.cta-btn:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 var(--color-accent);
+}
+.cta-btn:active {
+  transform: translate(0, 0);
+  box-shadow: 0 0 0 0 var(--color-accent);
+}
+
+.product-band {
+  transition:
+    transform var(--dur-mid) var(--ease-out),
+    border-color var(--dur-mid) var(--ease-out);
+}
+.product-band:hover,
+.product-band:focus-within {
+  transform: translateX(4px);
+  border-color: var(--color-accent);
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, hero loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .section > .section-content::before {
+    transform: scaleY(1);
+  }
+  .cta-btn:hover,
+  .cta-btn:focus-visible,
+  .cta-btn:active {
+    transform: none;
+  }
+  .product-band:hover,
+  .product-band:focus-within {
+    transform: none;
+  }
+  /* The hero loop is paused in JS; hold the poster frame here too. */
+  .hero-video {
+    display: none;
+  }
+  .video-container {
+    background-image: url('./assets/marrow-and-manifold-hero-background-poster.webp');
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Legibility corrections (visual audit).
+ * ------------------------------------------------------------------ */
+
+/* The bright accent is 1.72:1 as text on the light ground — fine as a fill
+   or a rule, not as type. Section readouts get a dark amber instead. */
+:root {
+  --color-accent-on-light: hsl(40, 90%, 26%);
+}
+[data-scramble],
+.section-id {
+  color: var(--color-accent-on-light);
+}
+[data-scramble].is-decoded {
+  color: var(--color-accent-on-light);
+}
+/* On the dark hero the bright accent already clears contrast, so keep it. */
+.section-hero [data-scramble],
+.section-hero [data-scramble].is-decoded,
+.section-hero .section-id {
+  color: var(--color-accent-focus);
+}
+
+/* h2 sits below the large-text threshold once clamped on narrow viewports,
+   so 1.1 is too tight to read comfortably. */
+h2 {
+  line-height: 1.25;
+}
+@media (min-width: 1024px) {
+  h2 {
+    line-height: 1.1;
+  }
+}

@@ -1,70 +1,123 @@
 import './style.css';
 
-// Intersection Observer for the split-screen scroll mechanic
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.scroll-section');
-    const telemetryDisplay = document.querySelector('.telemetry-display');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    if (!telemetryDisplay || sections.length === 0) return;
+/* ------------------------------------------------------------------ *
+ * Motion budget 1 — staggered scroll-reveal system.
+ * Fires once per element, never re-triggers.
+ * ------------------------------------------------------------------ */
+function initReveals() {
+  const targets = [...document.querySelectorAll('[data-reveal]')];
+  if (!targets.length) return;
 
-    const observerOptions = {
-        root: null,
-        rootMargin: '-50% 0px -50% 0px', // Trigger when section hits middle of viewport
-        threshold: 0
-    };
+  // Only hide content once we know JS is running and can bring it back. If the
+  // script fails to load the page renders un-animated instead of blank.
+  document.documentElement.classList.add('js-reveal');
 
-    const sectionStateMap = {
-        'hardware-registry': 'telemetry-hardware',
-        'protocol-architecture': 'telemetry-protocol',
-        'transmission-matrix': 'telemetry-matrix',
-        'fleet-tiers': 'telemetry-fleet'
-    };
+  const show = (el) => {
+    if (el.classList.contains('is-revealed')) return;
+    const group = el.parentElement;
+    const siblings = group ? [...group.querySelectorAll('[data-reveal]')] : [el];
+    const step = Math.max(0, siblings.indexOf(el));
+    el.style.setProperty('--reveal-delay', `${step * 80}ms`);
+    el.classList.add('is-revealed');
+  };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const sectionId = entry.target.id;
-                const stateClass = sectionStateMap[sectionId];
-                
-                // Clear all state classes
-                Object.values(sectionStateMap).forEach(cls => {
-                    telemetryDisplay.classList.remove(cls);
-                });
+  if (reduceMotion.matches || !('IntersectionObserver' in window)) {
+    targets.forEach(show);
+    return;
+  }
 
-                if (stateClass) {
-                    telemetryDisplay.classList.add(stateClass);
-                    updateTelemetryText(sectionId);
-                }
-            }
-        });
-    }, observerOptions);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        show(entry.target);
+        observer.unobserve(entry.target);
+      });
+    },
+    { rootMargin: '0px 0px -12% 0px', threshold: 0.12 }
+  );
 
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+  targets.forEach((el) => observer.observe(el));
 
-    function updateTelemetryText(sectionId) {
-        const statusEl = document.querySelector('.telemetry-status-text');
-        const depthEl = document.querySelector('.telemetry-depth-text');
-        if (!statusEl || !depthEl) return;
-
-        switch (sectionId) {
-            case 'hardware-registry':
-                statusEl.textContent = 'STATUS: SCANNING HARDWARE NODES';
-                depthEl.textContent = 'DEPTH: 3,000 M';
-                break;
-            case 'protocol-architecture':
-                statusEl.textContent = 'STATUS: ACQUIRING PACKET PIPELINE';
-                depthEl.textContent = 'BAND: 16-22 kHz';
-                break;
-            case 'transmission-matrix':
-                statusEl.textContent = 'STATUS: COMPARING TRANSMISSION METRICS';
-                depthEl.textContent = 'ERROR RATE: 0.001%';
-                break;
-            case 'fleet-tiers':
-                statusEl.textContent = 'STATUS: INITIALISING DEPLOYMENT GRID';
-                depthEl.textContent = 'NODES ACTIVE: 24';
-                break;
-        }
+  // Backstop: the observer can miss elements that arrive in view through an
+  // anchor jump or a programmatic scroll, which would strand them invisible.
+  const sweep = () => {
+    for (const el of targets) {
+      if (el.classList.contains('is-revealed')) continue;
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        show(el);
+        observer.unobserve(el);
+      }
     }
+  };
+  window.addEventListener('scroll', sweep, { passive: true });
+  window.addEventListener('resize', sweep, { passive: true });
+  window.addEventListener('hashchange', () => setTimeout(sweep, 600));
+  setTimeout(sweep, 400);
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — masked scroll-through type.
+ * Oversized type masks imagery that drifts at a different rate to the
+ * page, so the fill travels through the glyphs as the band passes.
+ * ------------------------------------------------------------------ */
+function initEffect() {
+  const band = document.querySelector('[data-masked-type]');
+  if (!band) return;
+  if (reduceMotion.matches) {
+    band.style.setProperty('--mask-shift', '0px');
+    return;
+  }
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const rect = band.getBoundingClientRect();
+    const progress = (window.innerHeight - rect.top) / (rect.height + window.innerHeight);
+    band.style.setProperty('--mask-shift', `${(progress - 0.5) * -220}px`);
+  };
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — the loop only decodes while it is on screen.
+ * Absent until the generated clip is installed, so this is a no-op
+ * while the slot still shows its still frame.
+ * ------------------------------------------------------------------ */
+function initSlotVideo() {
+  const video = document.querySelector('[data-slot-video]');
+  if (!video) return;
+
+  const apply = () => {
+    if (reduceMotion.matches) video.pause();
+    else video.play().catch(() => {});
+  };
+  reduceMotion.addEventListener('change', apply);
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !reduceMotion.matches) video.play().catch(() => {});
+        else video.pause();
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(video);
+  }
+  apply();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initReveals();
+  initEffect();
+  initSlotVideo();
 });
