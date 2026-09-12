@@ -13,5 +13,6 @@
   "wordFloor": 650,
   "qa": "v2-pass",
   "videoPlacement": "inline process demo",
-  "signatureEffect": "sticky section pinning with cross-fade"
+  "signatureEffect": "sticky section pinning with cross-fade",
+  "video": "assets/k-44-ordnance-canvas-inline-process-demo.webm"
 }

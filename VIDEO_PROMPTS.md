@@ -20,6 +20,15 @@ and subject all come from that site's own copy — they are not interchangeable.
 
 ## Pending
 
+_Queue is empty — every prompt below has been delivered._
+
+---
+
+## Delivered
+
+Installed as `<slug>-<slot>.webm` + `.mp4` + `-poster.webp`, wired into the
+named slot, and verified with `check:contract`, `qa` and `qa:visual`.
+
 ### 1. tendonforge — masked type fill
 
 - **Site:** `sites/2026-08/tendonforge/`
@@ -238,8 +247,187 @@ no bright light sources, no lens flare.
 Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
 ```
 
----
+### 11. k-44-ordnance-canvas — inline process demo
 
-## Delivered
+- **Site:** `sites/2026-08/k-44-ordnance-canvas/`
+- **Target file:** `assets/k-44-ordnance-canvas-inline-process-demo.webm`
+- **Where it lands:** beside the three numbered stitch steps, as the demonstration
+  they describe — so the clip should read as one continuous process, not a montage
+- **Brand:** ballistic-grade canvas spliced with deep-sea rigging, woven in
+  Hangar 4 at Falmouth Docks.
 
-_Nothing yet. Prompts move here once the clip is installed and the site ships._
+```text
+Industrial sewing head driving a double-pass lock-stitch through heavy waxed
+canvas and aramid webbing: the needle bar rising and falling, braided thread
+feeding off a cone, the fabric advancing steadily under the presser foot,
+bright metal foot and plate.
+Camera: 50mm macro, locked-off close-up over the needle plate, no camera move.
+Lighting: hard directional task light from frame left, workshop dim beyond.
+Palette: deep slate hsl(215,25%,16%), oiled steel, olive and sand canvas, one
+amber machine marking hsl(38,92%,50%).
+Motion: continuous stitching and fabric feed at a steady rate. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 12. codex-parallax — hover reveal
+
+- **Site:** `sites/2026-08/codex-parallax/`
+- **Target file:** `assets/codex-parallax-hover-reveal.webm`
+- **Where it lands:** behind the "Under the Erasure" card — poster at rest, clip
+  on hover and keyboard focus
+- **Brand:** multispectral recovery of erased text from palimpsest manuscripts;
+  16 narrow bands from 365nm UV to 1050nm near-infrared.
+
+```text
+A vellum palimpsest leaf under shifting narrow-band illumination: the page bathed
+first in deep violet ultraviolet, then cycling through to dim red, as faint
+scraped-away undertext rises into visibility beneath the darker overtext.
+Camera: 60mm macro, locked-off flat copy-stand view straight down, no camera move.
+Lighting: the changing LED bands are the only light; everything else is black.
+Palette: warm parchment cream, iron-gall brown-black ink, deep violet and cyan
+band wash hsl(185,95%,45%), against near-black.
+Motion: only the light changing across the page — the leaf itself never moves.
+Must loop seamlessly.
+Negatives: no on-screen text, no legible words, no logos, no hands, no recognisable
+faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 13. litho-acoustic-labs — hero background
+
+- **Site:** `sites/2026-08/litho-acoustic-labs/`
+- **Target file:** `assets/litho-acoustic-labs-hero-background.webm`
+- **Where it lands:** full-bleed behind the hero headline at 45% opacity under a
+  radial scrim, so keep it dark and slow
+- **Brand:** non-contact laser vibrometry of prehistoric lithophones, run out of
+  the Sterkfontein cave system.
+
+```text
+Interior of a deep limestone cave chamber: a thin green laser beam crossing the
+dark void and landing on a pale stone formation, fine dust drifting slowly
+through the beam, wet flowstone catching a faint glint.
+Camera: 35mm, extremely slow push-in down the chamber, locked horizon.
+Lighting: near-darkness with one cold pool of light on the stone; the laser is the
+brightest thing in frame.
+Palette: near-black hsl(210,15%,8%), wet grey limestone, a single green beam
+hsl(150,60%,40%).
+Motion: drifting dust and the faintest beam shimmer only. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no people, no recognisable faces, no
+watermarks, no lens flare.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 14. abyssal-crust-vaults — masked type fill
+
+- **Site:** `sites/2026-08/abyssal-crust-vaults/`
+- **Target file:** `assets/abyssal-crust-vaults-masked-type-fill.webm`
+- **Where it lands:** visible only through the numerals "0 Hz" in the band — so
+  the frame needs texture everywhere, with no single focal point
+- **Brand:** hyper-saline halite floatation vaults 1,200m under pre-Cambrian
+  granite at Rustenburg, for saturation divers with nerve tremor.
+
+```text
+Surface of a dense hyper-saline brine pool inside a salt vault: still water with
+a crust of white halite crystals growing at the rim, slow concentric ripples
+crossing the surface, crystalline salt walls behind catching low light.
+Camera: 50mm, locked-off, slightly above the waterline, no camera move.
+Lighting: low cold pool light from directly above, deep shadow beyond.
+Palette: white and grey salt crystal, black rock, brine hsl(190,100%,40%) where
+the light catches it, one warm instrument glow hsl(45,100%,50%).
+Motion: slow ripples and a faint crystal glitter, evenly across the whole frame.
+Must loop seamlessly.
+Negatives: no on-screen text, no logos, no people, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 15. cedar-and-salt — sticky rail loop
+
+- **Site:** `sites/2026-08/cedar-and-salt/`
+- **Target file:** `assets/cedar-and-salt-sticky-rail-loop.webm`
+- **Where it lands:** pinned in the dossier rail beside the scrolling cooperage
+  notes. It stays on screen for a long scroll, so keep it calm.
+- **Brand:** un-lacquered western red cedar soaking tubs, hand-coopered in
+  Revelstoke without glue or sealant.
+
+```text
+A cooper driving a stainless steel hoop down the tapered staves of a cedar tub:
+the hoop driver struck in a steady rhythm, the hoop stepping down a few
+millimetres at a time, pale cedar grain and fresh shavings on the bench.
+Camera: 50mm, static locked-off medium shot on the tub wall, no camera move.
+Lighting: soft daylight from a high workshop window, warm and even.
+Palette: warm red-brown cedar hsl(25,55%,32%), brushed stainless, sawdust cream,
+one amber lamp note hsl(38,90%,50%).
+Motion: the repeating hoop strike and the hoop creeping downward. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no faces in frame, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 16. lock-and-sluice — grid tile
+
+- **Site:** `sites/2026-08/lock-and-sluice/`
+- **Target file:** `assets/lock-and-sluice-grid-tile.webm`
+- **Where it lands:** one cell of the band above the scroll section, sized like
+  its neighbours
+- **Brand:** a shared mobile forge bank and itinerant blacksmiths restoring
+  wrought-iron canal sluice gear on the Shropshire Union and Kennet & Avon.
+
+```text
+Compact coal forge running on a canal towpath at dusk: the fire glowing orange
+in the firepot, a wrought-iron strap heating in the coals, sparks lifting on the
+draught, a portable anvil and the dark water of the cut just behind.
+Camera: 50mm, locked-off medium close-up on the firepot, no camera move.
+Lighting: the forge fire is the key light; everything else falls to near-black.
+Palette: deep slate hsl(215,20%,18%), black coal, hot orange hsl(22,90%,50%),
+brass-brown highlights hsl(36,58%,38%).
+Motion: fire movement and drifting sparks only. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 17. mantlecut-geology — hero inset frame
+
+- **Site:** `sites/2026-08/mantlecut-geology/`
+- **Target file:** `assets/mantlecut-geology-hero-inset-frame.webm`
+- **Where it lands:** the framed object beneath the hero copy — a bordered inset,
+  not a full-bleed background
+- **Brand:** vibrationless diamond-wire sawing of granite and basalt three
+  kilometres down at Carletonville, beside quantum sensors.
+
+```text
+Diamond-wire bead strand running continuously through a kerf in solid grey
+granite: the beaded cable travelling at speed through the slot, a thin trickle of
+cooling water running down the rock face, fine wet slurry at the cut line.
+Camera: 60mm macro, locked-off tight on the kerf, no camera move.
+Lighting: hard cold work lamp from frame right, deep cavern black beyond.
+Palette: grey granite, wet black rock, steel cable, one blue instrument glow
+hsl(210,85%,45%) and an amber lamp note hsl(38,95%,52%).
+Motion: the cable running and the water trickling — smooth and unvarying, no
+sparks, no percussion. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no people, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 18. sarek-bark-gear — footer ambient
+
+- **Site:** `sites/2026-08/sarek-bark-gear/`
+- **Target file:** `assets/sarek-bark-gear-footer-ambient.webm`
+- **Where it lands:** behind the footer at 32% opacity under a heavy scrim. It
+  must stay **low-contrast and slow** — footer copy sits on top of it.
+- **Brand:** winter-harvested birch bark packbaskets, hand-woven in Jokkmokk with
+  pine tar and no synthetic hardware.
+
+```text
+Sub-arctic birch forest in low winter light: pale white-and-grey birch trunks
+standing in deep snow, a light snowfall drifting down through the stand, long
+blue shadows across the ground.
+Camera: 35mm, static locked-off wide, no camera move.
+Lighting: flat overcast polar daylight — very low contrast, no sun, no highlights.
+Palette: white snow, grey-white birch bark, muted brown hsl(32,65%,42%) trunk
+markings, cold blue shadow.
+Motion: falling snow only — slow, sparse, continuous. Nothing bright, nothing fast.
+Must loop seamlessly.
+Negatives: no on-screen text, no logos, no people, no recognisable faces, no
+watermarks, no sun, no lens flare.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```

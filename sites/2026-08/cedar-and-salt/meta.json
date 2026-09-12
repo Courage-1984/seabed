@@ -1,7 +1,7 @@
 {
   "title": "Cedar & Salt Hydro-Cooperage",
   "blurb": "Aromatic old-growth cedar soaking tubs hand-coopered without synthetic adhesives or chemical lacquers.",
-  "hero": "assets/hero.webp",
+  "hero": "assets/hero-cedar-tub-snowfield.webp",
   "layoutFamily": "sticky-rail + content",
   "tags": [
     "wellness",
@@ -13,5 +13,6 @@
   "wordFloor": 1900,
   "qa": "v2-pass",
   "videoPlacement": "sticky rail loop",
-  "signatureEffect": "numeric counter roll-up"
+  "signatureEffect": "numeric counter roll-up",
+  "video": "assets/cedar-and-salt-sticky-rail-loop.webm"
 }

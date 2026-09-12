@@ -780,3 +780,23 @@ html:not(.js-reveal) .report-scroller {
 [data-pin-scroller].is-static {
   block-size: auto;
 }
+
+/* The media reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* --------------------------------------------------------------- *
+ * Legibility corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* The accent is 1.90:1 as text on the light body — it is engineered for
+   dark chrome. Step numbers carry the order, so they take a darker sibling. */
+.slot-demo__num {
+  color: hsl(38, 92%, 28%);
+}
+/* Headings inherit a 1.10 display line-height and collide when they wrap. */
+h3 {
+  line-height: 1.25;
+}

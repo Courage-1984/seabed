@@ -1,0 +1,95 @@
+{
+  "generatedAt": "2026-09-11T17:25:54.726Z",
+  "slugFilter": "k-92-maritime-victualling",
+  "summary": {
+    "pages": 2,
+    "failedPages": 0,
+    "pass": true,
+    "counts": {
+      "overflow": 0,
+      "brokenImages": 0,
+      "nonWebpPhotos": 0,
+      "missingAltTags": 0,
+      "missingFavicon": 0,
+      "consoleErrors": 0,
+      "networkErrors": 0,
+      "brokenLinks": 0,
+      "smallFonts": 0,
+      "overlappingText": 0,
+      "repetitiveLayouts": 0,
+      "videoIssues": 0
+    }
+  },
+  "pages": [
+    {
+      "path": "index.html",
+      "mobile": {
+        "overflowingElements": [],
+        "brokenImages": [],
+        "missingAltTags": [],
+        "missingFavicon": [],
+        "nonWebpPhotos": [],
+        "consoleErrors": [],
+        "networkErrors": [],
+        "brokenLinks": [],
+        "visualIssues": {
+          "overlappingText": [],
+          "smallFonts": [],
+          "repetitiveLayout": false
+        },
+        "videoIssues": []
+      },
+      "desktop": {
+        "overflowingElements": [],
+        "brokenImages": [],
+        "missingAltTags": [],
+        "missingFavicon": [],
+        "nonWebpPhotos": [],
+        "consoleErrors": [],
+        "networkErrors": [],
+        "brokenLinks": [],
+        "visualIssues": {
+          "overlappingText": [],
+          "smallFonts": [],
+          "repetitiveLayout": false
+        },
+        "videoIssues": []
+      }
+    },
+    {
+      "path": "sites/2026-08/k-92-maritime-victualling/index.html",
+      "mobile": {
+        "overflowingElements": [],
+        "brokenImages": [],
+        "missingAltTags": [],
+        "missingFavicon": [],
+        "nonWebpPhotos": [],
+        "consoleErrors": [],
+        "networkErrors": [],
+        "brokenLinks": [],
+        "visualIssues": {
+          "overlappingText": [],
+          "smallFonts": [],
+          "repetitiveLayout": false
+        },
+        "videoIssues": []
+      },
+      "desktop": {
+        "overflowingElements": [],
+        "brokenImages": [],
+        "missingAltTags": [],
+        "missingFavicon": [],
+        "nonWebpPhotos": [],
+        "consoleErrors": [],
+        "networkErrors": [],
+        "brokenLinks": [],
+        "visualIssues": {
+          "overlappingText": [],
+          "smallFonts": [],
+          "repetitiveLayout": false
+        },
+        "videoIssues": []
+      }
+    }
+  ]
+}

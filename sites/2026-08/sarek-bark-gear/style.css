@@ -1,5 +1,8 @@
 :root {
   --color-primary: hsl(32, 65%, 42%);
+  /* The brand tan is a fill colour: as text on the light ground it is
+     3.58:1, so type uses this darkened sibling of the same hue. */
+  --color-primary-on-light: hsl(32, 65%, 26%);
   --color-primary-hover: hsl(32, 65%, 48%);
   --color-secondary: hsl(25, 20%, 20%);
   --color-accent: hsl(42, 85%, 52%);
@@ -9,7 +12,8 @@
   --color-panel: hsl(38, 15%, 86%);
   --color-panel-border: hsl(38, 12%, 75%);
   --color-text: hsl(25, 30%, 12%);
-  --color-text-muted: hsl(30, 10%, 45%);
+  /* 3.42:1 on the panel surface at 45% lightness. */
+  --color-text-muted: hsl(30, 12%, 30%);
   --color-focus-ring: hsl(32, 65%, 42%);
 
   --font-heading: 'Fraunces', serif;
@@ -136,7 +140,15 @@ p {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(37, 30, 24, 0.6);
+  /* A flat 0.6 wash held the headline but not the intro paragraph, which sits
+     over the brightest part of the photograph. The scrim deepens toward the
+     bottom, where the longest copy is. */
+  background: linear-gradient(
+    to bottom,
+    rgba(37, 30, 24, 0.58) 0%,
+    rgba(37, 30, 24, 0.68) 45%,
+    rgba(37, 30, 24, 0.84) 100%
+  );
 }
 .hero-content {
   position: relative;
@@ -557,4 +569,35 @@ footer a {
 .draw-path {
   stroke: var(--color-primary, #b3722a);
   stroke-linecap: round;
+}
+
+/* The media reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* --------------------------------------------------------------- *
+ * Legibility corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* Light text on the tan fill is 3.58:1; the near-black ink clears it. */
+a.btn-primary,
+button.btn-primary,
+.btn.btn-primary {
+  /* The brand tan cannot carry any ink at 4.5:1, so the button fill is
+     lifted; the token itself is left alone for the rest of the site. */
+  background-color: hsl(32, 65%, 54%);
+  color: hsl(25, 30%, 12%);
+}
+/* The muted brown is 3.42:1 on the panel and 4.11:1 on the page ground. */
+.dossier-section a,
+.article-card p,
+.quote-author,
+.site-footer p {
+  color: hsl(27, 12%, 30%);
+}
+/* The tan as body text on the light ground is 3.58:1. */
+.flagship-section p {
+  color: hsl(32, 65%, 26%);
 }

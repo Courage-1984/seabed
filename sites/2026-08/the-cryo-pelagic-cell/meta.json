@@ -12,5 +12,6 @@
   "standard": "v2",
   "wordFloor": 650,
   "videoPlacement": "modal feature",
-  "signatureEffect": "animated SVG line-draw"
+  "signatureEffect": "animated SVG line-draw",
+  "video": "assets/the-cryo-pelagic-cell-modal-feature.webm"
 }

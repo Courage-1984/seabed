@@ -129,8 +129,36 @@ function initSlotVideo() {
   apply();
 }
 
+/* ------------------------------------------------------------------ *
+ * Video placement — hover reveal.
+ * The opacity swap is CSS; this only starts and stops playback so the
+ * clip does not decode while nobody is looking at it.
+ * ------------------------------------------------------------------ */
+function initHoverSlot() {
+  const slot = document.querySelector('[data-slot-hover]');
+  if (!slot) return;
+
+  const play = () => {
+    const video = slot.querySelector('[data-slot-video]');
+    if (!video || reduceMotion.matches) return;
+    video.play().catch(() => {});
+  };
+  const stop = () => {
+    const video = slot.querySelector('[data-slot-video]');
+    if (!video) return;
+    video.pause();
+    video.currentTime = 0;
+  };
+
+  slot.addEventListener('pointerenter', play);
+  slot.addEventListener('pointerleave', stop);
+  slot.addEventListener('focusin', play);
+  slot.addEventListener('focusout', stop);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initReveals();
   initEffect();
   initSlotVideo();
+  initHoverSlot();
 });

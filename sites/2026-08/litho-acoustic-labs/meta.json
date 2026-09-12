@@ -1,7 +1,7 @@
 {
   "title": "Litho-Acoustic Resonance Laboratories",
   "blurb": "Reconstructing the precise resonant harmonics of prehistoric stone instruments without physical contact or structural excitation.",
-  "hero": "assets/hero.webp",
+  "hero": "assets/hero-sterkfontein-laser-bench.webp",
   "layoutFamily": "ultra-minimal full-bleed",
   "tags": [
     "arts",
@@ -13,5 +13,6 @@
   "wordFloor": 1900,
   "qa": "v2-pass",
   "videoPlacement": "hero background",
-  "signatureEffect": "scroll-velocity marquee skew"
+  "signatureEffect": "scroll-velocity marquee skew",
+  "video": "assets/litho-acoustic-labs-hero-background.webm"
 }

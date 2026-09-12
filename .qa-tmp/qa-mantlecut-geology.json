@@ -1,0 +1,101 @@
+{
+  "generatedAt": "2026-09-11T18:03:13.469Z",
+  "slugFilter": "mantlecut-geology",
+  "summary": {
+    "pages": 2,
+    "failedPages": 1,
+    "pass": false,
+    "counts": {
+      "overflow": 1,
+      "brokenImages": 0,
+      "nonWebpPhotos": 0,
+      "missingAltTags": 0,
+      "missingFavicon": 0,
+      "consoleErrors": 0,
+      "networkErrors": 0,
+      "brokenLinks": 0,
+      "smallFonts": 0,
+      "overlappingText": 0,
+      "repetitiveLayouts": 0,
+      "videoIssues": 2
+    }
+  },
+  "pages": [
+    {
+      "path": "index.html",
+      "mobile": {
+        "overflowingElements": [],
+        "brokenImages": [],
+        "missingAltTags": [],
+        "missingFavicon": [],
+        "nonWebpPhotos": [],
+        "consoleErrors": [],
+        "networkErrors": [],
+        "brokenLinks": [],
+        "visualIssues": {
+          "overlappingText": [],
+          "smallFonts": [],
+          "repetitiveLayout": false
+        },
+        "videoIssues": []
+      },
+      "desktop": {
+        "overflowingElements": [],
+        "brokenImages": [],
+        "missingAltTags": [],
+        "missingFavicon": [],
+        "nonWebpPhotos": [],
+        "consoleErrors": [],
+        "networkErrors": [],
+        "brokenLinks": [],
+        "visualIssues": {
+          "overlappingText": [],
+          "smallFonts": [],
+          "repetitiveLayout": false
+        },
+        "videoIssues": []
+      }
+    },
+    {
+      "path": "sites/2026-08/mantlecut-geology/index.html",
+      "mobile": {
+        "overflowingElements": [
+          "video.slot-inset__still"
+        ],
+        "brokenImages": [],
+        "missingAltTags": [],
+        "missingFavicon": [],
+        "nonWebpPhotos": [],
+        "consoleErrors": [],
+        "networkErrors": [],
+        "brokenLinks": [],
+        "visualIssues": {
+          "overlappingText": [],
+          "smallFonts": [],
+          "repetitiveLayout": false
+        },
+        "videoIssues": [
+          "video.slot-inset__still: no decodable video (readyState 0, networkState 2)"
+        ]
+      },
+      "desktop": {
+        "overflowingElements": [],
+        "brokenImages": [],
+        "missingAltTags": [],
+        "missingFavicon": [],
+        "nonWebpPhotos": [],
+        "consoleErrors": [],
+        "networkErrors": [],
+        "brokenLinks": [],
+        "visualIssues": {
+          "overlappingText": [],
+          "smallFonts": [],
+          "repetitiveLayout": false
+        },
+        "videoIssues": [
+          "video.slot-inset__still: no decodable video (readyState 0, networkState 2)"
+        ]
+      }
+    }
+  ]
+}

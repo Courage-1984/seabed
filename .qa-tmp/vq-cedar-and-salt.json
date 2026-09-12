@@ -1,0 +1,269 @@
+{
+  "generatedAt": "2026-09-11T19:41:29.359Z",
+  "slug": "cedar-and-salt",
+  "pages": [
+    {
+      "path": "sites/2026-08/cedar-and-salt/index.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/cedar-and-salt/index.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.rail-link 3.37:1 (needs 4.5:1)",
+              "h3 1.60:1 (needs 3:1)",
+              "p 1.20:1 (needs 4.5:1)",
+              "h4 3.37:1 (needs 4.5:1)",
+              "p 3.37:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [
+              "a.brand 210x41",
+              "a.rail-link 276x27"
+            ],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 24,
+          "pageHeight": 17108,
+          "overlapPct": 16
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.rail-link 3.37:1 (needs 4.5:1)",
+              "h3 1.60:1 (needs 3:1)",
+              "p 1.20:1 (needs 4.5:1)",
+              "h4 3.37:1 (needs 4.5:1)",
+              "p 3.37:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [
+              "a.brand 210x41",
+              "a.rail-link 654x27"
+            ],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 14,
+          "pageHeight": 12120,
+          "overlapPct": 17
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.rail-link 3.37:1 (needs 4.5:1)",
+              "h3 1.60:1 (needs 3:1)",
+              "p 1.20:1 (needs 4.5:1)",
+              "h4 3.37:1 (needs 4.5:1)",
+              "p 3.37:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": true
+          },
+          "tiles": 14,
+          "pageHeight": 10673,
+          "overlapPct": 16
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.rail-link 3.37:1 (needs 4.5:1)",
+              "h3 1.60:1 (needs 3:1)",
+              "p 1.20:1 (needs 4.5:1)",
+              "h4 3.37:1 (needs 4.5:1)",
+              "p 3.37:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": true
+          },
+          "tiles": 12,
+          "pageHeight": 10673,
+          "overlapPct": 19
+        }
+      }
+    },
+    {
+      "path": "sites/2026-08/cedar-and-salt/hydrotherapy.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/cedar-and-salt/hydrotherapy.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h4 3.37:1 (needs 4.5:1)",
+              "h3 1.60:1 (needs 4.5:1)",
+              "p 1.20:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [
+              "a.brand 210x41"
+            ],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 17,
+          "pageHeight": 11699,
+          "overlapPct": 20
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h4 3.37:1 (needs 4.5:1)",
+              "h3 1.60:1 (needs 4.5:1)",
+              "p 1.20:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [
+              "a.brand 210x41"
+            ],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 9,
+          "pageHeight": 7802,
+          "overlapPct": 17
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h4 3.37:1 (needs 4.5:1)",
+              "h3 1.60:1 (needs 4.5:1)",
+              "p 1.20:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 9,
+          "pageHeight": 6969,
+          "overlapPct": 16
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h4 3.37:1 (needs 4.5:1)",
+              "h3 1.60:1 (needs 4.5:1)",
+              "p 1.20:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 8,
+          "pageHeight": 6969,
+          "overlapPct": 22
+        }
+      }
+    },
+    {
+      "path": "sites/2026-08/cedar-and-salt/tubs.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/cedar-and-salt/tubs.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "th 3.37:1 (needs 4.5:1)",
+              "h4 3.37:1 (needs 4.5:1)",
+              "h3 1.60:1 (needs 3:1)",
+              "p 1.20:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [
+              "a.brand 210x41",
+              "a 54x22"
+            ],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 14,
+          "pageHeight": 10073,
+          "overlapPct": 16
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "th 3.37:1 (needs 4.5:1)",
+              "h4 3.37:1 (needs 4.5:1)",
+              "h3 1.60:1 (needs 3:1)",
+              "p 1.20:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [
+              "a.brand 210x41",
+              "a 54x22"
+            ],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 9,
+          "pageHeight": 7307,
+          "overlapPct": 23
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "th 3.37:1 (needs 4.5:1)",
+              "h4 3.37:1 (needs 4.5:1)",
+              "h3 1.60:1 (needs 3:1)",
+              "p 1.20:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 9,
+          "pageHeight": 6567,
+          "overlapPct": 21
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "th 3.37:1 (needs 4.5:1)",
+              "h4 3.37:1 (needs 4.5:1)",
+              "h3 1.60:1 (needs 3:1)",
+              "p 1.20:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 7,
+          "pageHeight": 6567,
+          "overlapPct": 15
+        }
+      }
+    }
+  ],
+  "recording": "qa-recordings/cedar-and-salt-walkthrough.webm"
+}

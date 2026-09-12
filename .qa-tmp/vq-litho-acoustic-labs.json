@@ -1,0 +1,193 @@
+{
+  "generatedAt": "2026-09-11T19:28:56.512Z",
+  "slug": "litho-acoustic-labs",
+  "pages": [
+    {
+      "path": "sites/2026-08/litho-acoustic-labs/index.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/litho-acoustic-labs/index.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 13,
+          "pageHeight": 8891,
+          "overlapPct": 20
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 9,
+          "pageHeight": 7280,
+          "overlapPct": 24
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 12,
+          "pageHeight": 8835,
+          "overlapPct": 20
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 11,
+          "pageHeight": 9795,
+          "overlapPct": 19
+        }
+      }
+    },
+    {
+      "path": "sites/2026-08/litho-acoustic-labs/archives.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/litho-acoustic-labs/archives.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 10,
+          "pageHeight": 6634,
+          "overlapPct": 24
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 6,
+          "pageHeight": 4798,
+          "overlapPct": 26
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 7,
+          "pageHeight": 4903,
+          "overlapPct": 26
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 6,
+          "pageHeight": 4903,
+          "overlapPct": 29
+        }
+      }
+    },
+    {
+      "path": "sites/2026-08/litho-acoustic-labs/methodology.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/litho-acoustic-labs/methodology.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 11,
+          "pageHeight": 7678,
+          "overlapPct": 19
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 7,
+          "pageHeight": 6121,
+          "overlapPct": 17
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 9,
+          "pageHeight": 6956,
+          "overlapPct": 16
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 8,
+          "pageHeight": 7436,
+          "overlapPct": 16
+        }
+      }
+    }
+  ],
+  "recording": "qa-recordings/litho-acoustic-labs-walkthrough.webm"
+}

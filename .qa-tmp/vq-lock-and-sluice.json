@@ -1,0 +1,319 @@
+{
+  "generatedAt": "2026-09-11T19:50:57.687Z",
+  "slug": "lock-and-sluice",
+  "pages": [
+    {
+      "path": "sites/2026-08/lock-and-sluice/index.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/lock-and-sluice/index.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.nav-link 4.34:1 (needs 4.5:1)",
+              "span 4.34:1 (needs 4.5:1)",
+              "span.scroll-card-step 3.50:1 (needs 4.5:1)",
+              "p.section-subhead 3.59:1 (needs 4.5:1)",
+              "a.btn 2.87:1 (needs 4.5:1)",
+              "p.section-subhead 4.31:1 (needs 4.5:1)",
+              "div.stat-line 2.87:1 (needs 3:1)",
+              "span 3.43:1 (needs 4.5:1)",
+              "p.form-note 3.59:1 (needs 4.5:1)",
+              "button.btn 2.87:1 (needs 4.5:1)",
+              "a 4.34:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [
+              "a.brand 162x29",
+              "a.nav-link 32x44"
+            ],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 19,
+          "pageHeight": 13185,
+          "overlapPct": 19
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.nav-link 4.34:1 (needs 4.5:1)",
+              "span 4.34:1 (needs 4.5:1)",
+              "span.scroll-card-step 3.50:1 (needs 4.5:1)",
+              "p.section-subhead 3.59:1 (needs 4.5:1)",
+              "a.btn 2.87:1 (needs 4.5:1)",
+              "p.section-subhead 4.31:1 (needs 4.5:1)",
+              "div.stat-line 2.87:1 (needs 3:1)",
+              "span 3.43:1 (needs 4.5:1)",
+              "p.form-note 3.59:1 (needs 4.5:1)",
+              "button.btn 2.87:1 (needs 4.5:1)",
+              "a 4.34:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [
+              "a.brand 162x29",
+              "a.nav-link 32x44"
+            ],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 10,
+          "pageHeight": 8710,
+          "overlapPct": 17
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.nav-link 4.34:1 (needs 4.5:1)",
+              "span 4.34:1 (needs 4.5:1)",
+              "span.scroll-card-step 3.50:1 (needs 4.5:1)",
+              "p.section-subhead 3.59:1 (needs 4.5:1)",
+              "a.btn 2.87:1 (needs 4.5:1)",
+              "p.section-subhead 4.31:1 (needs 4.5:1)",
+              "div.stat-line 2.87:1 (needs 3:1)",
+              "span 3.43:1 (needs 4.5:1)",
+              "p.form-note 3.59:1 (needs 4.5:1)",
+              "button.btn 2.87:1 (needs 4.5:1)",
+              "a 4.34:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 10,
+          "pageHeight": 7571,
+          "overlapPct": 18
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.nav-link 4.34:1 (needs 4.5:1)",
+              "span 4.34:1 (needs 4.5:1)",
+              "span.scroll-card-step 3.50:1 (needs 4.5:1)",
+              "p.section-subhead 3.59:1 (needs 4.5:1)",
+              "a.btn 2.87:1 (needs 4.5:1)",
+              "p.section-subhead 4.31:1 (needs 4.5:1)",
+              "div.stat-line 2.87:1 (needs 3:1)",
+              "span 3.43:1 (needs 4.5:1)",
+              "p.form-note 3.59:1 (needs 4.5:1)",
+              "button.btn 2.87:1 (needs 4.5:1)",
+              "a 4.34:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 9,
+          "pageHeight": 7571,
+          "overlapPct": 25
+        }
+      }
+    },
+    {
+      "path": "sites/2026-08/lock-and-sluice/guild.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/lock-and-sluice/guild.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.nav-link 4.34:1 (needs 4.5:1)",
+              "p.section-subhead 4.31:1 (needs 4.5:1)",
+              "p.section-subhead 3.59:1 (needs 4.5:1)",
+              "div.data-label 4.31:1 (needs 4.5:1)",
+              "div.accordion-content 4.31:1 (needs 4.5:1)",
+              "p.form-note 4.31:1 (needs 4.5:1)",
+              "button.btn 2.87:1 (needs 4.5:1)",
+              "a 4.34:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [
+              "a.brand 162x29",
+              "a.nav-link 32x44"
+            ],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 13,
+          "pageHeight": 9283,
+          "overlapPct": 17
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.nav-link 4.34:1 (needs 4.5:1)",
+              "p.section-subhead 4.31:1 (needs 4.5:1)",
+              "p.section-subhead 3.59:1 (needs 4.5:1)",
+              "div.data-label 4.31:1 (needs 4.5:1)",
+              "div.accordion-content 4.31:1 (needs 4.5:1)",
+              "p.form-note 4.31:1 (needs 4.5:1)",
+              "button.btn 2.87:1 (needs 4.5:1)",
+              "a 4.34:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [
+              "a.brand 162x29",
+              "a.nav-link 32x44"
+            ],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 7,
+          "pageHeight": 6092,
+          "overlapPct": 17
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.nav-link 4.34:1 (needs 4.5:1)",
+              "p.section-subhead 4.31:1 (needs 4.5:1)",
+              "p.section-subhead 3.59:1 (needs 4.5:1)",
+              "div.data-label 4.31:1 (needs 4.5:1)",
+              "div.accordion-content 4.31:1 (needs 4.5:1)",
+              "p.form-note 4.31:1 (needs 4.5:1)",
+              "button.btn 2.87:1 (needs 4.5:1)",
+              "a 4.34:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 7,
+          "pageHeight": 5277,
+          "overlapPct": 19
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.nav-link 4.34:1 (needs 4.5:1)",
+              "p.section-subhead 4.31:1 (needs 4.5:1)",
+              "p.section-subhead 3.59:1 (needs 4.5:1)",
+              "div.data-label 4.31:1 (needs 4.5:1)",
+              "div.accordion-content 4.31:1 (needs 4.5:1)",
+              "p.form-note 4.31:1 (needs 4.5:1)",
+              "button.btn 2.87:1 (needs 4.5:1)",
+              "a 4.34:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 6,
+          "pageHeight": 5282,
+          "overlapPct": 22
+        }
+      }
+    },
+    {
+      "path": "sites/2026-08/lock-and-sluice/hardware.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/lock-and-sluice/hardware.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.nav-link 4.34:1 (needs 4.5:1)",
+              "p.section-subhead 4.31:1 (needs 4.5:1)",
+              "p.section-subhead 3.59:1 (needs 4.5:1)",
+              "a.btn 2.87:1 (needs 4.5:1)",
+              "a 4.34:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [
+              "a.brand 162x29",
+              "a.nav-link 32x44"
+            ],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 14,
+          "pageHeight": 10115,
+          "overlapPct": 15
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.nav-link 4.34:1 (needs 4.5:1)",
+              "p.section-subhead 4.31:1 (needs 4.5:1)",
+              "p.section-subhead 3.59:1 (needs 4.5:1)",
+              "a.btn 2.87:1 (needs 4.5:1)",
+              "a 4.34:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [
+              "a.brand 162x29",
+              "a.nav-link 32x44"
+            ],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 8,
+          "pageHeight": 6769,
+          "overlapPct": 20
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.nav-link 4.34:1 (needs 4.5:1)",
+              "p.section-subhead 4.31:1 (needs 4.5:1)",
+              "p.section-subhead 3.59:1 (needs 4.5:1)",
+              "a.btn 2.87:1 (needs 4.5:1)",
+              "a 4.34:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 8,
+          "pageHeight": 5670,
+          "overlapPct": 24
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.nav-link 4.34:1 (needs 4.5:1)",
+              "p.section-subhead 4.31:1 (needs 4.5:1)",
+              "p.section-subhead 3.59:1 (needs 4.5:1)",
+              "a.btn 2.87:1 (needs 4.5:1)",
+              "a 4.34:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 7,
+          "pageHeight": 5676,
+          "overlapPct": 29
+        }
+      }
+    }
+  ],
+  "recording": "qa-recordings/lock-and-sluice-walkthrough.webm"
+}

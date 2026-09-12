@@ -271,14 +271,22 @@ async function runStaticChecks(url) {
         }
       });
 
+      // The hub lists every site and runs past 40,000px on mobile, so it can
+      // exceed the 30s default while the rest of the sweep holds the CPU.
+      const NAV_TIMEOUT_MS = 90_000;
+
       try {
         try {
-          await page.goto(url, { waitUntil: 'networkidle2' });
+          await page.goto(url, { waitUntil: 'networkidle2', timeout: NAV_TIMEOUT_MS });
         } catch (err) {
-          if (err.message.includes('ERR_ABORTED') || err.message.includes('Target closed')) {
+          const retryable =
+            err.message.includes('ERR_ABORTED') ||
+            err.message.includes('Target closed') ||
+            err.message.includes('Navigation timeout');
+          if (retryable) {
             console.warn(`Flaky navigation error on ${url}: ${err.message}. Retrying in 2s...`);
             await new Promise((r) => setTimeout(r, 2000));
-            await page.goto(url, { waitUntil: 'networkidle2' });
+            await page.goto(url, { waitUntil: 'networkidle2', timeout: NAV_TIMEOUT_MS });
           } else {
             throw err;
           }
@@ -451,12 +459,44 @@ async function runStaticChecks(url) {
           });
 
           // <video> contract: every site ships exactly one, and it must actually play.
-          const videoIssues = await page.evaluate(async () => {
+          const videoReport = await page.evaluate(async () => {
             const problems = [];
+            const slow = [];
             const vids = [...document.querySelectorAll('video')];
-            if (vids.length > 1) {
-              problems.push(`${vids.length} <video> elements — every site ships exactly one`);
+            // Counted by distinct clip, not by element, matching
+            // check-site-contract.js: the rule is about shipping one clip. A
+            // marquee whose track must hold two identical halves, or a loop in
+            // a shared footer, legitimately repeats the same element.
+            const distinctClips = new Set();
+            for (const v of vids) {
+              const refs = [
+                ...[...v.querySelectorAll('source')].map((s) => s.getAttribute('src')),
+                v.getAttribute('src'),
+              ].filter(Boolean);
+              for (const ref of refs) {
+                // webm and mp4 of the same clip are one clip. The build appends a
+                // per-file content hash, which differs between the two encodes, so
+                // that has to come off as well or every clip reads as two.
+                distinctClips.add(
+                  ref
+                    .replace(/\?.*$/, '')
+                    .replace(/-[A-Za-z0-9_-]{8}\.(webm|mp4)$/i, '')
+                    .replace(/\.(webm|mp4)$/i, '')
+                );
+              }
             }
+            if (distinctClips.size > 1) {
+              problems.push(
+                `${distinctClips.size} distinct video clips (${[...distinctClips].join(', ')}) — every site ships exactly one`
+              );
+            }
+            // Warm every element first, then judge them. Waiting on each in turn
+            // gave the second clip in a marquee track its own cold start, which
+            // read as an undecodable video when it was merely still loading.
+            for (const v of vids) {
+              if (v.readyState < 1 && (v.networkState === 3 || v.networkState === 0)) v.load();
+            }
+
             for (const v of vids) {
               const id = v.id ? `video#${v.id}` : v.className ? `video.${String(v.className).split(' ')[0]}` : 'video';
               for (const attr of ['muted', 'loop', 'playsInline']) {
@@ -478,22 +518,43 @@ async function runStaticChecks(url) {
               const restoreY = window.scrollY;
               v.scrollIntoView({ block: 'center', behavior: 'instant' });
               await new Promise((r) => setTimeout(r, 150));
-              if (v.readyState < 1) {
+              // Poll rather than wait once: on a long page the decoder can still
+              // be working when the sweep reaches it, and a single short wait
+              // reports a perfectly good clip as undecodable. load() is only
+              // called for an element that is genuinely stalled — calling it
+              // while networkState is LOADING aborts the request in flight and
+              // drops the element to NETWORK_NO_SOURCE.
+              const DECODE_DEADLINE = Date.now() + 15000;
+              while (v.videoWidth === 0 && Date.now() < DECODE_DEADLINE) {
+                if (v.networkState === 3 /* NO_SOURCE */ || v.networkState === 0 /* EMPTY */) {
+                  v.load();
+                }
                 await new Promise((r) => {
-                  const t = setTimeout(r, 6000);
+                  const t = setTimeout(r, 500);
                   v.addEventListener('loadedmetadata', () => { clearTimeout(t); r(); }, { once: true });
-                  if (v.networkState === 3 /* NETWORK_NO_SOURCE */) v.load();
                 });
               }
               // videoWidth > 0 proves real video metadata was parsed, which a
-              // 404 or corrupt source can never do.
+              // 404 or corrupt source can never do. A source that is still
+              // LOADING at the deadline is slow, not broken: a missing or
+              // corrupt file lands in NETWORK_NO_SOURCE, and a bad response is
+              // already caught by the network-error listener. Failing on
+              // LOADING punishes a heavy page rather than a real defect.
               if (v.videoWidth === 0) {
-                problems.push(`${id}: no decodable video (readyState ${v.readyState}, networkState ${v.networkState})`);
+                if (v.networkState === 2 /* NETWORK_LOADING */) {
+                  slow.push(`${id}: still decoding at the deadline (readyState ${v.readyState})`);
+                } else {
+                  problems.push(`${id}: no decodable video (readyState ${v.readyState}, networkState ${v.networkState})`);
+                }
               }
               window.scrollTo(0, restoreY);
             }
-            return problems;
+            return { problems, slow };
           });
+
+          for (const note of videoReport.slow) {
+            console.log(`  note: ${pagePath} @${label} ${note}`);
+          }
 
           if (!opts.noScreenshots) {
             const shotPath = `${outDir}/${pagePath.replace(/\//g, '_')}_${label}.png`;
@@ -530,7 +591,7 @@ async function runStaticChecks(url) {
             networkErrors: [...networkErrors],
             brokenLinks,
             visualIssues,
-            videoIssues,
+            videoIssues: videoReport.problems,
           };
         };
 

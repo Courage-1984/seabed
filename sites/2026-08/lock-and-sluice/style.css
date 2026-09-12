@@ -806,3 +806,49 @@ footer a {
   font-size: 1.0625rem;
   color: #fff;
 }
+
+/* The media reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* --------------------------------------------------------------- *
+ * Legibility corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* The accent orange is 4.34:1 on the dark chrome and 2.87:1 on the light
+   body — it needs to move in opposite directions depending on the surface. */
+.site-header .nav-link.active,
+.scroll-band-section span,
+.scroll-card-step,
+.site-footer a {
+  color: hsl(22, 95%, 62%);
+}
+.stat-line {
+  color: hsl(22, 90%, 32%);
+}
+/* Light text on the orange fill is 2.87:1; the near-black ink clears it. */
+a.btn,
+button.btn,
+.btn.btn-primary {
+  color: hsl(0, 0%, 7%);
+}
+/* Slate-grey subheads are 3.59:1 on the panel surface. */
+.section-subhead,
+.form-note {
+  color: hsl(215, 20%, 32%);
+}
+.case-meta span {
+  color: hsl(36, 58%, 26%);
+}
+/* Touch targets: the wordmark and the short nav labels were under 44px. */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+.site-header .nav-link {
+  min-inline-size: 44px;
+  justify-content: center;
+}

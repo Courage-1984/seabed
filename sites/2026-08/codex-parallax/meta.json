@@ -1,7 +1,7 @@
 {
   "title": "Codex Parallax Laboratory",
   "blurb": "Non-destructive spectral recovery of erased ancient texts and clinical collagen stabilization for historic vellum codices.",
-  "hero": "assets/hero.webp",
+  "hero": "assets/hero-palimpsest-imaging-rig.webp",
   "layoutFamily": "overlapping card-stack",
   "tags": [
     "arts",
@@ -13,5 +13,6 @@
   "wordFloor": 1900,
   "qa": "v2-pass",
   "videoPlacement": "hover reveal",
-  "signatureEffect": "magnetic proximity cursor element"
+  "signatureEffect": "magnetic proximity cursor element",
+  "video": "assets/codex-parallax-hover-reveal.webm"
 }

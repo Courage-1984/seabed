@@ -1,0 +1,89 @@
+{
+  "generatedAt": "2026-09-11T19:57:44.078Z",
+  "slug": "mantlecut-geology",
+  "pages": [
+    {
+      "path": "sites/2026-08/mantlecut-geology/index.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/mantlecut-geology/index.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "span.rail-num 3.92:1 (needs 4.5:1)",
+              "a.btn 3.92:1 (needs 4.5:1)",
+              "a.btn 3.56:1 (needs 4.5:1)",
+              "div.step-marker 3.92:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 27,
+          "pageHeight": 18851,
+          "overlapPct": 18
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "span.rail-num 3.92:1 (needs 4.5:1)",
+              "a.btn 3.92:1 (needs 4.5:1)",
+              "a.btn 3.56:1 (needs 4.5:1)",
+              "div.step-marker 3.92:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 15,
+          "pageHeight": 12800,
+          "overlapPct": 18
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "span.rail-num 3.92:1 (needs 4.5:1)",
+              "a.btn 3.92:1 (needs 4.5:1)",
+              "a.btn 3.56:1 (needs 4.5:1)",
+              "div.step-marker 3.92:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 17,
+          "pageHeight": 12843,
+          "overlapPct": 17
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "span.rail-num 3.92:1 (needs 4.5:1)",
+              "a.btn 3.92:1 (needs 4.5:1)",
+              "a.btn 3.56:1 (needs 4.5:1)",
+              "div.step-marker 3.92:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 14,
+          "pageHeight": 12951,
+          "overlapPct": 15
+        }
+      }
+    }
+  ],
+  "recording": "qa-recordings/mantlecut-geology-walkthrough.webm"
+}

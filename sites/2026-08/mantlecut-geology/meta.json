@@ -1,7 +1,7 @@
 {
   "title": "MantleCut Deep-Geology Sawing",
   "blurb": "Slicing un-weathered granite and solid basalt three kilometres underground without shaking a single quantum sensor.",
-  "hero": "assets/hero.webp",
+  "hero": "assets/hero-diamond-wire-cavern.webp",
   "layoutFamily": "sticky-rail + content",
   "tags": [
     "industrial",
@@ -13,5 +13,6 @@
   "standard": "v2",
   "qa": "v2-pass",
   "videoPlacement": "hero inset frame",
-  "signatureEffect": "masked scroll-through type"
+  "signatureEffect": "masked scroll-through type",
+  "video": "assets/mantlecut-geology-hero-inset-frame.webm"
 }

@@ -163,7 +163,11 @@
       <div class="video-modal__backdrop" data-video-close></div>
       <div class="video-modal__frame">
         <button type="button" class="video-modal__close" data-video-close aria-label="Close video">&times;</button>
-        <img class="video-modal__still" src="./assets/flagship-immersion-tank.webp" alt="Immersion tank descent cycle." width="1280" height="720">
+        <video class="video-modal__still" data-slot-video muted loop playsinline preload="metadata"
+          poster="./assets/the-cryo-pelagic-cell-modal-feature-poster.webp" width="1280" height="720" aria-label="One descent cycle in the immersion tank, filmed from the gantry.">
+          <source src="./assets/the-cryo-pelagic-cell-modal-feature.webm" type="video/webm">
+          <source src="./assets/the-cryo-pelagic-cell-modal-feature.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
 

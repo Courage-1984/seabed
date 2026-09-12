@@ -1,0 +1,95 @@
+{
+  "generatedAt": "2026-09-11T20:02:11.979Z",
+  "slug": "sarek-bark-gear",
+  "pages": [
+    {
+      "path": "sites/2026-08/sarek-bark-gear/index.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/sarek-bark-gear/index.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.btn 3.58:1 (needs 4.5:1)",
+              "p 3.58:1 (needs 4.5:1)",
+              "p 3.42:1 (needs 4.5:1)",
+              "div.quote-author 4.11:1 (needs 4.5:1)",
+              "button.btn 3.58:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 26,
+          "pageHeight": 18133,
+          "overlapPct": 18
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a.btn 3.58:1 (needs 4.5:1)",
+              "p 3.58:1 (needs 4.5:1)",
+              "p 3.42:1 (needs 4.5:1)",
+              "div.quote-author 4.11:1 (needs 4.5:1)",
+              "button.btn 3.58:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 14,
+          "pageHeight": 12117,
+          "overlapPct": 17
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a 3.42:1 (needs 4.5:1)",
+              "a.btn 3.58:1 (needs 4.5:1)",
+              "p 3.58:1 (needs 4.5:1)",
+              "p 3.42:1 (needs 4.5:1)",
+              "div.quote-author 4.11:1 (needs 4.5:1)",
+              "button.btn 3.58:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 16,
+          "pageHeight": 12297,
+          "overlapPct": 16
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "a 3.42:1 (needs 4.5:1)",
+              "a.btn 3.58:1 (needs 4.5:1)",
+              "p 3.58:1 (needs 4.5:1)",
+              "p 3.42:1 (needs 4.5:1)",
+              "div.quote-author 4.11:1 (needs 4.5:1)",
+              "button.btn 3.58:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 14,
+          "pageHeight": 12368,
+          "overlapPct": 20
+        }
+      }
+    }
+  ],
+  "recording": "qa-recordings/sarek-bark-gear-walkthrough.webm"
+}

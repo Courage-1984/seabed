@@ -13,5 +13,6 @@
   "wordFloor": 1900,
   "qa": "v2-pass",
   "videoPlacement": "hover reveal",
-  "signatureEffect": "numeric counter roll-up"
+  "signatureEffect": "numeric counter roll-up",
+  "video": "assets/the-salt-barrow-malt-shieling-hover-reveal.webm"
 }

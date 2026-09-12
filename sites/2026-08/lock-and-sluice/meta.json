@@ -1,7 +1,7 @@
 {
   "title": "Lock & Sluice Millwright Forge",
   "blurb": "Hand-forged wrought-iron sluice restoration powered by a shared mobile forge bank and itinerant master blacksmiths.",
-  "hero": "assets/hero.webp",
+  "hero": "assets/hero-sluice-gate-lock.webp",
   "layoutFamily": "horizontal-scroll band",
   "tags": [
     "industrial",
@@ -13,5 +13,6 @@
   "standard": "v2",
   "qa": "v2-pass",
   "videoPlacement": "grid tile",
-  "signatureEffect": "staggered letter-by-letter headline"
+  "signatureEffect": "staggered letter-by-letter headline",
+  "video": "assets/lock-and-sluice-grid-tile.webm"
 }

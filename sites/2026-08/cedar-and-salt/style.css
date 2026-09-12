@@ -11,7 +11,8 @@
   --color-panel: hsl(34, 18%, 86%);
   --color-panel-border: hsl(34, 15%, 75%);
   --color-text: hsl(20, 30%, 12%);
-  --color-text-muted: hsl(30, 12%, 45%);
+  /* 3.37:1 on the panel surface at 45% lightness. */
+  --color-text-muted: hsl(30, 14%, 30%);
   --color-focus-ring: hsl(38, 90%, 50%);
 }
 
@@ -626,4 +627,53 @@ footer a {
   font-weight: 700;
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
+}
+
+/* The media reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* --------------------------------------------------------------- *
+ * Legibility corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* The muted brown is 3.37:1 on the panel surface. */
+.rail-link,
+.feature-card h4,
+.feature-card p,
+.form-container p {
+  color: hsl(27, 22%, 28%);
+}
+/* The accent is 1.60:1 on the light card. */
+.feature-card h3 {
+  color: hsl(38, 90%, 26%);
+}
+/* Near-white body copy was being rendered on the light panel at 1.20:1 —
+   the card is a light surface, so its copy takes the dark ink. */
+.feature-card p,
+.feature-card li {
+  color: hsl(27, 22%, 28%);
+}
+/* Touch targets: the wordmark, the rail links and the inline links were all
+   under the 44px minimum. */
+.brand,
+.rail-link {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+.rail-nav li a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* The header is pinned, so an in-page anchor would otherwise land with
+   its heading hidden underneath it. */
+html {
+  scroll-padding-top: 5.5rem;
 }

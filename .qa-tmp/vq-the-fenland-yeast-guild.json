@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-09-11T19:15:26.918Z",
+  "slug": "the-fenland-yeast-guild",
+  "pages": [
+    {
+      "path": "sites/2026-08/the-fenland-yeast-guild/index.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/the-fenland-yeast-guild/index.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 21,
+          "pageHeight": 14680,
+          "overlapPct": 18
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 12,
+          "pageHeight": 10214,
+          "overlapPct": 18
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 12,
+          "pageHeight": 8591,
+          "overlapPct": 22
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 10,
+          "pageHeight": 8744,
+          "overlapPct": 21
+        }
+      }
+    }
+  ],
+  "recording": "qa-recordings/the-fenland-yeast-guild-walkthrough.webm"
+}

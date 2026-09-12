@@ -1,0 +1,257 @@
+{
+  "generatedAt": "2026-09-11T19:23:49.313Z",
+  "slug": "codex-parallax",
+  "pages": [
+    {
+      "path": "sites/2026-08/codex-parallax/index.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/codex-parallax/index.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h1 1.00:1 (needs 3:1)",
+              "p.subhead 1.20:1 (needs 3:1)",
+              "h3 3.06:1 (needs 4.5:1)",
+              "div.footer-address 3.18:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": true
+          },
+          "tiles": 17,
+          "pageHeight": 11801,
+          "overlapPct": 19
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h1 1.00:1 (needs 3:1)",
+              "p.subhead 1.20:1 (needs 3:1)",
+              "h3 3.06:1 (needs 4.5:1)",
+              "div.footer-address 3.18:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": true
+          },
+          "tiles": 10,
+          "pageHeight": 8841,
+          "overlapPct": 15
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h1 1.00:1 (needs 3:1)",
+              "p.subhead 1.20:1 (needs 3:1)",
+              "h3 3.06:1 (needs 4.5:1)",
+              "div.footer-address 3.18:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": true
+          },
+          "tiles": 11,
+          "pageHeight": 8124,
+          "overlapPct": 20
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h1 1.00:1 (needs 3:1)",
+              "p.subhead 1.20:1 (needs 3:1)",
+              "h3 3.06:1 (needs 4.5:1)",
+              "div.footer-address 3.18:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": true
+          },
+          "tiles": 9,
+          "pageHeight": 8268,
+          "overlapPct": 17
+        }
+      }
+    },
+    {
+      "path": "sites/2026-08/codex-parallax/conservation.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/codex-parallax/conservation.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h1 1.00:1 (needs 3:1)",
+              "p.subhead 1.20:1 (needs 3:1)",
+              "p 3.59:1 (needs 4.5:1)",
+              "div.footer-address 3.18:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 11,
+          "pageHeight": 7664,
+          "overlapPct": 19
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h1 1.00:1 (needs 3:1)",
+              "p.subhead 1.20:1 (needs 3:1)",
+              "p 3.59:1 (needs 4.5:1)",
+              "div.footer-address 3.18:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 7,
+          "pageHeight": 5648,
+          "overlapPct": 25
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h1 1.00:1 (needs 3:1)",
+              "p.subhead 1.20:1 (needs 3:1)",
+              "p 3.59:1 (needs 4.5:1)",
+              "div.footer-address 3.18:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 7,
+          "pageHeight": 5048,
+          "overlapPct": 23
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h1 1.00:1 (needs 3:1)",
+              "p.subhead 1.20:1 (needs 3:1)",
+              "p 3.59:1 (needs 4.5:1)",
+              "div.footer-address 3.18:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 6,
+          "pageHeight": 5192,
+          "overlapPct": 24
+        }
+      }
+    },
+    {
+      "path": "sites/2026-08/codex-parallax/imaging.html",
+      "url": "http://127.0.0.1:4173/sites/2026-08/codex-parallax/imaging.html",
+      "breakpoints": {
+        "mobile-390": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h1 1.00:1 (needs 3:1)",
+              "p.subhead 1.20:1 (needs 3:1)",
+              "th 2.55:1 (needs 4.5:1)",
+              "h3 3.06:1 (needs 4.5:1)",
+              "div.footer-address 3.18:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 10,
+          "pageHeight": 7019,
+          "overlapPct": 19
+        },
+        "tablet-768": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h1 1.00:1 (needs 3:1)",
+              "p.subhead 1.20:1 (needs 3:1)",
+              "th 2.55:1 (needs 4.5:1)",
+              "h3 3.06:1 (needs 4.5:1)",
+              "div.footer-address 3.18:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 6,
+          "pageHeight": 5036,
+          "overlapPct": 22
+        },
+        "desktop-1440": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h1 1.00:1 (needs 3:1)",
+              "p.subhead 1.20:1 (needs 3:1)",
+              "th 2.55:1 (needs 4.5:1)",
+              "h3 3.06:1 (needs 4.5:1)",
+              "div.footer-address 3.18:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 7,
+          "pageHeight": 4867,
+          "overlapPct": 26
+        },
+        "wide-1920": {
+          "findings": {
+            "textOverMediaNoScrim": [],
+            "lowContrastText": [
+              "h1 1.00:1 (needs 3:1)",
+              "p.subhead 1.20:1 (needs 3:1)",
+              "th 2.55:1 (needs 4.5:1)",
+              "h3 3.06:1 (needs 4.5:1)",
+              "div.footer-address 3.18:1 (needs 4.5:1)"
+            ],
+            "tightLineHeight": [],
+            "smallTapTargets": [],
+            "viewportHeightClipping": [],
+            "horizontalScroll": false,
+            "stickyHeaderNoScrollPadding": false
+          },
+          "tiles": 6,
+          "pageHeight": 5011,
+          "overlapPct": 27
+        }
+      }
+    }
+  ],
+  "recording": "qa-recordings/codex-parallax-walkthrough.webm"
+}

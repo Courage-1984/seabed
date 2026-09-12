@@ -88,14 +88,11 @@
 
     <section class="masked-band" aria-labelledby="masked-band-heading" data-masked-type>
       <div class="masked-type">
-        <img
-          class="masked-type__still"
-          src="./assets/macro-hydrojet-manifold.webp"
-          alt=""
-          loading="lazy"
-          width="1280"
-          height="720"
-        >
+        <video class="masked-type__still" data-slot-video muted loop playsinline preload="metadata"
+          poster="./assets/tendonforge-masked-type-fill-poster.webp" width="1280" height="720" aria-hidden="true">
+          <source src="./assets/tendonforge-masked-type-fill.webm" type="video/webm">
+          <source src="./assets/tendonforge-masked-type-fill.mp4" type="video/mp4">
+        </video>
         <h2 class="masked-type__text" id="masked-band-heading">14 BAR</h2>
         <svg
           class="masked-type__knockout"

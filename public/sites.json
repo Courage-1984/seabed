@@ -748,7 +748,7 @@
   {
     "title": "Abyssal Crust Salt Vaults",
     "blurb": "Reversing deep-sea neuromuscular tremors and joint calcification inside silent, zero-vibration subterranean halite vaults.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-halite-floatation-vault.webp",
     "layoutFamily": "brutalist stacked",
     "tags": [
       "wellness",
@@ -761,6 +761,7 @@
     "qa": "v2-pass",
     "videoPlacement": "masked type fill",
     "signatureEffect": "CSS 3D card tilt",
+    "video": "assets/abyssal-crust-vaults-masked-type-fill.webm",
     "siteFolder": "./sites/2026-08/abyssal-crust-vaults"
   },
   {
@@ -802,7 +803,7 @@
   {
     "title": "Cedar & Salt Hydro-Cooperage",
     "blurb": "Aromatic old-growth cedar soaking tubs hand-coopered without synthetic adhesives or chemical lacquers.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-cedar-tub-snowfield.webp",
     "layoutFamily": "sticky-rail + content",
     "tags": [
       "wellness",
@@ -815,12 +816,13 @@
     "qa": "v2-pass",
     "videoPlacement": "sticky rail loop",
     "signatureEffect": "numeric counter roll-up",
+    "video": "assets/cedar-and-salt-sticky-rail-loop.webm",
     "siteFolder": "./sites/2026-08/cedar-and-salt"
   },
   {
     "title": "Codex Parallax Laboratory",
     "blurb": "Non-destructive spectral recovery of erased ancient texts and clinical collagen stabilization for historic vellum codices.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-palimpsest-imaging-rig.webp",
     "layoutFamily": "overlapping card-stack",
     "tags": [
       "arts",
@@ -833,6 +835,7 @@
     "qa": "v2-pass",
     "videoPlacement": "hover reveal",
     "signatureEffect": "magnetic proximity cursor element",
+    "video": "assets/codex-parallax-hover-reveal.webm",
     "siteFolder": "./sites/2026-08/codex-parallax"
   },
   {
@@ -927,6 +930,7 @@
     "qa": "v2-pass",
     "videoPlacement": "inline process demo",
     "signatureEffect": "sticky section pinning with cross-fade",
+    "video": "assets/k-44-ordnance-canvas-inline-process-demo.webm",
     "siteFolder": "./sites/2026-08/k-44-ordnance-canvas"
   },
   {
@@ -945,6 +949,7 @@
     "qa": "v2-pass",
     "videoPlacement": "split panel",
     "signatureEffect": "scroll-driven clip-path wipe",
+    "video": "assets/k-92-maritime-victualling-split-panel.webm",
     "siteFolder": "./sites/2026-08/k-92-maritime-victualling"
   },
   {
@@ -988,7 +993,7 @@
   {
     "title": "Litho-Acoustic Resonance Laboratories",
     "blurb": "Reconstructing the precise resonant harmonics of prehistoric stone instruments without physical contact or structural excitation.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-sterkfontein-laser-bench.webp",
     "layoutFamily": "ultra-minimal full-bleed",
     "tags": [
       "arts",
@@ -1001,12 +1006,13 @@
     "qa": "v2-pass",
     "videoPlacement": "hero background",
     "signatureEffect": "scroll-velocity marquee skew",
+    "video": "assets/litho-acoustic-labs-hero-background.webm",
     "siteFolder": "./sites/2026-08/litho-acoustic-labs"
   },
   {
     "title": "Lock & Sluice Millwright Forge",
     "blurb": "Hand-forged wrought-iron sluice restoration powered by a shared mobile forge bank and itinerant master blacksmiths.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-sluice-gate-lock.webp",
     "layoutFamily": "horizontal-scroll band",
     "tags": [
       "industrial",
@@ -1019,6 +1025,7 @@
     "qa": "v2-pass",
     "videoPlacement": "grid tile",
     "signatureEffect": "staggered letter-by-letter headline",
+    "video": "assets/lock-and-sluice-grid-tile.webm",
     "siteFolder": "./sites/2026-08/lock-and-sluice"
   },
   {
@@ -1037,6 +1044,7 @@
     "qa": "v2-pass",
     "videoPlacement": "hero inset frame",
     "signatureEffect": "drifting grain overlay",
+    "video": "assets/lv-74-marine-apothecary-hero-inset-frame.webm",
     "siteFolder": "./sites/2026-08/lv-74-marine-apothecary"
   },
   {
@@ -1055,12 +1063,13 @@
     "qa": "v2-pass",
     "videoPlacement": "grid tile",
     "signatureEffect": "staggered letter-by-letter headline",
+    "video": "assets/magnaloom-grid-tile.webm",
     "siteFolder": "./sites/2026-08/magnaloom"
   },
   {
     "title": "MantleCut Deep-Geology Sawing",
     "blurb": "Slicing un-weathered granite and solid basalt three kilometres underground without shaking a single quantum sensor.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-diamond-wire-cavern.webp",
     "layoutFamily": "sticky-rail + content",
     "tags": [
       "industrial",
@@ -1073,6 +1082,7 @@
     "qa": "v2-pass",
     "videoPlacement": "hero inset frame",
     "signatureEffect": "masked scroll-through type",
+    "video": "assets/mantlecut-geology-hero-inset-frame.webm",
     "siteFolder": "./sites/2026-08/mantlecut-geology"
   },
   {
@@ -1109,6 +1119,7 @@
     "qa": "v2-pass",
     "videoPlacement": "marquee strip",
     "signatureEffect": "CSS 3D card tilt",
+    "video": "assets/mash-and-manifold-marquee-strip.webm",
     "siteFolder": "./sites/2026-08/mash-and-manifold"
   },
   {
@@ -1165,12 +1176,13 @@
     "qa": "v2-pass",
     "videoPlacement": "sticky rail loop",
     "signatureEffect": "masked scroll-through type",
+    "video": "assets/pentland-acoustic-telemetry-works-sticky-rail-loop.webm",
     "siteFolder": "./sites/2026-08/pentland-acoustic-telemetry-works"
   },
   {
     "title": "Sarek Birch-Bark Gear Guild",
     "blurb": "Rot-proof, ultra-light sub-arctic packbaskets hand-woven from winter birch bark without synthetic nylon or plastic hardware.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-birch-bark-packbasket.webp",
     "layoutFamily": "sticky-rail + content",
     "tags": [
       "outdoors",
@@ -1183,6 +1195,7 @@
     "qa": "v2-pass",
     "videoPlacement": "footer ambient",
     "signatureEffect": "animated SVG line-draw",
+    "video": "assets/sarek-bark-gear-footer-ambient.webm",
     "siteFolder": "./sites/2026-08/sarek-bark-gear"
   },
   {
@@ -1275,6 +1288,7 @@
     "qa": "v2-pass",
     "videoPlacement": "masked type fill",
     "signatureEffect": "magnetic proximity cursor element",
+    "video": "assets/tendonforge-masked-type-fill.webm",
     "siteFolder": "./sites/2026-08/tendonforge"
   },
   {
@@ -1293,6 +1307,7 @@
     "qa": "v2-pass",
     "videoPlacement": "hero background",
     "signatureEffect": "scroll-velocity marquee skew",
+    "video": "assets/the-cryo-biome-crypt-hero-background.webm",
     "siteFolder": "./sites/2026-08/the-cryo-biome-crypt"
   },
   {
@@ -1310,6 +1325,7 @@
     "wordFloor": 650,
     "videoPlacement": "modal feature",
     "signatureEffect": "animated SVG line-draw",
+    "video": "assets/the-cryo-pelagic-cell-modal-feature.webm",
     "siteFolder": "./sites/2026-08/the-cryo-pelagic-cell"
   },
   {
@@ -1327,6 +1343,7 @@
     "standard": "v2",
     "videoPlacement": "footer ambient",
     "signatureEffect": "progressive blur focus-pull",
+    "video": "assets/the-fenland-yeast-guild-footer-ambient.webm",
     "siteFolder": "./sites/2026-08/the-fenland-yeast-guild"
   },
   {
@@ -1383,6 +1400,7 @@
     "qa": "v2-pass",
     "videoPlacement": "hover reveal",
     "signatureEffect": "numeric counter roll-up",
+    "video": "assets/the-salt-barrow-malt-shieling-hover-reveal.webm",
     "siteFolder": "./sites/2026-08/the-salt-barrow-malt-shieling"
   },
   {

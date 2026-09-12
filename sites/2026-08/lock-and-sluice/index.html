@@ -5,7 +5,7 @@
   <meta name="description" content="Hand-forged wrought-iron sluice restoration powered by a shared mobile forge bank and itinerant master blacksmiths.">
   <meta property="og:title" content="Lock &amp; Sluice Millwright Forge">
   <meta property="og:description" content="Hand-forged wrought-iron sluice restoration powered by a shared mobile forge bank and itinerant master blacksmiths.">
-  <meta property="og:image" content="./assets/hero.webp">
+  <meta property="og:image" content="./assets/hero-sluice-gate-lock.webp">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@
     <!-- Section 1: Hero -->
     <section class="hero-section">
       <div class="hero-bg">
-        <img src="./assets/hero.webp" alt="Master blacksmith hot-riveting iron straps on an oak canal lock gate in a historic forge." fetchpriority="high" class="hero-img" width="1024" height="1024">
+        <img src="./assets/hero-sluice-gate-lock.webp" alt="Master blacksmith hot-riveting iron straps on an oak canal lock gate in a historic forge." fetchpriority="high" class="hero-img" width="1024" height="1024">
         <div class="hero-overlay"></div>
       </div>
       <div class="container hero-content">
@@ -47,7 +47,11 @@
     <!-- Section 1: Flagship (Horizontal-Scroll Band) -->
     <div class="slot-tile-band">
       <figure class="slot-tile" data-slot-tile>
-        <img class="slot-tile__still" src="./assets/mobile-towpath-forge.webp" alt="The guild's mobile forge trailer set up on a canal towpath." loading="lazy" width="1280" height="720">
+        <video class="slot-tile__still" data-slot-video muted loop playsinline preload="metadata"
+          poster="./assets/lock-and-sluice-grid-tile-poster.webp" width="1280" height="720" aria-label="The guild coal forge running on the towpath, an iron strap heating in the fire.">
+          <source src="./assets/lock-and-sluice-grid-tile.webm" type="video/webm">
+          <source src="./assets/lock-and-sluice-grid-tile.mp4" type="video/mp4">
+        </video>
         <figcaption class="slot-tile__caption">
           <strong>The Towpath Forge</strong>
           Coal forge, 150kg anvil and hydraulic pullers, deployed within forty-eight hours.

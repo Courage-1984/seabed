@@ -501,36 +501,84 @@ footer a {
   }
 }
 
-/* Video placement — masked type fill: the clip is visible only through the
-   numerals, so the band reads as type first and media second. */
+/* Signature effect — masked type fill.
+   A layered knockout rather than `background-clip: text`: the plate is opaque
+   and the letters are holes, which lets a <video> sit behind the type. */
 .masked-band {
   padding-block: clamp(3rem, 7vw, 5rem);
   padding-inline: 1.5rem;
   text-align: center;
 }
-.masked-band__type {
-  margin: 0;
-  font-size: clamp(3.5rem, 14vw, 10rem);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  /* Solid fallback first: if background-clip:text is unsupported the type
-     still reads as flat accent colour rather than vanishing. */
-  color: var(--color-primary, #00a6cc);
+.masked-type {
+  position: relative;
+  inline-size: min(100%, 60rem);
+  margin-inline: auto;
+  aspect-ratio: 3 / 1;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--color-bg, #f0f0f0);
 }
-@supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .masked-band__type {
-    color: transparent;
-    background-image: url('./assets/salt-crystals.webp');
-    background-size: cover;
-    background-position: center calc(50% + var(--mask-shift, 0px));
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
+.masked-type__still,
+.masked-type [data-slot-video] {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+/* Accessible heading only. Rendering it visually as well makes its glyphs bleed
+   through the knockout holes — HTML and SVG type do not share metrics. */
+.masked-type__text {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.masked-type__knockout {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  inline-size: 100%;
+  block-size: 100%;
+  pointer-events: none;
 }
 .masked-band__caption {
-  max-inline-size: 60ch;
-  margin-inline: auto;
-  margin-block: 1rem 0;
-  font-size: 1rem;
+  margin: 1.5rem auto 0;
+  max-inline-size: 48ch;
   color: var(--color-secondary, #333);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* The media reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* --------------------------------------------------------------- *
+ * Legibility corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* The brand cyan is bright: white on it is 2.76:1, but the near-black
+   secondary on it is comfortably over 4.5:1. */
+.btn {
+  color: var(--color-secondary, #333);
+}
+/* The same cyan as text on white is also 2.76:1, so type uses a darkened
+   sibling of the same hue. */
+.module-card h3,
+.testimonial .testimonial-author,
+.testimonial-author {
+  color: hsl(190, 100%, 26%);
+}
+/* Mid-grey on the near-black footer is 3.21:1. */
+.site-footer p {
+  color: hsl(0, 0%, 72%);
 }

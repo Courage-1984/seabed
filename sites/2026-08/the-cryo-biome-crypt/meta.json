@@ -13,5 +13,6 @@
   "wordFloor": 650,
   "qa": "v2-pass",
   "videoPlacement": "hero background",
-  "signatureEffect": "scroll-velocity marquee skew"
+  "signatureEffect": "scroll-velocity marquee skew",
+  "video": "assets/the-cryo-biome-crypt-hero-background.webm"
 }

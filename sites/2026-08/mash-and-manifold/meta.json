@@ -13,5 +13,6 @@
   "standard": "v2",
   "qa": "v2-pass",
   "videoPlacement": "marquee strip",
-  "signatureEffect": "CSS 3D card tilt"
+  "signatureEffect": "CSS 3D card tilt",
+  "video": "assets/mash-and-manifold-marquee-strip.webm"
 }

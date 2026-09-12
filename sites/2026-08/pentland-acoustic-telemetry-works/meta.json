@@ -13,5 +13,6 @@
   "wordFloor": 1100,
   "qa": "v2-pass",
   "videoPlacement": "sticky rail loop",
-  "signatureEffect": "masked scroll-through type"
+  "signatureEffect": "masked scroll-through type",
+  "video": "assets/pentland-acoustic-telemetry-works-sticky-rail-loop.webm"
 }

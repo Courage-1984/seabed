@@ -5,7 +5,7 @@
   <meta name="description" content="Slicing un-weathered granite and solid basalt three kilometres underground without shaking a single quantum sensor.">
   <meta property="og:title" content="MantleCut Deep-Geology Sawing">
   <meta property="og:description" content="Slicing un-weathered granite and solid basalt three kilometres underground without shaking a single quantum sensor.">
-  <meta property="og:image" content="./assets/hero.webp">
+  <meta property="og:image" content="./assets/hero-diamond-wire-cavern.webp">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
     <!-- Section 1: Hero -->
     <section data-reveal id="hero" class="hero-section">
       <div class="hero-bg">
-        <img src="./assets/hero.webp" alt="Diamond-wire saw machine cutting solid granite inside an underground physics cavern." fetchpriority="high" class="hero-img" width="1024" height="1024">
+        <img src="./assets/hero-diamond-wire-cavern.webp" alt="Diamond-wire saw machine cutting solid granite inside an underground physics cavern." fetchpriority="high" class="hero-img" width="1024" height="1024">
         <div class="hero-overlay"></div>
       </div>
       <div class="hero-content">
@@ -57,7 +57,11 @@
     <!-- Section 3: Primary Sticky-Rail Section (§4b) -->
     <div class="slot-inset-wrap">
       <figure class="slot-inset">
-        <img class="slot-inset__still" src="./assets/diamond-wire-detail.webp" alt="Diamond-wire bead strand running through a granite kerf." loading="lazy" width="1280" height="720">
+        <video class="slot-inset__still" data-slot-video muted loop playsinline preload="metadata"
+          poster="./assets/mantlecut-geology-hero-inset-frame-poster.webp" width="1280" height="720" aria-label="A diamond-wire bead strand running through a granite kerf.">
+          <source src="./assets/mantlecut-geology-hero-inset-frame.webm" type="video/webm">
+          <source src="./assets/mantlecut-geology-hero-inset-frame.mp4" type="video/mp4">
+        </video>
         <figcaption class="slot-inset__caption">Diamond-wire bead strand &mdash; continuous cut, zero percussion</figcaption>
       </figure>
     </div>
@@ -247,7 +251,22 @@
 
     <!-- Section 7: Technical FAQ -->
     <section class="masked-band" aria-labelledby="masked-band-heading" data-masked-type>
-      <h2 class="masked-band__type" id="masked-band-heading">3 km</h2>
+      <div class="masked-type">
+        <img class="masked-type__still" src="./assets/cavern-wall.webp" alt="" loading="lazy" width="1280" height="720">
+        <h2 class="masked-type__text" id="masked-band-heading">3 km</h2>
+        <svg class="masked-type__knockout" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true" focusable="false">
+          <defs>
+            <mask id="mcg-knockout">
+              <rect width="600" height="200" fill="#fff"></rect>
+              <text x="300" y="100" text-anchor="middle" dominant-baseline="central"
+                font-family="'Archivo', sans-serif" font-weight="700" font-size="130" letter-spacing="-2"
+                fill="#000">3 km</text>
+            </mask>
+          </defs>
+          <rect width="600" height="200" fill="currentColor" mask="url(#mcg-knockout)"></rect>
+        </svg>
+      </div>
       <p class="masked-band__caption">Working depth at Carletonville &mdash; cut to sub-millimetre accuracy, with no seismic signature.</p>
     </section>
 
