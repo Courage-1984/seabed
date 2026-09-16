@@ -169,8 +169,19 @@ function collectVisualFindings(isMobile) {
     return { media: false, colour: bodyBg && bodyBg.a >= 0.85 ? bodyBg : { r: 255, g: 255, b: 255, a: 1 } };
   };
 
-  // Media boxes that could sit behind text (video, img, canvas).
-  const mediaBoxes = [...document.querySelectorAll('video, img, canvas')]
+  // Media boxes that could sit behind text. Not just media elements: a hero
+  // whose photograph is a background-image on a sibling layer is the common
+  // shape, and the ancestor walk cannot see it either, so text over it was
+  // being scored against the section's own background colour.
+  const isBackgroundMedia = (el) => {
+    const bg = getComputedStyle(el).backgroundImage;
+    return bg && bg !== 'none' && /url\(/i.test(bg);
+  };
+  const mediaCandidates = [
+    ...document.querySelectorAll('video, img, canvas'),
+    ...[...document.querySelectorAll('div, section, span, a, header, figure')].filter(isBackgroundMedia),
+  ];
+  const mediaBoxes = mediaCandidates
     .map((m) => ({ el: m, rect: m.getBoundingClientRect(), z: Number(getComputedStyle(m).zIndex) || 0 }))
     .filter((m) => m.rect.width > 120 && m.rect.height > 80);
 
@@ -195,9 +206,17 @@ function collectVisualFindings(isMobile) {
       if (/gradient/i.test(cs.backgroundImage)) return true;
       const bg = parseRgb(cs.backgroundColor);
       if (bg && bg.a >= 0.25) return true;
-      // A dedicated overlay sibling (::before is not reachable, so look for one).
+      // A dedicated overlay sibling, including one drawn as that sibling's
+      // ::before/::after — the usual way a background-image hero is scrimmed.
       for (const child of node.children) {
         const ccs = getComputedStyle(child);
+        for (const pseudo of ['::before', '::after']) {
+          const pcs = getComputedStyle(child, pseudo);
+          if (pcs.content === 'none') continue;
+          if (/gradient/i.test(pcs.backgroundImage) || (parseRgb(pcs.backgroundColor)?.a ?? 0) >= 0.25) {
+            return true;
+          }
+        }
         if (
           ccs.position === 'absolute' &&
           (/gradient/i.test(ccs.backgroundImage) || (parseRgb(ccs.backgroundColor)?.a ?? 0) >= 0.25)
@@ -258,15 +277,26 @@ function collectVisualFindings(isMobile) {
   }
 
   // Sections locked to the viewport height that cannot contain their content.
+  //
+  // A decorative parallax layer is not this: a scaled background image overflows
+  // its box by design, and a transformed descendant still counts toward
+  // scrollHeight even under `overflow: clip`. So a box that holds no text and
+  // clips what it holds is exempt -- nothing readable is being cut off, and
+  // nothing is visibly spilling either. A viewport-locked box with real content
+  // to lose always has text in it, so the check keeps its teeth.
   for (const el of document.querySelectorAll('section, header, div, main')) {
     const cs = getComputedStyle(el);
     const h = parseFloat(cs.height);
     if (!Number.isFinite(h)) continue;
+    const clips =
+      cs.overflowY === 'hidden' || cs.overflowY === 'clip' || cs.contain.includes('paint');
+    const hasText = (el.textContent || '').trim().length > 0;
     if (
       Math.abs(h - window.innerHeight) < 2 &&
       el.scrollHeight > el.clientHeight + 4 &&
       cs.overflowY !== 'auto' &&
-      cs.overflowY !== 'scroll'
+      cs.overflowY !== 'scroll' &&
+      !(clips && !hasText)
     ) {
       findings.viewportHeightClipping.push(`${sel(el)} content ${el.scrollHeight}px in ${Math.round(h)}px`);
     }

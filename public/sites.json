@@ -324,7 +324,7 @@
   {
     "title": "78 North Supply",
     "blurb": "Field-hardened gear dispatched from the world’s northernmost functional settlement — no lifestyle branding, no unnecessary features.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/svalbard-depot-crates.webp",
     "layoutFamily": "ultra-minimal full-bleed",
     "tags": [
       "expedition-gear",
@@ -396,7 +396,7 @@
   {
     "title": "GlacierMesh Infrastructure",
     "blurb": "Server architecture engineered to run continuously where diesel generators freeze and standard enterprise silicon snaps like dry twigs.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/boreas-9-chassis-ice-shelf.webp",
     "layoutFamily": "bento",
     "tags": [
       "tech",
@@ -427,6 +427,8 @@
     "qa": "v2-pass",
     "videoPlacement": "section transition band",
     "signatureEffect": "magnetic proximity cursor element",
+    "video": "assets/halcyon-tare-section-transition-band.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/halcyon-tare"
   },
   {
@@ -762,12 +764,13 @@
     "videoPlacement": "masked type fill",
     "signatureEffect": "CSS 3D card tilt",
     "video": "assets/abyssal-crust-vaults-masked-type-fill.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/abyssal-crust-vaults"
   },
   {
     "title": "Aegir Thermal Lugger",
     "blurb": "Deep thermal contrast and sea-immersion recovery delivered aboard a sailing wooden vessel at secluded fjord anchorages.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-lugger-sea-loch.webp",
     "layoutFamily": "sticky-rail + content",
     "tags": [
       "wellness",
@@ -780,12 +783,14 @@
     "qa": "v2-pass",
     "videoPlacement": "sticky rail loop",
     "signatureEffect": "text scramble decode on reveal",
+    "video": "assets/aegir-thermal-lugger-sticky-rail-loop.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/aegir-thermal-lugger"
   },
   {
     "title": "Brimstone & Basalt Structural Castings",
     "blurb": "Direct volcanic basalt rock liquification and high-density centrifugal casting for chemical-slurry pipes, underground mine shaft liners, and acidic pump casings.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-basalt-foundry-pour.webp",
     "layoutFamily": "bento",
     "tags": [
       "industrial",
@@ -798,6 +803,8 @@
     "qa": "v2-pass",
     "videoPlacement": "hover reveal",
     "signatureEffect": "numeric counter roll-up",
+    "video": "assets/brimstone-basalt-hover-reveal.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/brimstone-basalt"
   },
   {
@@ -817,6 +824,7 @@
     "videoPlacement": "sticky rail loop",
     "signatureEffect": "numeric counter roll-up",
     "video": "assets/cedar-and-salt-sticky-rail-loop.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/cedar-and-salt"
   },
   {
@@ -836,12 +844,13 @@
     "videoPlacement": "hover reveal",
     "signatureEffect": "magnetic proximity cursor element",
     "video": "assets/codex-parallax-hover-reveal.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/codex-parallax"
   },
   {
     "title": "Deep Crust Mycelial Bio-Lining",
     "blurb": "Breathing walls grown from deep-forest fungal strains, shielding subterranean sanctuaries from damp, radon, and harsh mineral glare.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-mycelial-sanctuary.webp",
     "layoutFamily": "overlapping card-stack",
     "tags": [
       "wellness",
@@ -854,6 +863,8 @@
     "qa": "v2-pass",
     "videoPlacement": "modal feature",
     "signatureEffect": "scroll-driven clip-path wipe",
+    "video": "assets/deep-crust-mycelial-modal-feature.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/deep-crust-mycelial"
   },
   {
@@ -899,7 +910,7 @@
   {
     "title": "Hverir Geothermal Hearth",
     "blurb": "Rye bread and wild Arctic ferments slow-cooked by the raw heat of the Earth inside a natural basalt lava chamber.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-geothermal-hearth.webp",
     "layoutFamily": "bento",
     "tags": [
       "food",
@@ -912,6 +923,8 @@
     "qa": "v2-pass",
     "videoPlacement": "hero inset frame",
     "signatureEffect": "scroll-velocity marquee skew",
+    "video": "assets/hverir-hearth-hero-inset-frame.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/hverir-hearth"
   },
   {
@@ -931,6 +944,7 @@
     "videoPlacement": "inline process demo",
     "signatureEffect": "sticky section pinning with cross-fade",
     "video": "assets/k-44-ordnance-canvas-inline-process-demo.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/k-44-ordnance-canvas"
   },
   {
@@ -950,12 +964,13 @@
     "videoPlacement": "split panel",
     "signatureEffect": "scroll-driven clip-path wipe",
     "video": "assets/k-92-maritime-victualling-split-panel.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/k-92-maritime-victualling"
   },
   {
     "title": "Kajak-Lauget Outer Archipelago",
     "blurb": "Traditional skin-on-frame watercraft that weigh less than eighteen kilograms, flex naturally with North Atlantic swells, and rest in keycard-locked boathouses along the island chain.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/skin-on-frame-kayak-beach.webp",
     "layoutFamily": "sticky-rail + content",
     "tags": [
       "outdoors",
@@ -1007,6 +1022,7 @@
     "videoPlacement": "hero background",
     "signatureEffect": "scroll-velocity marquee skew",
     "video": "assets/litho-acoustic-labs-hero-background.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/litho-acoustic-labs"
   },
   {
@@ -1026,6 +1042,7 @@
     "videoPlacement": "grid tile",
     "signatureEffect": "staggered letter-by-letter headline",
     "video": "assets/lock-and-sluice-grid-tile.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/lock-and-sluice"
   },
   {
@@ -1045,6 +1062,7 @@
     "videoPlacement": "hero inset frame",
     "signatureEffect": "drifting grain overlay",
     "video": "assets/lv-74-marine-apothecary-hero-inset-frame.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/lv-74-marine-apothecary"
   },
   {
@@ -1064,6 +1082,7 @@
     "videoPlacement": "grid tile",
     "signatureEffect": "staggered letter-by-letter headline",
     "video": "assets/magnaloom-grid-tile.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/magnaloom"
   },
   {
@@ -1083,12 +1102,13 @@
     "videoPlacement": "hero inset frame",
     "signatureEffect": "masked scroll-through type",
     "video": "assets/mantlecut-geology-hero-inset-frame.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/mantlecut-geology"
   },
   {
     "title": "Marion Fissure Fermentary",
     "blurb": "Sub-Antarctic geothermal heat meets sub-zero gale spray to yield Earth's most isolated mineral umami.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-marion-fissure-shore.webp",
     "layoutFamily": "brutalist stacked",
     "tags": [
       "food",
@@ -1101,6 +1121,8 @@
     "qa": "v2-pass",
     "videoPlacement": "marquee strip",
     "signatureEffect": "sticky section pinning with cross-fade",
+    "video": "assets/marion-fissure-marquee-strip.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/marion-fissure"
   },
   {
@@ -1120,12 +1142,13 @@
     "videoPlacement": "marquee strip",
     "signatureEffect": "CSS 3D card tilt",
     "video": "assets/mash-and-manifold-marquee-strip.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/mash-and-manifold"
   },
   {
     "title": "Nadir Quartzware Direct",
     "blurb": "Direct-to-laboratory online e-commerce catalog of synthetic fused-silica optical cuvettes, micro-bore flow cells, and spectroscopic calibration standards.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/fused-silica-cuvette-bench.webp",
     "layoutFamily": "terminal / data-readout",
     "tags": [
       "ecommerce",
@@ -1177,6 +1200,7 @@
     "videoPlacement": "sticky rail loop",
     "signatureEffect": "masked scroll-through type",
     "video": "assets/pentland-acoustic-telemetry-works-sticky-rail-loop.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/pentland-acoustic-telemetry-works"
   },
   {
@@ -1196,6 +1220,7 @@
     "videoPlacement": "footer ambient",
     "signatureEffect": "animated SVG line-draw",
     "video": "assets/sarek-bark-gear-footer-ambient.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/sarek-bark-gear"
   },
   {
@@ -1221,7 +1246,7 @@
   {
     "title": "Stave & Hoops Millwright Guild",
     "blurb": "Hand-milled English oak and Douglas fir stave restoration powered by a shared master-artisan timber bank.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-cooperage-yard.webp",
     "layoutFamily": "asymmetric split",
     "tags": [
       "industrial",
@@ -1234,12 +1259,14 @@
     "qa": "v2-pass",
     "videoPlacement": "section transition band",
     "signatureEffect": "magnetic proximity cursor element",
+    "video": "assets/stave-and-hoops-section-transition-band.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/stave-and-hoops"
   },
   {
     "title": "Sub-Lithic Archive Seals",
     "blurb": "Vitrified volcanic canisters engineered to keep digital data readable through ten thousand years of geological movement.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-quarry-seal-bed.webp",
     "layoutFamily": "asymmetric split",
     "tags": [
       "retail",
@@ -1252,12 +1279,14 @@
     "qa": "v2-pass",
     "videoPlacement": "split panel",
     "signatureEffect": "drifting grain overlay",
+    "video": "assets/sub-lithic-seals-split-panel.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/sub-lithic-seals"
   },
   {
     "title": "Sub-Litho Kinetic Calibration",
     "blurb": "Isolating subterranean kinetic art from planetary seismic drift down to sub-micron tolerances.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/hero-pendulum-vault.webp",
     "layoutFamily": "terminal / data-readout",
     "tags": [
       "arts",
@@ -1270,6 +1299,8 @@
     "wordFloor": 1100,
     "videoPlacement": "inline process demo",
     "signatureEffect": "progressive blur focus-pull",
+    "video": "assets/sub-litho-kinetic-inline-process-demo.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/sub-litho-kinetic"
   },
   {
@@ -1289,6 +1320,7 @@
     "videoPlacement": "masked type fill",
     "signatureEffect": "magnetic proximity cursor element",
     "video": "assets/tendonforge-masked-type-fill.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/tendonforge"
   },
   {
@@ -1308,6 +1340,7 @@
     "videoPlacement": "hero background",
     "signatureEffect": "scroll-velocity marquee skew",
     "video": "assets/the-cryo-biome-crypt-hero-background.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/the-cryo-biome-crypt"
   },
   {
@@ -1326,6 +1359,7 @@
     "videoPlacement": "modal feature",
     "signatureEffect": "animated SVG line-draw",
     "video": "assets/the-cryo-pelagic-cell-modal-feature.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/the-cryo-pelagic-cell"
   },
   {
@@ -1344,6 +1378,7 @@
     "videoPlacement": "footer ambient",
     "signatureEffect": "progressive blur focus-pull",
     "video": "assets/the-fenland-yeast-guild-footer-ambient.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/the-fenland-yeast-guild"
   },
   {
@@ -1362,6 +1397,8 @@
     "qa": "v2-pass",
     "videoPlacement": "section transition band",
     "signatureEffect": "text scramble decode on reveal",
+    "video": "assets/the-hardpan-outfitter-section-transition-band.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/the-hardpan-outfitter"
   },
   {
@@ -1401,6 +1438,7 @@
     "videoPlacement": "hover reveal",
     "signatureEffect": "numeric counter roll-up",
     "video": "assets/the-salt-barrow-malt-shieling-hover-reveal.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/the-salt-barrow-malt-shieling"
   },
   {
