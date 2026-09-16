@@ -2,7 +2,7 @@
 
 # Remediation campaign status
 
-Generated 2026-09-14T06:59:39.550Z from 88 sites.
+Generated 2026-09-16T19:05:15.038Z from 88 sites.
 
 Bringing every site up to the strict contract (video + motion budget + asset isolation),
 walking newest → oldest. A site is `DONE` once it carries `"contract": "v2.1"` in `meta.json`
