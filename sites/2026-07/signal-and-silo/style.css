@@ -416,3 +416,219 @@ footer {
     font-size: 3rem;
   }
 }
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — numeric counter roll-up. */
+[data-count-to] {
+  /* Tabular figures stop the layout jittering while the digits climb. */
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  display: inline-block;
+  min-inline-size: 3ch;
+  text-align: end;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — grid tile.
+ * A real cell of main.bento-grid (`repeat(12, 1fr)`, `gap: 2rem`), sited
+ * between the node section and the fermentation section. Like every other
+ * direct child of that grid it declares its own span, so it is a sized
+ * cell rather than an unspanned 1/12 sliver, and the grid's own gap — not
+ * a hand-rolled margin — supplies the spacing to the tiles either side.
+ * ------------------------------------------------------------------ */
+.slot-tile-band {
+  grid-column: span 12; /* a real bento cell; the grid's gap: 2rem supplies the spacing */
+}
+
+.slot-tile {
+  margin: 0;
+  border: 2px solid var(--color-primary);
+  background: hsl(200, 14%, 12%);
+  overflow: hidden;
+}
+
+/* Unscoped on purpose: the band is a direct child of main.bento-grid, so a
+   `.node-content ...` prefix would never match and the still would fall back
+   to the global `img { height: auto }` and render as a 1:1 square.
+   The <video> that later replaces the still inherits the same geometry. */
+.slot-tile__still,
+.slot-tile [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Caption panel: an explicit dark neutral, not a brand token — the tile sits
+   on the pale --color-background ground and --color-secondary/--color-accent
+   are both too light to carry pale text. hsl(200,14%,12%) = #1a2023. */
+.slot-tile__caption {
+  padding: 1.25rem 1.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: hsl(200, 14%, 92%); /* #e8eced on #1a2023 = 13.85:1 */
+  background: hsl(200, 14%, 12%);
+}
+
+.slot-tile__caption strong {
+  display: block;
+  margin-block-end: 0.35rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: #ffffff; /* on #1a2023 = 16.47:1 */
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — counter roll-up, site-local tuning.
+ * ------------------------------------------------------------------ */
+
+/* The shared hook reserves 3ch so the digits cannot reflow while they climb;
+   at .bento-metric's 4rem that leaves a 2ch indent in front of a two-digit
+   figure. Every counted value here tops out at two digits, so 2ch is enough.
+   (0,2,0) beats the bare [data-count-to] rule at (0,1,0). */
+.bento-metric [data-count-to] {
+  min-inline-size: 2ch;
+}
+
+/* --color-accent (#c25e30) on the gold --color-secondary (#d49b43) ground of
+   .mesh-section is 1.74:1 — illegible, and the roll-up puts a spotlight on it.
+   --color-primary matches the h2/p treatment already used on that tile. */
+.mesh-section .bento-metric {
+  color: var(--color-primary); /* #2a3439 on #d49b43 = 5.20:1 */
+}
+
+/* Same trap on the dark panel: accent on --color-primary is 3.00:1, right on
+   the large-text line. --color-secondary matches this tile's own h2. */
+.fermentation-section .bento-metric {
+  color: var(--color-secondary); /* #d49b43 on #2a3439 = 5.20:1 */
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Overflow guard.
+ * `clip`, never `hidden`: `hidden` turns body into a scroll container and
+ * silently kills every `position: sticky` inside it.
+ * ------------------------------------------------------------------ */
+body {
+  overflow-x: clip;
+}
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* White on the button fill measured 4.25:1 at 16px bold — just under the
+   4.5:1 it needs. Darkening the fill one step clears it at 5.33:1. */
+.button,
+a.button,
+button.button {
+  background-color: hsl(18, 60%, 42%);
+}
+@media (max-width: 768px) {
+  /* One nav link rendered 31px wide. */
+  nav a {
+    min-inline-size: 44px;
+    justify-content: center;
+  }
+}

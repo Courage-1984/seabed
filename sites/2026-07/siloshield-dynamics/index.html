@@ -40,7 +40,7 @@
     </header>
 
     <main class="bento-container">
-      <section id="hero" class="bento-item hero-span">
+      <section data-reveal id="hero" class="bento-item hero-span">
         <div class="hero-content">
           <h1>Air-Gapped Defence For The Future Of The Global Harvest</h1>
           <p>
@@ -52,7 +52,7 @@
             your yields remain secure, your machinery stays online, and your data remains out of the hands of
             state-sponsored actors.
           </p>
-          <a href="#dispatch" class="btn-primary">Initiate Threat Audit</a>
+          <a href="#dispatch" class="btn-primary" data-magnetic>Initiate Threat Audit</a>
         </div>
         <div class="hero-image">
           <img
@@ -65,7 +65,7 @@
         </div>
       </section>
 
-      <section id="threat-vectors" class="bento-item">
+      <section data-reveal id="threat-vectors" class="bento-item">
         <div class="section-content">
           <h2>Catastrophic Threat Vectors</h2>
           <p>
@@ -108,7 +108,7 @@
         </div>
       </section>
 
-      <section id="deployment" class="bento-item bento-tall">
+      <section data-reveal id="deployment" class="bento-item bento-tall">
         <div class="section-image">
           <img
             src="./assets/drone_deployment.webp"
@@ -133,11 +133,36 @@
             our central monitoring facility. This allows our engineers to perform surgical threat eradication without
             requiring an internet connection from your compromised ISP.
           </p>
+          <div
+            class="slot-demo"
+            role="group"
+            aria-label="Black box deployment sequence"
+            style="flex: 0 0 auto; align-self: stretch; width: 100%; max-width: 100%; margin: 0 0 1.5rem"
+          >
+            <ol class="slot-demo__steps">
+              <li><span class="slot-demo__num">01</span> Black box dropped beside the silo controller</li>
+              <li><span class="slot-demo__num">02</span> Edge firewall raised, rogue processes terminated</li>
+              <li><span class="slot-demo__num">03</span> Encrypted tunnel opened to our monitoring facility</li>
+            </ol>
+            <figure class="slot-demo__media">
+              <img
+                class="slot-demo__still"
+                src="./assets/siloshield-dynamics-inline-process-demo-poster.webp"
+                alt="Black box unit clamped to a silo controller cabinet with status LEDs lit"
+                loading="lazy"
+                width="1280"
+                height="720"
+              />
+              <figcaption class="slot-demo__caption">
+                Tier 3 rapid response &mdash; three stages from drop to an isolated network
+              </figcaption>
+            </figure>
+          </div>
           <a href="#dispatch" class="btn-secondary">Explore Deployment Mechanics</a>
         </div>
       </section>
 
-      <section id="case-studies" class="bento-item bento-wide">
+      <section data-reveal id="case-studies" class="bento-item bento-wide">
         <div class="section-content">
           <h2>Field Reports &amp; Telemetry</h2>
           <p>
@@ -178,7 +203,12 @@
         </div>
       </section>
 
-      <section id="methodology" class="bento-item bento-span" style="background-color: var(--color-surface-light)">
+      <section
+        data-reveal
+        id="methodology"
+        class="bento-item bento-span"
+        style="background-color: var(--color-surface-light)"
+      >
         <div class="section-content">
           <h2>Our Defence Methodology</h2>
           <p>
@@ -208,11 +238,11 @@
         </div>
       </section>
 
-      <section id="faq" class="bento-item bento-span">
+      <section data-reveal id="faq" class="bento-item bento-span">
         <div class="section-content">
           <h2>Frequently Asked Questions</h2>
           <dl>
-            <dt style="font-weight: bold; margin-top: 1rem; color: var(--color-primary)">
+            <dt style="font-weight: bold; margin-top: 1rem; color: var(--color-text)">
               Does your software interfere with our existing OEM warranties?
             </dt>
             <dd style="margin-bottom: 1rem">
@@ -221,7 +251,7 @@
               intact.
             </dd>
 
-            <dt style="font-weight: bold; margin-top: 1rem; color: var(--color-primary)">
+            <dt style="font-weight: bold; margin-top: 1rem; color: var(--color-text)">
               How do you handle farms with zero cellular reception?
             </dt>
             <dd style="margin-bottom: 1rem">
@@ -230,7 +260,7 @@
               on-site, requiring zero cloud connectivity to protect your assets.
             </dd>
 
-            <dt style="font-weight: bold; margin-top: 1rem; color: var(--color-primary)">
+            <dt style="font-weight: bold; margin-top: 1rem; color: var(--color-text)">
               What is the typical deployment timeframe for a Tier 2 audit?
             </dt>
             <dd style="margin-bottom: 1rem">
@@ -242,7 +272,7 @@
         </div>
       </section>
 
-      <section id="services" class="bento-item">
+      <section data-reveal id="services" class="bento-item">
         <div class="section-content">
           <h2>Hardening Packages</h2>
           <p>
@@ -278,7 +308,12 @@
         </div>
       </section>
 
-      <section id="dispatch" class="bento-item bento-span" style="background-color: var(--color-primary); color: white">
+      <section
+        data-reveal
+        id="dispatch"
+        class="bento-item bento-span"
+        style="background-color: var(--color-primary); color: white"
+      >
         <div class="section-content dispatch-content" style="display: flex; gap: 2rem; flex-wrap: wrap">
           <div class="dispatch-text" style="flex: 1; min-width: 300px">
             <h2 style="color: white">Urgent Dispatch</h2>
@@ -359,9 +394,9 @@
           14 Ag-Tech Innovation Park<br />
           Lincolnshire, LN2 4XX<br />
           United Kingdom<br />
-          <a href="mailto:dispatch@siloshield.co.uk" style="color: var(--color-primary)">dispatch@siloshield.co.uk</a>
+          <a href="mailto:dispatch@siloshield.co.uk" style="color: var(--color-text)">dispatch@siloshield.co.uk</a>
         </div>
-        <div class="legal" style="text-align: right; color: #666">
+        <div class="legal" style="text-align: right">
           © 2026 SiloShield Dynamics. All rights reserved. <br />
           Air-gapped defence for the future of the global harvest.
         </div>

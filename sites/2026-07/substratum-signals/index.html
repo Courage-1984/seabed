@@ -33,12 +33,12 @@
         </div>
       </section>
 
-      <section id="waveform-inversion-manifesto">
+      <section data-reveal id="waveform-inversion-manifesto">
         <div class="container content-block">
           <div class="section-header">
             <h2>Low-Frequency Acoustic Inversion: Reading the Earth’s Natural Resonances</h2>
           </div>
-          <img src="./assets/strata-waveform.webp" alt="Digital 3D visualization of sub-surface ocean strata layers." style="width: 100%; border-radius: 4px; margin-bottom: 2rem" loading="lazy" width="1024" height="1024">
+          <img src="./assets/strata-waveform.webp" alt="Colour-banded 3D block model of sub-surface strata beneath the ocean floor, its layers graded by seismic velocity from blue shallow sediments through yellow Mesozoic sequence to red crystalline basement, cut by major faults and a salt dome." style="width: 100%; border-radius: 4px; margin-bottom: 2rem" loading="lazy" width="1024" height="1024">
           <p>
             Sediment layers beneath the ocean floor respond dynamically to natural acoustic pressures, including tidal
             displacement, swell dynamics, and background micro-seismicity. Traditional geophysical surveys flood the
@@ -58,9 +58,9 @@
         </div>
       </section>
 
-      <section id="bento-telemetry-grid">
+      <section data-reveal id="bento-telemetry-grid">
         <div class="container">
-          <div class="bento-tile tile-1">
+          <div class="bento-tile tile-1" data-tilt>
             <div class="bento-tile-header">
               <h3>Full-Waveform Inversion Engine</h3>
             </div>
@@ -72,7 +72,7 @@
             </p>
             <div class="bento-metric">0.5m Resolution</div>
           </div>
-          <div class="bento-tile tile-2">
+          <div class="bento-tile tile-2" data-tilt>
             <div class="bento-tile-header">
               <h3>Benthic Hydrophone Array</h3>
             </div>
@@ -84,7 +84,7 @@
             </p>
             <div class="bento-metric">3,000m Depth</div>
           </div>
-          <div class="bento-tile tile-3">
+          <div class="bento-tile tile-3" data-tilt>
             <div class="bento-tile-header">
               <h3>Telemetry Bandwidth</h3>
             </div>
@@ -95,7 +95,7 @@
             </p>
             <div class="bento-metric">&lt;120s Latency</div>
           </div>
-          <div class="bento-tile tile-4">
+          <div class="bento-tile tile-4" data-tilt>
             <img src="./assets/buoy-telemetry.webp" alt="Offshore solar-powered data telemetry buoy floating in the North Sea." style="
                 width: 100%;
                 height: 180px;
@@ -113,7 +113,7 @@
             </p>
             <div class="bento-metric">0 dB Emissions</div>
           </div>
-          <div class="bento-tile tile-5">
+          <div class="bento-tile tile-5" data-tilt>
             <div class="bento-tile-header">
               <h3>Edge Processing Unit</h3>
             </div>
@@ -127,7 +127,7 @@
         </div>
       </section>
 
-      <section id="marine-survey-applications">
+      <section data-reveal id="marine-survey-applications">
         <div class="container">
           <div class="section-header">
             <h2>Marine Survey Applications</h2>
@@ -173,7 +173,27 @@
         </div>
       </section>
 
-      <section id="hardware-and-array-specs">
+      <section data-reveal id="inversion-process-demo" class="slot-demo-section" aria-labelledby="slot-demo-heading">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="slot-demo-heading">How One Passive Inversion Run Resolves</h2>
+            <p>A single ambient wavefront, followed from the mudline to a finished shear-wave velocity profile.</p>
+          </div>
+          <div class="slot-demo">
+            <ol class="slot-demo__steps">
+              <li><span class="slot-demo__num">01</span> Swell dynamics and background micro-seismicity pass down through clay, gravel and bedrock.</li>
+              <li><span class="slot-demo__num">02</span> Thirty-two benthic hydrophones log the phase velocity dispersion across 0.1 Hz to 500 Hz.</li>
+              <li><span class="slot-demo__num">03</span> The edge buoy inverts those phase shifts into a 0.5-metre-resolution Vs profile.</li>
+            </ol>
+            <figure class="slot-demo__media">
+              <img class="slot-demo__still" src="./assets/strata-waveform.webp" alt="Colour-banded 3D block model of sub-surface strata beneath the ocean floor, its layers graded by seismic velocity from blue shallow sediments through yellow Mesozoic sequence to red crystalline basement, cut by major faults and a salt dome." loading="lazy" width="1024" height="1024">
+              <figcaption class="slot-demo__caption">Acoustic-Sentry Grid, North Sea &mdash; one ambient wavefront resolved into strata</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section data-reveal id="hardware-and-array-specs">
         <div class="container content-block">
           <div class="section-header">
             <h2>Hardware &amp; Array Specifications</h2>
@@ -196,7 +216,7 @@
         </div>
       </section>
 
-      <section id="geophysical-credentials">
+      <section data-reveal id="geophysical-credentials">
         <div class="container content-block">
           <div class="section-header">
             <h2>Geophysical Credentials &amp; Field Proof</h2>
@@ -233,7 +253,7 @@
         </div>
       </section>
 
-      <section id="technical-faq">
+      <section data-reveal id="technical-faq">
         <div class="container">
           <div class="section-header">
             <h2>Technical FAQ</h2>
@@ -298,7 +318,7 @@
         </div>
       </section>
 
-      <section id="survey-intake-contact">
+      <section data-reveal id="survey-intake-contact">
         <div class="container">
           <div class="intake-box">
             <h2>Survey Intake &amp; Tender Enquiries</h2>

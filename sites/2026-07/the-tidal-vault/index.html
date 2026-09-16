@@ -68,10 +68,10 @@
         </div>
       </section>
 
-      <section class="section-padding">
+      <section class="section-padding" data-reveal>
         <div class="container">
           <div class="grid grid-2">
-            <div class="editorial-block">
+            <div class="editorial-block" data-clip-wipe>
               <h3 class="brand-font text-primary" style="font-size: 2rem; margin-bottom: 1.5rem">
                 The Quarry &amp; The Pool
               </h3>
@@ -123,7 +123,53 @@
         </div>
       </section>
 
-      <section class="section-padding border-top bg-background">
+      <section class="masked-band border-top" data-reveal data-masked-type aria-labelledby="masked-band-heading">
+        <p class="masked-band__label">Sub-surface resonance pool</p>
+        <div class="masked-type">
+          <img
+            src="./assets/acoustic.webp"
+            alt="Dark subterranean pool with deep resonance waves rippling softly"
+            class="masked-type__still"
+            loading="lazy"
+            width="1024"
+            height="1024"
+          />
+          <h2 class="masked-type__text" id="masked-band-heading">Still</h2>
+          <svg
+            class="masked-type__knockout"
+            viewBox="0 0 600 200"
+            preserveAspectRatio="xMidYMid slice"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <defs>
+              <mask id="tv-knockout">
+                <rect width="600" height="200" fill="#fff"></rect>
+                <text
+                  x="300"
+                  y="104"
+                  text-anchor="middle"
+                  dominant-baseline="central"
+                  font-family="'Cinzel', serif"
+                  font-weight="700"
+                  font-size="120"
+                  letter-spacing="10"
+                  fill="#000"
+                >
+                  STILL
+                </text>
+              </mask>
+            </defs>
+            <rect width="600" height="200" fill="currentColor" mask="url(#tv-knockout)"></rect>
+          </svg>
+        </div>
+        <p class="masked-band__caption">
+          Absolute stillness is the measurable end-state of the grounding protocol &mdash; held in the sub-surface
+          resonance pool, twelve metres below the swell line of the 1883 tidal basin.
+        </p>
+      </section>
+
+      <section class="section-padding border-top bg-background" data-reveal>
         <div class="container">
           <h2 class="brand-font text-primary" style="font-size: 2.5rem; text-align: center; margin-bottom: 3rem">
             The Three Pillars of Grounding
@@ -131,7 +177,7 @@
           <div class="grid grid-3">
             <div class="editorial-block" style="border-top: 3px solid var(--color-accent)">
               <div class="editorial-number">I</div>
-              <h4 class="brand-font" style="font-size: 1.5rem; margin-bottom: 1rem">Hydro-Equilibrium</h4>
+              <h3 class="brand-font" style="font-size: 1.5rem; margin-bottom: 1rem">Hydro-Equilibrium</h3>
               <p>
                 Immerses the body in high-density, hyper-saline North Sea water, neutralizing gravity and allowing the
                 frantic firing patterns of the vestibular nerve to halt completely. This clinical isolation
@@ -140,7 +186,7 @@
             </div>
             <div class="editorial-block" style="border-top: 3px solid var(--color-secondary)">
               <div class="editorial-number">II</div>
-              <h4 class="brand-font" style="font-size: 1.5rem; margin-bottom: 1rem">Bio-Mineral Infusion</h4>
+              <h3 class="brand-font" style="font-size: 1.5rem; margin-bottom: 1rem">Bio-Mineral Infusion</h3>
               <p>
                 Utilizes heavy thermal lamination with wild-harvested bladderwrack seaweed to provide a deep, tactile
                 weight that acts as an external sensory anchor while drawing out cellular waste through extreme
@@ -149,7 +195,7 @@
             </div>
             <div class="editorial-block" style="border-top: 3px solid var(--color-primary)">
               <div class="editorial-number">III</div>
-              <h4 class="brand-font" style="font-size: 1.5rem; margin-bottom: 1rem">Acoustic Dampening</h4>
+              <h3 class="brand-font" style="font-size: 1.5rem; margin-bottom: 1rem">Acoustic Dampening</h3>
               <p>
                 Places the patient in a sub-surface resonance pool where targeted, low-frequency counter-vibrations
                 actively cancel out the residual internal hum of industrial turbines, forcing the central nervous system
@@ -168,7 +214,7 @@
         </div>
       </section>
 
-      <section class="section-padding bg-primary text-white border-top">
+      <section class="section-padding bg-primary text-white border-top" data-reveal>
         <div class="container">
           <h2 class="brand-font text-secondary" style="font-size: 2.5rem; margin-bottom: 3rem">The Resident Log</h2>
           <div class="grid grid-3">

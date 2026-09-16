@@ -374,3 +374,355 @@ footer a:hover {
     text-align: center;
   }
 }
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — drifting grain overlay.
+   Viewport-sized and drifting via background-position: an oversized box drifts
+   the same way but reports as overflow and forces a large compositing layer. */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: grainDrift 8s steps(6) infinite;
+}
+.grain-overlay.is-paused {
+  animation-play-state: paused;
+}
+@keyframes grainDrift {
+  0% { background-position: 0 0; }
+  20% { background-position: -40px 24px; }
+  40% { background-position: 28px -36px; }
+  60% { background-position: -24px -28px; }
+  80% { background-position: 36px 16px; }
+  100% { background-position: 0 0; }
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .grain-overlay {
+    display: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — modal feature: a poster tile opening a focused
+ * overlay. Built around the still: the generated clip later replaces the
+ * <img class="video-modal__still"> and inherits the same sizing rule, so
+ * the page reads correctly with no video present.
+ * The wrap is a plain block child of #dispatch-terminal, never of
+ * .bento-grid — an extra grid child would steal a cell and shift the
+ * hand-tuned span/tall ordering.
+ * ------------------------------------------------------------------ */
+.slot-modal-wrap {
+  margin-top: 1.5rem;
+}
+
+.slot-tile-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  position: relative;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-secondary);
+  border-radius: 8px;
+  overflow: hidden;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+}
+
+.slot-tile-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  opacity: 0.82;
+  transition: opacity var(--dur-mid) var(--ease-out);
+}
+
+.slot-tile-button:hover,
+.slot-tile-button:focus-visible {
+  border-color: var(--color-accent);
+}
+
+.slot-tile-button:hover img,
+.slot-tile-button:focus-visible img {
+  opacity: 1;
+}
+
+.slot-tile-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Inset, not offset: the close button sits on .video-modal__still, which fills
+   the frame edge to edge, so a ring 2px outside it lands on an unknowable
+   photograph. It has to be drawn INSIDE the button — but :focus-visible also
+   fills the button with --color-accent, so an accent-coloured ring was accent on
+   accent, 1.00:1 and invisible. The ring takes the dark ground instead:
+   #08080a on #00e5ff = 13.01:1. */
+.video-modal__close:focus-visible {
+  outline: 2px solid var(--color-background);
+  outline-offset: -4px;
+}
+
+/* Opaque caption panel, not a gradient scrim: the label sits on a known
+   fill, so its contrast is computed rather than hoped for over a photo. */
+.slot-tile-button__label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: hsl(230, 11%, 12%);
+  border-top: 1px solid var(--color-secondary);
+}
+
+.slot-tile-button__glyph {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  position: relative;
+}
+
+.slot-tile-button__glyph::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 13px solid var(--color-accent);
+}
+
+.slot-tile-button__text {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: rgba(248, 249, 250, 0.7);
+}
+
+/* 0,1,1 — matches the weight of the existing `.stat-row strong` rule so the
+   heading colour is not decided by source order. */
+.slot-tile-button__text strong {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-accent);
+}
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-out);
+}
+
+.video-modal.is-open {
+  opacity: 1;
+}
+
+/* A class-level display beats the UA [hidden] rule, which would otherwise
+   leave this fixed full-viewport overlay swallowing every click on the page. */
+.video-modal[hidden] {
+  display: none;
+}
+
+.video-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(8, 8, 10, 0.92);
+  border: 0;
+}
+
+.video-modal__frame {
+  position: relative;
+  width: min(100%, 1080px);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-modal__still,
+.video-modal [data-slot-video] {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.video-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  font-size: 1.75rem;
+  line-height: 1;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: hsl(230, 11%, 12%);
+  border: 1px solid var(--color-secondary);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.video-modal__close:hover,
+.video-modal__close:focus-visible {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+  border-color: var(--color-accent);
+}
+
+body.has-modal-open {
+  /* `clip`, never `hidden`: `hidden` would make the body a scroll container
+     and silently kill every descendant `position: sticky`. */
+  overflow: clip;
+}
+
+/* --------------------------------------------------------------- *
+ * Overflow guard — same reason: `clip`, never `hidden`.
+ * --------------------------------------------------------------- */
+body {
+  overflow-x: clip;
+}
+
+@media (max-width: 768px) {
+  /* The opaque caption is ~73% of a 16/9 poster at 390px and ~93% at 320px,
+     which turns the tile into a caption bar with a sliver of photo. Below
+     768px the panel leaves the photo alone and flows underneath it, and the
+     poster goes 4/3 so it keeps real height in a narrow column. */
+  .slot-tile-button img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .slot-tile-button__label {
+    position: static;
+    padding: 0.85rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .slot-tile-button__text strong {
+    font-size: 1rem;
+  }
+}

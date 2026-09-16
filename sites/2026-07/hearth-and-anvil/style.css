@@ -24,7 +24,7 @@ body {
   color: var(--color-text-primary);
   font-family: var(--font-body);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1,
@@ -394,4 +394,255 @@ footer address {
 
 footer p {
   margin-bottom: 0.5rem;
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — masked scroll-through type. */
+.masked-band {
+  padding-block: clamp(3rem, 7vw, 5rem);
+  padding-inline: 1.5rem;
+  text-align: center;
+}
+.masked-band__type {
+  margin: 0;
+  font-size: clamp(3.5rem, 14vw, 10rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Solid fallback first: if background-clip:text is unsupported the type
+     still reads as flat accent colour rather than vanishing. */
+  color: var(--color-accent, #888);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .masked-band__type {
+    color: transparent;
+    background-size: cover;
+    background-position: center calc(50% + var(--mask-shift, 0px));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .masked-band__type {
+    background-position: center;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — masked scroll-through type, bound to the
+ * credentials display line.
+ * The hero <h1> was the obvious target but .hero is min-height:100vh /
+ * justify-content:flex-end, so it is fully on screen at load and has no
+ * scroll range left to travel through. The .cred-stats line sits mid-page
+ * and actually crosses the viewport, so the fill reads as moving.
+ * The fill is a four-stop accent/ink/ink/accent ramp rather than a
+ * photograph: this line carries a real fact ("Over 40 tonnes ... since
+ * 2018"), and both inks are contrast-checked, so every pixel of the glyphs
+ * stays legible against the #1e1b18 (--color-bg-secondary) section ground:
+ *   #e05a2b on #1e1b18 = 4.62:1  (darkest point of the ramp)
+ *   #eae6e1 on #1e1b18 = 13.80:1 (lightest point)
+ * All channels rise monotonically between the accent and ink stops, so
+ * 4.62:1 is the floor for the whole gradient. .cred-stats is
+ * clamp(1.5rem, 3vw, 2.5rem) => 24px minimum, i.e. the 3:1 large-text
+ * threshold; it clears 4.5:1 too.
+ * EVERY background declaration lives inside the @supports guard together
+ * with `color: transparent`. Painting the gradient outside the guard would
+ * put an opaque ramp behind un-knocked-out glyphs wherever background-clip
+ * is unsupported: #eae6e1 on the #eae6e1 band = 1.00:1, on the accent end
+ * = 2.98:1, and the accent <span> over the accent stop = 1.00:1.
+ * ------------------------------------------------------------------ */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  /* Solid ink on the bare section ground stays the fallback: with no rule
+     outside this block the unsupported path never paints a background at
+     all, so #eae6e1 / #e05a2b sit on #1e1b18 as authored. */
+  .cred-stats[data-masked-type] {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-accent-forge) 0%,
+      var(--color-text-primary) 38%,
+      var(--color-text-primary) 62%,
+      var(--color-accent-forge) 100%
+    );
+    background-repeat: no-repeat;
+    /* Oversized so the travel never runs the ramp off the end of the line. */
+    background-size: 240% 100%;
+    background-position: calc(50% + var(--mask-shift, 0px)) center;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  /* `.cred-stats span` (0,1,1) recolours the lead phrase to the accent, which
+     would paint an opaque patch over the clipped fill. (0,2,1) beats it. */
+  .cred-stats[data-masked-type] span {
+    color: inherit;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — split panel.
+ * .split-container is `display: grid; grid-template-columns: 68fr 32fr`,
+ * so a third child would open a new row and destroy the asymmetry. The
+ * panel therefore rides INSIDE .narrow-rail (display: block), at the top
+ * of the rail: .grid-breaker is absolutely positioned at top:50% of the
+ * container and straddles the gutter, so the vertical middle is spoken for.
+ * Above 992px the rail's own `padding-left: 3rem` insets the panel, which
+ * keeps it on the rail's text edge — deliberate, no negative margin.
+ * ------------------------------------------------------------------ */
+.slot-split {
+  margin: 0 0 2.5rem;
+  border: 1px solid var(--color-border-industrial);
+  background: hsl(28, 11%, 8%);
+  overflow: hidden;
+}
+/* The still and the clip that replaces it share one class, so the swap is
+   a tag change and nothing else moves. */
+.slot-split__still,
+.slot-split [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.slot-split__caption {
+  margin: 0;
+  padding: 0.625rem 0.875rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  text-transform: none;
+  /* The rail is narrow; without this the panel's `overflow: hidden` eats the
+     tail of a long word instead of wrapping it. */
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
+  /* On panel chrome, never over the media.
+     #eae6e1 on hsl(28, 11%, 8%) = 14.75:1. */
+  color: var(--color-text-primary);
+  background: hsl(28, 11%, 8%);
+}
+
+/* --------------------------------------------------------------- *
+ * Media guard. The base reset covers img but not video, so a <video>
+ * carrying width/height attributes renders at its intrinsic size and
+ * pushes the rail sideways once the clip is installed.
+ * --------------------------------------------------------------- */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* --------------------------------------------------------------- *
+ * Reduced motion — park the masked fill on its centre stop. The
+ * script already writes --mask-shift: 0px, this is the belt to that
+ * brace and covers a stylesheet-only render.
+ * --------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .cred-stats[data-masked-type] {
+    background-position: center;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured on the rendered page).
+ * --------------------------------------------------------------- */
+h4 {
+  /* 1.10 is below the 1.2 minimum for body-size headings. */
+  line-height: 1.3;
 }

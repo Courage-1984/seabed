@@ -58,7 +58,27 @@
       <!-- RIGHT PANEL: Scrolling -->
       <main class="panel-right">
         <!-- HERO IMAGE / INTRO -->
-        <section class="hero-visual" id="hero">
+        <section data-reveal class="hero-visual" id="hero">
+          <!-- Video placement slot: hero background. Layered over the in-flow
+               hero photograph inside section.hero-visual, which is already
+               position: relative. The still below is what the generated clip
+               replaces in place, so the page reads correctly with no video. -->
+          <div class="hero-media" aria-hidden="true">
+            <img
+              class="hero-media__still"
+              src="./assets/hero-shaft-vat.webp"
+              alt=""
+              loading="eager"
+              fetchpriority="high"
+              width="1024"
+              height="1024"
+            />
+            <div class="hero-media__scrim"></div>
+          </div>
+          <p class="hero-media__label">
+            South Crofty North Shaft
+            <span class="hero-media__depth">&minus;350 m &middot; 42.0 &deg;C</span>
+          </p>
           <img
             src="./assets/hero-shaft-vat.webp"
             fetchpriority="high"
@@ -79,8 +99,7 @@
         </section>
 
         <!-- SECTION 1 -->
-        <section class="content-block" id="physics">
-        <section class="content-block" id="physics">
+        <section data-reveal class="content-block" id="physics">
           <h2>The Physics of Geothermal Pressure Maturation</h2>
           <div style="margin: 2rem 0;">
             <img
@@ -109,8 +128,7 @@
         </section>
 
         <!-- SECTION 2 -->
-        <section class="content-block" id="architecture">
-        <section class="content-block" id="architecture">
+        <section data-reveal class="content-block" id="architecture">
           <h2>Shaft Architecture &amp; Infrastructure</h2>
           <div style="margin: 2rem 0;">
             <img
@@ -135,8 +153,9 @@
           </div>
         </section>
 
-        <section class="visual-break">
+        <section data-reveal class="visual-break">
           <img
+            data-focus-pull
             src="./assets/broth-reduction-flask.webp"
             loading="lazy"
             alt="Stainless steel flask filled with 30-day geothermal marrow reduction glaze."
@@ -147,7 +166,7 @@
         </section>
 
         <!-- SECTION 3 -->
-        <section class="content-block" id="inventory">
+        <section data-reveal class="content-block" id="inventory">
           <h2>Extraction &amp; Reserve Inventory</h2>
           <p>
             Our extraction cycles yield limited volumes of hyper-concentrated culinary matrices, stored and shipped in
@@ -174,7 +193,7 @@
         </section>
 
         <!-- SECTION 4 -->
-        <section class="content-block" id="syndicate">
+        <section data-reveal class="content-block" id="syndicate">
           <h2>Vault Access &amp; Membership Syndicate</h2>
           <p>
             Vapour &amp; Vault operates a restricted B2B allocation model for qualified executive kitchens and private
@@ -189,7 +208,7 @@
         </section>
 
         <!-- SECTION 5 -->
-        <section class="content-block dark-block" id="metrics">
+        <section data-reveal class="content-block dark-block" id="metrics">
           <h2>Subterranean Metrics &amp; Field Reviews</h2>
           <div class="metric-highlight">
             <span class="metric-val pulse-anim">98.4%</span>
@@ -213,7 +232,7 @@
         </section>
 
         <!-- SECTION 6 -->
-        <section class="content-block" id="faq">
+        <section data-reveal class="content-block" id="faq">
           <h2>Shaft Queries &amp; Operational FAQ</h2>
           <div class="faq-list">
             <div class="faq-item">

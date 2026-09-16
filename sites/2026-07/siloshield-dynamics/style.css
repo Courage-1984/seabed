@@ -419,7 +419,8 @@ footer {
 .legal {
   text-align: right;
   font-size: 0.8rem;
-  color: rgba(205, 214, 244, 0.5);
+  /* 0.5 alpha composited to 2.86:1 on the footer ground; 0.8 clears it. */
+  color: rgba(205, 214, 244, 0.8);
 }
 
 /* Responsive */
@@ -490,5 +491,253 @@ footer {
 
   .legal {
     text-align: left;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — magnetic proximity cursor element. */
+[data-magnetic] {
+  transform: translate3d(var(--magnet-x, 0px), var(--magnet-y, 0px), 0);
+  transition: transform 220ms var(--ease-out);
+  will-change: transform;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-magnetic] {
+    transform: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — inline process demo.
+ * Lives inside the #deployment card's text column. The wrapper carries
+ * an inline `flex: 0 0 auto` because .section-content is a column flex
+ * container: without it the default flex-shrink squashes a 16/9 box
+ * once the card's content outgrows its grid row. No negative margins —
+ * .bento-item is overflow: hidden and would clip them.
+ * ------------------------------------------------------------------ */
+.slot-demo {
+  display: grid;
+  /* One column at every width: the host card is two of four bento
+     columns, so a side-by-side split would starve the media track. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+.slot-demo__steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.slot-demo__steps li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: baseline;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  /* #cdd6f4 on the #1e1e2e card ground — 11.34:1. */
+  color: #cdd6f4;
+}
+
+.slot-demo__num {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+  /* #a6e3a1 on the #1e1e2e card ground — 11.03:1. */
+  color: #a6e3a1;
+}
+
+.slot-demo__media {
+  margin: 0;
+  /* Raised panel, matching .stat-card / .tier. Literal value, not a
+     token: --color-primary is the dark panel fill and --color-accent is
+     the bright ink here, so neither name describes what it does. */
+  background-color: #313244;
+  border: 1px solid rgba(166, 227, 161, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* The still and the clip that later replaces it share one box. */
+.slot-demo__still,
+.slot-demo [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.slot-demo__caption {
+  margin: 0;
+  /* On the panel chrome, never over the media. */
+  padding: 0.625rem 0.875rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  /* #cdd6f4 on #313244 — 8.69:1. */
+  color: #cdd6f4;
+  background-color: #313244;
+  max-inline-size: 100%;
+}
+
+/* The `*` reset covers img sizing but not video, so a <video> carrying
+   width/height attributes would render at intrinsic size and overflow. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — magnetic target composition.
+ * .btn-primary:hover already declares transform: translateY(-2px) and
+ * out-specifies the bare [data-magnetic] rule, so the lift is composed
+ * into the magnetic offset here rather than clobbering it. The offset
+ * is clamped far inside .hero-content's 4rem padding: #hero is
+ * overflow: hidden and would otherwise clip the button at the card edge.
+ * ------------------------------------------------------------------ */
+.btn-primary[data-magnetic] {
+  --magnet-cap-x: clamp(-14px, var(--magnet-x, 0px), 14px);
+  --magnet-cap-y: clamp(-14px, var(--magnet-y, 0px), 14px);
+  transform: translate3d(var(--magnet-cap-x), var(--magnet-cap-y), 0);
+  transition:
+    transform var(--dur-mid) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.btn-primary[data-magnetic]:hover {
+  transform: translate3d(var(--magnet-cap-x), calc(var(--magnet-cap-y) - 2px), 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Out-specifies the composition rules above, which the generic
+     [data-magnetic] reset at 0-1-0 cannot reach. */
+  .btn-primary[data-magnetic],
+  .btn-primary[data-magnetic]:hover {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* The pinned header covered the top of every in-page anchor target. */
+html {
+  scroll-padding-top: 5.5rem;
+}
+@media (max-width: 768px) {
+  /* Form controls rendered 40-42px tall and one nav link 33px wide. */
+  input,
+  select,
+  textarea {
+    min-block-size: 44px;
+  }
+  nav a,
+  .site-footer a,
+  footer a {
+    min-inline-size: 44px;
+    justify-content: center;
   }
 }

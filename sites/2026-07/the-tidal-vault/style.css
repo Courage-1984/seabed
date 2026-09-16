@@ -408,3 +408,255 @@ img {
 .bg-primary .form-control:focus {
   border-color: var(--color-white);
 }
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — scroll-driven clip-path wipe. */
+[data-clip-wipe] {
+  clip-path: inset(0 calc(100% - var(--wipe, 100%)) 0 0);
+  transition: clip-path 90ms linear;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-clip-wipe] {
+    clip-path: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement slot — masked type fill.
+ * A layered knockout rather than `background-clip: text`: the plate is an
+ * opaque cream rect and the letters are holes cut through it, so the still
+ * (and later the <video> that replaces it, carrying the same
+ * .masked-type__still class) shows through the type only.
+ * ------------------------------------------------------------------ */
+.masked-band {
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+  padding-inline: 2rem;
+  text-align: center;
+  background-color: var(--color-background);
+}
+/* Dark neutral chip, not a brand token: --color-accent is the terracotta
+   brand fill and only reaches 4.54:1 behind white. #101a16 gives 16.88:1. */
+.masked-band__label {
+  display: inline-block;
+  margin: 0 auto 2rem;
+  padding: 0.5rem 1.25rem;
+  background-color: #101a16;
+  color: #faf9f6;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.masked-type {
+  position: relative;
+  inline-size: min(100%, 60rem);
+  margin-inline: auto;
+  aspect-ratio: 3 / 1;
+  overflow: hidden;
+  isolation: isolate;
+  /* The plate rect paints with currentColor, so this is the band ground. */
+  color: var(--color-background);
+}
+.masked-type__still,
+.masked-type [data-slot-video] {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+/* Luminance floor for the knockout ink. The word STILL is a hole, not CSS text:
+   its only "colour" is whatever the still — and later the generated clip —
+   paints behind it, which nothing in this stylesheet otherwise constrains. On
+   the shipped still the lit rock behind the S and the first T reaches #ededed,
+   1.11:1 against the cream plate, so the letterforms wash out there. This
+   scrim sits between the media (z-index 0) and the plate (z-index 2), so it is
+   only ever visible through the letterforms, and it caps the ink: the worst
+   possible source pixel, pure white, composites to #65756f = 4.61:1 against
+   #faf9f6. That clears 4.5:1 for any frame of any clip, well past the 3:1 the
+   type's size (>=59px bold at every viewport) actually requires. */
+.masked-type::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: var(--color-primary);
+  opacity: 0.66;
+  pointer-events: none;
+}
+/* Accessible heading only. Rendering it visually as well makes its glyphs bleed
+   through the knockout holes — HTML and SVG type do not share metrics. */
+.masked-type__text {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+/* The plate. One pixel taller than its box on purpose: `aspect-ratio: 3 / 1`
+   on a width that is not a multiple of three gives the container a fractional
+   block-size (390px viewport -> 326 x 108.656px), and a plate sized to that
+   same fractional edge leaves a sub-pixel bottom row that composites the dark
+   media underneath instead of the cream plate — a 1px seam at every width
+   below 1024px, where the 60rem clamp finally lands on an integer. The extra
+   row is clipped by `.masked-type { overflow: hidden }` and
+   `preserveAspectRatio="xMidYMid slice"` keeps the type centred. */
+.masked-type__knockout {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  inline-size: 100%;
+  block-size: calc(100% + 1px);
+  pointer-events: none;
+}
+.masked-band__caption {
+  margin: 2rem auto 0;
+  max-inline-size: 52ch;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* The global media reset covers img but not video, so a <video> carrying a
+   width attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+
+/* The sage token serves both grounds: it is fine on the dark .bg-primary
+   sections but only 2.98:1 on the light page ground. Darkening the token
+   itself dropped every dark-ground consumer to 2.20:1, so the darker step is
+   scoped to the light-ground consumers instead (6.25:1 there). */
+.editorial-number,
+/* .hero is a dark section, but .hero-content is a light card inside it, so the
+   h2 there sits on the page ground and needs the darker step too. */
+.hero .hero-content h2 {
+  color: hsl(155, 13%, 34%);
+}
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* The pinned header covered the top of every in-page anchor target. */
+html {
+  scroll-padding-top: 5.5rem;
+}
+@media (max-width: 768px) {
+  /* The wordmark rendered 38px tall and the menu toggle 40px wide. */
+  .nav-brand {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+  }
+  .mobile-nav-toggle {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+  }
+}

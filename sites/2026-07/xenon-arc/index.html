@@ -34,7 +34,7 @@
 
       <div class="bento-grid">
         <!-- Main Title Block -->
-        <section class="bento-item span-2">
+        <section data-reveal class="bento-item span-2">
           <h1>Surgical-grade metallurgy, deployed directly to the launchpad.</h1>
           <p>
             Private orbital launch operators, experimental fusion reactor facilities, and cryogenic plant managers
@@ -55,7 +55,7 @@
         </section>
 
         <!-- Stats Block -->
-        <section class="bento-item stat-block highlight-bg">
+        <section data-reveal class="bento-item stat-block highlight-bg">
           <h3>Live Deployment Status</h3>
           <div class="stat-row">
             <span>Active Units</span>
@@ -80,7 +80,7 @@
         </section>
 
         <!-- Image Block 1 -->
-        <section class="bento-item image-block">
+        <section data-reveal class="bento-item image-block">
           <img
             src="./assets/tig_arc.webp"
             alt="Intense TIG welding arc on titanium"
@@ -93,6 +93,7 @@
 
         <!-- Operational Scope Block -->
         <section
+          data-reveal
           class="bento-item span-3 specs-block"
           style="border-top: 1px solid var(--border-color); padding-top: 1.5rem"
         >
@@ -134,7 +135,7 @@
         </section>
 
         <!-- Image Block - Cargo -->
-        <section class="bento-item image-block span-2">
+        <section data-reveal class="bento-item image-block span-2">
           <img
             src="./assets/air-freight.webp"
             alt="A massive industrial cargo plane interior at night, loaded with a sleek, high-tech modular clean-room container unit"
@@ -146,7 +147,7 @@
         </section>
 
         <!-- Capabilities Block -->
-        <section class="bento-item span-1 specs-block">
+        <section data-reveal class="bento-item span-1 specs-block">
           <h3>Material Capabilities &amp; Tolerances</h3>
           <p>
             Working with exotic alloys requires absolute environmental control. The slightest introduction of oxygen or
@@ -178,7 +179,7 @@
         </section>
 
         <!-- Image Block 2 -->
-        <section class="bento-item image-block tall">
+        <section data-reveal class="bento-item image-block tall">
           <img
             src="./assets/cleanroom.webp"
             alt="Mobile clean-room deployment unit"
@@ -191,6 +192,7 @@
 
         <!-- FAQ Block -->
         <section
+          data-reveal
           class="bento-item span-3 specs-block"
           style="border-top: 1px solid var(--border-color); padding-top: 1.5rem"
         >
@@ -240,7 +242,7 @@
         </section>
 
         <!-- Form Block -->
-        <section class="bento-item form-block span-2">
+        <section data-reveal class="bento-item form-block span-2">
           <h3>Emergency Contract Dispatch</h3>
           <p>
             Initiate a high-priority deployment sequence. A logistics commander will establish secure contact within 5
@@ -291,7 +293,7 @@
         </section>
 
         <!-- Image Block 3 -->
-        <section class="bento-item image-block">
+        <section data-reveal class="bento-item image-block">
           <img
             src="./assets/glowing_seam.webp"
             alt="A perfectly welded titanium seam glowing"
@@ -301,6 +303,48 @@
           />
           <div class="image-label">TOLERANCE: &lt; 0.1MM</div>
         </section>
+      </div>
+
+      <!-- Video placement — modal feature: a poster tile opening a focused overlay. -->
+      <div class="slot-modal-wrap">
+        <button
+          type="button"
+          class="slot-tile-button"
+          data-video-open
+          aria-haspopup="dialog"
+          aria-controls="cleanroom-film"
+        >
+          <img src="./assets/cleanroom.webp" alt="" loading="lazy" width="1024" height="1024" />
+          <span class="slot-tile-button__label">
+            <span class="slot-tile-button__glyph" aria-hidden="true"></span>
+            <span class="slot-tile-button__text">
+              <strong>Inside the XA-7 clean-room</strong>
+              One titanium repair pass, filmed from the open door frame
+            </span>
+          </span>
+        </button>
+      </div>
+
+      <div
+        class="video-modal"
+        id="cleanroom-film"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Inside the XA-7 mobile clean-room"
+        hidden
+      >
+        <div class="video-modal__backdrop" data-video-close></div>
+        <div class="video-modal__frame">
+          <button type="button" class="video-modal__close" data-video-close aria-label="Close video">&times;</button>
+          <img
+            class="video-modal__still"
+            src="./assets/cleanroom.webp"
+            loading="lazy"
+            alt="A welder in a hood working at the bench inside the open mobile clean-room container, with gas bottles, welding power supplies and an overhead extraction hood around them."
+            width="1024"
+            height="1024"
+          />
+        </div>
       </div>
 
       <footer class="terminal-footer">

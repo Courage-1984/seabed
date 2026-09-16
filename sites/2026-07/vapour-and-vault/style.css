@@ -26,7 +26,7 @@ body {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -159,6 +159,10 @@ a:hover {
 }
 
 .text-link {
+  /* Inherited --color-accent (#d47a3e) measured 2.75:1 on the page ground
+     #f2efea at 16px/700 — under the 4.5:1 it needs at that size. Pre-existing;
+     this darker step of the same hue clears it at 5.65:1. */
+  color: hsl(25, 63%, 34%);
   font-family: var(--font-head);
   font-weight: 700;
   text-transform: uppercase;
@@ -352,5 +356,241 @@ a:hover {
 
   .mobile-footer {
     display: none;
+  }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — progressive blur focus-pull. */
+[data-focus-pull] {
+  filter: blur(var(--focus-blur, 0px));
+  /* Composed against the element's own resting opacity: media held back to act
+     as a scrim would otherwise be blown to full opacity at full focus. */
+  opacity: calc(var(--focus-base-opacity, 1) * var(--focus-fade, 1));
+  will-change: filter, opacity;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-focus-pull] {
+    filter: none;
+    opacity: 1;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — hero background.
+ * The media layer lives inside section.hero-visual, which already
+ * carries position: relative and the --color-secondary bed. Being
+ * positioned, it paints over the in-flow hero photograph it stands in
+ * for, so only one image is ever visible; the generated clip then
+ * takes the still's place with no further markup change.
+ * z-index must be 0, never -1: a negative layer would drop behind the
+ * in-flow <img class="full-bleed-img"> and disappear entirely.
+ * The layer is bounded to the hero photograph's own box, NOT to the
+ * section: .hero-visual also contains the .intro-block copy slab
+ * (441px desktop / 643px mobile), so `inset: 0` would stretch the layer
+ * over that slab and object-fit: cover would crop the frame to the
+ * section's aspect ratio — 27.9% off each side at 1440px, 61.6% at
+ * 400px, with most of the layer hidden behind the slab. aspect-ratio
+ * 1 / 1 matches the 1024x1024 in-flow hero img, so the layer tracks the
+ * image it stands in for at every width.
+ * ------------------------------------------------------------------ */
+.hero-visual {
+  isolation: isolate;
+}
+.hero-media {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  block-size: auto;
+  aspect-ratio: 1 / 1; /* matches the 1024x1024 in-flow hero img */
+  z-index: 0;
+  /* `clip`, never `hidden`: `hidden` makes this a scroll container. */
+  overflow: clip;
+  pointer-events: none;
+}
+/* Pinned to the layer's own box rather than sized with a percentage, so a
+   16:9 clip fills the square layer regardless of how a percentage block-size
+   resolves against an aspect-ratio-derived height. */
+.hero-media__still,
+.hero-media [data-slot-video] {
+  position: absolute;
+  inset: 0;
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+/* Engineered scrim: darkened top so the depth stamp holds against any
+   frame, darkened foot so the media resolves into the .intro-block slab
+   instead of butting against it as a hard seam. */
+.hero-media__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 29, 32, 0.55) 0%,
+    rgba(26, 29, 32, 0.1) 26%,
+    rgba(26, 29, 32, 0.1) 56%,
+    rgba(26, 29, 32, 0.82) 100%
+  );
+}
+/* Depth stamp. Opaque ground on purpose — the reading must not depend on
+   which frame of the clip happens to be underneath.
+   hsl(210, 10%, 14%) = #202427; #f2efea on it = 13.63:1, #d47a3e = 4.95:1.
+   Class selector beats the bare `p { margin-bottom }` rule above. */
+.hero-media__label {
+  position: absolute;
+  z-index: 2;
+  inset-block-start: var(--spacing-sm);
+  inset-inline-start: var(--spacing-sm);
+  max-inline-size: calc(100% - (2 * var(--spacing-sm)));
+  margin: 0;
+  padding: 0.5rem 0.85rem;
+  background-color: hsl(210, 10%, 14%);
+  color: var(--color-background);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.hero-media__depth {
+  display: block;
+  color: var(--color-accent);
+}
+/* Lifted onto its own layer so the media cannot cover it; it keeps its
+   own opaque --color-primary ground. */
+.intro-block {
+  position: relative;
+  z-index: 1;
+}
+/* The `* { margin: 0 }` reset covers img sizing but not video, so a
+   <video> carrying width/height attributes would render at its intrinsic
+   size and overflow the column. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+@media (min-width: 900px) {
+  .hero-media__label {
+    inset-block-start: var(--spacing-md);
+    inset-inline-start: var(--spacing-md);
+    max-inline-size: calc(100% - (2 * var(--spacing-md)));
+    font-size: 0.8rem;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured on the rendered page).
+ * --------------------------------------------------------------- */
+h3 {
+  /* 1.10 is below the 1.2 minimum for body-size headings. */
+  line-height: 1.3;
+}
+@media (max-width: 768px) {
+  /* The inline CTA links rendered 24px tall. */
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
   }
 }

@@ -17,7 +17,7 @@ body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 h1,
 h2,
@@ -119,7 +119,7 @@ section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
-  auto-rows: minmax(220px, auto);
+  grid-auto-rows: minmax(220px, auto);
 }
 .bento-tile {
   background: var(--color-bg-secondary);
@@ -349,4 +349,252 @@ footer {
   .content-block {
     padding: 2rem 1.5rem;
   }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — CSS 3D card tilt. */
+[data-tilt] {
+  transform: translate3d(0, var(--reveal-y, 0px), 0) perspective(1000px) rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg));
+  transform-style: preserve-3d;
+  position: relative;
+  transition:
+    transform var(--dur-mid) var(--ease-out),
+    box-shadow var(--dur-mid) var(--ease-out);
+}
+[data-tilt].is-tilting {
+  transition:
+    transform 80ms linear,
+    box-shadow var(--dur-mid) var(--ease-out);
+}
+[data-tilt]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-out);
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0) 55%
+  );
+}
+[data-tilt].is-tilting::after {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-tilt],
+  [data-tilt].is-tilting {
+    transform: none;
+  }
+  [data-tilt]::after {
+    display: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement - inline process demo. The clip is the demonstration
+ * the numbered steps describe, sitting beside them rather than
+ * decorating them. Until the clip is installed the still <img> carries
+ * the same .slot-demo__still class the <video> will take, so the
+ * section reads correctly with no video present.
+ * Section padding and the hairline bottom rule come from the bare
+ * `section` rule, so the slot keeps the page's 6rem/4rem rhythm.
+ * ------------------------------------------------------------------ */
+.slot-demo-section .section-header {
+  margin-bottom: 3rem;
+}
+.slot-demo {
+  display: grid;
+  gap: 2rem;
+}
+@media (min-width: 900px) {
+  .slot-demo {
+    /* minmax(0, ...) so neither track floors at its min-content width. */
+    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+    align-items: center;
+  }
+}
+.slot-demo__steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1.5rem;
+}
+.slot-demo__steps li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.875rem;
+  align-items: baseline;
+  font-size: 1rem;
+  line-height: 1.5;
+  /* #e2e8f0 on the #080e14 page ground = 15.73:1. */
+  color: var(--color-text-primary);
+}
+.slot-demo__num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  /* #00a896 on the #080e14 page ground = 6.50:1 (18px, needs 4.5:1). */
+  color: var(--color-accent-signal);
+  font-variant-numeric: tabular-nums;
+}
+.slot-demo__media {
+  margin: 0;
+  border: 1px solid var(--color-border-subsea);
+  /* The site's own panel token, read from its real usages: --color-bg-secondary
+     is the fill behind .content-block, .bento-tile, .content-card, .faq-item and
+     .intake-box, so this panel matches the cards two sections above and the FAQ
+     two sections below instead of reading a shade darker than both. */
+  background: var(--color-bg-secondary);
+  overflow: hidden;
+}
+.slot-demo__still,
+.slot-demo [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.slot-demo__caption {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  /* On the panel chrome, never over the media.
+     #7a8b9e on #101a24 (--color-bg-secondary) = 5.03:1 (14px, needs 4.5:1). */
+  color: var(--color-text-muted);
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border-subsea);
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
+}
+/* The img reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* --------------------------------------------------------------- *
+ * Signature-effect corrections (measured against what already ships).
+ * --------------------------------------------------------------- */
+/* [data-tilt] has the same specificity as .bento-tile and lands later, so its
+   transition shorthand replaces the tile's own `border-color 0.3s ease` and the
+   accent border fade on hover is lost. Restore it alongside the tilt, and zero
+   the inherited --reveal-y: the tiles carry the tilt transform but not their
+   own reveal hook, so they would otherwise travel the section's offset twice. */
+.bento-tile[data-tilt] {
+  --reveal-y: 0px;
+  transition:
+    border-color 0.3s ease,
+    transform var(--dur-mid) var(--ease-out),
+    box-shadow var(--dur-mid) var(--ease-out);
+}
+.bento-tile[data-tilt].is-tilting {
+  transition:
+    border-color 0.3s ease,
+    transform 80ms linear,
+    box-shadow var(--dur-mid) var(--ease-out);
 }

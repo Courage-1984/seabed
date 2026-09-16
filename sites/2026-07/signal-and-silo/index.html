@@ -24,6 +24,7 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=Work+Sans:wght@400;500;600&amp;display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./style.css" />
     <script type="module" src="./main.js"></script>
   </head>
   <body>
@@ -58,7 +59,7 @@
         </header>
 
         <!-- Section 1: Hero -->
-        <section class="hero-section bento-item">
+        <section data-reveal class="hero-section bento-item">
           <div class="hero-content">
             <h1>Off-Grid Silo Telemetry Built for Remote Agriculture.</h1>
             <p class="hero-subhead">
@@ -86,9 +87,9 @@
         </section>
 
         <!-- Section 2: The Swartland LoRaWAN Mesh -->
-        <section id="technology" class="mesh-section bento-item">
+        <section data-reveal id="technology" class="mesh-section bento-item">
           <div class="bento-header">
-            <div class="bento-metric">30km</div>
+            <div class="bento-metric"><span data-count-to="30">30</span>km</div>
             <h2>Independent Long-Range Radio Frameworks</h2>
           </div>
           <p>
@@ -106,7 +107,7 @@
         </section>
 
         <!-- Mesh Network Image Block -->
-        <div class="image-block bento-item">
+        <div data-reveal class="image-block bento-item">
           <img
             src="./assets/mesh.webp"
             alt="A wide view of steel grain silos connected by high-visibility wireless radio signal lines"
@@ -117,7 +118,7 @@
         </div>
 
         <!-- Section 3: The SiloWatch-Pro Node -->
-        <section class="node-section bento-item">
+        <section data-reveal class="node-section bento-item">
           <img
             src="./assets/node.webp"
             alt="A rugged telemetry node clamped onto a corrugated galvanized steel silo wall"
@@ -127,7 +128,7 @@
           />
           <div class="node-content">
             <div class="bento-header">
-              <div class="bento-metric">7 Years</div>
+              <div class="bento-metric"><span data-count-to="7">7</span> Years</div>
               <h2>Non-Invasive Acoustic &amp; Thermal Telemetry</h2>
             </div>
             <p>
@@ -146,10 +147,30 @@
           </div>
         </section>
 
+        <!-- Video placement slot: grid tile -->
+        <div class="slot-tile-band">
+          <figure class="slot-tile" data-slot-tile>
+            <img
+              class="slot-tile__still"
+              src="./assets/node.webp"
+              alt="Close view of a powder-coated SiloWatch-Pro telemetry unit clamped to the corrugated ribbing of a galvanised silo"
+              loading="lazy"
+              width="1024"
+              height="1024"
+            />
+            <figcaption class="slot-tile__caption">
+              <strong>A SiloWatch-Pro Node Reporting In</strong>
+              Clamped to the outside of the steel, the node pulses acoustic and thermal readings
+              into the thirty-kilometre mesh every fifteen minutes — no drilling, no cellular
+              subscription, no mains power.
+            </figcaption>
+          </figure>
+        </div>
+
         <!-- Section 4: Fermentation Risk Algorithms -->
-        <section class="fermentation-section bento-item">
+        <section data-reveal class="fermentation-section bento-item">
           <div class="bento-header">
-            <div class="bento-metric">&gt;80°C</div>
+            <div class="bento-metric">&gt;<span data-count-to="80">80</span>°C</div>
             <h2>Stopping Grain Spoilage Before Combustion Begins</h2>
           </div>
           <div style="margin: 2rem 0;">
@@ -177,7 +198,7 @@
         </section>
 
         <!-- Section 5: About Our Mission -->
-        <section id="about" class="about-section bento-item">
+        <section data-reveal id="about" class="about-section bento-item">
           <div class="bento-header">
             <h2>About Our Mission</h2>
           </div>
@@ -203,7 +224,7 @@
         </section>
 
         <!-- Section 6: Rotational Deployment Steps -->
-        <section id="deployment" class="deployment-section bento-item">
+        <section data-reveal id="deployment" class="deployment-section bento-item">
           <div class="bento-header">
             <h2>Rotational Deployment Steps</h2>
           </div>
@@ -249,7 +270,7 @@
         </section>
 
         <!-- Section 7: Frequently Answered Questions -->
-        <section id="faq" class="faq-section bento-item">
+        <section data-reveal id="faq" class="faq-section bento-item">
           <div class="bento-header">
             <h2>Frequently Answered Questions</h2>
           </div>
@@ -311,7 +332,7 @@
         </section>
 
         <!-- Section 8: The Depot (Contact & Enquiries) -->
-        <section id="contact" class="contact-section bento-item">
+        <section data-reveal id="contact" class="contact-section bento-item">
           <div class="bento-header">
             <h2>The Depot</h2>
           </div>

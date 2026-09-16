@@ -60,7 +60,7 @@
         </div>
       </section>
 
-      <section id="clinical-rationale" class="clinical-rationale">
+      <section data-reveal id="clinical-rationale" class="clinical-rationale">
         <div class="container">
           <h2>The Physiological Mechanics of Sub-Aquatic Saturation Recovery</h2>
           <div class="rationale-body">
@@ -82,10 +82,31 @@
               readiness.
             </p>
           </div>
+
+          <figure class="line-draw-wrap">
+            <svg
+              class="line-draw"
+              viewBox="0 0 900 180"
+              role="img"
+              aria-label="Treatment pressure profile: a descent from surface pressure to a 6.0 ATA plateau, a held hyperbaric seawater immersion, then a three-stage out-gassing ascent back to the surface."
+              data-line-draw
+            >
+              <path class="draw-path" d="M 40 152 H 862" />
+              <path class="draw-path" d="M 62 34 L 250 118 L 520 118 L 600 92 L 700 92 L 782 56 L 862 56" />
+              <path class="draw-path" d="M 250 118 V 152" />
+              <path class="draw-path" d="M 520 118 V 152" />
+              <path class="draw-path" d="M 782 56 V 152" />
+            </svg>
+            <figcaption class="line-draw-legend">
+              <span><strong>01</strong> Compression to 6.0 ATA</span>
+              <span><strong>02</strong> Hyperbaric seawater immersion</span>
+              <span><strong>03</strong> Staged inert-gas out-gassing</span>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
-      <section id="occupational-card-stack" class="card-stack-section">
+      <section data-reveal id="occupational-card-stack" class="card-stack-section">
         <div class="container">
           <h2 class="section-title">Occupational Pathologies Treated</h2>
           <div class="card-stack">
@@ -129,7 +150,24 @@
         </div>
       </section>
 
-      <section id="medical-governance" class="governance-section">
+      <div class="slot-tile-band">
+        <figure class="slot-tile" data-slot-tile>
+          <img
+            src="./assets/halide-therapy.webp"
+            alt="A commercial diver in a wetsuit sits inside the steel decompression chamber breathing a nebulised halide aerosol while a masked clinician holds the atomiser beside him."
+            loading="lazy"
+            class="slot-tile__still"
+            width="1024"
+            height="1024"
+          />
+          <figcaption class="slot-tile__caption">
+            <strong>Attended Halide Aerosol Cycle</strong>
+            Nebulised halide delivered inside the Aegir-4 chamber, clinician-attended for the full cycle.
+          </figcaption>
+        </figure>
+      </div>
+
+      <section data-reveal id="medical-governance" class="governance-section">
         <div class="container">
           <h2>Medical Governance & Oversight</h2>
           <div style="margin: 2rem 0;">
@@ -161,7 +199,7 @@
         </div>
       </section>
 
-      <section id="emergency-triage-contact" class="triage-section">
+      <section data-reveal id="emergency-triage-contact" class="triage-section">
         <div class="container">
           <h2>Offshore Emergency Triage</h2>
           <div class="text-block">

@@ -407,3 +407,316 @@ h2 {
     perspective: none;
   }
 }
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — animated SVG line-draw. */
+.line-draw {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 56rem;
+  margin: 2rem auto 2.5rem;
+  block-size: auto;
+  color: var(--color-accent, #888);
+}
+.draw-path {
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition: stroke-dashoffset 1100ms var(--ease-out);
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .draw-path {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Overflow guard.
+ * `clip`, never `hidden`: `hidden` turns <body> into a scroll container,
+ * which silently kills .site-header's position: sticky.
+ * ------------------------------------------------------------------ */
+body {
+  overflow-x: clip;
+}
+
+/* The media reset covers <img> but not <video>, so a clip carrying width/height
+   attributes would render at intrinsic size and push the document sideways. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* Long single words in the display type ("Physiological", "Contraindications")
+   are wider than the column on a 390px viewport. */
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: break-word;
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — grid tile.
+ * A plain <div> at <main> level, deliberately NOT a <section>: the blanket
+ * `section:not(.hero) { padding: 6rem 0; border-bottom: ... }` rule would
+ * otherwise give the tile a divider line and a second helping of padding.
+ * The section BELOW already supplies 6rem of air from its own padding-top,
+ * but the section ABOVE ends with its `border-bottom: 1px solid
+ * var(--color-border-clinical)` hairline sitting directly on the tile's own
+ * 1px top border — two stacked rules with 0px between them. So the band needs
+ * its own top margin; `3rem auto 0` clears the divider without doubling the
+ * 6rem already coming up from below.
+ * ------------------------------------------------------------------ */
+.slot-tile-band {
+  max-inline-size: 820px;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.slot-tile {
+  margin: 0;
+  border: 1px solid var(--color-border-clinical);
+  border-radius: 4px;
+  /* --color-bg-secondary is this site's panel/surface role — read off its real
+     usages, not its name: it fills .stack-card, .testimonial, .faq-item,
+     .stat-callout, .sub-hero, .site-footer and .intake-form input. The tile
+     sits directly under a .stack-card stack whose border and 4px radius it
+     already matches, so it takes the same fill. NOT
+     --color-accent-verdigris: light ink on the verdigris fill measures
+     2.87:1 and fails even large-text AA. */
+  background-color: var(--color-bg-secondary);
+  overflow: hidden;
+}
+
+/* The still <img> and the clip that later replaces it share this class, so
+   the tile geometry is identical before and after the video is installed. */
+.slot-tile__still,
+.slot-tile [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.slot-tile__caption {
+  padding: 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  /* #829b9e on #142229 -> 5.53:1 (15px body, needs 4.5:1) */
+  color: var(--color-text-muted);
+}
+
+.slot-tile__caption strong {
+  display: block;
+  margin-block-end: 0.35rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.0625rem;
+  /* #e0f2f1 on #142229 -> 14.06:1. 17px bold is under the 18.66px large-text
+     cut-off, so this is held to 4.5:1, not 3:1. */
+  color: var(--color-text-primary);
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — line-draw, site palette.
+ * The shared rule above resolves `color` through --color-accent, which this
+ * site does not define, so it fell back to #888. Re-point it at the brand
+ * verdigris: #2a9d8f on #0b1317 = 5.64:1, well clear of the 3:1 graphics
+ * threshold. Declared after the shared rule, same specificity, so it wins.
+ * ------------------------------------------------------------------ */
+.line-draw {
+  color: var(--color-accent-verdigris);
+}
+
+/* The shared .draw-path rule declares stroke, linecap, linejoin, fill and
+   transition but NO stroke-width, so this is not overriding anything — it is
+   replacing the SVG default of 1.
+   stroke-width is in user units against the 900-wide viewBox, so it shrinks
+   with the graphic: at 390px the SVG is ~342px wide (scale 0.38) and 2.5 would
+   render as a ~0.95px hairline. Step the value up as the viewport narrows,
+   on the site's own 768px/600px breakpoints.
+   Deliberately NOT vector-effect: non-scaling-stroke — initEffect() sets
+   stroke-dasharray from getTotalLength(), which is measured in user units,
+   while a non-scaling stroke reads the dash pattern in screen units, so the
+   draw-in would desync at every scale but 1. */
+.line-draw .draw-path {
+  stroke-width: 2.5;
+}
+
+@media (max-width: 768px) {
+  .line-draw .draw-path {
+    stroke-width: 3.5; /* ~2.8 CSS px at 768 */
+  }
+}
+
+@media (max-width: 600px) {
+  .line-draw .draw-path {
+    stroke-width: 5; /* ~1.9 CSS px at 390, ~1.5 at 320 */
+  }
+}
+
+.line-draw-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.line-draw-wrap .line-draw {
+  margin: 1rem auto 1.25rem;
+}
+
+/* Stage labels live in HTML, not inside the SVG: SVG text scales with the
+   viewBox and would drop to ~6px on a 390px viewport. */
+.line-draw-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  font-size: 0.875rem;
+  /* #829b9e on #0b1317 -> 6.37:1 */
+  color: var(--color-text-muted);
+}
+
+.line-draw-legend strong {
+  margin-right: 0.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.1em;
+  /* #2a9d8f on #0b1317 -> 5.64:1 */
+  color: var(--color-accent-verdigris);
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — specificity top-up.
+ * The block above neutralises [data-reveal] at (0,1,0), which loses to the
+ * site's own `.card-stack.unfolded .stack-card:nth-child(n)` unfold at
+ * (0,3,1). `!important` is the only thing that reaches it, matching the
+ * existing @media (max-width: 600px) block.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .stack-card,
+  .card-stack.unfolded .stack-card,
+  .card-stack.unfolded .stack-card:nth-child(1),
+  .card-stack.unfolded .stack-card:nth-child(2),
+  .card-stack.unfolded .stack-card:nth-child(3),
+  .card-stack.unfolded .stack-card:nth-child(4) {
+    transform: none !important;
+  }
+  /* Flattening the fan without relaxing the overlap would leave four cards
+     stacked at -64px, swallowing the previous card's 48px of padding plus its
+     last line of body text. The site's own @media (max-width: 600px) block
+     pairs these two declarations for exactly that reason. */
+  .stack-card:not(:first-child) {
+    margin-top: -1rem;
+  }
+  .js-reveal [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured on the rendered page).
+ * --------------------------------------------------------------- */
+/* The pinned header covered the top of every in-page anchor target. */
+html {
+  scroll-padding-top: 5.5rem;
+}
