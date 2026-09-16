@@ -822,3 +822,81 @@ button:focus-visible, a:focus-visible {
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
 }
+
+/* --------------------------------------------------------------- *
+ * Video placement — section transition band.
+ * A short full-width interstitial between two sections, wiped open on
+ * scroll. The caption sits on panel chrome, never over the media.
+ * --------------------------------------------------------------- */
+.transition-band {
+  position: relative;
+  inline-size: 100%;
+  overflow: hidden;
+  background: var(--color-primary, #212a36);
+  /* Wiped open from the left as the band rises through the viewport. */
+  clip-path: inset(0 calc(100% - var(--band-wipe, 100%)) 0 0);
+  transition: clip-path 90ms linear;
+}
+.transition-band__media {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  /* Short and wide: the band is an interstitial, not a feature panel. */
+  aspect-ratio: 32 / 9;
+  object-fit: cover;
+}
+.transition-band__caption {
+  margin: 0;
+  padding: 0.625rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  max-inline-size: 100%;
+  color: hsl(210, 14%, 92%);
+  background: var(--color-primary, #212a36);
+}
+@media (prefers-reduced-motion: reduce) {
+  .transition-band {
+    clip-path: none;
+    transition: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Legibility corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* The accent is engineered for light chrome: on the dark panels and the
+   mid-brown split it lands at 2.3-3.8:1, so it is lifted there. */
+.tab-btn.active {
+  color: hsl(28, 95%, 66%);
+}
+/* The mid-brown split surface is lighter again, so the accent has to go
+   further: 3.51:1 even at 66% lightness. */
+.tier-volume,
+.col-secondary .label,
+.asymmetric-split .tier-volume,
+.asymmetric-split .label {
+  color: hsl(28, 96%, 82%);
+}
+/* White on the orange fill is 3.00:1; the near-black ink clears it. */
+.orange-overhang {
+  color: hsl(0, 0%, 8%);
+}
+/* Mid-slate on the dark readout is 2.35:1. */
+.spec-readout .label {
+  color: hsl(213, 18%, 80%);
+}
+
+/* Nav links were 26px tall, under the 44px touch minimum. */
+.nav-link,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* The header is pinned, so an in-page anchor would otherwise land with its
+   heading hidden underneath it. */
+html {
+  scroll-padding-top: 5.5rem;
+}

@@ -13,5 +13,6 @@
   "standard": "v2",
   "videoPlacement": "footer ambient",
   "signatureEffect": "progressive blur focus-pull",
-  "video": "assets/the-fenland-yeast-guild-footer-ambient.webm"
+  "video": "assets/the-fenland-yeast-guild-footer-ambient.webm",
+  "contract": "v2.1"
 }

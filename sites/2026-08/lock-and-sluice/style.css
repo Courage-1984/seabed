@@ -9,7 +9,8 @@
   --color-panel: hsl(36, 18%, 86%);
   --color-panel-border: hsl(36, 15%, 75%);
   --color-text: hsl(215, 30%, 12%);
-  --color-text-muted: hsl(210, 12%, 45%);
+  /* 4.31:1 on the page ground at 45% lightness. */
+  --color-text-muted: hsl(210, 16%, 32%);
   --color-focus-ring: hsl(22, 90%, 50%);
 
   --font-heading: 'Young Serif', serif;
@@ -747,7 +748,10 @@ footer a {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  [data-reveal] {
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
     opacity: 1;
     transform: none;
   }
@@ -755,8 +759,12 @@ footer a {
     opacity: 1;
     transform: none;
   }
+  /* Not display:none — the clip element now *is* the slot's visual, so hiding
+     it leaves a hole. A paused video renders its poster frame, which is exactly
+     the right still presentation here; the script pauses it, and the autoplay
+     attribute is only honoured while motion is allowed. */
   [data-slot-video] {
-    display: none;
+    animation: none;
   }
   .btn:hover,
   .btn:focus-visible,
@@ -827,6 +835,12 @@ video {
 }
 .stat-line {
   color: hsl(22, 90%, 32%);
+}
+/* The same strip sits on the dark split section on the guild page,
+   where the darkened accent drops to 2.07:1. */
+.split-section .stat-line,
+.bg-dark .stat-line {
+  color: hsl(22, 95%, 62%);
 }
 /* Light text on the orange fill is 2.87:1; the near-black ink clears it. */
 a.btn,

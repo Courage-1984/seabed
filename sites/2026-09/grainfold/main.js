@@ -122,11 +122,13 @@ function initVideoModal() {
   const player = modal.querySelector('.video-modal__player');
   const closeBtn = modal.querySelector('.video-modal__close');
   let lastFocused = null;
+  let closeTimer = null;
 
   const focusables = () =>
     [...modal.querySelectorAll('button, [href], video[controls]')].filter((el) => !el.hasAttribute('disabled'));
 
   const open = () => {
+    clearTimeout(closeTimer);
     lastFocused = document.activeElement;
     modal.hidden = false;
     document.body.classList.add('has-modal-open');
@@ -144,7 +146,9 @@ function initVideoModal() {
       if (lastFocused) lastFocused.focus();
     };
     if (reduceMotion.matches) finish();
-    else setTimeout(finish, 220);
+    // Stored so a re-open inside the 220ms exit cancels it; otherwise the
+    // stale timer hides the dialog again and leaves the scroll lock on.
+    else closeTimer = setTimeout(finish, 220);
   };
 
   opener.addEventListener('click', open);

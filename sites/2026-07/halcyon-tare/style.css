@@ -760,3 +760,124 @@ img {
     margin-bottom: -12vw;
   }
 }
+
+/* --------------------------------------------------------------- *
+ * Video placement — section transition band.
+ * A short full-width interstitial between two sections, wiped open on
+ * scroll. The caption sits on panel chrome, never over the media.
+ * --------------------------------------------------------------- */
+.transition-band {
+  position: relative;
+  inline-size: 100%;
+  overflow: hidden;
+  background: var(--color-primary, #2c4a43);
+  /* Wiped open from the left as the band rises through the viewport. */
+  clip-path: inset(0 calc(100% - var(--band-wipe, 100%)) 0 0);
+  transition: clip-path 90ms linear;
+}
+.transition-band__media {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  /* Short and wide: the band is an interstitial, not a feature panel. */
+  aspect-ratio: 32 / 9;
+  object-fit: cover;
+}
+.transition-band__caption {
+  margin: 0;
+  padding: 0.625rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  max-inline-size: 100%;
+  color: hsl(45, 20%, 92%);
+  background: var(--color-primary, #2c4a43);
+}
+@media (prefers-reduced-motion: reduce) {
+  .transition-band {
+    clip-path: none;
+    transition: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Legibility corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+:root {
+  /* The brand terracotta and sage are fill colours. As text they need a
+     darkened sibling on the cream ground and a lifted one on the dark panels. */
+  --color-accent-on-light: hsl(15, 65%, 33%);
+  --color-secondary-on-light: hsl(74, 30%, 28%);
+  --color-secondary-on-dark: hsl(74, 40%, 72%);
+}
+.hero-brand-tag,
+.spec-val {
+  color: var(--color-accent-on-light);
+}
+.hero-subhead,
+.testimonial-author {
+  color: var(--color-secondary-on-light);
+}
+.scale-ledger-widget .metric-label {
+  color: var(--color-secondary-on-dark);
+}
+/* White on the terracotta fill is 4.43:1 — just short. */
+.btn-primary,
+a.btn-primary,
+button.btn-primary {
+  background-color: hsl(15, 65%, 38%);
+}
+/* Cream-on-cream and deep-green-on-deep-green: both were rendering as
+   invisible text on a panel whose surface matched their own colour. */
+.metrology-badge-panel .metrology-badge-title {
+  color: var(--color-primary, #2c4a43);
+}
+.site-footer h3 {
+  color: hsl(45, 20%, 92%);
+}
+/* The footer is a dark panel, but its body copy and links kept the ink meant
+   for the cream ground — 1.17:1 and 1.36:1 against it. */
+.site-footer p,
+.site-footer strong,
+.site-footer li {
+  color: hsl(45, 16%, 86%);
+}
+.site-footer a {
+  color: hsl(74, 40%, 76%);
+}
+
+/* Touch targets: the wordmark, nav and in-content links were 19-36px tall. */
+.brand-logo,
+nav a,
+.site-footer a,
+footer a,
+main a:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* The price lines on the ranges page use the brand sage on the dark panel and
+   the terracotta on the light one — 3.16:1 and 3.59:1. Each takes the sibling
+   tuned for the surface it actually sits on. */
+.price-prose-block {
+  color: var(--color-accent-on-light);
+}
+.diagonal-angle-left-primary .price-prose-block,
+.diagonal-angle-right-primary .price-prose-block {
+  color: var(--color-secondary-on-dark);
+}
+/* One nav label ("FAQ") is only 31px wide. `.nav-links a` outranks a bare
+   `nav a`, so the width floor has to match that specificity. */
+.nav-links a,
+nav a,
+.brand-logo,
+.site-footer li a,
+footer li a {
+  min-inline-size: 44px;
+  justify-content: center;
+}
+/* The header is pinned, so an in-page anchor would otherwise land with its
+   heading hidden underneath it. */
+html {
+  scroll-padding-top: 5.5rem;
+}

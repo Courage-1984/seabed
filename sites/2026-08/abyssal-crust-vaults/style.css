@@ -474,7 +474,10 @@ footer a {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  [data-reveal] {
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
     opacity: 1;
     transform: none;
   }
@@ -485,8 +488,12 @@ footer a {
   [data-tilt]::after {
     display: none;
   }
+  /* Not display:none — the clip element now *is* the slot's visual, so hiding
+     it leaves a hole. A paused video renders its poster frame, which is exactly
+     the right still presentation here; the script pauses it, and the autoplay
+     attribute is only honoured while motion is allowed. */
   [data-slot-video] {
-    display: none;
+    animation: none;
   }
   .btn:hover,
   .btn:focus-visible,

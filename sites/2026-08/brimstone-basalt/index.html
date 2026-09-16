@@ -5,7 +5,7 @@
   <meta name="description" content="Direct volcanic basalt rock liquification and high-density centrifugal casting for chemical-slurry pipes, underground mine shaft liners, and acidic pump casings.">
   <meta property="og:title" content="Brimstone &amp; Basalt Structural Castings">
   <meta property="og:description" content="Direct volcanic basalt rock liquification and high-density centrifugal casting for chemical-slurry pipes, underground mine shaft liners, and acidic pump casings.">
-  <meta property="og:image" content="./assets/hero.webp">
+  <meta property="og:image" content="./assets/hero-basalt-foundry-pour.webp">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,9 +30,9 @@
   
   <main id="main-content">
     
-    <section class="hero-section" id="hero">
+    <section data-reveal class="hero-section" id="hero">
       <div class="hero-bg">
-        <img src="./assets/hero.webp" alt="Molten volcanic basalt poured into a heavy casting mold at the Kuruman foundry." fetchpriority="high" width="1024" height="1024">
+        <img src="./assets/hero-basalt-foundry-pour.webp" alt="Molten volcanic basalt poured into a heavy casting mold at the Kuruman foundry." fetchpriority="high" width="1024" height="1024">
         <div class="hero-overlay"></div>
       </div>
       <div class="hero-content">
@@ -45,7 +45,7 @@
       </div>
     </section>
 
-    <section class="flagship-section" id="vitrification">
+    <section data-reveal class="flagship-section" id="vitrification">
       <div class="container editorial-narrative">
         <h3>Why Re-Invent Metallurgy When the Crust Already Solved It?</h3>
         <p>The fundamental flaw of structural steel lies in its atomic desperation to return to iron oxide. Inject acidic mine runoff or copper slurry at high velocity, and the protective boundary layer strips away in weeks. Organic polymer liners fare little better, perishing under geothermal heat and abrasive quartz sand. Basalt, having already survived the convective mantle of the Earth, possesses no such chemical vulnerability. When spun centrifugally into dense vitrified pipes, its monocrystalline silicate structure registers an eight on the Mohs scale—yielding a surface that treats abrasive quartz like chalk.</p>
@@ -56,7 +56,24 @@
       </div>
     </section>
 
-    <section class="bento-section section-divider" id="specifications">
+    <div class="slot-hover-wrap">
+      <div class="slot-hover" tabindex="0" data-slot-hover>
+        <img class="slot-hover__poster" src="./assets/foundry-casting.webp" alt="Molten basalt poured into a casting mould at the Kuruman foundry." loading="lazy" width="1280" height="720">
+        <video class="slot-hover__video" data-slot-video autoplay muted loop playsinline preload="metadata"
+          poster="./assets/brimstone-basalt-hover-reveal-poster.webp" width="1280" height="720" aria-label="Molten basalt pouring from the cupola into a spinning casting mould.">
+          <source src="./assets/brimstone-basalt-hover-reveal.webm" type="video/webm">
+          <source src="./assets/brimstone-basalt-hover-reveal.mp4" type="video/mp4">
+        </video>
+        <div class="slot-hover__content">
+          <h3>The Pour</h3>
+          <p>Molten basalt leaves the cupola at 1,250&deg;C and is cast in a single
+            uninterrupted pour &mdash; any pause shows up later as a cleavage plane.</p>
+          <span class="slot-hover__hint" aria-hidden="true">Hover or focus to watch the pour</span>
+        </div>
+      </div>
+    </div>
+
+    <section data-reveal class="bento-section section-divider" id="specifications">
       <div class="container">
         <h3>Mineral Performance Specifications &amp; Lab Readouts</h3>
         <p class="section-lead">Independent laboratory verification confirming vitrified basalt outpaces high-chrome alloy steels across abrasion resistance, acid immunity, and compressive structural integrity.</p>
@@ -64,28 +81,28 @@
         <div class="bento-grid">
           <div class="bento-tile bento-large reveal-item tile-bg">
             <div class="tile-header">Abrasion Resistance</div>
-            <div class="tile-metric">8.0</div>
+            <div class="tile-metric"><span data-count-to="8.0">8.0</span></div>
             <div class="tile-label">Mohs Hardness Rating</div>
             <p>Vitrified basalt presents a monocrystalline matrix that easily deflects quartz and granite particulates. High-chrome alloys peak at 6.5; our castings treat abrasive slurry as negligible friction.</p>
           </div>
           
           <div class="bento-tile bento-medium-wide reveal-item tile-bg">
             <div class="tile-header">Acid Immunity</div>
-            <div class="tile-metric">0.00 <span class="unit">g/m²</span></div>
+            <div class="tile-metric"><span data-count-to="0.00">0.00</span> <span class="unit">g/m²</span></div>
             <div class="tile-label">H₂SO₄ &amp; HCl Mass Loss (30 Days)</div>
             <p>Complete structural resistance to concentrated sulfuric and hydrochloric environments. The silicate bonds simply do not participate in acidic oxidation.</p>
           </div>
           
           <div class="bento-tile bento-medium-tall reveal-item tile-bg">
             <div class="tile-header">Structural Load</div>
-            <div class="tile-metric">450 <span class="unit">MPa</span></div>
+            <div class="tile-metric"><span data-count-to="450">450</span> <span class="unit">MPa</span></div>
             <div class="tile-label">Compressive Strength</div>
             <p>Handles immense deep-level lithostatic pressures without deformation.</p>
           </div>
           
           <div class="bento-tile bento-small reveal-item tile-bg">
             <div class="tile-header">Geothermal</div>
-            <div class="tile-metric">800<span class="unit">°C</span></div>
+            <div class="tile-metric"><span data-count-to="800">800</span><span class="unit">°C</span></div>
             <div class="tile-label">Continuous Ceiling</div>
           </div>
           
@@ -106,7 +123,7 @@
       </div>
     </section>
 
-    <section class="spec-grid-section section-divider" id="catalog">
+    <section data-reveal class="spec-grid-section section-divider" id="catalog">
       <div class="container">
         <h3>Standard Cast Component Architecture</h3>
         <p class="section-lead">Heavy-wall, pre-engineered drop-in replacements for standard industrial flanged fittings. Available in standard nominal bores or bespoke casting dimensions.</p>
@@ -147,7 +164,7 @@
       </div>
     </section>
 
-    <section class="process-section section-divider" id="process">
+    <section data-reveal class="process-section section-divider" id="process">
       <div class="container">
         <h3>The Sub-Arc Liquefaction Protocol</h3>
         <p class="section-lead">Precise thermal control turns chaotic volcanic rock into predictable structural ceramics. We do not manufacture this material; we merely organise its transition.</p>
@@ -186,7 +203,7 @@
       </div>
     </section>
 
-    <section class="case-history-section section-divider" id="performance">
+    <section data-reveal class="case-history-section section-divider" id="performance">
       <div class="container">
         <h3>Operational Logs from Extreme Depths</h3>
         <p class="section-lead">Field-tested in the deepest, wettest, and most acidic shaft systems across South Africa and Western Australia.</p>
@@ -217,7 +234,7 @@
       </div>
     </section>
 
-    <section class="faq-section section-divider" id="faq">
+    <section data-reveal class="faq-section section-divider" id="faq">
       <div class="container">
         <h3>Technical &amp; Metallurgical Enquiries</h3>
         <p class="section-lead">Addressing common engineering scepticism regarding structural ceramics and thermal shock.</p>

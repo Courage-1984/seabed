@@ -554,12 +554,19 @@ footer a {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  [data-reveal] {
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
     opacity: 1;
     transform: none;
   }
+  /* Not display:none — the clip element now *is* the slot's visual, so hiding
+     it leaves a hole. A paused video renders its poster frame, which is exactly
+     the right still presentation here; the script pauses it, and the autoplay
+     attribute is only honoured while motion is allowed. */
   [data-slot-video] {
-    display: none;
+    animation: none;
   }
   .btn:hover,
   .btn:focus-visible,
@@ -646,8 +653,23 @@ video {
 .form-container p {
   color: hsl(27, 22%, 28%);
 }
-/* The accent is 1.60:1 on the light card. */
-.feature-card h3 {
+/* Near-white body copy was also being rendered inside the light FAQ panel at
+   1.20:1 — that colour belongs on the dark surfaces. */
+.faq-item p,
+.faq-item li {
+  color: hsl(27, 22%, 28%);
+}
+/* Inline links were 22px tall. */
+.dossier-content a,
+.faq-item a,
+main a:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+/* The accent is 1.60:1 on the light card and in the FAQ panel. */
+.feature-card h3,
+.faq-item h3 {
   color: hsl(38, 90%, 26%);
 }
 /* Near-white body copy was being rendered on the light panel at 1.20:1 —

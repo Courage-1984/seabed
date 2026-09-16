@@ -14,5 +14,6 @@
   "qa": "v2-pass",
   "videoPlacement": "split panel",
   "signatureEffect": "scroll-driven clip-path wipe",
-  "video": "assets/k-92-maritime-victualling-split-panel.webm"
+  "video": "assets/k-92-maritime-victualling-split-panel.webm",
+  "contract": "v2.1"
 }

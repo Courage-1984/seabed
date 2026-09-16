@@ -5,7 +5,7 @@
   <meta name="description" content="Hand-milled English oak and Douglas fir stave restoration powered by a shared master-artisan timber bank.">
   <meta property="og:title" content="Stave &amp; Hoops Millwright Guild">
   <meta property="og:description" content="Hand-milled English oak and Douglas fir stave restoration powered by a shared master-artisan timber bank.">
-  <meta property="og:image" content="./assets/hero.webp">
+  <meta property="og:image" content="./assets/hero-cooperage-yard.webp">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   
@@ -35,7 +35,7 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-bg">
-        <img src="./assets/hero.webp" alt="Master millwright restoring a historic wooden water tower on an English country estate." fetchpriority="high" width="1024" height="1024">
+        <img src="./assets/hero-cooperage-yard.webp" alt="Master millwright restoring a historic wooden water tower on an English country estate." fetchpriority="high" width="1024" height="1024">
         <div class="hero-overlay"></div>
       </div>
       <div class="container hero-content">
@@ -44,12 +44,12 @@
         <div class="hero-intro">
           <p>A century-old wooden water tower or stave silo is an extraordinary piece of vernacular engineering, held together purely by precise compound bevels and the relentless compression of wrought iron hoops. When dry rot or iron fatigue threatens these landmark structures, finding specialized millwrights with seasoned heartwood oak can take years. Through our cooperative guild reserve, historic estate stewards pool rare timber stocks, mobile steam rigs, and master craftspeople to keep Britain’s rural architectural heritage watertight.</p>
         </div>
-        <a href="./guild.html" class="btn btn-accent iron-rivet-hover"><span>Become a Guild Steward</span></a>
+        <a href="./guild.html" data-magnetic class="btn btn-accent iron-rivet-hover"><span>Become a Guild Steward</span></a>
       </div>
     </section>
 
     <!-- Flagship Section 1: Asymmetric Split -->
-    <section class="section-padding">
+    <section data-reveal class="section-padding">
       <div class="container">
         <div class="asymmetric-section">
           <div class="asymmetric-left">
@@ -66,7 +66,16 @@
     </section>
 
     <!-- Section 2: Water Tower & Barrel Silo Services -->
-    <section class="section-padding bg-panel">
+    <div class="transition-band" data-transition-band>
+      <video class="transition-band__media" data-slot-video autoplay muted loop playsinline preload="metadata"
+        poster="./assets/stave-and-hoops-section-transition-band-poster.webp" width="1280" height="720" aria-label="Oak staves steam-bent on the mobile rig in the timber yard.">
+        <source src="./assets/stave-and-hoops-section-transition-band.webm" type="video/webm">
+        <source src="./assets/stave-and-hoops-section-transition-band.mp4" type="video/mp4">
+      </video>
+      <p class="transition-band__caption">Mobile steam rig &mdash; staves bent where the barrel is built</p>
+    </div>
+
+    <section data-reveal class="section-padding bg-panel">
       <div class="container">
         <div style="text-align: center; max-width: 800px; margin: 0 auto var(--spacing-lg);">
           <h2>Specialized Structural Restoration Services</h2>
@@ -95,13 +104,13 @@
         </div>
         
         <div style="text-align: center; margin-top: var(--spacing-lg);">
-          <a href="./restoration.html" class="btn btn-primary iron-rivet-hover"><span>Explore Restoration Services</span></a>
+          <a href="./restoration.html" data-magnetic class="btn btn-primary iron-rivet-hover"><span>Explore Restoration Services</span></a>
         </div>
       </div>
     </section>
 
     <!-- Section 3: The Master Artisan Time & Timber Bank -->
-    <section class="section-padding">
+    <section data-reveal class="section-padding">
       <div class="container">
         <div style="text-align: center; margin-bottom: var(--spacing-lg);">
           <h2>The Shared Timber Reserve &amp; Mobile Workshop</h2>
@@ -130,13 +139,13 @@
         </div>
         
         <div style="text-align: center; margin-top: var(--spacing-lg);">
-          <a href="./guild.html" class="btn btn-primary iron-rivet-hover"><span>Learn How Guild Shares Work</span></a>
+          <a href="./guild.html" data-magnetic class="btn btn-primary iron-rivet-hover"><span>Learn How Guild Shares Work</span></a>
         </div>
       </div>
     </section>
 
     <!-- Section 4: Completed Estate Restorations -->
-    <section class="section-padding bg-panel">
+    <section data-reveal class="section-padding bg-panel">
       <div class="container">
         <h2>Recent Estate Preservation Projects</h2>
         <div class="projects-grid">
@@ -163,7 +172,7 @@
     </section>
 
     <!-- Section 5: Guild Intake Form -->
-    <section class="section-padding">
+    <section data-reveal class="section-padding">
       <div class="container requisition-form">
         <h2 style="text-align: center; margin-bottom: 2rem;">Requisition a Structural Timber Survey</h2>
         <p style="text-align: center; margin-bottom: 2rem;">Book a comprehensive structural survey before minor stave leaks turn into catastrophic wall failures. Our master millwrights aim to conduct onsite assessments within 7 business days.</p>

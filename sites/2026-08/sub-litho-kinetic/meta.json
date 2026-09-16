@@ -1,7 +1,7 @@
 {
   "title": "Sub-Litho Kinetic Calibration",
   "blurb": "Isolating subterranean kinetic art from planetary seismic drift down to sub-micron tolerances.",
-  "hero": "assets/hero.webp",
+  "hero": "assets/hero-pendulum-vault.webp",
   "layoutFamily": "terminal / data-readout",
   "tags": [
     "arts",
@@ -13,5 +13,7 @@
   "qa": "v2-pass",
   "wordFloor": 1100,
   "videoPlacement": "inline process demo",
-  "signatureEffect": "progressive blur focus-pull"
+  "signatureEffect": "progressive blur focus-pull",
+  "video": "assets/sub-litho-kinetic-inline-process-demo.webm",
+  "contract": "v2.1"
 }

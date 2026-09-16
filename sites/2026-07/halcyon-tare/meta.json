@@ -13,5 +13,7 @@
   "standard": "v2",
   "qa": "v2-pass",
   "videoPlacement": "section transition band",
-  "signatureEffect": "magnetic proximity cursor element"
+  "signatureEffect": "magnetic proximity cursor element",
+  "video": "assets/halcyon-tare-section-transition-band.webm",
+  "contract": "v2.1"
 }

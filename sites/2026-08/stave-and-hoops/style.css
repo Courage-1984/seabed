@@ -8,6 +8,9 @@
   --color-primary-hover: hsl(28, 55%, 40%);
   --color-secondary: hsl(215, 18%, 22%);
   --color-accent: hsl(18, 80%, 48%);
+  /* The accent is a fill colour: as text on the dark panels it is 3.07:1,
+     so type there uses this lifted sibling of the same hue. */
+  --color-accent-on-dark: hsl(18, 88%, 66%);
   --color-accent-hover: hsl(18, 80%, 54%);
   --color-accent-focus: hsla(18, 80%, 48%, 0.4);
   --color-bg: hsl(38, 30%, 94%);
@@ -32,7 +35,7 @@ body {
   color: var(--color-text);
   font-family: 'Plus Jakarta Sans', sans-serif;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -466,4 +469,200 @@ p {
   .form-grid {
     grid-template-columns: 1fr;
   }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — magnetic proximity cursor element. */
+[data-magnetic] {
+  transform: translate3d(var(--magnet-x, 0px), var(--magnet-y, 0px), 0);
+  transition: transform 220ms var(--ease-out);
+  will-change: transform;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-magnetic] {
+    transform: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — section transition band: a short full-width interstitial,
+   wiped open as it rises through the viewport. */
+.transition-band {
+  position: relative;
+  inline-size: 100%;
+  overflow: hidden;
+  background: var(--color-primary, #2a2119);
+  clip-path: inset(0 calc(100% - var(--band-wipe, 100%)) 0 0);
+  transition: clip-path 90ms linear;
+}
+.transition-band__media {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  /* Short and wide: this is an interstitial, not a feature panel. */
+  aspect-ratio: 32 / 9;
+  object-fit: cover;
+}
+.transition-band__caption {
+  margin: 0;
+  padding: 0.625rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  max-inline-size: 100%;
+  /* On panel chrome, never over the media. */
+  color: hsl(36, 18%, 92%);
+  background: var(--color-primary, #2a2119);
+}
+@media (prefers-reduced-motion: reduce) {
+  .transition-band {
+    clip-path: none;
+    transition: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Legibility corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* The brand orange is 3.07:1 on the dark header. */
+.site-header a.active {
+  color: hsl(18, 88%, 66%);
+}
+/* Cream on the orange fill is 3.52:1; near-black clears it. */
+.btn-accent,
+a.btn-accent,
+button.btn-accent {
+  /* Too light to carry any ink at 4.5:1; the fill drops and the cream type
+     reads at ~5.7:1. */
+  background-color: hsl(18, 80%, 36%);
+}
+.btn-accent,
+.btn-accent span,
+.btn-primary,
+.btn-primary span {
+  color: hsl(38, 30%, 96%);
+}
+/* The muted brown is 4.17:1 on the light card. */
+.card p {
+  color: hsl(28, 20%, 28%);
+}
+
+/* Form controls were 43px tall — one pixel under the touch minimum. */
+input,
+select,
+textarea {
+  min-block-size: 44px;
+}
+
+/* The muted brown is 4.17:1 on the page ground, and the brand orange is 3.07:1
+   on the dark header — the same hue needs to move opposite ways per surface. */
+:root {
+  --color-text-muted: hsl(28, 20%, 28%);
+}
+.site-header a,
+.site-header .active {
+  color: hsl(18, 88%, 66%);
+}
+
+/* The media reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
 }

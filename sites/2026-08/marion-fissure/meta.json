@@ -1,7 +1,7 @@
 {
   "title": "Marion Fissure Fermentary",
   "blurb": "Sub-Antarctic geothermal heat meets sub-zero gale spray to yield Earth's most isolated mineral umami.",
-  "hero": "assets/hero.webp",
+  "hero": "assets/hero-marion-fissure-shore.webp",
   "layoutFamily": "brutalist stacked",
   "tags": [
     "food",
@@ -13,5 +13,7 @@
   "standard": "v2",
   "qa": "v2-pass",
   "videoPlacement": "marquee strip",
-  "signatureEffect": "sticky section pinning with cross-fade"
+  "signatureEffect": "sticky section pinning with cross-fade",
+  "video": "assets/marion-fissure-marquee-strip.webm",
+  "contract": "v2.1"
 }

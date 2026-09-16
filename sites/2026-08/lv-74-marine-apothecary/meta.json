@@ -14,5 +14,6 @@
   "qa": "v2-pass",
   "videoPlacement": "hero inset frame",
   "signatureEffect": "drifting grain overlay",
-  "video": "assets/lv-74-marine-apothecary-hero-inset-frame.webm"
+  "video": "assets/lv-74-marine-apothecary-hero-inset-frame.webm",
+  "contract": "v2.1"
 }

@@ -31,7 +31,7 @@ body {
   color: var(--color-text);
   font-family: 'IBM Plex Sans', sans-serif;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -640,4 +640,210 @@ img {
   }
   
   .section-divider::before, .section-divider::after { display: none; }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — numeric counter roll-up. */
+[data-count-to] {
+  /* Tabular figures stop the layout jittering while the digits climb. */
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  display: inline-block;
+  min-inline-size: 3ch;
+  text-align: end;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — hover reveal: poster at rest, clip on hover and focus. */
+.slot-hover-wrap {
+  max-inline-size: 1100px;
+  margin: 3rem auto;
+  padding-inline: 1.5rem;
+}
+.slot-hover {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-border, #3a3a3a);
+  cursor: pointer;
+  min-block-size: 22rem;
+  display: flex;
+  align-items: flex-end;
+}
+.slot-hover__poster,
+.slot-hover [data-slot-video] {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.slot-hover [data-slot-video] {
+  opacity: 0;
+  z-index: 1;
+  transition: opacity var(--dur-mid) var(--ease-out);
+}
+/* Driven by :hover / :focus-within rather than a JS class, so the reveal still
+   works if the script never runs. */
+.slot-hover:hover [data-slot-video],
+.slot-hover:focus-within [data-slot-video] {
+  opacity: 1;
+}
+.slot-hover__content {
+  position: relative;
+  z-index: 2;
+  inline-size: 100%;
+  padding: 1.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(14, 12, 10, 0.94) 0%,
+    rgba(14, 12, 10, 0.86) 55%,
+    rgba(14, 12, 10, 0.6) 100%
+  );
+}
+/* Site-wide heading colours beat inheritance, so type on media is set here. */
+.slot-hover__content > * {
+  color: #fff;
+  max-inline-size: 100%;
+}
+.slot-hover__hint {
+  display: block;
+  margin-block-start: 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+.slot-hover:focus-visible {
+  outline: 3px solid var(--color-accent, #f5a623);
+  outline-offset: 3px;
+}
+@media (hover: none), (pointer: coarse) {
+  .slot-hover__hint {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Legibility corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* White on the brand orange is 3.87:1; near-black clears it. */
+.btn-primary,
+a.btn-primary,
+button.btn-primary,
+.bar.basalt {
+  /* The brand orange is too light to carry any ink at 4.5:1, so the fill drops
+     a step and the existing white type reads at ~4.9:1. */
+  background-color: hsl(18, 85%, 40%);
+  color: #fff;
+}
+/* The step numeral is 1.69:1 against the page ground. */
+.step-index {
+  color: hsl(210, 10%, 62%);
+}
+
+/* The media reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
 }

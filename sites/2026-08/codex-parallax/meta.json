@@ -14,5 +14,6 @@
   "qa": "v2-pass",
   "videoPlacement": "hover reveal",
   "signatureEffect": "magnetic proximity cursor element",
-  "video": "assets/codex-parallax-hover-reveal.webm"
+  "video": "assets/codex-parallax-hover-reveal.webm",
+  "contract": "v2.1"
 }

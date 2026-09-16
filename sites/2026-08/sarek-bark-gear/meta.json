@@ -14,5 +14,6 @@
   "qa": "v2-pass",
   "videoPlacement": "footer ambient",
   "signatureEffect": "animated SVG line-draw",
-  "video": "assets/sarek-bark-gear-footer-ambient.webm"
+  "video": "assets/sarek-bark-gear-footer-ambient.webm",
+  "contract": "v2.1"
 }

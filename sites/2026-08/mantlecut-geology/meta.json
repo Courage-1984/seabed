@@ -14,5 +14,6 @@
   "qa": "v2-pass",
   "videoPlacement": "hero inset frame",
   "signatureEffect": "masked scroll-through type",
-  "video": "assets/mantlecut-geology-hero-inset-frame.webm"
+  "video": "assets/mantlecut-geology-hero-inset-frame.webm",
+  "contract": "v2.1"
 }

@@ -22,7 +22,7 @@
     <!-- Section 1: Hero -->
     <section class="hero-section">
       <div class="hero-bg">
-        <img src="./assets/hero.webp" alt="Open basalt LithoVault canister showing a laser-etched synthetic quartz slate inside." fetchpriority="high" class="hero-img" width="1024" height="1024">
+        <img src="./assets/hero-quarry-seal-bed.webp" alt="Open basalt LithoVault canister showing a laser-etched synthetic quartz slate inside." fetchpriority="high" class="hero-img" width="1024" height="1024">
         <div class="hero-overlay"></div>
       </div>
       <div class="container hero-content">
@@ -39,7 +39,7 @@
     </section>
 
     <!-- Section 2: Flagship -->
-    <section class="bg-surface">
+    <section data-reveal class="bg-surface">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">Why Bitmaps on Synthetic Quartz Beat Magnetic Media Every Time.</h2>
@@ -53,7 +53,23 @@
     </section>
 
     <!-- Section 3: Asymmetric Split Showcase (The ONE allowed split layout) -->
-    <section class="asymmetric-section">
+    <div class="slot-split-band">
+      <div class="slot-split" data-slot-split>
+        <video class="slot-split__still" data-slot-video autoplay muted loop playsinline preload="metadata"
+          poster="./assets/sub-lithic-seals-split-panel-poster.webp" width="1280" height="720" aria-label="A wire saw drawing through the quarry bed where the seal blanks are cut.">
+          <source src="./assets/sub-lithic-seals-split-panel.webm" type="video/webm">
+          <source src="./assets/sub-lithic-seals-split-panel.mp4" type="video/mp4">
+        </video>
+        <p class="slot-split__caption">Quarry works &mdash; blanks cut on the bed they came from</p>
+      </div>
+      <div class="slot-split__lead">
+        <h2>Cut on the bed</h2>
+        <p>Every seal starts as a blank taken from the same stone bed it will
+          go back into, so the grain and the thermal behaviour match.</p>
+      </div>
+    </div>
+
+    <section data-reveal class="asymmetric-section">
       <div class="container">
         <h2 class="section-title">Archival Canister Models &amp; Slate Specifications</h2>
         
@@ -90,7 +106,7 @@
     </section>
 
     <!-- Section 4: Deep-Time Preservation Protocol -->
-    <section class="bg-surface">
+    <section data-reveal class="bg-surface">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">The 4-Stage Vitrification &amp; Etch Cycle</h2>
@@ -156,7 +172,7 @@
     </section>
 
     <!-- Section 6: Archival Canister Procurement -->
-    <section id="order" class="bg-surface">
+    <section data-reveal id="order" class="bg-surface">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">Initiate an Archival Vault Order</h2>

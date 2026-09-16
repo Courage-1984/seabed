@@ -14,5 +14,6 @@
   "qa": "v2-pass",
   "videoPlacement": "masked type fill",
   "signatureEffect": "CSS 3D card tilt",
-  "video": "assets/abyssal-crust-vaults-masked-type-fill.webm"
+  "video": "assets/abyssal-crust-vaults-masked-type-fill.webm",
+  "contract": "v2.1"
 }

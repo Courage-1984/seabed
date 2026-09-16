@@ -14,5 +14,6 @@
   "qa": "v2-pass",
   "videoPlacement": "sticky rail loop",
   "signatureEffect": "numeric counter roll-up",
-  "video": "assets/cedar-and-salt-sticky-rail-loop.webm"
+  "video": "assets/cedar-and-salt-sticky-rail-loop.webm",
+  "contract": "v2.1"
 }

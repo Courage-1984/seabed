@@ -1,7 +1,7 @@
 {
   "title": "Aegir Thermal Lugger",
   "blurb": "Deep thermal contrast and sea-immersion recovery delivered aboard a sailing wooden vessel at secluded fjord anchorages.",
-  "hero": "assets/hero.webp",
+  "hero": "assets/hero-lugger-sea-loch.webp",
   "layoutFamily": "sticky-rail + content",
   "tags": [
     "wellness",
@@ -13,5 +13,7 @@
   "standard": "v2",
   "qa": "v2-pass",
   "videoPlacement": "sticky rail loop",
-  "signatureEffect": "text scramble decode on reveal"
+  "signatureEffect": "text scramble decode on reveal",
+  "video": "assets/aegir-thermal-lugger-sticky-rail-loop.webm",
+  "contract": "v2.1"
 }

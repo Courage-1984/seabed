@@ -1,7 +1,7 @@
 {
   "title": "Sub-Lithic Archive Seals",
   "blurb": "Vitrified volcanic canisters engineered to keep digital data readable through ten thousand years of geological movement.",
-  "hero": "assets/hero.webp",
+  "hero": "assets/hero-quarry-seal-bed.webp",
   "layoutFamily": "asymmetric split",
   "tags": [
     "retail",
@@ -13,5 +13,7 @@
   "standard": "v2",
   "qa": "v2-pass",
   "videoPlacement": "split panel",
-  "signatureEffect": "drifting grain overlay"
+  "signatureEffect": "drifting grain overlay",
+  "video": "assets/sub-lithic-seals-split-panel.webm",
+  "contract": "v2.1"
 }

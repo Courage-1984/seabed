@@ -5,7 +5,7 @@
   <meta name="description" content="Breathing walls grown from deep-forest fungal strains, shielding subterranean sanctuaries from damp, radon, and harsh mineral glare.">
   <meta property="og:title" content="Deep Crust Mycelial Bio-Lining">
   <meta property="og:description" content="Breathing walls grown from deep-forest fungal strains, shielding subterranean sanctuaries from damp, radon, and harsh mineral glare.">
-  <meta property="og:image" content="./assets/hero.webp">
+  <meta property="og:image" content="./assets/hero-mycelial-sanctuary.webp">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,7 @@
   <main id="main-content">
     
     <section class="hero-section">
-      <img src="./assets/hero.webp" class="hero-bg" alt="Velvety mycelium bio-lining growing smoothly across dark cave rock walls." fetchpriority="high" width="1024" height="1024">
+      <img src="./assets/hero-mycelial-sanctuary.webp" class="hero-bg" alt="Velvety mycelium bio-lining growing smoothly across dark cave rock walls." fetchpriority="high" width="1024" height="1024">
       <div class="hero-content">
         <h1>We Grow Living Walls for Deep Underground Sanctuaries.</h1>
         <p class="subhead">Self-healing mycelial bio-membranes that transform raw rock vaults into warm, breathable wellness spaces.</p>
@@ -39,7 +39,7 @@
       </div>
     </section>
 
-    <section id="protocol" class="flagship-section wrapper">
+    <section data-reveal id="protocol" class="flagship-section wrapper">
       <div class="content-card organic-border">
         <h2>Architecture That Breathes and Heals Itself.</h2>
         <p>Raw underground rock chambers present a constant architectural challenge: cold moisture seeping through micro-fissures, harsh echo, and the persistent damp chill of the deep earth. Traditional mineral wool and synthetic sealants merely trap water behind rigid barriers, eventually rotting or flaking under subterranean humidity. Our bio-linings approach the underground differently, working with natural moisture rather than fighting it. By introducing native <em>Ganoderma</em> hyphae bound to sterilized organic substrates, we invite a living network to weave through the rock face.</p>
@@ -50,7 +50,7 @@
       </div>
     </section>
 
-    <section id="performance" class="card-stack-section wrapper">
+    <section data-reveal id="performance" class="card-stack-section wrapper">
       <div class="stack-container">
         <div class="stack-header">
           <h2>Four Layers of Biological Shielding</h2>
@@ -82,7 +82,7 @@
       </div>
     </section>
 
-    <section id="timeline" class="stepper-section wrapper">
+    <section data-reveal id="timeline" class="stepper-section wrapper">
       <div class="timeline-container">
         <h2>The 21-Day Sanctuary Growth Sequence</h2>
         <p class="section-lead">A clean, quiet, zero-waste application tailored specifically for sensitive underground locations, avoiding the dust and noise of traditional fit-outs.</p>
@@ -120,7 +120,7 @@
       </div>
     </section>
 
-    <section class="sensory-notes-section wrapper">
+    <section data-reveal class="sensory-notes-section wrapper">
       <div class="parchment-container">
         <h2>Atmospheric Readouts from Sabie &amp; Beyond</h2>
         <p class="section-lead">Sanctuary guests consistently report deeper relaxation and cleaner breathing within our mycelium-lined vaults across the Mpumalanga escarpment.</p>
@@ -154,7 +154,32 @@
       </div>
     </section>
 
-    <section id="consult" class="consult-section">
+    <div class="slot-modal-wrap">
+      <button type="button" class="slot-tile-button" data-video-open aria-haspopup="dialog" aria-controls="crust-film">
+        <img src="./assets/mycelium-wall.webp" alt="" loading="lazy" width="1280" height="720">
+        <span class="slot-tile-button__label">
+          <span class="slot-tile-button__glyph" aria-hidden="true"></span>
+          <span class="slot-tile-button__text">
+            <strong>Inside the growth chamber</strong>
+            One colonisation cycle, filmed against the rock
+          </span>
+        </span>
+      </button>
+    </div>
+
+    <div class="video-modal" id="crust-film" role="dialog" aria-modal="true" aria-label="Mycelial colonisation cycle" hidden>
+      <div class="video-modal__backdrop" data-video-close></div>
+      <div class="video-modal__frame">
+        <button type="button" class="video-modal__close" data-video-close aria-label="Close video">&times;</button>
+        <video class="video-modal__still" data-slot-video autoplay muted loop playsinline preload="metadata"
+          poster="./assets/deep-crust-mycelial-modal-feature-poster.webp" width="1280" height="720" aria-label="Mycelium spreading across the damp cave rock over one colonisation cycle.">
+          <source src="./assets/deep-crust-mycelial-modal-feature.webm" type="video/webm">
+          <source src="./assets/deep-crust-mycelial-modal-feature.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <section data-reveal id="consult" class="consult-section">
       <div class="consult-block wrapper">
         <h2>Request a Subterranean Site Audit</h2>
         <p>Work directly with our Sabie bio-craftsmen to tailor the exact Ganoderma strain selection to your specific rock chemistry, vault depth, and ambient humidity profiles.</p>

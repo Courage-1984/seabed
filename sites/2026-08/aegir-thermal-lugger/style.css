@@ -27,7 +27,7 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   font-size: 1.1rem;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4 {
@@ -369,4 +369,188 @@ th { font-family: var(--font-heading); background-color: var(--color-secondary);
   .booking-form { grid-template-columns: 1fr; }
   .site-header { flex-direction: column; gap: 1rem; padding: 1rem; text-align: center; }
   .console-panel { padding: 1.5rem; }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — text scramble decode on reveal. */
+[data-scramble] {
+  /* Tabular figures and a fixed min-width stop the line from reflowing as the
+     random glyphs swap in and out. */
+  font-variant-numeric: tabular-nums;
+  white-space: pre-wrap;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-scramble] {
+    animation: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — sticky rail loop. The prose section supplies the scroll
+   length, so it becomes a two-column grid and the rail pins in the first
+   column while everything else flows down the second. */
+@media (min-width: 900px) {
+  .split-section.has-rail {
+    display: grid;
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    column-gap: 2.5rem;
+    align-items: start;
+  }
+  .split-section.has-rail > *:not(.slot-rail) {
+    grid-column: 2;
+  }
+  .split-section.has-rail .slot-rail {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    position: sticky;
+    top: 6rem;
+  }
+}
+.slot-rail {
+  margin-block-end: 2rem;
+  border: 1px solid var(--color-border, #303a44);
+  background: var(--color-primary, #16202a);
+  overflow: hidden;
+}
+.slot-rail__still,
+.slot-rail [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.slot-rail__caption {
+  margin: 0;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
+  /* On panel chrome, never over the media. */
+  color: hsl(205, 16%, 90%);
+  background: var(--color-primary, #16202a);
+}
+
+/* --------------------------------------------------------------- *
+ * Legibility corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* `.split-section p` outranks a bare `.slot-rail__caption`, so the caption was
+   inheriting the muted body ink onto the teal panel at 1.11:1. Both the panel
+   and the specificity are fixed here. */
+.split-section .slot-rail,
+.split-section .slot-rail__caption {
+  background: hsl(200, 18%, 14%);
+}
+.split-section .slot-rail__caption {
+  color: hsl(200, 16%, 90%);
+}
+/* The brand orange is 3.84:1 on the dark panels. */
+.testimonials-section cite,
+.console-panel label {
+  color: hsl(24, 92%, 66%);
+}
+
+/* The media reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
 }

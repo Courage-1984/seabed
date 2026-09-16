@@ -116,8 +116,14 @@ function initFooterAmbient() {
   if (!video) return;
 
   const apply = () => {
-    if (reduceMotion.matches) video.pause();
-    else video.play().catch(() => {});
+    if (reduceMotion.matches) {
+      // Drop the attribute too, so the clip does not restart itself if the
+      // element is re-attached or the source reloads.
+      video.removeAttribute('autoplay');
+      video.pause();
+    } else {
+      video.play().catch(() => {});
+    }
   };
   reduceMotion.addEventListener('change', apply);
 

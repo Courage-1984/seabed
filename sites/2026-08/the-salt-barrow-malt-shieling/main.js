@@ -107,12 +107,21 @@ function initEffect() {
  * while the slot still shows its still frame.
  * ------------------------------------------------------------------ */
 function initSlotVideo() {
-  const video = document.querySelector('[data-slot-video]');
+  // The hover slot is driven by initHoverSlot, so it is excluded here:
+  // otherwise it plays continuously behind its poster and the reveal
+  // starts mid-clip instead of from the first frame.
+  const video = document.querySelector('[data-slot-video]:not([data-slot-hover] [data-slot-video])');
   if (!video) return;
 
   const apply = () => {
-    if (reduceMotion.matches) video.pause();
-    else video.play().catch(() => {});
+    if (reduceMotion.matches) {
+      // Drop the attribute too, so the clip does not restart itself if the
+      // element is re-attached or the source reloads.
+      video.removeAttribute('autoplay');
+      video.pause();
+    } else {
+      video.play().catch(() => {});
+    }
   };
   reduceMotion.addEventListener('change', apply);
 
@@ -141,13 +150,30 @@ function initHoverSlot() {
   const play = () => {
     const video = slot.querySelector('[data-slot-video]');
     if (!video || reduceMotion.matches) return;
+    finishing = false;
+    video.loop = true;
     video.play().catch(() => {});
   };
+  // Let the pass finish rather than cutting mid-frame: looping is dropped so
+  // the clip can reach its natural end, then it resets and loops again on the
+  // next hover. Re-entering before it ends simply restores the loop.
+  let finishing = false;
   const stop = () => {
     const video = slot.querySelector('[data-slot-video]');
-    if (!video) return;
-    video.pause();
-    video.currentTime = 0;
+    if (!video || video.paused) return;
+    finishing = true;
+    video.loop = false;
+    video.addEventListener(
+      'ended',
+      () => {
+        if (!finishing) return;
+        finishing = false;
+        video.loop = true;
+        video.pause();
+        video.currentTime = 0;
+      },
+      { once: true }
+    );
   };
 
   slot.addEventListener('pointerenter', play);

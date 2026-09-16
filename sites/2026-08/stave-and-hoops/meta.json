@@ -1,7 +1,7 @@
 {
   "title": "Stave & Hoops Millwright Guild",
   "blurb": "Hand-milled English oak and Douglas fir stave restoration powered by a shared master-artisan timber bank.",
-  "hero": "assets/hero.webp",
+  "hero": "assets/hero-cooperage-yard.webp",
   "layoutFamily": "asymmetric split",
   "tags": [
     "industrial",
@@ -13,5 +13,7 @@
   "wordFloor": 1900,
   "qa": "v2-pass",
   "videoPlacement": "section transition band",
-  "signatureEffect": "magnetic proximity cursor element"
+  "signatureEffect": "magnetic proximity cursor element",
+  "video": "assets/stave-and-hoops-section-transition-band.webm",
+  "contract": "v2.1"
 }

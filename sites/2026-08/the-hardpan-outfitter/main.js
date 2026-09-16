@@ -55,3 +55,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+/* ------------------------------------------------------------------ *
+ * Video placement — section transition band.
+ * The band wipes open as it rises through the viewport. The runway is
+ * short so the wipe completes well before the band leaves the screen.
+ * ------------------------------------------------------------------ */
+function initTransitionBand() {
+  const band = document.querySelector('[data-transition-band]');
+  if (!band) return;
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduce.matches) {
+    band.style.setProperty('--band-wipe', '100%');
+    return;
+  }
+
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const rect = band.getBoundingClientRect();
+    const raw = (window.innerHeight - rect.top) / (window.innerHeight * 0.35);
+    band.style.setProperty('--band-wipe', `${(Math.min(1, Math.max(0, raw)) * 100).toFixed(1)}%`);
+  };
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+
+  // The loop only decodes while the band is on screen.
+  const video = band.querySelector('[data-slot-video]');
+  if (!video) return;
+  const apply = () => {
+    if (reduce.matches) {
+      video.removeAttribute('autoplay');
+      video.pause();
+    } else {
+      video.play().catch(() => {});
+    }
+  };
+  reduce.addEventListener('change', apply);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !reduce.matches) video.play().catch(() => {});
+        else video.pause();
+      },
+      { threshold: 0.05 }
+    ).observe(video);
+  }
+  apply();
+}
+
+document.addEventListener('DOMContentLoaded', initTransitionBand);
