@@ -54,7 +54,7 @@
 
     <main>
       <!-- Section 1: Hero Section -->
-      <section id="hero" class="hero">
+      <section data-reveal id="hero" class="hero">
         <img
           src="./assets/hero.webp"
           alt="An 80-foot historic steel coal barge moored on a picturesque English canal at dusk"
@@ -82,7 +82,7 @@
       <section class="container">
         <div class="bento-grid">
           <!-- Section 2: The Fermentary & Fire -->
-          <article id="fermentary" class="bento-item span-2 row-span-2 primary-bg">
+          <article data-reveal id="fermentary" class="bento-item span-2 row-span-2 primary-bg">
             <img
               src="./assets/fermentary.webp"
               alt="A rustic kitchen interior inside a narrowboat with a roaring wood fire clay oven"
@@ -111,7 +111,7 @@
           </article>
 
           <!-- Section 3: The Flagship Trench-Pies -->
-          <article id="trench-pies" class="bento-item span-2">
+          <article data-reveal id="trench-pies" class="bento-item span-2">
             <img
               src="./assets/trench_pie.webp"
               alt="A dark stout and ox-cheek pie with thick pastry crust beside a pint of heritage ale"
@@ -141,7 +141,7 @@
           </article>
 
           <!-- Section 4: The Waterway Provenance -->
-          <article id="provenance" class="bento-item span-2">
+          <article data-reveal id="provenance" class="bento-item span-2">
             <div class="bento-content">
               <h2>Sourced Along the Towpath</h2>
               <p>
@@ -159,7 +159,7 @@
           </article>
 
           <!-- Section 5: Our Floating Public House -->
-          <article id="about" class="bento-item span-4 accent-bg">
+          <article data-reveal id="about" class="bento-item span-4 accent-bg">
             <div class="bento-content" style="text-align: center; max-width: 900px; margin: 0 auto">
               <h2>Our Floating Public House</h2>
               <div style="margin: 2rem 0;">
@@ -189,10 +189,34 @@
           </article>
 
           <!-- Section 6: The Daily Board -->
-          <article id="menu" class="bento-item span-2 row-span-2">
+          <article data-reveal id="menu" class="bento-item span-2 row-span-2">
             <div class="bento-content">
               <h2>The Daily Board</h2>
               <p>Our chalkboard menu rotates continuously, dictated solely by what the local topography yields.</p>
+
+              <div class="marquee-band" data-marquee>
+                <div class="marquee-band__track" data-marquee-track>
+                  <span class="marquee-band__word" aria-hidden="true">MOORED AT DUNDAS AQUEDUCT</span>
+                  <span class="marquee-band__word" aria-hidden="true">COB OVEN LIT AT FOUR</span>
+                  <span class="marquee-band__word" aria-hidden="true">THIRTY COVERS A NIGHT</span>
+                  <!-- Duplicate half: the loop wraps at -50%, so it must be identical. -->
+                  <span class="marquee-band__word" aria-hidden="true">MOORED AT DUNDAS AQUEDUCT</span>
+                  <span class="marquee-band__word" aria-hidden="true">COB OVEN LIT AT FOUR</span>
+                  <span class="marquee-band__word" aria-hidden="true">THIRTY COVERS A NIGHT</span>
+                </div>
+              </div>
+
+              <div class="slot-hover-wrap">
+                <div class="slot-hover" tabindex="0" role="group" aria-label="The cob oven" data-slot-hover>
+                  <img class="slot-hover__poster" src="./assets/fermentary.webp" alt="" loading="lazy" width="1024" height="576">
+                  <div class="slot-hover__content">
+                    <h3>The Cob Oven</h3>
+                    <p>Hand-built into the barge in 2019 and lit with English oak every service since.</p>
+                    <span class="slot-hover__hint" aria-hidden="true">Hover or focus to watch the fire</span>
+                  </div>
+                </div>
+              </div>
+
               <ul class="menu-list">
                 <li>
                   <div class="menu-title">
@@ -257,7 +281,7 @@
           </article>
 
           <!-- Section 7: Waterway Etiquette & Moorings -->
-          <article id="faq" class="bento-item span-2 primary-bg">
+          <article data-reveal id="faq" class="bento-item span-2 primary-bg">
             <div class="bento-content">
               <h2>Waterway Etiquette &amp; Moorings</h2>
               <div class="faq-item">
@@ -304,7 +328,7 @@
           </article>
 
           <!-- Section 8: The Patron's Log -->
-          <article id="testimonials" class="bento-item span-2">
+          <article data-reveal id="testimonials" class="bento-item span-2">
             <div class="bento-content">
               <h2>The Patron's Log</h2>
               <div class="testimonial">
@@ -333,7 +357,7 @@
           </article>
 
           <!-- Section 9: The Galley Hatch -->
-          <article id="contact" class="bento-item span-2">
+          <article data-reveal id="contact" class="bento-item span-2">
             <div class="bento-content">
               <h2>The Galley Hatch</h2>
               <p>

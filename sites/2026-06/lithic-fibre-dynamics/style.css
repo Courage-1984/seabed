@@ -3,7 +3,7 @@
 :root {
   --color-primary: #2a2f33;
   --color-secondary: #b86b40;
-  --color-accent: #2b7cba;
+  --color-accent: #1d6ba6;
   --color-background: #f5f3ec;
   --color-text: #191b1c;
   --color-text-muted: #5e6469;
@@ -24,6 +24,7 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 h1,
@@ -257,7 +258,9 @@ footer {
 }
 
 footer p {
-  color: var(--color-text-muted);
+  /* Scoped, not the token: --color-text-muted is tuned for the #f5f3ec light
+     ground, and the dark footer is its only consumer here. 7.35:1 on #2a2f33. */
+  color: #b9c0c5;
   font-size: 1rem;
 }
 
@@ -289,4 +292,166 @@ footer p {
   h2 {
     font-size: 2rem;
   }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — progressive blur focus-pull. */
+[data-focus-pull] {
+  filter: blur(var(--focus-blur, 0px));
+  /* Composed against the element's own resting opacity: media held back to act
+     as a scrim would otherwise be blown to full opacity at full focus. */
+  opacity: calc(var(--focus-base-opacity, 1) * var(--focus-fade, 1));
+  will-change: filter, opacity;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-focus-pull] {
+    filter: none;
+    opacity: 1;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Video placement slot — hero inset frame.
+ * Built around the still first: the page reads correctly with no
+ * video present, and the <video> takes the same class as the <img>.
+ * --------------------------------------------------------------- */
+.slot-inset {
+  display: block;
+  /* A real inset overlay. .hero-image-wrapper is position:relative and
+     aspect-ratio:4/3 with overflow:hidden, so an in-flow figure here pushed
+     the hero image out of the clipped box. Out of flow, the hero img is the
+     only in-flow child again and fills the frame. */
+  position: absolute;
+  inset-block-end: 1rem;
+  inset-inline-start: 1rem;
+  z-index: 1;
+  inline-size: min(62%, 20rem);
+  margin: 0;
+  border-radius: 6px;
+  overflow: clip;
+  background: hsl(206, 12%, 14%);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+.slot-inset__still,
+.slot-inset [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+/* .hero-image-wrapper img (0-1-1) sets height:100% and would out-specify
+   block-size:auto above, dropping the declared ratio the moment the figure
+   gains a definite height. Matched at 0-2-0 rather than with !important. */
+.hero-image-wrapper .slot-inset__still,
+.hero-image-wrapper .slot-inset [data-slot-video] {
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+}
+.slot-inset__caption {
+  margin: 0;
+  padding: 0.7rem 1rem;
+  background: hsl(206, 12%, 14%);
+  color: hsl(206, 12%, 94%);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
 }

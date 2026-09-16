@@ -20,6 +20,11 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   font-size: 1.125rem;
+  /* clip, never hidden: `hidden` on body makes it a scroll container and
+     silently kills every position: sticky descendant. The tilt effect
+     projects card corners ±7deg through perspective(1000px), outside the
+     layout box, which is what would otherwise open a horizontal scrollbar. */
+  overflow-x: clip;
 }
 
 h1,
@@ -50,8 +55,12 @@ a {
   transition: color 0.3s ease;
 }
 
+/* Light-ground hover ink. NOT --color-secondary (#d28a48 = 2.58:1 here).
+   The token itself is left alone: it is also the footer link ink on the dark
+   ground, the header's dashed border and the divider, and darkening it at
+   :root would drop every dark-ground consumer to ~1.4:1. */
 a:hover {
-  color: var(--color-secondary);
+  color: #9a5a1c; /* 5.01:1 on --color-background #f8f5ef */
 }
 
 img {
@@ -180,8 +189,20 @@ footer {
   margin-top: 4rem;
 }
 
+/* The global h1..h6 colour is a direct declaration and so beats the colour
+   footer children inherit from `footer`; without this the headings render
+   --color-primary ink on the --color-primary footer ground at 1.00:1. */
+footer h3 {
+  color: var(--color-background); /* 6.92:1 on --color-primary #355c4d */
+}
+
 footer a {
-  color: var(--color-secondary);
+  color: #f0c28d; /* 4.59:1 on --color-primary #355c4d */
+}
+
+/* Dark ground: the light-ground hover ink would be 1.38:1 here. */
+footer a:hover {
+  color: var(--color-background); /* 6.92:1 on --color-primary #355c4d */
 }
 
 .footer-grid {
@@ -218,4 +239,178 @@ footer a {
   .footer-grid {
     grid-template-columns: 1fr;
   }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — CSS 3D card tilt. */
+[data-tilt] {
+  /* --reveal-y inherits, and every tilt card here is a DESCENDANT of a
+     [data-reveal] section rather than a reveal target itself, so without this
+     local reset it would pick up the section's 18px and travel it a second
+     time. Reset rather than dropping the translate3d: an element that carries
+     BOTH hooks still needs to compose them, and `.js-reveal [data-reveal]`
+     (0-2-0) outranks this declaration (0-1-0) in exactly that case. */
+  --reveal-y: 0px;
+  transform: translate3d(0, var(--reveal-y, 0px), 0) perspective(1000px) rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg));
+  transform-style: preserve-3d;
+  position: relative;
+  transition:
+    transform var(--dur-mid) var(--ease-out),
+    box-shadow var(--dur-mid) var(--ease-out);
+}
+[data-tilt].is-tilting {
+  transition:
+    transform 80ms linear,
+    box-shadow var(--dur-mid) var(--ease-out);
+}
+[data-tilt]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-out);
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0) 55%
+  );
+}
+[data-tilt].is-tilting::after {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-tilt],
+  [data-tilt].is-tilting {
+    transform: none;
+  }
+  [data-tilt]::after {
+    display: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Video placement slot — footer ambient.
+ * Built around the still first: the page reads correctly with no
+ * video present, and the <video> takes the same class as the <img>.
+ * --------------------------------------------------------------- */
+.slot-footer-media {
+  position: relative;
+  inline-size: 100%;
+  block-size: clamp(9rem, 22vh, 14rem);
+  overflow: clip;
+}
+.slot-footer-media__still,
+.slot-footer-media [data-slot-video] {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  opacity: 0.32;
+}
+.slot-footer-media__scrim {
+  position: absolute;
+  inset: 0;
+  /* Terminates on the footer's own ground so the band dissolves into the
+     footer instead of stepping to a darker colour at its bottom edge. */
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, var(--color-primary) 100%);
+  pointer-events: none;
 }

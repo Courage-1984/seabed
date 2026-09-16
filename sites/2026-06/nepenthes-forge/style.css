@@ -25,7 +25,7 @@ body {
   font-family: 'Source Sans 3', sans-serif;
   line-height: 1.6;
   font-size: 16px;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -317,4 +317,272 @@ footer a:hover {
 .table-container {
   width: 100%;
   overflow-x: auto;
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — animated SVG line-draw.
+   The live element is `.seal-diagram` (index.html); the box rules for it live
+   with the slot below. A `.line-draw` block used to sit here matching nothing,
+   so it has been removed rather than left to shadow the real selector. */
+.draw-path {
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition: stroke-dashoffset 1100ms var(--ease-out);
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .draw-path {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Video placement slot — modal feature.
+ * Built around the still first: the page reads correctly with no
+ * video present, and the <video> takes the same class as the <img>.
+ * --------------------------------------------------------------- */
+.slot-tile-button {
+  display: block;
+  inline-size: 100%;
+  margin-block: 1.5rem 0;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  overflow: clip;
+  background: #1b1f22;
+  color: hsl(200, 12%, 94%);
+  text-align: start;
+  cursor: pointer;
+}
+.slot-tile-button:focus-visible {
+  /* outline-offset draws the ring OUTSIDE the #1b1f22 button, i.e. on the
+     #ffffff .bento-item card — so it takes the page ink, not the panel ink.
+     #121415 on #ffffff = 18.47:1. */
+  outline: 3px solid var(--color-text);
+  outline-offset: 3px;
+}
+.slot-tile-button img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  /* Reset the global `img` border + margin-bottom, which would otherwise open
+     a dark dead band between the poster and the label bar. */
+  border: 0;
+  margin-block-end: 0;
+}
+.slot-tile-button__label {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  background: #1b1f22;
+  color: hsl(200, 12%, 94%);
+}
+.slot-tile-button__glyph {
+  flex: 0 0 auto;
+  inline-size: 0;
+  block-size: 0;
+  border-block: 0.5rem solid transparent;
+  border-inline-start: 0.85rem solid hsl(200, 12%, 94%);
+}
+.slot-tile-button__text {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+.slot-tile-button__text strong {
+  display: block;
+  font-size: 0.9375rem;
+}
+/* A class-level display beats the UA [hidden] rule, which would otherwise leave
+   this fixed full-viewport overlay swallowing every click on the page. */
+.video-modal[hidden] {
+  display: none;
+}
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.video-modal.is-open {
+  opacity: 1;
+}
+.video-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+}
+.video-modal__frame {
+  position: relative;
+  inline-size: min(100%, 60rem);
+  border-radius: 6px;
+  overflow: clip;
+  background: #1b1f22;
+}
+.video-modal__still,
+.video-modal [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  /* Same reset as the tile poster: the global `img` rule would leave a 2px
+     border and a 24px strip of #1b1f22 under the still inside the frame. */
+  border: 0;
+  margin-block-end: 0;
+}
+.video-modal__close {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-end: 1rem;
+  z-index: 2;
+  inline-size: 44px;
+  block-size: 44px;
+  border: 2px solid hsl(200, 12%, 94%);
+  border-radius: 50%;
+  background: #1b1f22;
+  color: hsl(200, 12%, 94%);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.video-modal__close:hover,
+.video-modal__close:focus-visible {
+  background: hsl(200, 12%, 94%);
+  color: #1b1f22;
+}
+.video-modal__close:focus-visible {
+  /* Drawn inside the button: :focus-visible also fills it with hsl(200, 12%, 94%), so an
+     ink-coloured ring would be ink on ink. The panel colour is the contrast. */
+  outline: 2px solid #1b1f22;
+  outline-offset: -4px;
+}
+body.has-modal-open {
+  /* Longhand only: the `overflow` shorthand would also set overflow-x and
+     clobber `overflow-x: clip` on body, turning it into a real scroll
+     container. clip + hidden is a legal pair — only `visible` is coerced. */
+  overflow-y: hidden;
+}
+.seal-diagram {
+  display: block;
+  inline-size: min(100%, 22rem);
+  block-size: auto;
+  margin-block: 1.5rem;
+}
+.seal-diagram .draw-path {
+  fill: none;
+  /* The diagram sits on the #ffffff .bento-item card, not on a dark panel.
+     #7a1a21 on #ffffff = 10.52:1, well clear of the 3:1 WCAG 1.4.11 needs
+     for a non-text graphic. */
+  stroke: var(--color-primary);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }

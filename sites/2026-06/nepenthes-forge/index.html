@@ -27,7 +27,7 @@
       </div>
     </header>
     <main class="container bento-grid">
-      <section class="bento-item bento-item--hero">
+      <section data-reveal class="bento-item bento-item--hero">
         <h1>Absolute Climate Isolation for Predatory Flora.</h1>
         <h2>
           Aerospace-grade aluminium terrarium flight cases and zero-nutrient substrates engineered for the most
@@ -43,7 +43,7 @@
         </p>
       </section>
 
-      <section class="bento-item bento-item--two-thirds">
+      <section data-reveal class="bento-item bento-item--two-thirds">
         <h2>The Highveld Nepenthes Transit Case</h2>
         <p>
           Our flagship engineering achievement is the Highveld Nepenthes Transit Case. Designed originally to transport
@@ -59,11 +59,11 @@
         <img src="./assets/transit-case.webp" alt="High-tech rugged aluminum transit case with glowing climate control readouts housing a Nepenthes pitcher plant" loading="lazy" width="1024" height="1024" style="width:100%; height:auto; margin-top:1.5rem; border-radius:8px;" />
       </section>
 
-      <section class="bento-item bento-item--third">
+      <section data-reveal class="bento-item bento-item--third">
         <img src="./assets/hero.webp" alt="Sleek, aerospace-grade aluminium flight case housing a Nepenthes pitcher plant" fetchpriority="high" width="1024" height="1024">
       </section>
 
-      <section class="bento-item bento-item--seven">
+      <section data-reveal class="bento-item bento-item--seven">
         <h2>The Climate-Lock Sealing Process</h2>
         <p>
           Achieving absolute environmental isolation requires rigorous, methodical assembly. Standard terrariums fail
@@ -92,10 +92,33 @@
           This process guarantees that a ninety-five percent relative humidity setpoint remains constant, mitigating
           catastrophic transpiration shock for fragile botanical specimens.
         </p>
+        <svg class="seal-diagram" viewBox="0 0 320 120" data-line-draw aria-hidden="true" focusable="false">
+          <path class="draw-path" d="M12 96 L92 96 L92 40 L172 40 L172 84 L252 84 L252 24 L308 24"></path>
+        </svg>
+
+        <button type="button" class="slot-tile-button" data-video-open aria-haspopup="dialog" aria-controls="seal-film">
+          <img src="./assets/hardware.webp" alt="" loading="lazy" width="1024" height="576">
+          <span class="slot-tile-button__label">
+            <span class="slot-tile-button__glyph" aria-hidden="true"></span>
+            <span class="slot-tile-button__text">
+              <strong>Watch the seal close</strong>
+              One Climate-Lock cycle, filmed on the bench
+            </span>
+          </span>
+        </button>
+
+        <div class="video-modal" id="seal-film" role="dialog" aria-modal="true" aria-label="Climate-Lock sealing cycle" hidden>
+          <div class="video-modal__backdrop" data-video-close></div>
+          <div class="video-modal__frame">
+            <button type="button" class="video-modal__close" data-video-close aria-label="Close video">&times;</button>
+            <img class="video-modal__still" src="./assets/hardware.webp" alt="" width="1024" height="576">
+          </div>
+        </div>
+
         <a href="./hardware.html" class="cta-button">View Containment Hardware</a>
       </section>
 
-      <section class="bento-item bento-item--five">
+      <section data-reveal class="bento-item bento-item--five">
         <h2>Field Reports from the Conservatory</h2>
         <p>
           Our hardware acts as the final line of defence against hostile external climates. We engineer solutions for
@@ -123,7 +146,7 @@
         <a href="./hardware.html" class="cta-button">Read Full Case Studies</a>
       </section>
 
-      <section class="bento-item bento-item--full">
+      <section data-reveal class="bento-item bento-item--full">
         <h2>Forged in the Dry Highveld</h2>
         <p>
           The concept for Nepenthes Forge &amp; Flight was born out of stark necessity. Pretoria sits at an altitude of

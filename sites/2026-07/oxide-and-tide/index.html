@@ -43,7 +43,7 @@
         </div>
       </aside>
       <main class="content">
-        <section class="hero-section">
+        <section data-reveal class="hero-section">
           <img
             src="./assets/hero-workshop.webp"
             alt="An antique copper diving helmet sits on an oak workbench inside the Scapa Flow restoration studio."
@@ -74,7 +74,7 @@
           </div>
         </section>
 
-        <section>
+        <section data-reveal>
           <div class="section-content">
             <div class="section-label">The Anvil and the Abyss</div>
             <h2>Forging Yesterday’s Shipwrecks into Tomorrow’s Armour</h2>
@@ -97,7 +97,16 @@
           </div>
         </section>
 
-        <section>
+        <!-- Signature effect — masked scroll-through type. Deliberately a div,
+             not a section element: main.js drives the rail timeline off
+             document.querySelectorAll('section') by index, so a seventh one
+             would silently shift every timeline percentage and desync the six
+             rail markers. -->
+        <div class="masked-band" data-reveal>
+          <p class="masked-band__type" data-masked-type>OXIDE &amp; TIDE</p>
+        </div>
+
+        <section data-reveal>
           <div class="section-content">
             <div class="section-label">Workshop Manifest</div>
             <h2>Apparatus Under Structural Overhaul</h2>
@@ -119,7 +128,19 @@
           </div>
         </section>
 
-        <section>
+        <div class="slot-split-band" data-reveal>
+          <div class="slot-split" data-slot-split>
+            <img class="slot-split__still" src="./assets/hydrostatic-chamber.webp" alt="" loading="lazy" width="1024" height="576">
+            <p class="slot-split__caption">Hydrostatic validation &mdash; every helmet certified to depth before it ships</p>
+          </div>
+          <div class="slot-split__lead">
+            <h2>Proved, not polished</h2>
+            <p>A helmet leaves the bench only after it has held pressure in the tank. The
+              finish is the last thing we do and the least of what we guarantee.</p>
+          </div>
+        </div>
+
+        <section data-reveal>
           <div class="section-content">
             <div class="section-label">The Restoration Cycle</div>
             <h2>A Meticulous Timeline</h2>
@@ -138,7 +159,7 @@
           </div>
         </section>
 
-        <section>
+        <section data-reveal>
           <div class="section-content">
             <div class="section-label">Orkney Dispatches</div>
             <h2>Trusted by the Trade</h2>
@@ -172,7 +193,7 @@
           </div>
         </section>
 
-        <section>
+        <section data-reveal>
           <div class="section-content">
             <div class="section-label">Tidal Inquiries</div>
             <h2>Shipping Heavy Freight</h2>

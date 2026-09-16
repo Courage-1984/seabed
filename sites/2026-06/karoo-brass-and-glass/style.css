@@ -7,7 +7,11 @@
   --color-background: #f4f1ea; /* Parchment White */
   --color-text: #1a1a1a; /* Iron Black */
   --color-border: #d1c8b8;
-  --color-muted: #5e5a52;
+  /* Only ever rendered on the dark footer (background: var(--color-text) #1a1a1a)
+     -- the three footer copyright lines are its sole consumers site-wide, so
+     there is no light-ground usage to protect. #5e5a52 measured 2.54:1 there;
+     #a39d93 measures 6.47:1. */
+  --color-muted: #a39d93;
 }
 
 * {
@@ -22,7 +26,7 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   font-size: 16px;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1,
@@ -326,4 +330,185 @@ select:focus {
 .table-container {
   width: 100%;
   overflow-x: auto;
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — text scramble decode on reveal. */
+[data-scramble] {
+  /* Tabular figures keep numeric glyphs from jittering as they swap, and
+     pre-wrap preserves the run of whitespace -- which the script never
+     scrambles -- so the line keeps its break structure through the decode. */
+  font-variant-numeric: tabular-nums;
+  white-space: pre-wrap;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-scramble] {
+    animation: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Video placement slot — marquee strip.
+ * Built around the still first: the page reads correctly with no
+ * video present, and the <video> takes the same class as the <img>.
+ * --------------------------------------------------------------- */
+.slot-marquee {
+  margin-block: 3rem;
+  padding-block: 1rem;
+  background-color: #1f1b16;
+  overflow: clip;
+}
+.slot-marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  inline-size: max-content;
+  animation: slot-marquee-drift 38s linear infinite;
+}
+@keyframes slot-marquee-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.slot-marquee__item {
+  flex: 0 0 auto;
+  inline-size: clamp(14rem, 26vw, 20rem);
+  margin: 0;
+}
+.slot-marquee__still,
+.slot-marquee [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+/* The still is dial_macro.webp, intrinsically 1024x1024, and its width/height
+   attributes say the same. Rendering it 1/1 makes the reserved box, the
+   intrinsic ratio and the painted box agree, so nothing is cropped and nothing
+   reflows -- which matters here because the site has no <link rel="stylesheet">
+   and the attribute ratio governs layout until main.js resolves the import. */
+.slot-marquee__still {
+  aspect-ratio: 1 / 1;
+}
+/* A clip dropped into this slot stays 16/9. Specificity 0-2-0 beats the 0-1-0
+   still rule above, so this holds even when the <video> also carries
+   .slot-marquee__still -- no !important needed. */
+.slot-marquee [data-slot-video] {
+  aspect-ratio: 16 / 9;
+}
+.slot-marquee__caption {
+  margin-block-start: 0.4rem;
+  color: hsl(35, 18%, 94%);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+.slot-marquee__word {
+  flex: 0 0 auto;
+  color: hsl(35, 18%, 94%);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
 }

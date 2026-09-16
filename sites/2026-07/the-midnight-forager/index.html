@@ -35,7 +35,7 @@
 
     <main>
       <!-- 1. High-Impact Hero -->
-      <section id="hero" class="section hero-section animate-on-scroll">
+      <section data-reveal id="hero" class="section hero-section animate-on-scroll">
         <div class="hero-content">
           <h1 class="hero-title">The Midnight Forager</h1>
           <p class="hero-subtitle">
@@ -59,7 +59,7 @@
       </section>
 
       <!-- 2. Deep Value Adds (4 Cards) -->
-      <section id="concept" class="section concept-section animate-on-scroll">
+      <section data-reveal id="concept" class="section concept-section animate-on-scroll">
         <div class="concept-grid">
           <div class="concept-text">
             <h2>The Science of the Shadows</h2>
@@ -112,7 +112,7 @@
       </section>
 
       <!-- 3. Interactive Showcase (Carousel) -->
-      <section id="showcase" class="section showcase-section animate-on-scroll">
+      <section data-reveal id="showcase" class="section showcase-section animate-on-scroll">
         <h2 style="text-align: center; margin-bottom: 2rem">Nocturnal Discoveries</h2>
         <div class="carousel-wrapper" style="max-width: 1000px; margin: 0 auto; position: relative">
           <button class="carousel-btn prev-btn" aria-label="Previous image">&lt;</button>
@@ -176,7 +176,7 @@
       </section>
 
       <!-- 5. The Expedition — Itinerary -->
-      <section id="the-expedition" class="section expedition-section animate-on-scroll">
+      <section data-reveal id="the-expedition" class="section expedition-section animate-on-scroll">
         <div class="expedition-header">
           <h2>The Expedition</h2>
           <p class="section-lead">
@@ -189,8 +189,8 @@
               src="./assets/expedition.webp"
               alt="A warming campfire in the dark Scottish Highlands"
               loading="lazy"
-              width="800"
-              height="800"
+              width="737"
+              height="596"
             />
           </div>
           <div class="expedition-details">
@@ -238,8 +238,31 @@
         </div>
       </section>
 
+      <div class="transition-band">
+        <img class="transition-band__media" src="./assets/expedition.webp" alt="" loading="lazy" width="737" height="596">
+        <div class="transition-band__scrim"></div>
+        <p class="transition-band__label">Between dusk and the first frost</p>
+      </div>
+
+      <section data-reveal class="pin-section" data-pin-scroller>
+        <div class="pin-section__stage" data-pin-stage>
+          <article class="pin-panel" data-pin-panel>
+            <h3>We plan the route before dark</h3>
+            <p>Twelve years of fruiting maps, recent rainfall and soil temperature readings set the line we walk.</p>
+          </article>
+          <article class="pin-panel" data-pin-panel>
+            <h3>We verify every specimen twice</h3>
+            <p>Macroscopic and microscopic identification, and a spore print for anything ambiguous, before the fire.</p>
+          </article>
+          <article class="pin-panel" data-pin-panel>
+            <h3>We cook it where we pick it</h3>
+            <p>The night's harvest goes onto birch and cherry embers in the woodland canopy, minutes after picking.</p>
+          </article>
+        </div>
+      </section>
+
       <!-- 6. Seasonal Availability Calendar -->
-      <section id="seasonal-calendar" class="section calendar-section animate-on-scroll">
+      <section data-reveal id="seasonal-calendar" class="section calendar-section animate-on-scroll">
         <div style="max-width: 900px; margin: 0 auto; text-align: center">
           <h2>Seasonal Availability</h2>
           <p class="section-lead" style="margin: 0 auto 3rem">
@@ -307,7 +330,7 @@
       </section>
 
       <!-- 7. Menu Section -->
-      <section id="menu" class="section menu-section animate-on-scroll">
+      <section data-reveal id="menu" class="section menu-section animate-on-scroll">
         <div class="menu-container">
           <div class="menu-content">
             <h2 class="menu-title">Twilight Degustation</h2>
@@ -400,7 +423,7 @@
       </section>
 
       <!-- 9. Social Proof — Expanded -->
-      <section id="social-proof" class="section social-proof-section animate-on-scroll" style="text-align: center">
+      <section data-reveal id="social-proof" class="section social-proof-section animate-on-scroll" style="text-align: center">
         <div style="max-width: 800px; margin: 0 auto">
           <h2>Gastronomic Acclaim</h2>
           <blockquote style="font-size: 1.5rem; font-style: italic; margin: 2rem 0; line-height: 1.7">
@@ -454,7 +477,7 @@
       </section>
 
       <!-- 10. Booking Section -->
-      <section id="booking" class="section booking-section animate-on-scroll">
+      <section data-reveal id="booking" class="section booking-section animate-on-scroll">
         <div class="booking-grid">
           <div class="booking-image">
             <img

@@ -26,7 +26,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -34,7 +34,7 @@ body {
   background-color: var(--color-background);
   color: var(--color-text);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   font-weight: 300;
 }
 
@@ -943,4 +943,241 @@ p {
   .value-card {
     padding: 1.25rem;
   }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — sticky section pinning with cross-fade. */
+[data-pin-scroller] {
+  position: relative;
+}
+[data-pin-stage] {
+  position: sticky;
+  top: 0;
+  min-block-size: 100vh;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+}
+[data-pin-panel] {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  /* Inert panels must not swallow clicks meant for the active one. */
+  pointer-events: none;
+}
+[data-pin-panel].is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+[data-pin-scroller].is-static {
+  block-size: auto;
+}
+/* No script means nothing ever adds `.is-active`, so the unconditional
+   `opacity: 0` above would leave a blank sticky band and three lost content
+   blocks. Keyed to the same no-script signal the scroller height uses, so it
+   can never reach the pinned path. */
+html:not(.js-reveal) [data-pin-stage] {
+  position: static;
+  min-block-size: 0;
+  display: block;
+}
+html:not(.js-reveal) [data-pin-panel] {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  margin-block-end: 3rem;
+}
+
+/* Reduced motion drops the pin entirely and lets the panels stack in flow. */
+[data-pin-stage].is-static {
+  position: static;
+  min-block-size: 0;
+  display: block;
+}
+[data-pin-stage].is-static [data-pin-panel] {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  margin-block-end: 3rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-pin-panel] {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Video placement slot — section transition band.
+ * Built around the still first: the page reads correctly with no
+ * video present, and the <video> takes the same class as the <img>.
+ * --------------------------------------------------------------- */
+.transition-band {
+  position: relative;
+  inline-size: 100%;
+  margin-block: 4rem;
+  overflow: clip;
+  isolation: isolate;
+}
+.transition-band__media {
+  display: block;
+  inline-size: 100%;
+  block-size: clamp(14rem, 34vh, 22rem);
+  object-fit: cover;
+}
+.transition-band__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.72) 100%);
+  pointer-events: none;
+}
+.transition-band__label {
+  position: absolute;
+  inset-block-end: 1.25rem;
+  inset-inline-start: 1.5rem;
+  margin: 0;
+  color: hsl(214, 20%, 94%);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+.pin-section {
+  margin-block: 4rem;
+  /* The scroll travel the pin rides. The stage inside stays stuck to the top
+     of the viewport for the length of this box and no further. */
+  block-size: 300vh;
+}
+/* No script means no pin, so the travel must collapse instead of leaving
+   three viewports of empty page. */
+html:not(.js-reveal) .pin-section {
+  block-size: auto;
+}
+/* Deliberately no `.pin-section__stage` rule: the stage now carries
+   [data-pin-stage], and a same-specificity `position: relative` declared later
+   in the file would silently cancel the `position: sticky` the pin depends on. */
+.pin-panel {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: 6px;
+  background: hsl(214, 30%, 12%);
+  color: hsl(214, 20%, 94%);
+}
+/* Scoped to the unpinned path only. Once the panels genuinely share
+   `grid-area: 1 / 1` an unscoped sibling margin offsets panel 2 by 1rem and
+   panel 3 by 2rem inside the shared cell, so the cross-fade steps downward. */
+[data-pin-stage].is-static .pin-panel + .pin-panel {
+  margin-block-start: 1rem;
+}
+.pin-panel h3 {
+  margin: 0 0 0.5rem;
+  color: hsl(214, 20%, 94%);
+}
+.pin-panel p {
+  margin: 0;
+  color: hsl(214, 20%, 94%);
+  line-height: 1.55;
+  max-inline-size: 56ch;
 }

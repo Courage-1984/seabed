@@ -35,9 +35,9 @@
     </header>
 
     <main>
-      <section class="hero">
+      <section data-reveal class="hero">
         <div class="container">
-          <h1>Mechanics Over Microchips. Weather Prediction for the Off-Grid.</h1>
+          <h1 data-scramble>Mechanics Over Microchips. Weather Prediction for the Off-Grid.</h1>
           <p class="subhead">
             Fully restored, mechanically calibrated antique barometers engineered for extreme South African altitudes
             and zero-signal environments.
@@ -54,7 +54,7 @@
         </div>
       </section>
 
-      <section class="container">
+      <section data-reveal class="container">
         <div class="grid-editorial">
           <div class="content">
             <h2>Why Analogue Survives the Highveld</h2>
@@ -75,15 +75,15 @@
           </div>
           <img
             src="./assets/home_hero.webp"
-            alt="Restored 1920s naval aneroid barometer made of solid polished brass"
+            alt="Misty highland escarpment at sunrise, low cloud spilling over a green ridge"
             fetchpriority="high"
-            width="1200"
-            height="600"
+            width="1600"
+            height="953"
           />
         </div>
       </section>
 
-      <section class="container" style="background-color: var(--color-background); padding: 4rem 2rem">
+      <section data-reveal class="container" style="background-color: var(--color-background); padding: 4rem 2rem">
         <div class="grid-editorial reverse">
           <div class="content">
             <h2>Forged in Pretoria, Tested in the Karoo</h2>
@@ -120,7 +120,7 @@
         </div>
       </section>
 
-      <section class="container">
+      <section data-reveal class="container">
         <div style="margin-bottom: 3rem; text-align: center">
           <h2>Field Reports from the Interior</h2>
         </div>
@@ -160,7 +160,31 @@
         </div>
       </section>
 
-      <section class="container" style="background-color: var(--color-border); padding: 4rem">
+      <div class="slot-marquee" data-slot-marquee>
+        <div class="slot-marquee__track">
+          <!-- Decorative: this is the same picture already described in full at the
+               "Forged in Pretoria" section above, so it takes an empty alt rather
+               than a second description of one image. The figcaption carries the
+               visible label. 1024x1024 is dial_macro.webp's true intrinsic size. -->
+          <figure class="slot-marquee__item">
+            <img class="slot-marquee__still" src="./assets/dial_macro.webp" alt="" loading="lazy" width="1024" height="1024">
+            <figcaption class="slot-marquee__caption">Dial face, post-calibration</figcaption>
+          </figure>
+          <span class="slot-marquee__word" aria-hidden="true">CAPSULE RE-TEMPERED</span>
+          <span class="slot-marquee__word" aria-hidden="true">BRASS HAND-POLISHED</span>
+          <span class="slot-marquee__word" aria-hidden="true">BEVELLED CRYSTAL FITTED</span>
+          <!-- Duplicate half: the loop wraps at -50%, so it must be identical. -->
+          <figure class="slot-marquee__item" aria-hidden="true">
+            <img class="slot-marquee__still" src="./assets/dial_macro.webp" alt="" loading="lazy" width="1024" height="1024">
+            <figcaption class="slot-marquee__caption">Dial face, post-calibration</figcaption>
+          </figure>
+          <span class="slot-marquee__word" aria-hidden="true">CAPSULE RE-TEMPERED</span>
+          <span class="slot-marquee__word" aria-hidden="true">BRASS HAND-POLISHED</span>
+          <span class="slot-marquee__word" aria-hidden="true">BEVELLED CRYSTAL FITTED</span>
+        </div>
+      </div>
+
+      <section data-reveal class="container" style="background-color: var(--color-border); padding: 4rem">
         <div class="content" style="max-width: 800px; margin: 0 auto; text-align: center">
           <h2>Secure Overland Dispatch</h2>
           <p style="text-align: left">

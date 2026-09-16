@@ -2,6 +2,10 @@
   --color-primary: #12161a;
   --color-secondary: #2b353d;
   --color-accent: #00e5ff;
+  /* Light-ground variant: #00e5ff is 1.39:1 on --color-background and only
+     legal on the dark rail. Do not darken --color-accent itself; .btn:hover
+     uses the bright value as a BACKGROUND. */
+  --color-accent-on-light: #00727f;
   --color-background: #f0f4f8;
   --color-text: #080b0e;
 }
@@ -24,7 +28,7 @@ html {
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img {
@@ -93,8 +97,9 @@ h3,
   width: fit-content;
 }
 
+/* Dark-rail hovers only. .text-link is light-ground in this site (both uses
+   are inside .right-pane) and hovers via --color-accent-on-light below. */
 .rail-nav a:hover,
-.text-link:hover,
 .btn:hover {
   color: var(--color-accent);
   border-color: var(--color-accent);
@@ -223,8 +228,8 @@ p {
 }
 
 .text-link:hover {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
+  color: var(--color-accent-on-light);
+  border-bottom-color: var(--color-accent-on-light);
 }
 
 blockquote {
@@ -314,4 +319,160 @@ blockquote {
     border-right: none;
     border-bottom: 1px solid var(--color-secondary);
   }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — staggered letter-by-letter headline. */
+.split-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+.split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 0.4em, 0);
+}
+.is-split.is-animated .split-char {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 320ms var(--ease-out) calc(var(--char-index) * 18ms),
+    transform 320ms var(--ease-out) calc(var(--char-index) * 18ms);
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .split-char {
+    opacity: 1;
+    transform: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Video placement slot — sticky rail loop.
+ * Built around the still first: the page reads correctly with no
+ * video present, and the <video> takes the same class as the <img>.
+ * --------------------------------------------------------------- */
+.slot-rail {
+  margin-block-start: 2rem;
+  border-radius: 6px;
+  overflow: clip;
+  background: hsl(206, 16%, 13%);
+}
+.slot-rail__still,
+.slot-rail [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+/* Raised to 0-2-0 so the site's own .hero-statement p (0-1-1) cannot
+   out-specify the caption on colour, font-size or max-width. */
+.hero-statement .slot-rail__caption,
+.slot-rail__caption {
+  margin: 0;
+  padding: 0.65rem 0.9rem;
+  background: hsl(206, 16%, 13%);
+  color: hsl(206, 14%, 94%);
+  font-size: 0.78125rem;
+  line-height: 1.45;
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
 }

@@ -4,6 +4,13 @@
   --color-primary: #84593c;
   --color-secondary: #22332b;
   --color-accent: #d49a5b;
+  /* --color-accent is tuned for the DARK grounds it actually sits on: the rail
+     #22332b (5.44:1) and the footer #1a1c1a (7.00:1). On the light
+     --color-background #f4f2ee it is only 2.19:1, failing even the 3:1
+     large-text allowance. Rather than darken the shared token and wreck both
+     dark grounds, light-ground consumers take this deeper draw of the same
+     amber: #8a4f14 on #f4f2ee = 5.85:1. */
+  --color-accent-ink: #8a4f14;
   --color-background: #f4f2ee;
   --color-text: #1a1c1a;
 }
@@ -18,7 +25,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-background);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   font-size: 16px;
 }
 
@@ -55,8 +62,11 @@ a {
   text-decoration: none;
   transition: color 0.3s;
 }
+/* Light-ground hover. The dark-ground links override this: `.rail nav a:hover`
+   (0,2,2) and `.footer-col a` (0,1,1, declared later) both keep
+   --color-accent, which passes on their own grounds. */
 a:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 .layout {
@@ -318,4 +328,231 @@ footer {
 }
 .footer-col a {
   color: var(--color-accent);
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — masked scroll-through type. */
+.masked-band {
+  padding-block: clamp(3rem, 7vw, 5rem);
+  padding-inline: 1.5rem;
+  text-align: center;
+}
+.masked-band__type {
+  margin: 0;
+  font-size: clamp(3.5rem, 14vw, 10rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Solid fallback first: if background-clip:text is unsupported the type
+     still reads as flat accent colour rather than vanishing. The band sits on
+     the light --color-background, so this is the light-ground draw of the
+     accent (5.85:1), not --color-accent itself (2.19:1 here). */
+  color: var(--color-accent-ink, #888);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .masked-band__type {
+    color: transparent;
+    /* The image MUST be declared inside the guard, alongside
+       `color: transparent` — a browser that clips to text but has no fill
+       would otherwise render the glyphs at 1.00:1.
+       background-color paints under every layer and is clipped by
+       background-clip too, so if the asset 404s, or a --mask-shift ever
+       outruns the cover overflow, the glyphs land on #1a1c1a over #f4f2ee
+       (15.33:1) instead of disappearing.
+       The flat overlay holds every fill pixel down to at worst 4.93:1 against
+       #f4f2ee (measured against a pure-white source pixel; the real asset is
+       darker), while leaving the forge texture legible. */
+    background-color: var(--color-text);
+    background-image:
+      linear-gradient(rgba(26, 28, 26, 0.66), rgba(26, 28, 26, 0.66)),
+      url('./assets/metallurgy-close-up.webp');
+    background-size: cover;
+    background-position: center calc(50% + var(--mask-shift, 0px));
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+/* The band lives inside the 70vw content column at desktop, not the full
+   viewport, so the shared 14vw step overruns it and `overflow-x: clip` on body
+   would silently shear the glyphs instead of scrolling to them. Size from the
+   band's own inline size. Browsers without container queries drop this
+   declaration and keep the 14vw step above. */
+.masked-band {
+  container-type: inline-size;
+}
+.masked-band__type {
+  font-size: clamp(2.25rem, 13cqi, 9rem);
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .masked-band__type {
+    background-position: center;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Video placement slot — split panel.
+ * Built around the still first: the page reads correctly with no
+ * video present, and the <video> takes the same class as the <img>.
+ * --------------------------------------------------------------- */
+.slot-split-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  margin-block: 4rem;
+  /* Every sibling of this band is a <section> carrying `padding: 4rem 2rem`,
+     stepping to 4rem then 6rem inline. Nothing else pads children of
+     .content, so without these the band alone runs the full column width and
+     juts 96px past the page gutter on both sides at 1024px. */
+  padding-inline: 2rem;
+}
+@media (min-width: 768px) {
+  .slot-split-band {
+    padding-inline: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .slot-split-band {
+    padding-inline: 6rem;
+  }
+}
+@media (max-width: 860px) {
+  .slot-split-band {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.slot-split {
+  border-radius: 6px;
+  overflow: clip;
+  background: var(--color-secondary);
+}
+.slot-split__still,
+.slot-split [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+/* The still is a 1024x1024 source in a 16/9 box, so `cover` discards 43.75%
+   of it. Centred, the crop line falls at y=224 and takes roughly two thirds
+   off both pressure gauge faces (they run y=130..275). Pulling the crop
+   toward the top (0.27 x 448 = 121px) keeps both gauges in frame. */
+.slot-split__still {
+  object-position: center 27%;
+}
+.slot-split__caption {
+  margin: 0;
+  padding: 0.7rem 1rem;
+  background: var(--color-secondary);
+  color: hsl(152, 14%, 94%);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+/* This h2 is not inside .section-content, so it never picks up
+   `.section-content h2`. Without these it renders at the inherited body ink,
+   the only black heading on a page where every other h2 is --color-primary. */
+.slot-split__lead h2 {
+  margin-block-start: 0;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
 }

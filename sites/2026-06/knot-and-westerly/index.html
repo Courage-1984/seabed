@@ -31,7 +31,7 @@
             <div class="brand-details">Ushuaia, Tierra del Fuego</div>
           </header>
 
-          <section class="hero-text">
+          <section data-reveal class="hero-text">
             <h1 class="reveal-text">Suspended Architecture for the Furious Latitudes.</h1>
             <h2 class="reveal-text">
               We build permanent, non-invasive canopy observatories in the world's most violently windswept sub-polar
@@ -79,7 +79,7 @@
         </div>
 
         <div class="scroll-content">
-          <section id="flagship" class="content-section">
+          <section data-reveal id="flagship" class="content-section">
             <h2 class="reveal-text">The Physics of Inertia in a Sixty-Knot Gale</h2>
             <p class="reveal-text">
               Every Knot &amp; Westerly structure operates on a principle of dynamic equilibrium rather than rigid
@@ -100,7 +100,29 @@
             <img src="./assets/interior.webp" alt="Minimalist interior of a treehouse pod" loading="lazy" width="1024" height="1024" style="width:100%; height:auto; margin-top:2rem;" />
           </section>
 
-          <section id="materials" class="content-section">
+          <section class="masked-band" aria-labelledby="masked-band-heading" data-masked-type>
+            <div class="masked-type">
+              <img class="masked-type__still" src="./assets/cable.webp" alt="" loading="lazy" width="1024" height="341">
+              <h2 class="masked-type__text" id="masked-band-heading">9 kN</h2>
+              <svg class="masked-type__knockout" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid slice"
+                aria-hidden="true" focusable="false">
+                <defs>
+                  <mask id="kw-knockout">
+                    <rect width="600" height="200" fill="#fff"></rect>
+                    <text x="300" y="100" text-anchor="middle" dominant-baseline="central"
+                      font-family="'Fraunces', serif" font-weight="700" font-size="120" letter-spacing="-2"
+                      fill="#000">9 kN</text>
+                  </mask>
+                </defs>
+                <rect width="600" height="200" fill="currentColor" mask="url(#kw-knockout)"></rect>
+              </svg>
+            </div>
+            <p class="masked-band__caption">
+              Working load of a single compression-collar rigging point in the multi-point suspension network.
+            </p>
+          </section>
+
+          <section data-reveal id="materials" class="content-section">
             <div class="section-label">The Timber Ledger</div>
             <h2 class="reveal-text">Material Provenance</h2>
             <p class="reveal-text">
@@ -119,7 +141,7 @@
             <a href="#materials" class="text-link">Material Provenance →</a>
           </section>
 
-          <section id="typologies" class="content-section">
+          <section data-reveal id="typologies" class="content-section">
             <div class="section-label">Structural Typologies</div>
             <h2 class="reveal-text">The Observatory Classes</h2>
             <p class="reveal-text">
@@ -139,7 +161,7 @@
             <a href="#typologies" class="btn secondary">Examine Typologies</a>
           </section>
 
-          <section id="geography" class="content-section">
+          <section data-reveal id="geography" class="content-section">
             <div class="section-label">Territorial Coordinates</div>
             <h2 class="reveal-text">Limits of Deployment</h2>
             <p class="reveal-text">
@@ -156,7 +178,7 @@
             <a href="#geography" class="text-link">View Deployment Map →</a>
           </section>
 
-          <section id="methodology" class="content-section">
+          <section data-reveal id="methodology" class="content-section">
             <div class="section-label">The Canopy Protocol</div>
             <h2 class="reveal-text">Absolute Non-Interference</h2>
             <p class="reveal-text">
@@ -175,7 +197,7 @@
             <a href="#methodology" class="btn secondary">The Rigging Manual</a>
           </section>
 
-          <section id="peer-review" class="content-section dark-section">
+          <section data-reveal data-clip-wipe id="peer-review" class="content-section dark-section">
             <div class="section-label">Peer Review</div>
             <h2 class="reveal-text">Field Dispatches</h2>
             <div class="testimonial-grid">
@@ -212,7 +234,7 @@
             </div>
           </section>
 
-          <section id="inventory" class="content-section">
+          <section data-reveal id="inventory" class="content-section">
             <div class="section-label">Core Inventory</div>
             <h2 class="reveal-text">Commission Parameters</h2>
             <p class="reveal-text">
@@ -230,7 +252,7 @@
             <a href="#inventory" class="btn primary">Initiate Site Commission</a>
           </section>
 
-          <section id="faq" class="content-section faq-section">
+          <section data-reveal id="faq" class="content-section faq-section">
             <div class="section-label">Field Queries</div>
             <h2 class="reveal-text">Technical Responses</h2>
             <dl>
