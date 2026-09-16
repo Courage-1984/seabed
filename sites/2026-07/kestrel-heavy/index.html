@@ -55,7 +55,7 @@
       </section>
 
       <!-- section 2: autonomous-delivery-manifesto -->
-      <section class="text-block fade-up">
+      <section data-reveal class="text-block fade-up">
         <div class="text-content">
           <h2>Autonomous Tether-Drop Logistics</h2>
           <p>
@@ -76,7 +76,39 @@
       </section>
 
       <!-- section 3: component-catalogue-overview -->
-      <section class="image-bleed">
+      <section class="masked-band" aria-labelledby="masked-band-heading" data-masked-type>
+      <div class="masked-type">
+        <img class="masked-type__still" src="./assets/carbide-teeth.webp" alt="" loading="lazy" width="1280" height="720">
+        <h2 class="masked-type__text" id="masked-band-heading">40 t</h2>
+        <svg class="masked-type__knockout" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true" focusable="false">
+          <defs>
+            <mask id="kh-knockout">
+              <rect width="600" height="200" fill="#fff"></rect>
+              <text x="300" y="100" text-anchor="middle" dominant-baseline="central"
+                font-family="'Archivo', sans-serif" font-weight="700" font-size="130" letter-spacing="-2"
+                fill="#000">40 t</text>
+            </mask>
+          </defs>
+          <rect width="600" height="200" fill="currentColor" mask="url(#kh-knockout)"></rect>
+        </svg>
+      </div>
+      <p class="masked-band__caption">Machine class flown to the ridge in sections and rebuilt on site.</p>
+    </section>
+
+    <div class="marquee-band" data-marquee>
+      <div class="marquee-band__track" data-marquee-track>
+        <span class="marquee-band__word" aria-hidden="true">NO ACCESS TRACK</span>
+        <span class="marquee-band__word" aria-hidden="true">FLOWN IN SECTIONS</span>
+        <span class="marquee-band__word" aria-hidden="true">REBUILT ON SITE</span>
+        <!-- Duplicate half: the loop wraps at -50%, so it must be identical. -->
+        <span class="marquee-band__word" aria-hidden="true">NO ACCESS TRACK</span>
+        <span class="marquee-band__word" aria-hidden="true">FLOWN IN SECTIONS</span>
+        <span class="marquee-band__word" aria-hidden="true">REBUILT ON SITE</span>
+      </div>
+    </div>
+
+    <section data-reveal class="image-bleed">
         <img
           src="./assets/carbide-teeth.webp"
           alt="Heavy-duty tungsten carbide bucket teeth ready for dispatch."
@@ -87,7 +119,7 @@
         />
       </section>
 
-      <section id="inventory" class="text-block fade-up">
+      <section data-reveal id="inventory" class="text-block fade-up">
         <div class="text-content">
           <h2>High-Wear Inventory</h2>
           <p>
@@ -121,7 +153,7 @@
       </section>
 
       <!-- section 4: landing-zone-protocol -->
-      <section class="text-block fade-up">
+      <section data-reveal class="text-block fade-up">
         <div class="text-content">
           <h2>Drop Zone Authorisation</h2>
           <p>
@@ -153,7 +185,7 @@
       </section>
 
       <!-- section 5: operational-limits -->
-      <section class="image-bleed">
+      <section data-reveal class="image-bleed">
         <img
           src="./assets/highlands-site.webp"
           alt="A remote excavation site in the Scottish Highlands."
@@ -164,7 +196,7 @@
         />
       </section>
 
-      <section class="text-block fade-up">
+      <section data-reveal class="text-block fade-up">
         <div class="text-content">
           <h2>Flight &amp; Payload Tolerances</h2>
           <p>
@@ -188,7 +220,7 @@
       </section>
 
       <!-- section 6: dispatch-account-intake -->
-      <section id="account" class="text-block fade-up">
+      <section data-reveal id="account" class="text-block fade-up">
         <div class="text-content">
           <h2>Open a Dispatch Account</h2>
           <p>

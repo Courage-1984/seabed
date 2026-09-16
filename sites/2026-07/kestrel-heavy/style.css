@@ -19,7 +19,7 @@ body {
   font-family: 'Archivo', sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1,
@@ -216,4 +216,257 @@ a {
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — scroll-velocity marquee skew. */
+[data-marquee] {
+  overflow: hidden;
+}
+[data-marquee-track] {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  inline-size: max-content;
+  transform: skewX(var(--marquee-skew, 0deg));
+  animation: marqueeDrift 26s linear infinite;
+  will-change: transform;
+}
+[data-marquee]:hover [data-marquee-track],
+[data-marquee]:focus-within [data-marquee-track] {
+  animation-play-state: paused;
+}
+@keyframes marqueeDrift {
+  from { translate: 0 0; }
+  /* -50% only loops cleanly because the track holds two identical halves. */
+  to { translate: -50% 0; }
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-marquee-track] {
+    animation: none;
+    transform: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — masked type fill.
+   A layered knockout rather than `background-clip: text`: the plate is opaque
+   and the letters are holes, which lets a <video> sit behind the type. */
+.masked-band {
+  padding-block: clamp(3rem, 7vw, 5rem);
+  padding-inline: 1.5rem;
+  text-align: center;
+}
+.masked-type {
+  position: relative;
+  inline-size: min(100%, 60rem);
+  margin-inline: auto;
+  aspect-ratio: 3 / 1;
+  overflow: hidden;
+  isolation: isolate;
+  color: hsl(210, 14%, 10%);
+}
+.masked-type__still,
+.masked-type [data-slot-video] {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+/* Accessible heading only. Rendering it visually as well makes its glyphs bleed
+   through the knockout holes — HTML and SVG type do not share metrics. */
+.masked-type__text {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.masked-type__knockout {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  inline-size: 100%;
+  block-size: 100%;
+  pointer-events: none;
+}
+.masked-band__caption {
+  max-inline-size: 60ch;
+  margin: 1.5rem auto 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: hsl(210, 14%, 86%);
+}
+
+/* Signature effect — the drifting band of site slogans. */
+.marquee-band {
+  margin-block: 3rem;
+  padding-block: 1rem;
+  border-block: 1px solid hsl(28, 92%, 56%);
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+.marquee-band__track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  inline-size: max-content;
+}
+.marquee-band__word {
+  flex: 0 0 auto;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  letter-spacing: 0.12em;
+  color: hsl(28, 92%, 56%);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------- *
+ * Overflow and media guards.
+ * `clip`, never `hidden`: `hidden` makes the body a scroll container,
+ * which silently kills every `position: sticky` inside it.
+ * --------------------------------------------------------------- */
+body {
+  overflow-x: clip;
+}
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+/* The media reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* White on the aviation orange measured 3.92:1; the near-black ink clears it. */
+.cta.primary {
+  color: hsl(14, 55%, 8%);
+}
+/* The knockout plate was built dark while the band it sits in inherits the
+   site's near-white ground, so the caption and marquee type were coloured for a
+   backdrop that is not there (1.36:1 and 2.42:1). The plate matches the page
+   instead — the clip still reads through the numerals — and the type darkens. */
+.masked-type {
+  color: hsl(210, 14%, 96%);
+}
+.masked-band__caption {
+  color: hsl(210, 14%, 36%);
+}
+.marquee-band {
+  border-block-color: hsl(28, 92%, 34%);
+  background: rgba(0, 0, 0, 0.03);
+}
+.marquee-band__word {
+  color: hsl(28, 92%, 34%);
 }

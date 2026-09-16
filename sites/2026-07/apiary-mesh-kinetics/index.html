@@ -28,9 +28,9 @@
     </div>
 
     <main>
-      <section class="block-section bg-primary" id="hero">
+      <section data-reveal class="block-section bg-primary" id="hero">
         <div class="container">
-          <h1 class="brand-name">Apiary Mesh Kinetics</h1>
+          <h1 data-split-headline class="brand-name">Apiary Mesh Kinetics</h1>
           <h2 class="hero-headline">Deterministic Hive Telemetry &amp; Acoustic Anomaly Detection.</h2>
           <p class="hero-subhead">
             Ultra-low-power RF mesh networks engineered exclusively for commercial pollination fleets and large-scale
@@ -57,7 +57,7 @@
         </div>
       </section>
 
-      <section class="block-section bg-secondary" id="acoustic-anomaly-manifesto">
+      <section data-reveal class="block-section bg-secondary" id="acoustic-anomaly-manifesto">
         <div class="container">
           <h2>Acoustic Anomaly Detection: Decoding Colony Frequencies</h2>
           <p>
@@ -81,7 +81,7 @@
         </div>
       </section>
 
-      <section class="block-section bg-primary" id="hex-node-hardware-specs">
+      <section data-reveal class="block-section bg-primary" id="hex-node-hardware-specs">
         <div class="container">
           <h2>Hex-Node Hardware Specifications</h2>
           <p>
@@ -115,7 +115,27 @@
         </div>
       </section>
 
-      <section class="block-section bg-secondary" id="mesh-network-topology">
+      <div class="slot-marquee" data-slot-marquee>
+      <div class="slot-marquee__track">
+      <figure class="slot-marquee__item">
+        <img class="slot-marquee__still" src="./assets/hardware-hex-node.webp" alt="A hex sensor node seated inside a commercial hive." loading="lazy" width="1280" height="720">
+        <figcaption class="slot-marquee__caption">Hex node, in-hive</figcaption>
+      </figure>
+      <span class="slot-marquee__word" aria-hidden="true">ACOUSTIC TELEMETRY</span>
+      <span class="slot-marquee__word" aria-hidden="true">NO HIVE OPENED</span>
+      <span class="slot-marquee__word" aria-hidden="true">MESH TO THE APIARY EDGE</span>
+      <!-- Duplicate half: the loop wraps at -50%, so it must be identical. -->
+      <figure class="slot-marquee__item" aria-hidden="true">
+        <img class="slot-marquee__still" src="./assets/hardware-hex-node.webp" alt="" loading="lazy" width="1280" height="720">
+        <figcaption class="slot-marquee__caption">Hex node, in-hive</figcaption>
+      </figure>
+      <span class="slot-marquee__word" aria-hidden="true">ACOUSTIC TELEMETRY</span>
+      <span class="slot-marquee__word" aria-hidden="true">NO HIVE OPENED</span>
+      <span class="slot-marquee__word" aria-hidden="true">MESH TO THE APIARY EDGE</span>
+      </div>
+    </div>
+
+    <section data-reveal class="block-section bg-secondary" id="mesh-network-topology">
         <div class="container">
           <h2>LoRaWAN Mesh Topology</h2>
           <p>
@@ -137,7 +157,7 @@
         </div>
       </section>
 
-      <section class="block-section bg-primary" id="pathogen-detection-metrics">
+      <section data-reveal class="block-section bg-primary" id="pathogen-detection-metrics">
         <div class="container">
           <h2>Empirical Pathogen &amp; Swarm Metrics</h2>
           <p>
@@ -169,7 +189,7 @@
         </div>
       </section>
 
-      <section class="block-section bg-secondary" id="syndicate-deployment-logistics">
+      <section data-reveal class="block-section bg-secondary" id="syndicate-deployment-logistics">
         <div class="container">
           <h2>Commercial Fleet Deployment</h2>
           <p>
@@ -192,7 +212,7 @@
         </div>
       </section>
 
-      <section class="block-section bg-primary" id="entomological-faq">
+      <section data-reveal class="block-section bg-primary" id="entomological-faq">
         <div class="container">
           <h2>Technical &amp; Biological FAQ</h2>
           <div class="faq-item">
@@ -250,7 +270,7 @@
         </div>
       </section>
 
-      <section class="block-section bg-secondary" id="tender">
+      <section data-reveal class="block-section bg-secondary" id="tender">
         <div class="container">
           <h2>Hardware Tender &amp; Procurement</h2>
           <p>

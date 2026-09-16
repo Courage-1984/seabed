@@ -1,112 +1,132 @@
 import './style.css';
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Animate quantitative data counters upon intersection observation
-  const statElements = document.querySelectorAll('[data-target]');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  const counterObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const targetVal = parseFloat(el.getAttribute('data-target'));
-          const suffix = el.getAttribute('data-suffix') || '';
-          const prefix = el.getAttribute('data-prefix') || '';
-          const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
-          const duration = 1600;
-          const start = performance.now();
+/* ------------------------------------------------------------------ *
+ * Motion budget 1 — staggered scroll-reveal system.
+ * Fires once per element, never re-triggers.
+ * ------------------------------------------------------------------ */
+function initReveals() {
+  const targets = [...document.querySelectorAll('[data-reveal]')];
+  if (!targets.length) return;
 
-          const animate = (currentTime) => {
-            const elapsed = currentTime - start;
-            const progress = Math.min(elapsed / duration, 1);
-            // Cubic ease out for scientific precision feel
-            const easeProgress = 1 - Math.pow(1 - progress, 3);
-            const currentVal = easeProgress * targetVal;
+  // Only hide content once we know JS is running and can bring it back. If the
+  // script fails to load the page renders un-animated instead of blank.
+  document.documentElement.classList.add('js-reveal');
 
-            let formattedVal;
-            if (decimals > 0) {
-              formattedVal = currentVal.toFixed(decimals);
-            } else {
-              formattedVal = Math.round(currentVal).toLocaleString('en-GB');
-            }
+  const show = (el) => {
+    if (el.classList.contains('is-revealed')) return;
+    const group = el.parentElement;
+    const siblings = group ? [...group.querySelectorAll('[data-reveal]')] : [el];
+    const step = Math.max(0, siblings.indexOf(el));
+    el.style.setProperty('--reveal-delay', `${step * 80}ms`);
+    el.classList.add('is-revealed');
+  };
 
-            el.textContent = `${prefix}${formattedVal}${suffix}`;
-
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            } else {
-              let finalVal = decimals > 0 ? targetVal.toFixed(decimals) : Math.round(targetVal).toLocaleString('en-GB');
-              el.textContent = `${prefix}${finalVal}${suffix}`;
-            }
-          };
-
-          requestAnimationFrame(animate);
-          observer.unobserve(el);
-        }
-      });
-    },
-    { threshold: 0.25 }
-  );
-
-  statElements.forEach((el) => counterObserver.observe(el));
-
-  // Animate percentage fill bars in the bento hardware grid
-  const progressBars = document.querySelectorAll('.bento-progress-fill');
-  const barObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const bar = entry.target;
-          const width = bar.getAttribute('data-width') || '100%';
-          bar.style.width = width;
-          observer.unobserve(bar);
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-
-  progressBars.forEach((bar) => barObserver.observe(bar));
-
-  // Handle Trade Account Credentials intake form submission with dry clinical feedback
-  const tradeForm = document.getElementById('trade-account-form');
-  const formFeedback = document.getElementById('form-feedback-terminal');
-
-  if (tradeForm && formFeedback) {
-    tradeForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const submitBtn = tradeForm.querySelector('button[type="submit"]');
-      if (submitBtn) submitBtn.disabled = true;
-
-      formFeedback.style.display = 'block';
-      formFeedback.className = 'terminal-output active';
-      formFeedback.innerHTML = `<p class="system-status"><span class="pulse-indicator"></span> Transmitting cryptographic audit payload to Milton Keynes cleanroom dispatch server...</p>`;
-
-      setTimeout(() => {
-        formFeedback.innerHTML = `
-          <div class="feedback-success">
-            <span class="status-badge">ACKNOWLEDGED // STATUS CODE 200-OK</span>
-            <p><strong>Trade Credentials Logged into Technical Compliance Queue.</strong></p>
-            <p>Verification of institutional license and VAT parameters will terminate within 24 operational hours. Approved brigades will receive secure API ordering tokens via diplomatic email routing.</p>
-          </div>
-        `;
-        tradeForm.reset();
-        if (submitBtn) submitBtn.disabled = false;
-      }, 1400);
-    });
+  if (reduceMotion.matches || !('IntersectionObserver' in window)) {
+    targets.forEach(show);
+    return;
   }
 
-  // Handle sample request actions
-  const sampleBtns = document.querySelectorAll('.js-request-sample');
-  sampleBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const intakeSection = document.getElementById('trade-account-intake');
-      if (intakeSection) {
-        intakeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        const nameInput = document.getElementById('applicant-name');
-        if (nameInput) nameInput.focus();
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        show(entry.target);
+        observer.unobserve(entry.target);
+      });
+    },
+    { rootMargin: '0px 0px -12% 0px', threshold: 0.12 }
+  );
+
+  targets.forEach((el) => observer.observe(el));
+
+  // Backstop: the observer can miss elements that arrive in view through an
+  // anchor jump or a programmatic scroll, which would strand them invisible.
+  const sweep = () => {
+    for (const el of targets) {
+      if (el.classList.contains('is-revealed')) continue;
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        show(el);
+        observer.unobserve(el);
       }
-    });
-  });
+    }
+  };
+  window.addEventListener('scroll', sweep, { passive: true });
+  window.addEventListener('resize', sweep, { passive: true });
+  window.addEventListener('hashchange', () => setTimeout(sweep, 600));
+  setTimeout(sweep, 400);
+}
+
+/* ------------------------------------------------------------------ *
+ * Signature effect — scroll-driven clip-path wipe.
+ * The panel is revealed by animating clip-path against scroll progress
+ * rather than fading, so the content wipes into view.
+ * ------------------------------------------------------------------ */
+function initEffect() {
+  const band = document.querySelector('[data-clip-wipe]');
+  if (!band) return;
+  if (reduceMotion.matches) {
+    band.style.setProperty('--wipe', '100%');
+    return;
+  }
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const rect = band.getBoundingClientRect();
+    // Short runway: if the band sits in a sticky element, its top stops
+    // moving once that element pins, and a long runway freezes the wipe
+    // partway through for the whole section.
+    const raw = (window.innerHeight - rect.top) / (window.innerHeight * 0.35);
+    band.style.setProperty('--wipe', `${(Math.min(1, Math.max(0, raw)) * 100).toFixed(1)}%`);
+  };
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+}
+
+/* ------------------------------------------------------------------ *
+ * Video placement — the loop only decodes while it is on screen.
+ * Absent until the generated clip is installed, so this is a no-op
+ * while the slot still shows its still frame.
+ * ------------------------------------------------------------------ */
+function initSlotVideo() {
+  const video = document.querySelector('[data-slot-video]');
+  if (!video) return;
+
+  const apply = () => {
+    if (reduceMotion.matches) {
+      // Drop the attribute too, so the clip does not restart itself if the
+      // element is re-attached or the source reloads.
+      video.removeAttribute('autoplay');
+      video.pause();
+    } else {
+      video.play().catch(() => {});
+    }
+  };
+  reduceMotion.addEventListener('change', apply);
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !reduceMotion.matches) video.play().catch(() => {});
+        else video.pause();
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(video);
+  }
+  apply();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initReveals();
+  initEffect();
+  initSlotVideo();
 });

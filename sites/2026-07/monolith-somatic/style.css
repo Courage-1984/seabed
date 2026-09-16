@@ -15,7 +15,7 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -180,4 +180,181 @@ footer a:hover {
   font-size: 1.25rem;
   line-height: 1.5;
   margin: 0;
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — progressive blur focus-pull. */
+[data-focus-pull] {
+  filter: blur(var(--focus-blur, 0px));
+  /* Composed against the element's own resting opacity: media held back to act
+     as a scrim would otherwise be blown to full opacity at full focus. */
+  opacity: calc(var(--focus-base-opacity, 1) * var(--focus-fade, 1));
+  will-change: filter, opacity;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-focus-pull] {
+    filter: none;
+    opacity: 1;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — hero background: full-bleed behind the band copy, under an
+   engineered scrim so the type holds against the brightest frame. */
+.slot-hero-band {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-block-size: 60vh;
+  padding: clamp(3rem, 8vw, 6rem) 1.5rem;
+  overflow: hidden;
+  background: hsl(210, 14%, 13%);
+}
+.slot-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.slot-hero-media__still,
+.slot-hero-media [data-slot-video] {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+}
+.slot-hero-media__scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 75% 70% at 50% 50%, rgba(12, 16, 22, 0.86) 0%, rgba(12, 16, 22, 0.64) 55%, transparent 100%);
+}
+.slot-hero-band__content {
+  position: relative;
+  z-index: 1;
+  max-inline-size: 46rem;
+  text-align: center;
+}
+.slot-hero-band__content > * {
+  color: hsl(210, 16%, 94%);
+}
+
+/* --------------------------------------------------------------- *
+ * Overflow and media guards.
+ * `clip`, never `hidden`: `hidden` makes the body a scroll container,
+ * which silently kills every `position: sticky` inside it.
+ * --------------------------------------------------------------- */
+body {
+  overflow-x: clip;
+}
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+/* The media reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
 }

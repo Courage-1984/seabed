@@ -35,7 +35,7 @@ body {
   color: var(--color-text-primary);
   line-height: 1.65;
   font-weight: 400;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
   background-image:
     radial-gradient(circle at 15% 10%, rgba(30, 41, 59, 0.7) 0%, transparent 40%),
@@ -967,5 +967,191 @@ a:hover {
     padding-left: 0;
     border-left: none;
     margin-top: 0.5rem;
+  }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — scroll-driven clip-path wipe. */
+[data-clip-wipe] {
+  clip-path: inset(0 calc(100% - var(--wipe, 100%)) 0 0);
+  transition: clip-path 90ms linear;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-clip-wipe] {
+    clip-path: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — hero inset frame: a deliberate framed object rather than a
+   full-bleed background. */
+.slot-inset-wrap {
+  max-inline-size: 1100px;
+  margin: 0 auto 3rem;
+  padding-inline: 1.5rem;
+}
+.slot-inset {
+  margin: 0;
+  max-inline-size: 34rem;
+  border: 2px solid #f59e0b;
+  background: hsl(210, 14%, 13%);
+}
+.slot-inset__still,
+.slot-inset [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.slot-inset__caption {
+  margin: 0;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
+  /* On panel chrome, never over the media. */
+  color: hsl(210, 14%, 92%);
+  background: hsl(210, 14%, 13%);
+}
+
+/* --------------------------------------------------------------- *
+ * Overflow and media guards.
+ * `clip`, never `hidden`: `hidden` makes the body a scroll container,
+ * which silently kills every `position: sticky` inside it.
+ * --------------------------------------------------------------- */
+body {
+  overflow-x: clip;
+}
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+/* The media reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured on the rendered page).
+ * --------------------------------------------------------------- */
+/* The pinned header covered the top of every in-page anchor target. */
+html {
+  scroll-padding-top: 5.5rem;
+}
+@media (max-width: 768px) {
+  /* Inline nav links rendered 18px tall; the logo 33px and the CTA 34px. */
+  .site-nav a,
+  .brand-logo {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+  }
+  .site-nav a {
+    min-inline-size: 44px;
+    justify-content: center;
   }
 }

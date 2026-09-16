@@ -297,3 +297,235 @@ p {
   display: flex;
   justify-content: space-between;
 }
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — masked scroll-through type. */
+.masked-band {
+  padding-block: clamp(3rem, 7vw, 5rem);
+  padding-inline: 1.5rem;
+  text-align: center;
+}
+.masked-band__type {
+  margin: 0;
+  font-size: clamp(3.5rem, 14vw, 10rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Solid fallback first: if background-clip:text is unsupported the type
+     still reads as flat accent colour rather than vanishing. */
+  color: var(--color-accent, #888);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .masked-band__type {
+    color: transparent;
+    background-size: cover;
+    background-position: center calc(50% + var(--mask-shift, 0px));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .masked-band__type {
+    background-position: center;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — grid tile: a bento cell, capped so the caption does not
+   sit in a field of empty space beside the media. */
+.slot-tile-band {
+  max-inline-size: 820px;
+  margin: 3rem auto;
+  padding-inline: 1.5rem;
+}
+.slot-tile {
+  margin: 0;
+  border: 1px solid hsl(210, 12%, 26%);
+  background: hsl(210, 14%, 13%);
+  overflow: hidden;
+}
+.slot-tile__still,
+.slot-tile [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.slot-tile__caption {
+  padding: 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  max-inline-size: 100%;
+  color: hsl(210, 14%, 92%);
+  background: hsl(210, 14%, 13%);
+}
+.slot-tile__caption strong {
+  display: block;
+  margin-block-end: 0.35rem;
+  font-size: 1.0625rem;
+  color: #fff;
+}
+
+/* Signature effect — masked scroll-through type. */
+.masked-band {
+  padding-block: clamp(3rem, 7vw, 5rem);
+  padding-inline: 1.5rem;
+  text-align: center;
+}
+.masked-band__type {
+  margin: 0;
+  font-size: clamp(3.5rem, 14vw, 10rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  /* Solid fallback first: if background-clip:text is unsupported the type
+     still reads as flat accent colour rather than vanishing. */
+  color: hsl(185, 90%, 45%);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .masked-band__type {
+    color: transparent;
+    background-image: url('./assets/calibration-set.webp');
+    background-size: cover;
+    background-position: center calc(50% + var(--mask-shift, 0px));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+.masked-band__caption {
+  max-inline-size: 60ch;
+  margin: 1rem auto 0;
+  font-size: 1rem;
+  color: hsl(220, 14%, 82%);
+}
+
+/* --------------------------------------------------------------- *
+ * Overflow and media guards.
+ * `clip`, never `hidden`: `hidden` makes the body a scroll container,
+ * which silently kills every `position: sticky` inside it.
+ * --------------------------------------------------------------- */
+body {
+  overflow-x: clip;
+}
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+/* The media reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured on the rendered page).
+ * --------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* The terminal buttons rendered 40px tall — four short of the touch minimum. */
+  .btn-terminal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 44px;
+  }
+}

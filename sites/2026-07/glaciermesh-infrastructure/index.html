@@ -5,7 +5,7 @@
   <meta name="description" content="Server architecture engineered to run continuously where diesel generators freeze and standard enterprise silicon snaps like dry twigs.">
   <meta property="og:title" content="GlacierMesh Infrastructure">
   <meta property="og:description" content="Server architecture engineered to run continuously where diesel generators freeze and standard enterprise silicon snaps like dry twigs.">
-  <meta property="og:image" content="./assets/hero.webp">
+  <meta property="og:image" content="./assets/boreas-9-chassis-ice-shelf.webp">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="stylesheet" href="./style.css">
@@ -36,7 +36,7 @@
     <!-- Hero Section -->
     <section class="hero-section" aria-labelledby="hero-title">
       <div class="hero-background">
-        <img src="./assets/hero.webp" alt="GlacierMesh Boreas-9 titanium edge server chassis operating on Antarctic ice shelf under polar night sky." fetchpriority="high" width="1024" height="1024">
+        <img src="./assets/boreas-9-chassis-ice-shelf.webp" alt="GlacierMesh Boreas-9 titanium edge server chassis operating on Antarctic ice shelf under polar night sky." fetchpriority="high" width="1024" height="1024">
         <div class="hero-overlay"></div>
       </div>
       <div class="hero-content">
@@ -54,7 +54,7 @@
     </section>
 
     <!-- Section 1 (Flagship §4a): Cryogenic Edge Engineering -->
-    <section class="section-bento" aria-labelledby="flagship-title">
+    <section data-reveal class="section-bento" aria-labelledby="flagship-title">
       <div class="container">
         <header class="section-header">
           <h2 id="flagship-title">Cryogenic Edge Engineering &amp; Ross Ice Shelf Protocols</h2>
@@ -105,7 +105,7 @@
     </section>
 
     <!-- Section 3 (§4b): Hardened Hardware Specifications -->
-    <section class="section-bento" aria-labelledby="hardware-title">
+    <section data-reveal class="section-bento" aria-labelledby="hardware-title">
       <div class="container">
         <header class="section-header">
           <h2 id="hardware-title">Anatomy of a Sub-Zero Titanium Immersion Chassis</h2>
@@ -140,7 +140,7 @@
     </section>
 
     <!-- Section 4 (§4b): Sub-Glacial Deployment Case Studies -->
-    <section class="section-asymmetric-cards" aria-labelledby="case-studies-title">
+    <section data-reveal class="section-asymmetric-cards" aria-labelledby="case-studies-title">
       <div class="container">
         <header class="section-header">
           <h2 id="case-studies-title">Operational Notes from the Field</h2>
@@ -202,7 +202,38 @@
     </section>
 
     <!-- Section 6 (§4b): Technical FAQ -->
-    <section class="section-faq" aria-labelledby="faq-title">
+    <div class="slot-modal-wrap">
+      <button type="button" class="slot-tile-button" data-video-open aria-haspopup="dialog" aria-controls="mesh-film">
+        <img src="./assets/field-outpost.webp" alt="" loading="lazy" width="1280" height="720">
+        <span class="slot-tile-button__label">
+          <span class="slot-tile-button__glyph" aria-hidden="true"></span>
+          <span class="slot-tile-button__text">
+            <strong>Inside a field outpost</strong>
+            One cold-start cycle, filmed on the ice
+          </span>
+        </span>
+      </button>
+
+      <svg class="line-draw" viewBox="0 0 900 180" fill="none" role="img"
+        aria-label="Diagram of the link: field outpost, mesh relay, then the core datacentre." data-line-draw>
+        <path class="draw-path" d="M40 40 L 280 40" stroke-width="3"></path>
+        <path class="draw-path" d="M280 40 C 340 40, 360 90, 420 90" stroke-width="3"></path>
+        <path class="draw-path" d="M420 90 L 600 90" stroke-width="3"></path>
+        <path class="draw-path" d="M600 90 C 670 90, 680 140, 740 140" stroke-width="3"></path>
+        <path class="draw-path" d="M740 140 L 860 140" stroke-width="3"></path>
+        <path class="draw-path" d="M40 32 L 40 48 M860 132 L 860 148" stroke-width="3"></path>
+      </svg>
+    </div>
+
+    <div class="video-modal" id="mesh-film" role="dialog" aria-modal="true" aria-label="Field outpost cold start" hidden>
+      <div class="video-modal__backdrop" data-video-close></div>
+      <div class="video-modal__frame">
+        <button type="button" class="video-modal__close" data-video-close aria-label="Close video">&times;</button>
+        <img class="video-modal__still" src="./assets/field-outpost.webp" alt="A field outpost chassis cold-starting on the ice." width="1280" height="720">
+      </div>
+    </div>
+
+    <section data-reveal class="section-faq" aria-labelledby="faq-title">
       <div class="container">
         <header class="section-header text-center">
           <h2 id="faq-title">Expedition Technical Enquiries</h2>
@@ -247,7 +278,7 @@
     </section>
 
     <!-- Section 7 (§4b): Expedition Dispatch Requisition Form -->
-    <section class="section-requisition" aria-labelledby="requisition-title" id="requisition">
+    <section data-reveal class="section-requisition" aria-labelledby="requisition-title" id="requisition">
       <div class="container">
         <div class="requisition-panel">
           <header class="section-header text-center">

@@ -206,3 +206,214 @@ footer p {
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — staggered letter-by-letter headline. */
+.split-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+.split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 0.4em, 0);
+}
+.is-split.is-animated .split-char {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 320ms var(--ease-out) calc(var(--char-index) * 18ms),
+    transform 320ms var(--ease-out) calc(var(--char-index) * 18ms);
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .split-char {
+    opacity: 1;
+    transform: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* Video placement — marquee strip: a drifting band the clip rides inside. */
+.slot-marquee {
+  inline-size: 100%;
+  overflow: hidden;
+  padding-block: 1.25rem;
+  margin-block: 3rem;
+  background-color: hsl(40, 12%, 12%);
+  border-block: 2px solid hsl(42, 92%, 56%);
+}
+.slot-marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  inline-size: max-content;
+  animation: slotDrift 30s linear infinite;
+  will-change: transform;
+}
+.slot-marquee:hover .slot-marquee__track,
+.slot-marquee:focus-within .slot-marquee__track {
+  animation-play-state: paused;
+}
+@keyframes slotDrift {
+  from { translate: 0 0; }
+  /* -50% only loops cleanly because the track holds two identical halves. */
+  to { translate: -50% 0; }
+}
+.slot-marquee__item {
+  flex: 0 0 auto;
+  margin: 0;
+  inline-size: min(70vw, 420px);
+  border: 2px solid hsl(42, 92%, 56%);
+  background: hsl(40, 12%, 12%);
+}
+.slot-marquee__still,
+.slot-marquee [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.slot-marquee__caption {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: hsl(40, 14%, 90%);
+  background: hsl(40, 12%, 12%);
+  border-block-start: 1px solid hsl(42, 92%, 56%);
+}
+.slot-marquee__word {
+  flex: 0 0 auto;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  letter-spacing: 0.08em;
+  color: hsl(42, 92%, 56%);
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  .slot-marquee__track {
+    animation: none;
+    flex-wrap: wrap;
+    inline-size: 100%;
+    justify-content: center;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Overflow and media guards.
+ * `clip`, never `hidden`: `hidden` makes the body a scroll container,
+ * which silently kills every `position: sticky` inside it.
+ * --------------------------------------------------------------- */
+body {
+  overflow-x: clip;
+}
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+/* The media reset covers img but not video, so a <video> carrying a width
+   attribute renders at its intrinsic size and overflows its container. */
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+}
