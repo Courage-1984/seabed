@@ -19,7 +19,7 @@ body {
   background-color: var(--color-background);
   color: var(--color-text);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1,
@@ -794,4 +794,347 @@ footer {
 .table-container {
   width: 100%;
   overflow-x: auto;
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — sticky section pinning with cross-fade. */
+[data-pin-scroller] {
+  position: relative;
+  /* The stage's sticky containing block AND the track the progress is measured
+     against. Without a dedicated height here the stage would pin against <main>
+     and cover every section below it. Three panels, one viewport of travel each
+     on top of the pinned viewport. Undone by .is-static below. */
+  block-size: 300vh;
+}
+[data-pin-stage] {
+  position: sticky;
+  top: 0;
+  min-block-size: 100vh;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+}
+[data-pin-panel] {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  /* Inert panels must not swallow clicks meant for the active one. */
+  pointer-events: none;
+}
+[data-pin-panel].is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+[data-pin-scroller].is-static {
+  block-size: auto;
+}
+/* Reduced motion drops the pin entirely and lets the panels stack in flow. */
+[data-pin-stage].is-static {
+  position: static;
+  min-block-size: 0;
+  display: block;
+}
+[data-pin-stage].is-static [data-pin-panel] {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  margin-block-end: 3rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  /* Mirror of the .is-static path the script applies, so the pin collapses even
+     if the script never runs: no empty 300vh track, no pinned stage. */
+  [data-pin-scroller] {
+    block-size: auto;
+  }
+  [data-pin-stage] {
+    position: static;
+    min-block-size: 0;
+    display: block;
+  }
+  [data-pin-panel] {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    margin-block-end: 3rem;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Video placement slot — hover reveal.
+ * Built around the still first: the page reads correctly with no
+ * video present, and the <video> takes the same class as the <img>.
+ * --------------------------------------------------------------- */
+.slot-hover-wrap {
+  max-inline-size: 1200px;
+  margin-inline: auto;
+  margin-block: 3rem;
+  padding-inline: 2rem;
+}
+.slot-hover {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: clip;
+  background: hsl(201, 30%, 13%);
+}
+/* Only promise an interaction once there is a clip to reveal. While the slot is
+   a still, the box is not interactive and must not claim to be. */
+.slot-hover:has([data-slot-video]) {
+  cursor: pointer;
+}
+/* The ring is drawn outside the box by outline-offset, so it lands on the light
+   page background, not on the slot's dark ground — it must be inked for that. */
+.slot-hover:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+.slot-hover__poster,
+.slot-hover__video,
+.slot-hover [data-slot-video] {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+/* The clip cross-fades in over the poster; both share the same box. */
+.slot-hover__video,
+.slot-hover [data-slot-video] {
+  opacity: 0;
+  transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.slot-hover:hover .slot-hover__video,
+.slot-hover:focus-within .slot-hover__video,
+.slot-hover:hover [data-slot-video],
+.slot-hover:focus-within [data-slot-video] {
+  opacity: 1;
+}
+.slot-hover__content {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  padding: 1.5rem;
+  /* Opaque by the time the heading starts (~18% of the box): the ramp used to
+     reach full only at 82%, leaving both strings on blown-white pool water. */
+  background: linear-gradient(
+    180deg,
+    hsla(201, 30%, 13%, 0) 0%,
+    hsla(201, 30%, 13%, 0.96) 12%,
+    hsl(201, 30%, 13%) 55%
+  );
+  color: hsl(201, 18%, 94%);
+}
+.slot-hover__content h3 {
+  margin: 0 0 0.4rem;
+  color: hsl(201, 18%, 94%);
+  font-size: 1.1875rem;
+}
+.slot-hover__content p {
+  margin: 0;
+  color: hsl(201, 18%, 94%);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  max-inline-size: 46ch;
+}
+/* Held for the clip: the hint span is out of the markup while there is no video
+   to watch, and comes back with <video> and the tabindex that goes with it. */
+.slot-hover__hint {
+  display: inline-block;
+  margin-block-start: 0.6rem;
+  color: hsl(201, 18%, 94%);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.82;
+}
+@media (hover: none), (pointer: coarse) {
+  .slot-hover__hint {
+    display: none;
+  }
+}
+.pin-section {
+  max-inline-size: 1200px;
+  margin-inline: auto;
+  margin-block: 4rem;
+  padding-inline: 2rem;
+}
+.pin-panel {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: 6px;
+  background: hsl(201, 30%, 13%);
+  color: hsl(201, 18%, 94%);
+}
+/* h2, not h3: the pin section sits in <main> alongside the sections that each
+   open with an h2, and it has no h2 of its own, so an h3 here would orphan the
+   outline. Each panel is a self-contained <article>, so an h2 is the right rank.
+   The size is held at the caption scale the slot heading uses, not the UA h2
+   default. */
+.pin-panel h2 {
+  margin: 0 0 0.5rem;
+  color: hsl(201, 18%, 94%);
+  font-size: 1.1875rem;
+}
+.pin-panel p {
+  margin: 0;
+  color: hsl(201, 18%, 94%);
+  line-height: 1.55;
+  max-inline-size: 56ch;
+}
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* --color-accent #d48c46 serves three roles and failed in all three: 4.33:1 as
+   nav ink on the dark header, 2.54:1 as ink on the light page, and 2.75:1 as a
+   fill under white. Darkening the token would have fixed the light ground and
+   broken the dark one, so each role is scoped instead. */
+nav a.active {
+  color: hsl(30, 62%, 63%);
+}
+/* `.testimonial cite` (0-2-0) outranks a bare `cite`, so match it. */
+.testimonial cite {
+  color: hsl(30, 62%, 34%);
+}
+.btn,
+a.btn,
+button.btn {
+  color: hsl(30, 50%, 10%);
+}
+/* Each variant carries its own (0-2-0) colour, so the override must match that
+   weight — and each keeps its own hue rather than being flattened to one.
+   These sit on the DARK methodology card (rgb(39,81,77)) and the dark table
+   head (rgb(30,58,76)) once the translucent tints are composited, so the ink
+   goes lighter. Measured on the composited ground, not on the tint. */
+.outcome-badge.high {
+  color: hsl(122, 40%, 66%);
+}
+.outcome-badge.medium {
+  color: hsl(30, 62%, 66%);
+}
+.data-table th {
+  color: hsl(30, 62%, 58%);
+}
+@media (max-width: 768px) {
+  /* Nav links 30-37px wide, the wordmark 38px tall, and two icon buttons
+     40px and 32px wide. */
+  nav a,
+  .site-footer a,
+  footer a {
+    min-inline-size: 44px;
+    justify-content: center;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+  }
+  .carousel-btn,
+  .expand-btn {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+  }
 }

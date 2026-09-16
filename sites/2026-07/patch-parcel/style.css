@@ -414,3 +414,20 @@ footer a {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, var(--color-primary) 100%);
   pointer-events: none;
 }
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured on the rendered page).
+ * --------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Touch target: one nav link rendered 39px wide. */
+  /* The 39px link is a FOOTER link (div.container.footer-grid > div > ul > li),
+     not a header nav link — there is no <nav> element on this site at all. */
+  .footer-grid ul li a,
+  header ul li a,
+  nav a {
+    display: inline-flex;
+    align-items: center;
+    min-inline-size: 44px;
+    justify-content: center;
+  }
+}

@@ -21,7 +21,7 @@ html,
 body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: 'Manrope', sans-serif;
@@ -51,8 +51,10 @@ h6 {
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
-  background-image:
-    linear-gradient(to bottom, rgba(17, 17, 27, 0.7), rgba(17, 17, 27, 0.95)), url('./assets/hero-bg.webp');
+  /* hero-bg.webp removed from this layer: the media slot owns that asset now,
+     so painting it here too rendered the same picture twice at two different
+     treatments. The gradient stays as the page ground. */
+  background-image: linear-gradient(to bottom, rgba(17, 17, 27, 0.7), rgba(17, 17, 27, 0.95));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -80,9 +82,20 @@ main {
   padding: 4rem 0;
 }
 
+/* Positioned so the hero media slot's `inset: 0` resolves against THIS box.
+   Without it the containing block falls through to #terminal-view (the whole
+   ~6000px document) and the slot buries the page. `isolation` keeps the slot's
+   z-index local; the `> :not()` rule lifts the in-flow text out from under the
+   positioned z-index:0 media layer. */
 .manifesto {
+  position: relative;
+  isolation: isolate;
   border-left: 5px solid var(--color-accent);
   padding-left: 2rem;
+}
+.manifesto > :not(.slot-hero-media) {
+  position: relative;
+  z-index: 1;
 }
 
 .manifesto h1 {
@@ -130,7 +143,6 @@ label {
   font-weight: 600;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
-  color: var(--color-secondary);
   color: var(--color-text);
 }
 
@@ -222,4 +234,176 @@ footer {
     gap: 0.5rem;
     align-items: flex-start;
   }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — drifting grain overlay.
+   Viewport-sized and drifting via background-position: an oversized box drifts
+   the same way but reports as overflow and forces a large compositing layer. */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* `multiply` can only darken; over --color-background #11111b (rgb 17,17,27)
+     at 0.05 the maximum delta was 1/255 — a mathematical no-op. `overlay` can
+     lighten as well, so the grain survives a near-black ground. */
+  opacity: 0.09;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: grainDrift 8s steps(6) infinite;
+}
+.grain-overlay.is-paused {
+  animation-play-state: paused;
+}
+@keyframes grainDrift {
+  0% { background-position: 0 0; }
+  20% { background-position: -40px 24px; }
+  40% { background-position: 28px -36px; }
+  60% { background-position: -24px -28px; }
+  80% { background-position: 36px 16px; }
+  100% { background-position: 0 0; }
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .grain-overlay {
+    display: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Video placement slot — hero background.
+ * Built around the still first: the page reads correctly with no
+ * video present, and the <video> takes the same class as the <img>.
+ * --------------------------------------------------------------- */
+.slot-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: clip;
+  /* The <img> itself would otherwise hit-block the waitlist controls; only the
+     scrim carried this, which is not enough. */
+  pointer-events: none;
+}
+.slot-hero-media__still,
+.slot-hero-media [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+/* Sized for a moving image: the headline has to hold against the clip's
+   brightest frame, not just the poster. Measured against the real decoded
+   pixels of hero-bg.webp, which is a BRIGHT asset - top-third median L=0.5286
+   and a near-white brightest pixel rgb(242,255,252), L=0.9743.
+   Conservative bound, weakest stop (0.66) applied to every pixel in the frame:
+     #cba6f7 h1   worst 3.58:1  (clamp(3rem,8vw,6rem) = large text, bar 3:1)
+     #cdd6f4 body worst 5.03:1  (1.1rem floor, so the full bar 4.5:1)
+   With the gradient evaluated per row it is 3.64:1 / 5.12:1. The shipped
+   0.45/0.72 measured 1.69:1 / 2.38:1.
+   DO NOT lower these stops: 0.62/0.80 puts the body copy at 4.38:1, under the
+   4.5:1 bar, because of that near-white pixel. */
+.slot-hero-media__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.66) 0%, rgba(0, 0, 0, 0.82) 100%);
+  pointer-events: none;
 }

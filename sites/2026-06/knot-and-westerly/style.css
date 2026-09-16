@@ -622,3 +622,15 @@ footer a {
   line-height: 1.5;
   color: var(--color-secondary);
 }
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured on the rendered page).
+ * --------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Touch target: the inline CTA links rendered 24px tall. */
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+  }
+}

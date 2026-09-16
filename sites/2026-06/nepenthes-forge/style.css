@@ -586,3 +586,17 @@ body.has-modal-open {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* A bare `strong` rule paints the site's near-black ink, which on the slot
+   tile's own dark panel is 1.11:1 — the label was effectively invisible. The
+   tile sets its own ink, so the <strong> inside it inherits that instead. */
+.slot-tile-button__text strong {
+  color: inherit;
+}
+h4 {
+  /* 1.10 is below the 1.2 minimum for body-size headings. */
+  line-height: 1.3;
+}

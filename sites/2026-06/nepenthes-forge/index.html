@@ -107,13 +107,7 @@
           </span>
         </button>
 
-        <div class="video-modal" id="seal-film" role="dialog" aria-modal="true" aria-label="Climate-Lock sealing cycle" hidden>
-          <div class="video-modal__backdrop" data-video-close></div>
-          <div class="video-modal__frame">
-            <button type="button" class="video-modal__close" data-video-close aria-label="Close video">&times;</button>
-            <img class="video-modal__still" src="./assets/hardware.webp" alt="" width="1024" height="576">
-          </div>
-        </div>
+
 
         <a href="./hardware.html" class="cta-button">View Containment Hardware</a>
       </section>
@@ -185,6 +179,17 @@
         </div>
       </div>
     </footer>
-  
 
-</body></html>
+    <!-- Body-level: a position:fixed overlay must not sit inside a transformed
+         ancestor. Every [data-reveal] element keeps a translate3d and a
+         will-change:transform, either of which makes it the containing block
+         for fixed descendants — which would trap this dialog in that section. -->
+    <div class="video-modal" id="seal-film" role="dialog" aria-modal="true" aria-label="Climate-Lock sealing cycle" hidden>
+      <div class="video-modal__backdrop" data-video-close></div>
+      <div class="video-modal__frame">
+        <button type="button" class="video-modal__close" data-video-close aria-label="Close video">&times;</button>
+        <img class="video-modal__still" src="./assets/hardware.webp" alt="" width="1024" height="576">
+      </div>
+    </div>
+  </body>
+</html>

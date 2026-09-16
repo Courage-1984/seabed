@@ -36,7 +36,7 @@
     </header>
 
     <main>
-      <section class="container hero">
+      <section data-reveal class="container hero">
         <h1>Torn sails posted in. Ocean-ready sails posted back.</h1>
         <p class="intro-text">
           A working sail loft run out of a Cornish signal box, mending gaff mainsails, storm jibs and cruising genoas
@@ -61,7 +61,7 @@
         </p>
       </section>
 
-      <section class="container">
+      <section data-reveal class="container">
         <span class="section-number">1</span>
         <h2>The signal box at Lelant Saltings</h2>
         <p>
@@ -79,7 +79,7 @@
         </p>
       </section>
 
-      <section class="container">
+      <section data-reveal class="container">
         <span class="section-number">2</span>
         <h2>The repair-by-post workflow</h2>
         <p>
@@ -103,7 +103,29 @@
         </p>
       </section>
 
-      <section class="container">
+      <div class="transition-band">
+        <img class="transition-band__media" src="./assets/tanbark-swatch.webp" alt="A swatch of the heavy tanbark dacron used in the repair" loading="lazy" width="1024" height="1024">
+        <div class="transition-band__scrim"></div>
+        <p class="transition-band__label">Tanbark, cut to the weave of the original</p>
+      </div>
+
+      <div class="marquee-band" data-marquee>
+        <div class="marquee-band__track" data-marquee-track>
+          <span class="marquee-band__word" aria-hidden="true">INSPECTION COSTS YOU NOTHING</span>
+          <span class="marquee-band__word" aria-hidden="true">THE ELLERY DOUBLE-RUN ON EVERY SEAM</span>
+          <span class="marquee-band__word" aria-hidden="true">BACK ON THE WATER IN FOURTEEN DAYS</span>
+          <span class="marquee-band__word" aria-hidden="true">HAND-FINISHED IN CORNWALL</span>
+          <!-- Duplicate half: the loop wraps at -50%, so it must be identical, and
+               each word must carry its own trailing space (padding-inline-end in
+               style.css) rather than a track gap, or -50% short-travels. -->
+          <span class="marquee-band__word" aria-hidden="true">INSPECTION COSTS YOU NOTHING</span>
+          <span class="marquee-band__word" aria-hidden="true">THE ELLERY DOUBLE-RUN ON EVERY SEAM</span>
+          <span class="marquee-band__word" aria-hidden="true">BACK ON THE WATER IN FOURTEEN DAYS</span>
+          <span class="marquee-band__word" aria-hidden="true">HAND-FINISHED IN CORNWALL</span>
+        </div>
+      </div>
+
+      <section data-reveal class="container">
         <span class="section-number">3</span>
         <h2>The Bosun's Quarterly Box preview</h2>
         <p>
@@ -126,7 +148,7 @@
         </p>
       </section>
 
-      <section class="container">
+      <section data-reveal class="container">
         <span class="section-number">4</span>
         <h2>Testimonials from working skippers</h2>
         <p>
@@ -172,7 +194,7 @@
         <a href="./sails.html" class="cta-button">Post your sail in</a>
       </section>
 
-      <section class="container">
+      <section data-reveal class="container">
         <span class="section-number">5</span>
         <h2>Questions about the post</h2>
         <p>

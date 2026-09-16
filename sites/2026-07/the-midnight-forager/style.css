@@ -1181,3 +1181,39 @@ html:not(.js-reveal) .pin-section {
   line-height: 1.55;
   max-inline-size: 56ch;
 }
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured against the rendered backdrop).
+ * --------------------------------------------------------------- */
+/* Each availability badge painted its ink at roughly the same lightness as its
+   own ground. The badges sit on the DARK calendar card — rgb(38,47,57) through
+   rgb(56,56,40) once the translucent tint is composited over it — so the ink
+   goes lighter, not darker. Measured on the composited ground, not on the tint. */
+.month-status.closed {
+  color: hsl(215, 15%, 62%);
+}
+.month-status.limited {
+  color: hsl(14, 80%, 62%);
+}
+.month-status.open {
+  color: hsl(122, 40%, 62%);
+}
+.month-status.peak {
+  color: hsl(45, 60%, 62%);
+}
+/* The pinned header covered the top of every in-page anchor target. */
+html {
+  scroll-padding-top: 5.5rem;
+}
+@media (max-width: 768px) {
+  /* One nav link 43px wide and the text CTA 31px tall. */
+  nav a {
+    min-inline-size: 44px;
+    justify-content: center;
+  }
+  .btn-text {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+  }
+}

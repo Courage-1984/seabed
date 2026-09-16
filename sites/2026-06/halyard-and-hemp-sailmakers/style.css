@@ -518,3 +518,23 @@ footer a {
   font-size: 0.8125rem;
   font-weight: 700;
 }
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured on the rendered page).
+ * --------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Touch target: the nav links render 41px wide. */
+  nav ul li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 44px;
+    min-block-size: 44px;
+  }
+  /* Touch target: the wordmark rendered 32px tall. */
+  .nav-brand {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+  }
+}

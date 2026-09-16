@@ -396,8 +396,21 @@ footer a {
 /* Signature effect — masked scroll-through type. */
 .masked-band {
   padding-block: clamp(3rem, 7vw, 5rem);
-  padding-inline: 1.5rem;
+  /* The band is a <div>, not a <section>, so it does not inherit the page's
+     `section { padding: 4rem 2rem }` gutter or its 768/1024 steps. Matched here
+     so the only block outside the gutter is not this one. */
+  padding-inline: 2rem;
   text-align: center;
+}
+@media (min-width: 768px) {
+  .masked-band {
+    padding-inline: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .masked-band {
+    padding-inline: 6rem;
+  }
 }
 .masked-band__type {
   margin: 0;
@@ -417,19 +430,24 @@ footer a {
        `color: transparent` — a browser that clips to text but has no fill
        would otherwise render the glyphs at 1.00:1.
        background-color paints under every layer and is clipped by
-       background-clip too, so if the asset 404s, or a --mask-shift ever
-       outruns the cover overflow, the glyphs land on #1a1c1a over #f4f2ee
-       (15.33:1) instead of disappearing.
-       The flat overlay holds every fill pixel down to at worst 4.93:1 against
-       #f4f2ee (measured against a pure-white source pixel; the real asset is
-       darker), while leaving the forge texture legible. */
+       background-clip too, so if the asset 404s the glyphs land on #1a1c1a
+       over #f4f2ee (15.33:1) instead of disappearing.
+       The pinned overlay holds every fill pixel to at worst 4.93:1 against
+       #f4f2ee — that worst case is a pure-white source pixel, and the real
+       asset is darker — while leaving the forge texture legible. */
     background-color: var(--color-text);
     background-image:
       linear-gradient(rgba(26, 28, 26, 0.66), rgba(26, 28, 26, 0.66)),
       url('./assets/metallurgy-close-up.webp');
-    background-size: cover;
-    background-position: center calc(50% + var(--mask-shift, 0px));
-    background-repeat: no-repeat;
+    /* Per layer. The overlay is pinned at 100% 100% / centre so it covers every
+       glyph pixel at every scroll position; only the photograph carries
+       --mask-shift. Sharing one background-position slid the overlay off by the
+       shift amount and exposed raw image pixels in that band. */
+    background-size: 100% 100%, cover;
+    background-position:
+      center center,
+      center calc(50% + var(--mask-shift, 0px));
+    background-repeat: no-repeat, no-repeat;
     -webkit-background-clip: text;
     background-clip: text;
   }
@@ -555,4 +573,16 @@ footer a {
   margin-block-start: 0;
   margin-bottom: 2rem;
   color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured on the rendered page).
+ * --------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Touch target: an inline link rendered 19px tall. */
+  .rail a, .section-content a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+  }
 }
