@@ -16,9 +16,9 @@ site's `assets/`, updates `meta.json`, and wires the markup into the slot.
 **Every prompt is written for one specific brand.** The placement slot, palette
 and subject all come from that site's own copy — they are not interchangeable.
 
-**Coverage: 42 of 88 sites have their clip installed.** Thirty-four more are
-prepped and awaiting their clip — 12 from batch 6 and 22 from batch 7 — and the
-remaining 12 have not been through remediation yet.
+**Coverage: 42 of 88 sites have their clip installed. The other 46 are prepped
+and awaiting only their clip** — 12 from batch 6, 22 from batch 7 and 12 from
+batch 8. Every site in the repo has now been through remediation.
 
 ---
 
@@ -766,6 +766,273 @@ Lighting: soft raking daylight so the weave and the thread relief both read.
 Palette: navy slate #2c3e50, tan leather #8b5a2b, dark gold #b8860b on the waxed
 thread, unbleached flax #f4efe6.
 Motion: the iron pass and the stitching. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+---
+
+## Pending — batch 8 (12 clips)
+
+The last twelve sites. All pass check:contract and qa with zero visual findings;
+two report an assets duplicate that is the deferred dedupe worklist, not a defect
+in this work. Each is waiting on its clip, and the slots are live with a still in
+place so the pages are complete without video.
+
+Download each into `./videos_new/` and say "the videos are in".
+
+| # | Save as | Slug | Placement |
+|---|---|---|---|
+| 1 | `1. forge-and-feather.mp4` | 1. forge-and-feather | grid tile |
+| 2 | `2. drosera-vault.mp4` | 2. drosera-vault | footer ambient |
+| 3 | `3. cryotex-isolates.mp4` | 3. cryotex-isolates | hero background |
+| 4 | `4. copper-cloche.mp4` | 4. copper-cloche | split panel |
+| 5 | `5. backhaul-field-co.mp4` | 5. backhaul-field-co | modal feature |
+| 6 | `6. astrolabe-treks.mp4` | 6. astrolabe-treks | marquee strip |
+| 7 | `7. aseptic-cellars.mp4` | 7. aseptic-cellars | masked type fill |
+| 8 | `8. archive-arcade.mp4` | 8. archive-arcade | hover reveal |
+| 9 | `9. apex-altitude-lab.mp4` | 9. apex-altitude-lab | section transition band |
+| 10 | `10. abyssal-hardware.mp4` | 10. abyssal-hardware | hero inset frame |
+| 11 | `11. abyssal-data-recovery.mp4` | 11. abyssal-data-recovery | inline process demo |
+| 12 | `12. stake-and-bind.mp4` | 12. stake-and-bind | footer ambient |
+
+### 1. forge-and-feather — grid tile
+
+- **Site:** `sites/2026-06/forge-and-feather/`
+- **Target file:** `assets/forge-and-feather-grid-tile.webm`
+- **Where it lands:** the first cell of the showcase bento grid, sized and gapped like its neighbours
+- **Brand:** hand-forged kitchen blades, differentially hardened and finished to spec
+
+```text
+Blade quench: a glowing knife blank drawn from the coal forge and plunged edge-first
+into oil, flame leaping off the bath and dying back, scale flaking from the steel.
+Camera: 85mm, locked-off on the quench tank, no camera move.
+Lighting: the hot steel and the flash of flame are the only sources.
+Palette: near-black #1a1a1a, warm shadow #2e2522, forge orange #e65f2b in the metal,
+pale ash #f4f4f6 on the smoke.
+Motion: the plunge, the flare, the settle. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 2. drosera-vault — footer ambient
+
+- **Site:** `sites/2026-06/drosera-vault/`
+- **Target file:** `assets/drosera-vault-footer-ambient.webm`
+- **Where it lands:** full-width band across the footer, behind the closing block under a heavy scrim
+- **Brand:** lab-propagated rare carnivorous plants, sold as verified genetics
+
+```text
+Sundew in extreme macro: mucilage droplets trembling on red tentacles as a tiny
+midge touches down and the leaf begins its slow inward curl, everything beyond the
+leaf in black.
+Camera: 100mm macro, locked-off, no camera move.
+Lighting: hard low grow-light from the side so every droplet reads as glass.
+Palette: near-black #11111b, panel slate #1e1e2e and #313244, chlorophyll green
+#a6e3a1 in the leaf.
+Motion: droplet tremble and the beginning of the curl — slow. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 3. cryotex-isolates — hero background
+
+- **Site:** `sites/2026-06/cryotex-isolates/`
+- **Target file:** `assets/cryotex-isolates-hero-background.webm`
+- **Where it lands:** full-bleed behind the hero, under an engineered scrim sized for a moving image
+- **Brand:** medical-grade botanical vitrification and cryo-milling
+- **Note:** the scrim is sized for the clip's brightest frame — this one is very bright, so keep the hero type area away from pure white if possible.
+
+```text
+Cryogenic vitrification chamber: botanical material on a steel tray dropping into
+liquid nitrogen, dense white vapour boiling over the lip and rolling across a clean
+white bench, frost racing across the tray edge.
+Camera: 50mm, locked-off, no camera move.
+Lighting: flat clinical white, almost shadowless.
+Palette: clinical white #ffffff and #f4f5f7, hard black #000000 on the equipment, a
+single electric blue #0044ff indicator.
+Motion: boiling vapour and the frost front. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 4. copper-cloche — split panel
+
+- **Site:** `sites/2026-06/copper-cloche/`
+- **Target file:** `assets/copper-cloche-split-panel.webm`
+- **Where it lands:** the media half of the "Down before the first course" split band
+- **Brand:** a single long table served deep inside a working granite quarry
+
+```text
+Granite chamber laid for service: a long table candle-lit end to end in a quarried
+stone hall, copper cloches catching the flame, the rock face disappearing into black
+beyond the light.
+Camera: 35mm, extremely slow push along the table, level and steady.
+Lighting: candle and one warm overhead pool; the stone eats everything else.
+Palette: near-black #0d1112, cold stone #182022, copper #d97736 on the cloches, a
+muted green #4a7c59 in the table dressing.
+Motion: candle flicker and the slow push. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 5. backhaul-field-co — modal feature
+
+- **Site:** `sites/2026-06/backhaul-field-co/`
+- **Target file:** `assets/backhaul-field-co-modal-feature.webm`
+- **Where it lands:** inside the dialog the poster tile opens, at body level so the overlay is viewport-fixed
+- **Brand:** satellite backhaul and uplink for sites far outside coverage
+
+```text
+Field uplink acquiring: a portable satellite dish on a tripod tracking slowly across
+a dry scrubland sky at dusk, its feed arm adjusting in small increments, heat haze
+off the ground, a lit status panel at the tripod base.
+Camera: 50mm, locked-off wide-medium, no camera move.
+Lighting: low dusk sun behind the dish, panel glow as fill.
+Palette: deep teal #16323c, rust #a9522e in the earth, signal amber #f5a623 on the
+panel, bone sky #f3efe6.
+Motion: the dish tracking and heat shimmer. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 6. astrolabe-treks — marquee strip
+
+- **Site:** `sites/2026-06/astrolabe-treks/`
+- **Target file:** `assets/astrolabe-treks-marquee-strip.webm`
+- **Where it lands:** riding the drifting band above the expeditions section — it appears twice, in both identical halves of the loop
+- **Brand:** desert crossings navigated by astrolabe, with no generator and no light dome
+
+```text
+Star trails over a dune field: a long-exposure night sky wheeling above a sharp dune
+crest, sand grains moving along the ridge in a light wind, no artificial light anywhere
+in frame.
+Camera: 24mm, locked-off wide, no camera move — the sky does the moving.
+Lighting: starlight only; the dune reads as silhouette with a faint top edge.
+Palette: near-black #050608, deep slate #0b0c10 and #1f2833, brass #c5a880 in the
+star trails, pale sand edge.
+Motion: the trails wheeling and sand drifting on the crest. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 7. aseptic-cellars — masked type fill
+
+- **Site:** `sites/2026-06/aseptic-cellars/`
+- **Target file:** `assets/aseptic-cellars-masked-type-fill.webm`
+- **Where it lands:** visible only through the "0.2 aw" numerals in the band, via the layered SVG knockout
+- **Brand:** aseptic bio-acoustic protein desiccation held below spore-viable water activity
+- **Note:** seen only through the letterforms, so favour strong local contrast and movement over a legible wide subject.
+
+```text
+Ultrasonic desiccation in a sterile chamber: a shallow tray of pale protein slurry
+under an acoustic horn, the surface standing up in fine ripple patterns and drying to
+a crust at the edges, vapour drawn off to one side.
+Camera: 90mm macro, locked-off overhead, no camera move.
+Lighting: hard clinical top light so the ripple pattern reads as relief.
+Palette: clinical white #ffffff and #f2f4f7, hard black #000000 on the rig, one
+ultramarine #0a24db indicator at the frame edge.
+Motion: the standing ripple pattern — dense, high local contrast, which is what reads
+through cut-out numerals. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 8. archive-arcade — hover reveal
+
+- **Site:** `sites/2026-06/archive-arcade/`
+- **Target file:** `assets/archive-arcade-hover-reveal.webm`
+- **Where it lands:** behind the "On the Bench" card — poster at rest, clip on hover and keyboard focus, and it plays its pass out rather than cutting when the pointer leaves
+- **Brand:** restoration of coin-operated photo booths and arcade cabinets
+
+```text
+Photo-booth mechanism on the bench: the chemical transport rack stepping through its
+cycle, rollers turning and a print carrier advancing, brass linkages and worn enamel
+under a bench lamp.
+Camera: 70mm, locked-off on the mechanism, no camera move.
+Lighting: one warm bench lamp, deep falloff.
+Palette: navy #1e3a5f, aged brass #8a5c2e, a red enamel accent #d6463a, bone #f7f4ee.
+Motion: the step-and-advance of the transport. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 9. apex-altitude-lab — section transition band
+
+- **Site:** `sites/2026-05/apex-altitude-lab/`
+- **Target file:** `assets/apex-altitude-lab-section-transition-band.webm`
+- **Where it lands:** a full-width band between the showcase and social-proof sections
+- **Brand:** altitude and hyperbaric physiology calibration for expedition and dive teams
+
+```text
+Hyperbaric chamber porthole: pressure building behind thick glass, condensation
+blooming and clearing across the inner surface, a gauge needle climbing steadily at the
+frame edge, the chamber interior lit cold.
+Camera: 85mm, locked-off on the porthole, no camera move.
+Lighting: cold interior light through the glass, dark room outside.
+Palette: near-black #04090e, deep navy #0d1e2d and #1f3a52, electric cyan #00e5ff on
+the instrument glow, pale off-white #e2e8f0 on the condensation.
+Motion: the condensation cycle and the climbing needle. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 10. abyssal-hardware — hero inset frame
+
+- **Site:** `sites/2026-05/abyssal-hardware/`
+- **Target file:** `assets/abyssal-hardware-hero-inset-frame.webm`
+- **Where it lands:** an inset frame inside the hero image wrapper, above the fold
+- **Brand:** crush-proof transit cases rated and cycled to full abyssal depth
+
+```text
+Face seal under test in extreme macro: the O-ring groove of a transit case closing
+under load, the elastomer compressing into its channel, a bead of water squeezing out
+and running off the anodised lip.
+Camera: 100mm macro, locked-off, no camera move.
+Lighting: hard raking light so the compression reads as geometry.
+Palette: near-black #04080d, hull slate #0b131c and #1e2a38, safety orange #ff5722 on
+the seal itself, pale off-white #e2e8f0 highlight.
+Motion: the close and the water bead. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 11. abyssal-data-recovery — inline process demo
+
+- **Site:** `sites/2026-05/abyssal-data-recovery/`
+- **Target file:** `assets/abyssal-data-recovery-inline-process-demo.webm`
+- **Where it lands:** the process demo frame beside the three recovery steps
+- **Brand:** recovering data from silicon pulled off the ocean floor
+
+```text
+NAND package lifted under a microscope: hot air held low while a scorched memory chip
+releases from a corroded board, solder balls giving way one edge at a time, salt residue
+visible around the pads.
+Camera: 100mm macro through the scope framing, locked-off.
+Lighting: ring light, clinical and even.
+Palette: near-black #08101a, copper #b87333 on the traces, caution yellow #eab308 on
+the tool, clean off-white #f0f4f8 bench.
+Motion: the lift, in small increments. Must loop seamlessly.
+Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
+Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
+```
+
+### 12. stake-and-bind — footer ambient
+
+- **Site:** `sites/2025-01/stake-and-bind/`
+- **Target file:** `assets/stake-and-bind-footer-ambient.webm`
+- **Where it lands:** full-width band across the footer, behind the closing block under a heavy scrim
+- **Brand:** traditional hedge-laying taught as a residential craft course
+
+```text
+Hedge-laying in winter: a billhook cutting a pleacher most of the way through a
+hawthorn stem, the living stem bent over and bound down between stakes, breath and cold
+light in a bare field.
+Camera: 50mm, locked-off medium on the cut, no camera move.
+Lighting: flat low winter daylight, no sun.
+Palette: hedge green #2b4f3c, straw #d4a853 in the dead grass, billhook brown #8b4513,
+pale winter sky #f5f3ef.
+Motion: the cut and the bend — hands may enter frame, no faces. Must loop seamlessly.
 Negatives: no on-screen text, no logos, no recognisable faces, no watermarks.
 Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
 ```

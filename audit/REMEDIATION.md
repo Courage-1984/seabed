@@ -2,7 +2,7 @@
 
 # Remediation campaign status
 
-Generated 2026-09-16T19:05:15.038Z from 88 sites.
+Generated 2026-09-19T08:32:06.082Z from 88 sites.
 
 Bringing every site up to the strict contract (video + motion budget + asset isolation),
 walking newest → oldest. A site is `DONE` once it carries `"contract": "v2.1"` in `meta.json`
@@ -11,8 +11,7 @@ and passes every gate. See `AGENTS.md` §11–§15 for what each gate means.
 ## Summary
 
 - **DONE**: 42
-- **NEEDS-VIDEO**: 34
-- **TODO**: 12
+- **NEEDS-VIDEO**: 46
 
 ## Sites (newest first)
 
@@ -94,18 +93,18 @@ and passes every gate. See `AGENTS.md` §11–§15 for what each gate means.
 | 2026-06-21 | k9-kinetic-recovery | NEEDS-VIDEO | hover reveal | sticky section pinning with cross-fade | **video**, meta.video, contract flag |
 | 2026-06-19 | hull-and-hem-sailmenders | NEEDS-VIDEO | section transition band | scroll-velocity marquee skew | **video**, meta.video, contract flag |
 | 2026-06-17 | halyard-and-hemp-sailmakers | NEEDS-VIDEO | inline process demo | magnetic proximity cursor element | **video**, meta.video, contract flag |
-| 2026-06-15 | forge-and-feather | TODO | grid tile | numeric counter roll-up | prefers-reduced-motion, **video**, meta.video, contract flag |
-| 2026-06-13 | drosera-vault | TODO | footer ambient | CSS 3D card tilt | IntersectionObserver, prefers-reduced-motion, **video**, meta.video, contract flag |
-| 2026-06-11 | cryotex-isolates | TODO | hero background | masked scroll-through type | IntersectionObserver, prefers-reduced-motion, **video**, meta.video, contract flag |
-| 2026-06-09 | copper-cloche | TODO | split panel | staggered letter-by-letter headline | IntersectionObserver, prefers-reduced-motion, **video**, meta.video, contract flag |
-| 2026-06-07 | backhaul-field-co | TODO | modal feature | animated SVG line-draw | IntersectionObserver, prefers-reduced-motion, **video**, meta.video, contract flag |
-| 2026-06-05 | astrolabe-treks | TODO | marquee strip | drifting grain overlay | prefers-reduced-motion, **video**, meta.video, contract flag |
-| 2026-06-04 | aseptic-cellars | TODO | masked type fill | progressive blur focus-pull | IntersectionObserver, prefers-reduced-motion, **video**, meta.video, contract flag |
-| 2026-06-02 | archive-arcade | TODO | hover reveal | scroll-driven clip-path wipe | IntersectionObserver, prefers-reduced-motion, **video**, meta.video, contract flag |
-| 2026-05-31 | apex-altitude-lab | TODO | section transition band | text scramble decode on reveal | IntersectionObserver, prefers-reduced-motion, **video**, meta.video, contract flag |
-| 2026-05-29 | abyssal-hardware | TODO | hero inset frame | sticky section pinning with cross-fade | prefers-reduced-motion, **video**, meta.video, contract flag |
-| 2026-05-27 | abyssal-data-recovery | TODO | inline process demo | scroll-velocity marquee skew | IntersectionObserver, prefers-reduced-motion, **video**, meta.video, contract flag |
-| 2025-01-26 | stake-and-bind | TODO | footer ambient | magnetic proximity cursor element | prefers-reduced-motion, **video**, meta.video, contract flag |
+| 2026-06-15 | forge-and-feather | NEEDS-VIDEO | grid tile | numeric counter roll-up | **video**, meta.video, contract flag |
+| 2026-06-13 | drosera-vault | NEEDS-VIDEO | footer ambient | CSS 3D card tilt | **video**, meta.video, contract flag |
+| 2026-06-11 | cryotex-isolates | NEEDS-VIDEO | hero background | masked scroll-through type | **video**, meta.video, contract flag |
+| 2026-06-09 | copper-cloche | NEEDS-VIDEO | split panel | staggered letter-by-letter headline | **video**, meta.video, contract flag |
+| 2026-06-07 | backhaul-field-co | NEEDS-VIDEO | modal feature | animated SVG line-draw | **video**, meta.video, contract flag |
+| 2026-06-05 | astrolabe-treks | NEEDS-VIDEO | marquee strip | drifting grain overlay | **video**, meta.video, contract flag |
+| 2026-06-04 | aseptic-cellars | NEEDS-VIDEO | masked type fill | progressive blur focus-pull | **video**, meta.video, contract flag |
+| 2026-06-02 | archive-arcade | NEEDS-VIDEO | hover reveal | scroll-driven clip-path wipe | **video**, meta.video, contract flag |
+| 2026-05-31 | apex-altitude-lab | NEEDS-VIDEO | section transition band | text scramble decode on reveal | **video**, meta.video, contract flag |
+| 2026-05-29 | abyssal-hardware | NEEDS-VIDEO | hero inset frame | sticky section pinning with cross-fade | **video**, meta.video, contract flag |
+| 2026-05-27 | abyssal-data-recovery | NEEDS-VIDEO | inline process demo | scroll-velocity marquee skew | **video**, meta.video, contract flag |
+| 2025-01-26 | stake-and-bind | NEEDS-VIDEO | footer ambient | magnetic proximity cursor element | **video**, meta.video, contract flag |
 
 ## Deferred dedupe worklist
 
