@@ -11,5 +11,7 @@
     "concept"
   ],
   "videoPlacement": "split panel",
-  "signatureEffect": "staggered letter-by-letter headline"
+  "signatureEffect": "staggered letter-by-letter headline",
+  "video": "assets/copper-cloche-split-panel.webm",
+  "contract": "v2.1"
 }

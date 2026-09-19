@@ -11,5 +11,7 @@
     "research"
   ],
   "videoPlacement": "grid tile",
-  "signatureEffect": "numeric counter roll-up"
+  "signatureEffect": "numeric counter roll-up",
+  "video": "assets/signal-and-silo-grid-tile.webm",
+  "contract": "v2.1"
 }

@@ -11,5 +11,7 @@
     "concept"
   ],
   "videoPlacement": "hero inset frame",
-  "signatureEffect": "sticky section pinning with cross-fade"
+  "signatureEffect": "sticky section pinning with cross-fade",
+  "video": "assets/abyssal-hardware-hero-inset-frame.webm",
+  "contract": "v2.1"
 }

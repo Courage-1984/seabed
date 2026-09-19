@@ -13,5 +13,7 @@
   "standard": "v2",
   "qa": "v2-pass",
   "videoPlacement": "inline process demo",
-  "signatureEffect": "staggered letter-by-letter headline"
+  "signatureEffect": "staggered letter-by-letter headline",
+  "video": "assets/pellucid-memory-inline-process-demo.webm",
+  "contract": "v2.1"
 }

@@ -188,7 +188,11 @@
       <div class="video-modal__backdrop" data-video-close></div>
       <div class="video-modal__frame">
         <button type="button" class="video-modal__close" data-video-close aria-label="Close video">&times;</button>
-        <img class="video-modal__still" src="./assets/hardware.webp" alt="" width="1024" height="576">
+        <video class="video-modal__still" data-slot-video autoplay muted loop playsinline preload="metadata"
+          poster="./assets/nepenthes-forge-modal-feature-poster.webp" width="1280" height="720" aria-hidden="true">
+          <source src="./assets/nepenthes-forge-modal-feature.webm" type="video/webm">
+          <source src="./assets/nepenthes-forge-modal-feature.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </body>

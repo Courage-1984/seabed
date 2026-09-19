@@ -150,14 +150,11 @@
         <!-- Video placement slot: grid tile -->
         <div class="slot-tile-band">
           <figure class="slot-tile" data-slot-tile>
-            <img
-              class="slot-tile__still"
-              src="./assets/node.webp"
-              alt="Close view of a powder-coated SiloWatch-Pro telemetry unit clamped to the corrugated ribbing of a galvanised silo"
-              loading="lazy"
-              width="1024"
-              height="1024"
-            />
+            <video class="slot-tile__still" data-slot-video autoplay muted loop playsinline preload="metadata"
+              poster="./assets/signal-and-silo-grid-tile-poster.webp" width="1280" height="720" aria-label="Close view of a powder-coated SiloWatch-Pro telemetry unit clamped to the corrugated ribbing of a galvanised silo">
+              <source src="./assets/signal-and-silo-grid-tile.webm" type="video/webm">
+              <source src="./assets/signal-and-silo-grid-tile.mp4" type="video/mp4">
+            </video>
             <figcaption class="slot-tile__caption">
               <strong>A SiloWatch-Pro Node Reporting In</strong>
               Clamped to the outside of the steel, the node pulses acoustic and thermal readings

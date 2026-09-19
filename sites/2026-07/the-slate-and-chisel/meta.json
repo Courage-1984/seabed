@@ -11,5 +11,7 @@
     "concept"
   ],
   "videoPlacement": "hero inset frame",
-  "signatureEffect": "text scramble decode on reveal"
+  "signatureEffect": "text scramble decode on reveal",
+  "video": "assets/the-slate-and-chisel-hero-inset-frame.webm",
+  "contract": "v2.1"
 }

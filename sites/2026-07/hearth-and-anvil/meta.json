@@ -12,5 +12,7 @@
     "hardware"
   ],
   "videoPlacement": "split panel",
-  "signatureEffect": "masked scroll-through type"
+  "signatureEffect": "masked scroll-through type",
+  "video": "assets/hearth-and-anvil-split-panel.webm",
+  "contract": "v2.1"
 }

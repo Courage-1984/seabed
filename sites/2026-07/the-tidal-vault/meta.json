@@ -11,5 +11,7 @@
     "logistics"
   ],
   "videoPlacement": "masked type fill",
-  "signatureEffect": "scroll-driven clip-path wipe"
+  "signatureEffect": "scroll-driven clip-path wipe",
+  "video": "assets/the-tidal-vault-masked-type-fill.webm",
+  "contract": "v2.1"
 }

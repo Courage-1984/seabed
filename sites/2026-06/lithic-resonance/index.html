@@ -28,15 +28,11 @@
         <!-- HERO SECTION -->
         <section data-reveal class="manifesto" style="margin-bottom: 6rem">
           <div class="slot-hero-media" aria-hidden="true">
-            <img
-              class="slot-hero-media__still"
-              src="./assets/hero-bg.webp"
-              alt=""
-              fetchpriority="high"
-              decoding="async"
-              width="1920"
-              height="1080"
-            />
+            <video class="slot-hero-media__still" data-slot-video autoplay muted loop playsinline preload="metadata"
+              poster="./assets/lithic-resonance-hero-background-poster.webp" width="1280" height="720" aria-hidden="true">
+              <source src="./assets/lithic-resonance-hero-background.webm" type="video/webm">
+              <source src="./assets/lithic-resonance-hero-background.mp4" type="video/mp4">
+            </video>
             <div class="slot-hero-media__scrim"></div>
           </div>
           <h1>Heavy.<br />Absolute.</h1>

@@ -11,5 +11,7 @@
     "logistics"
   ],
   "videoPlacement": "hero background",
-  "signatureEffect": "progressive blur focus-pull"
+  "signatureEffect": "progressive blur focus-pull",
+  "video": "assets/vapour-and-vault-hero-background.webm",
+  "contract": "v2.1"
 }

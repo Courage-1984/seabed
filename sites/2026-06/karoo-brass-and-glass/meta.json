@@ -11,5 +11,7 @@
     "hardware"
   ],
   "videoPlacement": "marquee strip",
-  "signatureEffect": "text scramble decode on reveal"
+  "signatureEffect": "text scramble decode on reveal",
+  "video": "assets/karoo-brass-and-glass-marquee-strip.webm",
+  "contract": "v2.1"
 }

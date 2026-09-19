@@ -147,7 +147,11 @@
       <div class="slot-marquee" data-slot-marquee>
         <div class="slot-marquee__track">
           <figure class="slot-marquee__item">
-            <img class="slot-marquee__still" src="./assets/star_trails.webp" alt="Star trails wheeling above the dune line on a moonless night." loading="lazy" width="1024" height="576">
+            <video class="slot-marquee__still" data-slot-video autoplay muted loop playsinline preload="metadata"
+              poster="./assets/astrolabe-treks-marquee-strip-poster.webp" width="1280" height="720" aria-label="Star trails wheeling above the dune line on a moonless night.">
+              <source src="./assets/astrolabe-treks-marquee-strip.webm" type="video/webm">
+              <source src="./assets/astrolabe-treks-marquee-strip.mp4" type="video/mp4">
+            </video>
             <figcaption class="slot-marquee__caption">Star trails over the erg</figcaption>
           </figure>
           <span class="slot-marquee__word" aria-hidden="true">NO GENERATOR, NO LIGHT DOME</span>
@@ -155,7 +159,11 @@
           <span class="slot-marquee__word" aria-hidden="true">CAMP STRUCK BEFORE DAWN</span>
           <!-- Duplicate half: the loop wraps at -50%, so it must be identical. -->
           <figure class="slot-marquee__item" aria-hidden="true">
-            <img class="slot-marquee__still" src="./assets/star_trails.webp" alt="" loading="lazy" width="1024" height="576">
+            <video class="slot-marquee__still" data-slot-video autoplay muted loop playsinline preload="metadata"
+              poster="./assets/astrolabe-treks-marquee-strip-poster.webp" width="1280" height="720" aria-hidden="true">
+              <source src="./assets/astrolabe-treks-marquee-strip.webm" type="video/webm">
+              <source src="./assets/astrolabe-treks-marquee-strip.mp4" type="video/mp4">
+            </video>
             <figcaption class="slot-marquee__caption">Star trails over the erg</figcaption>
           </figure>
           <span class="slot-marquee__word" aria-hidden="true">NO GENERATOR, NO LIGHT DOME</span>

@@ -13,5 +13,7 @@
   "standard": "v2",
   "qa": "v2-pass",
   "videoPlacement": "footer ambient",
-  "signatureEffect": "numeric counter roll-up"
+  "signatureEffect": "numeric counter roll-up",
+  "video": "assets/78-north-supply-footer-ambient.webm",
+  "contract": "v2.1"
 }

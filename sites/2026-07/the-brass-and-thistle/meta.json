@@ -11,5 +11,7 @@
     "hardware"
   ],
   "videoPlacement": "hover reveal",
-  "signatureEffect": "scroll-velocity marquee skew"
+  "signatureEffect": "scroll-velocity marquee skew",
+  "video": "assets/the-brass-and-thistle-hover-reveal.webm",
+  "contract": "v2.1"
 }

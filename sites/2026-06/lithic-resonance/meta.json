@@ -11,5 +11,7 @@
     "concept"
   ],
   "videoPlacement": "hero background",
-  "signatureEffect": "drifting grain overlay"
+  "signatureEffect": "drifting grain overlay",
+  "video": "assets/lithic-resonance-hero-background.webm",
+  "contract": "v2.1"
 }

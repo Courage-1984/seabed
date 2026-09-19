@@ -221,7 +221,11 @@
         <section data-reveal id="showcase">
           <div class="bento-grid">
             <figure class="slot-tile">
-              <img class="slot-tile__still" src="./assets/specs.webp" alt="" loading="lazy" width="1024" height="576">
+              <video class="slot-tile__still" data-slot-video autoplay muted loop playsinline preload="metadata"
+                poster="./assets/forge-and-feather-grid-tile-poster.webp" width="1280" height="720" aria-hidden="true">
+                <source src="./assets/forge-and-feather-grid-tile.webm" type="video/webm">
+                <source src="./assets/forge-and-feather-grid-tile.mp4" type="video/mp4">
+              </video>
               <figcaption class="slot-tile__caption">Edge geometry checked against the spec card</figcaption>
             </figure>
             <div class="bento-item full" style="padding: 2rem">

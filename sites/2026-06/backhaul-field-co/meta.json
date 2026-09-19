@@ -11,5 +11,7 @@
     "concept"
   ],
   "videoPlacement": "modal feature",
-  "signatureEffect": "animated SVG line-draw"
+  "signatureEffect": "animated SVG line-draw",
+  "video": "assets/backhaul-field-co-modal-feature.webm",
+  "contract": "v2.1"
 }

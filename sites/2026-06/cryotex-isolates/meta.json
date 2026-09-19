@@ -11,5 +11,7 @@
     "hardware"
   ],
   "videoPlacement": "hero background",
-  "signatureEffect": "masked scroll-through type"
+  "signatureEffect": "masked scroll-through type",
+  "video": "assets/cryotex-isolates-hero-background.webm",
+  "contract": "v2.1"
 }

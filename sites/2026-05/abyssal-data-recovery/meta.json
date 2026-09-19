@@ -11,5 +11,7 @@
     "concept"
   ],
   "videoPlacement": "inline process demo",
-  "signatureEffect": "scroll-velocity marquee skew"
+  "signatureEffect": "scroll-velocity marquee skew",
+  "video": "assets/abyssal-data-recovery-inline-process-demo.webm",
+  "contract": "v2.1"
 }

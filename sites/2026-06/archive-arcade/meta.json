@@ -11,5 +11,7 @@
     "logistics"
   ],
   "videoPlacement": "hover reveal",
-  "signatureEffect": "scroll-driven clip-path wipe"
+  "signatureEffect": "scroll-driven clip-path wipe",
+  "video": "assets/archive-arcade-hover-reveal.webm",
+  "contract": "v2.1"
 }

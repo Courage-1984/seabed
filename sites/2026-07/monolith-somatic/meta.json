@@ -12,5 +12,7 @@
   "wordFloor": 1900,
   "standard": "v2",
   "videoPlacement": "hero background",
-  "signatureEffect": "progressive blur focus-pull"
+  "signatureEffect": "progressive blur focus-pull",
+  "video": "assets/monolith-somatic-hero-background.webm",
+  "contract": "v2.1"
 }

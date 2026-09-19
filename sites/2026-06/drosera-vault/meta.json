@@ -11,5 +11,7 @@
     "logistics"
   ],
   "videoPlacement": "footer ambient",
-  "signatureEffect": "CSS 3D card tilt"
+  "signatureEffect": "CSS 3D card tilt",
+  "video": "assets/drosera-vault-footer-ambient.webm",
+  "contract": "v2.1"
 }

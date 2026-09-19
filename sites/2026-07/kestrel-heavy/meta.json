@@ -13,5 +13,7 @@
   "standard": "v2",
   "qa": "v2-pass",
   "videoPlacement": "masked type fill",
-  "signatureEffect": "scroll-velocity marquee skew"
+  "signatureEffect": "scroll-velocity marquee skew",
+  "video": "assets/kestrel-heavy-masked-type-fill.webm",
+  "contract": "v2.1"
 }

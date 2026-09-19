@@ -11,5 +11,7 @@
     "research"
   ],
   "videoPlacement": "hero inset frame",
-  "signatureEffect": "progressive blur focus-pull"
+  "signatureEffect": "progressive blur focus-pull",
+  "video": "assets/lithic-fibre-dynamics-hero-inset-frame.webm",
+  "contract": "v2.1"
 }

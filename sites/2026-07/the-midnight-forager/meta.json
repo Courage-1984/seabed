@@ -11,5 +11,7 @@
     "concept"
   ],
   "videoPlacement": "section transition band",
-  "signatureEffect": "sticky section pinning with cross-fade"
+  "signatureEffect": "sticky section pinning with cross-fade",
+  "video": "assets/the-midnight-forager-section-transition-band.webm",
+  "contract": "v2.1"
 }

@@ -11,5 +11,7 @@
     "concept"
   ],
   "videoPlacement": "section transition band",
-  "signatureEffect": "text scramble decode on reveal"
+  "signatureEffect": "text scramble decode on reveal",
+  "video": "assets/apex-altitude-lab-section-transition-band.webm",
+  "contract": "v2.1"
 }

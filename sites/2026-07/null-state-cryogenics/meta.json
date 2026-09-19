@@ -11,5 +11,7 @@
     "hardware"
   ],
   "videoPlacement": "sticky rail loop",
-  "signatureEffect": "staggered letter-by-letter headline"
+  "signatureEffect": "staggered letter-by-letter headline",
+  "video": "assets/null-state-cryogenics-sticky-rail-loop.webm",
+  "contract": "v2.1"
 }

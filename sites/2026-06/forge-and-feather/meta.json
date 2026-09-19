@@ -11,5 +11,7 @@
     "hardware"
   ],
   "videoPlacement": "grid tile",
-  "signatureEffect": "numeric counter roll-up"
+  "signatureEffect": "numeric counter roll-up",
+  "video": "assets/forge-and-feather-grid-tile.webm",
+  "contract": "v2.1"
 }

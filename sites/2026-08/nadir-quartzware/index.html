@@ -33,7 +33,11 @@
     <!-- Hero Section -->
     <div class="slot-tile-band">
       <figure class="slot-tile" data-slot-tile>
-        <img class="slot-tile__still" src="./assets/high-pressure-cell.webp" alt="A fused-silica high-pressure flow cell under inspection." loading="lazy" width="1280" height="720">
+        <video class="slot-tile__still" data-slot-video autoplay muted loop playsinline preload="metadata"
+          poster="./assets/nadir-quartzware-grid-tile-poster.webp" width="1280" height="720" aria-label="A fused-silica high-pressure flow cell under inspection.">
+          <source src="./assets/nadir-quartzware-grid-tile.webm" type="video/webm">
+          <source src="./assets/nadir-quartzware-grid-tile.mp4" type="video/mp4">
+        </video>
         <figcaption class="slot-tile__caption">
           <strong>High-Pressure Cell</strong>
           Fused silica drawn and annealed in-house, then checked against the calibration set.

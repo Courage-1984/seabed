@@ -11,5 +11,7 @@
     "concept"
   ],
   "videoPlacement": "marquee strip",
-  "signatureEffect": "drifting grain overlay"
+  "signatureEffect": "drifting grain overlay",
+  "video": "assets/astrolabe-treks-marquee-strip.webm",
+  "contract": "v2.1"
 }

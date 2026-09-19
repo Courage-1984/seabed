@@ -15,6 +15,8 @@
     "qa": "v2-pass",
     "videoPlacement": "footer ambient",
     "signatureEffect": "magnetic proximity cursor element",
+    "video": "assets/stake-and-bind-footer-ambient.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2025-01/stake-and-bind"
   },
   {
@@ -31,6 +33,8 @@
     ],
     "videoPlacement": "inline process demo",
     "signatureEffect": "scroll-velocity marquee skew",
+    "video": "assets/abyssal-data-recovery-inline-process-demo.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-05/abyssal-data-recovery"
   },
   {
@@ -47,6 +51,8 @@
     ],
     "videoPlacement": "hero inset frame",
     "signatureEffect": "sticky section pinning with cross-fade",
+    "video": "assets/abyssal-hardware-hero-inset-frame.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-05/abyssal-hardware"
   },
   {
@@ -63,6 +69,8 @@
     ],
     "videoPlacement": "section transition band",
     "signatureEffect": "text scramble decode on reveal",
+    "video": "assets/apex-altitude-lab-section-transition-band.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-05/apex-altitude-lab"
   },
   {
@@ -79,6 +87,8 @@
     ],
     "videoPlacement": "hover reveal",
     "signatureEffect": "scroll-driven clip-path wipe",
+    "video": "assets/archive-arcade-hover-reveal.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/archive-arcade"
   },
   {
@@ -95,6 +105,8 @@
     ],
     "videoPlacement": "masked type fill",
     "signatureEffect": "progressive blur focus-pull",
+    "video": "assets/aseptic-cellars-masked-type-fill.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/aseptic-cellars"
   },
   {
@@ -111,6 +123,8 @@
     ],
     "videoPlacement": "marquee strip",
     "signatureEffect": "drifting grain overlay",
+    "video": "assets/astrolabe-treks-marquee-strip.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/astrolabe-treks"
   },
   {
@@ -127,6 +141,8 @@
     ],
     "videoPlacement": "modal feature",
     "signatureEffect": "animated SVG line-draw",
+    "video": "assets/backhaul-field-co-modal-feature.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/backhaul-field-co"
   },
   {
@@ -143,6 +159,8 @@
     ],
     "videoPlacement": "split panel",
     "signatureEffect": "staggered letter-by-letter headline",
+    "video": "assets/copper-cloche-split-panel.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/copper-cloche"
   },
   {
@@ -159,6 +177,8 @@
     ],
     "videoPlacement": "hero background",
     "signatureEffect": "masked scroll-through type",
+    "video": "assets/cryotex-isolates-hero-background.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/cryotex-isolates"
   },
   {
@@ -175,6 +195,8 @@
     ],
     "videoPlacement": "footer ambient",
     "signatureEffect": "CSS 3D card tilt",
+    "video": "assets/drosera-vault-footer-ambient.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/drosera-vault"
   },
   {
@@ -191,6 +213,8 @@
     ],
     "videoPlacement": "grid tile",
     "signatureEffect": "numeric counter roll-up",
+    "video": "assets/forge-and-feather-grid-tile.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/forge-and-feather"
   },
   {
@@ -207,6 +231,8 @@
     ],
     "videoPlacement": "inline process demo",
     "signatureEffect": "magnetic proximity cursor element",
+    "video": "assets/halyard-and-hemp-sailmakers-inline-process-demo.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/halyard-and-hemp-sailmakers"
   },
   {
@@ -223,6 +249,8 @@
     ],
     "videoPlacement": "section transition band",
     "signatureEffect": "scroll-velocity marquee skew",
+    "video": "assets/hull-and-hem-sailmenders-section-transition-band.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/hull-and-hem-sailmenders"
   },
   {
@@ -239,6 +267,8 @@
     ],
     "videoPlacement": "hover reveal",
     "signatureEffect": "sticky section pinning with cross-fade",
+    "video": "assets/k9-kinetic-recovery-hover-reveal.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/k9-kinetic-recovery"
   },
   {
@@ -255,6 +285,8 @@
     ],
     "videoPlacement": "marquee strip",
     "signatureEffect": "text scramble decode on reveal",
+    "video": "assets/karoo-brass-and-glass-marquee-strip.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/karoo-brass-and-glass"
   },
   {
@@ -271,6 +303,8 @@
     ],
     "videoPlacement": "masked type fill",
     "signatureEffect": "scroll-driven clip-path wipe",
+    "video": "assets/knot-and-westerly-masked-type-fill.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/knot-and-westerly"
   },
   {
@@ -287,6 +321,8 @@
     ],
     "videoPlacement": "hero inset frame",
     "signatureEffect": "progressive blur focus-pull",
+    "video": "assets/lithic-fibre-dynamics-hero-inset-frame.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/lithic-fibre-dynamics"
   },
   {
@@ -303,6 +339,8 @@
     ],
     "videoPlacement": "hero background",
     "signatureEffect": "drifting grain overlay",
+    "video": "assets/lithic-resonance-hero-background.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/lithic-resonance"
   },
   {
@@ -319,6 +357,8 @@
     ],
     "videoPlacement": "modal feature",
     "signatureEffect": "animated SVG line-draw",
+    "video": "assets/nepenthes-forge-modal-feature.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/nepenthes-forge"
   },
   {
@@ -337,6 +377,8 @@
     "qa": "v2-pass",
     "videoPlacement": "footer ambient",
     "signatureEffect": "numeric counter roll-up",
+    "video": "assets/78-north-supply-footer-ambient.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/78-north-supply"
   },
   {
@@ -355,6 +397,8 @@
     "qa": "v2-pass",
     "videoPlacement": "marquee strip",
     "signatureEffect": "staggered letter-by-letter headline",
+    "video": "assets/apiary-mesh-kinetics-marquee-strip.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/apiary-mesh-kinetics"
   },
   {
@@ -373,6 +417,8 @@
     "qa": "v2-pass",
     "videoPlacement": "hero inset frame",
     "signatureEffect": "scroll-driven clip-path wipe",
+    "video": "assets/centrifugal-larder-hero-inset-frame.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/centrifugal-larder"
   },
   {
@@ -391,6 +437,8 @@
     "qa": "v2-pass",
     "videoPlacement": "hover reveal",
     "signatureEffect": "text scramble decode on reveal",
+    "video": "assets/gimbal-and-hoist-hover-reveal.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/gimbal-and-hoist"
   },
   {
@@ -409,6 +457,8 @@
     "qa": "v2-pass",
     "videoPlacement": "modal feature",
     "signatureEffect": "animated SVG line-draw",
+    "video": "assets/glaciermesh-infrastructure-modal-feature.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/glaciermesh-infrastructure"
   },
   {
@@ -446,6 +496,8 @@
     ],
     "videoPlacement": "split panel",
     "signatureEffect": "masked scroll-through type",
+    "video": "assets/hearth-and-anvil-split-panel.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/hearth-and-anvil"
   },
   {
@@ -464,6 +516,8 @@
     "qa": "v2-pass",
     "videoPlacement": "split panel",
     "signatureEffect": "drifting grain overlay",
+    "video": "assets/isocline-preservation-split-panel.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/isocline-preservation"
   },
   {
@@ -482,6 +536,8 @@
     "qa": "v2-pass",
     "videoPlacement": "sticky rail loop",
     "signatureEffect": "sticky section pinning with cross-fade",
+    "video": "assets/katabatic-shelters-sticky-rail-loop.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/katabatic-shelters"
   },
   {
@@ -500,6 +556,8 @@
     "qa": "v2-pass",
     "videoPlacement": "masked type fill",
     "signatureEffect": "scroll-velocity marquee skew",
+    "video": "assets/kestrel-heavy-masked-type-fill.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/kestrel-heavy"
   },
   {
@@ -517,6 +575,8 @@
     "standard": "v2",
     "videoPlacement": "hero background",
     "signatureEffect": "progressive blur focus-pull",
+    "video": "assets/monolith-somatic-hero-background.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/monolith-somatic"
   },
   {
@@ -533,6 +593,8 @@
     ],
     "videoPlacement": "sticky rail loop",
     "signatureEffect": "staggered letter-by-letter headline",
+    "video": "assets/null-state-cryogenics-sticky-rail-loop.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/null-state-cryogenics"
   },
   {
@@ -549,6 +611,8 @@
     ],
     "videoPlacement": "split panel",
     "signatureEffect": "masked scroll-through type",
+    "video": "assets/oxide-and-tide-split-panel.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/oxide-and-tide"
   },
   {
@@ -565,6 +629,8 @@
     ],
     "videoPlacement": "footer ambient",
     "signatureEffect": "CSS 3D card tilt",
+    "video": "assets/patch-parcel-footer-ambient.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/patch-parcel"
   },
   {
@@ -583,6 +649,8 @@
     "qa": "v2-pass",
     "videoPlacement": "inline process demo",
     "signatureEffect": "staggered letter-by-letter headline",
+    "video": "assets/pellucid-memory-inline-process-demo.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/pellucid-memory"
   },
   {
@@ -599,6 +667,8 @@
     ],
     "videoPlacement": "grid tile",
     "signatureEffect": "numeric counter roll-up",
+    "video": "assets/signal-and-silo-grid-tile.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/signal-and-silo"
   },
   {
@@ -615,6 +685,8 @@
     ],
     "videoPlacement": "inline process demo",
     "signatureEffect": "magnetic proximity cursor element",
+    "video": "assets/siloshield-dynamics-inline-process-demo.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/siloshield-dynamics"
   },
   {
@@ -632,6 +704,8 @@
     ],
     "videoPlacement": "inline process demo",
     "signatureEffect": "CSS 3D card tilt",
+    "video": "assets/substratum-signals-inline-process-demo.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/substratum-signals"
   },
   {
@@ -648,6 +722,8 @@
     ],
     "videoPlacement": "hover reveal",
     "signatureEffect": "scroll-velocity marquee skew",
+    "video": "assets/the-brass-and-thistle-hover-reveal.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/the-brass-and-thistle"
   },
   {
@@ -664,6 +740,8 @@
     ],
     "videoPlacement": "section transition band",
     "signatureEffect": "sticky section pinning with cross-fade",
+    "video": "assets/the-midnight-forager-section-transition-band.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/the-midnight-forager"
   },
   {
@@ -680,6 +758,8 @@
     ],
     "videoPlacement": "hero inset frame",
     "signatureEffect": "text scramble decode on reveal",
+    "video": "assets/the-slate-and-chisel-hero-inset-frame.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/the-slate-and-chisel"
   },
   {
@@ -696,6 +776,8 @@
     ],
     "videoPlacement": "masked type fill",
     "signatureEffect": "scroll-driven clip-path wipe",
+    "video": "assets/the-tidal-vault-masked-type-fill.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/the-tidal-vault"
   },
   {
@@ -712,6 +794,8 @@
     ],
     "videoPlacement": "hero background",
     "signatureEffect": "progressive blur focus-pull",
+    "video": "assets/vapour-and-vault-hero-background.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/vapour-and-vault"
   },
   {
@@ -729,6 +813,8 @@
     ],
     "videoPlacement": "grid tile",
     "signatureEffect": "animated SVG line-draw",
+    "video": "assets/verdigris-and-salt-grid-tile.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/verdigris-and-salt"
   },
   {
@@ -745,6 +831,8 @@
     ],
     "videoPlacement": "modal feature",
     "signatureEffect": "drifting grain overlay",
+    "video": "assets/xenon-arc-modal-feature.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/xenon-arc"
   },
   {
@@ -983,6 +1071,8 @@
     "qa": "v2-pass",
     "videoPlacement": "footer ambient",
     "signatureEffect": "CSS 3D card tilt",
+    "video": "assets/kajak-lauget-footer-ambient.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/kajak-lauget"
   },
   {
@@ -1161,6 +1251,8 @@
     "qa": "v2-pass",
     "videoPlacement": "grid tile",
     "signatureEffect": "masked scroll-through type",
+    "video": "assets/nadir-quartzware-grid-tile.webm",
+    "contract": "v2.1",
     "siteFolder": "./sites/2026-08/nadir-quartzware"
   },
   {

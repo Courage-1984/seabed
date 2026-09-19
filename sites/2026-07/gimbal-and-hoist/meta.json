@@ -13,5 +13,7 @@
   "standard": "v2",
   "qa": "v2-pass",
   "videoPlacement": "hover reveal",
-  "signatureEffect": "text scramble decode on reveal"
+  "signatureEffect": "text scramble decode on reveal",
+  "video": "assets/gimbal-and-hoist-hover-reveal.webm",
+  "contract": "v2.1"
 }

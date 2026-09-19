@@ -13,5 +13,7 @@
   "wordFloor": 1100,
   "qa": "v2-pass",
   "videoPlacement": "marquee strip",
-  "signatureEffect": "staggered letter-by-letter headline"
+  "signatureEffect": "staggered letter-by-letter headline",
+  "video": "assets/apiary-mesh-kinetics-marquee-strip.webm",
+  "contract": "v2.1"
 }

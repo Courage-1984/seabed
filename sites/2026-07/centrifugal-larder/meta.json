@@ -13,5 +13,7 @@
   "standard": "v2",
   "qa": "v2-pass",
   "videoPlacement": "hero inset frame",
-  "signatureEffect": "scroll-driven clip-path wipe"
+  "signatureEffect": "scroll-driven clip-path wipe",
+  "video": "assets/centrifugal-larder-hero-inset-frame.webm",
+  "contract": "v2.1"
 }

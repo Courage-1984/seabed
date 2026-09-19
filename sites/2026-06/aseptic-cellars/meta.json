@@ -11,5 +11,7 @@
     "logistics"
   ],
   "videoPlacement": "masked type fill",
-  "signatureEffect": "progressive blur focus-pull"
+  "signatureEffect": "progressive blur focus-pull",
+  "video": "assets/aseptic-cellars-masked-type-fill.webm",
+  "contract": "v2.1"
 }

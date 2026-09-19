@@ -11,5 +11,7 @@
     "concept"
   ],
   "videoPlacement": "split panel",
-  "signatureEffect": "masked scroll-through type"
+  "signatureEffect": "masked scroll-through type",
+  "video": "assets/oxide-and-tide-split-panel.webm",
+  "contract": "v2.1"
 }

@@ -2,7 +2,7 @@
 
 # Remediation campaign status
 
-Generated 2026-09-19T08:32:06.082Z from 88 sites.
+Generated 2026-09-19T11:50:16.658Z from 88 sites.
 
 Bringing every site up to the strict contract (video + motion budget + asset isolation),
 walking newest → oldest. A site is `DONE` once it carries `"contract": "v2.1"` in `meta.json`
@@ -10,8 +10,7 @@ and passes every gate. See `AGENTS.md` §11–§15 for what each gate means.
 
 ## Summary
 
-- **DONE**: 42
-- **NEEDS-VIDEO**: 46
+- **DONE**: 88
 
 ## Sites (newest first)
 
@@ -58,53 +57,53 @@ and passes every gate. See `AGENTS.md` §11–§15 for what each gate means.
 | 2026-08-04 | marion-fissure | DONE | marquee strip | sticky section pinning with cross-fade | — |
 | 2026-08-03 | brimstone-basalt | DONE | hover reveal | numeric counter roll-up | — |
 | 2026-08-03 | stave-and-hoops | DONE | section transition band | magnetic proximity cursor element | — |
-| 2026-08-02 | kajak-lauget | NEEDS-VIDEO | footer ambient | CSS 3D card tilt | **video**, meta.video, contract flag |
-| 2026-08-01 | nadir-quartzware | NEEDS-VIDEO | grid tile | masked scroll-through type | **video**, meta.video, contract flag |
-| 2026-07-31 | glaciermesh-infrastructure | NEEDS-VIDEO | modal feature | animated SVG line-draw | **video**, meta.video, contract flag |
-| 2026-07-31 | pellucid-memory | NEEDS-VIDEO | inline process demo | staggered letter-by-letter headline | **video**, meta.video, contract flag |
-| 2026-07-30 | isocline-preservation | NEEDS-VIDEO | split panel | drifting grain overlay | **video**, meta.video, contract flag |
-| 2026-07-29 | monolith-somatic | NEEDS-VIDEO | hero background | progressive blur focus-pull | **video**, meta.video, contract flag |
-| 2026-07-28 | centrifugal-larder | NEEDS-VIDEO | hero inset frame | scroll-driven clip-path wipe | **video**, meta.video, contract flag |
-| 2026-07-27 | gimbal-and-hoist | NEEDS-VIDEO | hover reveal | text scramble decode on reveal | **video**, meta.video, contract flag |
-| 2026-07-26 | katabatic-shelters | NEEDS-VIDEO | sticky rail loop | sticky section pinning with cross-fade | **video**, meta.video, contract flag |
-| 2026-07-25 | 78-north-supply | NEEDS-VIDEO | footer ambient | numeric counter roll-up | **video**, meta.video, contract flag |
+| 2026-08-02 | kajak-lauget | DONE | footer ambient | CSS 3D card tilt | — |
+| 2026-08-01 | nadir-quartzware | DONE | grid tile | masked scroll-through type | — |
+| 2026-07-31 | glaciermesh-infrastructure | DONE | modal feature | animated SVG line-draw | — |
+| 2026-07-31 | pellucid-memory | DONE | inline process demo | staggered letter-by-letter headline | — |
+| 2026-07-30 | isocline-preservation | DONE | split panel | drifting grain overlay | — |
+| 2026-07-29 | monolith-somatic | DONE | hero background | progressive blur focus-pull | — |
+| 2026-07-28 | centrifugal-larder | DONE | hero inset frame | scroll-driven clip-path wipe | — |
+| 2026-07-27 | gimbal-and-hoist | DONE | hover reveal | text scramble decode on reveal | — |
+| 2026-07-26 | katabatic-shelters | DONE | sticky rail loop | sticky section pinning with cross-fade | — |
+| 2026-07-25 | 78-north-supply | DONE | footer ambient | numeric counter roll-up | — |
 | 2026-07-25 | halcyon-tare | DONE | section transition band | magnetic proximity cursor element | — |
-| 2026-07-25 | kestrel-heavy | NEEDS-VIDEO | masked type fill | scroll-velocity marquee skew | **video**, meta.video, contract flag |
-| 2026-07-24 | apiary-mesh-kinetics | NEEDS-VIDEO | marquee strip | staggered letter-by-letter headline | **video**, meta.video, contract flag |
-| 2026-07-24 | hearth-and-anvil | NEEDS-VIDEO | split panel | masked scroll-through type | **video**, meta.video, contract flag |
-| 2026-07-24 | substratum-signals | NEEDS-VIDEO | inline process demo | CSS 3D card tilt | **video**, meta.video, contract flag |
-| 2026-07-23 | verdigris-and-salt | NEEDS-VIDEO | grid tile | animated SVG line-draw | **video**, meta.video, contract flag |
-| 2026-07-21 | xenon-arc | NEEDS-VIDEO | modal feature | drifting grain overlay | **video**, meta.video, contract flag |
-| 2026-07-19 | vapour-and-vault | NEEDS-VIDEO | hero background | progressive blur focus-pull | **video**, meta.video, contract flag |
-| 2026-07-17 | the-tidal-vault | NEEDS-VIDEO | masked type fill | scroll-driven clip-path wipe | **video**, meta.video, contract flag |
-| 2026-07-15 | the-slate-and-chisel | NEEDS-VIDEO | hero inset frame | text scramble decode on reveal | **video**, meta.video, contract flag |
-| 2026-07-13 | the-midnight-forager | NEEDS-VIDEO | section transition band | sticky section pinning with cross-fade | **video**, meta.video, contract flag |
-| 2026-07-12 | the-brass-and-thistle | NEEDS-VIDEO | hover reveal | scroll-velocity marquee skew | **video**, meta.video, contract flag |
-| 2026-07-10 | siloshield-dynamics | NEEDS-VIDEO | inline process demo | magnetic proximity cursor element | **video**, meta.video, contract flag |
-| 2026-07-08 | signal-and-silo | NEEDS-VIDEO | grid tile | numeric counter roll-up | **video**, meta.video, contract flag |
-| 2026-07-06 | patch-parcel | NEEDS-VIDEO | footer ambient | CSS 3D card tilt | **video**, meta.video, contract flag |
-| 2026-07-04 | oxide-and-tide | NEEDS-VIDEO | split panel | masked scroll-through type | **video**, meta.video, contract flag |
-| 2026-07-02 | null-state-cryogenics | NEEDS-VIDEO | sticky rail loop | staggered letter-by-letter headline | **video**, meta.video, contract flag |
-| 2026-06-30 | nepenthes-forge | NEEDS-VIDEO | modal feature | animated SVG line-draw | **video**, meta.video, contract flag |
-| 2026-06-28 | lithic-resonance | NEEDS-VIDEO | hero background | drifting grain overlay | **video**, meta.video, contract flag |
-| 2026-06-26 | lithic-fibre-dynamics | NEEDS-VIDEO | hero inset frame | progressive blur focus-pull | **video**, meta.video, contract flag |
-| 2026-06-24 | knot-and-westerly | NEEDS-VIDEO | masked type fill | scroll-driven clip-path wipe | **video**, meta.video, contract flag |
-| 2026-06-23 | karoo-brass-and-glass | NEEDS-VIDEO | marquee strip | text scramble decode on reveal | **video**, meta.video, contract flag |
-| 2026-06-21 | k9-kinetic-recovery | NEEDS-VIDEO | hover reveal | sticky section pinning with cross-fade | **video**, meta.video, contract flag |
-| 2026-06-19 | hull-and-hem-sailmenders | NEEDS-VIDEO | section transition band | scroll-velocity marquee skew | **video**, meta.video, contract flag |
-| 2026-06-17 | halyard-and-hemp-sailmakers | NEEDS-VIDEO | inline process demo | magnetic proximity cursor element | **video**, meta.video, contract flag |
-| 2026-06-15 | forge-and-feather | NEEDS-VIDEO | grid tile | numeric counter roll-up | **video**, meta.video, contract flag |
-| 2026-06-13 | drosera-vault | NEEDS-VIDEO | footer ambient | CSS 3D card tilt | **video**, meta.video, contract flag |
-| 2026-06-11 | cryotex-isolates | NEEDS-VIDEO | hero background | masked scroll-through type | **video**, meta.video, contract flag |
-| 2026-06-09 | copper-cloche | NEEDS-VIDEO | split panel | staggered letter-by-letter headline | **video**, meta.video, contract flag |
-| 2026-06-07 | backhaul-field-co | NEEDS-VIDEO | modal feature | animated SVG line-draw | **video**, meta.video, contract flag |
-| 2026-06-05 | astrolabe-treks | NEEDS-VIDEO | marquee strip | drifting grain overlay | **video**, meta.video, contract flag |
-| 2026-06-04 | aseptic-cellars | NEEDS-VIDEO | masked type fill | progressive blur focus-pull | **video**, meta.video, contract flag |
-| 2026-06-02 | archive-arcade | NEEDS-VIDEO | hover reveal | scroll-driven clip-path wipe | **video**, meta.video, contract flag |
-| 2026-05-31 | apex-altitude-lab | NEEDS-VIDEO | section transition band | text scramble decode on reveal | **video**, meta.video, contract flag |
-| 2026-05-29 | abyssal-hardware | NEEDS-VIDEO | hero inset frame | sticky section pinning with cross-fade | **video**, meta.video, contract flag |
-| 2026-05-27 | abyssal-data-recovery | NEEDS-VIDEO | inline process demo | scroll-velocity marquee skew | **video**, meta.video, contract flag |
-| 2025-01-26 | stake-and-bind | NEEDS-VIDEO | footer ambient | magnetic proximity cursor element | **video**, meta.video, contract flag |
+| 2026-07-25 | kestrel-heavy | DONE | masked type fill | scroll-velocity marquee skew | — |
+| 2026-07-24 | apiary-mesh-kinetics | DONE | marquee strip | staggered letter-by-letter headline | — |
+| 2026-07-24 | hearth-and-anvil | DONE | split panel | masked scroll-through type | — |
+| 2026-07-24 | substratum-signals | DONE | inline process demo | CSS 3D card tilt | — |
+| 2026-07-23 | verdigris-and-salt | DONE | grid tile | animated SVG line-draw | — |
+| 2026-07-21 | xenon-arc | DONE | modal feature | drifting grain overlay | — |
+| 2026-07-19 | vapour-and-vault | DONE | hero background | progressive blur focus-pull | — |
+| 2026-07-17 | the-tidal-vault | DONE | masked type fill | scroll-driven clip-path wipe | — |
+| 2026-07-15 | the-slate-and-chisel | DONE | hero inset frame | text scramble decode on reveal | — |
+| 2026-07-13 | the-midnight-forager | DONE | section transition band | sticky section pinning with cross-fade | — |
+| 2026-07-12 | the-brass-and-thistle | DONE | hover reveal | scroll-velocity marquee skew | — |
+| 2026-07-10 | siloshield-dynamics | DONE | inline process demo | magnetic proximity cursor element | — |
+| 2026-07-08 | signal-and-silo | DONE | grid tile | numeric counter roll-up | — |
+| 2026-07-06 | patch-parcel | DONE | footer ambient | CSS 3D card tilt | — |
+| 2026-07-04 | oxide-and-tide | DONE | split panel | masked scroll-through type | — |
+| 2026-07-02 | null-state-cryogenics | DONE | sticky rail loop | staggered letter-by-letter headline | — |
+| 2026-06-30 | nepenthes-forge | DONE | modal feature | animated SVG line-draw | — |
+| 2026-06-28 | lithic-resonance | DONE | hero background | drifting grain overlay | — |
+| 2026-06-26 | lithic-fibre-dynamics | DONE | hero inset frame | progressive blur focus-pull | — |
+| 2026-06-24 | knot-and-westerly | DONE | masked type fill | scroll-driven clip-path wipe | — |
+| 2026-06-23 | karoo-brass-and-glass | DONE | marquee strip | text scramble decode on reveal | — |
+| 2026-06-21 | k9-kinetic-recovery | DONE | hover reveal | sticky section pinning with cross-fade | — |
+| 2026-06-19 | hull-and-hem-sailmenders | DONE | section transition band | scroll-velocity marquee skew | — |
+| 2026-06-17 | halyard-and-hemp-sailmakers | DONE | inline process demo | magnetic proximity cursor element | — |
+| 2026-06-15 | forge-and-feather | DONE | grid tile | numeric counter roll-up | — |
+| 2026-06-13 | drosera-vault | DONE | footer ambient | CSS 3D card tilt | — |
+| 2026-06-11 | cryotex-isolates | DONE | hero background | masked scroll-through type | — |
+| 2026-06-09 | copper-cloche | DONE | split panel | staggered letter-by-letter headline | — |
+| 2026-06-07 | backhaul-field-co | DONE | modal feature | animated SVG line-draw | — |
+| 2026-06-05 | astrolabe-treks | DONE | marquee strip | drifting grain overlay | — |
+| 2026-06-04 | aseptic-cellars | DONE | masked type fill | progressive blur focus-pull | — |
+| 2026-06-02 | archive-arcade | DONE | hover reveal | scroll-driven clip-path wipe | — |
+| 2026-05-31 | apex-altitude-lab | DONE | section transition band | text scramble decode on reveal | — |
+| 2026-05-29 | abyssal-hardware | DONE | hero inset frame | sticky section pinning with cross-fade | — |
+| 2026-05-27 | abyssal-data-recovery | DONE | inline process demo | scroll-velocity marquee skew | — |
+| 2025-01-26 | stake-and-bind | DONE | footer ambient | magnetic proximity cursor element | — |
 
 ## Deferred dedupe worklist
 
@@ -112,28 +111,5 @@ Cross-site byte-identical assets. These do **not** block `DONE` in this campaign
 fixing them means regenerating imagery, which is handled in a separate pass so the
 operator's image-generation quota is not spent mid-remediation.
 
-### abyssal-hardware
-
-- duplicate asset assets/hero-trunk.webp is byte-identical to uhv-74-precision/assets/hero-vacuum-chamber-cleanroom.webp — every site needs its own imagery and video
-
-### archive-arcade
-
-- duplicate asset assets/hero-booth.webp is byte-identical to uhv-74-precision/assets/five-axis-cnc-diamond-milling.webp — every site needs its own imagery and video
-
-### uhv-74-precision
-
-- duplicate asset assets/hero-vacuum-chamber-cleanroom.webp is byte-identical to abyssal-hardware/assets/hero-trunk.webp — every site needs its own imagery and video
-- duplicate asset assets/five-axis-cnc-diamond-milling.webp is byte-identical to archive-arcade/assets/hero-booth.webp — every site needs its own imagery and video
-
-### ash-07-studio
-
-- duplicate asset assets/anagama-wood-firing-kiln.webp is byte-identical to the-sub-oolite-salt-cellar/assets/telemetry-salinometer-bench.webp — every site needs its own imagery and video
-- duplicate asset assets/hero-subterranean-potters-wheel.webp is byte-identical to the-sub-oolite-salt-cellar/assets/hero-salt-mine-gallery.webp — every site needs its own imagery and video
-- duplicate asset assets/slate-platter-serving-vessels.webp is byte-identical to the-sub-oolite-salt-cellar/assets/product-halite-slab.webp — every site needs its own imagery and video
-
-### the-sub-oolite-salt-cellar
-
-- duplicate asset assets/telemetry-salinometer-bench.webp is byte-identical to ash-07-studio/assets/anagama-wood-firing-kiln.webp — every site needs its own imagery and video
-- duplicate asset assets/hero-salt-mine-gallery.webp is byte-identical to ash-07-studio/assets/hero-subterranean-potters-wheel.webp — every site needs its own imagery and video
-- duplicate asset assets/product-halite-slab.webp is byte-identical to ash-07-studio/assets/slate-platter-serving-vessels.webp — every site needs its own imagery and video
+_None._
 

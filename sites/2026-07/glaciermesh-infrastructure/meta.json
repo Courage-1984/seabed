@@ -13,5 +13,7 @@
   "wordFloor": 1100,
   "qa": "v2-pass",
   "videoPlacement": "modal feature",
-  "signatureEffect": "animated SVG line-draw"
+  "signatureEffect": "animated SVG line-draw",
+  "video": "assets/glaciermesh-infrastructure-modal-feature.webm",
+  "contract": "v2.1"
 }

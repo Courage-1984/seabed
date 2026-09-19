@@ -11,5 +11,7 @@
     "concept"
   ],
   "videoPlacement": "hover reveal",
-  "signatureEffect": "sticky section pinning with cross-fade"
+  "signatureEffect": "sticky section pinning with cross-fade",
+  "video": "assets/k9-kinetic-recovery-hover-reveal.webm",
+  "contract": "v2.1"
 }
