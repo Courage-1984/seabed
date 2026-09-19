@@ -238,7 +238,12 @@ h2 {
 
 /* Stack styling and initial state before intersection observer */
 .stack-card:not(:first-child) {
-  margin-top: -4rem; /* overlapping */
+  /* The unfolded ladder below only spreads consecutive cards by 20px, so the
+     overlap has to stay well inside the 3rem bottom padding or an opaque card
+     covers the last line of the one above it. -4rem left 44px of effective
+     overlap, and the +-2deg rotation swings an edge another ~20px on a 650px
+     card, which ate the text. -2rem keeps the deck look with room to spare. */
+  margin-top: -2rem;
 }
 
 /* Initial hidden state, slightly scrunched */

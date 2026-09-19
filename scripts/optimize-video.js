@@ -12,7 +12,7 @@
  *
  * Produces, in sites/<YYYY-MM>/<slug>/assets/:
  *   <slug>-<slot>.webm         VP9 2-pass, <=720p, no audio, target <= 2.5 MB
- *   <slug>-<slot>.mp4          H.264 fallback for older iOS/Safari
+ *   <slug>-<slot>.mp4          H.264 fallback for older iOS/Safari, <= 2.5 MB
  *   <slug>-<slot>-poster.webp  poster frame
  *
  * Requires ffmpeg + ffprobe on PATH. Two-pass logs go to the OS temp dir.
@@ -32,6 +32,8 @@ const MAX_HEIGHT = 720;
 const TARGET_BYTES = 2.5 * 1024 * 1024;
 /** Bitrate ladder (kbps) tried in order until the output fits TARGET_BYTES. */
 const BITRATE_LADDER = [1200, 900, 700, 500, 350];
+/** CRF ladder for the H.264 fallback, same purpose: higher CRF, smaller file. */
+const CRF_LADDER = [28, 31, 34, 37];
 
 function fail(msg) {
   console.error(`VIDEO_FAIL: ${msg}`);
@@ -182,29 +184,48 @@ if (chosenBitrate === null) {
   chosenBitrate = BITRATE_LADDER.at(-1);
 }
 
-console.log('Encoding H.264 mp4 fallback...');
-const mp4 = run('ffmpeg', [
-  '-y',
-  '-i',
-  input,
-  '-an',
-  '-vf',
-  vfChain,
-  '-c:v',
-  'libx264',
-  '-profile:v',
-  'main',
-  '-pix_fmt',
-  'yuv420p',
-  '-crf',
-  '28',
-  '-preset',
-  'slow',
-  '-movflags',
-  '+faststart',
-  mp4Path,
-]);
-if (mp4.status !== 0) fail(`ffmpeg mp4 encode failed:\n${mp4.stderr.slice(-2000)}`);
+// The fallback is held to the same budget as the webm. A flat CRF is fine for
+// most sources but blows past it on high-entropy footage (moving water, smoke),
+// so step the CRF up until it fits rather than shipping an oversized mp4.
+let chosenCrf = null;
+for (const crf of CRF_LADDER) {
+  console.log(`Encoding H.264 mp4 fallback @ CRF ${crf}...`);
+  const mp4 = run('ffmpeg', [
+    '-y',
+    '-i',
+    input,
+    '-an',
+    '-vf',
+    vfChain,
+    '-c:v',
+    'libx264',
+    '-profile:v',
+    'main',
+    '-pix_fmt',
+    'yuv420p',
+    '-crf',
+    String(crf),
+    '-preset',
+    'slow',
+    '-movflags',
+    '+faststart',
+    mp4Path,
+  ]);
+  if (mp4.status !== 0) fail(`ffmpeg mp4 encode failed:\n${mp4.stderr.slice(-2000)}`);
+
+  const size = statSync(mp4Path).size;
+  console.log(`  -> ${(size / 1024 / 1024).toFixed(2)} MB`);
+  if (size <= TARGET_BYTES) {
+    chosenCrf = crf;
+    break;
+  }
+  console.log(`  over the ${(TARGET_BYTES / 1024 / 1024).toFixed(1)} MB budget, stepping down...`);
+}
+if (chosenCrf === null) {
+  console.warn(
+    `VIDEO_WARN: mp4 still over budget at CRF ${CRF_LADDER.at(-1)} — the source is probably too long. Trim it to 5-8s.`
+  );
+}
 
 console.log('Extracting poster frame...');
 const posterAt = Math.min(1, duration / 4).toFixed(2);

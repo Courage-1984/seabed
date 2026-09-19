@@ -33,8 +33,6 @@
     ],
     "videoPlacement": "inline process demo",
     "signatureEffect": "scroll-velocity marquee skew",
-    "video": "assets/abyssal-data-recovery-inline-process-demo.webm",
-    "contract": "v2.1",
     "siteFolder": "./sites/2026-05/abyssal-data-recovery"
   },
   {
@@ -231,8 +229,6 @@
     ],
     "videoPlacement": "inline process demo",
     "signatureEffect": "magnetic proximity cursor element",
-    "video": "assets/halyard-and-hemp-sailmakers-inline-process-demo.webm",
-    "contract": "v2.1",
     "siteFolder": "./sites/2026-06/halyard-and-hemp-sailmakers"
   },
   {
@@ -704,8 +700,6 @@
     ],
     "videoPlacement": "inline process demo",
     "signatureEffect": "CSS 3D card tilt",
-    "video": "assets/substratum-signals-inline-process-demo.webm",
-    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/substratum-signals"
   },
   {
@@ -813,8 +807,6 @@
     ],
     "videoPlacement": "grid tile",
     "signatureEffect": "animated SVG line-draw",
-    "video": "assets/verdigris-and-salt-grid-tile.webm",
-    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/verdigris-and-salt"
   },
   {
@@ -831,8 +823,6 @@
     ],
     "videoPlacement": "modal feature",
     "signatureEffect": "drifting grain overlay",
-    "video": "assets/xenon-arc-modal-feature.webm",
-    "contract": "v2.1",
     "siteFolder": "./sites/2026-07/xenon-arc"
   },
   {

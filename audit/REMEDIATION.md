@@ -2,7 +2,7 @@
 
 # Remediation campaign status
 
-Generated 2026-09-19T11:50:16.658Z from 88 sites.
+Generated 2026-09-19T13:06:31.532Z from 88 sites.
 
 Bringing every site up to the strict contract (video + motion budget + asset isolation),
 walking newest → oldest. A site is `DONE` once it carries `"contract": "v2.1"` in `meta.json`
@@ -10,7 +10,8 @@ and passes every gate. See `AGENTS.md` §11–§15 for what each gate means.
 
 ## Summary
 
-- **DONE**: 88
+- **DONE**: 83
+- **NEEDS-VIDEO**: 5
 
 ## Sites (newest first)
 
@@ -71,9 +72,9 @@ and passes every gate. See `AGENTS.md` §11–§15 for what each gate means.
 | 2026-07-25 | kestrel-heavy | DONE | masked type fill | scroll-velocity marquee skew | — |
 | 2026-07-24 | apiary-mesh-kinetics | DONE | marquee strip | staggered letter-by-letter headline | — |
 | 2026-07-24 | hearth-and-anvil | DONE | split panel | masked scroll-through type | — |
-| 2026-07-24 | substratum-signals | DONE | inline process demo | CSS 3D card tilt | — |
-| 2026-07-23 | verdigris-and-salt | DONE | grid tile | animated SVG line-draw | — |
-| 2026-07-21 | xenon-arc | DONE | modal feature | drifting grain overlay | — |
+| 2026-07-24 | substratum-signals | NEEDS-VIDEO | inline process demo | CSS 3D card tilt | **video**, meta.video, contract flag |
+| 2026-07-23 | verdigris-and-salt | NEEDS-VIDEO | grid tile | animated SVG line-draw | **video**, meta.video, contract flag |
+| 2026-07-21 | xenon-arc | NEEDS-VIDEO | modal feature | drifting grain overlay | **video**, meta.video, contract flag |
 | 2026-07-19 | vapour-and-vault | DONE | hero background | progressive blur focus-pull | — |
 | 2026-07-17 | the-tidal-vault | DONE | masked type fill | scroll-driven clip-path wipe | — |
 | 2026-07-15 | the-slate-and-chisel | DONE | hero inset frame | text scramble decode on reveal | — |
@@ -91,7 +92,7 @@ and passes every gate. See `AGENTS.md` §11–§15 for what each gate means.
 | 2026-06-23 | karoo-brass-and-glass | DONE | marquee strip | text scramble decode on reveal | — |
 | 2026-06-21 | k9-kinetic-recovery | DONE | hover reveal | sticky section pinning with cross-fade | — |
 | 2026-06-19 | hull-and-hem-sailmenders | DONE | section transition band | scroll-velocity marquee skew | — |
-| 2026-06-17 | halyard-and-hemp-sailmakers | DONE | inline process demo | magnetic proximity cursor element | — |
+| 2026-06-17 | halyard-and-hemp-sailmakers | NEEDS-VIDEO | inline process demo | magnetic proximity cursor element | **video**, meta.video, contract flag |
 | 2026-06-15 | forge-and-feather | DONE | grid tile | numeric counter roll-up | — |
 | 2026-06-13 | drosera-vault | DONE | footer ambient | CSS 3D card tilt | — |
 | 2026-06-11 | cryotex-isolates | DONE | hero background | masked scroll-through type | — |
@@ -102,7 +103,7 @@ and passes every gate. See `AGENTS.md` §11–§15 for what each gate means.
 | 2026-06-02 | archive-arcade | DONE | hover reveal | scroll-driven clip-path wipe | — |
 | 2026-05-31 | apex-altitude-lab | DONE | section transition band | text scramble decode on reveal | — |
 | 2026-05-29 | abyssal-hardware | DONE | hero inset frame | sticky section pinning with cross-fade | — |
-| 2026-05-27 | abyssal-data-recovery | DONE | inline process demo | scroll-velocity marquee skew | — |
+| 2026-05-27 | abyssal-data-recovery | NEEDS-VIDEO | inline process demo | scroll-velocity marquee skew | **video**, meta.video, contract flag |
 | 2025-01-26 | stake-and-bind | DONE | footer ambient | magnetic proximity cursor element | — |
 
 ## Deferred dedupe worklist
@@ -112,4 +113,10 @@ fixing them means regenerating imagery, which is handled in a separate pass so t
 operator's image-generation quota is not spent mid-remediation.
 
 _None._
+
+## Clip review
+
+The gates check that a clip exists, encodes, and is wired correctly — not what it
+shows. Clips rejected on review, and the sites still carrying one, are tracked in
+the "Pending — corrections" section of `VIDEO_PROMPTS.md`.
 

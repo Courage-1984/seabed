@@ -280,6 +280,18 @@ if (WRITE) {
     md.push('_None._', '');
   }
 
+  // `DONE` means every automated gate passes. It cannot speak for what is
+  // inside the clip, so a site can be DONE and still be carrying footage that
+  // was rejected on review. That queue lives in VIDEO_PROMPTS.md.
+  md.push(
+    '## Clip review',
+    '',
+    'The gates check that a clip exists, encodes, and is wired correctly — not what it',
+    'shows. Clips rejected on review, and the sites still carrying one, are tracked in',
+    'the "Pending — corrections" section of `VIDEO_PROMPTS.md`.',
+    ''
+  );
+
   writeFileSync(OUT, `${md.join('\n')}\n`, 'utf8');
   console.log(`\nWrote ${OUT.replace(/\\/g, '/')}`);
 }
