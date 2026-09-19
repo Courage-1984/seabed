@@ -195,7 +195,7 @@ nav a {
   grid-column: span 8;
   grid-row: span 2;
   background-color: var(--color-primary);
-  background-image: linear-gradient(rgba(26, 26, 26, 0.5), rgba(26, 26, 26, 0.8)), url('./assets/hero.webp');
+  background-image: linear-gradient(rgba(26, 26, 26, 0.5), rgba(26, 26, 26, 0.8)), url('./assets/open-fire-dining-courtyard.webp');
   background-size: cover;
   background-position: center;
   justify-content: center;

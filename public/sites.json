@@ -200,7 +200,7 @@
   {
     "title": "Forge & Feather",
     "blurb": "Bespoke Culinary Blacksmithing & Open-Fire Dining.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/open-fire-dining-courtyard.webp",
     "layoutFamily": "bento",
     "created": "2026-06-15",
     "standard": "v2",
@@ -252,7 +252,7 @@
   {
     "title": "K9 Kinetic Recovery",
     "blurb": "Mobile hydrotherapy & acoustic resonance for retired working dogs.",
-    "hero": "assets/k9/hero.webp",
+    "hero": "assets/k9/service-dog-beside-hydrotherapy-tank.webp",
     "layoutFamily": "horizontal-scroll band",
     "created": "2026-06-21",
     "standard": "v2",
@@ -306,7 +306,7 @@
   {
     "title": "Lithic Fibre Dynamics",
     "blurb": "Gigabit connectivity mapped and routed invisibly through the Victorian circulatory systems of historic architecture.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/fibre-routed-through-masonry.webp",
     "layoutFamily": "asymmetric split",
     "created": "2026-06-26",
     "standard": "v2",
@@ -342,7 +342,7 @@
   {
     "title": "Nepenthes Forge & Flight",
     "blurb": "Transporting and sustaining fragile predatory flora in absolute, climate-controlled isolation.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/nepenthes-containment-case.webp",
     "layoutFamily": "bento",
     "created": "2026-06-30",
     "standard": "v2",
@@ -460,7 +460,7 @@
   {
     "title": "Halcyon Tare",
     "blurb": "A returnable-container weight ledger retail model where you pay only for contents, never packaging.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/bulk-refill-canisters-counter-scale.webp",
     "layoutFamily": "diagonal-cut",
     "tags": [
       "retail",
@@ -614,7 +614,7 @@
   {
     "title": "Patch & Parcel",
     "blurb": "Premium repair kits, heritage fabrics, and visible mending supplies from West Yorkshire.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/mending-kit-laid-out.webp",
     "layoutFamily": "editorial magazine",
     "created": "2026-07-06",
     "standard": "v2",
@@ -652,7 +652,7 @@
   {
     "title": "Signal & Silo",
     "blurb": "Off-Grid Silo Telemetry Built for Remote Agriculture. Solar-powered radio networks safeguarding grain reserves in areas completely bypassed by cellular coverage.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/grain-silo-cluster-under-storm.webp",
     "layoutFamily": "bento",
     "created": "2026-07-08",
     "standard": "v2",
@@ -705,7 +705,7 @@
   {
     "title": "The Brass & Thistle",
     "blurb": "Heritage British pub fare, wild-fermented and wood-fired on the historic waters of the Kennet & Avon Canal.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/narrowboat-moored-at-aqueduct.webp",
     "layoutFamily": "bento",
     "created": "2026-07-12",
     "standard": "v2",
@@ -723,7 +723,7 @@
   {
     "title": "The Midnight Forager",
     "blurb": "Nocturnal Culinary Expeditions in the Scottish Highlands.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/pine-forest-at-dusk.webp",
     "layoutFamily": "horizontal-scroll band",
     "created": "2026-07-13",
     "standard": "v2",
@@ -759,7 +759,7 @@
   {
     "title": "The Tidal Vault | Offshore Grounding Sanctuary",
     "blurb": "A dedicated, subterranean vestibular sanctuary engineered inside a historic Kent tidal pool to restore maritime professionals from the silent strain of offshore industry.",
-    "hero": "assets/hero.webp",
+    "hero": "assets/victorian-tidal-bathing-pool.webp",
     "layoutFamily": "editorial magazine",
     "created": "2026-07-17",
     "standard": "v2",
