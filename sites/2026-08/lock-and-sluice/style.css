@@ -722,6 +722,16 @@ footer a {
 .split-word {
   display: inline-block;
   white-space: nowrap;
+  max-inline-size: 100%;
+}
+/* A word longer than the line cannot break while it is nowrap, so a long
+   headline word pushes the page sideways on a phone. The character spans are
+   inline-block, so releasing nowrap at narrow widths lets the word break
+   between them instead of overflowing. */
+@media (max-width: 600px) {
+  .split-word {
+    white-space: normal;
+  }
 }
 .split-char {
   display: inline-block;

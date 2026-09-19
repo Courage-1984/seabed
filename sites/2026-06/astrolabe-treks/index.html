@@ -39,7 +39,7 @@
 
     <main>
       <!-- HERO -->
-      <section id="hero" class="asymmetric-section hero-section">
+      <section data-reveal id="hero" class="asymmetric-section hero-section">
         <div class="hero-image">
           <img
             src="./assets/desert_night_dunes.webp"
@@ -62,7 +62,7 @@
       </section>
 
       <!-- PHILOSOPHY -->
-      <section id="the-philosophy" class="asymmetric-section overlap-right">
+      <section data-reveal id="the-philosophy" class="asymmetric-section overlap-right">
         <div class="section-text">
           <h2>The Philosophy of the Void</h2>
           <p>
@@ -90,7 +90,7 @@
       </section>
 
       <!-- TERRAIN -->
-      <section id="the-terrain" class="asymmetric-section overlap-left">
+      <section data-reveal id="the-terrain" class="asymmetric-section overlap-left">
         <div class="section-image wide-img">
           <img
             src="./assets/sandboarding.webp"
@@ -117,7 +117,7 @@
       </section>
 
       <!-- EQUIPMENT -->
-      <section id="equipment" class="asymmetric-section centre-align">
+      <section data-reveal id="equipment" class="asymmetric-section centre-align">
         <div class="section-text text-centre">
           <h2>Analogue Equipment &amp; Survival Methodology</h2>
           <p>
@@ -144,7 +144,27 @@
       </section>
 
       <!-- EXPEDITIONS -->
-      <section id="expeditions" class="asymmetric-section double-column">
+      <div class="slot-marquee" data-slot-marquee>
+        <div class="slot-marquee__track">
+          <figure class="slot-marquee__item">
+            <img class="slot-marquee__still" src="./assets/star_trails.webp" alt="Star trails wheeling above the dune line on a moonless night." loading="lazy" width="1024" height="576">
+            <figcaption class="slot-marquee__caption">Star trails over the erg</figcaption>
+          </figure>
+          <span class="slot-marquee__word" aria-hidden="true">NO GENERATOR, NO LIGHT DOME</span>
+          <span class="slot-marquee__word" aria-hidden="true">NAVIGATED BY ASTROLABE</span>
+          <span class="slot-marquee__word" aria-hidden="true">CAMP STRUCK BEFORE DAWN</span>
+          <!-- Duplicate half: the loop wraps at -50%, so it must be identical. -->
+          <figure class="slot-marquee__item" aria-hidden="true">
+            <img class="slot-marquee__still" src="./assets/star_trails.webp" alt="" loading="lazy" width="1024" height="576">
+            <figcaption class="slot-marquee__caption">Star trails over the erg</figcaption>
+          </figure>
+          <span class="slot-marquee__word" aria-hidden="true">NO GENERATOR, NO LIGHT DOME</span>
+          <span class="slot-marquee__word" aria-hidden="true">NAVIGATED BY ASTROLABE</span>
+          <span class="slot-marquee__word" aria-hidden="true">CAMP STRUCK BEFORE DAWN</span>
+        </div>
+      </div>
+
+      <section data-reveal id="expeditions" class="asymmetric-section double-column">
         <div class="col-left">
           <h2>Expedition Programmes</h2>
           <p>
@@ -178,7 +198,7 @@
       </section>
 
       <!-- FAQ SECTION (NEW) -->
-      <section id="faq" class="asymmetric-section overlap-right" style="padding-top: 4rem">
+      <section data-reveal id="faq" class="asymmetric-section overlap-right" style="padding-top: 4rem">
         <div class="section-text">
           <h2>Frequently Asked Questions</h2>
           <div style="margin-bottom: 2rem">
@@ -239,7 +259,7 @@
       </section>
 
       <!-- APPLICATION -->
-      <section id="application" class="asymmetric-section application-section">
+      <section data-reveal id="application" class="asymmetric-section application-section">
         <div class="application-container">
           <h2>Candidate Assessment</h2>
           <p>

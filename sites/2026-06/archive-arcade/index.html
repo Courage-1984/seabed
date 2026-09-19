@@ -33,7 +33,7 @@
     </header>
 
     <main>
-      <section class="hero container">
+      <section data-reveal class="hero container">
         <div class="grid grid-2" style="align-items: center">
           <div>
             <h1>Mechanical Memories Restored Properly</h1>
@@ -64,7 +64,19 @@
         </div>
       </section>
 
-      <section class="band-dark" id="featured-restorations">
+      <div class="slot-hover-wrap">
+        <div class="slot-hover" tabindex="0" data-slot-hover>
+          <img class="slot-hover__poster" src="./assets/tools-strip.webp" alt="" loading="lazy" width="1024" height="576">
+          <div class="slot-hover__content">
+            <h3>On the Bench</h3>
+            <p>Every cabinet is stripped to the frame and rebuilt with period-correct
+              hardware. Nothing is replaced that can be repaired.</p>
+            <span class="slot-hover__hint" aria-hidden="true">Hover or focus to watch the strip-down</span>
+          </div>
+        </div>
+      </div>
+
+      <section data-reveal class="band-dark" id="featured-restorations">
         <div class="container">
           <h2>Featured Restorations</h2>
           <div class="grid grid-3">
@@ -145,7 +157,7 @@
         </div>
       </section>
 
-      <section class="container">
+      <section data-reveal class="container">
         <div class="grid grid-2" style="align-items: center">
           <div>
             <h2>Why Printed Photographs Still Matter</h2>
@@ -175,7 +187,7 @@
         </div>
       </section>
 
-      <section class="band-dark" style="background-color: var(--color-secondary)">
+      <section data-reveal class="band-dark" style="background-color: var(--color-secondary)">
         <div class="container">
           <h2>The Nine-Bench Revival Method</h2>
           <p style="font-size: 1.25rem; margin-bottom: 3rem; color: var(--color-background)">
@@ -250,10 +262,10 @@
         </div>
       </section>
 
-      <section class="container">
+      <section data-reveal class="container">
         <h2 style="text-align: center">Testimonials</h2>
         <div class="grid grid-3">
-          <div class="card">
+          <div data-clip-wipe class="card">
             <p>
               "Archive Arcade delivered exactly what they promised. The Mori PX-88 has become the focal point of our
               foyer. In our first six months of operation, we have seen a 40% increase in dwell time before evening

@@ -34,7 +34,7 @@
     </header>
 
     <main>
-      <section class="vault-hero">
+      <section data-reveal class="vault-hero">
         <div class="hero-text">
           <h1>Rare. Verified. Lethal.</h1>
           <p>
@@ -58,7 +58,7 @@
         </div>
       </section>
 
-      <section id="the-manifesto" style="padding: 4rem 2rem; max-width: 1000px; margin: 0 auto">
+      <section data-reveal id="the-manifesto" style="padding: 4rem 2rem; max-width: 1000px; margin: 0 auto">
         <h2 style="margin-bottom: 2rem; font-family: 'Space Grotesk', sans-serif">The Procurement Manifesto</h2>
         <p style="margin-bottom: 1.5rem; line-height: 1.8">
           The global trade in rare carnivorous plants is plagued by devastating field poaching and the rampant
@@ -78,8 +78,8 @@
         <img src="./assets/nepenthes_macro.webp" alt="Macro shot of a Nepenthes pitcher plant" style="width: 100%; height: auto; margin-top: 2rem; border: 1px solid var(--color-primary);" loading="lazy" width="1024" height="1024" />
       </section>
 
-      <section id="active-drops" class="drop-grid" style="padding-top: 2rem">
-        <div class="drop-item">
+      <section data-reveal id="active-drops" class="drop-grid" style="padding-top: 2rem">
+        <div data-tilt class="drop-item">
           <img
             src="./assets/flytrap_macro.webp"
             alt="Macro shot of a Venus Flytrap interior with trigger hairs"
@@ -101,7 +101,7 @@
           <button class="btn-outline">Secure Genetics — £85.00</button>
         </div>
 
-        <div class="drop-item">
+        <div data-tilt class="drop-item">
           <img
             src="./assets/pinguicula_macro.webp"
             alt="Macro shot of a Pinguicula leaf surface"
@@ -111,7 +111,7 @@
           />
           <div class="drop-header">
             <h3>Pinguicula "Titan's Mirror"</h3>
-            <span class="drop-status" style="color: var(--color-secondary)">Locked</span>
+            <span class="drop-status" style="color: hsl(227, 20%, 54%)">Locked</span>
           </div>
           <p>
             A giant Mexican hybrid engineered by crossing P. gigantea with a highly specific, high-altitude P.
@@ -124,14 +124,14 @@
           <button
             class="btn-outline"
             disabled=""
-            style="opacity: 0.5; border-color: var(--color-secondary); color: var(--color-secondary)"
+            style="opacity: 0.75; border-color: hsl(227, 20%, 54%); color: hsl(227, 20%, 54%)"
           >
             Access Denied
           </button>
         </div>
       </section>
 
-      <section id="the-process" style="padding: 4rem 2rem; background: var(--color-bg-dark); margin-top: 4rem">
+      <section data-reveal id="the-process" style="padding: 4rem 2rem; background: var(--color-bg-dark); margin-top: 4rem">
         <div style="max-width: 1000px; margin: 0 auto">
           <h2 style="margin-bottom: 2rem; font-family: 'Space Grotesk', sans-serif">Acquisition Protocol</h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem">
@@ -163,7 +163,7 @@
         </div>
       </section>
 
-      <section id="collector-testimonials" style="padding: 4rem 2rem; max-width: 1000px; margin: 0 auto">
+      <section data-reveal id="collector-testimonials" style="padding: 4rem 2rem; max-width: 1000px; margin: 0 auto">
         <h2 style="margin-bottom: 3rem; font-family: 'Space Grotesk', sans-serif; text-align: center">
           Verified Cultivator Records
         </h2>
@@ -175,7 +175,7 @@
               a ninety-four percent strike rate. The genetic vigour is unlike anything I have sourced from domestic
               European nurseries."
             </p>
-            <footer style="color: var(--color-primary); font-family: 'Space Grotesk', sans-serif">
+            <footer style="color: hsl(240, 20%, 60%); font-family: 'Space Grotesk', sans-serif">
               — Dr. H. Vance, Lead Horticulturist at the Munich Botanical Conservatory
             </footer>
           </blockquote>
@@ -185,7 +185,7 @@
               importing their rare South African endemics into the United Kingdom completely frictionless. The Roridula
               gorgonias tissue culture arrived in pristine, sterile condition despite seven days in transit."
             </p>
-            <footer style="color: var(--color-primary); font-family: 'Space Grotesk', sans-serif">
+            <footer style="color: hsl(240, 20%, 60%); font-family: 'Space Grotesk', sans-serif">
               — M. Stirling, Private Terrarium Architect
             </footer>
           </blockquote>
@@ -194,6 +194,10 @@
     </main>
 
     <footer>
+      <div class="slot-footer-media" aria-hidden="true">
+        <img class="slot-footer-media__still" src="./assets/pinguicula_macro.webp" alt="" loading="lazy" width="1024" height="576">
+        <div class="slot-footer-media__scrim"></div>
+      </div>
       <div class="footer-left">
         © 2026 Drosera Vault.<br />
         Strictly ethical, lab-propagated genetics.

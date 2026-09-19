@@ -368,3 +368,234 @@ footer {
 footer p {
   color: #cbd5e1;
 }
+
+
+/* ------------------------------------------------------------------ *
+ * Motion tokens — explicit curves only, never a bare ease.
+ * ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-mid: 260ms;
+  --dur-slow: 380ms;
+}
+
+/* Motion budget 1 — staggered scroll-reveal system.
+   Gated on .js-reveal so the hidden state only ever exists while the script
+   that un-hides it is running; a failed script renders un-animated, not blank.
+   The offset travels through a custom property so elements that carry their own
+   transform can compose both instead of one clobbering the other. */
+.js-reveal [data-reveal] {
+  --reveal-y: 18px;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-slow) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+.js-reveal [data-reveal].is-revealed {
+  --reveal-y: 0px;
+  opacity: 1;
+}
+
+/* Micro-interactions — hover + focus-visible + active on every control. */
+.btn,
+button,
+a.btn,
+.cta-button {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  min-block-size: 44px;
+}
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active,
+button:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+nav a,
+.site-footer a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+}
+
+/* Signature effect — scroll-velocity marquee skew. */
+[data-marquee] {
+  overflow: hidden;
+}
+[data-marquee-track] {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  inline-size: max-content;
+  transform: skewX(var(--marquee-skew, 0deg));
+  animation: marqueeDrift 26s linear infinite;
+  will-change: transform;
+}
+[data-marquee]:hover [data-marquee-track],
+[data-marquee]:focus-within [data-marquee-track] {
+  animation-play-state: paused;
+}
+@keyframes marqueeDrift {
+  from { translate: 0 0; }
+  /* -50% only loops cleanly because the track holds two identical halves. */
+  to { translate: -50% 0; }
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — neutralise everything, video loop included.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Must match the hidden rule's specificity (.js-reveal [data-reveal],
+     0-2-0): a media query adds none, so a bare [data-reveal] loses and the
+     content stays hidden if the script's reduce branch ever changes. */
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  [data-marquee-track] {
+    animation: none;
+    transform: none;
+  }
+  /* Not display:none — the clip element is the slot's visual, so hiding it
+     leaves a hole. A paused video renders its poster frame, which is the right
+     still presentation; the script pauses it and strips autoplay. */
+  [data-slot-video] {
+    animation: none;
+  }
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  button:hover,
+  button:focus-visible,
+  button:active,
+  .cta-button:hover,
+  .cta-button:focus-visible,
+  .cta-button:active {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- *
+ * Video placement slot — inline process demo.
+ * Built around the still first: the page reads correctly with no
+ * video present, and the <video> takes the same class as the <img>.
+ * --------------------------------------------------------------- */
+.slot-demo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: start;
+  margin-block: 2.5rem;
+}
+@media (max-width: 860px) {
+  .slot-demo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.slot-demo__media {
+  border-radius: 6px;
+  overflow: clip;
+  background: hsl(210, 45%, 9%);
+}
+.slot-demo__still,
+.slot-demo [data-slot-video] {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.slot-demo__caption {
+  margin: 0;
+  padding: 0.65rem 0.9rem;
+  background: hsl(210, 45%, 9%);
+  color: hsl(210, 20%, 94%);
+  font-size: 0.78125rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.slot-demo__steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+.slot-demo__steps li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: baseline;
+  line-height: 1.55;
+}
+.slot-demo__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  border-radius: 50%;
+  background: hsl(210, 45%, 9%);
+  color: hsl(210, 20%, 94%);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.marquee-band {
+  margin-block: 3rem;
+  padding-block: 1rem;
+  border-block: 1px solid hsl(210, 45%, 9%);
+  background: hsl(210, 45%, 9%);
+  overflow: clip;
+}
+.marquee-band__track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  inline-size: max-content;
+}
+.marquee-band__word {
+  flex: 0 0 auto;
+  color: hsl(210, 20%, 94%);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------- *
+ * Visual QA corrections (measured against the composited backdrop).
+ * --------------------------------------------------------------- */
+/* The copper as ink on white measured 3.79:1. */
+.testimonial-author {
+  color: hsl(29, 57%, 41%);
+}
+@media (max-width: 768px) {
+  /* The wordmark renders 32px tall. */
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+  }
+}

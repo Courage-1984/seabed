@@ -31,7 +31,7 @@
 
     <main class="bento-grid">
       <!-- Hero (1) -->
-      <section class="tile tile-hero">
+      <section data-reveal class="tile tile-hero">
         <div class="eyebrow">01 / UPLINK</div>
         <div class="tile-content">
           <h1>Bandwidth for the Middle of Nowhere</h1>
@@ -52,7 +52,7 @@
       </section>
 
       <!-- What we do (2) -->
-      <section class="tile tile-what-we-do">
+      <section data-reveal class="tile tile-what-we-do">
         <div class="eyebrow">02 / THE FIX</div>
         <div class="tile-content">
           <h2>What we do</h2>
@@ -72,7 +72,7 @@
       </section>
 
       <!-- The Meerkat rig (3) -->
-      <section class="tile tile-meerkat feature-tile">
+      <section data-reveal class="tile tile-meerkat feature-tile">
         <div class="eyebrow">03 / FLAGSHIP KIT</div>
         <div class="tile-image" style="background-image: url('./assets/meerkat-texture.webp')"></div>
         <div class="tile-content">
@@ -92,7 +92,7 @@
       </section>
 
       <!-- First Light (4) -->
-      <section class="tile tile-first-light feature-tile alt-feature">
+      <section data-reveal class="tile tile-first-light feature-tile alt-feature">
         <div class="eyebrow">04 / THE GUARANTEE</div>
         <div class="tile-image" style="background-image: url('./assets/satellite-uplink.webp')"></div>
         <div class="tile-content">
@@ -112,7 +112,7 @@
       </section>
 
       <!-- The kit & crew (5) -->
-      <section class="tile tile-services">
+      <section data-reveal class="tile tile-services">
         <div class="eyebrow">05 / SERVICES</div>
         <div class="tile-content">
           <h2>The kit & crew</h2>
@@ -155,7 +155,23 @@
       </section>
 
       <!-- Standards on set (6) -->
-      <section class="tile tile-standards">
+      <div class="slot-modal-wrap">
+        <svg class="link-diagram" viewBox="0 0 320 120" data-line-draw aria-hidden="true" focusable="false">
+          <path class="draw-path" d="M12 100 L96 100 L96 44 L176 44 L176 88 L256 88 L256 20 L308 20"></path>
+        </svg>
+        <button type="button" class="slot-tile-button" data-video-open aria-haspopup="dialog" aria-controls="uplink-film">
+          <img src="./assets/satellite-uplink.webp" alt="" loading="lazy" width="1024" height="576">
+          <span class="slot-tile-button__label">
+            <span class="slot-tile-button__glyph" aria-hidden="true"></span>
+            <span class="slot-tile-button__text">
+              <strong>Watch a link come up</strong>
+              One cold uplink, filmed in the field
+            </span>
+          </span>
+        </button>
+      </div>
+
+      <section data-reveal class="tile tile-standards">
         <div class="eyebrow">06 / COMPLIANCE</div>
         <div class="tile-content">
           <h2>Standards on set</h2>
@@ -176,7 +192,7 @@
       </section>
 
       <!-- What productions say (7) -->
-      <section class="tile tile-social-proof">
+      <section data-reveal class="tile tile-social-proof">
         <div class="eyebrow">07 / THE VERDICT</div>
         <div class="tile-content">
           <h2>What productions say</h2>
@@ -200,7 +216,7 @@
       </section>
 
       <!-- Where we work (8) -->
-      <section class="tile tile-coverage">
+      <section data-reveal class="tile tile-coverage">
         <div class="eyebrow">08 / COVERAGE</div>
         <div class="tile-content">
           <h2>Where we work</h2>
@@ -219,7 +235,7 @@
       </section>
 
       <!-- Questions from the call sheet (9) -->
-      <section class="tile tile-faq">
+      <section data-reveal class="tile tile-faq">
         <div class="eyebrow">09 / FAQ</div>
         <div class="tile-content">
           <h2>Questions from the call sheet</h2>
@@ -270,7 +286,7 @@
       </section>
 
       <!-- Get us on your recce (10) -->
-      <section class="tile tile-contact" id="contact">
+      <section data-reveal class="tile tile-contact" id="contact">
         <div class="eyebrow">10 / DEPLOY</div>
         <div class="tile-content">
           <h2>Get us on your recce</h2>
@@ -304,5 +320,16 @@
       </div>
     </footer>
     <script type="module" src="./main.js"></script>
+    <!-- Body-level: a position:fixed overlay must not sit inside a transformed
+         ancestor, and every [data-reveal] element keeps a translate3d and a
+         will-change:transform. -->
+    <div class="video-modal" id="uplink-film" role="dialog" aria-modal="true" aria-label="Cold uplink acquisition" hidden>
+      <div class="video-modal__backdrop" data-video-close></div>
+      <div class="video-modal__frame">
+        <button type="button" class="video-modal__close" data-video-close aria-label="Close video">&times;</button>
+        <img class="video-modal__still" src="./assets/satellite-uplink.webp" alt="" width="1024" height="576">
+      </div>
+    </div>
+
   </body>
 </html>

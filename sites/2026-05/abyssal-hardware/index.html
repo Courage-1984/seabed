@@ -57,8 +57,12 @@
       </aside>
 
       <main class="content-scroll">
-        <section id="hero" class="hero-section">
+        <section data-reveal id="hero" class="hero-section">
           <div class="hero-image-wrapper">
+            <figure class="slot-inset">
+              <img class="slot-inset__still" src="./assets/seal-macro.webp" alt="" loading="lazy" width="1024" height="576">
+              <figcaption class="slot-inset__caption">Face seal &mdash; the only part that matters at depth</figcaption>
+            </figure>
             <img
               src="./assets/hero-trunk.webp"
               fetchpriority="high"
@@ -84,7 +88,7 @@
           </div>
         </section>
 
-        <section id="flagship" class="content-section technical-grid">
+        <section data-reveal id="flagship" class="content-section technical-grid">
           <div class="section-header">
             <h2>The Bathypelagic Cache</h2>
             <span class="spec-badge">500+ ATM Rating</span>
@@ -118,7 +122,7 @@
           </div>
         </section>
 
-        <section id="engineering" class="content-section blueprint-layout">
+        <section data-reveal id="engineering" class="content-section blueprint-layout">
           <div class="section-header">
             <h2>Materials &amp; Engineering</h2>
           </div>
@@ -153,7 +157,24 @@
           </div>
         </section>
 
-        <section id="faq" class="content-section">
+        <section data-reveal class="pin-section" data-pin-stage>
+          <div class="pin-section__stage">
+            <article class="pin-panel" data-pin-panel>
+              <h3>Rated, not estimated</h3>
+              <p>Every case is pressure-cycled to its stated depth before it is given a serial.</p>
+            </article>
+            <article class="pin-panel" data-pin-panel>
+              <h3>One seal, one job</h3>
+              <p>The face seal is the only barrier. Nothing else is asked to hold water out.</p>
+            </article>
+            <article class="pin-panel" data-pin-panel>
+              <h3>Serviced, not scrapped</h3>
+              <p>Seals are a consumable. The trunk is not, and we stock parts for every run.</p>
+            </article>
+          </div>
+        </section>
+
+        <section data-reveal id="faq" class="content-section">
           <div class="section-header">
             <h2>FAQ</h2>
           </div>
@@ -216,7 +237,7 @@
           </div>
         </section>
 
-        <section id="procurement" class="content-section highlight-section">
+        <section data-reveal id="procurement" class="content-section highlight-section">
           <div class="section-header">
             <h2>Procurement &amp; Contact</h2>
           </div>

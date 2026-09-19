@@ -31,9 +31,9 @@
 
     <main>
       <!-- 1. Expanded Hero Section -->
-      <section class="hero split-layout">
+      <section data-reveal class="hero split-layout">
         <div class="split-content">
-          <h1>Calibrating Human Physiology</h1>
+          <h1 data-scramble>Calibrating Human Physiology</h1>
           <p class="subheadline">
             For the world's most hostile depths. Our state-of-the-art atmospheric chambers and hypoxic conditioning
             programmes are engineered specifically for deep-sea commercial saturation divers and extreme cold-water
@@ -72,7 +72,7 @@
       </section>
 
       <!-- 2. Deep Value Adds (4 Cards) -->
-      <section class="value-add container section-padding">
+      <section data-reveal class="value-add container section-padding">
         <h2>Why Apex Altitude Matters</h2>
         <div class="value-grid value-grid-4">
           <div class="value-card">
@@ -131,7 +131,7 @@
       </section>
 
       <!-- 3. Interactive Showcase (Carousel) -->
-      <section class="showcase section-padding bg-alt">
+      <section data-reveal class="showcase section-padding bg-alt">
         <div class="container">
           <h2>Facility Showcase</h2>
           <p style="max-width: 800px; margin: 0 auto 2rem auto; text-align: center">
@@ -192,7 +192,7 @@
       </section>
 
       <!-- 4. Scannable Feature Breakdown -->
-      <section class="features section-padding container">
+      <section data-reveal class="features section-padding container">
         <h2>Core Diagnostics &amp; Conditioning</h2>
         <p style="max-width: 900px; margin-bottom: 2rem">
           The architecture of our 12-week residency is built upon strict clinical protocols rather than generic fitness
@@ -242,7 +242,13 @@
       </section>
 
       <!-- 5. Social Proof / Trust Signals -->
-      <section class="social-proof section-padding bg-alt">
+      <div class="transition-band">
+        <img class="transition-band__media" src="./assets/deepsea-diver.webp" alt="" loading="lazy" width="1024" height="576">
+        <div class="transition-band__scrim"></div>
+        <p class="transition-band__label">From the summit ridge to sixty metres down</p>
+      </div>
+
+      <section data-reveal class="social-proof section-padding bg-alt">
         <div class="container text-center">
           <h2>Operational Provenance</h2>
           <p style="max-width: 800px; margin: 0 auto 3rem auto">
@@ -296,7 +302,7 @@
       </section>
 
       <!-- 6. Closing CTA -->
-      <section class="closing-cta section-padding container text-center">
+      <section data-reveal class="closing-cta section-padding container text-center">
         <h2>Ready for the Extremes?</h2>
         <p style="max-width: 700px; margin: 0 auto 2rem auto">
           Do not leave your physiological adaptation to chance. Secure your diagnostic assessment today and begin the

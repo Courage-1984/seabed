@@ -34,7 +34,7 @@
 
       <main>
         <!-- Hero -->
-        <section id="anvil-and-ash">
+        <section data-reveal id="anvil-and-ash">
           <div class="bento-grid">
             <div class="bento-item hero-main">
               <h1>Where the heat of the anvil<br />meets the precision of the plate.</h1>
@@ -70,7 +70,7 @@
         </section>
 
         <!-- The Craft — Deep Value Adds (4 Cards) -->
-        <section id="the-craft">
+        <section data-reveal id="the-craft">
           <div class="bento-grid">
             <div class="bento-item tall image-cell">
               <img
@@ -112,7 +112,7 @@
         </section>
 
         <!-- The Hearth -->
-        <section id="the-hearth">
+        <section data-reveal id="the-hearth">
           <div class="bento-grid">
             <div class="bento-item half">
               <h2>Smoke &amp; Sizzle</h2>
@@ -143,7 +143,7 @@
         </section>
 
         <!-- The Process — Timeline -->
-        <section id="the-process">
+        <section data-reveal id="the-process">
           <div class="bento-grid">
             <div class="bento-item full" style="padding: 3rem">
               <h2>The Forging Process</h2>
@@ -218,8 +218,12 @@
         </section>
 
         <!-- Interactive Showcase (Carousel) -->
-        <section id="showcase">
+        <section data-reveal id="showcase">
           <div class="bento-grid">
+            <figure class="slot-tile">
+              <img class="slot-tile__still" src="./assets/specs.webp" alt="" loading="lazy" width="1024" height="576">
+              <figcaption class="slot-tile__caption">Edge geometry checked against the spec card</figcaption>
+            </figure>
             <div class="bento-item full" style="padding: 2rem">
               <h2>The Culinary Arsenal</h2>
               <div class="carousel-wrapper">
@@ -257,7 +261,7 @@
         </section>
 
         <!-- Feature Breakdown — Expanded -->
-        <section id="feature-breakdown">
+        <section data-reveal id="feature-breakdown">
           <div class="bento-grid">
             <div
               class="bento-item full"
@@ -311,7 +315,7 @@
         </section>
 
         <!-- Social Proof / Trust Signals — Expanded -->
-        <section id="social-proof">
+        <section data-reveal id="social-proof">
           <div class="bento-grid">
             <div
               class="bento-item full"
@@ -355,7 +359,7 @@
               </blockquote>
               <div class="forge-stats-grid">
                 <div class="forge-stat">
-                  <span class="forge-stat-number">200+</span>
+                  <span class="forge-stat-number"><span data-count-to="200">200</span>+</span>
                   <span class="forge-stat-label">Blades Commissioned</span>
                 </div>
                 <div class="forge-stat">
@@ -363,11 +367,11 @@
                   <span class="forge-stat-label">HRC Hardness</span>
                 </div>
                 <div class="forge-stat">
-                  <span class="forge-stat-number">3 Wk</span>
+                  <span class="forge-stat-number"><span data-count-to="3">3</span> Wk</span>
                   <span class="forge-stat-label">Lead Time</span>
                 </div>
                 <div class="forge-stat">
-                  <span class="forge-stat-number">4</span>
+                  <span class="forge-stat-number"><span data-count-to="4">4</span></span>
                   <span class="forge-stat-label">Monthly Capacity</span>
                 </div>
               </div>
@@ -376,7 +380,7 @@
         </section>
 
         <!-- Specifications -->
-        <section id="specifications">
+        <section data-reveal id="specifications">
           <div class="bento-grid">
             <div class="bento-item image-cell photo">
               <img
@@ -435,7 +439,7 @@
         </section>
 
         <!-- Commissions -->
-        <section id="commissions">
+        <section data-reveal id="commissions">
           <div class="bento-grid">
             <div class="bento-item full">
               <h2>Bespoke Commissions</h2>
@@ -525,7 +529,7 @@
             </ul>
           </div>
         </div>
-        <div style="text-align: center; margin-top: 3rem; color: #666; font-size: 0.9rem">
+        <div style="text-align: center; margin-top: 3rem; color: hsl(0, 0%, 50%); font-size: 0.9rem">
           © 2026 Forge &amp; Feather. All rights reserved.
         </div>
       </footer>
