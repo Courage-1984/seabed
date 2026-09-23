@@ -12,5 +12,7 @@
     "concept"
   ],
   "videoPlacement": "grid tile",
-  "signatureEffect": "animated SVG line-draw"
+  "signatureEffect": "animated SVG line-draw",
+  "video": "assets/verdigris-and-salt-grid-tile.webm",
+  "contract": "v2.1"
 }

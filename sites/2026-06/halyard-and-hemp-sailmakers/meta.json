@@ -11,5 +11,7 @@
     "services"
   ],
   "videoPlacement": "inline process demo",
-  "signatureEffect": "magnetic proximity cursor element"
+  "signatureEffect": "magnetic proximity cursor element",
+  "video": "assets/halyard-and-hemp-sailmakers-inline-process-demo.webm",
+  "contract": "v2.1"
 }

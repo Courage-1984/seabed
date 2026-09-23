@@ -11,5 +11,7 @@
     "research"
   ],
   "videoPlacement": "modal feature",
-  "signatureEffect": "drifting grain overlay"
+  "signatureEffect": "drifting grain overlay",
+  "video": "assets/xenon-arc-modal-feature.webm",
+  "contract": "v2.1"
 }
