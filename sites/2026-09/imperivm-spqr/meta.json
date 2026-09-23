@@ -1,0 +1,18 @@
+{
+  "title": "IMPERIVM.SPQR",
+  "blurb": "The Civic Terminal of the Digital Rome",
+  "hero": "assets/hero-forum-cybernetics.webp",
+  "layoutFamily": "terminal / data-readout",
+  "tags": [
+    "government",
+    "cybernetic",
+    "military"
+  ],
+  "created": "2026-09-23",
+  "standard": "v2",
+  "videoPlacement": "modal feature",
+  "signatureEffect": "scroll-driven clip-path wipe",
+  "wordFloor": 500,
+  "video": "assets/imperivm-spqr-modal-feature.webm",
+  "qa": "v2-pass"
+}
