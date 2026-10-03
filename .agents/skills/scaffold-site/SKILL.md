@@ -40,7 +40,7 @@ sites/<YYYY-MM>/<slug>/
 }
 ```
 
-Omit `"qa": "v2-pass"` until @.agents/skills/qa-and-ship/SKILL.md gate passes. `layoutFamily` must be one of the **eleven** names in @.agents/rules/01-site-v2-standard.md / `scripts/lib/layout-families.js`. Set `"created"` to today’s UTC date (`YYYY-MM-DD`). Generate 1-3 semantic tags categorizing the site (e.g. `ecommerce`, `industrial`, `medical`). When the brief §3 word floor is known, you may add `"wordFloor": <n>` now or at ship.
+Omit `"qa": "v2-pass"` until @.agents/skills/qa-and-ship/SKILL.md gate passes. `layoutFamily` must be one of the **seventeen** names in @.agents/rules/01-site-v2-standard.md / `scripts/lib/layout-families.js`. Set `"created"` to today’s UTC date (`YYYY-MM-DD`). Generate 1-3 semantic tags categorizing the site (e.g. `ecommerce`, `industrial`, `medical`). When the brief §3 word floor is known, you may add `"wordFloor": <n>` now or at ship.
 
 ### index.html (stub)
 

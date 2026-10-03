@@ -339,7 +339,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* Registry Grid */
 .registry-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  /* auto-fill reduces the column count but never the track floor, so a
+     bare 280px minimum overflows every phone under ~344px. */
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
   gap: 2rem;
   margin-block-start: 2rem;
 }
@@ -533,6 +535,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 .form-group input, .form-group textarea {
+  /* Inputs do not inherit font-size. Under 16px iOS zooms the page on
+     focus and does not zoom back, which strands the reader mid-form. */
+  font-size: 1rem;
   padding: 0.75rem;
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);

@@ -46,7 +46,7 @@ Still accept older briefs without §10.
 | Voice card           | Do/don’t, reading level, rhythm                                                                                           |
 | Blurb                | Hub one-liner                                                                                                             |
 | Architecture         | landing / dense one-pager / multi-page + page files                                                                       |
-| Layout family        | Exact name from §3/§6 — one of the **eleven** in @.agents/rules/01-site-v2-standard.md / `scripts/lib/layout-families.js` |
+| Layout family        | Exact name from §3/§6 — one of the **seventeen** in @.agents/rules/01-site-v2-standard.md / `scripts/lib/layout-families.js` |
 | Layout signature     | Mandatory structural signature + forbidden pattern from §3/§6 (carry into design)                                         |
 | L/R split count      | From §3/§6 — hard cap ≤1 site-wide (sticky-rail is the special two-pane case)                                             |
 | Word floor / ceiling | From §3                                                                                                                   |

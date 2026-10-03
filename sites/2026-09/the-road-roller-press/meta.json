@@ -1,0 +1,17 @@
+{
+  "title": "The Road-Roller Press — Monumental Relief Printmaking",
+  "blurb": "Four-metre woodcuts inked with heavy pitch and pressed by eight tonnes of municipal compaction steel.",
+  "hero": "assets/the-road-roller-press-hero-street.webp",
+  "layoutFamily": "sticky-rail + content",
+  "tags": [
+    "printmaking",
+    "studio",
+    "publishing"
+  ],
+  "created": "2026-09-29",
+  "wordFloor": 650,
+  "videoPlacement": "split panel",
+  "signatureEffect": "progressive blur focus-pull",
+  "standard": "v2",
+  "video": "assets/the-road-roller-press-split-panel.webm"
+}

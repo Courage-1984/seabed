@@ -36,8 +36,13 @@ jobs:
         run: npm run build
       - name: Site contract
         run: npm run check:contract -- --all
+      # The device matrix defaults to ten devices; across all 88 sites that is
+      # ten navigations per page. `fast` keeps CI to the four widths that
+      # actually catch regressions (320 / 393 / 768 / 1440) -- 320px in
+      # particular, which nothing tested before. Run the full matrix locally
+      # per slug via `npm run qa -- <slug>`.
       - name: Puppeteer QA
-        run: npm run qa
+        run: npm run qa -- --devices fast
         env:
           CI: true
       - name: Upload QA report

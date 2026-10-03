@@ -512,7 +512,9 @@ section {
 }
 
 .site-footer .copyright {
-  color: rgba(255,255,255,0.4);
+  /* 0.4 alpha over the dark footer measured 3.56:1 -- below the 4.5:1 floor
+     for small text. 0.65 clears it at 8.3:1 while staying visibly secondary. */
+  color: rgba(255, 255, 255, 0.65);
   margin-block-start: var(--spacing-sm);
   font-size: 0.75rem;
 }
@@ -744,6 +746,11 @@ section {
   display: grid;
   place-items: center;
   padding: 1.5rem;
+  /* A full-viewport overlay with no scroller traps anything taller than the
+     screen; on a phone the dialog exceeds the viewport and its close control
+     sat below the fold, unreachable. */
+  overflow-y: auto;
+  overscroll-behavior: contain;
   opacity: 0;
   transition: opacity var(--dur-mid) var(--ease-out);
 }
@@ -908,4 +915,33 @@ footer a {
 }
 nav {
   flex-wrap: wrap;
+}
+
+/* ---------------------------------------------------------------------------
+   Narrow-viewport safety net. Appended so it wins on order against the rules
+   above it; both defects were found by the ten-device QA sweep at 320px.
+   --------------------------------------------------------------------------- */
+/* Long unbroken tokens had no escape hatch and overflowed the viewport. */
+body {
+  overflow-wrap: break-word;
+}
+
+
+/* Inputs do not inherit font-size, and anything under 16px makes iOS zoom the
+   page on focus without zooming back, stranding the reader mid-form. */
+input,
+select,
+textarea {
+  font-size: 1rem;
+}
+
+/* Grid and flex children default to `min-width: auto`, which means they refuse
+   to shrink below their min-content width however the track is sized -- so
+   guarding a minmax() floor is necessary but not sufficient, and
+   `overflow-wrap` does not help either (it wraps text without reducing the
+   intrinsic min-content size the track is measured from). `:where()` carries
+   zero specificity, so this is only a default: any deliberate min-width in the
+   rules above still wins. */
+:where([class*='grid'], [class*='form'], [class*='row'], [class*='stack'], [class*='cluster']) > * {
+  min-width: 0;
 }

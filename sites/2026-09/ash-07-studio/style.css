@@ -225,7 +225,7 @@ section {
 
 @media (min-width: 1024px) {
   .hero-box {
-    grid-template-columns: minmax(400px, 1fr);
+    grid-template-columns: minmax(min(400px, 100%), 1fr);
   }
 }
 
@@ -311,7 +311,7 @@ section {
 /* Masonry Vessel Manifest */
 .masonry-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: var(--space-lg);
   align-items: start;
 }

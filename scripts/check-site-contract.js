@@ -48,6 +48,62 @@ function walkFiles(dir, pred, out = []) {
   return out;
 }
 
+/**
+ * Document-structure rules from .agents/rules/04-accessibility.md, which have
+ * been stated since the rules file was written and enforced by nothing. The
+ * first run found four live defects: two h1s in litho-acoustic-labs, no h1 at
+ * all on two nadir-quartzware pages, and a duplicate id in copper-cloche.
+ *
+ * Regex rather than a parser, to match the rest of this file and stay fast
+ * enough to run over 151 pages on every gate.
+ */
+function structuralIssues(html, rel) {
+  // `hard` breaks the page for someone; `soft` is a real but widespread
+  // hygiene problem. Heading-level skips are the latter: 39 of 89 sites have
+  // one, all pre-existing, and hard-failing them repo-wide overnight would say
+  // nothing new while burying the defects that actually block a user.
+  const hard = [];
+  const soft = [];
+  const found = hard;
+  const stripped = html.replace(/<!--[\s\S]*?-->/g, '');
+
+  const headings = [...stripped.matchAll(/<h([1-6])\b/gi)].map((m) => Number(m[1]));
+  const h1s = headings.filter((level) => level === 1).length;
+  if (h1s === 0) found.push(`${rel}: no <h1>`);
+  else if (h1s > 1) found.push(`${rel}: ${h1s} <h1> elements (exactly one per page)`);
+
+  let previous = 0;
+  for (const level of headings) {
+    if (previous && level > previous + 1) {
+      soft.push(`${rel}: heading jumps h${previous} -> h${level} (levels must not skip)`);
+      break;
+    }
+    previous = level;
+  }
+
+  const ids = [...stripped.matchAll(/\bid=["']([^"']+)["']/gi)].map((m) => m[1]);
+  const seen = new Set();
+  const duplicates = new Set();
+  for (const id of ids) {
+    if (seen.has(id)) duplicates.add(id);
+    seen.add(id);
+  }
+  for (const id of duplicates) found.push(`${rel}: duplicate id="${id}"`);
+
+  // A dead in-page link looks fine to the link checker, which strips the
+  // fragment before its HEAD request and gets a 200 back from the page itself.
+  const anchorNames = new Set([...stripped.matchAll(/\bname=["']([^"']+)["']/gi)].map((m) => m[1]));
+  for (const m of stripped.matchAll(/href=["']#([^"']+)["']/gi)) {
+    const target = m[1];
+    if (target === 'top' || target === '!') continue;
+    if (!seen.has(target) && !anchorNames.has(target)) {
+      found.push(`${rel}: href="#${target}" has no matching element`);
+    }
+  }
+
+  return { hard, soft };
+}
+
 function checkSite(site) {
   const issues = [];
   const warnings = [];
@@ -160,6 +216,13 @@ function checkSite(site) {
       issues.push(`${rel}: absolute /assets/ path (breaks GitHub Pages)`);
     }
 
+    if (!/<html[^>]*\blang=["'][^"']+["']/i.test(html)) {
+      noteVersioned(`${rel}: <html> has no lang attribute`);
+    }
+    const structural = structuralIssues(html, rel);
+    for (const found of structural.hard) noteVersioned(found);
+    for (const note of structural.soft) warnings.push(note);
+
     const imgSrcs = [...html.matchAll(/<(?:img|source)[^>]+(?:src|srcset)=["']([^"']+)["']/gi)].map((m) => m[1]);
     for (const src of imgSrcs) {
       const first = src.split(',')[0].trim().split(/\s+/)[0];
@@ -262,7 +325,7 @@ for (const site of siteDescriptors) {
 }
 
 if (warned) {
-  console.warn(`\nCONTRACT_WARN: ${warned} legacy site(s) with advisory findings (not blocking)`);
+  console.warn(`\nCONTRACT_WARN: ${warned} site(s) with advisory findings (not blocking)`);
 }
 
 if (failed) {

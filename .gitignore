@@ -19,3 +19,4 @@ ffmpeg2pass*.log
 .qa-tmp/
 
 .firecrawl/
+audit/.run20/

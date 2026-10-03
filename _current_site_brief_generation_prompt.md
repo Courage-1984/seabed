@@ -4,7 +4,7 @@ use @Spark Mcp Gateway
 
 > **Snapshot note:** The operator's live Gemini prompt may be maintained **outside** this repo. This file is the checked-in snapshot for docs/agents. Prefer updating this file when the external prompt changes. **Builders** follow @AGENTS.md for pipeline/commands (AGENTS wins if a pasted brief's §2/§8 is somehow thinner).
 >
-> **Operator cadence:** After shipping sites, run `npm run sites:index` and paste the Existing sites table into the live Gemini Scheduled Action (~weekly).
+> **Operator cadence:** After shipping sites, run `npm run sites:index` and paste the Anti-repetition state + Existing sites table into the live Gemini Scheduled Action (~weekly).
 
 Copy everything below this line into the Google Gemini Scheduled Action instructions (or keep your external copy in sync with this snapshot).
 
@@ -104,7 +104,7 @@ The five newer sectors are deliberately under-used — 7–11 have little or no 
 |--------|--------------|----------|-----------------------|----------------|
 | 0 | **Landing** — 1 page | hero + 5–6 content sections (1 flagship §4a + 4–5 directed §4b) | 650 | Max 7 sections |
 | 1 | **Dense one-pager** — 1 page | hero + 7–9 sections (1 flagship + ≥7 directed) | 1,100 | Max 10 sections |
-| 2 | **Multi-page** — 3 pages (index + 2 distinct; shared nav/footer); each page hero + 4–6 sections | 1,900 total | Max 7 sections per page |
+| 2 | **Multi-page** — 3 pages (index + 2 distinct; shared nav/footer) | each page hero + 4–6 sections | 1,900 total | Max 7 sections per page |
 
 Rare **4th page** only if seed % 7 === 0 on a multi-page day, and only if it has a real job (FAQ, booking, catalogue — not a clone landing). Cap ~700 words/page average on multi-page sites.
 
@@ -155,7 +155,7 @@ Every site ships **exactly one** video, generated for that site alone. The slot 
 | 8 | masked type fill | Video visible only through a text or shape mask (`background-clip: text` or a CSS/SVG mask). Requires a solid fallback colour where masking is unsupported |
 | 9 | grid tile | Video occupies exactly one cell of the page grid/bento, sized and gapped identically to its neighbouring tiles |
 | 10 | marquee strip | Video sits inside a horizontal band or repeating strip that drifts with scroll velocity |
-| 11 | modal feature | A poster tile opens the video in a focused overlay — keyboard-operable, focus-trapped, dismissible with Escape |
+| 11 | modal feature | A poster tile opens the video in a focused overlay — keyboard-operable, focus-trapped (Tab cannot leave it), dismissible with Escape, and focus returns to the trigger on close. The overlay carries `max-height` + `overflow-y: auto` and scroll-locks the page behind it, or its content is unreachable on a phone |
 
 **Layout family -> compatible slots** (the roll must land inside this row):
 
@@ -222,7 +222,7 @@ seed % 10 picks voice; state it in §1 and the brand voice card:
 ### Niche + twist
 
 1. Pick a **hyper-niche** business inside today's sector (from the rotated pool above).
-2. Collide it with **ONE** unexpected twist. seed % 10 selects axis:
+2. Collide it with **ONE** unexpected twist. `(seed + 13) % 10` selects axis — the offset matters: sharing `seed % 10` with the tone roll locked voice and twist together 1:1, so only ten of the hundred combinations were ever reachable:
    - 0 → unusual **audience**
    - 1 → unusual **geography / base**
    - 2 → unusual **delivery / format**
@@ -412,7 +412,7 @@ Write ONLY the specifications (heading, goal, angle, required content) for these
 1. Markdown table: Element (Primary, Secondary, Accent, Background, Text) | HSL Value | Hex Equivalent | Reasoning. (Prefer HSL for easier theme manipulation).
 2. Ready-to-paste `:root { --color-…: …; }` block containing both base and interactive states (e.g. --color-hover, --color-focus).
 3. Implement palette **exclusively** as CSS custom properties in `:root`.
-4. WCAG AA contrast for Text on Background and primary UI text on its surfaces.
+4. WCAG AA contrast for **every foreground/background pair the palette actually produces**, on each surface that pair appears on — not just body text on the page background. State the computed ratio for each. Status and signal colours are the usual failure: one mid-tone green or red typically passes on neither the light page nor the dark panel, and needs a separate on-light and on-dark value.
 
 **Visual anti-patterns**:
 
@@ -443,12 +443,24 @@ Avoid these palettes/combos (from the project's design rules):
 The builder must inline or link the `favicon.svg` into the `<nav>` or `<header>` as the primary brand logo, scaling it appropriately (e.g., 24px to 32px height) next to or replacing the text-based brand name.
 </ui_branding_constraint>
 
-**Responsive design**
+**Responsive contract (mandatory — every item, every site)**
 
-- Mobile-first CSS architecture: default styles for mobile, `min-width` media queries for larger screens.
-- Must work 360–1440 px. No horizontal overflow.
-- Prefer `max-width`, flex/grid, `clamp()` for fluid type/spacing.
-- Use CSS logical properties where appropriate (`margin-block`, `padding-inline`, `inset`).
+A site that breaks on a phone is a failed site, exactly as a flat site is. Specify all of the following concretely enough to build from; the builder implements every one. QA renders ten real devices from `scripts/lib/device-matrix.js` — **320, 360, 393, 393-short, phone-landscape, 768, tablet-landscape, 1280, 1440, 1920** — with real touch, device pixel ratio and user agent, so none of this can be waved through.
+
+1. **Mobile-first architecture.** Default styles are the phone layout; `min-width` queries add complexity upward. A desktop-first sheet with one `max-width` query at the bottom is a failed build.
+2. **Every layout block has a mobile state.** Name the breakpoints the site uses, and confirm each major section (hero, every content block, forms, footer, overlays) has a rule at the narrowest one. Padding, type scale, letter-spacing, flex direction and grid tracks all need a phone value — not just the grid collapses.
+3. **Works to 320px.** Not 360 — 320 is the narrowest device in the matrix and it is where `minmax()` floors and wide display type break first.
+4. **Media reset.** `img, video, canvas, svg { max-width: 100%; height: auto; display: block }`. Without it an intrinsic-width image lays the whole document out wider than the screen and `overflow-x` then crops every section instead of scrolling.
+5. **Grid tracks must be able to collapse.** `minmax(min(300px, 100%), 1fr)`, never a bare `minmax(300px, 1fr)` — `auto-fit` reduces the column count but never the floor. The same applies to `flex: 0 0 380px` and any `min-width` on a grid or flex child.
+6. **Long strings must be breakable.** `overflow-wrap: break-word` on the body, and `white-space: nowrap` only inside something that scrolls or is a marquee track.
+7. **Form controls at `font-size: 1rem` minimum.** Inputs do not inherit font-size; anything under 16px makes iOS zoom the page on focus and never zoom back.
+8. **Touch targets ≥ 44×44px**, with ≥ 8px between adjacent controls.
+9. **`dvh`, not `vh`,** for any element locked to viewport height — `vh` counts the collapsed mobile URL bar, so a `100vh` hero resizes under the user mid-scroll. Ship `vh` first and `dvh` second as the fallback pair.
+10. **Scrims are re-authored for the mobile stack.** A `linear-gradient(to right, …)` scrim is built for a desktop text column on one side; once the copy goes full-bleed the end of every line lands on the transparent end. State the mobile scrim direction explicitly.
+11. **Overlays scroll and lock.** Any `position: fixed` dialog needs `max-height` + `overflow-y: auto`, and the page behind it scroll-locked while it is open.
+12. **`overflow-x: clip`, never `hidden`,** on the body — `hidden` makes the body a scroll container and kills `position: sticky` in every descendant. It is a safety net, not a fix: the overflow that made it necessary is still a defect.
+
+**State the layout family's mobile reduction.** Most of the seventeen families are desktop mechanics and must say, in one line, what they become on a phone — e.g. split-screen scroll → a stacked sequence with the pinned half above; sticky-rail + content → a static index at the top; horizontal-scroll band → the band is kept but driven by touch with `scroll-snap`; layered-parallax → fewer planes, or none under `prefers-reduced-motion`. A family whose reduction is unstated gets invented by the builder or skipped entirely.
 
 **Hero craft (mandatory)**
 
@@ -481,7 +493,7 @@ A flat site is a failed site. Specify all of the following concretely enough to 
 
 Do **not** invent unverified image URLs. Provide **5–8 image briefs**:
 
-- Filename (e.g. hero.webp, workshop.webp)
+- Filename — descriptive and unique repo-wide (e.g. `forge-hearth-at-dusk.webp`, `flax-sailcloth-seam.webp`). Generic names are rejected by `check:assets`, so **not** `hero.webp`, `image1.webp` or `photo.webp`
 - Subject + mood + palette + suggested aspect
 - Preferred mode: pd-open or generate
 - Prompt-ready one-liner for generation (even if pd-open is preferred — builder may fall back)
@@ -546,18 +558,18 @@ Provide a detailed, creative design brief for the builder to code as `assets/fav
 
 Include verbatim:
 
-- Passed all standard QA and ship gates per AGENTS.md. Execute explicitly: `npm run check:contract`, `npm run check:copy-depth`, `npm run check:assets`, `npm run build`, `npm run qa`, `npm run qa:visual`, and `npm run check:ship`. Add `qa: "v2-pass"` to `meta.json` only after the Extreme Visual Audit below is complete.
+- Passed all standard QA and ship gates per AGENTS.md. Execute explicitly, each with `-- <slug>`: `npm run check:contract`, `npm run check:copy-depth`, `npm run check:assets`, `npm run build`, `npm run qa`, `npm run qa:visual`, `npm run check:vision`, and `npm run check:ship`. `check:ship` fails until `check:vision` passes, and `qa:visual` fails on any blocking finding. Add `qa: "v2-pass"` to `meta.json` only after the Extreme Visual Audit below is complete.
 - New site at `sites/<YYYY-MM>/<slug>/`, flat v2, no nested package.json.
 - meta.json: title, blurb, hero (assets/….webp); "layoutFamily"; "tags" (1–3); "created"; "wordFloor"; "video" (assets/<slug>-<slot>.webm); "videoPlacement"; "signatureEffect"; "standard": "v2".
 - Relative paths only; custom `assets/favicon.svg`. `assets/favicon.svg` must be linked in `<head>` AND integrated directly into the `<nav>` or `<header>` as the primary brand mark.
 - Semantic HTML5; one `<h1>` per page; headings do not skip levels.
-- Accessibility: all interactive elements focusable via Tab; explicit `:focus-visible` styles; descriptive `alt` text on all meaningful images; `aria-label` on icon-only buttons; WCAG AA contrast met.
+- Accessibility: all interactive elements focusable via Tab; explicit `:focus-visible` styles that are actually visible (`outline: none` with no replacement is a failed build); descriptive `alt` text on all meaningful images; every link and button has a non-empty accessible name; **every form control has a programmatic label** (`<label for>` or `aria-label`) — a placeholder is a hint, never a label, and it disappears the moment anyone types; WCAG AA contrast met.
 - §4a verbatim used exactly; §4b authored by builder; no placeholders.
 - The layout family's mandatory structural signature (per §6) is visibly implemented, and no more than one section site-wide uses a literal left/right split (unless the family is sticky-rail + content, per its own rule).
 - **Motion budget fully implemented** (§6): IntersectionObserver scroll-reveal system, the rolled signature effect, the layout family's signature motion, 2–3 supporting motions, 2 micro-interactions covering hover/focus-visible/active, transform+opacity only, 120–400ms custom cubic-bezier, and a `prefers-reduced-motion` block that neutralises all of it including the video loop.
 - **Exactly one video**, in the rolled placement slot, implemented per that slot's mandatory spec. `<video>` carries `muted loop playsinline preload="metadata"` and a `poster`, with both `.webm` and `.mp4` sources. The site must look and function correctly **with no video present** — the video is layered into a slot that already works, never a hole in the layout.
 - **Assets are site-private** — `npm run check:assets -- <slug>` passes. No asset is byte-identical to one in another site, nothing is referenced outside the site folder, nothing is hotlinked.
-- **Extreme Visual Audit complete** (AGENTS.md §14): every artifact in `qa-screenshots/<slug>/INDEX.md` reviewed at all four breakpoints (390/768/1440/1920), and `qa-recordings/<slug>-walkthrough.webm` watched end to end. The build summary carries a `## Visual Audit` section listing each issue found and the fix applied, or the count of artifacts reviewed if none were found.
+- **Extreme Visual Audit complete** (AGENTS.md §14): every contact sheet in `qa-screenshots/<slug>/INDEX.md` reviewed — the `wall-*` sheet (all ten devices side by side), every `detail-*` sheet, and the `walkthrough-*` frames. Record it in `audit/visual-reviews/<slug>.md` (start it with `node scripts/check-vision-review.js <slug> --write-stub`) with `sheetsReviewed: N/N` and `verdict: PASS`, then confirm with `npm run check:vision -- <slug>`. The review is digest-bound to the source and the sheets, so it goes stale the moment either changes. The build summary carries a `## Visual Audit` section listing each issue found and the fix applied, or the count of sheets reviewed if none were found.
 - No text sits on an image or video without an engineered scrim. Contrast holds against the media's brightest frame.
 - Footer: fictional complete contact block consistent with world-building city.
 
@@ -573,7 +585,7 @@ Include verbatim:
 - Semantic HTML5 landmarks (<header>, <nav>, <main>, <section>, <footer>). Use <button> for actions, <a> for navigation. Never `outline: none` without a `:focus-visible` replacement.
 - Apply strict CSS best practices: Use `padding` for click targets/spacing, `margin` ONLY to push unrelated sections apart or center blocks (no flex/grid gap hacks), `gap` MUST be used for equal spacing in flex/grid.
 - Use logical properties (`margin-block`, `padding-inline`, `block-size`, `inset`). Implement `scroll-padding` or `scroll-margin` for fixed headers. Use `justify-content` for dynamic gap distribution.
-- Mobile-first responsive: 360–1440 px, no horizontal overflow.
+- Mobile-first responsive down to **320 px**, no horizontal overflow. The full responsive contract is §6 and every numbered item in it is mandatory.
 - Assets are site-private: never copy, reference, or reuse an image or video from another site in this repo, and never hotlink remote media. One video per site, generated for that site alone.
 - Motion is not optional. A site with no scroll-reveal system, no signature effect, or no `prefers-reduced-motion` block is a failed build — `npm run check:contract` fails it.
 - Video placement comes from the STEP 0 roll. Never default to a hero background, and never derive placement from the day of the month.
@@ -594,7 +606,7 @@ Fill this so the builder produces higher quality (research + plan + skills + ima
 ### Planning
 
 - Ordered checklist referencing skills by name
-- Execute the strict sequence of verification scripts: `npm run check:contract` → `npm run check:copy-depth` → `npm run check:assets` → `npm run build` → `npm run qa` → `npm run qa:visual` → **Extreme Visual Audit** (AGENTS.md §14) → `npm run check:ship`.
+- Execute the strict sequence of verification scripts, each with `-- <slug>`: `npm run check:contract` → `npm run check:copy-depth` → `npm run check:assets` → `npm run build` → `npm run qa` → `npm run qa:visual` → **Extreme Visual Audit** (AGENTS.md §14) → `npm run check:vision` → `npm run check:ship`.
 - Risks to watch (overflow, thin FAQ, generic hero, exceeding copy ceiling, collapsing into a generic two-column layout instead of the declared layout family's mandatory signature, text going illegible over the video, motion that fires on every scroll pass instead of once)
 - Before scaffolding, verify the proposed slug does not already exist in the sites/ directory. If it does, automatically append a short hash (e.g. -a7f) to the slug and use that instead.
 
@@ -613,7 +625,7 @@ parse-brief → research-and-plan → scaffold-site → design-and-build → acq
 - Placement slot: **<slot from STEP 0>** — implement per its mandatory spec in the STEP 0 table
 - Build the slot so it works with **no video present** first (poster/still treatment), then layer the video in
 - The builder MUST end its response with the fenced `VIDEO GENERATION PROMPT` block specified in AGENTS.md §11c, derived from **this brand's** niche, palette and slot — a generic "cinematic industrial b-roll" prompt is a failed handoff
-- Seed the prompt here: subject, setting, camera move, lighting, and the palette hexes it must stay inside
+- Seed the prompt here: subject, setting, camera move, lighting, and the palette **named in prose** ("oxidised copper green", "sodium-lamp amber"). **Never put `#rrggbb`, `hsl(...)` or `rgb(...)` in a generation prompt** — the generator renders them as literal on-screen text. Seven of 88 clips shipped defaced this way before the rule was written down. Colour codes, lettering and UI chrome go in the negatives.
 - Operator generates it in Google Flow, drops it in `./videos_new/`, then the builder runs:
   `npm run optimize:video -- --slug <slug> --slot "<slot>"`
 ```

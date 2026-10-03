@@ -18,6 +18,7 @@
     "check:copy-depth": "node scripts/check-copy-depth.js",
     "check:contract": "node scripts/check-site-contract.js",
     "check:assets": "node scripts/check-asset-isolation.js",
+    "check:vision": "node scripts/check-vision-review.js",
     "check:ship": "node scripts/ship-gate.js",
     "lint": "eslint .",
     "format": "prettier --write .",

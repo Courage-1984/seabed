@@ -171,7 +171,10 @@ a:hover, a:focus-visible {
 /* Hero Viewport */
 .hero {
   position: relative;
+  /* vh counts the collapsed mobile URL bar, so a vh-locked hero resizes
+     under the reader mid-scroll. dvh tracks the visible viewport. */
   min-height: 80vh;
+  min-height: 80dvh;
   display: flex;
   align-items: flex-end;
   padding-block: var(--space-12) var(--space-6);
@@ -527,6 +530,16 @@ a:hover, a:focus-visible {
   gap: var(--space-6);
 }
 
+/* Grid items default to `min-width: auto`, so they refuse to shrink below
+   their min-content width. At 320px that blew the panel out to 327px, which
+   widened the container and the heading with it, and the section's
+   `overflow: hidden` -- there to clip the ambient video -- then cropped all
+   of it. `overflow-wrap: break-word` does not help here: it wraps text but
+   does not reduce the intrinsic min-content size the track is measured from. */
+.console-grid > * {
+  min-width: 0;
+}
+
 @media (min-width: 1024px) {
   .console-grid {
     grid-template-columns: 1fr 1.5fr; /* Asymmetric */
@@ -798,4 +811,33 @@ a:hover, a:focus-visible {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Narrow-viewport safety net. Appended so it wins on order against the rules
+   above it; both defects were found by the ten-device QA sweep at 320px.
+   --------------------------------------------------------------------------- */
+/* Long unbroken tokens had no escape hatch and overflowed the viewport. */
+body {
+  overflow-wrap: break-word;
+}
+
+
+/* Inputs do not inherit font-size, and anything under 16px makes iOS zoom the
+   page on focus without zooming back, stranding the reader mid-form. */
+input,
+select,
+textarea {
+  font-size: 1rem;
+}
+
+/* Grid and flex children default to `min-width: auto`, which means they refuse
+   to shrink below their min-content width however the track is sized -- so
+   guarding a minmax() floor is necessary but not sufficient, and
+   `overflow-wrap` does not help either (it wraps text without reducing the
+   intrinsic min-content size the track is measured from). `:where()` carries
+   zero specificity, so this is only a default: any deliberate min-width in the
+   rules above still wins. */
+:where([class*='grid'], [class*='form'], [class*='row'], [class*='stack'], [class*='cluster']) > * {
+  min-width: 0;
 }

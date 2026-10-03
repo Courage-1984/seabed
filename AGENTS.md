@@ -25,6 +25,7 @@ Only pause to ask **one** clarifying question when critical fields are missing (
    - `npm run qa -- <slug>`
    - `npm run check:ship -- <slug> --floor <floor>`
    - `npm run check:assets -- <slug>` (per-site asset isolation — see §12)
+   - `npm run qa:visual -- <slug>` then `npm run check:vision -- <slug>` (§14 — the ship gate fails without it)
    - Confirm layout family’s structural signature from the brief was implemented (self-check)
    - Confirm the motion budget is implemented (§13) and the signature effect is real, not a name in `meta.json`
    - Confirm `Responsive: PASS desktop + mobile` and WebP per @.agents/skills/acquire-images/SKILL.md
@@ -73,9 +74,9 @@ VIDEO GENERATION PROMPT — <slug>  |  placement: <slot>  |  target: sites/<YYYY
 <Subject and setting, specific to THIS brand's niche and nothing else>
 <Camera: lens, movement, framing>
 <Lighting and time of day>
-<Colour palette — locked to the site's actual hex palette>
+<Colour palette — named in prose, e.g. "oxidised copper green, sodium-lamp amber". NEVER #rrggbb / hsl() / rgb(): the generator renders them as on-screen text — see VIDEO_PROMPTS.md>
 <Motion pace, and what must loop seamlessly>
-<Negatives: no on-screen text, no logos, no recognisable faces, no watermarks>
+<Negatives: no on-screen text, no colour codes or hex values, no lettering, no UI chrome, no logos, no recognisable faces, no watermarks>
 Duration: 5-8s, seamless loop. Resolution: 720p. Aspect ratio: 16:9.
 ```
 
@@ -121,25 +122,38 @@ Every site ships real motion. Minimum, all of it:
 
 `npm run check:contract` fails a build with no `IntersectionObserver`, no `prefers-reduced-motion` handling, or no CSS transitions/animations.
 
-## 14. Extreme Visual Audit (mandatory)
+## 14. Extreme Visual Audit (mandatory, and now enforced)
 
 The correctness sweep (`npm run qa`) does not see UI/UX or legibility problems. This step does. Do not set `qa: "v2-pass"` until it is complete.
 
-1. `npm run build` → `npm run qa -- <slug>` → `npm run qa:visual -- <slug>`.
-2. **Look at every artifact listed in `qa-screenshots/<slug>/INDEX.md`** — every tile, at every breakpoint (390 / 768 / 1440 / 1920). All of them, not a sample. Tiles overlap by 15% so nothing hides at a seam.
-3. **Watch `qa-recordings/<slug>-walkthrough.webm`** end to end and analyse it for:
-   - layout shift or jumping during scroll
-   - animations firing late, never, or repeatedly
-   - sticky elements colliding with content
-   - text going illegible over media as the video/image moves
-   - hover states that do nothing
-   - navigation that breaks
-   - video failing to play, or showing a black first frame
-4. Read `qa-visual-report.json` for the heuristic findings (text-over-media with no scrim, contrast failures, tight line-height, small tap targets, viewport-height clipping, horizontal scroll, sticky header without scroll-padding).
-5. **Fix what you find, then re-run.**
-6. Write a `## Visual Audit` section into the build summary listing each issue found **and the fix applied**. "No issues found" is only acceptable when accompanied by the number of artifacts you actually reviewed.
+This used to be an honour system and it did not hold. `check:ship` never read the visual report, a site with zero screenshots reached `SHIP_PASS`, and the instruction to "watch the walkthrough recording" asked the agent to open a `.webm` it cannot read. It is now a hash-bound gate: `npm run check:ship` fails until `npm run check:vision` passes.
 
-**Browser fallback** — if `qa:visual` cannot run in your environment, do the same work manually with your browser tooling: load the preview at each of the four breakpoints, screenshot in viewport-height steps from top to bottom, walk every link and every hover state, and report against the same checklist. Say in the summary that you used the fallback.
+1. `npm run build` → `npm run qa -- <slug>` → `npm run qa:visual -- <slug>`.
+2. `qa:visual` renders **ten devices** (`scripts/lib/device-matrix.js`) with real touch, device pixel ratio and user agent, then composites the tiles into **contact sheets** under `qa-screenshots/<slug>/sheets/`.
+3. **Look at every sheet listed in `qa-screenshots/<slug>/INDEX.md`.** All of them, not a sample. There are three kinds:
+   - `wall-*.png` — every device's full page side by side. Read this first: overflow, uncollapsed grids and oversized media show up here at a glance.
+   - `detail-*.png` — tiles at a legible cell width for the phones, tablet and desktop. Read the copy: legibility, contrast, spacing, clipping.
+   - `walkthrough-*.png` — frames pulled from the recording: layout shift during scroll, animations firing late/never/repeatedly, sticky elements colliding, dead hover states, video showing a black first frame.
+   - `detail-*-reduced-motion-*.png` — the page rendered under `prefers-reduced-motion: reduce`. Confirm content is actually *there*: these sites hide reveals at `opacity: 0` and show them with JS, so a missing or out-specified reduce branch leaves the page blank.
+   - `detail-*-interaction-*.png` — the keyboard walk and the opened overlay. Confirm each focus ring is visible, and that the dialog traps focus and returns it to the trigger on Escape.
+4. Read `qa-visual-report.json` for the per-device heuristic findings. Blocker-class findings fail `qa:visual` outright and are re-checked by `check:ship`; advisory ones are yours to judge and belong in the review. The heuristics finding nothing does **not** substitute for looking.
+5. **Fix what you find, then re-run.** Re-running regenerates the sheets and invalidates any existing review, which is intended.
+6. Record the review in `audit/visual-reviews/<slug>.md`. Start it with:
+
+   ```
+   node scripts/check-vision-review.js <slug> --write-stub
+   ```
+
+   Fill in what you saw per sheet, set `sheetsReviewed` to `N/N` and `verdict: PASS`, then:
+
+   ```
+   npm run check:vision -- <slug>
+   ```
+
+   It fails if the review is missing, incomplete, not `PASS`, or **stale** — the `digest` binds the review to the site source plus every sheet byte, so a review cannot outlive what it approved.
+7. Write a `## Visual Audit` section into the build summary listing each issue found **and the fix applied**. "No issues found" is only acceptable when accompanied by the number of sheets you actually reviewed.
+
+**Browser fallback** — if `qa:visual` cannot run in your environment, do the same work manually with your browser tooling: load the preview at each device size in the matrix, screenshot in viewport-height steps from top to bottom, walk every link and every hover state, and report against the same checklist. Say in the summary that you used the fallback.
 
 ## 15. Image generation quota
 
@@ -179,8 +193,9 @@ The builder must codify and adhere strictly to the following CSS spacing and lay
 | PNG/JPEG → WebP                       | `npm run optimize:webp` (`-- --slug <slug>` to scope)   |
 | Lazy-load / dimensions                | `npm run optimize:html` (`-- --slug <slug>` to scope)   |
 | Optimize + install video              | `npm run optimize:video -- --slug <slug> --slot "<placement>"` |
-| Puppeteer QA sweep                    | `npm run qa` (`-- <slug>`; `CI=true` skips screenshots) |
-| Visual QA (tiles + walkthrough)       | `npm run qa:visual -- <slug>`                           |
+| Puppeteer QA sweep (10 devices)       | `npm run qa` (`-- <slug>`; `--devices core\|fast\|<keys>`) |
+| Visual QA (tiles + sheets + walkthrough) | `npm run qa:visual -- <slug>` (`--devices`, `--no-sheets`) |
+| Visual review gate                    | `npm run check:vision -- <slug>`                        |
 | Static site contract                  | `npm run check:contract -- <slug\|--all>`               |
 | Asset isolation                       | `npm run check:assets -- <slug\|--all>`                 |
 | Ship gate (copy + contract + assets + report) | `npm run check:ship -- <slug> [--floor N]`      |
@@ -191,7 +206,9 @@ The builder must codify and adhere strictly to the following CSS spacing and lay
 
 `npm run qa` starts preview against the built `dist/` — always `npm run build` first. QA fails on overflow, broken images, non-WebP photos (img + CSS), missing alt, console/network errors, broken internal links, or `<video>` contract violations (missing muted/loop/playsinline/poster/preload, no webm source, never reaching `readyState 2`). Report shape: `{ summary, pages }` in `qa-report.json`.
 
-`npm run qa:visual` is a separate, deeper pass — it writes viewport tiles at four breakpoints, a walkthrough recording, `qa-visual-report.json`, and the `INDEX.md` manifest you are held to reviewing. It never sets a verdict; see §14.
+`npm run qa` renders every page on the ten devices in `scripts/lib/device-matrix.js`, navigating afresh for each one. It used to test two viewports and switch between them with `setViewport()` on a live page, so "mobile" was measured against JS that had initialised at 1440px — that is how a site with two 1024px images and no `max-width` rule passed at 390px.
+
+`npm run qa:visual` is a separate, deeper pass — viewport tiles on every device, contact sheets, a walkthrough recording, `qa-visual-report.json`, `MANIFEST.json`, and the `INDEX.md` list you are held to reviewing. It fails if it produced no evidence, and `check:vision` fails until you have reviewed what it produced; see §14.
 
 **ffmpeg is required** on PATH for `optimize:video` and for the `qa:visual` walkthrough recording. Without it, `optimize:video` fails with instructions and `qa:visual` continues with a warning and no recording.
 

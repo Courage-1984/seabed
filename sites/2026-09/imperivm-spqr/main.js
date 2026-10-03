@@ -27,8 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
     oathBtn.addEventListener('mousedown', startOath);
     oathBtn.addEventListener('mouseup', endOath);
     oathBtn.addEventListener('mouseleave', endOath);
-    oathBtn.addEventListener('touchstart', (e) => { e.preventDefault(); startOath(); }, { passive: false });
+    // preventDefault() on touchstart cancelled any scroll that began on the
+    // button, and the button is full-width in the hero on a phone -- swiping
+    // up from it did nothing. user-select/touch-callout are handled in CSS
+    // instead, so the gesture stays live.
+    oathBtn.addEventListener('touchstart', startOath, { passive: true });
     oathBtn.addEventListener('touchend', endOath);
+    // Touch cancellation is routine on a phone (system back gesture, incoming
+    // notification, palm rejection). Without this the button stays stuck in
+    // .holding with the shake animation running forever.
+    oathBtn.addEventListener('touchcancel', endOath);
   }
 
   // 2. Motion Budget - IntersectionObserver for reveal
@@ -55,15 +63,48 @@ document.addEventListener('DOMContentLoaded', () => {
   const video = modal ? modal.querySelector('video') : null;
 
   if (modalTrigger && modal) {
+    // The modal-feature slot's spec requires the overlay to be keyboard
+    // operable, focus-trapped and Escape-dismissible. Escape was handled;
+    // focus was not, so Tab walked straight out of the open dialog and kept
+    // going through the page behind it.
+    const FOCUSABLE =
+      'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    let lastFocused = null;
+
+    const trapFocus = (e) => {
+      if (e.key !== 'Tab') return;
+      const items = [...modal.querySelectorAll(FOCUSABLE)].filter((el) => el.offsetParent !== null);
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
     const openModal = () => {
+      lastFocused = document.activeElement;
       modal.classList.remove('hidden');
       modal.setAttribute('aria-hidden', 'false');
+      document.addEventListener('keydown', trapFocus);
+      // Without a scroll lock the page scrolls behind the overlay on touch.
+      document.body.style.overflow = 'hidden';
+      if (modalClose) modalClose.focus();
       if (video) video.play();
     };
 
     const closeModal = () => {
       modal.classList.add('hidden');
       modal.setAttribute('aria-hidden', 'true');
+      document.removeEventListener('keydown', trapFocus);
+      document.body.style.overflow = '';
+      // Returning focus to the trigger is what makes the dialog usable
+      // without a mouse; otherwise focus resets to the top of the document.
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
       if (video) {
         video.pause();
         video.currentTime = 0;
@@ -119,9 +160,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
     
-    window.addEventListener('scroll', () => {
-      requestAnimationFrame(handleScrollWipe);
-    }, { passive: true });
+    // One rAF callback was queued per scroll event, each forcing a sync
+    // layout read and then writing clip-path on a full section -- read/write
+    // thrash that janks the whole censor section on a mid-range phone.
+    let wipeQueued = false;
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (wipeQueued) return;
+        wipeQueued = true;
+        requestAnimationFrame(() => {
+          wipeQueued = false;
+          handleScrollWipe();
+        });
+      },
+      { passive: true }
+    );
     
     // Initial check
     handleScrollWipe();

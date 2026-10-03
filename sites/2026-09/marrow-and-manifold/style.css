@@ -36,6 +36,9 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-body);
+    /* A single word-break rule on one component left the rest of the page
+       with no escape hatch; section ids and headings overflowed at 320px. */
+    overflow-wrap: break-word;
     font-weight: 400;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;

@@ -164,7 +164,10 @@ nav a:hover {
 /* Hero Section */
 .hero-section {
   position: relative;
+  /* vh counts the collapsed mobile URL bar, so a vh-locked hero resizes
+     under the reader mid-scroll. dvh tracks the visible viewport. */
   min-height: 90vh;
+  min-height: 90dvh;
   display: flex;
   align-items: center;
   padding-inline: var(--spacing-md);
@@ -710,6 +713,11 @@ nav a:active {
   display: grid;
   place-items: center;
   padding: var(--spacing-md);
+  /* A full-viewport overlay with no scroller traps anything taller than the
+     screen -- on a 320px phone the dialog is taller than the viewport, so the
+     close button sat below the fold with no way to reach it. */
+  overflow-y: auto;
+  overscroll-behavior: contain;
   opacity: 0;
   transition: opacity var(--dur-mid) var(--ease-out);
 }

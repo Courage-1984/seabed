@@ -1595,6 +1595,24 @@
     "siteFolder": "./sites/2026-09/ash-07-studio"
   },
   {
+    "title": "Drogue & Crate — Tactical Airdrop Expedition Hardware",
+    "blurb": "Heavy survival ordnance and forged tools fulfilled in nitrogen-purged parachute drop pods to exact grid coordinates.",
+    "hero": "assets/drogue-crate-hero-airdrop.webp",
+    "layoutFamily": "brutalist stacked",
+    "tags": [
+      "specialty-retail",
+      "direct-to-consumer",
+      "apparel"
+    ],
+    "created": "2026-09-30",
+    "wordFloor": 650,
+    "videoPlacement": "masked type fill",
+    "signatureEffect": "scroll-driven clip-path wipe",
+    "standard": "v2",
+    "video": "assets/drogue-and-crate-masked-type-fill.webm",
+    "siteFolder": "./sites/2026-09/drogue-and-crate"
+  },
+  {
     "title": "GrainFold",
     "blurb": "Heritage sourdough stoneground and wood-fired inside a granite sea-powder house cut off twice daily by the tide.",
     "hero": "assets/hero-wood-fired-scotch-oven.webp",
@@ -1613,6 +1631,25 @@
     "video": "assets/grainfold-modal-feature.webm",
     "contract": "v2.1",
     "siteFolder": "./sites/2026-09/grainfold"
+  },
+  {
+    "title": "IMPERIVM.SPQR",
+    "blurb": "The Civic Terminal of the Digital Rome",
+    "hero": "assets/hero-forum-cybernetics.webp",
+    "layoutFamily": "terminal / data-readout",
+    "tags": [
+      "government",
+      "cybernetic",
+      "military"
+    ],
+    "created": "2026-09-23",
+    "standard": "v2",
+    "videoPlacement": "modal feature",
+    "signatureEffect": "scroll-driven clip-path wipe",
+    "wordFloor": 500,
+    "video": "assets/imperivm-spqr-modal-feature.webm",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-09/imperivm-spqr"
   },
   {
     "title": "Marrow & Manifold",
@@ -1634,6 +1671,24 @@
     "video": "assets/marrow-and-manifold-hero-background.webm",
     "contract": "v2.1",
     "siteFolder": "./sites/2026-09/marrow-and-manifold"
+  },
+  {
+    "title": "The Road-Roller Press — Monumental Relief Printmaking",
+    "blurb": "Four-metre woodcuts inked with heavy pitch and pressed by eight tonnes of municipal compaction steel.",
+    "hero": "assets/the-road-roller-press-hero-street.webp",
+    "layoutFamily": "sticky-rail + content",
+    "tags": [
+      "printmaking",
+      "studio",
+      "publishing"
+    ],
+    "created": "2026-09-29",
+    "wordFloor": 650,
+    "videoPlacement": "split panel",
+    "signatureEffect": "progressive blur focus-pull",
+    "standard": "v2",
+    "video": "assets/the-road-roller-press-split-panel.webm",
+    "siteFolder": "./sites/2026-09/the-road-roller-press"
   },
   {
     "title": "The Sub-Oolite Salt-Cellar",
@@ -1694,5 +1749,23 @@
     "video": "assets/tracemend-hero-inset-frame.webm",
     "contract": "v2.1",
     "siteFolder": "./sites/2026-09/tracemend"
+  },
+  {
+    "title": "Defilade — Sovereign Air-Gapped Edge Compute",
+    "blurb": "Offline neural inference clusters and write-once optical quartz media delivered under armed physical custody.",
+    "hero": "assets/defilade-hero-chassis.webp",
+    "layoutFamily": "overlapping card-stack",
+    "tags": [
+      "security",
+      "hardware",
+      "platform"
+    ],
+    "created": "2026-10-02",
+    "wordFloor": 1100,
+    "signatureEffect": "magnetic proximity cursor element",
+    "standard": "v2",
+    "video": "assets/defilade-grid-tile.webm",
+    "videoPlacement": "grid tile",
+    "siteFolder": "./sites/2026-10/defilade"
   }
 ]

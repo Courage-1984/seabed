@@ -370,16 +370,16 @@
             
             <form action="#" class="split-stack" style="margin-top: 2rem; max-width: 600px; padding: 2rem; border: 1px solid var(--color-border); background-color: var(--color-bg);">
               <div class="form-group">
-                <label class="form-label">String Text Input (Max 20 Chars)</label>
-                <input type="text" class="form-control" placeholder="ENTER_TEXT_LITERAL">
+                <label class="form-label" for="glyph-string">String Text Input (Max 20 Chars)</label>
+                <input type="text" id="glyph-string" class="form-control" placeholder="ENTER_TEXT_LITERAL">
               </div>
               <div class="form-group">
-                <label class="form-label">Target Cap Height (Metres)</label>
-                <input type="number" class="form-control" placeholder="e.g. 4.2" step="0.1" min="1.0" max="6.0">
+                <label class="form-label" for="glyph-cap-height">Target Cap Height (Metres)</label>
+                <input type="number" id="glyph-cap-height" class="form-control" placeholder="e.g. 4.2" step="0.1" min="1.0" max="6.0">
               </div>
               <div class="form-group">
-                <label class="form-label">Substrate Wall Type</label>
-                <select class="form-control">
+                <label class="form-label" for="glyph-substrate">Substrate Wall Type</label>
+                <select id="glyph-substrate" class="form-control">
                   <option>REINFORCED_CONCRETE</option>
                   <option>SOLID_MASONRY</option>
                   <option>STRUCTURAL_STEEL_FRAME</option>
@@ -387,8 +387,8 @@
                 </select>
               </div>
               <div class="form-group">
-                <label class="form-label">Crane Clearance Available</label>
-                <select class="form-control">
+                <label class="form-label" for="glyph-crane">Crane Clearance Available</label>
+                <select id="glyph-crane" class="form-control">
                   <option>UNRESTRICTED_ACCESS</option>
                   <option>PARTIAL_ROAD_CLOSURE_REQUIRED</option>
                   <option>NIGHT_RIGGING_ONLY</option>

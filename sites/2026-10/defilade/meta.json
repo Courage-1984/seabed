@@ -1,0 +1,17 @@
+{
+  "title": "Defilade — Sovereign Air-Gapped Edge Compute",
+  "blurb": "Offline neural inference clusters and write-once optical quartz media delivered under armed physical custody.",
+  "hero": "assets/defilade-hero-chassis.webp",
+  "layoutFamily": "overlapping card-stack",
+  "tags": [
+    "security",
+    "hardware",
+    "platform"
+  ],
+  "created": "2026-10-02",
+  "wordFloor": 1100,
+  "signatureEffect": "magnetic proximity cursor element",
+  "standard": "v2",
+  "video": "assets/defilade-grid-tile.webm",
+  "videoPlacement": "grid tile"
+}

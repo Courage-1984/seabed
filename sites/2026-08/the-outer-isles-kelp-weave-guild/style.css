@@ -129,7 +129,10 @@ h1, h2, h3, h4, .brand {
 /* Hero Viewport */
 .hero-viewport {
   position: relative;
+  /* vh counts the collapsed mobile URL bar, so a vh-locked hero resizes
+     under the reader mid-scroll. dvh tracks the visible viewport. */
   min-height: 80vh;
+  min-height: 80dvh;
   display: flex;
   align-items: center;
   padding: 2rem;

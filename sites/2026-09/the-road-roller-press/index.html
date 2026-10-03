@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="en-GB"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Road-Roller Press | Monumental Relief Printmaking</title>
+  <meta name="description" content="Four-metre woodcuts inked with heavy pitch and pressed by eight tonnes of municipal compaction steel.">
+  <meta property="og:title" content="The Road-Roller Press">
+  <meta property="og:description" content="Four-metre woodcuts inked with heavy pitch and pressed by eight tonnes of municipal compaction steel.">
+  <meta property="og:image" content="./assets/the-road-roller-press-hero-street.webp">
+  <meta property="og:type" content="website">
+  
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&amp;family=Chivo:wght@700;900&amp;display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js" defer=""></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-container">
+      <div class="brand">
+        <img src="./assets/favicon.svg" alt="" aria-hidden="true" class="brand-mark" loading="lazy" width="64" height="64">
+        <span>THE ROAD-ROLLER PRESS</span>
+      </div>
+      <a href="#commission" class="button button-nav">Initiate Commission</a>
+    </nav>
+  </header>
+  
+  <main id="main-content">
+    
+    <!-- Hero (The Diesel Printshop) -->
+    <section class="hero monolithic-section reveal-item">
+      <div class="hero-image-wrap">
+        <img src="./assets/the-road-roller-press-hero-street.webp" alt="An 8.5-tonne yellow road roller pressing a giant woodcut print on an urban street at dawn." fetchpriority="high" class="hero-image" width="1376" height="768">
+        <div class="hero-scrim"></div>
+      </div>
+      <div class="hero-content">
+        <div class="live-notice">
+          <span class="notice-dot"></span> LIVE ROAD-CLOSURE NOTICE
+        </div>
+        <h1>Four-Metre Woodcuts Pressed by Eight-Tonne Road Rollers.</h1>
+        <p class="subhead">An unholy alliance of fine-art printmakers and civil highway contractors printing colossal relief editions across closed British streets.</p>
+        <p class="intro">Gallery purists insist that serious relief printmaking belongs on century-old cast-iron proof presses tucked away in dustless university basements. We route monumental four-metre birch plywood matrices in our Leeds yard and roll them out on public asphalt at five in the morning using a vibrating twin-drum compaction roller. When eight tonnes of diesel-driven steel passes over saturated Somerset rag paper, you get hydraulic ink transfer that museum equipment cannot replicate and delicate collectors cannot ignore.</p>
+        <a href="#editions" class="button button-primary">Primary Print Dispatch</a>
+      </div>
+    </section>
+
+    <!-- §4a Flagship — The Compaction Manifesto -->
+    <section class="flagship monolithic-section">
+      <div class="flagship-content focus-pull">
+        <h2>The Physics of Heavy Compaction</h2>
+        <p>Traditional hand-cranked Vandercook and Albion platens max out at thirty pounds per square inch before their cast-iron frames risk micro-fracture. Our Bomag BW 120 vibratory tandem roller delivers four hundred and fifty pounds per square inch of linear ground pressure across a continuous one-metre steel drum. When rolling over 600gsm handmade cotton rag laid upon deeply gouged marine ply, that sheer tonnage forces viscous carbon black ink into the very marrow of the cellulose fibres, eliminating air voids and producing impenetrable, velvet-dense blacks.</p>
+        <p>Civil paving crews understand asphalt compaction; we simply swapped bituminous gravel for French printmaking ink and damp cotton rag. We schedule our major printing runs under municipal roadworks permits on quiet industrial access roads, treating the tarmac itself as the lower press bed. The neighbours complain about the diesel exhaust, the gallery directors wring their hands over our lack of archival tissue gloves, and the finished woodcuts require scaffolding just to hang on the wall.</p>
+      </div>
+    </section>
+
+    <!-- §4b The Compaction Run & Sticky Machine Rail (30/70 Ratio) -->
+    <section class="compaction-run layout-split reveal-item">
+      <div class="sticky-rail">
+        <div class="split-video-container video-container has-video" data-slot="split panel">
+          <video
+            class="site-video"
+            autoplay muted loop playsinline
+            preload="metadata"
+            poster="./assets/the-road-roller-press-split-panel-poster.webp"
+            aria-label="A heavy road roller pressing a massive woodcut"
+          >
+            <source src="./assets/the-road-roller-press-split-panel.webm" type="video/webm" />
+            <source src="./assets/the-road-roller-press-split-panel.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="rail-header">
+          <h3>Telemetry</h3>
+        </div>
+        <div class="rail-gauges">
+          <div class="gauge-item">
+            <span class="gauge-label">Linear Load</span>
+            <span class="gauge-value"><span id="psi-gauge">0</span> PSI</span>
+          </div>
+          <div class="gauge-item">
+            <span class="gauge-label">Drum Vibration</span>
+            <span class="gauge-value">60 Hz</span>
+          </div>
+          <div class="gauge-item">
+            <span class="gauge-label">Forward Speed</span>
+            <span class="gauge-value">1.8 km/h</span>
+          </div>
+        </div>
+        <div class="rail-tracker">
+          <div class="rail-track-line"></div>
+          <div class="rail-active-indicator" id="rail-active-indicator"></div>
+          <div class="rail-dots">
+            <div class="rail-dot"></div>
+            <div class="rail-dot"></div>
+            <div class="rail-dot"></div>
+            <div class="rail-dot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="content-column">
+        <h2>The Highway Rolling Protocol</h2>
+        <div class="phase-list">
+          
+          <div class="phase-block accordion-item is-expanded">
+            <button class="accordion-trigger" aria-expanded="true">
+              <h3>Phase 1: The Street Survey</h3>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Checking the road crown for deviation, sweeping loose aggregate from the tarmac, and laying down 12mm rubber sacrificial sub-beds to protect the plywood matrix from asphalt scarification.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="phase-block accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <h3>Phase 2: Inking with Mops</h3>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Spreading five kilograms of high-tack carbon black relief ink. Printmakers use 50cm industrial roofing brayers to build up a viscous, uniform layer of pitch across four metres of birch.</p>
+                <img src="./assets/the-road-roller-press-brayer-ink.webp" alt="Printmakers applying heavy black ink to a giant carved wooden matrix using wide rollers." loading="lazy" class="content-image hazard-hover" width="1200" height="896">
+              </div>
+            </div>
+          </div>
+          
+          <div class="phase-block accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <h3>Phase 3: The First Roll</h3>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>A deadweight pass to seat damp 600gsm cotton rag into deep router gouges, capturing the sheer tonnage required for flawless hydraulic ink transfer.</p>
+                <div class="video-container hazard-hover">
+                  <img src="./assets/the-road-roller-press-drum-contact.webp" alt="Close-up of the steel road roller drum compacting cotton paper over an inked woodblock." loading="lazy" class="content-image" style="margin-block-start:0;border:none;">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="phase-block accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <h3>Phase 4: The Peeling Ceremony</h3>
+              <span class="accordion-icon"></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Four riggers simultaneously pulling the damp print off the wood matrix under dawn light, revealing flawless, opaque blacks pressed straight onto heavy paper.</p>
+                <img src="./assets/the-road-roller-press-print-reveal.webp" alt="Four printmakers peeling a four-metre woodcut print off the carved wooden matrix in the street." loading="lazy" class="content-image hazard-hover" width="1376" height="768">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="cta-block">
+          <a href="#" class="text-link">Inspect the Highway Plant Machinery Rigging Notes →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- §4b The Monumental Editions Catalogue -->
+    <section id="editions" class="editions monolithic-section reveal-item">
+      <h2>Colossal Editions Currently in Inventory</h2>
+      <p class="section-intro">These are physical architectural monuments, not delicate portfolio folder prints. Rigging hire is highly recommended for indoor installation.</p>
+      
+      <div class="edition-grid">
+        <div class="edition-card">
+          <img src="./assets/the-road-roller-press-gallery-hang.webp" alt="A massive four-metre woodcut print installed on a concrete wall in a high-ceiling gallery." loading="lazy" class="edition-image hazard-hover" width="1376" height="768">
+          <div class="edition-specs">
+            <h3>The M62 Viaduct Triptych</h3>
+            <ul>
+              <li><strong>Dimensions:</strong> 420 × 180 cm (Three panels)</li>
+              <li><strong>Matrix:</strong> Finnish birch ply relief</li>
+              <li><strong>Edition:</strong> 12</li>
+              <li><strong>Context:</strong> Printed on Kirkstall Road during autumn resurfacing.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="edition-card">
+          <div class="edition-specs">
+            <h3>The Ferrybridge Cooling Tower Broadsheet</h3>
+            <ul>
+              <li><strong>Dimensions:</strong> 300 × 150 cm</li>
+              <li><strong>Matrix:</strong> Single plate, Somerset 600gsm velvet black</li>
+              <li><strong>Edition:</strong> 15</li>
+              <li><strong>Context:</strong> Capturing the explosive demolition silhouette.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="edition-card">
+          <div class="edition-specs">
+            <h3>The Westgate Pavement Monotype</h3>
+            <ul>
+              <li><strong>Dimensions:</strong> 240 × 120 cm</li>
+              <li><strong>Matrix:</strong> Direct relief impression</li>
+              <li><strong>Edition:</strong> 6</li>
+              <li><strong>Context:</strong> Pulled over cast-iron drainage covers and rough road scarification.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <p class="framing-note">All prints shipped rolled inside 200mm industrial spiral steel tubes.</p>
+      <div class="cta-block">
+        <a href="#" class="text-link">Request Archival Condition &amp; Packing Report →</a>
+      </div>
+    </section>
+
+    <!-- §4b Street Dispatches & Council Citations -->
+    <section class="citations monolithic-section reveal-item">
+      <h2>Field Transcripts &amp; Council Warning Letters</h2>
+      <div class="testimonial-grid">
+        <blockquote class="testimonial">
+          <p>I walked into their Leeds yard expecting delicate lino-cuts and left with diesel soot on my cuffs and tears in my eyes.</p>
+          <cite>— Julian Sterling, Senior Curator, Northern Contemporary Gallery</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>Thought they were lunatics until I saw the absolute crispness of the letters printed straight under my Bomag roller drum.</p>
+          <cite>— Dave 'Spud' Henderson, Plant Manager, West Yorkshire Plant Hire</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>We had to reinforce the Georgian townhouse drawing-room wall with structural steel brackets just to hang The Viaduct Triptych.</p>
+          <cite>— Lady Camilla Thorne, Private Collector</cite>
+        </blockquote>
+      </div>
+      <div class="stat-banner">
+        <strong>48</strong> road permits granted • <strong>0</strong> cracked curbstones • <strong>14,000</strong> square metres of paper pressed since 2021.
+      </div>
+    </section>
+
+    <!-- §4b Commission a Highway Closure & Studio Terminal -->
+    <section id="commission" class="commission monolithic-section reveal-item">
+      <h2>Commission a Municipal Street Rolling Run</h2>
+      <p>You supply the wall and the road permit; we supply the router, the birch timber, the diesel, and the roller.</p>
+      
+      <div class="commission-details">
+        <div class="detail-block">
+          <h3>Client Requirements</h3>
+          <p>Minimum ceiling clearance of 3.5 metres. Site access required for an 8-tonne flatbed transport trailer. Local council road-closure coordination is the client's responsibility.</p>
+        </div>
+        <div class="detail-block">
+          <h3>Booking Terms</h3>
+          <p>Runs scheduled during spring and autumn road maintenance seasons only to accommodate bitumen setting temperatures.</p>
+        </div>
+      </div>
+      
+      <a href="#" class="button button-primary">Initiate Street Print Commission</a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-address">
+        <img src="./assets/favicon.svg" alt="" aria-hidden="true" class="footer-logo" loading="lazy" width="64" height="64">
+        <address>
+          <strong>The Road-Roller Press</strong><br>
+          Arch 14, Viaduct Industrial Estate<br>
+          Kirkstall Road, Leeds, LS4 2BG<br>
+          United Kingdom
+        </address>
+      </div>
+      <div class="footer-legal">
+        <p>© 2026 The Road-Roller Press. All monumental editions reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+</body></html>

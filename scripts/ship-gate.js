@@ -12,6 +12,8 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { resolveSlugPath } from './lib/resolve-slug.js';
+import { pageFailed, viewIssueSummary, viewsOf, visualBlockers } from './lib/qa-verdict.js';
+import { siteSourceDigest, shortDigest } from './lib/source-digest.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -80,24 +82,6 @@ if (runNode('check-asset-isolation.js', [slug, '--defer-duplicates']) !== 0) {
   failures.push('asset-isolation');
 }
 
-function viewHasIssues(view) {
-  if (!view) return false;
-  return Boolean(
-    view.overflowingElements?.length ||
-    view.brokenImages?.length ||
-    view.nonWebpPhotos?.length ||
-    view.missingAltTags?.length ||
-    view.consoleErrors?.length ||
-    view.networkErrors?.length ||
-    view.brokenLinks?.length ||
-    view.videoIssues?.length
-  );
-}
-
-function pageFailed(r) {
-  return Boolean(r.error || viewHasIssues(r.mobile) || viewHasIssues(r.desktop));
-}
-
 const reportPath = join(ROOT, 'qa-report.json');
 if (!existsSync(reportPath)) {
   console.error('SHIP_FAIL: qa-report.json missing — run npm run build && npm run qa first');
@@ -117,16 +101,46 @@ if (!existsSync(reportPath)) {
     const sitePages = pages.filter((p) => p.path?.startsWith(`${site.relativePath}/`));
     const hub = pages.find((p) => p.path === 'index.html');
 
+    // A green report is worthless if it describes bytes that have since
+    // changed. imperivm-spqr shipped on a report generated before its last two
+    // edits; this is the check that would have caught it.
+    const recorded = report.sourceDigests?.[site.relativePath];
+    if (!recorded) {
+      console.error(
+        'SHIP_FAIL: qa-report.json predates source-digest binding - re-run npm run build && npm run qa'
+      );
+      failures.push('qa-report-unbound');
+    } else {
+      const current = siteSourceDigest(site.absolutePath);
+      if (current !== recorded) {
+        console.error(
+          `SHIP_FAIL: qa-report.json is stale for ${site.relativePath} ` +
+            `(tested ${shortDigest(recorded)}, on disk ${shortDigest(current)}) - rebuild and re-run npm run qa`
+        );
+        failures.push('qa-report-stale');
+      }
+    }
+
     if (!sitePages.length) {
       console.error(`SHIP_FAIL: no qa-report pages for ${site.relativePath}/`);
       failures.push('qa-slug-pages');
     } else {
       const dirty = sitePages.filter(pageFailed);
       if (dirty.length) {
-        console.error(`SHIP_FAIL: ${dirty.length} qa page(s) dirty for slug: ${dirty.map((d) => d.path).join(', ')}`);
+        console.error(`SHIP_FAIL: ${dirty.length} qa page(s) dirty for slug:`);
+        for (const d of dirty) {
+          for (const { key, view } of viewsOf(d)) {
+            const hits = viewIssueSummary(view);
+            if (hits.length) console.error(`  ${d.path} @${key} - ${hits.join(', ')}`);
+          }
+          if (d.error) console.error(`  ${d.path} - load error: ${d.error}`);
+        }
         failures.push('qa-slug-dirty');
       } else {
-        console.log(`SHIP_QA_PASS: ${sitePages.length} page(s) clean for ${site.relativePath}/`);
+        const deviceCount = viewsOf(sitePages[0]).length;
+        console.log(
+          `SHIP_QA_PASS: ${sitePages.length} page(s) clean for ${site.relativePath}/ across ${deviceCount} device(s)`
+        );
       }
     }
 
@@ -147,6 +161,55 @@ if (!existsSync(reportPath)) {
       console.log('Note: report.summary.pass is false (other sites may be dirty); slug/hub checked above.');
     }
   }
+}
+
+// The visual findings themselves. check:vision below proves a review happened;
+// this proves the machine checks were clean. Without it a site could report
+// hundreds of layout and contrast defects and still ship, because the only
+// thing anyone read was the agent's own verdict line.
+const visualReportPath = join(ROOT, 'qa-visual-report.json');
+if (!existsSync(visualReportPath)) {
+  console.error(`SHIP_FAIL: qa-visual-report.json missing - run npm run qa:visual -- ${slug}`);
+  failures.push('qa-visual-missing');
+} else {
+  let visual = null;
+  try {
+    visual = JSON.parse(readFileSync(visualReportPath, 'utf8'));
+  } catch {
+    console.error('SHIP_FAIL: qa-visual-report.json is not valid JSON');
+    failures.push('qa-visual-invalid');
+  }
+  if (visual) {
+    // The file holds one slug at a time, so a run for a different site must
+    // not be mistaken for a clean result here.
+    if (visual.slug !== site.slug) {
+      console.error(
+        `SHIP_FAIL: qa-visual-report.json is for "${visual.slug}", not "${site.slug}" - re-run npm run qa:visual -- ${slug}`
+      );
+      failures.push('qa-visual-other-slug');
+    } else if (visual.sourceDigest !== siteSourceDigest(site.absolutePath)) {
+      console.error(
+        `SHIP_FAIL: qa-visual-report.json is stale for ${site.relativePath} - rebuild and re-run npm run qa:visual`
+      );
+      failures.push('qa-visual-stale');
+    } else {
+      const blockers = visualBlockers(visual);
+      if (blockers.length) {
+        const total = blockers.reduce((n, b) => n + b.count, 0);
+        console.error(`SHIP_FAIL: ${total} blocking visual finding(s) for ${site.relativePath}:`);
+        for (const b of blockers) console.error(`  ${b.path} @${b.device} ${b.key} (${b.count}) e.g. ${b.samples[0]}`);
+        failures.push('qa-visual-dirty');
+      } else {
+        console.log(`SHIP_VISUAL_PASS: no blocking findings for ${site.relativePath}/`);
+      }
+    }
+  }
+}
+
+// The Extreme Visual Audit (AGENTS.md 14) used to be enforced by nothing at
+// all: a site with zero screenshots and no review still reached SHIP_PASS.
+if (runNode('check-vision-review.js', [slug]) !== 0) {
+  failures.push('vision-review');
 }
 
 if (failures.length) {

@@ -1,0 +1,491 @@
+:root {
+  /* Core Palette */
+  --color-bg: hsl(210, 8%, 91%);
+  --color-primary: hsl(215, 25%, 12%);
+  --color-secondary: hsl(85, 18%, 32%);
+  --color-accent: hsl(35, 95%, 22%);
+  --color-accent-on-dark: hsl(48, 100%, 50%);
+  --color-text: hsl(215, 30%, 8%);
+
+  /* Surface & Border Tiers */
+  --color-surface: hsl(210, 10%, 96%);
+  --color-surface-dim: hsl(210, 8%, 86%);
+  --color-border-dark: hsl(215, 20%, 20%);
+  --color-border-accent: hsl(35, 95%, 34%);
+
+  /* Interactive States */
+  --color-hover: hsl(35, 100%, 28%);
+  --color-focus: hsl(48, 100%, 50%);
+  --color-active: hsl(35, 100%, 22%);
+
+  /* Focus & Hard Rules */
+  --focus-ring: 2px solid var(--color-focus);
+  --focus-offset: 3px;
+  --border-thick: 2px solid var(--color-border-dark);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Space Mono', monospace;
+  overflow-x: clip; /* Mandatory */
+  scroll-behavior: smooth;
+}
+
+/* Typography */
+h1, h2, h3, h4, .brand-logotype {
+  font-family: 'Chivo', sans-serif;
+  font-weight: 900;
+  margin: 0;
+  color: var(--color-primary);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw + 1rem, 5.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(1.85rem, 3.5vw + 0.5rem, 3.25rem);
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 1.8vw + 0.4rem, 1.75rem);
+  line-height: 1.2;
+}
+
+p, body {
+  font-size: clamp(0.95rem, 0.35vw + 0.85rem, 1.05rem);
+  line-height: 1.6;
+}
+
+.stencil-label {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+/* Base elements */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+/* Layout Blocks */
+main {
+  width: 100%;
+}
+
+section, header, footer {
+  width: 100%;
+  border-bottom: var(--border-thick);
+  padding-block: clamp(2rem, 5vw, 5rem);
+  padding-inline: clamp(1rem, 5vw, 3rem);
+  overflow-wrap: break-word;
+}
+
+header {
+  border-bottom: var(--border-thick);
+  padding-block: 1rem;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  font-family: 'Chivo', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  transition: transform 120ms cubic-bezier(0, 0, 0.2, 1), box-shadow 120ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 2px 2px 0 var(--color-primary);
+}
+
+.btn-primary:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+/* Hero Section */
+.hero-block {
+  padding-block: 0;
+  padding-inline: 0;
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-image-wrap {
+  width: 100%;
+  height: 50vh;
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--color-bg) 0%, transparent 80%);
+}
+
+.hero-content {
+  padding: clamp(1rem, 5vw, 3rem);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.telemetry-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.telemetry-bar .stencil-label {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  padding: 0.25rem 0.5rem;
+}
+
+.hero-content h1 {
+  max-width: 20ch;
+}
+
+.hero-content .subhead {
+  font-weight: 700;
+  max-width: 60ch;
+  color: var(--color-primary);
+}
+
+.hero-content .intro {
+  max-width: 60ch;
+  color: var(--color-secondary);
+}
+
+/* Full Width Images */
+.full-width-image {
+  width: 100%;
+  margin-block: 2rem;
+  border: var(--border-thick);
+}
+
+/* Flagship */
+.flagship-text {
+  max-width: 65ch;
+}
+.flagship-text p {
+  margin-block-end: 1.5rem;
+}
+
+/* Manifest (Section 3) */
+.manifest-intro {
+  max-width: 65ch;
+  margin-block-end: 2rem;
+  font-weight: 700;
+}
+
+.manifest-item {
+  border-top: var(--border-thick);
+  padding-block: 2rem;
+  transition: border-color 0.15s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.manifest-item:hover {
+  border-top-color: var(--color-border-accent);
+}
+
+.manifest-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-block-end: 1rem;
+}
+
+.manifest-item h3 {
+  margin-block-end: 1rem;
+}
+
+.manifest-item p {
+  margin: 0;
+  max-width: 65ch;
+}
+
+.manifest-action {
+  margin-block-start: 3rem;
+}
+.text-link {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Extraction / Masked Video */
+.extraction-block .masked-video-container {
+  margin-block: 3rem;
+  position: relative;
+  background-color: var(--color-primary);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.masked-text {
+  font-size: clamp(1.2rem, 7vw, 100px);
+  color: var(--color-accent-on-dark);
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Fallback: no video means text stays yellow on black.
+   If video exists and is playing, we use mix-blend-mode or background-clip on text. */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .masked-video-container.has-video {
+    background-color: var(--color-primary);
+  }
+  .masked-video-container.has-video .masked-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    color: var(--color-accent-on-dark);
+    mix-blend-mode: multiply;
+    z-index: 2;
+  }
+  .masked-video-container.has-video video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+}
+
+.tabular-data {
+  display: flex;
+  flex-direction: column;
+  border-top: var(--border-thick);
+}
+.data-row {
+  display: flex;
+  flex-direction: column;
+  padding-block: 1rem;
+  border-bottom: var(--border-thick);
+}
+@media (min-width: 768px) {
+  .data-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.data-val {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.extraction-notes {
+  margin-block-start: 2rem;
+  max-width: 65ch;
+  color: var(--color-secondary);
+}
+
+/* Logs */
+.logs-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-entry {
+  border-top: var(--border-thick);
+  padding-block: 2rem;
+}
+.log-entry h4 {
+  font-size: 1.25rem;
+  margin-block-end: 1rem;
+}
+.log-entry p {
+  margin: 0;
+  max-width: 65ch;
+}
+.log-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-block-end: 1rem;
+}
+@media (min-width: 768px) {
+  .log-meta {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.stat-line {
+  margin-block-start: 3rem;
+  padding: 1rem;
+  background-color: var(--color-primary);
+}
+.stat-line .highlight-stat {
+  color: var(--color-accent-on-dark);
+  display: block;
+}
+
+/* Form */
+.requisition-intro {
+  max-width: 65ch;
+  margin-block-end: 2rem;
+}
+
+.requisition-form {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group input, .form-group select {
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem; /* min 1rem for iOS */
+  padding: 0.75rem;
+  border: var(--border-thick);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  min-height: 44px;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.form-check input[type="checkbox"] {
+  min-width: 24px;
+  min-height: 24px;
+  font-size: 16px;
+}
+
+/* Footer */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Motion Budget */
+
+/* 1. Scroll-reveal system */
+.reveal-block {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 400ms cubic-bezier(0, 0, 0.2, 1), transform 400ms cubic-bezier(0, 0, 0.2, 1);
+}
+.reveal-block.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3. Signature layout motion (Type slide-in) */
+.slide-in-text {
+  opacity: 0;
+  transition: opacity 400ms cubic-bezier(0, 0, 0.2, 1);
+}
+.reveal-block.is-active .slide-in-text, .slide-in-text.is-active {
+  opacity: 1;
+}
+
+/* 2. Scroll-Driven clip-path wipe in Section 3 */
+.clip-wipe-container {
+  clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-block, .slide-in-text {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .clip-wipe-container {
+    clip-path: none !important;
+  }
+}

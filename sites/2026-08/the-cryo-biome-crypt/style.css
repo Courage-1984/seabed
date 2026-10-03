@@ -187,7 +187,10 @@ p {
   margin-top: 0;
   padding-top: 0;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 3.5vw));
+  /* vh counts the collapsed mobile URL bar, so a vh-locked hero resizes
+     under the reader mid-scroll. dvh tracks the visible viewport. */
   min-height: 80vh;
+  min-height: 80dvh;
   display: flex;
   align-items: center;
   background-color: var(--color-primary);
@@ -257,7 +260,10 @@ p {
 /* Matrix */
 .matrix-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, /* auto-fit reduces the column count but never the track floor, so a bare
+     px minimum overflows any viewport narrower than it. min() lets the last
+     column collapse. */
+  minmax(min(280px, 100%), 1fr));
   gap: 1.5rem;
   margin-top: 3rem;
 }
@@ -313,7 +319,7 @@ p {
 /* Protocol */
 .protocol-steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
   gap: 1.5rem;
 }
 .step {
@@ -364,7 +370,7 @@ p {
 }
 .evidence-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -665,4 +671,33 @@ html {
 video {
   max-inline-size: 100%;
   block-size: auto;
+}
+
+/* ---------------------------------------------------------------------------
+   Narrow-viewport safety net. Appended so it wins on order against the rules
+   above it; both defects were found by the ten-device QA sweep at 320px.
+   --------------------------------------------------------------------------- */
+/* Long unbroken tokens had no escape hatch and overflowed the viewport. */
+body {
+  overflow-wrap: break-word;
+}
+
+
+/* Inputs do not inherit font-size, and anything under 16px makes iOS zoom the
+   page on focus without zooming back, stranding the reader mid-form. */
+input,
+select,
+textarea {
+  font-size: 1rem;
+}
+
+/* Grid and flex children default to `min-width: auto`, which means they refuse
+   to shrink below their min-content width however the track is sized -- so
+   guarding a minmax() floor is necessary but not sufficient, and
+   `overflow-wrap` does not help either (it wraps text without reducing the
+   intrinsic min-content size the track is measured from). `:where()` carries
+   zero specificity, so this is only a default: any deliberate min-width in the
+   rules above still wins. */
+:where([class*='grid'], [class*='form'], [class*='row'], [class*='stack'], [class*='cluster']) > * {
+  min-width: 0;
 }

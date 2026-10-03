@@ -249,7 +249,10 @@ section {
 
 .masonry-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, /* auto-fit reduces the column count but never the track floor, so a bare
+     px minimum overflows any viewport narrower than it. min() lets the last
+     column collapse. */
+  minmax(min(320px, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -370,7 +373,7 @@ section {
 
 .sequence-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -385,7 +388,7 @@ section {
 
 .metrics-bar {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 3px;
   background-color: var(--color-border);
   border: var(--border-brutal);
@@ -419,7 +422,7 @@ section {
 
 .quotes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -448,7 +451,7 @@ section {
 
 .faq-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -766,4 +769,53 @@ sup {
   font-size: max(0.8em, 12px);
   line-height: 0;
   vertical-align: super;
+}
+
+/* ---------------------------------------------------------------------------
+   Narrow-viewport safety net. Appended so it wins on order against the rules
+   above it; both defects were found by the ten-device QA sweep at 320px.
+   --------------------------------------------------------------------------- */
+/* Long unbroken tokens had no escape hatch and overflowed the viewport. */
+body {
+  overflow-wrap: break-word;
+}
+
+
+/* Inputs do not inherit font-size, and anything under 16px makes iOS zoom the
+   page on focus without zooming back, stranding the reader mid-form. */
+input,
+select,
+textarea {
+  font-size: 1rem;
+}
+
+/* Grid and flex children default to `min-width: auto`, which means they refuse
+   to shrink below their min-content width however the track is sized -- so
+   guarding a minmax() floor is necessary but not sufficient, and
+   `overflow-wrap` does not help either (it wraps text without reducing the
+   intrinsic min-content size the track is measured from). `:where()` carries
+   zero specificity, so this is only a default: any deliberate min-width in the
+   rules above still wins. */
+:where([class*='grid'], [class*='form'], [class*='row'], [class*='stack'], [class*='cluster']) > * {
+  min-width: 0;
+}
+
+/* Force a single column below the smallest multi-column width.
+   `repeat(auto-fit, minmax(min(320px, 100%), 1fr))` is the usual idiom, and it
+   works for the first .masonry-grid on this page but not the second: Chrome
+   resolves the percentage inside min() against an indefinite size there, the
+   track lands at its 320px floor inside a 272px container, and every element
+   in the box overflows. Measured, not assumed -- two identical grids, same
+   272px parent, resolving to 272px and 320px respectively.
+
+   A plain 1fr column cannot depend on how min() resolves, and above 640px the
+   px floors are all smaller than the viewport, so auto-fit is safe again. */
+@media (max-width: 639px) {
+  .masonry-grid,
+  .sequence-grid,
+  .metrics-bar,
+  .quotes-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
 }

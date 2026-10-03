@@ -1,0 +1,17 @@
+{
+  "title": "Drogue & Crate — Tactical Airdrop Expedition Hardware",
+  "blurb": "Heavy survival ordnance and forged tools fulfilled in nitrogen-purged parachute drop pods to exact grid coordinates.",
+  "hero": "assets/drogue-crate-hero-airdrop.webp",
+  "layoutFamily": "brutalist stacked",
+  "tags": [
+    "specialty-retail",
+    "direct-to-consumer",
+    "apparel"
+  ],
+  "created": "2026-09-30",
+  "wordFloor": 650,
+  "videoPlacement": "masked type fill",
+  "signatureEffect": "scroll-driven clip-path wipe",
+  "standard": "v2",
+  "video": "assets/drogue-and-crate-masked-type-fill.webm"
+}

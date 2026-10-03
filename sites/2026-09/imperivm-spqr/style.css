@@ -10,7 +10,13 @@
   --color-text: hsl(220, 30%, 10%);
   --color-text-muted: hsl(215, 15%, 40%);
   --color-border: hsl(40, 15%, 78%);
+  /* Signal colours need one value per surface: a single mid-tone failed
+     AA on the light page (2.95:1) and on the dark panels (4.30:1) alike. */
   --color-verdigris: hsl(165, 80%, 35%);
+  --color-verdigris-on-light: hsl(165, 80%, 24%);
+  --color-verdigris-on-dark: hsl(165, 80%, 45%);
+  --color-alarm-on-light: hsl(2, 70%, 38%);
+  --color-alarm-on-dark: hsl(2, 70%, 68%);
 
   /* Typography */
   --font-monumental: "Cinzel Decorative", "Marcellus", serif;
@@ -28,13 +34,28 @@
   box-sizing: border-box;
 }
 
+/* Without this the two 1024px section photos lay the whole document out
+   1056px wide on a 320px phone, and body's overflow-x:hidden then crops
+   every section instead of showing a scrollbar. */
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.65;
-  overflow-x: hidden;
+  /* clip, not hidden: hidden makes body a scroll container and would break
+     position: sticky in any descendant. */
+  overflow-x: clip;
+  overflow-wrap: break-word;
 }
 
 h1, h2, h3, h4 {
@@ -165,7 +186,10 @@ main {
   background-size: cover;
   background-position: center;
   position: relative;
+  /* dvh tracks the visible viewport; vh counts the collapsed mobile URL
+     bar and makes the hero resize mid-scroll. */
   min-height: 80vh;
+  min-height: 80dvh;
   display: flex;
   align-items: center;
   padding: 4rem;
@@ -218,12 +242,25 @@ main {
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 700;
-  transition: color 200ms ease;
+  /* The line box alone was 22px -- half the 44px touch minimum. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  transition: color 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.link-secondary:hover {
+.link-secondary:hover,
+.link-secondary:focus-visible {
   color: var(--color-primary);
   text-decoration: underline;
+}
+
+/* A 3-second press on iOS raises the selection magnifier over the primary
+   call to action without this. */
+.oath-btn {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 /* Oath Button Interaction */
@@ -303,7 +340,9 @@ main {
 /* 03 CIRCENSES */
 .cards-stack {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* A bare minmax(300px, …) floor never shrinks, so auto-fit still overflows
+     any viewport under ~364px. min() lets the last column collapse. */
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -399,11 +438,11 @@ main {
 }
 
 .status.breach {
-  color: #d9534f;
+  color: var(--color-alarm-on-dark);
 }
 
 .status.secure {
-  color: var(--color-verdigris);
+  color: var(--color-verdigris-on-dark);
 }
 
 .incident-log {
@@ -462,13 +501,13 @@ main {
 }
 
 .score-pos {
-  color: var(--color-verdigris);
+  color: var(--color-verdigris-on-light);
   font-family: var(--font-telemetry);
   font-weight: 700;
 }
 
 .score-neg {
-  color: #d9534f;
+  color: var(--color-alarm-on-light);
   font-family: var(--font-telemetry);
   font-weight: 700;
 }
@@ -496,6 +535,9 @@ main {
 
 .sedition-form input, .sedition-form textarea {
   font-family: var(--font-telemetry);
+  /* Inputs do not inherit font-size, and anything under 16px makes iOS zoom
+     the page on focus without zooming back. */
+  font-size: 1rem;
   padding: 0.75rem;
   border: 1px solid var(--color-border);
   background-color: var(--color-surface);
@@ -549,6 +591,8 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
+  padding: 1rem;
   z-index: 1000;
 }
 
@@ -631,7 +675,19 @@ main {
   .section-rostra {
     padding: 2rem;
   }
-  
+
+  /* The scrim fades out left-to-right for a desktop text column sitting on
+     the left half. Once the copy goes full-bleed, the end of every line lands
+     on the 0.2-alpha end of the gradient, i.e. on bare photograph. */
+  .section-rostra::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(245, 243, 239, 0.95) 0%,
+      rgba(245, 243, 239, 0.88) 60%,
+      rgba(245, 243, 239, 0.8) 100%
+    );
+  }
+
   .rostra-content h1 {
     font-size: 2rem;
   }
@@ -643,5 +699,63 @@ main {
   
   .limes-grid, .merits-infractions, .section-sedition {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Narrow phones. The site shipped with a single max-width:900px query that
+   touched 5 of its 15 layout blocks; padding, type scale, letter-spacing and
+   flex direction all stayed at desktop values right down to 320px.
+   --------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  main {
+    padding: 1rem;
+    gap: 2.5rem;
+  }
+
+  /* 0.1em of tracking on a wide display face adds ~3px per glyph, which is
+     what pushed CYBERNETICA past a 256px content box. */
+  .monumental {
+    letter-spacing: 0.04em;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .rostra-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .section-rostra {
+    padding: 1.5rem;
+  }
+
+  .annona-panel,
+  .combat-card,
+  .dignitas-terminal,
+  .sedition-form-container,
+  .auxiliary-banner,
+  .site-footer {
+    padding: 1.25rem;
+  }
+
+  /* Two flex items rammed to opposite edges left a canyon between label and
+     value, and overflowed the panel outright at 320px. */
+  .rations-list li {
+    display: block;
+  }
+
+  .dignitas-score {
+    font-size: 1.1rem;
+  }
+
+  .score-val {
+    font-size: 1.5rem;
+  }
+
+  .decree-ticker {
+    font-size: 0.75rem;
   }
 }

@@ -196,7 +196,10 @@ button:active, .btn:active {
 /* Heroes */
 .hero-section {
   position: relative;
+  /* vh counts the collapsed mobile URL bar, so the hero resizes under the
+     reader mid-scroll. dvh tracks the visible viewport. */
   min-height: 85vh;
+  min-height: 85dvh;
   display: flex;
   align-items: flex-end;
   padding-inline: 5vw;
@@ -401,7 +404,7 @@ button:active, .btn:active {
 /* Logs / Testimonials grid */
 .logs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 2rem;
   margin-block: 3rem;
 }
@@ -436,7 +439,7 @@ button:active, .btn:active {
 /* Workshop Schedule Grid */
 .schedule-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1.5rem;
   margin-block: 2rem;
 }
@@ -527,7 +530,10 @@ button:active, .btn:active {
   gap: 0.5rem 1.25rem;
 }
 .stat {
-  white-space: nowrap;
+  /* Was `white-space: nowrap`, which pushed "99.98% Upland Packet Delivery"
+     23px past a 320px screen. The numeral is already an inline-block with
+     tabular figures, so it cannot split -- only the phrase wraps. */
+  white-space: normal;
 }
 .stat__value {
   /* Tabular figures stop the layout jittering while the digits climb. */
@@ -660,4 +666,7 @@ select,
 textarea,
 button {
   min-block-size: 44px;
+  /* Inputs do not inherit font-size. Under 16px iOS zooms the page on
+     focus and does not zoom back, which strands the reader mid-form. */
+  font-size: 1rem;
 }

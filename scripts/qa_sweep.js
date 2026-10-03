@@ -1,15 +1,23 @@
 #!/usr/bin/env node
 /**
  * Puppeteer QA sweep against Vite preview (dist/).
- * Usage: node scripts/qa_sweep.js [slug] [--no-screenshots] [--no-hub] [--concurrency N]
+ * Usage: node scripts/qa_sweep.js [slug] [--no-screenshots] [--no-hub]
+ *                                 [--concurrency N] [--devices core|fast|<keys>] [--full-dpr]
  * Env: QA_HEADED=1 for headed browser; CI=true implies --no-screenshots.
  * npm: npm run qa -- <slug>
+ *
+ * Every device gets its own navigation. The sweep used to load once and then
+ * call setViewport(), so the "mobile" numbers were measured against JS that
+ * had initialised at 1440x900 — see scripts/lib/device-matrix.js.
  */
 import puppeteer from 'puppeteer';
 import * as cheerio from 'cheerio';
-import { readdirSync, writeFileSync, mkdirSync, existsSync } from 'fs';
+import { readdirSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'fs';
 import { join, resolve } from 'path';
-import { resolveSlugPath } from './lib/resolve-slug.js';
+import { resolveSlugPath, findAllSiteDirs } from './lib/resolve-slug.js';
+import { resolveDevices, applyDevice, describeDevice } from './lib/device-matrix.js';
+import { pageFailed, accumulateCounts, failingDevices } from './lib/qa-verdict.js';
+import { siteSourceDigest, distDigest } from './lib/source-digest.js';
 import {
   PREVIEW_URL,
   mapPool,
@@ -23,6 +31,8 @@ function parseArgs(argv) {
     noScreenshots: process.env.CI === 'true',
     noHub: false,
     concurrency: null,
+    devices: 'core',
+    fullDpr: false,
   };
   const positional = [];
   for (let i = 0; i < argv.length; i++) {
@@ -31,9 +41,15 @@ function parseArgs(argv) {
     else if (a === '--no-hub') flags.noHub = true;
     else if (a === '--concurrency') {
       flags.concurrency = Number(argv[++i]);
+    } else if (a === '--devices') {
+      flags.devices = argv[++i];
+    } else if (a === '--full-dpr') {
+      flags.fullDpr = true;
     } else if (a.startsWith('--')) {
       console.error(`Unknown flag: ${a}`);
-      console.error('Usage: node scripts/qa_sweep.js [slug] [--no-screenshots] [--no-hub] [--concurrency N]');
+      console.error(
+        'Usage: node scripts/qa_sweep.js [slug] [--no-screenshots] [--no-hub] [--concurrency N] [--devices core|fast|<keys>] [--full-dpr]'
+      );
       process.exit(2);
     } else {
       positional.push(a);
@@ -44,6 +60,13 @@ function parseArgs(argv) {
 }
 
 const opts = parseArgs(process.argv.slice(2));
+let devices;
+try {
+  devices = resolveDevices(opts.devices, { fullDpr: opts.fullDpr });
+} catch (err) {
+  console.error(err.message);
+  process.exit(2);
+}
 const targetSlug = opts.slug;
 const baseUrl = PREVIEW_URL;
 const outDir = './qa-screenshots';
@@ -75,63 +98,6 @@ if (targetSlug) {
 const sitePages = findHtmlFiles(searchDir);
 const pages =
   targetSlug && opts.noHub ? sitePages : targetSlug ? ['index.html', ...sitePages] : ['index.html', ...sitePages];
-
-function viewHasIssues(view) {
-  if (!view) return false;
-  return Boolean(
-    view.overflowingElements?.length ||
-    view.brokenImages?.length ||
-    view.nonWebpPhotos?.length ||
-    view.missingAltTags?.length ||
-    view.missingFavicon?.length ||
-    view.consoleErrors?.length ||
-    view.networkErrors?.length ||
-    view.brokenLinks?.length ||
-    view.visualIssues?.smallFonts?.length ||
-    view.visualIssues?.overlappingText?.length ||
-    view.visualIssues?.repetitiveLayout ||
-    view.videoIssues?.length
-  );
-}
-
-function pageFailed(r) {
-  return Boolean(r.error || viewHasIssues(r.mobile) || viewHasIssues(r.desktop));
-}
-
-function accumulateCounts(pagesList) {
-  const counts = {
-    overflow: 0,
-    brokenImages: 0,
-    nonWebpPhotos: 0,
-    missingAltTags: 0,
-    missingFavicon: 0,
-    consoleErrors: 0,
-    networkErrors: 0,
-    brokenLinks: 0,
-    smallFonts: 0,
-    overlappingText: 0,
-    repetitiveLayouts: 0,
-    videoIssues: 0,
-  };
-  for (const r of pagesList) {
-    for (const view of [r.mobile, r.desktop]) {
-      if (!view) continue;
-      counts.overflow += view.overflowingElements?.length || 0;
-      counts.brokenImages += view.brokenImages?.length || 0;
-      counts.nonWebpPhotos += view.nonWebpPhotos?.length || 0;
-      counts.missingAltTags += view.missingAltTags?.length || 0;
-      counts.missingFavicon += view.missingFavicon?.length || 0;
-      counts.consoleErrors += view.consoleErrors?.length || 0;
-      counts.networkErrors += view.networkErrors?.length || 0;
-      counts.brokenLinks += view.brokenLinks?.length || 0;
-      counts.smallFonts += view.visualIssues?.smallFonts?.length || 0;
-      counts.overlappingText += view.visualIssues?.overlappingText?.length || 0;
-      if (view.visualIssues?.repetitiveLayout) counts.repetitiveLayouts++;
-      counts.videoIssues += view.videoIssues?.length || 0;
-    }
-  }
-  return counts;
-}
 
 function truncateSelector(sel, max = 120) {
   if (!sel || sel.length <= max) return sel;
@@ -225,6 +191,12 @@ async function runStaticChecks(url) {
       return;
     }
 
+    // Remove any previous report before doing anything. A crashed run used to
+    // leave the last run's file sitting there, and anything reading it next --
+    // check:ship, a batch runner -- would treat another site's results as this
+    // site's. Absence is honest; a stale file is not.
+    rmSync(join(ROOT, 'qa-report.json'), { force: true });
+
     if (!opts.noScreenshots && !existsSync(outDir)) mkdirSync(outDir);
 
     console.log('\nStarting preview server...');
@@ -239,6 +211,7 @@ async function runStaticChecks(url) {
     console.log(
       `Launching browser (${headed ? 'headed' : 'headless'}); concurrency=${concurrency}; screenshots=${opts.noScreenshots ? 'off' : 'on'}; pages=${pages.length}`
     );
+    console.log(`Devices (${devices.length}): ${devices.map(describeDevice).join(', ')}`);
 
     browser = await puppeteer.launch({
       headless: headed ? false : true,
@@ -249,10 +222,14 @@ async function runStaticChecks(url) {
       args: onCi ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
     });
 
+    // Captured once so applyDevice() can reset the UA after a phone; without
+    // it every desktop device inherits whichever mobile UA ran last.
+    const defaultUserAgent = await browser.userAgent();
+
     async function checkPage(pagePath) {
       console.log(`\nChecking ${pagePath}...`);
       const url = pagePath === 'index.html' ? baseUrl : `${baseUrl}${pagePath}`;
-      const pageResult = { path: pagePath, mobile: {}, desktop: {} };
+      const pageResult = { path: pagePath, views: {} };
 
       const staticResults = await runStaticChecks(url);
 
@@ -260,9 +237,18 @@ async function runStaticChecks(url) {
 
       const consoleErrors = [];
       const networkErrors = [];
+      const pageErrors = [];
 
       page.on('console', (msg) => {
         if (msg.type() === 'error') consoleErrors.push(msg.text());
+      });
+
+      // An uncaught exception that logs nothing was invisible before. It
+      // matters here because these sites hide sections behind a JS reveal —
+      // one throw in a DOMContentLoaded handler leaves a whole section blank
+      // with a clean console.
+      page.on('pageerror', (err) => {
+        pageErrors.push(String(err?.message || err));
       });
 
       page.on('response', (response) => {
@@ -275,7 +261,7 @@ async function runStaticChecks(url) {
       // exceed the 30s default while the rest of the sweep holds the CPU.
       const NAV_TIMEOUT_MS = 90_000;
 
-      try {
+      const navigate = async () => {
         try {
           await page.goto(url, { waitUntil: 'networkidle2', timeout: NAV_TIMEOUT_MS });
         } catch (err) {
@@ -291,9 +277,21 @@ async function runStaticChecks(url) {
             throw err;
           }
         }
+      };
 
-        const checkViewport = async (width, height, label, { checkLinks }) => {
-          await page.setViewport({ width, height });
+      try {
+        const checkViewport = async (device, { checkLinks }) => {
+          const label = device.key;
+          const height = device.viewport.height;
+
+          // Emulate, then load. Resizing a live page leaves any width-sensitive
+          // JS holding the measurements it took at the previous size, which is
+          // exactly how a broken mobile layout passed this sweep.
+          await applyDevice(page, device, defaultUserAgent);
+          consoleErrors.length = 0;
+          networkErrors.length = 0;
+          pageErrors.length = 0;
+          await navigate();
 
           // Parallel + overall budget — sequential per-image waits on the hub
           // (34+ cards) can exceed Puppeteer's protocolTimeout under CI load.
@@ -588,20 +586,47 @@ async function runStaticChecks(url) {
             missingFavicon: staticResults.missingFavicon,
             nonWebpPhotos: staticResults.nonWebpPhotos,
             consoleErrors: [...consoleErrors],
+            pageErrors: [...pageErrors],
             networkErrors: [...networkErrors],
             brokenLinks,
             visualIssues,
             videoIssues: videoReport.problems,
+            videoSlow: videoReport.slow,
+            device: {
+              key: device.key,
+              width: device.viewport.width,
+              height: device.viewport.height,
+              deviceScaleFactor: device.viewport.deviceScaleFactor,
+              hasTouch: device.viewport.hasTouch,
+              isMobile: device.viewport.isMobile,
+            },
           };
         };
 
         const runViewports = async () => {
-          pageResult.mobile = await checkViewport(390, 844, 'mobile', { checkLinks: true });
-          consoleErrors.length = 0;
-          networkErrors.length = 0;
-          pageResult.desktop = await checkViewport(1440, 900, 'desktop', { checkLinks: false });
-          // Carry link results to desktop view for consistent hasIssues (links checked once)
-          pageResult.desktop.brokenLinks = pageResult.mobile.brokenLinks;
+          let links = null;
+          let first = true;
+          for (const device of devices) {
+            // Links are page-level, not device-level: check them once on the
+            // first device and carry the result so every view reports the same
+            // thing without paying for the HEAD requests ten times.
+            const view = await checkViewport(device, { checkLinks: links === null });
+            if (links === null) links = view.brokenLinks;
+            else view.brokenLinks = links;
+
+            // The static checks parse the served HTML, so they are page-level
+            // too. Recording them on every view made summary.counts multiply a
+            // single missing alt by the device count -- one defect reported as
+            // ten. Keep them on the first view only; pageFailed still trips.
+            if (!first) {
+              view.missingAltTags = [];
+              view.missingFavicon = [];
+              view.nonWebpPhotos = [];
+              view.brokenLinks = [];
+            }
+            first = false;
+            pageResult.views[device.key] = view;
+          }
         };
 
         try {
@@ -635,9 +660,19 @@ async function runStaticChecks(url) {
       counts: accumulateCounts(results),
     };
 
+    // Bind the verdict to the bytes it was produced from, so check:ship can
+    // refuse a report that describes a build which no longer exists.
+    const sourceDigests = {};
+    for (const site of targetSlug ? [resolveSlugPath(ROOT, targetSlug)] : findAllSiteDirs(ROOT)) {
+      if (site) sourceDigests[site.relativePath] = siteSourceDigest(site.absolutePath);
+    }
+
     const report = {
       generatedAt: new Date().toISOString(),
       slugFilter: targetSlug || null,
+      devices: devices.map((d) => ({ key: d.key, ...d.viewport })),
+      distDigest: distDigest(ROOT),
+      sourceDigests,
       summary,
       pages: results,
     };
@@ -649,7 +684,10 @@ async function runStaticChecks(url) {
     );
     console.log('Counts:', JSON.stringify(summary.counts));
     if (failed.length) {
-      console.error('Failing pages:', failed.map((f) => f.path).join(', '));
+      for (const f of failed) {
+        const where = f.error ? 'load error' : failingDevices(f).join(', ');
+        console.error(`  FAIL ${f.path} — ${where}`);
+      }
       exitCode = 1;
     }
   } catch (globalError) {
