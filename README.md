@@ -36,7 +36,7 @@ sites/<YYYY-MM>/<kebab-slug>/
 
 Sites live in chronological `YYYY-MM` buckets; every CLI still takes a bare slug.
 
-The hub (`index.html` + `hub.js` + `hub.css`) discovers every `sites/**/meta.json`, sorts by `created` (newest first), and shows a slow infinite discovery strip, a latest-drop stage, and a filterable archive gallery (All · `layoutFamily` chips · Recent). Adding a site only requires a valid `meta.json` — do not edit hub files for daily builds. `layoutFamily` + roster feed Gemini via `npm run sites:index`.
+The hub (`index.html` + `hub.js` + `hub.css`) discovers every `sites/**/meta.json` and shows a slow infinite discovery strip, a latest-drop stage (the newest site), and a filterable archive gallery (All · `layoutFamily` chips · Recent). The strip and archive order sites as an equal rotation of style families, so no two neighbouring cards share one. The strip's sort toggle switches to Newest / Oldest. Adding a site only requires a valid `meta.json` — do not edit hub files for daily builds. `layoutFamily` + roster feed Gemini via `npm run sites:index`.
 
 ## Commands
 
@@ -52,8 +52,10 @@ npm run qa               # Puppeteer correctness sweep (build first). npm run qa
 npm run qa:visual -- <slug>              # tiled screenshots x4 breakpoints + walkthrough recording
 npm run check:contract -- <slug|--all>   # meta/favicon/WebP/path/video/motion gate
 npm run check:assets -- <slug|--all>     # per-site asset isolation (cross-site duplicates, hotlinks)
-npm run check:ship -- <slug> [--floor N] # copy-depth + contract + assets + qa-report
-npm run sites:index      # regenerate .agents/prompts/_sites-index.md for Gemini paste
+npm run check:variety -- <slug>          # rotation gate: layout/style/fonts/palette/slot/effect vs recent sites
+npm run check:ship -- <slug> [--floor N] # copy-depth + contract + variety + assets + qa-report
+npm run sites:index      # regenerate .agents/prompts/_sites-index.md (incl. 14-day rotation schedule) for Gemini paste
+npm run roll -- [--date D] [--days N] [--for <slug>]  # roll the Variety Engine from real history
 npm run check:copy-depth -- <slug> [floor]   # word-floor gate (or meta.wordFloor)
 ```
 
@@ -80,6 +82,9 @@ Image generation uses built-in Antigravity/Gemini tools; public-domain / open-li
 ## Gemini brief prompt
 
 1. Keep your **live** system prompt outside the repo (or sync from the snapshot in [`.agents/prompts/daily-brief-generator.md`](.agents/prompts/daily-brief-generator.md)).
-2. Run `npm run sites:index` periodically and paste **Anti-repetition state** + **Existing sites** + **Roster** from [`.agents/prompts/_sites-index.md`](.agents/prompts/_sites-index.md) into your prompt. The anti-repetition block is what makes the hard-ban rules work — Gemini cannot know what it built last week without it.
+2. At least weekly, run `npm run sites:index` and paste **Rotation schedule** + **Anti-repetition state** + **Existing sites** + **Roster** from [`.agents/prompts/_sites-index.md`](.agents/prompts/_sites-index.md) into your prompt.
+   - The schedule pre-rolls the next 14 days: layout family, visual style family, fonts, video slot, effect, and the rest. Rows never repeat recent sites or each other.
+   - Gemini uses today's row verbatim. It cannot know what it built last week without the paste.
+   - `npm run check:variety` enforces the same rotation at ship time. See [AGENTS.md](AGENTS.md) §16.
 3. Each run should emit a brief starting with `# Website Build Brief — <Brand> — <YYYY-MM-DD>`, optional Variety Engine Audit HTML comment, then §§1–11.
 4. Paste that brief into Antigravity or Cursor — the auto-pipeline takes over (builders ignore the audit comment; follow [AGENTS.md](AGENTS.md) for ship gates).

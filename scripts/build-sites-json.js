@@ -2,6 +2,8 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join, resolve } from 'path';
 import { findAllSiteDirs } from './lib/resolve-slug.js';
+import { readRootVars } from './lib/site-fingerprint.js';
+import { resolveStyleFamily } from './lib/style-families.js';
 
 const ROOT = resolve('.');
 const OUT_DIR = join(ROOT, 'public');
@@ -18,6 +20,10 @@ for (const site of allSites) {
     if (!meta.siteFolder.startsWith('./')) {
       meta.siteFolder = './' + meta.siteFolder;
     }
+    // The hub orders cards as a rotation of style families. Older sites have no
+    // meta.styleFamily, so it is resolved here (legacy map, else palette classifier)
+    // rather than written into their meta.json, which the visual-review digest hashes.
+    meta.styleFamily = resolveStyleFamily(site.slug, meta, readRootVars(site.absolutePath)).family;
     sitesData.push(meta);
   } catch (err) {
     console.warn(`Could not read meta.json for ${site.slug}: ${err.message}`);

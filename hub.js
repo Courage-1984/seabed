@@ -1,5 +1,9 @@
-// Hub: fetch sites.json, sort by created (newest first), render strip + featured + filterable archive
+// Hub: fetch sites.json, sort by created (newest first), render strip + featured + filterable archive.
+// The strip and archive show sites as an equal rotation of style families (no two neighbours
+// share one); the latest drop and build numbers stay chronological.
 // We still use import.meta.glob for images so Vite hashes and resolves their final URLs.
+import { interleaveByStyle } from './scripts/lib/style-interleave.js';
+
 const images = import.meta.glob('./sites/**/assets/**/*.{jpg,png,jpeg,webp,svg,gif}', {
   query: '?url',
   import: 'default',
@@ -12,6 +16,14 @@ const filtersEl = document.getElementById('archive-filters');
 const discoveryFiltersEl = document.getElementById('discovery-filters');
 
 const RECENT_DAYS = 14;
+
+/** Seeds the style rotation; set once the sites load. Stable until a new site ships, then reshuffles. */
+let styleMixSeed = '';
+
+/** Reorder a newest-first list so neighbouring cards never share a style family. */
+function mixStyles(siteList) {
+  return interleaveByStyle(siteList, { seed: styleMixSeed });
+}
 
 function formatDate(iso) {
   if (!iso || !/^\d{4}-\d{2}-\d{2}$/.test(iso)) return '';
@@ -53,7 +65,7 @@ async function loadSiteEntries() {
   const entries = await Promise.all(
     sitesData.map(async (metaData) => {
       const siteFolder = metaData.siteFolder;
-      const { title, blurb, hero, created, layoutFamily, tags } = metaData;
+      const { title, blurb, hero, created, layoutFamily, styleFamily, tags } = metaData;
 
       const normalizedHero = (hero || '').replace(/^\.\//, '');
       const imageGlobPath = `${siteFolder}/${normalizedHero}`;
@@ -74,6 +86,7 @@ async function loadSiteEntries() {
         blurb: blurb || '',
         created: created || '1970-01-01',
         layoutFamily: String(layoutFamily || '').trim(),
+        styleFamily: styleFamily || null,
         tags: Array.isArray(tags) ? tags : [],
         href: `${siteFolder}/index.html`,
         heroUrl: resolvedImageUrl,
@@ -526,7 +539,7 @@ function observeArchiveCards(cards) {
 }
 
 function renderArchive(siteList, category, subFilter, newestDate) {
-  const filtered = filterSites(siteList, category, subFilter, newestDate);
+  const filtered = mixStyles(filterSites(siteList, category, subFilter, newestDate));
   gridEl.classList.add('is-fading');
 
   window.setTimeout(() => {
@@ -599,6 +612,7 @@ function renderFilters(siteList, onChange) {
 
 const sorted = await loadSiteEntries();
 const newestDate = parseCreated(sorted[0]?.created);
+styleMixSeed = `${sorted[0]?.created ?? ''}|${sorted.length}`;
 
 // --- News Ticker Generation ---
 const renderTicker = (siteList) => {
@@ -722,7 +736,12 @@ renderTicker(sorted);
 // --- Discovery Carousel Filtering ---
 let discoveryActiveCategory = localStorage.getItem('discoveryActiveCategory') || 'all';
 let discoveryActiveSubFilter = localStorage.getItem('discoveryActiveSubFilter') || null;
-let discoverySortOrder = localStorage.getItem('discoverySortOrder') || 'desc'; // 'desc' (newest first) or 'asc' (oldest first)
+// 'mix' (style-family rotation, the default), 'desc' (newest first) or 'asc' (oldest first).
+// A new storage key, so a remembered 'desc' from before the rotation existed does not hide it.
+const DISCOVERY_ORDERS = { mix: 'Sort: Mixed styles', desc: 'Sort: Newest', asc: 'Sort: Oldest' };
+const NEXT_DISCOVERY_ORDER = { mix: 'desc', desc: 'asc', asc: 'mix' };
+let discoverySortOrder = localStorage.getItem('discoveryOrder');
+if (!(discoverySortOrder in DISCOVERY_ORDERS)) discoverySortOrder = 'mix';
 
 function renderDiscoveryFilters(siteList, onChange) {
   if (!discoveryFiltersEl) return;
@@ -756,10 +775,9 @@ function renderDiscoveryFilters(siteList, onChange) {
   const sortBtn = document.createElement('button');
   sortBtn.type = 'button';
   sortBtn.className = 'discovery-filter-chip discovery-filter-chip--sort';
-  sortBtn.textContent = discoverySortOrder === 'desc' ? 'Sort: Newest' : 'Sort: Oldest';
+  sortBtn.textContent = DISCOVERY_ORDERS[discoverySortOrder];
   sortBtn.addEventListener('click', () => {
-    const newOrder = discoverySortOrder === 'desc' ? 'asc' : 'desc';
-    onChange(discoveryActiveCategory, discoveryActiveSubFilter, newOrder);
+    onChange(discoveryActiveCategory, discoveryActiveSubFilter, NEXT_DISCOVERY_ORDER[discoverySortOrder]);
   });
   row.appendChild(sortBtn);
 
@@ -788,7 +806,7 @@ function renderDiscoveryFilters(siteList, onChange) {
   }
 }
 
-const applyDiscoveryFilter = (category, subFilter = null, sortOrder = 'desc') => {
+const applyDiscoveryFilter = (category, subFilter = null, sortOrder = 'mix') => {
   discoveryActiveCategory = category;
   discoveryActiveSubFilter = subFilter;
   discoverySortOrder = sortOrder;
@@ -799,7 +817,7 @@ const applyDiscoveryFilter = (category, subFilter = null, sortOrder = 'desc') =>
   } else {
     localStorage.removeItem('discoveryActiveSubFilter');
   }
-  localStorage.setItem('discoverySortOrder', sortOrder);
+  localStorage.setItem('discoveryOrder', sortOrder);
 
   if (category === 'layout' && !subFilter) {
     const families = uniqueLayoutFamilies(sorted);
@@ -812,10 +830,10 @@ const applyDiscoveryFilter = (category, subFilter = null, sortOrder = 'desc') =>
 
   renderDiscoveryFilters(sorted, applyDiscoveryFilter);
   const filtered = filterSites(sorted, discoveryActiveCategory, discoveryActiveSubFilter, newestDate);
-  if (discoverySortOrder === 'asc') {
-    filtered.reverse();
-  }
-  renderDiscoveryStrip(filtered);
+  // Copy before reversing: on the 'all' filter, filterSites returns `sorted` itself.
+  const ordered =
+    discoverySortOrder === 'mix' ? mixStyles(filtered) : discoverySortOrder === 'asc' ? [...filtered].reverse() : filtered;
+  renderDiscoveryStrip(ordered);
 };
 
 // --- Archive Grid Filtering ---

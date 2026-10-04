@@ -7,12 +7,16 @@
  * AGENTS.md §11 is the canonical prose; .agents/rules/02-frontend-design.md and
  * .agents/skills/design-and-build/SKILL.md point here rather than restating it.
  *
- * Selection (see AGENTS.md §11):
- *   slotIndex = (seed + 5) % 12
- *   advance slotIndex by +1 until the slot is BOTH
- *     (a) listed in PLACEMENT_BY_FAMILY[layoutFamily], and
- *     (b) not among the last 8 sites' videoPlacement values
+ * Selection (see AGENTS.md §11, engine in scripts/lib/rotation.js): the slot must be
+ *   (a) listed in PLACEMENT_BY_FAMILY[layoutFamily], and
+ *   (b) not among the last PLACEMENT_BAN_WINDOW sites' videoPlacement values,
+ * drawn at random weighted towards the slots used longest ago. When every
+ * compatible slot is banned, the least-recently-used compatible slot is allowed.
  */
+import { pickRotated, mulberry32 } from './weighted-pick.js';
+
+export const PLACEMENT_BAN_WINDOW = 8;
+
 export const VIDEO_PLACEMENTS = [
   'hero background',
   'hero inset frame',
@@ -181,23 +185,12 @@ export function placementSlug(placement) {
 }
 
 /**
- * Deterministic slot resolution. `recent` is the videoPlacement values of the
- * most recent sites, newest first; the last 8 are banned.
+ * Deterministic slot resolution. `recent` is the videoPlacement values of the most
+ * recent sites, newest first. Kept for callers of the old API; scripts/lib/rotation.js
+ * is the engine.
  */
 export function resolvePlacement(seed, layoutFamily, recent = []) {
   const allowed = PLACEMENT_BY_FAMILY[layoutFamily];
   if (!allowed) throw new Error(`unknown layout family: ${layoutFamily}`);
-  const banned = new Set(recent.slice(0, 8));
-  const start = (seed + 5) % VIDEO_PLACEMENTS.length;
-  for (let n = 0; n < VIDEO_PLACEMENTS.length; n++) {
-    const slot = VIDEO_PLACEMENTS[(start + n) % VIDEO_PLACEMENTS.length];
-    if (allowed.includes(slot) && !banned.has(slot)) return slot;
-  }
-  // Every compatible slot is banned -- fall back to the least-recently-used one.
-  const byRecency = allowed.slice().sort((a, b) => {
-    const ia = recent.indexOf(a);
-    const ib = recent.indexOf(b);
-    return (ia === -1 ? Infinity : ia) - (ib === -1 ? Infinity : ib);
-  });
-  return byRecency[byRecency.length - 1];
+  return pickRotated(VIDEO_PLACEMENTS, recent, { ban: PLACEMENT_BAN_WINDOW, allowed, rng: mulberry32(seed) }).value;
 }

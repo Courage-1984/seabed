@@ -12,7 +12,7 @@ Only pause to ask **one** clarifying question when critical fields are missing (
 
 1. Load skill `parse-brief` — extract structured checklist.
 2. Load skill `research-and-plan` — execute §10 handoff research/planning (bounded).
-3. Load skill `scaffold-site` — create `sites/<slug>/` tree.
+3. Load skill `scaffold-site` — create `sites/<slug>/` tree, then run `npm run check:variety -- <slug>` as soon as `meta.json` and the `:root` palette exist (§16). Fix a repeat now, not after the build.
 4. Load skill `design-and-build` — implement HTML/CSS/JS; author §4b directed copy; apply layout family.
 5. Load skill `acquire-images` — PD/open vs generate (WebP per @.agents/skills/acquire-images/SKILL.md).
 6. Optimize assets (prefer slug scope):
@@ -20,6 +20,7 @@ Only pause to ask **one** clarifying question when critical fields are missing (
    - `npm run optimize:html -- --slug <slug>`
 7. Load skill `qa-and-ship`:
    - `npm run check:contract -- <slug>`
+   - `npm run check:variety -- <slug>` (rotation gate — see §16)
    - `npm run check:copy-depth -- <slug> <floor>` (or rely on `meta.wordFloor`)
    - `npm run build`
    - `npm run qa -- <slug>`
@@ -32,10 +33,10 @@ Only pause to ask **one** clarifying question when critical fields are missing (
    - **Extreme Visual Audit** — mandatory, not optional, and not satisfied by the correctness sweep alone. See §14.
 
 **Note:** Pasted briefs §2/§8 should match this command list (see `.agents/prompts/daily-brief-generator.md`). If a brief is somehow thinner, **this file wins**. 
-8. Set `meta.json` `"standard": "v2"`, `"layoutFamily"`, `"tags"`, `"created"` (UTC `YYYY-MM-DD`), `"wordFloor"` when known, `"video"`, `"videoPlacement"`, `"signatureEffect"`, and `"qa": "v2-pass"` per @.agents/skills/qa-and-ship/SKILL.md gate only. 
+8. Set `meta.json` `"standard": "v2"`, `"layoutFamily"`, `"styleFamily"`, `"tone"`, `"sector"`, `"tags"`, `"created"` (UTC `YYYY-MM-DD`), `"wordFloor"` when known, `"video"`, `"videoPlacement"`, `"signatureEffect"`, and `"qa": "v2-pass"` per @.agents/skills/qa-and-ship/SKILL.md gate only. 
    - **CRITICAL RULE**: Do not set `"qa": "v2-pass"` unless ALL image assets AND the implemented video (webm + mp4 + poster) are physically present, site-private, and integrated into the new website build.
-9. Summarize: slug, pages, layout family, video placement, signature effect, created date, image strategy per asset, copy depth, responsive status, QA status, **Visual Audit findings**, remaining risks. 
-10. After ship (operator): `npm run sites:index` and paste the Anti-repetition state + Roster + Existing sites table into the live Gemini prompt (~weekly).
+9. Summarize: slug, pages, layout family, style family + fonts, video placement, signature effect, created date, image strategy per asset, copy depth, responsive status, QA status, **Visual Audit findings**, remaining risks. 
+10. Operator, at least weekly: `npm run sites:index` and paste the **Rotation schedule** + Anti-repetition state + Existing sites table + Roster into the live Gemini prompt. The schedule covers 14 days (§16).
 
 ## 11. Video handoff (canonical)
 
@@ -47,16 +48,17 @@ The single source of truth for placement slots is `scripts/lib/video-placements.
 
 There are **twelve** slots: `hero background`, `hero inset frame`, `inline process demo`, `sticky rail loop`, `split panel`, `footer ambient`, `hover reveal`, `section transition band`, `masked type fill`, `grid tile`, `marquee strip`, `modal feature`.
 
-The brief carries the rolled slot. It is resolved as:
+The brief carries the rolled slot, taken from the Rotation schedule (§16). The slot must be:
 
 ```
-slotIndex = (seed + 5) % 12
-advance slotIndex by +1 until the slot is BOTH
-  (a) listed in PLACEMENT_BY_FAMILY[layoutFamily], and
-  (b) not among the last 8 sites' videoPlacement values
+(a) listed in PLACEMENT_BY_FAMILY[layoutFamily], and
+(b) not among the last 8 sites' videoPlacement values
+    -- unless every compatible slot is banned, in which case the least-recently-used compatible slot is allowed
 ```
 
-**Never key placement off the day of the month.** That is what produced eight consecutive sites with an identical hover-reveal treatment. If a brief specifies a slot, use it; if it does not, resolve it with `resolvePlacement()` from the registry and the last-8 list in `.agents/prompts/_sites-index.md`.
+drawn at random, weighted towards the slots used longest ago (`scripts/lib/rotation.js`).
+
+**Never key placement off the day of the month.** That is what produced eight consecutive sites with an identical hover-reveal treatment. If a brief specifies a slot, use it, but if `npm run check:variety` rejects it, re-resolve with `npm run roll -- --for <slug>`. If the brief has no slot, take it from that same command.
 
 Each slot has a mandatory implementation spec in `VIDEO_PLACEMENT_SPECS` — a slot name alone is not a spec.
 
@@ -173,6 +175,28 @@ Missing assets:
 Resume with: <exact commands to re-run once quota resets>
 ```
 
+## 16. Rotation & variety gate (mandatory for sites created on/after 2026-10-04)
+
+Layout names rotated while the look did not: 30 of the 31 sites from 2026-08-14 shipped the same light-grey ground, navy-ink primary and amber accent, with the same handful of grotesques, because palette and type were never rolled. The ban list Gemini worked from was also pasted weekly, so it could not see sites built mid-week, and nothing in the repo checked it.
+
+- **One engine:** `scripts/lib/rotation.js`. Every dimension (layout family, **style family**, **font pairing**, video slot, signature effect, architecture, sector, tone, twist, naming) is rolled by removing recently-used values, then drawing at random from the rest, weighted towards whatever has gone unused longest. Rolls are seeded per date, so they are reproducible.
+- **Style families:** `scripts/lib/style-families.js`. Fourteen visual registers, each with a palette direction, a type class with three font pairings (no pairing is shared between families), motifs, imagery, and the layouts it may not pair with. The site records its family in `meta.styleFamily`.
+- **Equal style rotation:** sites from the cutoff on are counted in cycles of 14. Each cycle uses every family exactly once, in its own random order. No family returns within 7 sites, even across the seam between cycles. Style is rolled first; the layout is then picked from those the family may pair with.
+- **Hub order:** the hub's carousel and archive show sites as an equal, seeded rotation of style families, so neighbours never share a family. `scripts/lib/style-interleave.js` does this, reading the `styleFamily` that `build-sites-json.js` resolves into `public/sites.json`. The latest drop and build numbers stay chronological, and the carousel's sort toggle still offers Newest / Oldest. Older sites' families come from `LEGACY_STYLE_FAMILY`, or failing that a palette classifier (`classifyStyleFamily`). Add a slug to `LEGACY_STYLE_FAMILY` to correct a misclassification.
+- **The schedule:** `npm run sites:index` writes a 14-day Rotation schedule into `.agents/prompts/_sites-index.md`. Rows ban every recent site and every earlier row, so a weekly paste cannot repeat itself mid-week. Gemini uses today's row verbatim.
+- **The gate:** `npm run check:variety -- <slug>` (also run inside `check:ship`). It fails when any of these repeat the sites created before this one:
+  - layout family (last 8, max 5 in 25)
+  - video slot (last 8, while a compatible slot is free)
+  - signature effect (last 9)
+  - style family (already used in the current cycle, or in the last 7)
+  - any Google Font face (last 6, or 3+ of the last 20)
+  - the shipped `:root` palette fingerprint (same ground + primary as the last 3, or same ground + primary + accent as the last 6)
+  - the `light|ink-blue` base outside `industrial safety-signage`
+- **Repeats found:** `npm run roll -- --for <slug>` re-resolves the day's values against real history. Use the failing dimensions from it and say so in the build summary.
+- **Palette tokens:** `style.css` `:root` must declare `--color-bg`, `--color-text`, `--color-primary` and `--color-accent` by exactly those names (`check:contract`), because the fingerprint is read from them.
+- **Older sites:** sites created before the cutoff print `VARIETY_SKIP`. Their style family is resolved in code (`LEGACY_STYLE_FAMILY`, then the classifier). Never edit a shipped site's `meta.json` to add it: the visual-review digest hashes `meta.json`.
+- **Not run in CI**, because a same-day sibling added later would retroactively fail an earlier site.
+
 ## CSS Best Practices (Mandatory)
 
 The builder must codify and adhere strictly to the following CSS spacing and layout rules for all responsive breakpoints:
@@ -198,8 +222,10 @@ The builder must codify and adhere strictly to the following CSS spacing and lay
 | Visual review gate                    | `npm run check:vision -- <slug>`                        |
 | Static site contract                  | `npm run check:contract -- <slug\|--all>`               |
 | Asset isolation                       | `npm run check:assets -- <slug\|--all>`                 |
-| Ship gate (copy + contract + assets + report) | `npm run check:ship -- <slug> [--floor N]`      |
-| Regenerate sites index (Gemini paste) | `npm run sites:index`                                   |
+| Ship gate (copy + contract + variety + assets + report) | `npm run check:ship -- <slug> [--floor N]` |
+| Regenerate sites index + 14-day rotation schedule (Gemini paste) | `npm run sites:index`        |
+| Roll a day / schedule from real history | `npm run roll` (`-- --date D`, `--days N`, `--for <slug>`, `--json`) |
+| Rotation gate (layout/style/fonts/palette/slot/effect) | `npm run check:variety -- <slug>`     |
 | Copy depth check                      | `npm run check:copy-depth -- <slug> [floor]`            |
 | Code Quality: Lint                    | `npm run lint`                                          |
 | Code Quality: Format                  | `npm run format`                                        |

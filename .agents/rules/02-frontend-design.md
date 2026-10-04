@@ -20,7 +20,8 @@ Apply when creating or substantially editing HTML/CSS/JS under `sites/`.
 
 - Expressive, purposeful font pairs (e.g. Google Fonts). Do **not** use Inter, Roboto, Arial, or system-ui as the primary display face for new sites.
 - Do not rely on flat single-color backgrounds — use gradients, imagery, or subtle patterns.
-- Define a clear palette via CSS variables on `:root` (e.g., `--color-bg-base`, `--color-text-main`, `--color-accent`). Consider using HSL or exact hex codes for precision.
+- Define a clear palette via CSS variables on `:root`. It must include `--color-bg`, `--color-text`, `--color-primary` and `--color-accent` by exactly those names, as HSL or hex. `check:variety` fingerprints the palette from them (`AGENTS.md` §16).
+- Palette, type, motifs and imagery follow the brief's **style family** (`scripts/lib/style-families.js`). Do not fall back to the grey ground + navy ink + amber accent house look unless the family is `industrial safety-signage`.
 - Define interactive states standardly (e.g., `--color-hover`, `--color-focus`).
 
 ## Sections and cards

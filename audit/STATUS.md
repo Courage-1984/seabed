@@ -2,7 +2,7 @@
 
 **Branch context:** `chore/governance-dedup` and follow-ups  
 **Full audit text (historical):** `git show 99dd64f:audit/GT-AUD-GOV-20260721.md` and `git show 99dd64f:audit/CHANGELOG-GT-AUD-GOV-20260721.md`  
-**Sites index cadence:** manual-weekly — `npm run sites:index`, paste into Gemini Scheduled Action
+**Sites index cadence:** manual-weekly — `npm run sites:index`, paste into Gemini Scheduled Action (the Rotation schedule covers 14 days, so weekly leaves a week of runway)
 
 ## Decisions in effect
 
@@ -48,6 +48,11 @@ SITES_INDEX_CADENCE: manual-weekly
 | Mandatory motion budget + 12 signature effects                      | Applied; enforced in `check:contract`                   |
 | `visual_qa.js` tiled screenshots + walkthrough recording            | Applied                                                |
 | Per-site asset isolation (`check:assets`, wired into ship gate)     | Applied                                                |
+| Visual style families (14) + font pairings; `meta.styleFamily`      | Applied; required for sites created >= 2026-10-04      |
+| Equal style rotation: cycles of 14, each family once, random order  | Applied; scheduled + gated (`check:variety`)           |
+| Hub carousel + archive ordered as style-family rotation             | Applied; `scripts/lib/style-interleave.js`, Newest/Oldest toggle kept |
+| Rotation engine (`scripts/lib/rotation.js`): weighted-LRU picks, 14-day schedule in `sites:index` | Applied; replaces in-prompt linear-probe arithmetic |
+| `check:variety` (layout/style/fonts/palette fingerprint/slot/effect) | Applied; in ship gate, per-slug only (not CI)          |
 | Image-generation quota block, last in the response                  | Applied                                                |
 | `<video>` contract checks in `qa_sweep.js`                          | Applied                                                |
 | `_sites-index.md` pipe-escaping bugfix + newest-first ordering      | Fixed                                                  |

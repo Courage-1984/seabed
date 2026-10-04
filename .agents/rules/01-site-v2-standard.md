@@ -31,6 +31,9 @@ sites/<YYYY-MM>/<kebab-slug>/
   "blurb": "One-line hub card description.",
   "hero": "assets/hero.webp",
   "layoutFamily": "bento",
+  "styleFamily": "riso spot-ink",
+  "tone": "playful provocateur",
+  "sector": "retail / e-commerce",
   "tags": ["ecommerce", "apparel"],
   "created": "2026-07-21",
   "wordFloor": 1100,
@@ -45,6 +48,8 @@ sites/<YYYY-MM>/<kebab-slug>/
 - `title`, `blurb`, `hero` are required for hub cards.
 - `hero` is relative to the site folder, **without** a leading `./` (e.g. `assets/tig_arc.webp`).
 - `layoutFamily` — one of the seventeen names (exact): `asymmetric split`, `editorial magazine`, `bento`, `brutalist stacked`, `horizontal-scroll band`, `ultra-minimal full-bleed`, `sticky-rail + content`, `diagonal-cut`, `overlapping card-stack`, `terminal / data-readout`, `kinetic ticker / marquee bands`, `layered-parallax`, `split-screen scroll`, `neo-brutalist masonry`, `cinematic full-bleed canvas`, `index / ledger`, `modular grid-break collage`. Required at ship so `npm run sites:index` can feed Gemini collision avoidance. Canonical list: `scripts/lib/layout-families.js`.
+- `styleFamily` — required for sites created on/after **2026-10-04**. One of the fourteen visual style families in `scripts/lib/style-families.js`, taken from the brief's Rotation schedule row. Its palette direction, font pairing, motifs and imagery are implemented for real. The same sites must declare `--color-bg`, `--color-text`, `--color-primary` and `--color-accent` in `style.css` `:root` by exactly those names. `npm run check:variety` fingerprints the palette from them and fails repeats (`AGENTS.md` §16).
+- `tone` / `sector` (optional, validated when present) — the brief's tone and sector, exact names from `scripts/lib/brief-axes.js`. They let the rotation engine see them in history.
 - `tags` — required array of 1-3 semantic tags categorizing the site (e.g., `saas`, `medical`, `industrial`, `ecommerce`, `fintech`, `lifestyle`). These are rendered as filter chips on the hub archive.
 - `created` — required `YYYY-MM-DD` (UTC day the site was built/shipped). Hub sorts newest-first by this field. Set at scaffold; confirm at ship. The site resides inside the matching `sites/YYYY-MM/` directory bucket.
 - `wordFloor` (optional number) — brief §3 word floor; used by `check:copy-depth` / `check:ship` when CLI floor is omitted. Set at ship when known; do not invent for legacy sites.
@@ -54,6 +59,7 @@ sites/<YYYY-MM>/<kebab-slug>/
 - Set `"standard": "v2"` when the folder matches this layout.
 - Set `"qa": "v2-pass"` only per the gate in @.agents/skills/qa-and-ship/SKILL.md.
 - Assets are **site-private** — never reused or referenced across sites. Validate with `npm run check:assets -- <slug|--all>` (`AGENTS.md` §12).
+- Validate rotation with `npm run check:variety -- <slug>` (per slug only; it also runs inside `check:ship`).
 - Validate statically with `npm run check:contract -- <slug|--all>` (note: you can pass bare slugs without year-month prefixes; the scripts locate sites dynamically).
 
 ## Paths
@@ -71,4 +77,4 @@ sites/<YYYY-MM>/<kebab-slug>/
 
 ## Hub integration
 
-Adding `sites/<YYYY-MM>/<slug>/meta.json` is enough for discovery — do not edit `hub.js` / `hub.css` / `index.html` when **adding a site**. Hub UX (discovery strip, featured drop, archive) lives in those root files; redesign them only when intentionally changing the hub, not as part of a daily site build. The archive surfaces `layoutFamily` as filter chips and card tags (plus a Recent window relative to the newest site’s `created` date).
+Adding `sites/<YYYY-MM>/<slug>/meta.json` is enough for discovery — do not edit `hub.js` / `hub.css` / `index.html` when **adding a site**. Hub UX (discovery strip, featured drop, archive) lives in those root files; redesign them only when intentionally changing the hub, not as part of a daily site build. The archive surfaces `layoutFamily` as filter chips and card tags (plus a Recent window relative to the newest site’s `created` date). The carousel and archive order cards as an equal rotation of style families so neighbours never share one (`AGENTS.md` §16). `build-sites-json.js` resolves each site's family into `public/sites.json`, so a valid `meta.styleFamily` is all a new site needs.

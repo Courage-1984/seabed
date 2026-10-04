@@ -11,6 +11,10 @@ import { LAYOUT_FAMILIES, LAYOUT_FAMILY_SET } from './lib/layout-families.js';
 import { VIDEO_PLACEMENTS, VIDEO_PLACEMENT_SET, PLACEMENT_BY_FAMILY } from './lib/video-placements.js';
 import { SIGNATURE_EFFECTS, SIGNATURE_EFFECT_SET } from './lib/signature-effects.js';
 import { findAllSiteDirs, resolveSlugPath } from './lib/resolve-slug.js';
+import { STYLE_FAMILIES, STYLE_FAMILY_SET } from './lib/style-families.js';
+import { SECTOR_NAMES, TONES } from './lib/brief-axes.js';
+import { REQUIRED_PALETTE_TOKENS, readRootVars, parseColor } from './lib/site-fingerprint.js';
+import { ROTATION_CUTOFF } from './lib/rotation.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -190,6 +194,28 @@ function checkSite(site) {
         `meta.signatureEffect must be one of: ${SIGNATURE_EFFECTS.join(' | ')} (got ${JSON.stringify(meta.signatureEffect)})`
       );
     }
+  }
+
+  // --- rotation contract (created on/after ROTATION_CUTOFF): style family + fingerprintable palette ---
+  if (typeof meta.created === 'string' && meta.created >= ROTATION_CUTOFF) {
+    if (!STYLE_FAMILY_SET.has(meta.styleFamily)) {
+      issues.push(
+        `meta.styleFamily must be one of: ${STYLE_FAMILIES.join(' | ')} (got ${JSON.stringify(meta.styleFamily)})`
+      );
+    }
+    const vars = readRootVars(siteDir);
+    const unreadable = REQUIRED_PALETTE_TOKENS.filter((t) => !parseColor(vars[t]));
+    if (unreadable.length) {
+      issues.push(
+        `style.css :root must declare ${unreadable.map((t) => `--${t}`).join(', ')} as hex/hsl()/rgb() -- check:variety fingerprints the palette from them`
+      );
+    }
+  }
+  if (meta.tone !== undefined && !TONES.includes(meta.tone)) {
+    issues.push(`meta.tone must be one of: ${TONES.join(' | ')} (got ${JSON.stringify(meta.tone)})`);
+  }
+  if (meta.sector !== undefined && !SECTOR_NAMES.includes(meta.sector)) {
+    issues.push(`meta.sector must be one of: ${SECTOR_NAMES.join(' | ')} (got ${JSON.stringify(meta.sector)})`);
   }
 
   const htmlFiles = walkFiles(siteDir, (name) => name.endsWith('.html'));

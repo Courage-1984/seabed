@@ -48,6 +48,8 @@ Still accept older briefs without §10.
 | Architecture         | landing / dense one-pager / multi-page + page files                                                                       |
 | Layout family        | Exact name from §3/§6 — one of the **seventeen** in @.agents/rules/01-site-v2-standard.md / `scripts/lib/layout-families.js` |
 | Layout signature     | Mandatory structural signature + forbidden pattern from §3/§6 (carry into design)                                         |
+| Style family + fonts | Exact name from §1/§3 — one of the fourteen in `scripts/lib/style-families.js` — plus the exact font pairing from §6       |
+| Tone / sector        | Exact names from §1 (`scripts/lib/brief-axes.js`); written to `meta.tone` / `meta.sector`                                  |
 | L/R split count      | From §3/§6 — hard cap ≤1 site-wide (sticky-rail is the special two-pane case)                                             |
 | Word floor / ceiling | From §3                                                                                                                   |
 | Verbatim copy        | §4a only — hero + exactly one flagship; use exactly                                                                       |

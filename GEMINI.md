@@ -10,7 +10,7 @@ Daily creative briefs arrive from a **Google Gemini Scheduled Action** (operator
 
 ### Sites index for Gemini (manual-weekly)
 
-Gemini has **no repo access**. After shipping new sites (or ~weekly), regenerate @./.agents/prompts/_sites-index.md with `npm run sites:index` and paste **both** the **Existing sites** table **and** the **Roster** block into your Saved Scheduled Action / live prompt (and keep @./.agents/prompts/daily-brief-generator.md in sync). That is the only cross-run collision memory Gemini gets.
+Gemini has **no repo access**. At least weekly, regenerate @./.agents/prompts/_sites-index.md with `npm run sites:index` and paste **all four** blocks into your Saved Scheduled Action / live prompt: **Rotation schedule**, **Anti-repetition state**, **Existing sites** and **Roster**. Keep @./.agents/prompts/daily-brief-generator.md in sync. The Rotation schedule pre-rolls 14 days: layout, style family, fonts, video slot, effect, architecture, sector, tone, twist and naming. Gemini looks up today's row and uses it verbatim (`AGENTS.md` §16). That is the only cross-run memory Gemini gets. If a brief opens with `STALE ROTATION SCHEDULE`, the paste is overdue.
 
 ## Stack
 

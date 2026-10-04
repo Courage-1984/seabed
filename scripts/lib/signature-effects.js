@@ -2,10 +2,18 @@
  * Canonical signature-effect pool for meta.signatureEffect.
  *
  * Every site implements exactly one signature effect on top of its mandatory
- * motion budget (see AGENTS.md "Motion budget"). Rolled as
- * (seed + 11) % 12, then advanced until it is not among the last 12 sites'
- * signatureEffect values.
+ * motion budget (see AGENTS.md "Motion budget"). Rolled by scripts/lib/rotation.js:
+ * not among the last EFFECT_BAN_WINDOW sites, otherwise a weighted random pick
+ * that favours the effects used longest ago.
  */
+import { pickRotated, mulberry32 } from './weighted-pick.js';
+
+/**
+ * 9 of 12, not 12 of 12. Banning the whole pool left nothing eligible on almost
+ * every roll, so the engine fell back to a fixed round-robin with no randomness.
+ */
+export const EFFECT_BAN_WINDOW = 9;
+
 export const SIGNATURE_EFFECTS = [
   'scroll-driven clip-path wipe',
   'text scramble decode on reveal',
@@ -51,14 +59,9 @@ export const SIGNATURE_EFFECT_SPECS = {
 };
 
 /**
- * Deterministic effect resolution. `recent` is newest-first; the last 12 are banned.
+ * Deterministic effect resolution. `recent` is newest-first. Kept for callers of
+ * the old API; scripts/lib/rotation.js is the engine.
  */
 export function resolveSignatureEffect(seed, recent = []) {
-  const banned = new Set(recent.slice(0, 12));
-  const start = (seed + 11) % SIGNATURE_EFFECTS.length;
-  for (let n = 0; n < SIGNATURE_EFFECTS.length; n++) {
-    const effect = SIGNATURE_EFFECTS[(start + n) % SIGNATURE_EFFECTS.length];
-    if (!banned.has(effect)) return effect;
-  }
-  return SIGNATURE_EFFECTS[start];
+  return pickRotated(SIGNATURE_EFFECTS, recent, { ban: EFFECT_BAN_WINDOW, rng: mulberry32(seed) }).value;
 }

@@ -34,6 +34,9 @@ sites/<YYYY-MM>/<slug>/
   "blurb": "<One-line blurb from brief>",
   "hero": "assets/hero.webp",
   "layoutFamily": "<exact layout family from brief §3>",
+  "styleFamily": "<exact style family from brief §3>",
+  "tone": "<exact tone from brief §1>",
+  "sector": "<exact sector from brief §1>",
   "tags": ["<tag1>", "<tag2>"],
   "created": "<YYYY-MM-DD UTC today>",
   "standard": "v2"
@@ -41,6 +44,14 @@ sites/<YYYY-MM>/<slug>/
 ```
 
 Omit `"qa": "v2-pass"` until @.agents/skills/qa-and-ship/SKILL.md gate passes. `layoutFamily` must be one of the **seventeen** names in @.agents/rules/01-site-v2-standard.md / `scripts/lib/layout-families.js`. Set `"created"` to today’s UTC date (`YYYY-MM-DD`). Generate 1-3 semantic tags categorizing the site (e.g. `ecommerce`, `industrial`, `medical`). When the brief §3 word floor is known, you may add `"wordFloor": <n>` now or at ship.
+
+**Rotation check (mandatory, now — not at ship).** As soon as `meta.json` exists, write the brief §5 `:root` block into `style.css` (it must declare `--color-bg`, `--color-text`, `--color-primary`, `--color-accent` by exactly those names) and the §6 Google Fonts `<link>` into `index.html`. Then run:
+
+```
+npm run check:variety -- <slug>
+```
+
+If it fails, the brief repeats a recent site. Run `npm run roll -- --for <slug>`, take the failing dimensions from its output (layout, style family + fonts, slot, effect), update `meta.json` and the palette/fonts to match, and re-run until it passes. Record the change in the build summary. Canonical rule: `AGENTS.md` §16.
 
 ### index.html (stub)
 

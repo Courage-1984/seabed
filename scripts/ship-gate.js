@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Ship gate: copy-depth + site contract + asset isolation + qa-report.json cleanliness.
+ * Ship gate: copy-depth + site contract + rotation variety + asset isolation + qa-report.json cleanliness.
  * Does not run Puppeteer — consume an existing qa-report.json from npm run qa.
  *
  * Usage: node scripts/ship-gate.js <slug> [--floor N]
@@ -75,6 +75,11 @@ if (runNode('check-copy-depth.js', [slug, String(floor)]) !== 0) {
 }
 if (runNode('check-site-contract.js', [slug]) !== 0) {
   failures.push('contract');
+}
+// Rotation: layout / slot / effect / style family / fonts / palette vs the sites before it.
+// Skips itself (exit 0) for sites created before the rotation cutoff.
+if (runNode('check-variety.js', [slug]) !== 0) {
+  failures.push('variety');
 }
 // Cross-site duplicates are deferred to the dedupe pass (see audit/REMEDIATION.md);
 // hotlinks and out-of-folder references still fail the gate.

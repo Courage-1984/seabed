@@ -16,8 +16,8 @@
  * already-decided and are never overwritten -- they still participate in the
  * recency history so later assignments space themselves around them.
  *
- * Forward-going daily builds do NOT use this script: the brief rolls
- * (seed + 5) % 12 and (seed + 11) % 12 per AGENTS.md §11 / §13.
+ * Forward-going daily builds do NOT use this script: their slot and effect come
+ * from the Rotation schedule rolled by scripts/lib/rotation.js (AGENTS.md §16).
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';

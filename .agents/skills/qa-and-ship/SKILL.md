@@ -15,12 +15,12 @@ Before marking pass: confirm the brief’s **layout structural signature** is vi
 
 ## Steps
 
-1. From repo root: `npm run check:contract -- <slug>` (meta, layoutFamily, hero file, favicon, no raster leftovers).
+1. From repo root: `npm run check:contract -- <slug>` (meta, layoutFamily, styleFamily + palette tokens, hero file, favicon, no raster leftovers), then `npm run check:variety -- <slug>`. The variety check fails if layout, style family, fonts, palette fingerprint, slot or effect repeat recent sites. Re-resolve with `npm run roll -- --for <slug>` (`AGENTS.md` §16).
 2. **Copy depth (fail-qa-10pct):** `npm run check:copy-depth -- <slug> <floor>` using §3 word floor (or set `meta.wordFloor` and omit floor). If it exits non-zero, expand §4b copy and re-check before proceeding.
 3. `npm run build`
 4. `npm run qa -- <slug>` (includes hub `index.html` by default; writes `qa-report.json` with `summary` + `pages`, plus screenshots unless `CI=true`).
 5. `npm run qa:visual -- <slug>`, then look at every contact sheet in `qa-screenshots/<slug>/INDEX.md` and record the review in `audit/visual-reviews/<slug>.md` (AGENTS.md §14). Verify with `npm run check:vision -- <slug>`.
-6. `npm run check:ship -- <slug> --floor <floor>` — re-checks copy-depth + contract + assets + the visual review + clean report pages for the slug and hub. Prefer this over hand-parsing the report; still confirm `summary` for the slug.
+6. `npm run check:ship -- <slug> --floor <floor>` — re-checks copy-depth + contract + variety + assets + the visual review + clean report pages for the slug and hub. Prefer this over hand-parsing the report; still confirm `summary` for the slug.
 
    The ship gate now also fails `qa-report-stale` when `qa-report.json` describes a build that no longer matches the source on disk. If you edit the site after running QA, rebuild and re-run it.
 6. Fix failures in priority order:
@@ -40,6 +40,7 @@ Before marking pass: confirm the brief’s **layout structural signature** is vi
 
 - `"standard": "v2"`
 - `"layoutFamily": "<exact family from brief §3 / design-and-build>"`
+- `"styleFamily"`, `"tone"`, `"sector"` — exact names from the brief (or from `npm run roll -- --for <slug>` if the variety check forced a re-roll)
 - `"created": "<YYYY-MM-DD>"` — UTC ship/build day (set at scaffold; confirm here if missing)
 - `"wordFloor": <n>` when known from brief §3 (helps future `check:copy-depth` / `check:ship`)
 - `"qa": "v2-pass"` — **only** after step 9
@@ -50,6 +51,7 @@ Before marking pass: confirm the brief’s **layout structural signature** is vi
 - Image strategy per major asset + WebP confirmed
 - Copy depth result (`COPY_DEPTH_PASS` wording)
 - Video placement slot + signature effect implemented
+- Style family + font pairing implemented, and `VARIETY_PASS` (or which values were re-rolled and why)
 - `## Visual Audit` section: each issue found and the fix applied, or the count of contact sheets reviewed
 - `Responsive: PASS desktop + mobile` (required wording when shipping)
 - QA / `SHIP_PASS` status
@@ -62,6 +64,7 @@ Before marking pass: confirm the brief’s **layout structural signature** is vi
 - Set `"qa": "v2-pass"` while the site is missing ANY image asset or its optimized video (`.webm` + `.mp4` + poster). All image assets and the video MUST be physically present and integrated before shipping.
 - Set `"qa": "v2-pass"` before completing the **Extreme Visual Audit** in `AGENTS.md` §14 — reviewing every contact sheet in `qa-screenshots/<slug>/INDEX.md` and recording it in `audit/visual-reviews/<slug>.md` so `npm run check:vision -- <slug>` passes.
 - Set `"qa": "v2-pass"` while `npm run check:assets -- <slug>` fails. Assets are site-private (`AGENTS.md` §12).
+- Set `"qa": "v2-pass"` while `npm run check:variety -- <slug>` fails. The site repeats the sites before it (`AGENTS.md` §16).
 - Set `"qa": "v2-pass"` while image-generation quota is exhausted and any asset is still a placeholder (`AGENTS.md` §15).
 - Commit, push, or open PRs unless explicitly asked - @.agents/rules/03-repo-safety.md.
 - "Fix" unrelated sites unless you introduced a regression.

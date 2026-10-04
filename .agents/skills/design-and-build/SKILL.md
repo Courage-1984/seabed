@@ -50,13 +50,14 @@ Before `acquire-images`:
 1. **Semantic HTML** — landmarks, heading hierarchy, button/link semantics.
 2. **Meta** — title, description, OG tags, `lang`, viewport.
 3. **Brand-first hero** — per @.agents/rules/02-frontend-design.md (hero budget, first viewport).
-4. **CSS** — `:root` colour variables from §5; fluid type/spacing; breakpoints for 360–1440; **no horizontal overflow**.
-5. **Fonts** — §6 pairing only; banned display faces per @.agents/rules/02-frontend-design.md.
-6. **Motion** — implement the full motion budget in `AGENTS.md` §13: an IntersectionObserver scroll-reveal system, the rolled `signatureEffect`, the layout family's signature motion, the 2–3 ideas from §6, 2 micro-interactions, and a `prefers-reduced-motion` block that neutralises everything.
-7. **Favicon** — custom `assets/favicon.svg`.
-8. **Distinctiveness** — do not clone another site in this repo.
-9. **Video** — build the placement slot so it works with **no video present** (poster/still treatment), then layer the video in when it arrives. Placement comes from the brief and is seeded, not derived from the date — canonical rule in `AGENTS.md` §11, slot specs in `scripts/lib/video-placements.js`. Text over video always needs a scrim.
-10. Reference `./assets/<name>.webp` paths; @.agents/skills/acquire-images/SKILL.md must resolve them before QA.
+4. **CSS** — `:root` colour variables from §5, including `--color-bg`, `--color-text`, `--color-primary`, `--color-accent` by exactly those names; fluid type/spacing; breakpoints for 360–1440; **no horizontal overflow**.
+5. **Fonts** — §6 pairing only (it is the style family's rolled pairing); banned display faces per @.agents/rules/02-frontend-design.md.
+6. **Style family** — implement `meta.styleFamily` for real: its palette direction, motifs (surfaces, rules, shapes, CTA shape, radius) and imagery register, per `scripts/lib/style-families.js`. The grey ground + navy ink + amber accent + heavy grotesque + mono look belongs to `industrial safety-signage` only. `npm run check:variety` fails it anywhere else (`AGENTS.md` §16).
+7. **Motion** — implement the full motion budget in `AGENTS.md` §13: an IntersectionObserver scroll-reveal system, the rolled `signatureEffect`, the layout family's signature motion, the 2–3 ideas from §6, 2 micro-interactions, and a `prefers-reduced-motion` block that neutralises everything.
+8. **Favicon** — custom `assets/favicon.svg`.
+9. **Distinctiveness** — do not clone another site in this repo.
+10. **Video** — build the placement slot so it works with **no video present** (poster/still treatment), then layer the video in when it arrives. Placement comes from the brief and is seeded, not derived from the date — canonical rule in `AGENTS.md` §11, slot specs in `scripts/lib/video-placements.js`. Text over video always needs a scrim.
+11. Reference `./assets/<name>.webp` paths; @.agents/skills/acquire-images/SKILL.md must resolve them before QA.
 
 ## Responsive mindset
 
