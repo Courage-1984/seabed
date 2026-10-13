@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false">
+  <!-- Outer Foundry Earth-Collar Rim with Industrial Bolt Notches -->
+  <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="3.5" />
+  <circle cx="32" cy="32" r="23" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2" />
+  
+  <!-- Foundry Bolt Flange Notches (8 points) -->
+  <rect x="30" y="2" width="4" height="5" rx="1" fill="currentColor" />
+  <rect x="30" y="57" width="4" height="5" rx="1" fill="currentColor" />
+  <rect x="2" y="30" width="5" height="4" rx="1" fill="currentColor" />
+  <rect x="57" y="30" width="5" height="4" rx="1" fill="currentColor" />
+  <rect x="10.5" y="10.5" width="4" height="4" rx="0.8" transform="rotate(45 12.5 12.5)" fill="currentColor" />
+  <rect x="49.5" y="10.5" width="4" height="4" rx="0.8" transform="rotate(45 51.5 12.5)" fill="currentColor" />
+  <rect x="10.5" y="49.5" width="4" height="4" rx="0.8" transform="rotate(45 12.5 51.5)" fill="currentColor" />
+  <rect x="49.5" y="49.5" width="4" height="4" rx="0.8" transform="rotate(45 51.5 51.5)" fill="currentColor" />
+
+  <!-- Flanking Botanical Fronds (Pacific Palm & Scottish Bracken Ferns) -->
+  <!-- Left Fern Frond -->
+  <path d="M 12 32 C 14 26 18 20 23 16 C 22 20 20 24 17 28 C 16 25 18 22 17 20 M 15 36 C 18 31 22 27 25 24 M 14 42 C 17 38 21 35 24 33" 
+        fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+  
+  <!-- Right Fern Frond -->
+  <path d="M 52 32 C 50 26 46 20 41 16 C 42 20 44 24 47 28 C 48 25 46 22 47 20 M 49 36 C 46 31 42 27 39 24 M 50 42 C 47 38 43 35 40 33" 
+        fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+
+  <!-- Subterranean Volcanic Basalt Hearth Bed & Core Flames -->
+  <path d="M 23 44 C 27 47 37 47 41 44 C 40 40 38 38 36 37 C 38 34 38 30 36 26 C 34 29 33 32 32 34 C 31 31 30 28 28 24 C 26 29 27 33 29 36 C 26 38 24 41 23 44 Z" 
+        fill="currentColor" />
+  <!-- Internal Heat Core Flame Cutout -->
+  <path d="M 32 42 C 34 42 35 40 35 38 C 34 36 33 35 32 33 C 31 35 30 36 29 38 C 29 40 30 42 32 42 Z" 
+        fill="var(--color-bg, #081f13)" />
+</svg>

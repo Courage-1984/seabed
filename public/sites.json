@@ -1861,6 +1861,28 @@
     "styleFamily": "industrial safety-signage"
   },
   {
+    "title": "Dentdale Orthotic Castworks",
+    "blurb": "Anatomical immobilisation engineered from hydrostatic negative casts and drafted as millimeter-precise architectural armatures.",
+    "hero": "assets/dentdale-tlso-cyanotype-loft.webp",
+    "layoutFamily": "horizontal-scroll band",
+    "styleFamily": "cyanotype blueprint",
+    "tone": "dry expert",
+    "sector": "health / wellness",
+    "tags": [
+      "clinical",
+      "rehabilitation",
+      "diagnostics"
+    ],
+    "created": "2026-10-06",
+    "wordFloor": 650,
+    "videoPlacement": "hover reveal",
+    "signatureEffect": "staggered letter-by-letter headline",
+    "standard": "v2",
+    "video": "assets/dentdale-orthotic-castworks-hover-reveal.webm",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-10/dentdale-orthotic-castworks"
+  },
+  {
     "title": "Megabivvy — Colossal Alpine Expedition Architecture",
     "blurb": "Monumental tensioned canvas domes and communal mountain pavilions engineered to withstand Force 11 plateau squalls.",
     "hero": "assets/megabivvy-hero-cairngorm.webp",
@@ -1876,7 +1898,52 @@
     "videoPlacement": "marquee strip",
     "signatureEffect": "sticky section pinning with cross-fade",
     "standard": "v2",
+    "qa": "v2-pass",
     "siteFolder": "./sites/2026-10/megabivvy",
     "styleFamily": "industrial safety-signage"
+  },
+  {
+    "title": "SiloShield Capping Solutions",
+    "blurb": "Rapid-deployment mechanical flood capping heads, pneumatic annular grout collars, and ballast-weighted sealing lids engineered to secure decommissioned municipal grain silos, ventilation shafts, and deep stormwater caissons against catastrophic back-flooding during extreme 6-hour tidal surge windows.",
+    "hero": "assets/siloshield-hero-caisson.webp",
+    "layoutFamily": "ultra-minimal full-bleed",
+    "tags": [
+      "infrastructure",
+      "engineering",
+      "utilities"
+    ],
+    "created": "2026-10-12",
+    "wordFloor": 1100,
+    "video": "assets/siloshield-capping-solutions-section-transition-band.webm",
+    "videoPlacement": "section transition band",
+    "signatureEffect": "drifting grain overlay",
+    "styleFamily": "swiss international",
+    "tone": "warm maker",
+    "sector": "civic / infrastructure",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-10/siloshield-capping-solutions"
+  },
+  {
+    "title": "The Pit-Roast Hearthwrights",
+    "blurb": "Subterranean hearth castings, refractory basalt thermal cores, and engineered hydraulic earth-pit cranes for ancestral whole-carcass pyres.",
+    "hero": "assets/pit-hearth-hero-embers.webp",
+    "layoutFamily": "cinematic full-bleed canvas",
+    "styleFamily": "tropical vivid",
+    "tone": "sharp industrial",
+    "sector": "food / hospitality",
+    "tags": [
+      "specialty-food",
+      "foundry",
+      "catering"
+    ],
+    "created": "2026-10-13",
+    "wordFloor": 1900,
+    "video": "assets/the-pit-roast-hearthwrights-footer-ambient.webm",
+    "videoPlacement": "footer ambient",
+    "signatureEffect": "masked scroll-through type",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-10/the-pit-roast-hearthwrights"
   }
 ]

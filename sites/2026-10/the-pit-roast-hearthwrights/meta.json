@@ -1,0 +1,21 @@
+{
+  "title": "The Pit-Roast Hearthwrights",
+  "blurb": "Subterranean hearth castings, refractory basalt thermal cores, and engineered hydraulic earth-pit cranes for ancestral whole-carcass pyres.",
+  "hero": "assets/pit-hearth-hero-embers.webp",
+  "layoutFamily": "cinematic full-bleed canvas",
+  "styleFamily": "tropical vivid",
+  "tone": "sharp industrial",
+  "sector": "food / hospitality",
+  "tags": [
+    "specialty-food",
+    "foundry",
+    "catering"
+  ],
+  "created": "2026-10-13",
+  "wordFloor": 1900,
+  "video": "assets/the-pit-roast-hearthwrights-footer-ambient.webm",
+  "videoPlacement": "footer ambient",
+  "signatureEffect": "masked scroll-through type",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

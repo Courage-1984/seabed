@@ -1,0 +1,21 @@
+{
+  "title": "SiloShield Capping Solutions",
+  "blurb": "Rapid-deployment mechanical flood capping heads, pneumatic annular grout collars, and ballast-weighted sealing lids engineered to secure decommissioned municipal grain silos, ventilation shafts, and deep stormwater caissons against catastrophic back-flooding during extreme 6-hour tidal surge windows.",
+  "hero": "assets/siloshield-hero-caisson.webp",
+  "layoutFamily": "ultra-minimal full-bleed",
+  "tags": [
+    "infrastructure",
+    "engineering",
+    "utilities"
+  ],
+  "created": "2026-10-12",
+  "wordFloor": 1100,
+  "video": "assets/siloshield-capping-solutions-section-transition-band.webm",
+  "videoPlacement": "section transition band",
+  "signatureEffect": "drifting grain overlay",
+  "styleFamily": "swiss international",
+  "tone": "warm maker",
+  "sector": "civic / infrastructure",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

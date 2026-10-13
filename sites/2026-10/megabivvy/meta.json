@@ -13,5 +13,6 @@
   "video": "assets/megabivvy-marquee-strip.webm",
   "videoPlacement": "marquee strip",
   "signatureEffect": "sticky section pinning with cross-fade",
-  "standard": "v2"
+  "standard": "v2",
+  "qa": "v2-pass"
 }

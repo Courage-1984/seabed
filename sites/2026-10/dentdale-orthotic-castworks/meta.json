@@ -1,0 +1,21 @@
+{
+  "title": "Dentdale Orthotic Castworks",
+  "blurb": "Anatomical immobilisation engineered from hydrostatic negative casts and drafted as millimeter-precise architectural armatures.",
+  "hero": "assets/dentdale-tlso-cyanotype-loft.webp",
+  "layoutFamily": "horizontal-scroll band",
+  "styleFamily": "cyanotype blueprint",
+  "tone": "dry expert",
+  "sector": "health / wellness",
+  "tags": [
+    "clinical",
+    "rehabilitation",
+    "diagnostics"
+  ],
+  "created": "2026-10-06",
+  "wordFloor": 650,
+  "videoPlacement": "hover reveal",
+  "signatureEffect": "staggered letter-by-letter headline",
+  "standard": "v2",
+  "video": "assets/dentdale-orthotic-castworks-hover-reveal.webm",
+  "qa": "v2-pass"
+}
