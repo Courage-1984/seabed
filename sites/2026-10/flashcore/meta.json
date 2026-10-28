@@ -1,0 +1,21 @@
+{
+  "title": "FlashCore",
+  "blurb": "A cryogenic core repository and field station in the Amargosa Desert, freezing flash-flood sediment in situ since 1968.",
+  "hero": "assets/flashcore-amargosa-station-desert-modern.webp",
+  "layoutFamily": "neo-brutalist masonry",
+  "styleFamily": "mid-century desert modern",
+  "tone": "calm clinical",
+  "sector": "education / research & archives",
+  "tags": [
+    "archive",
+    "laboratory",
+    "field-study"
+  ],
+  "created": "2026-10-28",
+  "wordFloor": 1100,
+  "video": "assets/flashcore-inline-process-demo.webm",
+  "videoPlacement": "inline process demo",
+  "signatureEffect": "numeric counter roll-up",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

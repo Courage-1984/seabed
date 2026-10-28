@@ -559,7 +559,8 @@ async function runStaticChecks(url) {
             // Chrome refuses to encode a capture taller than 16384px, and some
             // of these pages run past 19000px on mobile. Clip to the cap rather
             // than let the whole sweep fail on a ProtocolError.
-            const CAPTURE_LIMIT = 16384;
+            const dpr = device.viewport?.deviceScaleFactor || 1;
+            const CAPTURE_LIMIT = Math.floor(16384 / dpr);
             const metrics = await page.evaluate(() => ({
               height: document.documentElement.scrollHeight,
               width: document.documentElement.scrollWidth,

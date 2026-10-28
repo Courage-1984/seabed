@@ -1883,6 +1883,49 @@
     "siteFolder": "./sites/2026-10/dentdale-orthotic-castworks"
   },
   {
+    "title": "FlashCore",
+    "blurb": "A cryogenic core repository and field station in the Amargosa Desert, freezing flash-flood sediment in situ since 1968.",
+    "hero": "assets/flashcore-amargosa-station-desert-modern.webp",
+    "layoutFamily": "neo-brutalist masonry",
+    "styleFamily": "mid-century desert modern",
+    "tone": "calm clinical",
+    "sector": "education / research & archives",
+    "tags": [
+      "archive",
+      "laboratory",
+      "field-study"
+    ],
+    "created": "2026-10-28",
+    "wordFloor": 1100,
+    "video": "assets/flashcore-inline-process-demo.webm",
+    "videoPlacement": "inline process demo",
+    "signatureEffect": "numeric counter roll-up",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-10/flashcore"
+  },
+  {
+    "title": "M-28 Lugger & Loom Guild",
+    "blurb": "Open-ocean sail-freight under hand-loomed flax: three Cornish gaff luggers and the Douarnenez weavers who clothe them, bartering tonnage since 1928.",
+    "hero": "assets/m-28-gaff-lugger-under-flax-canvas.webp",
+    "layoutFamily": "editorial magazine",
+    "styleFamily": "folk pattern craft",
+    "tone": "adventurous field",
+    "sector": "maritime / logistics & freight",
+    "tags": [
+      "freight",
+      "trade",
+      "fabrication"
+    ],
+    "created": "2026-10-27",
+    "wordFloor": 1100,
+    "video": "assets/m-28-lugger-and-loom-guild-hero-inset-frame.webm",
+    "videoPlacement": "hero inset frame",
+    "signatureEffect": "CSS 3D card tilt",
+    "standard": "v2",
+    "siteFolder": "./sites/2026-10/m-28-lugger-and-loom-guild"
+  },
+  {
     "title": "Megabivvy — Colossal Alpine Expedition Architecture",
     "blurb": "Monumental tensioned canvas domes and communal mountain pavilions engineered to withstand Force 11 plateau squalls.",
     "hero": "assets/megabivvy-hero-cairngorm.webp",

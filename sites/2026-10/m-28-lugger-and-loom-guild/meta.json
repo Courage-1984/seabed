@@ -1,0 +1,16 @@
+{
+  "title": "M-28 Lugger & Loom Guild",
+  "blurb": "Open-ocean sail-freight under hand-loomed flax: three Cornish gaff luggers and the Douarnenez weavers who clothe them, bartering tonnage since 1928.",
+  "hero": "assets/m-28-gaff-lugger-under-flax-canvas.webp",
+  "layoutFamily": "editorial magazine",
+  "styleFamily": "folk pattern craft",
+  "tone": "adventurous field",
+  "sector": "maritime / logistics & freight",
+  "tags": ["freight", "trade", "fabrication"],
+  "created": "2026-10-27",
+  "wordFloor": 1100,
+  "video": "assets/m-28-lugger-and-loom-guild-hero-inset-frame.webm",
+  "videoPlacement": "hero inset frame",
+  "signatureEffect": "CSS 3D card tilt",
+  "standard": "v2"
+}
