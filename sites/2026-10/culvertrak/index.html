@@ -1,0 +1,962 @@
+<!DOCTYPE html><html lang="en-GB"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Culvertrak | Subterranean Culvert Telemetry Beneath Dungeness</title>
+  <meta name="description" content="Culvertrak operates twenty-four kilometres of pre-stressed concrete drainage galleries across Dungeness to protect coastal infrastructure from seawater inundation.">
+  <meta property="og:title" content="Culvertrak | Subterranean Culvert Telemetry">
+  <meta property="og:description" content="Subterranean drainage engineering authority and automated hydraulic telemetry network monitoring 24 km of concrete culverts across Dungeness.">
+  <meta property="og:image" content="./assets/culvertrak-sub-shingle-headworks.webp">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&amp;family=Young+Serif&amp;display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js" defer=""></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main technical telemetry</a>
+
+  <!-- Top System Broadcast Bar -->
+  <aside class="telemetry-ticker-bar" aria-label="Live System Broadcast">
+    <div class="ticker-inner">
+      <span class="ticker-item"><strong class="ticker-label">STATION:</strong> OUTFALL-04 DUNGENESS POINT</span>
+      <span class="ticker-separator">/</span>
+      <span class="ticker-item"><strong class="ticker-label">GRID REF:</strong> TR 089 169</span>
+      <span class="ticker-separator">/</span>
+      <span class="ticker-item"><strong class="ticker-label">DATUM:</strong> -4.00m ODN INVERT</span>
+      <span class="ticker-separator">/</span>
+      <span class="ticker-item"><strong class="ticker-label">CHANNEL TIDE:</strong> +2.85m ODN (FLOOD RISING)</span>
+      <span class="ticker-separator">/</span>
+      <span class="ticker-item"><strong class="ticker-label">HYDROSTATIC HEAD:</strong> 68.4 kPa</span>
+      <span class="ticker-separator">/</span>
+      <span class="ticker-item ticker-status"><span class="status-indicator-dot" aria-hidden="true"></span> READINESS: DEFENSE STATE 1</span>
+    </div>
+  </aside>
+
+  <!-- Primary Site Header & Nav -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand-block">
+        <img src="./assets/favicon.svg" alt="Culvertrak Survey Mark" class="brand-emblem" width="28" height="28" loading="lazy">
+        <div class="brand-text">
+          <span class="brand-title">CULVERTRAK</span>
+          <span class="brand-sub">HYDRAULIC TELEMETRY AUTHORITY</span>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Technical Directory">
+        <ul class="nav-list">
+          <li><a href="#sector-culvert-matrix" class="nav-link">Arterial Matrix</a></li>
+          <li><a href="#culvert-inspection-feed" class="nav-link">CCTV Profiling</a></li>
+          <li><a href="#emergency-dewatering-spec" class="nav-link">Surge Sluice</a></li>
+          <li><a href="#saline-piezometer-telemetry" class="nav-link">Piezometry</a></li>
+          <li><a href="#scour-and-sediment-logs" class="nav-link">Scour Logs</a></li>
+          <li><a href="#station-dispatch-intake" class="nav-cta-btn">Submit Observation</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Section 1: Hero Console -->
+    <section id="hero" class="console-section hero-section" aria-labelledby="hero-heading">
+      <div class="section-container">
+        <!-- Masthead Meta Header -->
+        <header class="console-masthead-header">
+          <div class="masthead-badge-row">
+            <span class="spec-badge">ESTABLISHED 1961</span>
+            <span class="spec-badge">DOC REF: CT-OPS-2026-X</span>
+            <span class="spec-badge spec-badge-accent">DEFENSE GRADE SPECIFICATION</span>
+            <span class="spec-badge">KENT COASTAL SECTOR 04</span>
+          </div>
+          <h1 id="hero-heading" class="hero-title">Subterranean Culvert Telemetry Beneath the Dungeness Shingle Foreland</h1>
+          <p class="hero-subhead">Culvertrak operates twenty-four kilometres of pre-stressed concrete drainage galleries to protect coastal infrastructure from seawater inundation.</p>
+        </header>
+
+        <!-- Technical Telemetry Data Grid -->
+        <div class="hero-status-strip" role="region" aria-label="System Telemetry Parameters">
+          <div class="telemetry-cell">
+            <span class="cell-label">SURVEYED CONDUIT GRID</span>
+            <span class="cell-value">24,180 <abbr title="metres">m</abbr></span>
+            <span class="cell-sub">Precast C40 Concrete</span>
+          </div>
+          <div class="telemetry-cell">
+            <span class="cell-label">OUTLET MANIFOLDS</span>
+            <span class="cell-value">48 STATIONS</span>
+            <span class="cell-sub">Triple Flap Protection</span>
+          </div>
+          <div class="telemetry-cell">
+            <span class="cell-label">INVERT VELOCITY THRESHOLD</span>
+            <span class="cell-value">≥ 1.20 <abbr title="metres per second">m/s</abbr></span>
+            <span class="cell-sub">Self-Scouring Flume</span>
+          </div>
+          <div class="telemetry-cell">
+            <span class="cell-label">AQUIFER BOUNDARY HEAD</span>
+            <span class="cell-value">+1.84 <abbr title="metres Ordnance Datum Newlyn">m ODN</abbr></span>
+            <span class="cell-sub">Positive Hydraulic Barrier</span>
+          </div>
+        </div>
+
+        <!-- Section 4a Verbatim Intro Paragraph -->
+        <div class="hero-verbatim-body">
+          <p class="lead-text">
+            Forty metres beneath the shifting flint gravel of Dungeness, our automated culvert network diverts storm run-off and controls subterranean saline water intrusion across forty-eight square kilometres of low-lying coastal marsh. The installation manages forty-eight gravity-fed drainage ducts equipped with motorized penstocks, acoustic flow meters, and autonomous crawler inspection tracks. All culverts operate under continuous hydrostatic pressure logging to guarantee immediate freshwater discharge during severe English Channel storm surges.
+          </p>
+        </div>
+
+        <!-- Hero Technical Plate & Station Overview -->
+        <div class="hero-plate-container">
+          <div class="plate-frame">
+            <div class="plate-header">
+              <span class="plate-title">FIG 01 // STATION OUTFALL 04 HEADWORKS PENSTOCK CASING (CHAINAGE 0+000)</span>
+              <span class="plate-meta">BEARING 142° SSE / APERTURE F/8 / EXPOSURE 1/250s</span>
+            </div>
+            <img src="./assets/culvertrak-sub-shingle-headworks.webp" alt="Precast concrete drainage headworks and penstock gate emerging from the Dungeness shingle foreland" class="plate-image" width="1280" height="720" fetchpriority="high">
+            <div class="plate-footer">
+              <span class="plate-caption">Hydraulic thrust-bored intake structure anchoring arterial culvert CT-01 at Dungeness Point. Reinforced C40 concrete wingwalls withstand 7.2-metre Channel spring tidal heads without settlement.</span>
+              <a href="#sector-culvert-matrix" class="spec-button">Access Arterial Matrix ↓</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Flagship Narrative (Verbatim §4a) -->
+    <section id="sub-shingle-culvert-doctrine" class="console-section flagship-section" aria-labelledby="flagship-heading">
+      <div class="section-container">
+        <header class="section-header-band">
+          <div class="section-title-wrap">
+            <span class="section-index-num">SEC 02 // CIVIL HYDROLOGY</span>
+            <h2 id="flagship-heading" class="section-title">Sub-Shingle Hydraulic Stabilization</h2>
+          </div>
+          <div class="section-stamp">
+            <span class="stamp-pill">STATUTORY SPECIFICATION</span>
+            <span class="stamp-meta">BRITISH STANDARD BS EN 1992-3</span>
+          </div>
+        </header>
+
+        <div class="spec-sheet-panel">
+          <div class="spec-sheet-header">
+            <span class="spec-title">HYDRAULIC GRADIENT ARREST DOCTRINE // REPORT REF: CT-HYD-1961</span>
+            <span class="spec-status"><span class="status-indicator-dot" aria-hidden="true"></span> ACTIVE MANDATE</span>
+          </div>
+          <div class="flagship-copy-block">
+            <p>
+              The Dungeness cuspate foreland constitutes an unstable geological mass of over twelve billion tonnes of flint pebbles overlying permeable sand and silty clay. Rainwater filtering through this vast gravel sponge gathers in a lens of fresh groundwater resting directly atop dense, encroaching seawater. During spring tides combined with south-westerly gales, hydraulic head pressure from the Channel forces saltwater through deep permeable strata, threatening to breach coastal utility basements and contaminate municipal boreholes across Romney Marsh.
+            </p>
+            <p>
+              Culvertrak’s sub-surface galleries establish an artificial hydraulic gradient that arrests saline migration at the shoreline perimeter. Precast concrete culvert pipes up to 3.6 metres in diameter are driven horizontally through the gravel bed using hydraulic thrust boring, forming continuous drainage conduits with invert levels set precisely four metres below Ordnance Datum Newlyn. Self-scouring flume profiles maintain minimum self-cleaning velocities of 1.2 metres per second even during low-flow summer intervals, preventing fine marine silt from choking the outfall valves. When sea levels exceed the coastal drainage threshold, automated counter-weighted flap gates seal within three seconds, redirecting drainage discharge into high-capacity dewatering sumps for pressurized offshore release.
+            </p>
+          </div>
+
+          <div class="spec-plate-aside">
+            <div class="spec-plate-inner">
+              <img src="./assets/culvert-precast-barrel-stockyard.webp" alt="Rows of large precast concrete culvert pipes in an outdoor engineering storage depot" class="aside-image" width="800" height="600" loading="lazy">
+              <div class="aside-caption">
+                <strong>PLATE 2A // BARREL STOCKYARD:</strong> 3,600mm pre-stressed C40 concrete culvert segments staged at Lydd depot prior to subterranean hydraulic thrust boring beneath flint shingle beds.
+              </div>
+            </div>
+            <div class="spec-data-sidebar">
+              <h3 class="sidebar-heading">Hydrogeological Constants</h3>
+              <ul class="spec-bullet-list">
+                <li><strong>Gravel Mass:</strong> 1.25 × 10<sup>10</sup> tonnes flint pebble matrix</li>
+                <li><strong>Infiltration Permeability:</strong> k = 2.4 × 10<sup>-2</sup> m/s</li>
+                <li><strong>Ghyben-Herzberg Ratio:</strong> 1:40 freshwater-to-saline head ratio</li>
+                <li><strong>Mean Spring Tidal Swing:</strong> 7.20 metres Ordnance Datum Newlyn</li>
+                <li><strong>C40 Concrete Sulfate Resistance:</strong> Class XA3 chemical exposure rating</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Master Culvert Matrix & Structural Spec Sheet -->
+    <section id="sector-culvert-matrix" class="console-section matrix-section" aria-labelledby="matrix-heading">
+      <div class="section-container">
+        <header class="section-header-band">
+          <div class="section-title-wrap">
+            <span class="section-index-num">SEC 03 // INFRASTRUCTURE REGISTER</span>
+            <h2 id="matrix-heading" class="section-title">Master Conduit Inventory &amp; Operational Ratings</h2>
+          </div>
+          <div class="section-stamp">
+            <span class="stamp-pill">LIVE REGISTER</span>
+            <span class="stamp-meta">ALL 8 ARTERIAL SECTORS SYNCHRONISED</span>
+          </div>
+        </header>
+
+        <p class="section-desc">
+          Culvertrak maintains twenty-four thousand linear metres of subterranean precast concrete conduits. The register below details hydraulic invert levels, bore dimensions, material structural specifications, and maximum non-surcharging discharge capacities under gravity flow conditions.
+        </p>
+
+        <!-- Monospace-led Spec Sheet Table -->
+        <div class="spec-sheet-panel">
+          <div class="table-scroll-container">
+            <table class="terminal-data-table" aria-label="Master Culvert Conduit Inventory">
+              <thead>
+                <tr>
+                  <th scope="col" class="th-sticky">Conduit ID</th>
+                  <th scope="col">Sector Designation</th>
+                  <th scope="col">Invert Datum</th>
+                  <th scope="col">Bore Diameter</th>
+                  <th scope="col">Material Spec</th>
+                  <th scope="col">Max Q (<abbr title="cubic metres per second">m³/s</abbr>)</th>
+                  <th scope="col">Velocity (<abbr title="metres per second">m/s</abbr>)</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody id="matrix-tbody">
+                <tr class="data-row" data-decode-row="1">
+                  <td class="td-id">CT-01</td>
+                  <td class="td-desc">Point Outfall Arterial</td>
+                  <td class="td-val">-4.20m ODN</td>
+                  <td class="td-val">3,600 mm</td>
+                  <td class="td-spec">Pre-stressed C40 Concrete</td>
+                  <td class="td-num">6.80</td>
+                  <td class="td-num">2.45</td>
+                  <td><span class="badge-status badge-active">Active</span></td>
+                </tr>
+                <tr class="data-row" data-decode-row="2">
+                  <td class="td-id">CT-02</td>
+                  <td class="td-desc">West Bay Siphon Line</td>
+                  <td class="td-val">-3.85m ODN</td>
+                  <td class="td-val">2,400 mm</td>
+                  <td class="td-spec">High-Sulfate Resisting Concrete</td>
+                  <td class="td-num">3.20</td>
+                  <td class="td-num">2.10</td>
+                  <td><span class="badge-status badge-active">Active</span></td>
+                </tr>
+                <tr class="data-row" data-decode-row="3">
+                  <td class="td-id">CT-03</td>
+                  <td class="td-desc">Romney Marsh Relief Duct</td>
+                  <td class="td-val">-2.10m ODN</td>
+                  <td class="td-val">1,800 mm</td>
+                  <td class="td-spec">Centrifugally Spun Concrete</td>
+                  <td class="td-num">1.95</td>
+                  <td class="td-num">1.82</td>
+                  <td><span class="badge-status badge-nominal">Nominal</span></td>
+                </tr>
+                <tr class="data-row" data-decode-row="4">
+                  <td class="td-id">CT-04</td>
+                  <td class="td-desc">Lydd Aquifer Interceptor</td>
+                  <td class="td-val">-4.80m ODN</td>
+                  <td class="td-val">2,000 mm</td>
+                  <td class="td-spec">Polymer-Lined Precast Segment</td>
+                  <td class="td-num">2.40</td>
+                  <td class="td-num">1.95</td>
+                  <td><span class="badge-status badge-active">Active</span></td>
+                </tr>
+                <tr class="data-row" data-decode-row="5">
+                  <td class="td-id">CT-05</td>
+                  <td class="td-desc">Power Station Outer Sump</td>
+                  <td class="td-val">-5.10m ODN</td>
+                  <td class="td-val">3,000 mm</td>
+                  <td class="td-spec">Reinforced Sulfate-Proof Concrete</td>
+                  <td class="td-num">5.10</td>
+                  <td class="td-num">2.30</td>
+                  <td><span class="badge-status badge-standby">Standby</span></td>
+                </tr>
+                <tr class="data-row" data-decode-row="6">
+                  <td class="td-id">CT-06</td>
+                  <td class="td-desc">Denge Marsh Infiltration Gallery</td>
+                  <td class="td-val">-1.60m ODN</td>
+                  <td class="td-val">1,200 mm</td>
+                  <td class="td-spec">Porous Concrete Well Pipe</td>
+                  <td class="td-num">0.85</td>
+                  <td class="td-num">1.35</td>
+                  <td><span class="badge-status badge-active">Active</span></td>
+                </tr>
+                <tr class="data-row" data-decode-row="7">
+                  <td class="td-id">CT-07</td>
+                  <td class="td-desc">Shingle Spit Bypass Trunk</td>
+                  <td class="td-val">-3.40m ODN</td>
+                  <td class="td-val">2,400 mm</td>
+                  <td class="td-spec">Pre-stressed C40 Concrete</td>
+                  <td class="td-num">3.10</td>
+                  <td class="td-num">2.05</td>
+                  <td><span class="badge-status badge-active">Active</span></td>
+                </tr>
+                <tr class="data-row" data-decode-row="8">
+                  <td class="td-id">CT-08</td>
+                  <td class="td-desc">East Lade Emergency Flume</td>
+                  <td class="td-val">-2.90m ODN</td>
+                  <td class="td-val">1,500 mm</td>
+                  <td class="td-spec">Spun Cast Iron &amp; Concrete</td>
+                  <td class="td-num">1.40</td>
+                  <td class="td-num">1.60</td>
+                  <td><span class="badge-status badge-nominal">Nominal</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-control-footer">
+            <span class="footer-note">Aggregate Network Gravity Discharge Peak: 24.80 m³/s. Pressure head logged via dual piezometric transducers at 30-second cycles.</span>
+            <a href="#station-dispatch-intake" class="spec-button">Download Sector CAD Sections ↓</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Crawler Inspection Feed & CCTV Terminal (Hosts GRID TILE Video) -->
+    <section id="culvert-inspection-feed" class="console-section crawler-section" aria-labelledby="crawler-heading">
+      <div class="section-container">
+        <header class="section-header-band">
+          <div class="section-title-wrap">
+            <span class="section-index-num">SEC 04 // DIAGNOSTIC CCTV</span>
+            <h2 id="crawler-heading" class="section-title">Autonomous Internal Bore CCTV Profiling</h2>
+          </div>
+          <div class="section-stamp">
+            <span class="stamp-pill">LIVE INSPECTION LOOP</span>
+            <span class="stamp-meta">CRAWLER UNIT MK VII // BORE 03</span>
+          </div>
+        </header>
+
+        <p class="section-desc">
+          Continuous internal condition monitoring verifies pipe barrel roundness, joint sealing integrity, and gravel ingress across all active sectors. Telemetry data from the Mk VII Tracked Bore Crawler is logged at 10-millimetre chainage increments.
+        </p>
+
+        <!-- 4-Cell Telemetry Grid (Cell 2 is the GRID TILE Video) -->
+        <div class="telemetry-bento-grid">
+          <!-- Grid Tile 1: Pipe Ovality Profilometry -->
+          <article class="bento-tile bento-tile-data">
+            <header class="tile-header">
+              <span class="tile-tag">TELEMETRY TILE 01</span>
+              <h3 class="tile-title">Bore Ovality Profilometer</h3>
+            </header>
+            <div class="tile-metric-block">
+              <span class="big-metric">0.14%</span>
+              <span class="metric-label">Observed Cross-Section Ovality</span>
+            </div>
+            <div class="diagnostic-readout-list">
+              <div class="readout-row">
+                <span class="readout-label">Permissible Limit:</span>
+                <span class="readout-value">&lt; 0.20% BS EN 1992</span>
+              </div>
+              <div class="readout-row">
+                <span class="readout-label">Horizontal Axis:</span>
+                <span class="readout-value">2,398.2 mm</span>
+              </div>
+              <div class="readout-row">
+                <span class="readout-label">Vertical Axis:</span>
+                <span class="readout-value">2,401.5 mm</span>
+              </div>
+              <div class="readout-row">
+                <span class="readout-label">Laser Ring Frequency:</span>
+                <span class="readout-value">120 scans / sec</span>
+              </div>
+            </div>
+            <footer class="tile-footer">
+              <span class="tile-status-tag status-pass">✓ STRUCTURAL TOLERANCE MET</span>
+            </footer>
+          </article>
+
+          <!-- Grid Tile 2: Video Player Tile (MANDATORY GRID TILE PLACEMENT SLOT) -->
+          <article class="bento-tile bento-tile-video" id="video-grid-cell">
+            <header class="tile-header">
+              <span class="tile-tag">TELEMETRY TILE 02 // CCTV STREAM</span>
+              <h3 class="tile-title">Live Internal Bore Profiling</h3>
+            </header>
+            <div class="video-frame-container">
+              <video class="inspection-video-element" autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="./assets/culvertrak-grid-tile-poster.webp" aria-label="CCTV crawler inspection feed inside 2,400mm pre-stressed concrete culvert pipe">
+                <source src="./assets/culvertrak-grid-tile.webm" type="video/webm">
+                <source src="./assets/culvertrak-grid-tile.mp4" type="video/mp4">
+              </video>
+              <div class="video-overlay-hud" aria-hidden="true">
+                <div class="hud-top">
+                  <span class="hud-rec"><span class="hud-blinker"></span> CCTV LIVE</span>
+                  <span class="hud-stat">SECTOR CT-01 // CH 1+420m</span>
+                </div>
+                <div class="hud-bottom">
+                  <span class="hud-coords">TR 0891 1694 • INVERT -4.20m ODN</span>
+                  <span class="hud-time">UTC 2026-10-31 12:00:00</span>
+                </div>
+              </div>
+            </div>
+            <footer class="tile-footer video-caption-footer">
+              <p class="video-caption-text">
+                <strong>Bore Crawler 03</strong> inspecting joint seal at Station CT-01, chainage 1+420m beneath Dungeness Foreland gravel beds. Shallow self-scouring flume flow confirms zero silt deposition.
+              </p>
+            </footer>
+          </article>
+
+          <!-- Grid Tile 3: Joint Gap & Infiltration Telemetry -->
+          <article class="bento-tile bento-tile-data">
+            <header class="tile-header">
+              <span class="tile-tag">TELEMETRY TILE 03</span>
+              <h3 class="tile-title">Joint Gap &amp; Flume Velocimetry</h3>
+            </header>
+            <div class="tile-metric-block">
+              <span class="big-metric">1.42 <abbr title="metres per second">m/s</abbr></span>
+              <span class="metric-label">Current Flume Velocity at Invert</span>
+            </div>
+            <div class="diagnostic-readout-list">
+              <div class="readout-row">
+                <span class="readout-label">Joint Gap Reading:</span>
+                <span class="readout-value">3.8 mm (Max 6.0 mm)</span>
+              </div>
+              <div class="readout-row">
+                <span class="readout-label">Neoprene Compression:</span>
+                <span class="readout-value">42% Certified Seal</span>
+              </div>
+              <div class="readout-row">
+                <span class="readout-label">Flint Occlusion Depth:</span>
+                <span class="readout-value">12 mm (Scour Active)</span>
+              </div>
+              <div class="readout-row">
+                <span class="readout-label">Saline Ingress Leakage:</span>
+                <span class="readout-value">0.00 L/min</span>
+              </div>
+            </div>
+            <footer class="tile-footer">
+              <span class="tile-status-tag status-pass">✓ HYDROSTATIC SEAL INTEGRITY PASS</span>
+            </footer>
+          </article>
+
+          <!-- Grid Tile 4: Crawler Chassis Specs & Imagery -->
+          <article class="bento-tile bento-tile-crawler">
+            <header class="tile-header">
+              <span class="tile-tag">TELEMETRY TILE 04</span>
+              <h3 class="tile-title">Mk VII Profilometer Chassis</h3>
+            </header>
+            <div class="crawler-media-box">
+              <img src="./assets/tracked-bore-inspection-crawler.webp" alt="Tracked robotic culvert inspection crawler with laser profilometer head resting on concrete" class="crawler-still" width="600" height="400" loading="lazy">
+            </div>
+            <div class="crawler-spec-notes">
+              <p>Dual rubber-lug tracks with waterproof IP68 servomotors. High-output ring light and 360-degree rotary ultrasonic profilometer detect microscopic hairline fractures in C40 concrete barrels.</p>
+            </div>
+            <footer class="tile-footer">
+              <a href="#station-dispatch-intake" class="spec-button">Inspect Crawler Log Records ↓</a>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Emergency Dewatering Bypass Sluice (Hosts SCROLL-DRIVEN CLIP-PATH WIPE) -->
+    <section id="emergency-dewatering-spec" class="console-section dewatering-section" aria-labelledby="dewatering-heading">
+      <div class="section-container">
+        <header class="section-header-band">
+          <div class="section-title-wrap">
+            <span class="section-index-num">SEC 05 // DEFENSE READINESS</span>
+            <h2 id="dewatering-heading" class="section-title">High-Capacity Storm Surge Sluice Deployment</h2>
+          </div>
+          <div class="section-stamp">
+            <span class="stamp-pill stamp-alert">SURGE DEPLOYMENT</span>
+            <span class="stamp-meta">12,000 L/s RATED PUMP RELIEF</span>
+          </div>
+        </header>
+
+        <p class="section-desc">
+          When severe gale-force spring tides raise Channel sea levels above the gravity discharge threshold, gravity outfalls seal against backflow. Emergency dewatering systems deploy twin high-capacity axial-flow flood pumps to prevent backpressure inundation across Romney Marsh.
+        </p>
+
+        <!-- Container for Scroll-Driven Clip-Path Wipe Signature Effect -->
+        <div class="wipe-container-wrapper">
+          <div class="wipe-target-panel" id="scroll-wipe-panel">
+            <div class="wipe-panel-header">
+              <span class="panel-tag">EMERGENCY BYPASS PROTOCOL // DIRECTIVE CT-DP-08</span>
+              <span class="panel-surge-indicator">MAX SURGE DISCHARGE: 12,000 L/s</span>
+            </div>
+
+            <div class="wipe-grid-content">
+              <div class="wipe-main-specs">
+                <h3 class="wipe-heading">Axial-Flow Dewatering Assembly</h3>
+                <p class="wipe-body-text">
+                  The Outfall 04 emergency dewatering station is equipped with twin 450-kilowatt vertical axial-flow flood pumps mounted directly within a six-metre-deep reinforced concrete sump chamber. When tidal flaps lock shut, storm run-off accumulates in the retention manifold. Once piezometric head sensors register +1.20 metres ODN, automated variable-speed drives engage pump impeller bank A within twelve seconds. If surge levels persist above +1.50 metres ODN, pump bank B triggers concurrently to achieve the full twelve thousand litres per second discharge rate into the English Channel.
+                </p>
+                <div class="spec-data-triad">
+                  <div class="triad-card">
+                    <span class="triad-val">2 × 450 kW</span>
+                    <span class="triad-lbl">Vertical Axial Pumps</span>
+                    <span class="triad-detail">Submersible induction motors</span>
+                  </div>
+                  <div class="triad-card">
+                    <span class="triad-val">3 Seconds</span>
+                    <span class="triad-lbl">Rapid Sluice Closure</span>
+                    <span class="triad-detail">Counter-weighted flap gates</span>
+                  </div>
+                  <div class="triad-card">
+                    <span class="triad-val">3,200 Nm</span>
+                    <span class="triad-lbl">Diesel Hydraulic Torque</span>
+                    <span class="triad-detail">Auxiliary standby generators</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wipe-media-column">
+                <div class="wipe-image-frame">
+                  <img src="./assets/dewatering-axial-pump-chamber.webp" alt="Heavy axial-flow emergency dewatering pumps in a subterranean reinforced concrete sump chamber" class="wipe-pump-img" width="800" height="600" loading="lazy">
+                  <div class="wipe-image-caption">
+                    <strong>PUMP WELL 04:</strong> Twin 450 kW axial-flow units with plum-painted flanged discharge ducts and high-visibility coral hydraulic valve handles.
+                  </div>
+                </div>
+                <div class="activation-criteria-box">
+                  <h4 class="criteria-title">Trip Conditions</h4>
+                  <ul class="criteria-list">
+                    <li><strong>Trip Alpha:</strong> Groundwater head ≥ +1.20m ODN at Station BH-01</li>
+                    <li><strong>Trip Beta:</strong> English Channel sea level &gt; +3.80m ODN</li>
+                    <li><strong>Trip Gamma:</strong> Wave overtopping crest sensor triggers</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <footer class="wipe-panel-footer">
+              <span class="footer-status-text">SYSTEM STANDBY READINESS: 100% • FUEL RESERVES: 14 DAYS RUNTIME CONTINUOUS</span>
+              <a href="#station-dispatch-intake" class="spec-button">Review Surge Operating Procedure ↓</a>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Saline Piezometer Telemetry Array -->
+    <section id="saline-piezometer-telemetry" class="console-section piezometer-section" aria-labelledby="piezo-heading">
+      <div class="section-container">
+        <header class="section-header-band">
+          <div class="section-title-wrap">
+            <span class="section-index-num">SEC 06 // HYDROLOGICAL TELEMETRY</span>
+            <h2 id="piezo-heading" class="section-title">Groundwater Piezometry and Conductivity Logs</h2>
+          </div>
+          <div class="section-stamp">
+            <span class="stamp-pill">REAL-TIME TELEMETRY</span>
+            <span class="stamp-meta">6 COASTAL BOREHOLES MONITORED</span>
+          </div>
+        </header>
+
+        <p class="section-desc">
+          Automated piezometers record freshwater head pressures, electrical conductivity, and dissolved chloride ion concentrations across six strategic boreholes spanning the Dungeness Foreland to the Romney Marsh perimeter. Data verifies absolute freshwater lens isolation against 7.2m spring tide hydraulic gradients.
+        </p>
+
+        <div class="spec-sheet-panel">
+          <div class="table-scroll-container">
+            <table class="terminal-data-table" aria-label="Groundwater Piezometry and Salinity Telemetry">
+              <thead>
+                <tr>
+                  <th scope="col" class="th-sticky">Borehole ID</th>
+                  <th scope="col">Geographic Transect</th>
+                  <th scope="col">Depth to Aquifer</th>
+                  <th scope="col">Fresh Head (<abbr title="metres Ordnance Datum Newlyn">m ODN</abbr>)</th>
+                  <th scope="col">Conductivity (<abbr title="microSiemens per centimetre">μS/cm</abbr>)</th>
+                  <th scope="col">Chloride (<abbr title="milligrams per litre">mg/L</abbr>)</th>
+                  <th scope="col">24h Saline Trend</th>
+                  <th scope="col">Barrier Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="data-row">
+                  <td class="td-id">BH-01</td>
+                  <td class="td-desc">Outfall Point Foreland</td>
+                  <td class="td-val">42.50 m</td>
+                  <td class="td-num">+1.84</td>
+                  <td class="td-num">412</td>
+                  <td class="td-num">64</td>
+                  <td class="td-trend trend-stable">-0.4% (Stable)</td>
+                  <td><span class="badge-status badge-active">Protected</span></td>
+                </tr>
+                <tr class="data-row">
+                  <td class="td-id">BH-02</td>
+                  <td class="td-desc">Dungeness Shingle West</td>
+                  <td class="td-val">38.00 m</td>
+                  <td class="td-num">+1.62</td>
+                  <td class="td-num">485</td>
+                  <td class="td-num">82</td>
+                  <td class="td-trend trend-stable">+0.1% (Stable)</td>
+                  <td><span class="badge-status badge-active">Protected</span></td>
+                </tr>
+                <tr class="data-row">
+                  <td class="td-id">BH-03</td>
+                  <td class="td-desc">Romney Marsh Perimeter</td>
+                  <td class="td-val">29.50 m</td>
+                  <td class="td-num">+2.10</td>
+                  <td class="td-num">310</td>
+                  <td class="td-num">41</td>
+                  <td class="td-trend trend-stable">-1.2% (Falling)</td>
+                  <td><span class="badge-status badge-active">Protected</span></td>
+                </tr>
+                <tr class="data-row">
+                  <td class="td-id">BH-04</td>
+                  <td class="td-desc">Lydd Aquifer North Boundary</td>
+                  <td class="td-val">34.00 m</td>
+                  <td class="td-num">+1.95</td>
+                  <td class="td-num">365</td>
+                  <td class="td-num">53</td>
+                  <td class="td-trend trend-stable">0.0% (Stable)</td>
+                  <td><span class="badge-status badge-active">Protected</span></td>
+                </tr>
+                <tr class="data-row">
+                  <td class="td-id">BH-05</td>
+                  <td class="td-desc">Denge Marsh South Transect</td>
+                  <td class="td-val">46.20 m</td>
+                  <td class="td-num">+1.48</td>
+                  <td class="td-num">520</td>
+                  <td class="td-num">98</td>
+                  <td class="td-trend trend-stable">+0.8% (Nominal)</td>
+                  <td><span class="badge-status badge-nominal">Nominal</span></td>
+                </tr>
+                <tr class="data-row">
+                  <td class="td-id">BH-06</td>
+                  <td class="td-desc">East Lade Shingle Spit</td>
+                  <td class="td-val">40.80 m</td>
+                  <td class="td-num">+1.70</td>
+                  <td class="td-num">440</td>
+                  <td class="td-num">76</td>
+                  <td class="td-trend trend-stable">-0.2% (Stable)</td>
+                  <td><span class="badge-status badge-active">Protected</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="telemetry-analysis-split">
+            <div class="analysis-media">
+              <img src="./assets/piezometer-sensor-monitoring-head.webp" alt="Groundwater piezometer borehole head and instrumentation collar set in Dungeness shingle gravel" class="piezo-img" width="800" height="600" loading="lazy">
+              <span class="media-sub"><strong>INSTRUMENTATION HEAD:</strong> Stainless-steel transducer casing with brass bleed cock installed at Station BH-01.</span>
+            </div>
+            <div class="analysis-copy">
+              <h3 class="analysis-title">Saline Barrier Hydrodynamic Verification</h3>
+              <p>
+                All recorded chloride ion concentrations remain strictly below the statutory potable drinking water threshold of 250 mg/L (maximum observed: 98 mg/L at BH-05). Positive freshwater head pressures (average +1.78m ODN) actively suppress marine groundwater wedges despite violent semi-diurnal hydrostatic cycling in the adjacent Channel.
+              </p>
+              <div class="analysis-stat-row">
+                <div class="stat-cell">
+                  <span class="stat-number">98 mg/L</span>
+                  <span class="stat-desc">Peak Chloride Observed</span>
+                </div>
+                <div class="stat-cell">
+                  <span class="stat-number">250 mg/L</span>
+                  <span class="stat-desc">Statutory Drinking Ceiling</span>
+                </div>
+                <div class="stat-cell">
+                  <span class="stat-number">100%</span>
+                  <span class="stat-desc">Freshwater Integrity Index</span>
+                </div>
+              </div>
+              <a href="#station-dispatch-intake" class="spec-button">Export Telemetry Dataset (.CSV) ↓</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Silt-Trap Manifest & Scouring Logs -->
+    <section id="scour-and-sediment-logs" class="console-section scour-section" aria-labelledby="scour-heading">
+      <div class="section-container">
+        <header class="section-header-band">
+          <div class="section-title-wrap">
+            <span class="section-index-num">SEC 07 // MAINTENANCE MANIFEST</span>
+            <h2 id="scour-heading" class="section-title">Mechanical Sediment Accumulation &amp; Clean-Out Log</h2>
+          </div>
+          <div class="section-stamp">
+            <span class="stamp-pill">MAINTENANCE SCHEDULE</span>
+            <span class="stamp-meta">SEDIMENT CLEARANCE PROTOCOL</span>
+          </div>
+        </header>
+
+        <p class="section-desc">
+          Mobile flint pebbles and marine silts carried during storm surges are intercepted by heavy subterranean grit chambers before entering primary culvert barrels. The operational mandate strictly prohibits silt accumulation exceeding five per cent cross-sectional occlusion.
+        </p>
+
+        <div class="spec-sheet-panel">
+          <div class="table-scroll-container">
+            <table class="terminal-data-table" aria-label="Silt Trap Maintenance Manifest">
+              <thead>
+                <tr>
+                  <th scope="col" class="th-sticky">Chamber ID</th>
+                  <th scope="col">Facility Location</th>
+                  <th scope="col">Gravel Ingress Rate</th>
+                  <th scope="col">Last Scour Run</th>
+                  <th scope="col">Occlusion %</th>
+                  <th scope="col">Scraper Status</th>
+                  <th scope="col">Next Scheduled Service</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="data-row">
+                  <td class="td-id">ST-01</td>
+                  <td class="td-desc">Main Outfall Scour Basins</td>
+                  <td class="td-val">14.2 tonnes / month</td>
+                  <td class="td-val">2026-10-24</td>
+                  <td class="td-num">1.8%</td>
+                  <td><span class="badge-status badge-active">100% Operational</span></td>
+                  <td class="td-val">2026-11-07</td>
+                </tr>
+                <tr class="data-row">
+                  <td class="td-id">ST-02</td>
+                  <td class="td-desc">West Spit Interceptor</td>
+                  <td class="td-val">8.6 tonnes / month</td>
+                  <td class="td-val">2026-10-26</td>
+                  <td class="td-num">2.4%</td>
+                  <td><span class="badge-status badge-active">100% Operational</span></td>
+                  <td class="td-val">2026-11-09</td>
+                </tr>
+                <tr class="data-row">
+                  <td class="td-id">ST-03</td>
+                  <td class="td-desc">Romney Sluice Settling Trap</td>
+                  <td class="td-val">4.1 tonnes / month</td>
+                  <td class="td-val">2026-10-18</td>
+                  <td class="td-num">0.9%</td>
+                  <td><span class="badge-status badge-standby">Standby / Clean</span></td>
+                  <td class="td-val">2026-11-02</td>
+                </tr>
+                <tr class="data-row">
+                  <td class="td-id">ST-04</td>
+                  <td class="td-desc">Lydd Sump Gravel Trap</td>
+                  <td class="td-val">11.8 tonnes / month</td>
+                  <td class="td-val">2026-10-29</td>
+                  <td class="td-num">3.1%</td>
+                  <td><span class="badge-status badge-active">100% Operational</span></td>
+                  <td class="td-val">2026-11-12</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-control-footer">
+            <span class="footer-note">Continuous scouring flume dynamics ensure hydraulic velocity stays above 1.20 m/s threshold, clearing heavy gravel grains into collection hoppers automatically.</span>
+            <a href="#station-dispatch-intake" class="spec-button">Inspect Maintenance Manifest ↓</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Civil Engineering Inspection Vouchers -->
+    <section id="municipal-survey-proof" class="console-section endorsements-section" aria-labelledby="vouchers-heading">
+      <div class="section-container">
+        <header class="section-header-band">
+          <div class="section-title-wrap">
+            <span class="section-index-num">SEC 08 // STATUTORY ENDORSEMENTS</span>
+            <h2 id="vouchers-heading" class="section-title">Statutory Drainage Authority Survey Endorsements</h2>
+          </div>
+          <div class="section-stamp">
+            <span class="stamp-pill">TRIENNIAL AUDIT</span>
+            <span class="stamp-meta">EXTERNAL ENGINEERING REVIEW</span>
+          </div>
+        </header>
+
+        <p class="section-desc">
+          Culvertrak operations and structural infrastructure undergo continuous independent inspection by regional drainage boards and coastal engineering authorities. Decades of operational resilience under extreme coastal weather confirm system reliability.
+        </p>
+
+        <!-- Verification Metrics Banner -->
+        <div class="stat-banner-strip">
+          <div class="stat-banner-cell">
+            <span class="banner-num">24 km</span>
+            <span class="banner-lbl">Maintained Conduits</span>
+          </div>
+          <div class="stat-banner-cell">
+            <span class="banner-num">48</span>
+            <span class="banner-lbl">Active Outfall Stations</span>
+          </div>
+          <div class="stat-banner-cell">
+            <span class="banner-num">0 Breaches</span>
+            <span class="banner-lbl">Saline Ingress Since 1961</span>
+          </div>
+          <div class="stat-banner-cell">
+            <span class="banner-num">12,000 L/s</span>
+            <span class="banner-lbl">Emergency Sluice Peak Q</span>
+          </div>
+        </div>
+
+        <!-- 3 Formal Inspection Vouchers -->
+        <div class="vouchers-stack">
+          <article class="voucher-card">
+            <header class="voucher-header">
+              <span class="voucher-ref">AUDIT CERTIFICATE: RMIDB-ENG-2023-A</span>
+              <span class="voucher-date">Audited: 14 November 2023</span>
+            </header>
+            <blockquote class="voucher-quote">
+              “During the catastrophic English Channel gales of November 2023, Culvertrak’s Outfall 04 arterial maintained 100% discharge reliability. The automated motorized penstocks sealed within 2.8 seconds of tidal surge inversion, completely preventing seawater backflow into the Romney Marsh freshwater catchment. Structural pipe joint deflection across the 3,600mm arterial remained below 0.15%, well within our strict statutory allowances.”
+            </blockquote>
+            <footer class="voucher-signoff">
+              <strong>Col. Arthur Vance, CEng FICE</strong> • Chief Engineer, Romney Marshes Internal Drainage Board
+            </footer>
+          </article>
+
+          <article class="voucher-card">
+            <header class="voucher-header">
+              <span class="voucher-ref">HYDROLOGICAL AUDIT: SCEA-HYDRO-2024-C</span>
+              <span class="voucher-date">Audited: 09 March 2024</span>
+            </header>
+            <blockquote class="voucher-quote">
+              “Our hydrological logging confirms that Culvertrak’s deep infiltration galleries and automated sluice scours provide verifiable stabilization of the freshwater aquifer boundaries beneath Dungeness. Electrical conductivity measurements across all six monitoring boreholes show zero saline upconing, establishing an unbreached hydraulic equilibrium that shields regional utility corridors.”
+            </blockquote>
+            <footer class="voucher-signoff">
+              <strong>Dr Sarah Lindfield, PhD CGeol</strong> • Principal Hydrologist, Southern Coastal Engineering Authority
+            </footer>
+          </article>
+
+          <article class="voucher-card">
+            <header class="voucher-header">
+              <span class="voucher-ref">INFRASTRUCTURE REVIEW: LCDT-CIV-2025-V</span>
+              <span class="voucher-date">Audited: 22 September 2025</span>
+            </header>
+            <blockquote class="voucher-quote">
+              “Over thirty years of continuous autonomous ultrasonic crawler logs document zero flint gravel intrusion into the secondary drainage galleries. The self-scouring flume profiles designed by Culvertrak maintain required scouring velocities even during severe drought conditions. The asset condition rating across all twenty-four kilometres remains Grade 1 Exceptional.”
+            </blockquote>
+            <footer class="voucher-signoff">
+              <strong>Gerald Kemp, MICE</strong> • Infrastructure Works Manager, Lydd Coastal Defence Trust
+            </footer>
+          </article>
+        </div>
+
+        <div class="voucher-action-bar">
+          <a href="#station-dispatch-intake" class="spec-button">Download Statutory Audit Certificate (PDF) ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 9: Terminal Dispatch & Outfall Fault Intake -->
+    <section id="station-dispatch-intake" class="console-section intake-section" aria-labelledby="intake-heading">
+      <div class="section-container">
+        <header class="section-header-band">
+          <div class="section-title-wrap">
+            <span class="section-index-num">SEC 09 // TECHNICAL INTAKE</span>
+            <h2 id="intake-heading" class="section-title">Submit Culvert Observation or Station Notice</h2>
+          </div>
+          <div class="section-stamp">
+            <span class="stamp-pill stamp-alert">DIRECT DISPATCH</span>
+            <span class="stamp-meta">DUTY DRAINAGE SUPERINTENDENT</span>
+          </div>
+        </header>
+
+        <p class="section-desc">
+          Statutory inspectors, drainage contractors, and utility civil engineers may lodge field observations, piezometric anomalies, or scheduled maintenance requests directly to the Resident Superintendent. All notices are assigned a dispatch incident code within sixty minutes.
+        </p>
+
+        <div class="intake-console-wrapper">
+          <!-- Programmatic Form -->
+          <form class="technical-intake-form" id="culvert-dispatch-form" action="#" method="post" novalidate="">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="officer-name" class="field-label">Reporting Officer Full Name <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="officer-name" name="officer-name" class="field-input" placeholder="e.g. Major R. Sterling, CEng" required="">
+              </div>
+
+              <div class="form-group">
+                <label for="agency-name" class="field-label">Agency / Infrastructure Authority <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="agency-name" name="agency-name" class="field-input" placeholder="e.g. Environment Agency / Kent Coastal Works" required="">
+              </div>
+
+              <div class="form-group">
+                <label for="official-email" class="field-label">Official Engineering Email <span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="official-email" name="official-email" class="field-input" placeholder="officer@infrastructure.gov.uk" required="">
+              </div>
+
+              <div class="form-group">
+                <label for="sector-code" class="field-label">Culvert Sector Code <span class="req" aria-hidden="true">*</span></label>
+                <select id="sector-code" name="sector-code" class="field-select" required="">
+                  <option value="" disabled="" selected="">Select Sector Arterial...</option>
+                  <option value="CT-01">CT-01 / Point Outfall Arterial (3,600mm)</option>
+                  <option value="CT-02">CT-02 / West Bay Siphon Line (2,400mm)</option>
+                  <option value="CT-03">CT-03 / Romney Marsh Relief Duct (1,800mm)</option>
+                  <option value="CT-04">CT-04 / Lydd Aquifer Interceptor (2,000mm)</option>
+                  <option value="CT-05">CT-05 / Power Station Outer Sump (3,000mm)</option>
+                  <option value="CT-06">CT-06 / Denge Marsh Infiltration Gallery (1,200mm)</option>
+                  <option value="CT-07">CT-07 / Shingle Spit Bypass Trunk (2,400mm)</option>
+                  <option value="CT-08">CT-08 / East Lade Emergency Flume (1,500mm)</option>
+                </select>
+              </div>
+
+              <div class="form-group form-group-full">
+                <label for="observation-category" class="field-label">Observation Category <span class="req" aria-hidden="true">*</span></label>
+                <select id="observation-category" name="observation-category" class="field-select" required="">
+                  <option value="" disabled="" selected="">Select Technical Diagnostic Classification...</option>
+                  <option value="head-anomaly">Head Pressure Anomaly (&gt; ±10 kPa variance)</option>
+                  <option value="invert-scour">Invert Scour / Self-Cleaning Velocity Deficit</option>
+                  <option value="flap-valve">Flap Valve Seating / Seal Degradation</option>
+                  <option value="silt-obstruction">Silt / Shingle Obstruction (&gt; 5% cross-section)</option>
+                  <option value="crawler-request">Crawler Profilometer Inspection Deployment</option>
+                  <option value="routine-audit">Routine Statutory Compliance Audit Sign-off</option>
+                </select>
+              </div>
+
+              <div class="form-group form-group-full">
+                <label for="technical-log" class="field-label">Detailed Technical Log &amp; Chainage Coordinates <span class="req" aria-hidden="true">*</span></label>
+                <textarea id="technical-log" name="technical-log" rows="5" class="field-textarea" placeholder="Detail exact chainage (e.g. CH 1+250m), invert elevation reading, instrument serial numbers, and observed physical conditions..." required=""></textarea>
+              </div>
+            </div>
+
+            <div class="form-action-row">
+              <button type="submit" class="submit-button" id="dispatch-submit-btn">
+                <span>Transmit Engineering Docket</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </button>
+              <div class="form-status-msg" id="form-status" role="status" aria-live="polite"></div>
+            </div>
+          </form>
+
+          <!-- Installation Coordinates & Dispatch Info -->
+          <aside class="station-address-card" aria-label="Control Station Installation Coordinates">
+            <h3 class="station-card-title">Installation Control Coordinates</h3>
+            <p class="station-addr">
+              <strong>Culvertrak Central Control Station</strong><br>
+              Point Outfall 04, Dungeness Road<br>
+              Lydd, Kent TN29 9NA<br>
+              United Kingdom
+            </p>
+            <div class="station-meta-grid">
+              <div class="meta-row">
+                <span class="lbl">Ordnance Datum:</span>
+                <span class="val">Newlyn (ODN)</span>
+              </div>
+              <div class="meta-row">
+                <span class="lbl">National Grid:</span>
+                <span class="val">TR 0891 1694</span>
+              </div>
+              <div class="meta-row">
+                <span class="lbl">VHF Marine Band:</span>
+                <span class="val">Ch 14 (Culvertrak Ops)</span>
+              </div>
+              <div class="meta-row">
+                <span class="lbl">Response Mandate:</span>
+                <span class="val">≤ 60 Mins On-Site</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand-col">
+        <div class="footer-brand-wrap">
+          <img src="./assets/favicon.svg" alt="Culvertrak Emblem" class="footer-emblem" width="24" height="24" loading="lazy">
+          <span class="footer-brand-title">CULVERTRAK DRAINAGE AUTHORITY</span>
+        </div>
+        <p class="footer-tagline">
+          Subterranean hydraulic telemetry, gravity conduit scouring, and coastal saline intrusion prevention across the Dungeness Cuspate Foreland.
+        </p>
+        <p class="footer-copyright">
+          © 1961–2026 Culvertrak Civil Engineering Installation. All rights reserved. Operating under statutory endorsement from the Environment Agency and Romney Marshes Internal Drainage Board.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-col-title">Statutory Specifications</h4>
+        <ul class="footer-link-list">
+          <li><a href="#sector-culvert-matrix">Arterial Conduit Register</a></li>
+          <li><a href="#culvert-inspection-feed">Crawler CCTV Terminal</a></li>
+          <li><a href="#emergency-dewatering-spec">Surge Sluice Operating Protocol</a></li>
+          <li><a href="#saline-piezometer-telemetry">Groundwater Piezometer Array</a></li>
+          <li><a href="#scour-and-sediment-logs">Mechanical Sediment Clear-Out</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-col-title">Installation Contact</h4>
+        <address class="footer-contact-block">
+          Culvertrak Control Station<br>
+          Point Outfall 04, Dungeness Road<br>
+          Lydd, Kent TN29 9NA<br>
+          Telecommunications: +44 (0) 1797 320 048<br>
+          Direct Dispatch: ops@culvertrak.internal.gov.uk
+        </address>
+      </div>
+    </div>
+  </footer>
+
+
+</body></html>

@@ -1,0 +1,21 @@
+{
+  "title": "Harp & Hawser",
+  "blurb": "Tensiometric heavy rigging works, acoustic cable-tuning consultancy, and proof-testing forge at Victoria Dock, Aberdeen.",
+  "hero": "assets/victoria-dock-acoustic-rigging-trench.webp",
+  "layoutFamily": "index / ledger",
+  "styleFamily": "nordic daylight",
+  "tone": "playful provocateur",
+  "sector": "trades / industrial",
+  "tags": [
+    "tooling",
+    "engineering",
+    "precision"
+  ],
+  "created": "2026-10-30",
+  "wordFloor": 650,
+  "video": "assets/harp-and-hawser-modal-feature.webm",
+  "videoPlacement": "modal feature",
+  "signatureEffect": "text scramble decode on reveal",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

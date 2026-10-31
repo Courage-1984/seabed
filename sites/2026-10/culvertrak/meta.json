@@ -1,0 +1,21 @@
+{
+  "title": "Culvertrak",
+  "blurb": "Subterranean drainage engineering authority and automated hydraulic telemetry network monitoring 24 km of concrete culverts across Dungeness.",
+  "hero": "assets/culvertrak-sub-shingle-headworks.webp",
+  "layoutFamily": "terminal / data-readout",
+  "styleFamily": "mineral pastel",
+  "tone": "terse military",
+  "sector": "civic / infrastructure",
+  "tags": [
+    "utilities",
+    "infrastructure",
+    "telemetry"
+  ],
+  "created": "2026-10-31",
+  "wordFloor": 1100,
+  "video": "assets/culvertrak-grid-tile.webm",
+  "videoPlacement": "grid tile",
+  "signatureEffect": "scroll-driven clip-path wipe",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

@@ -5,82 +5,86 @@
 
 ## Rotation schedule (paste into STEP 0)
 
-Generated 2026-10-03 from 93 sites. Valid 2026-10-04 through 2026-10-17.
+Generated 2026-10-28 from 98 sites. Valid 2026-10-28 through 2026-11-10.
 Style families rotate in equal cycles of 14: each run of 14 sites uses every family exactly once, in random order.
 Find today's UTC date and use that row **verbatim**. Rows already ban each other and every recent site.
 
 | date | architecture | layout family | style family | fonts (heading + body) | video placement | signature effect | sector | tone | twist axis | naming style |
 |------|--------------|---------------|--------------|------------------------|-----------------|------------------|--------|------|------------|--------------|
-| 2026-10-04 | multi-page | cinematic full-bleed canvas | swiss international | Host Grotesk + Reddit Mono | footer ambient | numeric counter roll-up | maritime / logistics & freight | calm clinical | audience | single invented or uncommon word |
-| 2026-10-05 | dense one-pager | modular grid-break collage | candy pop maximal | Bagel Fat One + Nunito | section transition band | CSS 3D card tilt | education / research & archives | intimate artisan | geography / base | The + noun-phrase |
-| 2026-10-06 | landing | horizontal-scroll band | cyanotype blueprint | Spline Sans Mono + Saira | hover reveal | staggered letter-by-letter headline | health / wellness | dry expert | material / method | place + trade descriptor |
-| 2026-10-07 | multi-page | split-screen scroll | noir monochrome film | Anton + EB Garamond | sticky rail loop | scroll-velocity marquee skew | agriculture / land & food production | playful provocateur | scale | alphanumeric / initialism |
-| 2026-10-08 | landing | bento | nordic daylight | Onest + Literata | hero inset frame | animated SVG line-draw | creative / arts | terse military | business model / access | verb-forward or action compound |
-| 2026-10-09 | multi-page | neo-brutalist masonry | mineral pastel | Petrona + Golos Text | inline process demo | masked scroll-through type | repair / restoration & salvage | stoic technical | collaboration | single invented or uncommon word |
-| 2026-10-10 | dense one-pager | diagonal-cut | acid tech on paper | Unbounded + Fragment Mono | hero background | drifting grain overlay | trades / industrial | adventurous field | environmental constraint | place + trade descriptor |
-| 2026-10-11 | landing | index / ledger | botanical plate | Gloock + Karla | modal feature | text scramble decode on reveal | retail / e-commerce | wry editorial | delivery / format | X & Y (noun pair) |
-| 2026-10-12 | dense one-pager | ultra-minimal full-bleed | industrial safety-signage | Barlow Condensed + Overpass Mono | masked type fill | magnetic proximity cursor element | civic / infrastructure | warm maker | time constraint | portmanteau or blend |
-| 2026-10-13 | multi-page | sticky-rail + content | tropical vivid | Rozha One + Urbanist | split panel | progressive blur focus-pull | food / hospitality | sharp industrial | heritage / tradition | The + noun-phrase |
-| 2026-10-14 | dense one-pager | asymmetric split | folk pattern craft | Arvo + PT Sans | footer ambient | scroll-driven clip-path wipe | agriculture / land & food production | dry expert | material / method | verb-forward or action compound |
-| 2026-10-15 | landing | layered-parallax | mid-century desert modern | Jost + Bitter | section transition band | numeric counter roll-up | tech / digital services | stoic technical | collaboration | alphanumeric / initialism |
-| 2026-10-16 | dense one-pager | brutalist stacked | oxblood & brass luxe | Bodoni Moda + Tenor Sans | marquee strip | CSS 3D card tilt | health / wellness | calm clinical | scale | portmanteau or blend |
-| 2026-10-17 | landing | editorial magazine | riso spot-ink | Darker Grotesque + Azeret Mono | grid tile | scroll-velocity marquee skew | maritime / logistics & freight | wry editorial | time constraint | verb-forward or action compound |
+| 2026-10-28 | landing | modular grid-break collage | candy pop maximal | Bagel Fat One + Nunito | modal feature | scroll-velocity marquee skew | agriculture / land & food production | intimate artisan | business model / access | The + noun-phrase |
+| 2026-10-29 | multi-page | split-screen scroll | noir monochrome film | Six Caps + Libre Caslon Text | sticky rail loop | animated SVG line-draw | repair / restoration & salvage | stoic technical | material / method | place + trade descriptor |
+| 2026-10-30 | landing | index / ledger | nordic daylight | Nunito Sans + Spectral | grid tile | text scramble decode on reveal | trades / industrial | playful provocateur | collaboration | X & Y (noun pair) |
+| 2026-10-31 | dense one-pager | terminal / data-readout | mineral pastel | Young Serif + Wix Madefor Text | hover reveal | scroll-driven clip-path wipe | civic / infrastructure | terse military | geography / base | portmanteau or blend |
+| 2026-11-01 | multi-page | layered-parallax | acid tech on paper | Funnel Display + Funnel Sans | split panel | magnetic proximity cursor element | retail / e-commerce | sharp industrial | environmental constraint | single invented or uncommon word |
+| 2026-11-02 | landing | diagonal-cut | botanical plate | Cormorant + Mulish | hero background | staggered letter-by-letter headline | agriculture / land & food production | dry expert | audience | verb-forward or action compound |
+| 2026-11-03 | dense one-pager | asymmetric split | industrial safety-signage | Big Shoulders Display + Martian Mono | footer ambient | sticky section pinning with cross-fade | health / wellness | wry editorial | scale | alphanumeric / initialism |
+| 2026-11-04 | multi-page | bento | oxblood & brass luxe | Prata + Gantari | hero inset frame | progressive blur focus-pull | food / hospitality | calm clinical | time constraint | The + noun-phrase |
+| 2026-11-05 | landing | editorial magazine | riso spot-ink | Rubik Mono One + Rubik | inline process demo | CSS 3D card tilt | tech / digital services | adventurous field | delivery / format | place + trade descriptor |
+| 2026-11-06 | dense one-pager | sticky-rail + content | cyanotype blueprint | Major Mono Display + Atkinson Hyperlegible | sticky rail loop | numeric counter roll-up | creative / arts | playful provocateur | collaboration | X & Y (noun pair) |
+| 2026-11-07 | multi-page | kinetic ticker / marquee bands | folk pattern craft | Zilla Slab + Cabin | section transition band | masked scroll-through type | leisure / outdoors | stoic technical | material / method | The + noun-phrase |
+| 2026-11-08 | dense one-pager | ultra-minimal full-bleed | noir monochrome film | Six Caps + Libre Caslon Text | masked type fill | animated SVG line-draw | maritime / logistics & freight | intimate artisan | geography / base | portmanteau or blend |
+| 2026-11-09 | landing | overlapping card-stack | swiss international | Schibsted Grotesk + Geist Mono | modal feature | drifting grain overlay | education / research & archives | calm clinical | heritage / tradition | alphanumeric / initialism |
+| 2026-11-10 | multi-page | split-screen scroll | botanical plate | Gloock + Karla | split panel | scroll-velocity marquee skew | repair / restoration & salvage | terse military | environmental constraint | verb-forward or action compound |
 
 ## Anti-repetition state (paste into STEP 0)
 
-Computed 2026-10-03 from the 93 sites below, newest first. Used only when today's date is not in the schedule.
+Computed 2026-10-28 from the 98 sites below, newest first. Used only when today's date is not in the schedule.
 
 ```text
 BANNED layout families (used in the last 8 sites):
-kinetic ticker / marquee bands, overlapping card-stack, brutalist stacked, sticky-rail + content, terminal / data-readout, asymmetric split
+neo-brutalist masonry, editorial magazine, cinematic full-bleed canvas, ultra-minimal full-bleed, horizontal-scroll band, kinetic ticker / marquee bands, overlapping card-stack, brutalist stacked
 
-Style rotation: cycle 1, 0/14 built. Every 14 sites use all 14 families once.
+Style rotation: cycle 1, 5/14 built. Every 14 sites use all 14 families once.
 Still to come this cycle, in planned order. Take the first one that is not marked "not yet":
-swiss international, candy pop maximal, cyanotype blueprint, noir monochrome film, nordic daylight, mineral pastel, acid tech on paper, botanical plate, industrial safety-signage (not yet: used in the last 7), tropical vivid, folk pattern craft, mid-century desert modern, oxblood & brass luxe (not yet: used in the last 7), riso spot-ink
+candy pop maximal, noir monochrome film, nordic daylight, mineral pastel, acid tech on paper, botanical plate, industrial safety-signage (not yet: used in the last 7), oxblood & brass luxe, riso spot-ink
 
 BANNED style families (used this cycle, or in the last 7 sites):
-industrial safety-signage, oxblood & brass luxe
+mid-century desert modern, folk pattern craft, tropical vivid, swiss international, cyanotype blueprint, industrial safety-signage
 
 BANNED video placements (used in the last 8 sites):
-marquee strip, grid tile, masked type fill, split panel, modal feature, hero background
+inline process demo, hero inset frame, footer ambient, section transition band, hover reveal, marquee strip, grid tile, masked type fill
 
 BANNED signature effects (used in the last 9 sites):
-sticky section pinning with cross-fade, magnetic proximity cursor element, scroll-driven clip-path wipe, progressive blur focus-pull, text scramble decode on reveal, scroll-velocity marquee skew
+numeric counter roll-up, CSS 3D card tilt, masked scroll-through type, drifting grain overlay, staggered letter-by-letter headline, sticky section pinning with cross-fade, magnetic proximity cursor element, scroll-driven clip-path wipe, progressive blur focus-pull
 
 BANNED fonts (used in the last 6 sites):
-Fraunces, Work Sans, Chivo, Red Hat Mono, Space Mono, Albert Sans, Cinzel Decorative, Cinzel, Literata
+Bitter, Jost, Cabin, Zilla Slab, Rozha One, Urbanist, Geist Mono, Schibsted Grotesk, Saira, Spline Sans Mono, Fraunces, Work Sans
 
 BANNED fonts (overused: 3+ of the last 20 sites):
-Fraunces, Chivo, Albert Sans, Space Grotesk, Chakra Petch, IBM Plex Mono
+Fraunces, Chivo, Albert Sans, Space Grotesk, IBM Plex Mono
 
 Recent palette bases (ground|primary, last 3) — do not reproduce:
-light|ink-blue
+light-warm|teal, dark-warm|pale-warm, dark-green|pink
 
 Recent palette signatures (ground|primary|accent, last 6) — do not reproduce:
-light|ink-blue|orange, light|ink-blue|red, light|ink-warm|orange
+light-warm|teal|orange, dark-warm|pale-warm|orange, dark-green|pink|orange, light|ink|red, dark-blue|pale|orange, light|ink-blue|orange
 
 Layout usage, last 25 sites (frequency cap: max 5):
-overlapping card-stack: 5  <-- AT CAP
-brutalist stacked: 3
+overlapping card-stack: 4
+editorial magazine: 3
 kinetic ticker / marquee bands: 3
-bento: 2
-editorial magazine: 2
-neo-brutalist masonry: 2
+neo-brutalist masonry: 3
+brutalist stacked: 2
 terminal / data-readout: 2
+ultra-minimal full-bleed: 2
 asymmetric split: 1
-diagonal-cut: 1
+bento: 1
+cinematic full-bleed canvas: 1
+horizontal-scroll band: 1
 layered-parallax: 1
-split-screen scroll: 1
 sticky-rail + content: 1
-ultra-minimal full-bleed: 1
 
-AT CAP — also banned: overlapping card-stack (5)
 ```
 
 ## Existing sites (collision reference)
 
 | slug | title | layout-family | style-family | palette | fonts | video-placement | signature-effect | created |
 |------|-------|---------------|--------------|---------|-------|-----------------|------------------|---------|
+| flashcore | FlashCore | neo-brutalist masonry | mid-century desert modern | light-warm\|teal\|orange | Bitter + Jost | inline process demo | numeric counter roll-up | 2026-10-28 |
+| m-28-lugger-and-loom-guild | M-28 Lugger & Loom Guild | editorial magazine | folk pattern craft | dark-warm\|pale-warm\|orange | Cabin + Zilla Slab | hero inset frame | CSS 3D card tilt | 2026-10-27 |
+| the-pit-roast-hearthwrights | The Pit-Roast Hearthwrights | cinematic full-bleed canvas | tropical vivid | dark-green\|pink\|orange | Rozha One + Urbanist | footer ambient | masked scroll-through type | 2026-10-13 |
+| siloshield-capping-solutions | SiloShield Capping Solutions | ultra-minimal full-bleed | swiss international | light\|ink\|red | Geist Mono + Schibsted Grotesk | section transition band | drifting grain overlay | 2026-10-12 |
+| dentdale-orthotic-castworks | Dentdale Orthotic Castworks | horizontal-scroll band | cyanotype blueprint | dark-blue\|pale\|orange | Saira + Spline Sans Mono | hover reveal | staggered letter-by-letter headline | 2026-10-06 |
 | megabivvy | Megabivvy — Colossal Alpine Expedition Architecture | kinetic ticker / marquee bands | industrial safety-signage | light\|ink-blue\|orange | Fraunces + Work Sans | marquee strip | sticky section pinning with cross-fade | 2026-10-03 |
 | defilade | Defilade — Sovereign Air-Gapped Edge Compute | overlapping card-stack | industrial safety-signage | light\|ink-blue\|red | Chivo + Red Hat Mono | grid tile | magnetic proximity cursor element | 2026-10-02 |
 | drogue-and-crate | Drogue & Crate — Tactical Airdrop Expedition Hardware | brutalist stacked | industrial safety-signage | light\|ink-blue\|orange | Chivo + Space Mono | masked type fill | scroll-driven clip-path wipe | 2026-09-30 |
@@ -183,21 +187,23 @@ Replace the fenced slug list in your external Variety Engine **Roster** section 
 aegir-thermal-lugger, apex-altitude-lab, apiary-mesh-kinetics, archive-arcade,
 aseptic-cellars, ash-07-studio, astrolabe-treks, backhaul-field-co, brimstone-basalt,
 cedar-and-salt, centrifugal-larder, codex-parallax, copper-cloche, cryotex-isolates,
-deep-crust-mycelial, defilade, drogue-and-crate, drosera-vault, forge-and-fallow,
-forge-and-feather, gigaglyph, gimbal-and-hoist, glaciermesh-infrastructure, grainfold,
-halcyon-tare, halyard-and-hemp-sailmakers, hearth-and-anvil, hull-and-hem-sailmenders,
-hverir-hearth, imperivm-spqr, isocline-preservation, k-44-ordnance-canvas,
-k-92-maritime-victualling, k9-kinetic-recovery, kajak-lauget, karoo-brass-and-glass,
-katabatic-shelters, kestrel-heavy, knot-and-westerly, leafbind, lithic-fibre-dynamics,
-lithic-resonance, litho-acoustic-labs, lock-and-sluice, lv-74-marine-apothecary,
-magnaloom, mantlecut-geology, marion-fissure, marrow-and-manifold, mash-and-manifold,
-megabivvy, monolith-somatic, nadir-quartzware, nepenthes-forge, null-state-cryogenics,
-oxide-and-tide, patch-parcel, pellucid, pellucid-memory,
-pentland-acoustic-telemetry-works, sarek-bark-gear, signal-and-silo, siloshield-dynamics,
-spiretrace, stake-and-bind, stave-and-hoops, sub-lithic-seals, sub-litho-kinetic,
-substratum-signals, tendonforge, the-brass-and-thistle, the-cryo-biome-crypt,
-the-cryo-pelagic-cell, the-fenland-yeast-guild, the-hardpan-outfitter,
-the-midnight-forager, the-outer-isles-kelp-weave-guild, the-road-roller-press,
+deep-crust-mycelial, defilade, dentdale-orthotic-castworks, drogue-and-crate,
+drosera-vault, flashcore, forge-and-fallow, forge-and-feather, gigaglyph,
+gimbal-and-hoist, glaciermesh-infrastructure, grainfold, halcyon-tare,
+halyard-and-hemp-sailmakers, hearth-and-anvil, hull-and-hem-sailmenders, hverir-hearth,
+imperivm-spqr, isocline-preservation, k-44-ordnance-canvas, k-92-maritime-victualling,
+k9-kinetic-recovery, kajak-lauget, karoo-brass-and-glass, katabatic-shelters,
+kestrel-heavy, knot-and-westerly, leafbind, lithic-fibre-dynamics, lithic-resonance,
+litho-acoustic-labs, lock-and-sluice, lv-74-marine-apothecary,
+m-28-lugger-and-loom-guild, magnaloom, mantlecut-geology, marion-fissure,
+marrow-and-manifold, mash-and-manifold, megabivvy, monolith-somatic, nadir-quartzware,
+nepenthes-forge, null-state-cryogenics, oxide-and-tide, patch-parcel, pellucid,
+pellucid-memory, pentland-acoustic-telemetry-works, sarek-bark-gear, signal-and-silo,
+siloshield-capping-solutions, siloshield-dynamics, spiretrace, stake-and-bind,
+stave-and-hoops, sub-lithic-seals, sub-litho-kinetic, substratum-signals, tendonforge,
+the-brass-and-thistle, the-cryo-biome-crypt, the-cryo-pelagic-cell,
+the-fenland-yeast-guild, the-hardpan-outfitter, the-midnight-forager,
+the-outer-isles-kelp-weave-guild, the-pit-roast-hearthwrights, the-road-roller-press,
 the-salt-barrow-malt-shieling, the-slate-and-chisel, the-sub-oolite-salt-cellar,
 the-sub-solway-bismuth-foundries, the-tidal-vault, trace-and-tungsten, tracemend,
 uhv-74-precision, vapour-and-vault, verdigris-and-salt, xenon-arc

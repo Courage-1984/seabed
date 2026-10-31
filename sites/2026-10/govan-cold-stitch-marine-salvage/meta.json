@@ -1,0 +1,21 @@
+{
+  "title": "Govan Cold-Stitch Marine Salvage",
+  "blurb": "Zero-heat mechanical cold-stitching and cast-iron marine machinery salvage along the River Clyde since 1934.",
+  "hero": "assets/govan-graving-dock-salvage-basin.webp",
+  "layoutFamily": "split-screen scroll",
+  "styleFamily": "noir monochrome film",
+  "tone": "stoic technical",
+  "sector": "repair / restoration & salvage",
+  "tags": [
+    "conservation-repair",
+    "salvage",
+    "metalwork"
+  ],
+  "created": "2026-10-29",
+  "wordFloor": 1900,
+  "video": "assets/govan-cold-stitch-marine-salvage-sticky-rail-loop.webm",
+  "videoPlacement": "sticky rail loop",
+  "signatureEffect": "animated SVG line-draw",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

@@ -1842,6 +1842,28 @@
     "styleFamily": "industrial safety-signage"
   },
   {
+    "title": "Culvertrak",
+    "blurb": "Subterranean drainage engineering authority and automated hydraulic telemetry network monitoring 24 km of concrete culverts across Dungeness.",
+    "hero": "assets/culvertrak-sub-shingle-headworks.webp",
+    "layoutFamily": "terminal / data-readout",
+    "styleFamily": "mineral pastel",
+    "tone": "terse military",
+    "sector": "civic / infrastructure",
+    "tags": [
+      "utilities",
+      "infrastructure",
+      "telemetry"
+    ],
+    "created": "2026-10-31",
+    "wordFloor": 1100,
+    "video": "assets/culvertrak-grid-tile.webm",
+    "videoPlacement": "grid tile",
+    "signatureEffect": "scroll-driven clip-path wipe",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-10/culvertrak"
+  },
+  {
     "title": "Defilade — Sovereign Air-Gapped Edge Compute",
     "blurb": "Offline neural inference clusters and write-once optical quartz media delivered under armed physical custody.",
     "hero": "assets/defilade-hero-chassis.webp",
@@ -1903,6 +1925,50 @@
     "standard": "v2",
     "qa": "v2-pass",
     "siteFolder": "./sites/2026-10/flashcore"
+  },
+  {
+    "title": "Govan Cold-Stitch Marine Salvage",
+    "blurb": "Zero-heat mechanical cold-stitching and cast-iron marine machinery salvage along the River Clyde since 1934.",
+    "hero": "assets/govan-graving-dock-salvage-basin.webp",
+    "layoutFamily": "split-screen scroll",
+    "styleFamily": "noir monochrome film",
+    "tone": "stoic technical",
+    "sector": "repair / restoration & salvage",
+    "tags": [
+      "conservation-repair",
+      "salvage",
+      "metalwork"
+    ],
+    "created": "2026-10-29",
+    "wordFloor": 1900,
+    "video": "assets/govan-cold-stitch-marine-salvage-sticky-rail-loop.webm",
+    "videoPlacement": "sticky rail loop",
+    "signatureEffect": "animated SVG line-draw",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-10/govan-cold-stitch-marine-salvage"
+  },
+  {
+    "title": "Harp & Hawser",
+    "blurb": "Tensiometric heavy rigging works, acoustic cable-tuning consultancy, and proof-testing forge at Victoria Dock, Aberdeen.",
+    "hero": "assets/victoria-dock-acoustic-rigging-trench.webp",
+    "layoutFamily": "index / ledger",
+    "styleFamily": "nordic daylight",
+    "tone": "playful provocateur",
+    "sector": "trades / industrial",
+    "tags": [
+      "tooling",
+      "engineering",
+      "precision"
+    ],
+    "created": "2026-10-30",
+    "wordFloor": 650,
+    "video": "assets/harp-and-hawser-modal-feature.webm",
+    "videoPlacement": "modal feature",
+    "signatureEffect": "text scramble decode on reveal",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-10/harp-and-hawser"
   },
   {
     "title": "M-28 Lugger & Loom Guild",
