@@ -2054,5 +2054,93 @@
     "standard": "v2",
     "qa": "v2-pass",
     "siteFolder": "./sites/2026-10/the-pit-roast-hearthwrights"
+  },
+  {
+    "title": "Cardiff Kerb-Gully & Bollard Works",
+    "blurb": "Blocked drains cleared and crooked bollards straightened in forty-five minutes flat from the back of a cargo trike—no lorries, no cones, no six-week wait.",
+    "hero": "assets/cardiff-kerb-gully-hero-trike.webp",
+    "layoutFamily": "brutalist stacked",
+    "styleFamily": "candy pop maximal",
+    "tone": "playful provocateur",
+    "sector": "civic / infrastructure",
+    "tags": [
+      "municipal",
+      "utilities",
+      "roadworks"
+    ],
+    "created": "2026-11-18",
+    "wordFloor": 1900,
+    "video": "assets/cardiff-kerb-gully-masked-type-fill.webm",
+    "videoPlacement": "masked type fill",
+    "signatureEffect": "staggered letter-by-letter headline",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-11/cardiff-kerb-gully"
+  },
+  {
+    "title": "Compass & Crowbar",
+    "blurb": "Monumental solar photograms and structural blueprint cartography developed directly on active demolition sites across the UK.",
+    "hero": "assets/hero-monumental-cyanotype-scaffolding.webp",
+    "layoutFamily": "sticky-rail + content",
+    "styleFamily": "industrial safety-signage",
+    "tone": "playful provocateur",
+    "sector": "creative / arts",
+    "tags": [
+      "printmaking",
+      "studio",
+      "design"
+    ],
+    "created": "2026-11-06",
+    "wordFloor": 1100,
+    "video": "assets/compass-and-crowbar-split-panel.webm",
+    "videoPlacement": "split panel",
+    "signatureEffect": "sticky section pinning with cross-fade",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-11/compass-and-crowbar"
+  },
+  {
+    "title": "IG-84",
+    "blurb": "Archival iron-gall ink corrosion neutralisation reverse-engineered from twelfth-century monastic treatises.",
+    "hero": "assets/hero-iron-gall-vellum-macro.webp",
+    "layoutFamily": "overlapping card-stack",
+    "styleFamily": "acid tech on paper",
+    "tone": "calm clinical",
+    "sector": "education / research & archives",
+    "tags": [
+      "archive",
+      "laboratory",
+      "instrumentation"
+    ],
+    "created": "2026-11-09",
+    "wordFloor": 650,
+    "video": "assets/ig-84-hover-reveal.webm",
+    "videoPlacement": "hover reveal",
+    "signatureEffect": "progressive blur focus-pull",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-11/ig-84"
+  },
+  {
+    "title": "ScionBind",
+    "blurb": "Archival germplasm preservation and cambial grafting systems engineered exclusively for pre-industrial fruit cultivars.",
+    "hero": "assets/dormant-pear-whip-graft.webp",
+    "layoutFamily": "diagonal-cut",
+    "styleFamily": "botanical plate",
+    "tone": "dry expert",
+    "sector": "agriculture / land & food production",
+    "tags": [
+      "horticulture",
+      "seed-stock",
+      "orchard"
+    ],
+    "created": "2026-11-02",
+    "wordFloor": 650,
+    "video": "assets/scionbind-hero-background.webm",
+    "videoPlacement": "hero background",
+    "signatureEffect": "scroll-velocity marquee skew",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-11/scionbind"
   }
 ]

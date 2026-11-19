@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IG-84 // Paleographic Conservation &amp; Iron-Gall Ink Stabilization</title>
+  <meta name="description" content="Archival iron-gall ink corrosion neutralisation reverse-engineered from twelfth-century monastic treatises.">
+  <meta property="og:title" content="IG-84 // Paleographic Conservation &amp; Iron-Gall Ink Stabilization">
+  <meta property="og:description" content="Archival iron-gall ink corrosion neutralisation reverse-engineered from twelfth-century monastic treatises.">
+  <meta property="og:image" content="./assets/hero-iron-gall-vellum-macro.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@700;800&family=Funnel+Sans:wght@400;500;600&family=Fragment+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js" defer></script>
+</head>
+<body>
+  <!-- Fixed Laboratory Navigation -->
+  <header class="site-header">
+    <nav class="nav-container" aria-label="Primary Laboratory Navigation">
+      <a href="#hero" class="brand-link" aria-label="IG-84 Conservation Science Homepage">
+        <svg class="brand-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" width="28" height="28" aria-hidden="true">
+          <rect width="64" height="64" fill="#F7F7EE" />
+          <rect x="2" y="2" width="60" height="60" stroke="#0C0E0A" stroke-width="3" />
+          <line x1="2" y1="32" x2="62" y2="32" stroke="#0C0E0A" stroke-width="1.5" stroke-dasharray="2 2" />
+          <line x1="32" y1="2" x2="32" y2="62" stroke="#0C0E0A" stroke-width="1.5" stroke-dasharray="2 2" />
+          <polygon points="32,13 48.4,22.5 48.4,41.5 32,51 15.6,41.5 15.6,22.5" stroke="#0C0E0A" stroke-width="2.5" fill="#FFFFFF" />
+          <circle cx="32" cy="32" r="6" fill="#C4F024" stroke="#0C0E0A" stroke-width="2" />
+          <circle cx="32" cy="13" r="3" fill="#0C0E0A" />
+          <circle cx="48.4" cy="22.5" r="3" fill="#0C0E0A" />
+          <circle cx="48.4" cy="41.5" r="3" fill="#0C0E0A" />
+          <circle cx="32" cy="51" r="3" fill="#0C0E0A" />
+          <circle cx="15.6" cy="41.5" r="3" fill="#0C0E0A" />
+          <circle cx="15.6" cy="22.5" r="3" fill="#0C0E0A" />
+        </svg>
+        <span class="brand-name">IG-84 // CONSERVATION SCIENCE</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#phytate-kinetics">Kinetics</a></li>
+        <li><a href="#spectrometry-scan">Diagnostics</a></li>
+        <li><a href="#monastic-formulations">Monastic Ledger</a></li>
+        <li><a href="#chelation-stack">Treatment Stack</a></li>
+        <li><a href="#curatorial-consignment">Consignment</a></li>
+      </ul>
+      <a href="#curatorial-consignment" class="btn btn-nav">Request Survey</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- SECTION 1: HERO -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content focus-pull-element">
+          <div class="badge">ARCHIVAL CHEMICAL INTERVENTION // CAMBRIDGE CB3 0AS</div>
+          <h1 class="hero-title">STOPPING IRON-GALL INK CORROSION IN MEDIEVAL MANUSCRIPT ARCHIVES</h1>
+          <p class="hero-lead">Non-aqueous phytate chelation, sub-molecular acid neutralisation, and multispectral palimpsest extraction for damaged parchment collections.</p>
+          <p class="hero-body">IG-84 arrests the progressive degradation of historical iron-gall ink across European archives, libraries, and cathedral collections. When twelfth-century vitriol inks oxidize, they release free ferrous ions and sulfuric acid that burn directly through paper fibers, leaving lace-like perforations where text once stood. By recreating historical monastic ink formulas to understand their precise chemical decay, we manufacture non-aqueous calcium phytate treatments that permanently bind active transition metals without washing away water-sensitive historic pigments.</p>
+          <div class="hero-actions">
+            <a href="#curatorial-consignment" class="btn btn-primary">Request Collection Survey</a>
+            <a href="#monastic-formulations" class="btn btn-secondary">Review Chemical Data</a>
+          </div>
+        </div>
+        <div class="hero-visual focus-pull-element">
+          <figure class="specimen-frame">
+            <img src="./assets/hero-iron-gall-vellum-macro.webp" alt="Objective macro photograph showing iron-gall ink acid corrosion perforating medieval vellum" width="1280" height="720" fetchpriority="high">
+            <figcaption class="specimen-caption">
+              <span class="caption-id">FIG. 01</span>
+              <span>FORENSIC MACROGRAPH OF 1240 CE VELLUM SHOWING TYPICAL FE(II) ACID PERFORATION ALONG SCRIBAL STROKES.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Laboratory Instrumentation Telemetry Strip -->
+      <div class="telemetry-bar">
+        <div class="container telemetry-grid">
+          <div class="telemetry-item">
+            <span class="telemetry-value">400</span>
+            <span class="telemetry-label">Historical Leaves Synthesized</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="telemetry-value">0.00%</span>
+            <span class="telemetry-label">Unbound Fe²⁺ Post-Treatment</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="telemetry-value">pH 8.0</span>
+            <span class="telemetry-label">Alkaline Reserve Buffer</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="telemetry-value">100%</span>
+            <span class="telemetry-label">Water-Sensitive Pigment Hold</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: PHYTATE KINETICS (FLAGSHIP VERBATIM) -->
+    <section id="phytate-kinetics" class="section-block">
+      <div class="container">
+        <div class="section-header focus-pull-element">
+          <span class="section-tag">02 // CHEMICAL REVERSAL MECHANISM</span>
+          <h2 class="section-title">SUB-MOLECULAR CHELATION AND THE HALTING OF SULFURIC ACID BURN</h2>
+        </div>
+        <div class="kinetics-grid">
+          <div class="kinetics-text focus-pull-element">
+            <p>Iron-gall ink is not a stable pigment; it is an ongoing corrosive reaction. When medieval scribes compounded tannic acid from Aleppo oak galls with iron vitriol (ferrous sulfate), they produced an indelible black iron pyrogallate complex. However, historical formulations inevitably included an excess of unbound ferrous ions (Fe2+). Across centuries of atmospheric humidity, these free ions act as persistent catalysts in the Fenton reaction, generating highly destructive hydroxyl free radicals that sever cellulose polymer chains while generating localized concentrations of sulfuric acid. Left untreated, the manuscript page consumes itself from within.</p>
+            <p>Standard aqueous deacidification treatments are catastrophic for illuminated manuscripts, dissolving water-sensitive binder gums and bleeding red rubrication pigments across the vellum. The IG-84 protocol utilizes an engineered non-aqueous calcium phytate complex suspended in a volatile fluorinated carrier solvent. The phytate molecule possesses twelve active phosphate coordinating sites that form an exceptionally stable hexadentate chelate with reactive Fe2+ ions, neutralizing their catalytic oxidation potential completely. Simultaneously, micronized calcium carbonate particles deposit into the porous paper matrix, creating a permanent alkaline reserve that buffers future acid generation without altering parchment tactile geometry or ink spectral reflectivity.</p>
+          </div>
+          <div class="kinetics-aside focus-pull-element">
+            <figure class="specimen-frame">
+              <img src="./assets/calcium-phytate-immersion-bath.webp" alt="Stainless steel conservation tray with calcium phytate solution and immersion monitoring probes" width="800" height="600" loading="lazy">
+              <figcaption class="specimen-caption">
+                <span class="caption-id">FIG. 02</span>
+                <span>FLUORINATED CALCIUM PHYTATE COMPLEXING BATH WITH DUAL REDOX POTENTIAL AND PH PROBES.</span>
+              </figcaption>
+            </figure>
+            <div class="reaction-card">
+              <div class="reaction-formula">Fe²⁺ + H₂O₂ → Fe³⁺ + •OH + OH⁻</div>
+              <div class="reaction-desc">Fenton reaction catalyzed by unbound iron vitriol, halted permanently via hexadentate phytate chelation (log K = 24.8).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: SPECTROMETRY DIAGNOSTICS (VIDEO SLOT: HOVER REVEAL) -->
+    <section id="spectrometry-scan" class="section-block section-alt">
+      <div class="container">
+        <div class="section-header focus-pull-element">
+          <span class="section-tag">03 // NON-DESTRUCTIVE DIAGNOSTICS</span>
+          <h2 class="section-title">MULTISPECTRAL PALIMPSEST RECOVERY &amp; SCANNING TELEMETRY</h2>
+          <p class="section-desc">Extracting obliterated text erased by scribes eight centuries ago through calibrated narrow-band wavebands.</p>
+        </div>
+
+        <div class="hover-reveal-wrapper focus-pull-element">
+          <!-- Interactive Hover-Reveal Video Container -->
+          <div class="hover-reveal-container" id="video-reveal-container" tabindex="0" role="region" aria-label="Interactive multispectral scanning sequence. Hover or focus to play diagnostic video loop.">
+            <div class="poster-layer">
+              <img src="./assets/multispectral-scanning-cradle.webp" alt="Multispectral imaging cradle analyzing an open historical manuscript under ultraviolet light" width="1280" height="720" class="hover-poster" loading="lazy">
+              <div class="poster-reticle" aria-hidden="true">
+                <div class="reticle-crosshair"></div>
+                <div class="reticle-label">SPECTROMETRIC APPARATUS // HOVER OR TAP TO ACTIVATE 4K SCAN LOOP</div>
+              </div>
+            </div>
+            <div class="video-layer">
+              <video id="multispectral-video" class="site-video" muted loop playsinline preload="metadata" poster="./assets/ig-84-hover-reveal-poster.webp" aria-label="Multispectral luminescence scan of a 1240 CE palimpsest under alternating ultraviolet and infrared wavelengths">
+                <source src="./assets/ig-84-hover-reveal.webm" type="video/webm">
+                <source src="./assets/ig-84-hover-reveal.mp4" type="video/mp4">
+              </video>
+              <div class="video-overlay-data" aria-hidden="true">
+                <span class="channel-pill">365nm UV // 450nm BLUE // 850nm IR</span>
+                <span class="status-indicator">ACTIVE SCAN SEQUENCE</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal-meta">
+            <div class="caption-text">
+              <strong>FIG. 04:</strong> MULTISPECTRAL LUMINESCENCE ANALYSIS OF AN OXIDIZED 1240 CE VELLUM FOLIO SHOWING EXTRACTED UNDERTEXT.
+            </div>
+            <div class="diagnostics-summary">
+              <div class="diag-point">
+                <span class="diag-key">OPTICAL RESOLUTION:</span>
+                <span class="diag-val">100 Megapixel Scientific Monochrome CMOS (±2.4 µm pixel pitch)</span>
+              </div>
+              <div class="diag-point">
+                <span class="diag-key">WAVELENGTH STACK:</span>
+                <span class="diag-val">16 Narrow-Band LED Emitters (365nm to 940nm)</span>
+              </div>
+              <div class="diag-point">
+                <span class="diag-key">CRADLE GEOMETRY:</span>
+                <span class="diag-val">110° Preserved Vellum Angle with Micro-Suction Spine Relief</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: MONASTIC FORMULATIONS (ANALYTICAL INK LEDGER) -->
+    <section id="monastic-formulations" class="section-block">
+      <div class="container">
+        <div class="section-header focus-pull-element">
+          <span class="section-tag">04 // HISTORICAL FORMULATION LEDGER</span>
+          <h2 class="section-title">TWELFTH-CENTURY MONASTIC INK SYNTHESIS &amp; EMPIRICAL BENCHMARKS</h2>
+          <p class="section-desc">You cannot arrest iron-gall decay without understanding how the vitriol was originally brewed. IG-84 reproduces the exact chemical stoichiometry from historical treatises to map degradation rates.</p>
+        </div>
+
+        <div class="ledger-layout">
+          <div class="ledger-specimen focus-pull-element">
+            <figure class="specimen-frame">
+              <img src="./assets/monastic-oak-gall-and-vitriol.webp" alt="Crushed oak galls, green vitriol crystals, and gum arabic displayed on a white laboratory plate" width="600" height="600" loading="lazy">
+              <figcaption class="specimen-caption">
+                <span class="caption-id">FIG. 05</span>
+                <span>RAW BOTANICAL &amp; MINERAL PRECURSORS: CRUSHED ALEPPO OAK GALLS, GREEN VITRIOL, AND ACACIA RESIN.</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="ledger-table-wrapper focus-pull-element">
+            <table class="analytical-table" aria-label="Analytical comparison of historical iron-gall ink recipes">
+              <thead>
+                <tr>
+                  <th scope="col">Recipe &amp; Source</th>
+                  <th scope="col">Vitriol Purity</th>
+                  <th scope="col">Free Fe²⁺ Ratio</th>
+                  <th scope="col">Acidity</th>
+                  <th scope="col">50-Year Aging Index</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>St. Gall Monastic Recipe (1150 CE)</strong>
+                    <span class="table-sub">Theophilus, De diversis artibus; green vitriol, crushed Aleppo galls, rainwater.</span>
+                  </td>
+                  <td>82.4%</td>
+                  <td>1:1.8 (Severe Excess)</td>
+                  <td>pH 2.1</td>
+                  <td><span class="status-badge alert">Perforation Risk</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Bologna University Notarial Ink (1280 CE)</strong>
+                    <span class="table-sub">Notarial registry formula; iron sulfate, gallotannins, dry white wine, honey.</span>
+                  </td>
+                  <td>76.1%</td>
+                  <td>1:1.2 (High Excess)</td>
+                  <td>pH 1.8</td>
+                  <td><span class="status-badge alert">Acid Embrittlement</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Flemish Scriptoria Formula (1410 CE)</strong>
+                    <span class="table-sub">Illumination charter baseline; copperas vitriol, alum mordant, boiled rainwater.</span>
+                  </td>
+                  <td>89.0%</td>
+                  <td>1:2.4 (Moderate)</td>
+                  <td>pH 2.6</td>
+                  <td><span class="status-badge warn">Fibre Degradation</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Imperial Chancery Standard (1540 CE)</strong>
+                    <span class="table-sub">Archival administrative standard; roasted galls, calibrated vitriol, beer wort.</span>
+                  </td>
+                  <td>94.2%</td>
+                  <td>1:1.0 (Calibrated)</td>
+                  <td>pH 3.2</td>
+                  <td><span class="status-badge stable">Stable Substrate</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: CHELATION STACK (OVERLAPPING CARD-STACK LAYOUT FAMILY SIGNATURE) -->
+    <section id="chelation-stack" class="section-block section-alt">
+      <div class="container">
+        <div class="section-header focus-pull-element">
+          <span class="section-tag">05 // THE PHYTATE-84 PROTOCOL</span>
+          <h2 class="section-title">THREE-STAGE NON-AQUEOUS CHELATION &amp; STABILISATION STACK</h2>
+          <p class="section-desc">A progressive physical sequence engineered to de-activate transition metal catalysts without introducing water into historic vellum fibers.</p>
+        </div>
+
+        <!-- Overlapping Card Stack Container -->
+        <div class="card-stack-wrapper" id="card-stack-root">
+          <!-- CARD 01 -->
+          <article class="stack-card card-01" id="card-stage-01" style="--stack-index: 1;">
+            <div class="card-header-bar">
+              <span class="card-num">STAGE 01</span>
+              <h3 class="card-title">Condition Assessment &amp; Non-Invasive Elemental Profiling</h3>
+            </div>
+            <div class="card-body-grid">
+              <div class="card-copy">
+                <p>Before any chemical intervention, the manuscript folio undergoes rigorous non-destructive elemental profiling. We utilize an automated micro-X-ray fluorescence (micro-XRF) spectrometer with a focused 50-micron polycapillary optic to map transition metal spatial distributions across affected letters.</p>
+                <p>The sensor scans iron (Fe), copper (Cu), and zinc (Zn) atomic molar ratios, determining the precise stoichiometric excess of reactive ferrous ions present in the ink. Concurrently, baseline spectrophotometric reflectance and micro-tensile data are logged into the collection record.</p>
+                <ul class="spec-list">
+                  <li><strong>Spatial Resolution:</strong> 50 µm spot diameter</li>
+                  <li><strong>Elemental Sensitivity:</strong> &lt;5 ppm transition metals</li>
+                  <li><strong>Substrate Impact:</strong> 0.00% physical sampling required</li>
+                </ul>
+              </div>
+              <div class="card-media">
+                <figure class="specimen-frame">
+                  <img src="./assets/xrf-spectroscopy-sensor-head.webp" alt="Micro-XRF spectrometer sensor head measuring elemental metal ratios on a manuscript page" width="800" height="600" loading="lazy">
+                  <figcaption class="specimen-caption">
+                    <span class="caption-id">FIG. 06</span>
+                    <span>ROBOTIC MICRO-XRF SENSOR HEAD QUANTIFYING ELEMENTAL FE/CU/ZN RATIOS ACROSS INK BOUNDARIES.</span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 02 -->
+          <article class="stack-card card-02" id="card-stage-02" style="--stack-index: 2;">
+            <div class="card-header-bar">
+              <span class="card-num">STAGE 02</span>
+              <h3 class="card-title">Calcium Phytate Immersion Chelation in Fluorinated Solvent</h3>
+            </div>
+            <div class="card-body-grid">
+              <div class="card-copy">
+                <p>The folio is introduced into the Phytate-84 non-aqueous reaction bath. The formulation utilizes myo-inositol hexakisphosphate coordinated with calcium ions, dispersed within an ultra-pure ethoxy-nonafluorobutane carrier fluid that has zero solubility for medieval gum binders, cinnabar, or lapis lazuli.</p>
+                <p>The twelve active phosphate oxygen coordinating vertices on each phytate molecule encapsulate free Fe²⁺ ions into an extraordinarily stable, biologically inert hexadentate coordination chelate. The redox potential of iron is altered permanently, terminating hydroxyl radical formation via the Fenton sequence.</p>
+                <ul class="spec-list">
+                  <li><strong>Carrier Solvent:</strong> Volatile fluorinated hydrofluoroether</li>
+                  <li><strong>Chelate Constant:</strong> log K = 24.8 (thermodynamically irreversible)</li>
+                  <li><strong>Drying Cycle:</strong> Rapid 90-second residue-free evaporation</li>
+                </ul>
+              </div>
+              <div class="card-media">
+                <figure class="specimen-frame">
+                  <img src="./assets/calcium-phytate-immersion-bath.webp" alt="Stainless steel conservation tray with calcium phytate solution and immersion monitoring probes" width="800" height="600" loading="lazy">
+                  <figcaption class="specimen-caption">
+                    <span class="caption-id">FIG. 07</span>
+                    <span>CONTROLLED TEMPERATURE IMMERSION BASIN WITH HOMOGENEOUS FLUORINATED CARRIER CIRCULATION.</span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 03 -->
+          <article class="stack-card card-03" id="card-stage-03" style="--stack-index: 3;">
+            <div class="card-header-bar">
+              <span class="card-num">STAGE 03</span>
+              <h3 class="card-title">Sub-Micron Alkaline Deacidification &amp; Structural Buffering</h3>
+            </div>
+            <div class="card-body-grid">
+              <div class="card-copy">
+                <p>Following transition metal chelation, the substrate is impregnated with sub-micron calcium carbonate (CaCO₃) particles suspended in an identical non-aqueous matrix. These nano-scale particles deposit within the porous cellulose and collagen fibre matrix without creating surface deposits or chalky residue.</p>
+                <p>The treatment establishes an enduring 1.0% alkaline reserve, buffering parchment to pH 8.0 and neutralizing any lingering sulfuric acid. Treated folios undergo micro-tensile mechanical testing to verify that fibre tensile modulus and elasticity are fully preserved.</p>
+                <ul class="spec-list">
+                  <li><strong>Alkaline Reserve:</strong> 0.8% to 1.2% CaCO₃ equivalent</li>
+                  <li><strong>Fibre Stabilization:</strong> Degree of polymerization retained &gt;1450 DP</li>
+                  <li><strong>ICOM Compliance:</strong> 100% chemically and physically reversible</li>
+                </ul>
+              </div>
+              <div class="card-media">
+                <figure class="specimen-frame">
+                  <img src="./assets/deacidified-vellum-tensile-test.webp" alt="Micro-tensile testing apparatus measuring the tensile strength of treated vellum" width="1280" height="720" loading="lazy">
+                  <figcaption class="specimen-caption">
+                    <span class="caption-id">FIG. 08</span>
+                    <span>CALIBRATED TENSILE TEST STAGE VERIFYING POST-TREATMENT VELLUM ELASTICITY AND TENSILE MODULUS.</span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: CURATORIAL CONSIGNMENT -->
+    <section id="curatorial-consignment" class="section-block">
+      <div class="container">
+        <div class="section-header focus-pull-element">
+          <span class="section-tag">06 // INSTITUTIONAL SURVEY &amp; CONSIGNMENT</span>
+          <h2 class="section-title">CURATORIAL PROTOCOLS &amp; REPOSITORY INTAKE SPECIFICATIONS</h2>
+          <p class="section-desc">Operating in strict compliance with ICOM-CC ethical guidelines and British Library manuscript preservation frameworks.</p>
+        </div>
+
+        <div class="consignment-grid">
+          <div class="consignment-info focus-pull-element">
+            <h3 class="info-heading">Archival Logistics &amp; Mobile Deployment</h3>
+            <p>IG-84 provides comprehensive condition assessments and tailored conservation programmes for national archives, university special collections, and ecclesiastical libraries across the United Kingdom and Europe.</p>
+            <p>For high-value illuminated codices that cannot leave institutional premises under insurance covenants, our certified conservators deploy the IG-84 Mobile Laboratory unit directly to repository vaults, equipped with self-contained air filtration and micro-XRF scanning stations.</p>
+            <div class="certifications-block">
+              <div class="cert-item">
+                <span class="cert-code">ICOM-CC</span>
+                <span class="cert-name">Committee for Conservation Certified Process</span>
+              </div>
+              <div class="cert-item">
+                <span class="cert-code">ICON</span>
+                <span class="cert-name">Institute of Conservation Accredited Conservators</span>
+              </div>
+              <div class="cert-item">
+                <span class="cert-code">N₂ VAULT</span>
+                <span class="cert-name">Nitrogen-Purged Inert Atmospheric Transport</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="consignment-form-wrapper focus-pull-element">
+            <form class="survey-form" id="collection-survey-form" action="#" method="post">
+              <h3 class="form-title">Consignment Survey Scheduling</h3>
+              
+              <div class="form-group">
+                <label for="institution-name">Institution / Repository Name</label>
+                <input type="text" id="institution-name" name="institutionName" required placeholder="e.g. Cambridge University Library Special Collections">
+              </div>
+
+              <div class="form-group">
+                <label for="curator-email">Lead Conservator / Curator Email</label>
+                <input type="email" id="curator-email" name="curatorEmail" required placeholder="conservator@institution.ac.uk">
+              </div>
+
+              <div class="form-group">
+                <label for="collection-type">Parchment / Paper Collection Type</label>
+                <select id="collection-type" name="collectionType" required>
+                  <option value="" disabled selected>Select collection classification</option>
+                  <option value="illuminated-codices">12th–15th Century Illuminated Manuscripts</option>
+                  <option value="legal-charters">Medieval Legal Charters &amp; Diplomas</option>
+                  <option value="monastic-registers">Ecclesiastical Registers &amp; Cartularies</option>
+                  <option value="palimpsests">Fragmented Palimpsests &amp; Binder Waste</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="folio-count">Estimated Affected Folio Count</label>
+                <input type="number" id="folio-count" name="folioCount" min="1" max="10000" placeholder="e.g. 150">
+              </div>
+
+              <div class="form-group">
+                <label for="service-mode">Logistical Dispatch Preference</label>
+                <select id="service-mode" name="serviceMode" required>
+                  <option value="mobile-lab">On-Site Mobile Laboratory Deployment</option>
+                  <option value="courier-vault">Secure Nitrogen-Purged Courier Transport</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">Submit Collection Survey</button>
+              <div class="form-feedback" id="survey-feedback" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SECTION 7: FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-logo">
+          <svg class="brand-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" width="24" height="24" aria-hidden="true">
+            <rect width="64" height="64" fill="#F7F7EE" />
+            <rect x="2" y="2" width="60" height="60" stroke="#0C0E0A" stroke-width="3" />
+            <polygon points="32,13 48.4,22.5 48.4,41.5 32,51 15.6,41.5 15.6,22.5" stroke="#0C0E0A" stroke-width="2.5" fill="#FFFFFF" />
+            <circle cx="32" cy="32" r="6" fill="#C4F024" stroke="#0C0E0A" stroke-width="2" />
+          </svg>
+          <span class="footer-brand-text">IG-84 CONSERVATION SCIENCE</span>
+        </div>
+        <p class="footer-desc">Archival iron-gall ink corrosion neutralisation reverse-engineered from twelfth-century monastic treatises. All synthesis protocols conducted under strict containment for analytical benchmarking.</p>
+        <p class="footer-hub"><a href="#hero" class="hub-back-link">↑ Return to Index Top</a></p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Laboratory Headquarters</h4>
+        <address class="footer-address">
+          IG-84 Research Complex<br>
+          Cambridge Conservation Science Park<br>
+          Madingley Road<br>
+          Cambridge, CB3 0AS<br>
+          United Kingdom
+        </address>
+        <p class="footer-contact">Telephone: +44 (0) 1223 948 402<br>Facsimile: +44 (0) 1223 948 403</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Archival Accreditations</h4>
+        <ul class="footer-list">
+          <li>ICOM Committee for Conservation (ICOM-CC)</li>
+          <li>Institute of Conservation (Icon UK Accredited)</li>
+          <li>European Consortium of Paper Archives (ECPA)</li>
+          <li>International Institute for Conservation (IIC)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container footer-bottom-flex">
+        <span>&copy; 2026 IG-84 Conservation Science Laboratories. British English Standard en-GB.</span>
+        <span>Phytate-84 Stabilization Matrix // Revision 4.8.2</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

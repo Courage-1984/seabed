@@ -1,0 +1,21 @@
+{
+  "title": "Cardiff Kerb-Gully & Bollard Works",
+  "blurb": "Blocked drains cleared and crooked bollards straightened in forty-five minutes flat from the back of a cargo trike—no lorries, no cones, no six-week wait.",
+  "hero": "assets/cardiff-kerb-gully-hero-trike.webp",
+  "layoutFamily": "brutalist stacked",
+  "styleFamily": "candy pop maximal",
+  "tone": "playful provocateur",
+  "sector": "civic / infrastructure",
+  "tags": [
+    "municipal",
+    "utilities",
+    "roadworks"
+  ],
+  "created": "2026-11-18",
+  "wordFloor": 1900,
+  "video": "assets/cardiff-kerb-gully-masked-type-fill.webm",
+  "videoPlacement": "masked type fill",
+  "signatureEffect": "staggered letter-by-letter headline",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

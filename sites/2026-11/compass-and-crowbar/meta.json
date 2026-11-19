@@ -1,0 +1,21 @@
+{
+  "title": "Compass & Crowbar",
+  "blurb": "Monumental solar photograms and structural blueprint cartography developed directly on active demolition sites across the UK.",
+  "hero": "assets/hero-monumental-cyanotype-scaffolding.webp",
+  "layoutFamily": "sticky-rail + content",
+  "styleFamily": "industrial safety-signage",
+  "tone": "playful provocateur",
+  "sector": "creative / arts",
+  "tags": [
+    "printmaking",
+    "studio",
+    "design"
+  ],
+  "created": "2026-11-06",
+  "wordFloor": 1100,
+  "video": "assets/compass-and-crowbar-split-panel.webm",
+  "videoPlacement": "split panel",
+  "signatureEffect": "sticky section pinning with cross-fade",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

@@ -1,0 +1,21 @@
+{
+  "title": "IG-84",
+  "blurb": "Archival iron-gall ink corrosion neutralisation reverse-engineered from twelfth-century monastic treatises.",
+  "hero": "assets/hero-iron-gall-vellum-macro.webp",
+  "layoutFamily": "overlapping card-stack",
+  "styleFamily": "acid tech on paper",
+  "tone": "calm clinical",
+  "sector": "education / research & archives",
+  "tags": [
+    "archive",
+    "laboratory",
+    "instrumentation"
+  ],
+  "created": "2026-11-09",
+  "wordFloor": 650,
+  "video": "assets/ig-84-hover-reveal.webm",
+  "videoPlacement": "hover reveal",
+  "signatureEffect": "progressive blur focus-pull",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

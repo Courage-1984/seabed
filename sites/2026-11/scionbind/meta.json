@@ -1,0 +1,21 @@
+{
+  "title": "ScionBind",
+  "blurb": "Archival germplasm preservation and cambial grafting systems engineered exclusively for pre-industrial fruit cultivars.",
+  "hero": "assets/dormant-pear-whip-graft.webp",
+  "layoutFamily": "diagonal-cut",
+  "styleFamily": "botanical plate",
+  "tone": "dry expert",
+  "sector": "agriculture / land & food production",
+  "tags": [
+    "horticulture",
+    "seed-stock",
+    "orchard"
+  ],
+  "created": "2026-11-02",
+  "wordFloor": 650,
+  "video": "assets/scionbind-hero-background.webm",
+  "videoPlacement": "hero background",
+  "signatureEffect": "scroll-velocity marquee skew",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

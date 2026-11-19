@@ -1,0 +1,1453 @@
+/* ==========================================================================
+   SCIONBIND — Archival Pomological Scionwood & Cambial Grafting Systems
+   Style Family: Botanical Plate | Layout Family: Diagonal-Cut
+   ========================================================================== */
+
+:root {
+  /* Mandatory Fingerprinted Tokens */
+  --color-bg: #D6E6D8;
+  --color-surface: #E8F0E9;
+  --color-primary: #112619;
+  --color-text: #192D21;
+  --color-text-muted: #4B6353;
+  --color-accent: #95233A;
+  --color-accent-hover: #78162A;
+  --color-border: #2B4434;
+  --color-border-light: #B8C7B9;
+
+  /* Botanical Plate Specialized Tokens */
+  --color-paper-tint: #E2EBE3;
+  --color-scrim-dark: rgba(17, 38, 25, 0.88);
+  --color-scrim-mid: rgba(17, 38, 25, 0.65);
+  --color-scrim-light: rgba(17, 38, 25, 0.25);
+  --color-focus-ring: #95233A;
+
+  /* Typography */
+  --font-heading: 'Cormorant', Georgia, serif;
+  --font-body: 'Mulish', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, Monaco, monospace;
+
+  /* Motion & Transitions */
+  --ease-plate: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fast: 180ms var(--ease-plate);
+  --transition-normal: 320ms var(--ease-plate);
+  --transition-slow: 550ms var(--ease-plate);
+
+  /* Borders & Framing */
+  --border-specimen: 1px solid var(--color-border);
+  --border-double: 3px double var(--color-border);
+  --border-subtle: 1px solid var(--color-border-light);
+
+  /* Layout Geometry */
+  --cut-slope: 1.5vw;
+  --site-max-width: 1200px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --cut-slope: 3vw;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Resets & Base Mechanics
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  font-size: 16px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+p, li, dt, dd, figcaption {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Focus Visibility Contract */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Header & Navigation
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(214, 230, 216, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: var(--border-subtle);
+  padding-block: 0.75rem;
+}
+
+.nav-container {
+  max-width: var(--site-max-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 44px;
+  padding-inline: 0.25rem;
+}
+
+.brand-mark-svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.brand-wordmark {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+@media (min-width: 880px) {
+  .nav-links {
+    display: flex;
+  }
+}
+
+.nav-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--color-primary);
+  padding: 0.5rem 0.25rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.nav-cta {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-surface);
+  background-color: var(--color-accent);
+  padding: 0.5rem 1rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-accent);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.nav-cta:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   Button Styles
+   -------------------------------------------------------------------------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  min-height: 44px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  text-align: center;
+}
+
+.button-primary {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  border: 1px solid var(--color-accent);
+}
+
+.button-primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.button-primary:active {
+  transform: translateY(1px);
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+.button-secondary:hover {
+  background-color: rgba(43, 68, 52, 0.08);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.button-secondary:active {
+  transform: translateY(1px);
+}
+
+.button-ghost-light {
+  background-color: transparent;
+  color: #F6F8F5;
+  border: 1px solid rgba(246, 248, 245, 0.7);
+}
+
+.button-ghost-light:hover {
+  background-color: rgba(246, 248, 245, 0.15);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.button-ghost-light:active {
+  transform: translateY(1px);
+}
+
+.button-accent {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  border: 1px solid var(--color-accent);
+}
+
+.button-accent:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.button-full-width {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Diagonal Cut Layout Family Core Mechanics
+   -------------------------------------------------------------------------- */
+.diagonal-cut-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut-slope)), 0 100%);
+  margin-bottom: calc(-1 * var(--cut-slope));
+}
+
+.diagonal-cut-top {
+  clip-path: polygon(0 var(--cut-slope), 100% 0, 100% 100%, 0 100%);
+  padding-top: calc(3.5rem + var(--cut-slope));
+}
+
+.diagonal-cut-both {
+  clip-path: polygon(0 var(--cut-slope), 100% 0, 100% calc(100% - var(--cut-slope)), 0 100%);
+  padding-top: calc(3.5rem + var(--cut-slope));
+  padding-bottom: calc(3.5rem + var(--cut-slope));
+  margin-bottom: calc(-1 * var(--cut-slope));
+}
+
+/* --------------------------------------------------------------------------
+   Section Foundations & Specimen Plate Motif
+   -------------------------------------------------------------------------- */
+.section-container {
+  max-width: var(--site-max-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    padding-inline: 2rem;
+  }
+}
+
+.specimen-section-header {
+  text-align: center;
+  max-width: 820px;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+}
+
+.engraved-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.section-subtext {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.engraved-rule {
+  width: 90px;
+  height: 2px;
+  background-color: var(--color-border);
+  margin: 1.5rem auto 0;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 600ms var(--ease-plate);
+}
+
+.engraved-rule.is-drawn {
+  transform: scaleX(1);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 1: HERO
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  padding-block: 5rem 6rem;
+  overflow: hidden;
+}
+
+.hero-media-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-poster-img,
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-video {
+  opacity: 0;
+  transition: opacity 800ms var(--ease-plate);
+}
+
+.hero-video.is-loaded {
+  opacity: 1;
+}
+
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(17, 38, 25, 0.94) 0%, rgba(17, 38, 25, 0.75) 60%, rgba(17, 38, 25, 0.45) 100%);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .hero-scrim {
+    background: linear-gradient(to right, rgba(17, 38, 25, 0.92) 0%, rgba(17, 38, 25, 0.72) 55%, rgba(17, 38, 25, 0.35) 100%);
+  }
+}
+
+.hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .hero-content-wrapper {
+    padding-inline: 2.5rem;
+  }
+}
+
+.specimen-plate-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: #C6D1C4;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .specimen-plate-meta {
+    flex-direction: row;
+    gap: 1.25rem;
+  }
+}
+
+.plate-index {
+  color: #DFEADF;
+  font-weight: 500;
+}
+
+.plate-coordinates {
+  color: #B8C7B9;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #F6F8F5;
+  margin-bottom: 1.25rem;
+}
+
+.hero-subhead {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #D6E6D8;
+  margin-bottom: 1.5rem;
+  max-width: 760px;
+}
+
+.hero-intro {
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  line-height: 1.75;
+  color: #E2EBE3;
+  margin-bottom: 2.25rem;
+  max-width: 760px;
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   SIGNATURE EFFECT: Scroll-Velocity Marquee Skew
+   -------------------------------------------------------------------------- */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0) skewX(var(--marquee-skew, 0deg));
+  }
+  100% {
+    transform: translateX(-50%) skewX(var(--marquee-skew, 0deg));
+  }
+}
+
+.velocity-marquee-container {
+  position: relative;
+  z-index: 10;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  border-block: 1px solid var(--color-border);
+  padding-block: 0.85rem;
+  overflow: hidden;
+  user-select: none;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marqueeScroll 32s linear infinite;
+}
+
+.marquee-unit {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.05em;
+  padding-inline: 1.5rem;
+  color: #D6E6D8;
+}
+
+.marquee-unit em {
+  font-family: var(--font-heading);
+  font-style: italic;
+  color: #F6F8F5;
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 2: GERMPLASM ARCHIVE (Tabula II)
+   -------------------------------------------------------------------------- */
+.section-archive {
+  background-color: var(--color-paper-tint);
+  position: relative;
+  z-index: 4;
+}
+
+.archive-mosaic-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .archive-mosaic-layout {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+.archive-text-card {
+  background-color: var(--color-surface);
+  border: var(--border-specimen);
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+  box-shadow: 0 4px 18px rgba(17, 38, 25, 0.04);
+}
+
+.verbatim-lead {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.75;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.verbatim-follow {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text);
+  margin-bottom: 1.75rem;
+}
+
+.archive-callout-plate {
+  border-left: 3px solid var(--color-accent);
+  background-color: rgba(149, 35, 58, 0.05);
+  padding: 1rem 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.callout-code {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: 0.35rem;
+}
+
+.specimen-mounting-card {
+  background-color: var(--color-surface);
+  border: var(--border-specimen);
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(17, 38, 25, 0.05);
+}
+
+.mounting-board-frame {
+  border: 1px dashed var(--color-border);
+  padding: 0.75rem;
+  background-color: var(--color-bg);
+}
+
+.herbarium-img-wrapper {
+  border: var(--border-subtle);
+  overflow: hidden;
+  background-color: #E2EBE3;
+}
+
+.herbarium-img-wrapper img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.herbarium-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.figure-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+}
+
+.binomial-tag {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.accession-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 3: CULTIVAR MATRIX
+   -------------------------------------------------------------------------- */
+.section-matrix {
+  background-color: var(--color-bg);
+  position: relative;
+  z-index: 3;
+}
+
+/* Diagonal Bleed Image: crossing the upper diagonal cut */
+.diagonal-bleed-image-container {
+  width: 100%;
+  max-width: var(--site-max-width);
+  margin: 0 auto 3rem;
+  padding-inline: 1.25rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .diagonal-bleed-image-container {
+    padding-inline: 2rem;
+  }
+}
+
+.diagonal-bleed-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: var(--border-specimen);
+  box-shadow: 0 6px 24px rgba(17, 38, 25, 0.08);
+}
+
+.bleed-image-caption-strip {
+  background-color: var(--color-surface);
+  border-inline: var(--border-specimen);
+  border-bottom: var(--border-specimen);
+  padding: 0.6rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.cultivar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.specimen-plate-card {
+  background-color: var(--color-surface);
+  border: var(--border-specimen);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.specimen-plate-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+  box-shadow: 0 6px 18px rgba(17, 38, 25, 0.06);
+}
+
+.plate-header {
+  border-bottom: var(--border-subtle);
+  padding-bottom: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.plate-fig {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.plate-title {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1.25;
+  margin-bottom: 0.25rem;
+}
+
+.plate-binomial {
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.plate-description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: 1.25rem;
+}
+
+.accession-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  border-top: var(--border-subtle);
+  padding-top: 0.75rem;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.spec-row dt {
+  color: var(--color-text-muted);
+}
+
+.spec-row dd {
+  font-weight: 600;
+  color: var(--color-primary);
+  text-align: right;
+}
+
+.mono-code {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent);
+}
+
+.matrix-action-footer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-register-note {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 4: GRAFTING SYSTEMS (Hardware Specification)
+   -------------------------------------------------------------------------- */
+.section-grafting {
+  background-color: var(--color-paper-tint);
+  position: relative;
+  z-index: 2;
+}
+
+.systems-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .systems-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.specimen-imagery-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.specimen-plate-frame {
+  background-color: var(--color-surface);
+  border: var(--border-specimen);
+  padding: 1rem;
+  box-shadow: 0 4px 16px rgba(17, 38, 25, 0.04);
+}
+
+.frame-inner {
+  border: 1px dashed var(--color-border);
+  padding: 0.5rem;
+  background-color: var(--color-bg);
+}
+
+.frame-inner img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.plate-sub-caption {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--color-text);
+  padding-top: 0.75rem;
+}
+
+.plate-sub-caption strong {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent);
+}
+
+.systems-spec-card {
+  background-color: var(--color-surface);
+  border: var(--border-specimen);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.spec-section {
+  margin-bottom: 2rem;
+}
+
+.spec-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.spec-summary {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.metrics-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+}
+
+.metric-card {
+  background-color: var(--color-bg);
+  border: var(--border-subtle);
+  padding: 1rem 0.85rem;
+  text-align: center;
+}
+
+.metric-number {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 0.25rem;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+.protocol-steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.protocol-step {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-surface);
+  background-color: var(--color-primary);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-content h4 {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.step-content p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.spec-cta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: var(--border-subtle);
+}
+
+@media (min-width: 600px) {
+  .spec-cta-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.spec-ship-note {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 5: INSTITUTIONAL PROVENANCE
+   -------------------------------------------------------------------------- */
+.section-provenance {
+  background-color: var(--color-bg);
+  position: relative;
+  z-index: 1;
+}
+
+.provenance-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.provenance-case-card {
+  background-color: var(--color-surface);
+  border: var(--border-specimen);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.provenance-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.provenance-title {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+
+.provenance-scope {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.provenance-body {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.provenance-footer-meta {
+  border-top: var(--border-subtle);
+  padding-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.phytosanitary-declaration-box {
+  background-color: var(--color-surface);
+  border: var(--border-double);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 800px) {
+  .phytosanitary-declaration-box {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+  }
+}
+
+.declaration-seal {
+  flex-shrink: 0;
+}
+
+.declaration-text h3 {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.declaration-text p {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+.declaration-cta {
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 6: ACCESSION PROTOCOL & FORM
+   -------------------------------------------------------------------------- */
+.section-protocol {
+  background-color: var(--color-paper-tint);
+  position: relative;
+  z-index: 1;
+}
+
+.protocol-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 940px) {
+  .protocol-grid {
+    grid-template-columns: 0.95fr 1.05fr;
+  }
+}
+
+.schedule-timeline-plate {
+  background-color: var(--color-surface);
+  border: var(--border-specimen);
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.plate-inner-heading {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  border-bottom: var(--border-subtle);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.timeline-schedule-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-border);
+}
+
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.timeline-item h4 {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.timeline-item p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.canister-engineering-card {
+  background-color: var(--color-surface);
+  border: var(--border-specimen);
+  padding: 1rem;
+}
+
+.canister-photo-wrapper {
+  border: var(--border-subtle);
+  overflow: hidden;
+  background-color: #E2EBE3;
+  margin-bottom: 1rem;
+}
+
+.canister-photo-wrapper img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.canister-photo-content h4 {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+}
+
+.canister-photo-content p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+/* Inquiry Form */
+.form-mount-card {
+  background-color: var(--color-surface);
+  border: var(--border-specimen);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  box-shadow: 0 4px 20px rgba(17, 38, 25, 0.05);
+}
+
+.card-header-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.form-title {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.form-instructions {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+
+.botanical-order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  font-family: var(--font-body);
+  font-size: 1rem; /* 16px minimum prevents iOS zoom */
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: var(--border-subtle);
+  padding: 0.75rem 0.85rem;
+  min-height: 44px;
+  width: 100%;
+  border-radius: 0;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--color-primary);
+  background-color: var(--color-surface);
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+
+.form-status-message {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  display: none;
+}
+
+.form-status-message.is-success {
+  display: block;
+  background-color: rgba(43, 68, 52, 0.1);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Site Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  border-top: var(--border-specimen);
+  padding-block: 4rem 3rem;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-container {
+  max-width: var(--site-max-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1.5fr 1fr 1fr;
+    padding-inline: 2rem;
+  }
+}
+
+.footer-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.footer-wordmark {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #F6F8F5;
+}
+
+.footer-tagline {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #D6E6D8;
+  margin-bottom: 1rem;
+}
+
+.footer-legal {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #B8C7B9;
+}
+
+.footer-heading {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #F6F8F5;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5rem;
+}
+
+.footer-address {
+  font-style: normal;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #D6E6D8;
+  margin-bottom: 0.75rem;
+}
+
+.footer-meta-item {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #B8C7B9;
+  line-height: 1.6;
+}
+
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-links-list a {
+  font-size: 0.875rem;
+  color: #D6E6D8;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-links-list a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Motion & Animation System (Scroll-Reveal & Transforms)
+   -------------------------------------------------------------------------- */
+.specimen-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 450ms var(--ease-plate), transform 450ms var(--ease-plate);
+  will-change: opacity, transform;
+}
+
+.specimen-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Mandatory Reduced Motion Contract
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .specimen-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .engraved-rule {
+    transform: none !important;
+  }
+
+  .marquee-track {
+    transform: none !important;
+  }
+
+  .hero-video {
+    display: none !important;
+  }
+
+  .hero-poster-img {
+    opacity: 1 !important;
+  }
+}
