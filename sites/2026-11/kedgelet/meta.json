@@ -1,0 +1,21 @@
+{
+  "title": "Kedgelet",
+  "blurb": "Pocket-sized 1:250 and 1:500 scale maritime logistics & harbour-berthing test hardware cast from weighted bismuth-tin in Falmouth.",
+  "hero": "assets/kedgelet-hero-tin.webp",
+  "layoutFamily": "modular grid-break collage",
+  "styleFamily": "oxblood & brass luxe",
+  "tone": "intimate artisan",
+  "sector": "maritime / logistics & freight",
+  "tags": [
+    "maritime",
+    "hardware",
+    "logistics"
+  ],
+  "created": "2026-11-23",
+  "wordFloor": 1900,
+  "video": "assets/kedgelet-section-transition-band.webm",
+  "videoPlacement": "section transition band",
+  "signatureEffect": "masked scroll-through type",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

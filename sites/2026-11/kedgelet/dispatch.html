@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quay Workshop &amp; Pilot Orders | Kedgelet Maritime Hardware</title>
+  <meta name="description" content="Reserve a numbered bench kit, request custom lid stamping, or inspect our current casting and pour schedule at Custom-House Quay, Falmouth.">
+  <meta property="og:title" content="Quay Workshop &amp; Pilot Orders — Kedgelet">
+  <meta property="og:description" content="Direct pilot reservations, current batch casting status, and admiralty dispatch logistics in Falmouth, Cornwall.">
+  <meta property="og:image" content="./assets/kedgelet-workbench.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,300..800;1,300..800&family=Prata&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-container">
+      <a href="./index.html" class="brand-anchor" aria-label="Kedgelet Homepage">
+        <div class="brand-mark">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#cca75a" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="12" y1="6" x2="12" y2="18"/>
+          </svg>
+        </div>
+        <div class="brand-text-wrap">
+          <span class="brand-wordmark">Kedgelet</span>
+          <span class="brand-tagline">Custom-House Quay &bull; Falmouth</span>
+        </div>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Main Navigation">
+        <a href="./index.html" class="nav-link">Home</a>
+        <a href="./kits.html" class="nav-link">Bench Kits</a>
+        <a href="./dispatch.html" class="nav-link active" aria-current="page">Quay Dispatch</a>
+      </nav>
+
+      <div class="header-actions">
+        <span class="scale-pill">Batch #46 Open</span>
+        <a href="#order" class="btn btn-accent" style="min-height: 40px; padding: 0.5rem 1rem; font-size: 0.8125rem;">Book a Quay Tin</a>
+        <button type="button" class="mobile-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-nav" aria-label="Mobile Navigation">
+      <a href="./index.html" class="nav-link">Home</a>
+      <a href="./kits.html" class="nav-link">Bench Kits</a>
+      <a href="./dispatch.html" class="nav-link active" aria-current="page">Quay Dispatch</a>
+    </div>
+  </header>
+
+  <main id="main-content" class="main-wrapper">
+    <!-- Section 1: Workshop Opener Collage -->
+    <section class="section-container" style="padding-block-end: 2rem;" aria-labelledby="dispatch-header-heading">
+      <div class="grid-12" style="align-items: center;">
+        <div style="grid-column: 1 / 7;" class="reveal-on-scroll">
+          <span class="eyebrow">Custom-House Quay &bull; Shed 4</span>
+          <h1 id="dispatch-header-heading">The Falmouth Harbour Bench &amp; Dispatch Desk</h1>
+          <p style="font-size: 1.15rem; color: var(--color-text); margin-block: 1rem 1.25rem; font-family: var(--font-heading); line-height: 1.5;">
+            Where low-temperature eutectic alloy meets naval brass turning and traditional wax-sealed admiralty parcel packing.
+          </p>
+          <p>
+            Our workshop overlooks the inner tidal basin at Falmouth. Here, we cast twenty-four numbered kits during each two-week spring tide cycle, ensuring strict quality control, individual mass verification on jeweller's balances, and hand-stamped lid plates for pilotage authorities across the United Kingdom and northern Europe.
+          </p>
+          <div style="display: flex; gap: 1rem; margin-block-start: 1.5rem; flex-wrap: wrap;">
+            <a href="#order" class="btn btn-primary">Book Batch #46 Tin</a>
+            <a href="#schedule" class="btn btn-secondary">Inspect Pour Schedule</a>
+          </div>
+        </div>
+
+        <div style="grid-column: 7 / 13;" class="reveal-on-scroll">
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+            <div class="specimen-frame" style="box-shadow: var(--shadow-card);">
+              <img 
+                src="./assets/kedgelet-workbench.webp" 
+                alt="Sunlit Cornish coastal workshop bench with ladle, ingot moulds, and miniature metal cargo units" 
+                width="1000" 
+                height="750" 
+                loading="lazy"
+              >
+              <span class="stamp-badge" style="font-size: 0.75rem;">Casting Ladle Bench</span>
+            </div>
+            <div class="specimen-frame" style="box-shadow: var(--shadow-card); margin-block-start: 1.5rem;">
+              <img 
+                src="./assets/kedgelet-quay-crate.webp" 
+                alt="Open cedar-wood dispatch box holding an enamelled metal pocket tin and wax-sealed pilot card" 
+                width="900" 
+                height="700" 
+                loading="lazy"
+              >
+              <span class="stamp-badge" style="font-size: 0.75rem;">Admiralty Packing Box</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Current Pour & Dispatch Schedule -->
+    <section id="schedule" class="section-container" style="padding-block-start: 1rem;" aria-labelledby="schedule-heading">
+      <div style="max-width: 72ch; margin-block-end: 2.5rem;">
+        <span class="eyebrow">Tidal Casting Cycles &bull; 2026 Production</span>
+        <h2 id="schedule-heading">Current Pour &amp; Dispatch Board</h2>
+        <p>
+          Because we melt in small controlled 3-kilogram crucible batches, all dispatch tins follow a transparent casting queue tied to regional spring-tide pilot training schedules.
+        </p>
+      </div>
+
+      <div class="grid-12" style="gap: 1.75rem;">
+        <!-- Batch 44 -->
+        <div class="luxe-card" style="grid-column: span 4; border-color: rgba(204, 167, 90, 0.3);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-block-end: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--color-text);">Batch #44</span>
+            <span class="scale-pill" style="background: rgba(209, 48, 40, 0.2); border-color: var(--color-buoy-red); color: #f59e9b;">Allocated &bull; Final Tumble</span>
+          </div>
+          <h3>Walnut Shell Tumble &amp; Final Weighing</h3>
+          <p style="font-size: 0.9375rem; margin-block-start: 0.5rem;">
+            Twenty-four Carrick Roads 1:250 kits currently completing twenty-four hours in rotary walnut shell barrels to remove casting burrs. Balance-checked to &plusmn;0.08g.
+          </p>
+          <div style="margin-block-start: 1rem; padding-block-start: 0.75rem; border-block-start: 1px solid rgba(204, 167, 90, 0.2); font-size: 0.8125rem; color: var(--color-brass);">
+            Despatch Target: Friday 27 November 2026
+          </div>
+        </div>
+
+        <!-- Batch 45 -->
+        <div class="luxe-card" style="grid-column: span 4; border-color: var(--color-brass);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-block-end: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--color-text);">Batch #45</span>
+            <span class="scale-pill" style="background: rgba(204, 167, 90, 0.25); border-color: var(--color-brass); color: var(--color-brass);">Enamel Cure &amp; Engraving</span>
+          </div>
+          <h3>Lid Stamping &amp; Buoy Enamel Priming</h3>
+          <p style="font-size: 0.9375rem; margin-block-start: 0.5rem;">
+            Coaster Trim and Breakwater sets undergoing dual-dip tomato red and cobalt buoy colour application. Brass lid nameplates being engraved for Trinity House trainees.
+          </p>
+          <div style="margin-block-start: 1rem; padding-block-start: 0.75rem; border-block-start: 1px solid rgba(204, 167, 90, 0.2); font-size: 0.8125rem; color: var(--color-brass);">
+            Despatch Target: Thursday 3 December 2026
+          </div>
+        </div>
+
+        <!-- Batch 46 -->
+        <div class="luxe-card" style="grid-column: span 4; border-color: var(--color-brass); background: var(--color-surface-raised);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-block-end: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--color-brass);">Batch #46</span>
+            <span class="scale-pill" style="background: var(--color-oxblood); color: var(--color-text); border-color: var(--color-brass);">Open for Allocation</span>
+          </div>
+          <h3>Next Foundry Ladle Pour</h3>
+          <p style="font-size: 0.9375rem; margin-block-start: 0.5rem;">
+            Allocations currently being logged for our next spring-tide casting cycle. Reserve your numbered tinplate case and custom vessel stamp before the pour schedule closes.
+          </p>
+          <div style="margin-block-start: 1rem; padding-block-start: 0.75rem; border-block-start: 1px solid rgba(204, 167, 90, 0.2); font-size: 0.8125rem; color: var(--color-brass);">
+            Remaining Units: 9 of 24 Available
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Direct Quay Order & Pilot Reservation Form -->
+    <section id="order" class="section-container" style="padding-block-start: 1rem;" aria-labelledby="order-heading">
+      <div class="grid-12">
+        <div class="form-card" style="grid-column: 2 / 12;">
+          <div style="margin-block-end: 2rem;">
+            <span class="eyebrow">Pilot Desk Allocation Booking</span>
+            <h2 id="order-heading">Reserve a Numbered Bench Tin from Batch #46</h2>
+            <p>
+              Submit your kit selection and engraving specifications below. We will assign an official batch allocation serial number and prepare your cedar-shaving dispatch tin at Custom-House Quay.
+            </p>
+          </div>
+
+          <form id="pilot-dispatch-form" novalidate>
+            <div class="form-grid">
+              <div>
+                <label for="field-kit" class="form-label">Select Bench Kit Configuration *</label>
+                <select id="field-kit" class="form-control" required>
+                  <option value="carrick">The Carrick Roads Pilot Tin (1:250) — &pound;145</option>
+                  <option value="coaster">The Coaster Trim &amp; Stack Set (1:500) — &pound;118</option>
+                  <option value="breakwater">The Breakwater Tug-Warp Kit (1:250) — &pound;162</option>
+                  <option value="custom">Custom Admiralty Multi-Vessel Commission</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="field-scale" class="form-label">Preferred Scale Ratio *</label>
+                <select id="field-scale" class="form-control" required>
+                  <option value="1:250 Standard Scale">1:250 Standard Pilot Scale (42.0g TEU block)</option>
+                  <option value="1:500 Feeder Scale">1:500 Coaster Stack Scale (12.4g micro-block)</option>
+                  <option value="Dual Scale Combination">Dual-Scale Combination Rehearsal Suite</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="field-vessel" class="form-label">Vessel or Harbour Authority Name (for Lid Stamping)</label>
+                <input type="text" id="field-vessel" class="form-control" placeholder="e.g. Carrick Pilotage / M/V Penlee Swell" maxlength="48">
+              </div>
+
+              <div>
+                <label for="field-email" class="form-label">Navigator / Pilot Officer Email *</label>
+                <input type="email" id="field-email" class="form-control" placeholder="skipper@carrickpilots.co.uk" required>
+              </div>
+
+              <div class="form-group-full">
+                <label for="field-notes" class="form-label">Special Hydrographic or Harbour Details</label>
+                <textarea id="field-notes" class="form-control" rows="3" placeholder="Provide any specific quay depths, bollard spacings, or tidal sets you wish noted on your kit's hydrographic ledger plate."></textarea>
+              </div>
+
+              <div class="form-group-full" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-block-start: 1rem;">
+                <p style="font-size: 0.8125rem; color: var(--color-text-dim); margin: 0;">
+                  &bull; No upfront card payment required at reservation &bull; Batch allocation confirmed within 24 hours.
+                </p>
+                <button type="submit" class="btn btn-accent" style="width: 100%; max-width: 240px;">Book Batch #46 Tin</button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Interactive Confirmation Receipt Card (rendered via main.js) -->
+          <div id="dispatch-receipt" class="form-receipt-card" aria-live="polite">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-block-end: 1.25rem;">
+              <div>
+                <span class="eyebrow" style="color: var(--color-brass-light);">Official Falmouth Despatch Voucher</span>
+                <h3 style="color: var(--color-text); margin: 0;">Batch #46 Reservation Confirmed</h3>
+              </div>
+              <span class="scale-pill" style="font-size: 0.875rem;">Status: Logged in Pour Register</span>
+            </div>
+
+            <p style="color: var(--color-text); font-size: 1.0625rem; margin-block-end: 1.25rem;">
+              Thank you for commissioning Kedgelet maritime hardware. Your allocation has been recorded in the Custom-House Quay casting ledger.
+            </p>
+
+            <div class="receipt-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; background: var(--color-ground-deep); padding: 1.25rem; border-radius: 4px; border: 1px solid rgba(204, 167, 90, 0.3); margin-block-end: 1.5rem; font-size: 0.9375rem;">
+              <div>
+                <span style="color: var(--color-text-dim); display: block; font-size: 0.75rem; text-transform: uppercase;">Allocation Reference</span>
+                <strong id="receipt-ref" style="color: var(--color-brass); font-family: var(--font-heading); font-size: 1.2rem;">FAL-B46-8812</strong>
+              </div>
+              <div>
+                <span style="color: var(--color-text-dim); display: block; font-size: 0.75rem; text-transform: uppercase;">Selected Hardware</span>
+                <strong id="receipt-kit" style="color: var(--color-text);">The Carrick Roads Pilot Tin (1:250)</strong>
+              </div>
+              <div>
+                <span style="color: var(--color-text-dim); display: block; font-size: 0.75rem; text-transform: uppercase;">Scale Ratio</span>
+                <strong id="receipt-scale" style="color: var(--color-text);">1:250 Standard Scale</strong>
+              </div>
+              <div>
+                <span style="color: var(--color-text-dim); display: block; font-size: 0.75rem; text-transform: uppercase;">Lid Inscription Stamp</span>
+                <strong id="receipt-stamp" style="color: var(--color-brass);">Carrick Pilotage</strong>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+              <p style="font-size: 0.8125rem; color: var(--color-text-dim); margin: 0;">
+                A workshop confirmation and parcel tracking notification will be dispatched to your email upon alloy cooling and inspection.
+              </p>
+              <button type="button" id="btn-order-another" class="btn btn-secondary">Submit Another Pilot Request</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Packing & Royal Mail / Harbour Courier Details -->
+    <section class="section-container" style="padding-block-start: 1rem;" aria-labelledby="postage-heading">
+      <div style="max-width: 72ch; margin-block-end: 2.5rem;">
+        <span class="eyebrow">Packing &amp; Worldwide Despatch</span>
+        <h2 id="postage-heading">Secure Admiralty Courier Logistics</h2>
+        <p>
+          Weighted metal castings require heavy-gauge packaging to survive international transit. Every tin is bedded in cedar shavings and secured against shock and moisture.
+        </p>
+      </div>
+
+      <div class="grid-12" style="gap: 1.75rem;">
+        <div class="luxe-card" style="grid-column: span 4;">
+          <h3 style="color: var(--color-brass); font-size: 1.35rem;">Aromatic Cedar Bedding</h3>
+          <p style="font-size: 0.9375rem; margin-block-start: 0.5rem;">
+            Each enamelled tin is cradled in hand-planed Cornish red cedar shavings inside a wooden outer dispatch box. The cedar absorbs atmospheric humidity and prevents tarnishing of turned naval brass bitts.
+          </p>
+        </div>
+
+        <div class="luxe-card" style="grid-column: span 4;">
+          <h3 style="color: var(--color-brass); font-size: 1.35rem;">Royal Mail Special Delivery</h3>
+          <p style="font-size: 0.9375rem; margin-block-start: 0.5rem;">
+            UK domestic dispatches ship via Royal Mail Special Delivery Guaranteed by 1pm, tracked and signed. Admiralty and European harbour offices receive priority DHL Express couriered transit.
+          </p>
+        </div>
+
+        <div class="luxe-card" style="grid-column: span 4;">
+          <h3 style="color: var(--color-brass); font-size: 1.35rem;">Quay Collection in Falmouth</h3>
+          <p style="font-size: 0.9375rem; margin-block-start: 0.5rem;">
+            Visiting pilots and skippers berthed in Falmouth Harbour or Truro can collect completed sets directly from Shed 4, Custom-House Quay. Bring your chart tube to test fit our Delabole tide slates.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Workshop FAQ Accordion -->
+    <section class="section-container" style="padding-block-start: 1rem;" aria-labelledby="faq-heading">
+      <div style="max-width: 72ch; margin-block-end: 2rem;">
+        <span class="eyebrow">Navigator Knowledge Base</span>
+        <h2 id="faq-heading">Frequently Answered Workshop Questions</h2>
+        <p>
+          Technical specifications regarding our bismuth-tin alloy, chartroom table safety, replacement turned fittings, and custom maritime academy requirements.
+        </p>
+      </div>
+
+      <div class="faq-accordion">
+        <details class="faq-item">
+          <summary class="faq-summary">Is the bismuth-tin alloy non-toxic and safe for continuous chartroom handling?</summary>
+          <div class="faq-content">
+            <p>
+              Yes, absolutely. Our foundry strictly uses lead-free 58% bismuth and 42% tin eutectic alloy. It contains zero lead, zero cadmium, and zero hazardous heavy metals. It was chosen specifically because it achieves a high density (8.56 g/cm³) comparable to lead alloys while being completely non-toxic for daily bare-handed chartroom manipulation, table drills, and student training.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-summary">Can you mill custom vessel silhouettes and specific bulbous bow profiles?</summary>
+          <div class="faq-content">
+            <p>
+              Yes. In addition to our standard coaster and barge hulls, we accept naval architectural lines plans (.dxf or traditional lines tables) to cast custom waterline silhouettes. We frequently cast specialized feeder container ships, chemical product tankers, twin-screw harbour tugs, and ocean-going salvage tugs with true waterline breadth and draft scales.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-summary">What happens if a turned brass bollard or scale container block is dropped overboard?</summary>
+          <div class="faq-content">
+            <p>
+              We maintain an archival stock of individual replacement components for every numbered tin ever dispatched from Falmouth. If a crew member misplaces a 14mm brass bitt or a 42g dangerous-goods container, you can contact the workshop with your tin's serial number to receive exact matching replacements within forty-eight hours.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-summary">Do you offer educational institution and maritime academy batch discounts?</summary>
+          <div class="faq-content">
+            <p>
+              Yes. Nautical colleges, Trinity House apprentice schemes, and port pilot associations ordering ten or more tins receive fitted classroom packing chests with comprehensive master tide slates, magnetic whiteboard anchors, and custom engraved instructional marking sets. Contact the Custom-House Quay desk directly for institutional invoicing.
+            </p>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <h3>Kedgelet Miniature Maritime Hardware</h3>
+          <p style="margin-block: 0.75rem 1.25rem; font-size: 0.9375rem;">
+            Precision-cast bismuth-tin ballast hardware and turned brass quay gear for coastal navigators, harbour pilot training rooms, and admiralty chart tables.
+          </p>
+          <p style="font-size: 0.8125rem; color: var(--color-brass);">
+            Shed 4, Custom-House Quay, Falmouth Harbour, Cornwall, TR11 3JT &bull; 50.1526&deg; N, 5.0645&deg; W
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Scale Tins</h4>
+          <ul class="footer-links">
+            <li><a href="./kits.html#carrick">Carrick Roads 1:250</a></li>
+            <li><a href="./kits.html#coaster">Coaster Trim 1:500</a></li>
+            <li><a href="./kits.html#breakwater">Breakwater Tug-Warp</a></li>
+            <li><a href="./kits.html#custom">Custom Fleet Markings</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Foundry &amp; Quay</h4>
+          <ul class="footer-links">
+            <li><a href="./dispatch.html#schedule">Pouring Schedule</a></li>
+            <li><a href="./dispatch.html#order">Pilot Order Desk</a></li>
+            <li><a href="./dispatch.html#postage">Admiralty Parcel Post</a></li>
+            <li><a href="./dispatch.html#faq">Metallurgy FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Standards &amp; Alloy</h4>
+          <p style="font-size: 0.875rem; margin-block-end: 0.75rem;">
+            Lead-free 58/42 Bismuth-Tin eutectic alloy complying with UK MCA safety guidelines for chartroom handling.
+          </p>
+          <span class="scale-pill">Standard v2 &bull; en-GB</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Kedgelet Hardware Works. Handcrafted in Falmouth, Cornwall. All rights reserved.</p>
+        <p>Built for the Daily Builds Architecture Hub &bull; Static MPA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
