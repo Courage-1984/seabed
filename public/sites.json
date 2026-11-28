@@ -2056,6 +2056,28 @@
     "siteFolder": "./sites/2026-10/the-pit-roast-hearthwrights"
   },
   {
+    "title": "Caliche",
+    "blurb": "Borrow twenty-four raw earth pigments in a brass pocket tin, paint the ridge, and swap empty pans on the road.",
+    "hero": "assets/caliche-hero-field-tin.webp",
+    "layoutFamily": "neo-brutalist masonry",
+    "styleFamily": "mid-century desert modern",
+    "tone": "adventurous field",
+    "sector": "creative / arts",
+    "tags": [
+      "studio",
+      "printmaking",
+      "design"
+    ],
+    "created": "2026-11-28",
+    "wordFloor": 650,
+    "video": "assets/caliche-modal-feature.webm",
+    "videoPlacement": "modal feature",
+    "signatureEffect": "numeric counter roll-up",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-11/caliche"
+  },
+  {
     "title": "Cardiff Kerb-Gully & Bollard Works",
     "blurb": "Blocked drains cleared and crooked bollards straightened in forty-five minutes flat from the back of a cargo trike—no lorries, no cones, no six-week wait.",
     "hero": "assets/cardiff-kerb-gully-hero-trike.webp",
@@ -2142,6 +2164,50 @@
     "standard": "v2",
     "qa": "v2-pass",
     "siteFolder": "./sites/2026-11/kedgelet"
+  },
+  {
+    "title": "PegLow",
+    "blurb": "Bone-dry, rustle-free shelter for people who go outdoors to stay completely still.",
+    "hero": "assets/peglow-hero-hide.webp",
+    "layoutFamily": "asymmetric split",
+    "styleFamily": "swiss international",
+    "tone": "wry editorial",
+    "sector": "leisure / outdoors",
+    "tags": [
+      "gear",
+      "conservation",
+      "recreation"
+    ],
+    "created": "2026-11-26",
+    "wordFloor": 1900,
+    "video": "assets/peglow-inline-process-demo.webm",
+    "videoPlacement": "inline process demo",
+    "signatureEffect": "magnetic proximity cursor element",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-11/peglow"
+  },
+  {
+    "title": "Rule & Trammel",
+    "blurb": "Direct-to-bench precision layout instruments: hand-graduated boxwood rules, cast-brass trammel heads, and duodecimal scales cut on 1924 Sheffield iron.",
+    "hero": "assets/rule-and-trammel-hero-photogram.webp",
+    "layoutFamily": "layered-parallax",
+    "styleFamily": "riso spot-ink",
+    "tone": "stoic technical",
+    "sector": "retail / e-commerce",
+    "tags": [
+      "specialty-retail",
+      "direct-to-consumer",
+      "vintage"
+    ],
+    "created": "2026-11-25",
+    "wordFloor": 650,
+    "video": "assets/rule-and-trammel-footer-ambient.webm",
+    "videoPlacement": "footer ambient",
+    "signatureEffect": "drifting grain overlay",
+    "standard": "v2",
+    "qa": "v2-pass",
+    "siteFolder": "./sites/2026-11/rule-and-trammel"
   },
   {
     "title": "ScionBind",

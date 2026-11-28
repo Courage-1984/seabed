@@ -1,0 +1,535 @@
+<!DOCTYPE html><html lang="en-GB"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rule &amp; Trammel | Direct-to-Bench Precision Layout Instruments</title>
+  <meta name="description" content="Engine-divided boxwood rules, cast-brass trammel heads, and duodecimal scales scribed to 0.05 mm tolerance on restored 1924 Sheffield iron.">
+  <meta property="og:title" content="Rule &amp; Trammel | Direct-to-Bench Precision Layout Instruments">
+  <meta property="og:description" content="Engine-divided boxwood rules, cast-brass trammel heads, and duodecimal scales scribed to 0.05 mm tolerance on restored 1924 Sheffield iron.">
+  <meta property="og:image" content="./assets/rule-and-trammel-hero-photogram.webp">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;700;800&amp;family=DM+Mono:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.js" defer=""></script>
+</head>
+<body class="riso-ground">
+  <!-- Drifting grain overlay (Signature Effect) -->
+  <div class="drifting-grain" aria-hidden="true"></div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#main-content" class="skip-to-content">Skip to bench content</a>
+      <a href="#" class="brand-link" aria-label="Rule and Trammel Home">
+        <img src="./assets/favicon.svg" alt="" class="brand-mark" width="28" height="28" aria-hidden="true" loading="lazy">
+        <span class="brand-text">RULE &amp; TRAMMEL</span>
+      </a>
+      <nav class="site-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#flagship" class="nav-link">1924 Engine</a></li>
+          <li><a href="#catalogue" class="nav-link">Catalogue</a></li>
+          <li><a href="#standards" class="nav-link">Tolerances</a></li>
+          <li><a href="#provenance" class="nav-link">Provenance</a></li>
+          <li><a href="#faq" class="nav-link">Care &amp; FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="order-slip-trigger" id="orderSlipToggle" aria-expanded="false" aria-controls="orderSlipDrawer">
+          <span class="slip-icon" aria-hidden="true">¶</span>
+          <span class="slip-label">Order Slip</span>
+          <span class="slip-count" id="slipTallyCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Interactive Order Slip Drawer / Modal -->
+  <aside id="orderSlipDrawer" class="order-slip-drawer" aria-label="Bench Order Slip" hidden="">
+    <div class="drawer-header">
+      <h2 class="drawer-title">Bench Order Slip</h2>
+      <button type="button" class="drawer-close" id="orderSlipClose" aria-label="Close Order Slip">✕</button>
+    </div>
+    <div class="drawer-body">
+      <div id="orderSlipEmpty" class="slip-empty-state">
+        <p class="mono-label">No instruments selected yet.</p>
+        <p class="text-muted">Choose your preferred graduation below and add an instrument directly to your bench slip.</p>
+      </div>
+      <ul id="orderSlipItems" class="slip-item-list" aria-live="polite"></ul>
+      <div class="slip-summary" id="orderSlipSummary" hidden="">
+        <div class="slip-summary-row">
+          <span>Subtotal</span>
+          <span class="summary-val" id="slipSubtotal">£0</span>
+        </div>
+        <div class="slip-summary-row">
+          <span>Bench Calibration</span>
+          <span class="summary-val">Included (£0)</span>
+        </div>
+        <div class="slip-summary-row summary-total">
+          <span>Total (ex. VAT)</span>
+          <span class="summary-val" id="slipTotal">£0</span>
+        </div>
+        <div class="slip-actions">
+          <button type="button" class="btn btn-primary btn-block" id="dispatchSlipBtn">Confirm Bench Dispatch</button>
+          <button type="button" class="btn btn-subtle btn-block" id="clearSlipBtn">Clear Slip</button>
+        </div>
+        <p class="dispatch-note">Signed calibration slip by Sheffield engine master included with every parcel.</p>
+      </div>
+    </div>
+  </aside>
+
+  <main id="main-content">
+    <!-- Section 1 — Hero (Verbatim §4a) -->
+    <section class="section-hero parallax-container" id="hero" aria-labelledby="hero-title">
+      <!-- Parallax depth planes -->
+      <div class="parallax-plane plane-bg drafting-grid" data-parallax="0.04" aria-hidden="true"></div>
+      <div class="parallax-plane plane-mid technical-arcs" data-parallax="0.14" aria-hidden="true">
+        <svg class="schematic-watermark" viewBox="0 0 800 600" fill="none" stroke="currentColor">
+          <circle cx="400" cy="300" r="220" stroke-width="1" stroke-dasharray="4 4"></circle>
+          <circle cx="400" cy="300" r="160" stroke-width="1.5"></circle>
+          <line x1="180" y1="300" x2="620" y2="300" stroke-width="1"></line>
+          <line x1="400" y1="80" x2="400" y2="520" stroke-width="1"></line>
+          <path d="M 280 200 L 520 400 M 280 400 L 520 200" stroke-width="0.75" stroke-dasharray="2 3"></path>
+        </svg>
+      </div>
+
+      <div class="hero-content-wrapper parallax-plane plane-fore" data-parallax="-0.06">
+        <div class="hero-plate">
+          <div class="hero-meta-bar">
+            <span class="mono-badge">SHEFFIELD WORKSHOP REGISTRY 1986</span>
+            <span class="mono-badge">TOLERANCE ±0.05 MM</span>
+            <span class="mono-badge">ALLOY CZ121 BRASS</span>
+          </div>
+          <h1 id="hero-title" class="hero-headline">Engine-divided boxwood rules scribed in Sheffield.</h1>
+          <p class="hero-subhead">Rule &amp; Trammel cuts traditional duodecimal rules, cast-brass trammel heads, and proportional dividers for joiners and boatbuilders who still lay out work from first principles.</p>
+          <div class="hero-body-intro">
+            <p>Modern laser-printed scales wear flat within two seasons of bench dust and linseed oil. We scribe every boxwood blade and brass beam on a 1924 cast-iron dividing engine so each sixteenth-inch tick bites cleanly into the grain. Order individual instruments or complete oiled-canvas rolls direct from our Kelham Island bench.</p>
+          </div>
+          <div class="hero-cta-group">
+            <a href="#catalogue" class="btn btn-primary">Browse Bench Catalogue</a>
+            <a href="#standards" class="btn btn-secondary">Inspect Dividing Tolerances</a>
+          </div>
+        </div>
+
+        <div class="hero-visual-card">
+          <div class="visual-frame">
+            <img src="./assets/rule-and-trammel-hero-photogram.webp" alt="Cyanotype and riso photogram showing precision cast-brass trammel heads, compass points, and scribed boxwood rule graduations on technical paper" class="hero-image" width="1200" height="850" fetchpriority="high">
+            <div class="visual-caption">
+              <span class="caption-marker">PLATE 01</span>
+              <span class="caption-text">No. 4 Trammel Beam &amp; Scribed Boxwood Photogram · Sheffield Loft</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dimension Leader Transition -->
+    <div class="dimension-transition" aria-hidden="true">
+      <div class="dimension-line">
+        <span class="dimension-tick start-tick"></span>
+        <span class="dimension-label">LEADSCREW TRAVEL: 36 INCHES / 914.4 MM</span>
+        <span class="dimension-tick end-tick"></span>
+      </div>
+    </div>
+
+    <!-- Section 2 — Flagship (§4a Verbatim: The 1924 Dividing Engine Bench) -->
+    <section class="section-flagship parallax-container" id="flagship" aria-labelledby="flagship-title">
+      <div class="parallax-plane plane-bg drafting-radial" data-parallax="0.06" aria-hidden="true"></div>
+      
+      <div class="flagship-inner parallax-plane plane-fore" data-parallax="-0.04">
+        <header class="section-header">
+          <div class="section-label-tag">MECHANICAL GEOMETRY &amp; PROVENANCE</div>
+          <h2 id="flagship-title" class="section-title">One-twentieth of a millimetre, cut by leadscrew and burin.</h2>
+        </header>
+
+        <div class="flagship-plate-stack">
+          <div class="flagship-prose-card reveal-card">
+            <div class="plate-index-tab">SPECIFICATION ARCHIVE §1924</div>
+            <div class="prose-content">
+              <p>A dividing engine works without optics or software: a hardened steel leadscrew advances the carriage by a fixed fraction of a turn while a weighted diamond-tipped burin scores the face of the rule. Because the cut is mechanical, every graduation line holds a crisp V-shaped trench that catches graphite and dividers' points alike.</p>
+              <p>Before any blank reaches the carriage, European boxwood billets rest for seven years on slatted oak racks in our Sheffield loft until moisture stabilises below nine percent. Only straight-grained, knot-free lengths pass to the planer and brass-binding press.</p>
+              <p>We still cut twelfths, sixteenths, and Admiralty spar-taper ratios alongside standard millimetres, giving boatwrights and restoration joiners exact replacements for nineteenth-century lofting tables.</p>
+            </div>
+            <div class="prose-footer">
+              <span class="footer-note">CALIBRATION STANDARD: NPL TRACEABLE 1924 CERTIFICATE 4402-B</span>
+            </div>
+          </div>
+
+          <div class="flagship-media-card reveal-card">
+            <div class="flagship-image-wrapper">
+              <img src="./assets/rule-and-trammel-dividing-engine.webp" alt="Restored 1924 cast-iron linear dividing engine in Sheffield workshop showing micrometer leadscrew and diamond burin carriage" width="1200" height="720" loading="lazy" class="flagship-img">
+              <div class="callout-leader callout-leadscrew" aria-hidden="true">
+                <span class="leader-dot"></span>
+                <span class="leader-line"></span>
+                <span class="leader-text">Hardened steel leadscrew (10 TPI)</span>
+              </div>
+              <div class="callout-leader callout-burin" aria-hidden="true">
+                <span class="leader-dot"></span>
+                <span class="leader-line"></span>
+                <span class="leader-text">Diamond-tipped scoring burin</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3 — Direct-to-Bench Catalogue (§4b Directed) -->
+    <section class="section-catalogue" id="catalogue" aria-labelledby="catalogue-title">
+      <div class="container">
+        <header class="section-header">
+          <div class="section-label-tag">RETAIL &amp; BENCH DISPATCH</div>
+          <h2 id="catalogue-title" class="section-title">Instruments ready for immediate bench dispatch</h2>
+          <p class="section-subtitle">Cut direct from our Kelham Island loft. Shipped in waxed protective wraps with individual calibration slips.</p>
+        </header>
+
+        <div class="catalogue-grid">
+          <!-- Item 1: Trammel Set -->
+          <article class="product-card reveal-card" data-sku="RT-TRAM-04">
+            <div class="product-media">
+              <img src="./assets/rule-and-trammel-trammel-set.webp" alt="No. 4 Boxwood and Brass Trammel Set laid on oiled canvas roll with fine adjustment screw heads" width="800" height="600" loading="lazy">
+              <span class="product-badge">FLAGSHIP SET</span>
+            </div>
+            <div class="product-content">
+              <div class="product-header">
+                <h3 class="product-title">No. 4 Boxwood &amp; Brass Trammel Set</h3>
+                <div class="product-price">£148</div>
+              </div>
+              <p class="product-desc">Complete large-arc layout system with two sand-cast CZ121 brass trammel heads, fine knurled micro-feed screw, and seasoned boxwood beam.</p>
+              <ul class="product-specs">
+                <li><span class="spec-label">Beam:</span> 36-inch kiln-seasoned European boxwood (8.6% MC)</li>
+                <li><span class="spec-label">Fittings:</span> Dual cast-brass heads with hardened steel points &amp; pencil collet</li>
+                <li><span class="spec-label">Packaging:</span> Heavyweight 14-oz oiled canvas roll with copper rivets</li>
+              </ul>
+              <div class="selector-group">
+                <label for="grad-trammel" class="selector-label">Select Scribed Graduation:</label>
+                <select id="grad-trammel" class="form-select grad-selector">
+                  <option value="Imperial 1/16th Ticks">Imperial 1/16" Scribed Ticks</option>
+                  <option value="Duodecimal 1/12th Admiralty Ticks">Duodecimal 1/12" Admiralty Ticks</option>
+                  <option value="Dual Metric 0.5mm / Imperial 1/16th">Dual Metric 0.5mm &amp; Imperial 1/16"</option>
+                </select>
+              </div>
+              <button type="button" class="btn btn-primary btn-add-slip" data-id="RT-TRAM-04" data-name="No. 4 Boxwood &amp; Brass Trammel Set" data-price="148" data-selector="grad-trammel">
+                Add to Order Slip · £148
+              </button>
+            </div>
+          </article>
+
+          <!-- Item 2: Proportional Dividers -->
+          <article class="product-card reveal-card" data-sku="RT-DIV-02">
+            <div class="product-media">
+              <img src="./assets/rule-and-trammel-dividers.webp" alt="Sector-Joint Proportional Dividers in cast brass opened over technical drawing grid" width="800" height="600" loading="lazy">
+              <span class="product-badge">SECTOR APPARATUS</span>
+            </div>
+            <div class="product-content">
+              <div class="product-header">
+                <h3 class="product-title">Sector-Joint Proportional Dividers</h3>
+                <div class="product-price">£112</div>
+              </div>
+              <p class="product-desc">Precision reduction and enlargement dividers with ground steel points and hand-lapped conical brass friction pivot for ratio layout.</p>
+              <ul class="product-specs">
+                <li><span class="spec-label">Reach:</span> 10-inch hand-finished CZ121 brass arms with line graduations</li>
+                <li><span class="spec-label">Joint:</span> Hand-scraped cone-and-socket pivot with knurled lock thumb-nut</li>
+                <li><span class="spec-label">Points:</span> Replaceable needle-sharp silver steel points in clamp chucks</li>
+              </ul>
+              <div class="selector-group">
+                <label for="grad-dividers" class="selector-label">Select Scribed Graduation:</label>
+                <select id="grad-dividers" class="form-select grad-selector">
+                  <option value="Architectural 3:5 &amp; Golden Ratio">Architectural 3:5 &amp; Golden Ratio</option>
+                  <option value="Dual Direct Ratio (1:2 to 1:10)">Dual Direct Ratio (1:2 to 1:10)</option>
+                  <option value="Decimal Scale &amp; Chord Angles">Decimal Scale &amp; Chord Angles</option>
+                </select>
+              </div>
+              <button type="button" class="btn btn-primary btn-add-slip" data-id="RT-DIV-02" data-name="Sector-Joint Proportional Dividers" data-price="112" data-selector="grad-dividers">
+                Add to Order Slip · £112
+              </button>
+            </div>
+          </article>
+
+          <!-- Item 3: Cyanotype Pattern Roll -->
+          <article class="product-card reveal-card" data-sku="RT-ROLL-01">
+            <div class="product-media">
+              <img src="./assets/rule-and-trammel-pattern-roll.webp" alt="Linen-backed cyanotype blueprint pattern roll unrolled on workbench with brass cylindrical weights" width="800" height="600" loading="lazy">
+              <span class="product-badge">LOFTING ROLL</span>
+            </div>
+            <div class="product-content">
+              <div class="product-header">
+                <h3 class="product-title">Linen-Backed Cyanotype Pattern Roll</h3>
+                <div class="product-price">£38</div>
+              </div>
+              <p class="product-desc">Durable Irish linen-backed draughting paper for hull lines, full-size joinery templates, and cabinet carcase lofting on the bench.</p>
+              <ul class="product-specs">
+                <li><span class="spec-label">Dimensions:</span> 36 inches width x 10 yards continuous pattern roll</li>
+                <li><span class="spec-label">Substrate:</span> 160 gsm rag paper bonded to unbleached woven Irish linen</li>
+                <li><span class="spec-label">Chemistry:</span> Traditional ferric ammonium citrate &amp; potassium ferricyanide</li>
+              </ul>
+              <div class="selector-group">
+                <label for="grad-roll" class="selector-label">Select Scribed Graduation:</label>
+                <select id="grad-roll" class="form-select grad-selector">
+                  <option value="1/12th Duodecimal Grid">1/12" Duodecimal Grid Lines</option>
+                  <option value="1/16th Standard Cabinet Grid">1/16" Standard Cabinet Grid</option>
+                  <option value="Full Boatwright Spar-Taper Format">Full Boatwright Spar-Taper Format</option>
+                </select>
+              </div>
+              <button type="button" class="btn btn-primary btn-add-slip" data-id="RT-ROLL-01" data-name="Linen-Backed Cyanotype Pattern Roll" data-price="38" data-selector="grad-roll">
+                Add to Order Slip · £38
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4 — Scale & Graduation Standards (§4b Directed) -->
+    <section class="section-standards parallax-container" id="standards" aria-labelledby="standards-title">
+      <div class="parallax-plane plane-bg drafting-ticks" data-parallax="0.08" aria-hidden="true"></div>
+      
+      <div class="container standards-inner parallax-plane plane-fore" data-parallax="-0.04">
+        <header class="section-header">
+          <div class="section-label-tag">TOLERANCES &amp; METRIC BENCHMARKS</div>
+          <h2 id="standards-title" class="section-title">Verified geometry from the Kelham Island carriage</h2>
+          <p class="section-subtitle">We document physical performance in thousandths of an inch and fractions of a millimetre, not vague marketing claims.</p>
+        </header>
+
+        <div class="metrics-grid">
+          <div class="metric-card reveal-card">
+            <div class="metric-num-wrapper">
+              <span class="metric-val tabular-nums" data-counter="1924">1924</span>
+              <span class="metric-unit">AD</span>
+            </div>
+            <h3 class="metric-title">Dividing Engine Build Year</h3>
+            <p class="metric-caption">Cast in Leeds by Greenwood &amp; Batley, restored in 1986 with micrometer screw hand-lapped to British Standard Imperial yards.</p>
+            <div class="metric-rule" aria-hidden="true"></div>
+          </div>
+
+          <div class="metric-card reveal-card">
+            <div class="metric-num-wrapper">
+              <span class="metric-val tabular-nums" data-counter="0.05" data-decimals="2">0.05</span>
+              <span class="metric-unit">mm</span>
+            </div>
+            <h3 class="metric-title">Maximum Linear Deviation</h3>
+            <p class="metric-caption">Pitch deviation across a full 36-inch boxwood travel verified via 3-point Vernier audit and optical bench comparator.</p>
+            <div class="metric-rule" aria-hidden="true"></div>
+          </div>
+
+          <div class="metric-card reveal-card">
+            <div class="metric-num-wrapper">
+              <span class="metric-val tabular-nums" data-counter="12">12</span>
+              <span class="metric-unit">ticks/in</span>
+            </div>
+            <h3 class="metric-title">Duodecimal Ticks per Inch</h3>
+            <p class="metric-caption">Traditional 1/12th division allowing immediate thirds, quarters, and sixths without fractional conversion errors at the bench.</p>
+            <div class="metric-rule" aria-hidden="true"></div>
+          </div>
+
+          <div class="metric-card reveal-card">
+            <div class="metric-num-wrapper">
+              <span class="metric-val tabular-nums" data-counter="7">7</span>
+              <span class="metric-unit">years</span>
+            </div>
+            <h3 class="metric-title">Boxwood Loft Seasoning</h3>
+            <p class="metric-caption">Air-cured in slatted oak racks in Kelham Island until billet internal moisture rests below 9% before precision planing.</p>
+            <div class="metric-rule" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5 — Workshop Provenance & Maker Proof (§4b Directed) -->
+    <section class="section-provenance" id="provenance" aria-labelledby="provenance-title">
+      <div class="container">
+        <header class="section-header">
+          <div class="section-label-tag">MAKER PROOF &amp; BENCH VERIFICATION</div>
+          <h2 id="provenance-title" class="section-title">Checked against real lofting floors</h2>
+          <p class="section-subtitle">Grounded reports from working wooden boatwrights, heritage joiners, and architectural modelers across Britain.</p>
+        </header>
+
+        <div class="stat-banner reveal-card">
+          <div class="stat-large tabular-nums">99.4%</div>
+          <div class="stat-desc">
+            <strong>First-Cut Vernier Pass Rate</strong>
+            <span>Of every batch of scribed boxwood rules, 99.4% pass our 3-point calibration audit on the initial leadscrew cut before edge finishing.</span>
+          </div>
+        </div>
+
+        <div class="testimonials-grid">
+          <article class="testimonial-card reveal-card">
+            <blockquote class="testimonial-quote">
+              <p>“In the damp salt air of the Falmouth yard, laser-printed aluminium rules corrode and printed inks peel. Rule &amp; Trammel's scribed boxwood and cast brass heads have held true through three clinker-built cutter builds without shifting zero.”</p>
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-name">Alistair Penrose</div>
+              <div class="author-role">Master Boatwright · Quay Lofting, Falmouth</div>
+            </div>
+          </article>
+
+          <article class="testimonial-card reveal-card">
+            <blockquote class="testimonial-quote">
+              <p>“Reconstructing Georgian sash joinery requires true duodecimal twelfths. The V-groove tick cuts catch our marking knives with mechanical repeatability you cannot get from modern hardware store rules.”</p>
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-name">Eleanor Vance</div>
+              <div class="author-role">Senior Joinery Conservator · Minster Timber Conservation, York</div>
+            </div>
+          </article>
+
+          <article class="testimonial-card reveal-card">
+            <blockquote class="testimonial-quote">
+              <p>“Their proportional dividers are balanced with just enough friction to hold ratio across forty transfers on delicate drafting vellum. Essential bench apparatus for our historic building reconstructions.”</p>
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-name">Callum Nairn</div>
+              <div class="author-role">Principal Modelmaker · St Andrew Scale Models, Edinburgh</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6 — Technical FAQ & Direct Dispatch (§4b Directed) -->
+    <section class="section-faq" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="section-header">
+          <div class="section-label-tag">TECHNICAL CARE &amp; WORKSHOP POLICIES</div>
+          <h2 id="faq-title" class="section-title">Care, graduations, and parcel dispatch</h2>
+          <p class="section-subtitle">Practical advice on maintaining boxwood blades, ordering bespoke spar tapers, and our Sheffield recalibration service.</p>
+        </header>
+
+        <div class="faq-accordion">
+          <details class="faq-item reveal-card">
+            <summary class="faq-summary">
+              <span class="faq-question">How should European boxwood rules be oiled and stored at the workbench?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Rub the boxwood blade lightly with raw cold-pressed linseed oil once every six months, wiping off all excess with a clean linen rag after twenty minutes. Never soak the wood or expose it to direct heat lamps. Boxwood's naturally dense, fine cellular structure repels workshop grime when properly seasoned.</p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal-card">
+            <summary class="faq-summary">
+              <span class="faq-question">Can an instrument be returned to Sheffield for re-scribing or recalibration?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Yes. We offer lifetime maintenance for all Rule &amp; Trammel blades. If heavy workshop wear softens a graduation line after years of knife scoring, return the rule to our Kelham Island shop. We clean the blade, lightly dress the edge, and re-trace the V-grooves on our 1924 engine for a £24 bench fee.</p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal-card">
+            <summary class="faq-summary">
+              <span class="faq-question">How are instruments packed for UK and international postal dispatch?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Every rule and trammel set is wrapped in anti-corrosive VCI tissue, enclosed in a heavy waxed cardboard tube or oiled canvas roll, and shipped in double-walled parcel crates. UK orders travel via Royal Mail Tracked 24; international deliveries ship via DHL Express with signed calibration certificates included.</p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal-card">
+            <summary class="faq-summary">
+              <span class="faq-question">Why are 1/12th duodecimal graduations preferred over metric by traditional timber craftspeople?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Traditional British timber frame construction and heritage joinery rely on duodecimal divisibility: twelve divides evenly by two, three, four, and six without infinite decimal fractions. Scribed twelfths allow joiners to step off proportions directly with dividers rather than calculating awkward fractions.</p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal-card">
+            <summary class="faq-summary">
+              <span class="faq-question">Will the sand-cast CZ121 brass fittings tarnish over time?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>CZ121 brass naturally develops a warm, dull bronze patina from hand handling and workshop atmospheric exposure. This oxidised surface layer protects the underlying alloy without altering mechanical tolerances. If you prefer bright metal, buff lightly with micro-abrasive polishing paste.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="custom-scale-box reveal-card">
+          <div class="custom-scale-content">
+            <h3 class="custom-title">Require a bespoke spar-taper or naval architectural scale?</h3>
+            <p class="custom-desc">We regularly cut custom proportional rules for marine restoration trusts and heritage boatyards requiring non-standard lofting intervals.</p>
+          </div>
+          <div class="custom-action">
+            <a href="#footer-contact" class="btn btn-secondary">Request Custom Scale Specification</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Section 7 — Footer with Footer Ambient Video Backdrop -->
+  <footer class="site-footer" id="footer-contact">
+    <!-- Ambient motion backdrop container -->
+    <div class="footer-ambient-container" aria-hidden="true">
+      <video class="footer-ambient-video" autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="./assets/rule-and-trammel-footer-ambient-poster.webp" id="footerVideo" aria-label="Slow cinematic study of a restored 1924 linear dividing engine leadscrew and carriage in Sheffield workshop">
+        <source src="./assets/rule-and-trammel-footer-ambient.webm" type="video/webm">
+        <source src="./assets/rule-and-trammel-footer-ambient.mp4" type="video/mp4">
+      </video>
+      <div class="footer-ambient-scrim"></div>
+    </div>
+
+    <div class="footer-content container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <div class="footer-logo">
+            <img src="./assets/favicon.svg" alt="" width="32" height="32" class="brand-mark-footer" aria-hidden="true" loading="lazy">
+            <span class="footer-brand-name">RULE &amp; TRAMMEL</span>
+          </div>
+          <p class="footer-tagline">Engine-divided layout instruments cut on 1924 Sheffield cast iron for fine cabinetmakers, boatwrights, and pattern-makers.</p>
+          <div class="footer-badge-list">
+            <span class="footer-badge">EST. 1986 SHEFFIELD</span>
+            <span class="footer-badge">CZ121 ALLOY</span>
+            <span class="footer-badge">BUXUS SEMPERVIRENS</span>
+          </div>
+        </div>
+
+        <div class="footer-nav-col">
+          <h4 class="footer-col-title">Workshop Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Bench Intro</a></li>
+            <li><a href="#flagship">1924 Dividing Engine</a></li>
+            <li><a href="#catalogue">Direct Catalogue</a></li>
+            <li><a href="#standards">Tolerances &amp; Geometry</a></li>
+            <li><a href="#provenance">Lofting Floor Proof</a></li>
+            <li><a href="#faq">Instrument Care &amp; FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-dispatch-col">
+          <h4 class="footer-col-title">Bench Orders &amp; Dispatch</h4>
+          <p class="footer-info-text">Individual instruments and complete sets dispatched weekly from our Kelham Island loft. Worldwide parcel courier via signed calibration crate.</p>
+          <div class="footer-order-status">
+            <span class="status-indicator"></span>
+            <span class="status-text">Sheffield Engine Bench: Active Dispatch</span>
+          </div>
+        </div>
+
+        <div class="footer-contact-col">
+          <h4 class="footer-col-title">Sheffield Bench Registry</h4>
+          <address class="footer-address">
+            Rule &amp; Trammel Works<br>
+            Unit 3, Alma Street Works<br>
+            Kelham Island, Sheffield S3 8SA<br>
+            United Kingdom
+          </address>
+          <p class="footer-hours">Bench Openings: Mon–Fri 08:00–16:30 GMT</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div class="footer-legal">
+          <p>© 2026 Rule &amp; Trammel. All rights reserved. Scribed in Sheffield, Great Britain.</p>
+        </div>
+        <div class="footer-note-sub">
+          <p>Dividing tolerance ±0.05 mm certified under bench standard BS 1924-RT.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+</body></html>

@@ -1,0 +1,21 @@
+{
+  "title": "Rule & Trammel",
+  "blurb": "Direct-to-bench precision layout instruments: hand-graduated boxwood rules, cast-brass trammel heads, and duodecimal scales cut on 1924 Sheffield iron.",
+  "hero": "assets/rule-and-trammel-hero-photogram.webp",
+  "layoutFamily": "layered-parallax",
+  "styleFamily": "riso spot-ink",
+  "tone": "stoic technical",
+  "sector": "retail / e-commerce",
+  "tags": [
+    "specialty-retail",
+    "direct-to-consumer",
+    "vintage"
+  ],
+  "created": "2026-11-25",
+  "wordFloor": 650,
+  "video": "assets/rule-and-trammel-footer-ambient.webm",
+  "videoPlacement": "footer ambient",
+  "signatureEffect": "drifting grain overlay",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

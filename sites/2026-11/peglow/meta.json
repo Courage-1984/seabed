@@ -1,0 +1,21 @@
+{
+  "title": "PegLow",
+  "blurb": "Bone-dry, rustle-free shelter for people who go outdoors to stay completely still.",
+  "hero": "assets/peglow-hero-hide.webp",
+  "layoutFamily": "asymmetric split",
+  "styleFamily": "swiss international",
+  "tone": "wry editorial",
+  "sector": "leisure / outdoors",
+  "tags": [
+    "gear",
+    "conservation",
+    "recreation"
+  ],
+  "created": "2026-11-26",
+  "wordFloor": 1900,
+  "video": "assets/peglow-inline-process-demo.webm",
+  "videoPlacement": "inline process demo",
+  "signatureEffect": "magnetic proximity cursor element",
+  "standard": "v2",
+  "qa": "v2-pass"
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Caliche",
+  "blurb": "Borrow twenty-four raw earth pigments in a brass pocket tin, paint the ridge, and swap empty pans on the road.",
+  "hero": "assets/caliche-hero-field-tin.webp",
+  "layoutFamily": "neo-brutalist masonry",
+  "styleFamily": "mid-century desert modern",
+  "tone": "adventurous field",
+  "sector": "creative / arts",
+  "tags": [
+    "studio",
+    "printmaking",
+    "design"
+  ],
+  "created": "2026-11-28",
+  "wordFloor": 650,
+  "video": "assets/caliche-modal-feature.webm",
+  "videoPlacement": "modal feature",
+  "signatureEffect": "numeric counter roll-up",
+  "standard": "v2",
+  "qa": "v2-pass"
+}
